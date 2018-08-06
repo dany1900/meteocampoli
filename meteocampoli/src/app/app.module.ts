@@ -12,7 +12,7 @@ import {SatelliteComponent} from "./satellite/satellite.component";
 import { MenuComponent } from './menu/menu.component';
 import { SliderComponent } from './slider/slider.component';
 import { DatiAttualiComponent } from './dati-attuali/dati-attuali.component';
-import {ApiService} from "../../../testAngular6/src/app/api-service.service";
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -26,7 +26,8 @@ import {ApiService} from "../../../testAngular6/src/app/api-service.service";
     SatelliteComponent,
     MenuComponent,
     SliderComponent,
-    DatiAttualiComponent
+    DatiAttualiComponent,
+    HeaderComponent
 
 
 ],
@@ -56,7 +57,7 @@ import {ApiService} from "../../../testAngular6/src/app/api-service.service";
       }
     ])
   ],
-  providers: [ApiService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
