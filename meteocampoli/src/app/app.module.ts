@@ -13,6 +13,8 @@ import { MenuComponent } from './menu/menu.component';
 import { SliderComponent } from './slider/slider.component';
 import { DatiAttualiComponent } from './dati-attuali/dati-attuali.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { ShinystatComponent } from './shinystat/shinystat.component';
 
 
 @NgModule({
@@ -27,13 +29,20 @@ import { HeaderComponent } from './header/header.component';
     MenuComponent,
     SliderComponent,
     DatiAttualiComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent,
+    ShinystatComponent
 
 
 ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule ,
     RouterModule.forRoot([
+      { path: '',
+        redirectTo: 'datiAttuali',
+        pathMatch: 'full'
+      },
+
       {
         path: 'riepilogo.html',
         component: RiepilogoComponent
