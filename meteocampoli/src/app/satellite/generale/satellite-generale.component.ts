@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-new-cmp',
-  templateUrl: './satellite.component.html',
+  selector: 'sat-generale',
+  templateUrl: './satellite-generale.component.html',
   //styleUrls: ['./riepilogo.component.css']
 })
 
-export class SatelliteComponent implements OnInit {
+export class SatelliteGeneraleComponent implements OnInit {
   //newcomponent = "Entered in new component created";
   ngOnInit() { }
 

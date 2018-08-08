@@ -1,0 +1,106 @@
+@media screen and (max-width: 980px) {
+
+
+
+  h1 {
+    font-size: 35px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 30px;
+  }
+
+  h5 {
+    font-size: 24px;
+  }
+
+  strong {
+    font-size: 18px;
+  }
+
+  .desc-footer {
+    font-size: 24px;
+  }
+
+  #abruzzo-molise{
+    font-size: 20px;
+
+  }
+
+
+
+  .btn-primary {
+    font-size: 22px;
+  }
+
+
+  .btn-lg {
+    font-size: 19px;
+    height: 60px;
+
+  }
+
+
+  .btn-puldown {
+    height: 50px;
+  }
+
+  #logo H2 a{
+    font-size: 16px;
+
+  }
+
+  #riepilogo{
+    height:3800px;
+    width:100%;
+  }
+
+
+  /*.btn-pulup{ color:#fff;background-color:#2d65c4;border-color:#2d65c4; height: 50px;}
+
+  .btn-puldown{ color:#fff;background-color:#2d65c4;border-color:#2d65c4;height:25px;}
+  .dropdown-menu{color:#fff; border-color:#026960;}
+  .dropdown-menu>li>a{display:block;padding:3px 20px;clear:both; font-size: 22px; font-weight:normal;line-height:1.428571429;font-weight:bold;color:black;white-space:nowrap;background-color:#e3e4e6;}
+  .dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus{color:#fff;text-decoration:none;background-color:#0F75CF;}
+  .dropdown-menu .divider{height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5;}
+  .footer-desc{width:100%;font-family:helvetica;font-size:12px;color:#fff }*/
+
+  .dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    font-weight: bold;
+    color: #f5f5f5;
+    white-space: nowrap;
+    background-color: #2d65c4;
+    height: 40px;
+    font-size: 25px;
+
+  }
+
+  /*
+  .webcam {
+  width: 580px;
+  height: 460px;
+  }
+
+  }
+
+  @media screen and (min-width: 981px) {
+
+  .webcam {
+  width: 480px;
+  height: 360px;
+  }
+  */
+}

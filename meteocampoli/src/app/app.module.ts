@@ -8,13 +8,17 @@ import { FormsModule } from '@angular/forms';
 import {RiepilogoComponent} from "./riepilogo/riepilogo.component";
 import {HomeComponent} from "./home/home.component";
 import {TestComponent} from "./test/test.component";
-import {SatelliteComponent} from "./satellite/satellite.component";
+import {SatelliteGeneraleComponent} from "./satellite/generale/satellite-generale.component";
 import { MenuComponent } from './menu/menu.component';
 import { SliderComponent } from './slider/slider.component';
 import { DatiAttualiComponent } from './dati-attuali/dati-attuali.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ShinystatComponent } from './shinystat/shinystat.component';
+import { InfoAngularComponent } from './info-angular/info-angular.component';
+import { PublicitaComponent } from './publicita/publicita.component';
+import { TabComponent } from './satellite/tab/tab.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -25,18 +29,21 @@ import { ShinystatComponent } from './shinystat/shinystat.component';
     RiepilogoComponent,
     HomeComponent,
     TestComponent,
-    SatelliteComponent,
+    SatelliteGeneraleComponent,
     MenuComponent,
     SliderComponent,
     DatiAttualiComponent,
     HeaderComponent,
     FooterComponent,
-    ShinystatComponent
+    ShinystatComponent,
+    InfoAngularComponent,
+    PublicitaComponent,
+    TabComponent
 
 
 ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule ,
+    BrowserModule, HttpClientModule, FormsModule ,MatTabsModule,
     RouterModule.forRoot([
       { path: '',
         redirectTo: 'datiAttuali',
@@ -62,7 +69,7 @@ import { ShinystatComponent } from './shinystat/shinystat.component';
       ,
       {
         path: 'satellite',
-        component: SatelliteComponent
+        component: SatelliteGeneraleComponent
       }
     ])
   ],
