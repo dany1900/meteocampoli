@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import {SatTabComponent} from "../sat-tab.component";
 
 @Component({
   selector: 'sat-generale',
   templateUrl: './satellite-generale.component.html',
-  //styleUrls: ['./riepilogo.component.css']
+  styleUrls: ['../sat-tab.component.css']
 })
 
-export class SatelliteGeneraleComponent implements OnInit {
+export class SatelliteGeneraleComponent extends SatTabComponent implements OnInit {
   //newcomponent = "Entered in new component created";
   ngOnInit() { }
 

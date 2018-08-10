@@ -1,6 +1,5 @@
 // src/app.component.ts
 import { Component } from '@angular/core';
-import { Model, TodoItem } from "model/model";
 
 
 @Component({
@@ -11,8 +10,9 @@ import { Model, TodoItem } from "model/model";
 export class AppComponent {
 
 
- // pages =['abc','bca','pqr'];
 
-
+  ngAfterViewChecked() {
+    window.scrollTo(500, 500);
+  }
 }
 

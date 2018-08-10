@@ -1,8 +1,7 @@
 .btn-group-vertical>.btn, .btn-group-vertical>.btn-group, .btn-group-vertical>.btn-group>.btn {
   display: block;
   float: none;
-  width: 120%;
-  max-width: 120%;
+  width: 120px;
 }
 
 .btn-group-lg>.btn, .btn-lg {

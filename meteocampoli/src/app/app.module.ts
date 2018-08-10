@@ -44,6 +44,14 @@ import {WebcamMoliseComponent} from "./webcam/centro-italia/molise/webcam-molise
 import {SatelliteCentroComponent} from "./satellite/centro-italia/satellite-centro.component";
 import {SatelliteSudComponent} from "./satellite/sud-italia/satellite-sud.component";
 import {SatelliteNordComponent} from "./satellite/nord-italia/satellite-nord.component";
+import {WebCamLimitrofeComponent} from './webcam/centro-italia/limitrofe/webcamLimitrofe.component';
+import { WebcamFrosinoneComponent } from './webcam/centro-italia/lazio/webcam-frosinone/webcam-frosinone.component';
+import { WebcamLatinaComponent } from './webcam/centro-italia/lazio/webcam-latina/webcam-latina.component';
+import { WebcamRomaComponent } from './webcam/centro-italia/lazio/webcam-roma/webcam-roma.component';
+import { WebcamRietiComponent } from './webcam/centro-italia/lazio/webcam-rieti/webcam-rieti.component';
+import { WebcamViterboComponent } from './webcam/centro-italia/lazio/webcam-viterbo/webcam-viterbo.component';
+import {AccordionModule} from "ngx-accordion";
+
 
 
 @NgModule({
@@ -88,12 +96,19 @@ import {SatelliteNordComponent} from "./satellite/nord-italia/satellite-nord.com
     CentroItaliaComponent,
     SatelliteCentroComponent,
     SatelliteNordComponent,
-    SatelliteSudComponent
+    SatelliteSudComponent,
+    WebcamFrosinoneComponent,
+    WebcamLatinaComponent,
+    WebcamRomaComponent,
+    WebcamRietiComponent,
+    WebcamViterboComponent,
+    WebCamLimitrofeComponent
+
 
 
 ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule ,MatTabsModule,
+    BrowserModule, HttpClientModule, FormsModule ,MatTabsModule,AccordionModule,
     RouterModule.forRoot([
       { path: '',
         redirectTo: 'datiAttuali',
@@ -139,7 +154,7 @@ import {SatelliteNordComponent} from "./satellite/nord-italia/satellite-nord.com
       },
       {
         path: 'webcam-limitrofe',
-        component: WebcamComponent
+        component: WebCamLimitrofeComponent
       },
       {
         path: 'home',

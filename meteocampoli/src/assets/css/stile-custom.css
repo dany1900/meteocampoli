@@ -65,6 +65,12 @@
   color: #23252C;
 }
 
+.panel-default>.panel-heading {
+  color: #333;
+  background-color: #d1e0fb;
+  border-color: #ddd;
+}
+
 
 /*
 @media screen and (max-width: 980px)  {

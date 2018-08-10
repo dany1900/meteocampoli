@@ -1,8 +1,27 @@
 
 
-<tab-sat></tab-sat>
 
 <br>
+
+<accordion [showArrows]="true">
+  <accordion-group heading="Temperatura 2m in tempo reale" class="title-micro-section" (click)="toggle()" >
+    <img class="flex" *ngIf="show" src="http://img.meteo.it/forecastimg/realtime/12/today_temperatura.jpg" width="920" height="630" alt="temperature suolo" style="padding:5px; border:2px solid #5DB4D9"/><br />
+    <br>
+    <br>
+  </accordion-group>
+  <accordion-group heading="Contacts" (click)="toggle()">
+    <img *ngIf="show" src="http://www.meteo60.fr/satellites/animation-satellite-ir-france.gif" width="920" height="630" alt="satellite infrarossi movimento" style="padding:5px; border:2px solid #5DB4D9;" /><br />
+  </accordion-group>
+  <accordion-group heading="Map">
+    Content of the Map
+  </accordion-group>
+  <accordion-group>
+    <accordion-heading>
+      Custom heading
+    </accordion-heading>
+    Its all about me.
+  </accordion-group>
+</accordion>
 
 <em class="title-micro-section"(click)="toggle()">{{buttonName}} Temperatura 2m in tempo reale </em>
 <img class="flex" *ngIf="show" src="http://img.meteo.it/forecastimg/realtime/12/today_temperatura.jpg" width="920" height="630" alt="temperature suolo" style="padding:5px; border:2px solid #5DB4D9"/><br />
@@ -12,8 +31,8 @@
 <br>
 <br>
 
-<em class="title-micro-section">Satellite Infrarossi in movimento</em>
-<img src="http://www.meteo60.fr/satellites/animation-satellite-ir-france.gif" width="920" height="630" alt="satellite infrarossi movimento" style="padding:5px; border:2px solid #5DB4D9;" /><br />
+<em class="title-micro-section" (click)="toggle()">Satellite Infrarossi in movimento</em>
+<img *ngIf="show" src="http://www.meteo60.fr/satellites/animation-satellite-ir-france.gif" width="920" height="630" alt="satellite infrarossi movimento" style="padding:5px; border:2px solid #5DB4D9;" /><br />
 
 <em class="title-micro-section">Satellite Fulminazioni Europa</em>
 <img src="http://images.blitzortung.org/Images/image_b_eu.png?t=22640732" width="920" height="630" alt="satellite fulminazioni" style="padding:5px; border:2px solid #5DB4D9" /><br />
@@ -25,7 +44,7 @@
 <img src="http://radarweb.aquila.infn.it/cetempsite/fulmini.png" width="920" height="630" alt="satellite fulminazioni centro italia" style="padding:5px; border:2px solid #5DB4D9" /><br />
 
 <em class="title-micro-section">Satellite Precipitazioni</em>
-<h4><span style="color: red;"> &nbsp &nbsp Se l immagine sottostante non si aggiorna premere F5 o CTRL+F5 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Orario Italia UTC+1</span>
+<span style="color: red;"> &nbsp &nbsp Se l immagine sottostante non si aggiorna premere F5 o CTRL+F5 &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp  Orario Italia UTC+1</span>
 <img src="http://www.protezionecivile.gov.it/images/rete_radar/VMI/VMI.JPEG" width="920" height="630" alt="satellite precipitazioni" style="padding:5px; border:2px solid #5DB4D9" /><br />
 
 <em class="title-micro-section">Satellite Meteosat Immagine Italia</em>
@@ -61,43 +80,36 @@
 
 
 
+  <br>
+  <br>
+  <em class="title-micro-section">Radar Precipitazioni Ultime 3 ore</em>
+  <img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt3h_noclass.png" width="920" height="630" alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+  <br>
+  <br>
+  <em class="title-micro-section">Radar Precipitazioni Ultime 6 ore</em>
+  <img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt6h_noclass.png" width="920" height="630" alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
 
-<br>
-<br>
-<em class="title-micro-section">Radar Precipitazioni Ultime 3 ore</em>
-<img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt3h_noclass.png" width="920" height="630" alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
-<br>
-<br>
-<em class="title-micro-section">Radar Precipitazioni Ultime 6 ore</em>
-<img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt6h_noclass.png" width="920" height="630" alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+  <br>
+  <br>
+  <em class="title-micro-section">Radar Precipitazioni Ultime 24 ore</em>
+  <img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt24h_giornaliero_cetcest_noclass.png" width="920" height="630" alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
 
-<br>
-<br>
-<em class="title-micro-section">Radar Precipitazioni Ultime 24 ore</em>
-<img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt24h_giornaliero_cetcest_noclass.png" width="920" height="630" alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
-
-<br>
-<br>
-
-
-
-<em class="title-micro-section">Radar Precipitazioni Live</em>
-<img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="http://radarweb.aquila.infn.it/imgmm/ultimo_vmi_120km.png" width="920" height="630" alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
-
-<br>
-<br>
+  <br>
+  <br>
 
 
 
-<!--
-<font color="#23252C"><em><b><h3><center>Radar precipitazioni ultime 24H Zoom</center></h3></b></em></font>
-<center><iframe src="http://www.vallemuricana.it/radarStimaH24.php" width="825" height="615" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px"></iframe><center>
+  <em class="title-micro-section">Radar Precipitazioni Live</em>
+  <img style="-webkit-user-select: none; cursor: -webkit-zoom-in;" src="http://radarweb.aquila.infn.it/imgmm/ultimo_vmi_120km.png" width="920" height="630" alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
 
-<br>
-<br>
-<br>
-<br>
--->
+  <br>
+  <br>
+
+
+
+
+
+
 
 <em class="title-micro-section">Radar precipitazioni in tempo reale Zoom</em>
 <iframe src="../../../assets/php/radar_zoom.php" width="920" height="630" alt="radar precipitazioni zoom" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px"></iframe>
