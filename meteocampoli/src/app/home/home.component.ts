@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {NgForm} from "@angular/forms";
-import {Device} from "../../model/device";
+import {Device} from "../shared/models/device";
 
 const INITIAL_STATE = { label: null, os: null };
 

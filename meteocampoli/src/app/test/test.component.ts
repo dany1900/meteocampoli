@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Model, TodoItem } from "model/model";
+import { Model, TodoItem } from "app/shared/models/model";
 
 
 @Component({

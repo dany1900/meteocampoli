@@ -73,11 +73,11 @@ export  const routes: Routes = [
     path: 'stazioni-meteo/:tipo',
     component: TabStazioniComponent,
     data: {
-      title: ''
+      title: 'Stazioni Meteo Lazio - Dati - Meteo Campoli'
     }
   },
   {
-    path: 'stazioni-meteo-abruzzo/:tipo',
+    path: 'stazioni-meteo/:tipo',
     component: TabStazioniComponent,
     data: {
       title: ''
@@ -108,7 +108,7 @@ export  const routes: Routes = [
   path: 'previsioni',
     component: PrevisioniComponent,
   data: {
-    title: ''
+    title: 'Previsioni Meteo - Monitoraggio Indici Climatici - Meteo Campoli'
   }
 },
 {

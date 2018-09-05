@@ -44,11 +44,11 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a [routerLink]="['/stazioni-meteo', 1]" title="temperature principali">Temperature Limitrofe</a></li>
+      <li><a [routerLink]="['/stazioni-meteo', 'GENERALE']" title="temperature principali">Temperature Limitrofe</a></li>
       <li class="divider"></li>
-      <li><a [routerLink]="['/stazioni-meteo', 2]"  title="stazioni meteo lazio">Temperature Lazio</a></li>
+      <li><a [routerLink]="['/stazioni-meteo', 'LAZIO']"  title="stazioni meteo lazio">Temperature Lazio</a></li>
       <li class="divider"></li>
-      <li><a routerLink = "stazioni-abruzzo" title="stazioni meteo abruzzo">Temperature Abruzzo</a></li>
+      <li><a [routerLink]="['/stazioni-meteo', 'ABRUZZO']" title="stazioni meteo abruzzo">Temperature Abruzzo</a></li>
       <li class="divider"></li>
       <li><a routerLink = "stazioni-molise" title="stazioni meteo molise">Temperature Molise</a></li>
       <li class="divider"></li>

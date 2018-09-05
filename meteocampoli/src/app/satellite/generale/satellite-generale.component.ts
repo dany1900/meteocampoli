@@ -9,6 +9,9 @@ import {SatTabComponent} from "../sat-tab.component";
 
 export class SatelliteGeneraleComponent extends SatTabComponent implements OnInit {
   //newcomponent = "Entered in new component created";
+
+
+
   ngOnInit() { }
 
   public show:boolean = false;
