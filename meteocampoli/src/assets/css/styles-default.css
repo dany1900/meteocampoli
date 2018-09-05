@@ -1,3 +1,16 @@
+@media screen (max-width: 900px) {
+  h3 {
+    font-size: 24px;
+  }
+  h6 {
+    font-size: 24px;
+    text-align:  center;
+    color:  #23252C;
+  }
+
+
+}
+
 {
   border: 0;
   margin: 0;
@@ -12,7 +25,7 @@ body {
 }
 #bg_clouds {
   background: url(../../../../assets/img/bg_clouds.jpg) top center no-repeat;
-  /*width: 1270px; */
+ /* width: 1170px; */
 }
 #main {
   width: 95%;
@@ -686,13 +699,4 @@ a.nivo-prevNav {
   color: #efe9d1;
   text-decoration: underline;
 }
-@media screen (max-width: 900px) {
-  h3 {
-    font-size: 24px;
-  }
-  h6 {
-    font-size: 24px;
-    text-align:  center;
-    color:  #23252C;
-  }
-}
+

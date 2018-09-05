@@ -14,5 +14,10 @@ export class AppComponent {
   ngAfterViewChecked() {
     window.scrollTo(500, 500);
   }
+
+  ngOnInit() {
+
+  }
+
 }
 

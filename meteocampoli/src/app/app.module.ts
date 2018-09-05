@@ -1,7 +1,6 @@
 // app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -24,34 +23,45 @@ import { InfoComponent } from './info/info.component';
 import { WebcamComponent } from './webcam/webcam.component';
 import { TerremotiComponent } from './terremoti/terremoti.component';
 import { ImmaginiComponent } from './immagini/immagini.component';
-import { TemperatureComponent } from './temperature/temperature.component';
-import { LazioComponent } from './temperature/lazio/lazio.component';
-import { AbruzzoComponent } from './temperature/abruzzo/abruzzo.component';
-import { MoliseComponent } from './temperature/molise/molise.component';
-import { MeteonetworkComponent } from './temperature/meteonetwork/meteonetwork.component';
-import { ReteNazionaleComponent } from './temperature/rete-nazionale/rete-nazionale.component';
-import { WebcamMontagnaComponent } from './webcam/centro-italia/montagna/webcam-montagna.component';
-import { ValleCominoComponent } from './webcam/centro-italia/valle-comino/valle-comino.component';
-import { WebcamIserniaComponent } from './webcam/centro-italia/molise/isernia/webcam-isernia.component';
-import { CampobassoComponent } from './webcam/centro-italia/molise/campobasso/campobasso.component';
-import { UmbriaComponent } from './webcam/centro-italia/umbria/umbria.component';
-import { ToscanaComponent } from './webcam/centro-italia/toscana/toscana.component';
-import { MarcheComponent } from './webcam/centro-italia/marche/marche.component';
-import { NordItaliaComponent } from './webcam/nord-italia/nord-italia.component';
-import { SudItaliaComponent } from './webcam/sud-italia/sud-italia.component';
-import { CentroItaliaComponent } from './webcam/centro-italia/centro-italia.component';
-import {WebcamMoliseComponent} from "./webcam/centro-italia/molise/webcam-molise.component";
+import { StazioniMeteoComponent } from './stazioni-meteo/stazioni-meteo.component';
+import { StazioniMoliseComponent } from './stazioni-meteo/stazioni-molise/stazioni-molise.component';
+import { StazioniMeteonetworkComponent } from './stazioni-meteo/stazioni-meteonetwork/stazioni-meteonetwork.component';
+import { StazioniReteMeteoComponent } from './stazioni-meteo/stazioni-rete-meteo/stazioni-rete-meteo.component';
+import { WebcamMontagnaComponent } from './webcam/webcam-centro-italia/webcam-montagna/webcam-montagna.component';
+import { ValleCominoComponent } from './webcam/webcam-centro-italia/webcam-valle-comino/valle-comino.component';
+import { WebcamIserniaComponent } from './webcam/webcam-centro-italia/webcam-molise/webcam-isernia/webcam-isernia.component';
+import { CampobassoComponent } from './webcam/webcam-centro-italia/webcam-molise/webcam-campobasso/campobasso.component';
+import { UmbriaComponent } from './webcam/webcam-centro-italia/webcam-umbria/umbria.component';
+import { ToscanaComponent } from './webcam/webcam-centro-italia/webcam-toscana/toscana.component';
+import { MarcheComponent } from './webcam/webcam-centro-italia/webcam-marche/marche.component';
+import { NordItaliaComponent } from './webcam/webcam-nord-italia/nord-italia.component';
+import { SudItaliaComponent } from './webcam/webcam-sud-italia/sud-italia.component';
+import { CentroItaliaComponent } from './webcam/webcam-centro-italia/centro-italia.component';
+import {WebcamMoliseComponent} from "./webcam/webcam-centro-italia/webcam-molise/webcam-molise.component";
 import {SatelliteCentroComponent} from "./satellite/centro-italia/satellite-centro.component";
 import {SatelliteSudComponent} from "./satellite/sud-italia/satellite-sud.component";
 import {SatelliteNordComponent} from "./satellite/nord-italia/satellite-nord.component";
-import {WebCamLimitrofeComponent} from './webcam/centro-italia/limitrofe/webcamLimitrofe.component';
-import { WebcamFrosinoneComponent } from './webcam/centro-italia/lazio/webcam-frosinone/webcam-frosinone.component';
-import { WebcamLatinaComponent } from './webcam/centro-italia/lazio/webcam-latina/webcam-latina.component';
-import { WebcamRomaComponent } from './webcam/centro-italia/lazio/webcam-roma/webcam-roma.component';
-import { WebcamRietiComponent } from './webcam/centro-italia/lazio/webcam-rieti/webcam-rieti.component';
-import { WebcamViterboComponent } from './webcam/centro-italia/lazio/webcam-viterbo/webcam-viterbo.component';
+import {WebCamLimitrofeComponent} from './webcam/webcam-centro-italia/webcam-limitrofe/webcamLimitrofe.component';
+import { WebcamFrosinoneComponent } from './webcam/webcam-centro-italia/webcam-lazio/webcam-frosinone/webcam-frosinone.component';
+import { WebcamLatinaComponent } from './webcam/webcam-centro-italia/webcam-lazio/webcam-latina/webcam-latina.component';
+import { WebcamRomaComponent } from './webcam/webcam-centro-italia/webcam-lazio/webcam-roma/webcam-roma.component';
+import { WebcamRietiComponent } from './webcam/webcam-centro-italia/webcam-lazio/webcam-rieti/webcam-rieti.component';
+import { WebcamViterboComponent } from './webcam/webcam-centro-italia/webcam-lazio/webcam-viterbo/webcam-viterbo.component';
 import {AccordionModule} from "ngx-accordion";
-
+import { WebcamAquilaComponent } from './webcam/webcam-centro-italia/webcam-abruzzo/webcam-aquila/webcam-aquila.component';
+import { WebcamPescaraComponent } from './webcam/webcam-centro-italia/webcam-abruzzo/webcam-pescara/webcam-pescara.component';
+import { WebcamChietiComponent } from './webcam/webcam-centro-italia/webcam-abruzzo/webcam-chieti/webcam-chieti.component';
+import {WebcamAbruzzoComponent} from "./webcam/webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component";
+import {WebcamLazioComponent} from "./webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component";
+import { TerremotiItaliaComponent } from './terremoti/terremoti-italia/terremoti-italia.component';
+import { TabSatelliteComponent } from './tab/tab-satellite/tab-satellite.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SEOService} from "./service/seoservice.service";
+import {AppRoutingModule} from './app-routing.module';
+import {StazioniLazioComponent} from "./stazioni-meteo/stazioni-lazio/stazioni-lazio.component";
+import {StazioniAbruzzoComponent} from "./stazioni-meteo/stazioni-abruzzo/stazioni-abruzzo.component";
+import { TabWebcamComponent } from './tab/tab-webcam/tab-webcam.component';
+import { TabStazioniComponent } from './tab/tab-stazioni/tab-stazioni.component';
 
 
 @NgModule({
@@ -77,11 +87,11 @@ import {AccordionModule} from "ngx-accordion";
     WebcamComponent,
     TerremotiComponent,
     ImmaginiComponent,
-    TemperatureComponent,
-    LazioComponent,
-    AbruzzoComponent,
-    MeteonetworkComponent,
-    ReteNazionaleComponent,
+    StazioniMeteoComponent,
+    WebcamLazioComponent,
+    WebcamAbruzzoComponent,
+    StazioniMeteonetworkComponent,
+    StazioniReteMeteoComponent,
     WebcamMontagnaComponent,
     ValleCominoComponent,
     WebcamIserniaComponent,
@@ -89,7 +99,7 @@ import {AccordionModule} from "ngx-accordion";
     CampobassoComponent,
     UmbriaComponent,
     ToscanaComponent,
-    MoliseComponent,
+    StazioniMoliseComponent,
     MarcheComponent,
     NordItaliaComponent,
     SudItaliaComponent,
@@ -102,73 +112,28 @@ import {AccordionModule} from "ngx-accordion";
     WebcamRomaComponent,
     WebcamRietiComponent,
     WebcamViterboComponent,
-    WebCamLimitrofeComponent
-
-
-
+    WebCamLimitrofeComponent,
+    WebcamAquilaComponent,
+    WebcamPescaraComponent,
+    WebcamChietiComponent,
+    TerremotiItaliaComponent,
+    TabSatelliteComponent,
+    StazioniLazioComponent,
+    StazioniAbruzzoComponent,
+    StazioniMeteoComponent,
+    TabWebcamComponent,
+    TabStazioniComponent
 ],
   imports: [
-    BrowserModule, HttpClientModule, FormsModule ,MatTabsModule,AccordionModule,
-    RouterModule.forRoot([
-      { path: '',
-        redirectTo: 'datiAttuali',
-        pathMatch: 'full'
-      },
-      {
-        path: 'datiAttuali',
-        component: DatiAttualiComponent
-      },
-      {
-        path: 'riepilogo',
-        component: RiepilogoComponent
-      },
-
-      {
-        path: 'temperature',
-        component: TemperatureComponent
-      },
-      {
-        path: 'previsioni',
-        component: PrevisioniComponent
-      },
-      {
-        path: 'immagini',
-        component: ImmaginiComponent
-      },
-
-      {
-        path: 'satellite',
-        component: SatTabComponent
-      },
-      {
-        path: 'terremoti',
-        component: TerremotiComponent
-      },
-      {
-        path: 'info',
-        component: InfoComponent
-      },
-      {
-        path: 'webcam-montagna',
-        component: WebcamComponent
-      },
-      {
-        path: 'webcam-limitrofe',
-        component: WebCamLimitrofeComponent
-      },
-      {
-        path: 'home',
-        component: HomeComponent
-      },
-      {
-        path: 'test',
-        component: TestComponent
-      }
-      ,
-
-    ])
+    BrowserModule,
+    HttpClientModule,
+    FormsModule ,
+    MatTabsModule,
+    AccordionModule,
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [SEOService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

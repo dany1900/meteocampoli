@@ -23,7 +23,7 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="riepilogo.htm" title="statistiche stazione meteo treo">Statistiche Campoli Treo bassa (500mt)</a></li>
+      <li><a routerLink = "riepilogo" title="statistiche stazione meteo treo">Statistiche Campoli Treo bassa (500mt)</a></li>
       <li class="divider"></li>
       <li><a href="http://www.idrografico.roma.it/annali/" title="statistiche stazione meteo san pancrazio" target="_blank">Statistiche Campoli San Pancrazio (680mt)</a></li>
       <li class="divider"></li>
@@ -39,22 +39,22 @@
 
   <!-- Large button group -->
   <div class="btn-group-vertical">
-    <a type="button" class="btn btn-pulup btn-lg" routerLink = "temperature" title="Temperature Limitrofe">Temperature </a>
+    <a type="button" class="btn btn-pulup btn-lg" routerLink = "stazioni-meteo" title="Temperature Limitrofe">Temperature </a>
     <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="temperature.htm" title="temperature principali">Temperature Limitrofe</a></li>
+      <li><a [routerLink]="['/stazioni-meteo', 1]" title="temperature principali">Temperature Limitrofe</a></li>
       <li class="divider"></li>
-      <li><a href="lazio.html" title="stazioni meteo lazio">Temperature Lazio</a></li>
+      <li><a [routerLink]="['/stazioni-meteo', 2]"  title="stazioni meteo lazio">Temperature Lazio</a></li>
       <li class="divider"></li>
-      <li><a href="abruzzo.html" title="stazioni meteo abruzzo">Temperature Abruzzo</a></li>
+      <li><a routerLink = "stazioni-abruzzo" title="stazioni meteo abruzzo">Temperature Abruzzo</a></li>
       <li class="divider"></li>
-      <li><a href="molise.html" title="stazioni meteo molise">Temperature Molise</a></li>
+      <li><a routerLink = "stazioni-molise" title="stazioni meteo molise">Temperature Molise</a></li>
       <li class="divider"></li>
-      <li><a href="meteonetwork.html" title="stazioni meteonetwork">Temperature Meteonetwork</a></li>
+      <li><a routerLink = "stazioni-meteonetwork" title="stazioni meteonetwork">Temperature Meteonetwork</a></li>
       <li class="divider"></li>
-      <li><a href="retemeteo.html" title="retemeteo">Rete Nazionale</a></li>
+      <li><a routerLink = "stazioni-rete-meteo" title="retemeteo">Rete Nazionale</a></li>
       <li class="divider"></li>
       <li><a href="http://www.caputfrigoris.it/rete-meteo.htm" title="stazioni meteo caputfrigoris" target="_blank">Temperature Caput Frigoris</a></li>
     </ul>
@@ -68,7 +68,7 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="thisyear.htm" title="previsioni meteo campoli">Previsioni Base</a></li>
+      <li><a routerLink = "previsioni" title="previsioni meteo campoli">Previsioni Base</a></li>
       <li class="divider"></li>
       <li><a href="http://www.lamma.rete.toscana.it/meteo/modelli" title="previsioni meteo lamma" target="_blank">Previsioni Lamma</a></li>
       <li class="divider"></li>
@@ -101,18 +101,18 @@
 
   <!-- Large button group -->
   <div class="btn-group-vertical">
-    <a type="button" class="btn btn-pulup btn-lg" routerLink = "satellite" title="Satellite">Satellite</a>
+    <a type="button" class="btn btn-pulup btn-lg" routerLink = "satellite-generale" title="Satellite">Satellite</a>
     <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="satellite.htm" title="monitoraggio satelliti e radar generale">Satellite Generale</a></li>
+      <li><a routerLink = "satellite-generale" title="monitoraggio satelliti e radar generale">Satellite Generale</a></li>
       <li class="divider"></li>
-      <li><a href="satellite-centro.html" title="monitoraggio satelliti e radar centro italia">Radar Centro Italia</a></li>
+      <li><a routerLink = "satellite-centro" title="monitoraggio satelliti e radar centro italia">Radar Centro Italia</a></li>
       <li class="divider"></li>
-      <li><a href="satellite-nord.html" title="monitoraggio satelliti e radar nord italia">Radar Nord Italia</a></li>
+      <li><a routerLink = "satellite-nord" title="monitoraggio satelliti e radar nord italia">Radar Nord Italia</a></li>
       <li class="divider"></li>
-      <li><a href="satellite-sud.html"  title="monitoraggio satelliti e radar sud italia">Radar Sud Italia</a></li>
+      <li><a routerLink = "satellite-sud"  title="monitoraggio satelliti e radar sud italia">Radar Sud Italia</a></li>
       <li class="divider"></li>
       <li><a href="http://www.protezionecivile.gov.it/jcms/it/mappa_radar.wp" title="monitoraggio radar protezione civile" target="_blank">Radar Protezione Civile</a></li>
 
@@ -126,7 +126,7 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="terremoti-italia.html" title="lista terremoti italia">Terremoti Italia</a></li>
+      <li><a routerLink = "terremoti-italia" title="lista terremoti italia">Terremoti Italia</a></li>
       <li class="divider"></li>
       <li><a href="terremoti-mondo.html" title="mappa terremoti mondo">Terremoti Mondo</a></li>
     </ul>
@@ -139,7 +139,7 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a href="infos.htm" title="curiosità generali"> Generali</a></li>
+      <li><a routerLink = "info" title="curiosità generali"> Generali</a></li>
       <li class="divider"></li>
       <li><a href="effemeridi.htm" title="effemeridi campoli appennino">Effemeridi</a></li>
       <li class="divider"></li>
