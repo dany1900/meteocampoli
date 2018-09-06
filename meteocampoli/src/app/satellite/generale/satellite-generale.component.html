@@ -3,24 +3,16 @@
 
 <br>
 
-<accordion [showArrows]="true">
-  <accordion-group heading="Temperatura 2m in tempo reale" class="title-micro-section" (click)="toggle()" >
-    <img class="flex" *ngIf="show" src="http://img.meteo.it/forecastimg/realtime/12/today_temperatura.jpg" width="920" height="630" alt="temperature suolo" style="padding:5px; border:2px solid #5DB4D9"/><br />
+<accordion [showArrows]="true" [closeOthers]="false" [expandAll]="false">
+  <accordion-group heading="{{buttonName}}  Temperatura 2m in tempo reale" class="title-micro-section" (click)="toggle()" >
+    <img class="flex"  src="http://www.meteo60.fr/satellites/animation-satellite-ir-france.gif" width="920" height="630" alt="temperature suolo" style="padding:5px; border:2px solid #5DB4D9"/><br />
     <br>
     <br>
   </accordion-group>
-  <accordion-group heading="Contacts" (click)="toggle()">
-    <img *ngIf="show" src="http://www.meteo60.fr/satellites/animation-satellite-ir-france.gif" width="920" height="630" alt="satellite infrarossi movimento" style="padding:5px; border:2px solid #5DB4D9;" /><br />
+  <accordion-group heading="{{buttonName}}  Contacts" (click)="test2()">
+    <img class="flex"  src="http://img.meteo.it/forecastimg/realtime/12/today_temperatura.jpg" width="920" height="630" alt="satellite infrarossi movimento" style="padding:5px; border:2px solid #5DB4D9;" /><br />
   </accordion-group>
-  <accordion-group heading="Map">
-    Content of the Map
-  </accordion-group>
-  <accordion-group>
-    <accordion-heading>
-      Custom heading
-    </accordion-heading>
-    Its all about me.
-  </accordion-group>
+
 </accordion>
 
 <em class="title-micro-section"(click)="toggle()">{{buttonName}} Temperatura 2m in tempo reale </em>

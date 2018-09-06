@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SatTabComponent} from "../sat-tab.component";
 
 @Component({
-  selector: 'sat-generale',
+  selector: 'satellite-generale',
   templateUrl: './satellite-generale.component.html',
   styleUrls: ['../sat-tab.component.css']
 })
@@ -14,17 +14,29 @@ export class SatelliteGeneraleComponent extends SatTabComponent implements OnIni
 
   ngOnInit() { }
 
-  public show:boolean = false;
+  public show1:boolean = false;
+  public show2:boolean = false;
+
   public buttonName:any = 'Mostra';
 
   toggle() {
-    this.show = !this.show;
+    this.show1 = !this.show1;
 
     // CHANGE THE NAME OF THE BUTTON.
-    if(this.show)
+    if (this.show1)
       this.buttonName = "Nascondi";
     else
       this.buttonName = "Mostra";
   }
 
+  test2() {
+    this.show2 = !this.show2;
+
+
+    if (this.show2)
+      this.buttonName = "Nascondi";
+    else
+      this.buttonName = "Mostra";
+
+  }
 }
