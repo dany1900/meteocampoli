@@ -39,22 +39,22 @@
 
   <!-- Large button group -->
   <div class="btn-group-vertical">
-    <a type="button" class="btn btn-pulup btn-lg" routerLink = "stazioni-meteo" title="Temperature Limitrofe">Temperature </a>
+    <a type="button" class="btn btn-pulup btn-lg" [routerLink]="['/stazioni-meteo/generale']"  title="Temperature Limitrofe">Temperature </a>
     <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <li><a [routerLink]="['/stazioni-meteo', 'GENERALE']" title="temperature principali">Temperature Limitrofe</a></li>
+      <li><a [routerLink]="['/stazioni-meteo/generale']" title="temperature principali">Temperature Limitrofe</a></li>
       <li class="divider"></li>
-      <li><a [routerLink]="['/stazioni-meteo', 'LAZIO']"  title="stazioni meteo lazio">Temperature Lazio</a></li>
+      <li><a [routerLink]="['/stazioni-meteo/lazio']"  title="stazioni meteo lazio">Temperature Lazio</a></li>
       <li class="divider"></li>
-      <li><a [routerLink]="['/stazioni-meteo', 'ABRUZZO']" title="stazioni meteo abruzzo">Temperature Abruzzo</a></li>
+      <li><a [routerLink]="['/stazioni-meteo/abruzzo']" title="stazioni meteo abruzzo">Temperature Abruzzo</a></li>
       <li class="divider"></li>
-      <li><a routerLink = "stazioni-molise" title="stazioni meteo molise">Temperature Molise</a></li>
+      <li><a [routerLink]="['/stazioni-meteo/molise']" title="stazioni meteo molise">Temperature Molise</a></li>
       <li class="divider"></li>
-      <li><a routerLink = "stazioni-meteonetwork" title="stazioni meteonetwork">Temperature Meteonetwork</a></li>
+      <li><a [routerLink]="['/stazioni-meteo/meteonetwork']"  title="stazioni meteonetwork">Temperature Meteonetwork</a></li>
       <li class="divider"></li>
-      <li><a routerLink = "stazioni-rete-meteo" title="retemeteo">Rete Nazionale</a></li>
+      <li><a [routerLink]="['/stazioni-meteo/rete-meteo']" title="retemeteo">Rete Meteo</a></li>
       <li class="divider"></li>
       <li><a href="http://www.caputfrigoris.it/rete-meteo.htm" title="stazioni meteo caputfrigoris" target="_blank">Temperature Caput Frigoris</a></li>
     </ul>

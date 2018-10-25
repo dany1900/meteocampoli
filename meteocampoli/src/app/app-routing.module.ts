@@ -24,11 +24,7 @@ import {DatiAttualiComponent} from "./dati-attuali/dati-attuali.component";
 import {SatelliteNordComponent} from "./satellite/nord-italia/satellite-nord.component";
 import {SatelliteSudComponent} from "./satellite/sud-italia/satellite-sud.component";
 import {SatelliteCentroComponent} from "./satellite/centro-italia/satellite-centro.component";
-import {StazioniLazioComponent} from "./stazioni-meteo/stazioni-lazio/stazioni-lazio.component";
-import {StazioniAbruzzoComponent} from "./stazioni-meteo/stazioni-abruzzo/stazioni-abruzzo.component";
-import {StazioniMoliseComponent} from "./stazioni-meteo/stazioni-molise/stazioni-molise.component";
-import {StazioniReteMeteoComponent} from "./stazioni-meteo/stazioni-rete-meteo/stazioni-rete-meteo.component";
-import {StazioniMeteonetworkComponent} from "./stazioni-meteo/stazioni-meteonetwork/stazioni-meteonetwork.component";
+
 import {TabStazioniComponent} from "./tab/tab-stazioni/tab-stazioni.component";
 
 export  const routes: Routes = [
@@ -60,50 +56,49 @@ export  const routes: Routes = [
 
   }
 },
-
-{
-  path: 'stazioni-meteo',
-    component: TabStazioniComponent,
-  data: {
-    title: 'Temperature - Stazioni Meteo Centro Italia - Dati'
-
-  }
-},
   {
-    path: 'stazioni-meteo/:tipo',
+    path: 'stazioni-meteo/generale',
+    component: TabStazioniComponent,
+    data: {
+      title: 'Stazioni Meteo Limitrofe - Dati - Meteo Campoli'
+    }
+  },
+  {
+    path: 'stazioni-meteo/lazio',
     component: TabStazioniComponent,
     data: {
       title: 'Stazioni Meteo Lazio - Dati - Meteo Campoli'
     }
   },
   {
-    path: 'stazioni-meteo/:tipo',
+    path: 'stazioni-meteo/abruzzo',
     component: TabStazioniComponent,
     data: {
-      title: ''
+      title: 'Stazioni Meteo Abruzzo - Dati - Meteo Campoli'
     }
   },
   {
-    path: 'stazioni-meteo-molise',
+    path: 'stazioni-meteo/molise',
     component: TabStazioniComponent,
     data: {
-      title: ''
+      title: 'Stazioni Meteo Molise - Dati - Meteo Campoli'
     }
   },
   {
-    path: 'stazioni-meteo-rete-nazionale',
+    path: 'stazioni-meteo/meteonetwork',
     component: TabStazioniComponent,
     data: {
-      title: ''
+      title: 'Stazioni Meteo Meteonetwork - Dati - Meteo Campoli'
     }
   },
   {
-    path: 'stazioni-meteo-meteonetwork',
+    path: 'stazioni-meteo/rete-meteo',
     component: TabStazioniComponent,
     data: {
-      title: ''
+      title: 'Stazioni Meteo Rete Meteo - Dati - Meteo Campoli'
     }
   },
+
 {
   path: 'previsioni',
     component: PrevisioniComponent,
