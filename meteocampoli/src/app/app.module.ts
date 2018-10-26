@@ -62,6 +62,7 @@ import {StazioniLazioComponent} from "./stazioni-meteo/stazioni-lazio/stazioni-l
 import {StazioniAbruzzoComponent} from "./stazioni-meteo/stazioni-abruzzo/stazioni-abruzzo.component";
 import { TabWebcamComponent } from './tab/tab-webcam/tab-webcam.component';
 import { TabStazioniComponent } from './tab/tab-stazioni/tab-stazioni.component';
+import { TabImmagginiWebcamComponent } from './tab-immaggini-webcam/tab-immaggini-webcam.component';
 
 
 @NgModule({
@@ -122,7 +123,8 @@ import { TabStazioniComponent } from './tab/tab-stazioni/tab-stazioni.component'
     StazioniAbruzzoComponent,
     StazioniMeteoComponent,
     TabWebcamComponent,
-    TabStazioniComponent
+    TabStazioniComponent,
+    TabImmagginiWebcamComponent
 ],
   imports: [
     BrowserModule,

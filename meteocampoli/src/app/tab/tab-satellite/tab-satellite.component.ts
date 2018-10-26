@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {RouterModule, Router} from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
+import {Subscription} from "rxjs/Rx";
 
 
 @Component({
@@ -10,23 +10,42 @@ import {RouterModule, Router} from '@angular/router';
 })
 export class TabSatelliteComponent  {
 
-  navLinks:any[];
-  activeLinkIndex = 0;
 
 
+  private id : number;
+  private path: any;
 
 
-  constructor(private router: Router) {
-    this.navLinks = [
-      {label: 'Welcome', link: 'welcome'},
-      {label: 'Home', link: 'home'}];
+  constructor(private route : ActivatedRoute) {
 
 
+    let paramTab: any;
+    this.path = this.route.url;
+    paramTab = this.path._value[1].path;
 
-  this.activeLinkIndex =
-    this.navLinks.indexOf(this.navLinks.find(tab => router.url.indexOf(tab.link) != -1));
+    switch (paramTab) {
+      case "generale":
+        this.id = 0;
+        break;
+      case "centro-italia":
+        this.id = 1;
+        break;
+      case "nord-italia":
+        this.id = 2;
+        break;
+      case "sud-italia":
+        this.id = 3;
+        break;
+      default:
+        this.id = 0;
+
+        break;
+
     }
 
   }
+
+
+}
 
 

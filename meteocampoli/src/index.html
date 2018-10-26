@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="assets/css/stile-custom.css"  type="text/css" />
   <script type="text/javascript" src="assets/js/clockt.js"></script>
   <script type="text/javascript" src="assets/js/clockp.js"></script>
+  <script type="text/javascript" src="assets/js/moloch.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="assets/css/media-query.css" media="screen and (max-device-width: 980px)" title="css cellulari">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -44,7 +45,20 @@
       align-items: center;
       white-space: nowrap;
       position: relative;
+      margin-top: 15px;
+
     }
+    .mat-tab-body-content {
+      height: 100%;
+      overflow: auto;
+      margin-top: 15px;
+    }
+
+    .mat-tab-body.mat-tab-body-active{
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
   </style>
 
 

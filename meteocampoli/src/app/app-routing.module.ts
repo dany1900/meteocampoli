@@ -26,6 +26,10 @@ import {SatelliteSudComponent} from "./satellite/sud-italia/satellite-sud.compon
 import {SatelliteCentroComponent} from "./satellite/centro-italia/satellite-centro.component";
 
 import {TabStazioniComponent} from "./tab/tab-stazioni/tab-stazioni.component";
+import {WebcamLazioComponent} from "./webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component";
+import {WebcamAbruzzoComponent} from "./webcam/webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component";
+import {WebcamMoliseComponent} from "./webcam/webcam-centro-italia/webcam-molise/webcam-molise.component";
+import {TabImmagginiWebcamComponent} from "./tab-immaggini-webcam/tab-immaggini-webcam.component";
 
 export  const routes: Routes = [
 
@@ -107,38 +111,39 @@ export  const routes: Routes = [
   }
 },
 {
-  path: 'immagini',
-    component: ImmaginiComponent,
+  path: 'webcam/immagini',
+    component: TabImmagginiWebcamComponent,
   data: {
     title: ''
   }
 },
 
 {
-  path: 'satellite-generale',
+  path: 'satellite/generale',
     component: SatTabComponent
 },
   {
-    path: 'satellite-nord-italia',
-    component: SatelliteNordComponent,
+    path: 'satellite/nord-italia',
+    component: SatTabComponent,
     data: {
       title: ''
     }
   },
   {
-    path: 'satellite-sud-italia',
-    component: SatelliteSudComponent,
+    path: 'satellite/centro-italia',
+    component: SatTabComponent,
     data: {
       title: ''
     }
   },
   {
-    path: 'satellite-centro-italia',
-    component: SatelliteCentroComponent,
+    path: 'satellite/sud-italia',
+    component: SatTabComponent,
     data: {
       title: ''
     }
   },
+
 {
   path: 'terremoti',
     component: TerremotiComponent,
@@ -147,14 +152,14 @@ export  const routes: Routes = [
   }
 },
 {
-  path: 'terremoti-italia',
+  path: 'terremoti/italia',
     component: TerremotiItaliaComponent,
   data: {
     title: ''
   }
 },
   {
-    path: 'terremoti-mondo',
+    path: 'terremoti/mondo',
     component: TerremotiItaliaComponent,
     data: {
       title: ''
@@ -168,19 +173,41 @@ export  const routes: Routes = [
   }
 },
 {
-  path: 'webcam-montagna',
-    component: WebcamComponent,
+  path: 'webcam/montagna',
+    component: TabImmagginiWebcamComponent,
   data: {
     title: ''
   }
 },
 {
-  path: 'webcam-limitrofe',
-    component: WebCamLimitrofeComponent,
+  path: 'webcam/limitrofe',
+    component: TabImmagginiWebcamComponent,
   data: {
     title: ''
   }
 },
+  {
+    path: 'webcam/montagna/lazio',
+    component: WebcamLazioComponent,
+    data: {
+      title: ''
+    }
+  },
+  {
+    path: 'webcam/montagna/abruzzo',
+    component: WebcamAbruzzoComponent,
+    data: {
+      title: ''
+    }
+  },
+  {
+    path: 'webcam/montagna/molise',
+    component: WebcamMoliseComponent,
+    data: {
+      title: ''
+    }
+  },
+
 {
   path: 'home',
     component: HomeComponent,

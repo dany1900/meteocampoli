@@ -4,6 +4,68 @@
 
 <br>
 <br>
+
+<script>
+  $(document).ready(function() {
+    var select = GetUrlParameter("model");
+    console.log(select);
+    //$("#" + select).attr("selected", "");
+    //$("#" + select).prop("selected", true);
+    $("#modello").val(select);
+
+  });
+
+  function GetUrlParameter(name) {
+    var value;
+    $.each(window.location.search.slice(1).split("&"), function (i, kvp) {
+      var values = kvp.split("=");
+      if (name === values[0]) {
+        value = values[1] ? values[1] : values[0];
+        return false;
+      }
+    });
+
+    return value;
+
+  }
+</script>
+
+  <ul id="menugiorni">
+    <li style="float: right;">
+
+      <div id="info_arw_gfs_12km" style="display:none;"><a href="/modelli/atmo/wrf-info-sul-modello" target="_blank">Info sul modello WRF</a></div>
+      <div id="info_arw_ecm_3km" style="display:none;"><a href="/modelli/atmo/wrf-info-sul-modello" target="_blank">Info sul modello WRF</a></div>
+      <div id="info_arw_gfs_3km" style="display:none;"><a href="/modelli/atmo/wrf-info-sul-modello" target="_blank">Info sul modello WRF</a></div>
+      <div id="info_moloch.0p02.ita.ecm" style="display:none;"><a href="/modelli/atmo/bolam-e-moloch-info-sui-modelli" target="_blank">Info sul modello Moloch</a></div>
+      <div id="info_moloch.0p02.ita.gfs" style="display:none;"><a href="/modelli/atmo/bolam-e-moloch-info-sui-modelli" target="_blank">Info sul modello Moloch</a></div>
+      <div id="info_bolam.0p07.med" style="display:none;"><a href="/modelli/atmo/bolam-e-moloch-info-sui-modelli" target="_blank">Info sul modello Bolam</a></div>
+
+
+
+
+    </li>
+  </ul>
+  <table border="0" cellpadding="5" cellspacing="0" class="localita" width="100%">
+    <tbody>
+    <tr>
+      <td><select id="modello"><option id="arw_gfs_12km" value="arw_gfs_12km">WRF-ARW GFS - risoluzione 12 km</option><option id="arw_ecm_3km" value="arw_ecm_3km">WRF-ARW ECM - risoluzione 3 km</option><option id="arw_gfs_3km" value="arw_gfs_3km">WRF-ARW GFS - risoluzione 3 km</option><option id="bolam.0p07.med" value="bolam.0p07.med">BOLAM GFS - risoluzione 7 km</option><option id="moloch.0p02.ita.ecm" value="moloch.0p02.ita.ecm">MOLOCH ECM - risoluzione 2.5 km</option><option id="moloch.0p02.ita.gfs" value="moloch.0p02.ita.gfs">MOLOCH GFS - risoluzione 2.5 km</option><option disabled="disabled">--------------</option><option id="gfs" value="gfs05">GFS NCEP - risoluzione 25 km</option></select></td>
+      <td><select id="sezione"><option selected="selected" value="last">Ultima corsa</option><option value="old1">corsa precedente 1</option><option value="old2">corsa precedente 2</option><option value="old3">corsa precedente 3</option></select></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><a class="frecce" href="#" id="primo">&laquo; inizio</a> | <a class="frecce" href="#" id="indietro">&lt; prec.</a> <span id="display-frecce">-</span> <a class="frecce" href="#" id="avanti">succ. &gt;</a> | <a class="frecce" href="#" id="ultimo">fine &raquo;</a></td>
+      <td><a href="#" id="zoom">Zoom in/out</a></td>
+      <td>
+        <div id="select_campi"><select id="campi"><option title="Precipitazione cumulata nelle ore precedenti" value="pcp1h">Precipitazione 1 ora</option><option selected="selected" title="Precipitazione cumulata nelle 3 ore precedenti" value="pcp3h">Precipitazione 3 ore</option><option title="Precipitazione cumulata nelle 6 ore precedenti" value="pcp6h">Precipitazione 6 ore</option><option title="Precipitazione cumulata nelle 12 ore precedenti" value="pcp12h">Precipitazione 12 ore</option><option title="Precipitazione cumulata nelle 24 ore precedenti" value="pcp24h">Precipitazione 24 ore</option><option title="Neve accumulata nelle 6 ore precedenti" value="snow6h">Neve 6 ore</option><option title="Neve accumulata nelle 24 ore precedenti" value="snow24h">Neve 24 ore</option><option title="nuvolosità" value="tc">Nuvolosità</option><option title="Vento a 10 m (km/h)" value="wind10">Vento a 10 m</option><option title="Vento raffica (km/h)" value="gust">Vento raffica</option><option title="Pressione a livello del mare (hPa)" value="mslp">Pressione</option><option title="Temperatura a 2 metri (°C)" value="t2m">Temperatura a 2 m</option><option title="Temperatura e geopotenziale a 950 hPa" value="zt950">Temperatura 950 hPa</option><option title="Temperatura e geopotenziale a 850 hPa" value="zt850">Temperatura 850 hPa</option><option title="Temperatura e geopotenziale a 500 hPa" value="zt500">Temperatura 500 hPa</option><option title="Umidità relativa a 925 hPa" value="rh950">Umidità e vento 950 hPa</option><option title="Umidità relativa a 850 hPa" value="rh850">Umidità e vento 850 hPa</option><option title="Umidità relativa a 700 hPa" value="rh700">Umidità e vento 700 hPa</option><option title="Umidità relativa a 500 hPa" value="rh500">Umidità e vento 500 hPa</option><option title="Temperatura potenziale equivalente a 850 hPa (°C) + vento a 850 e 300 hPa (kt)" value="the850">Theta-e 850 hPa</option><option title="Total Totals e Sweat Index" value="tt">Total Totals</option><option title="K index" value="ki">K index</option><option title="Lifted index" value="li">Lifted index</option><option title="Delta Theta-e" value="dthe">Delta Theta-e</option><option title="Cape" value="cape">Cape</option><option title="Cin" value="cin">Cin</option><option title="Lapse Rate" value="lpr">Lapse Rate</option><option title="Acqua precipitabile" value="pw">Acqua precipitabile</option></select></div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <p><img class="image_click" height="631" href="#" id="mainimage" src="" width="760" /></p>
+  <p>&nbsp;</p>
+
+
+
 <em class="title-micro-section" >Meteogramma Campoli Appennino</em>
   <img src="http://www.yr.no/sted/Italia/Lazio/Campoli_Appennino/avansert_meteogram.png"width="910" height="340"style="padding:5px; border:2px solid #5DB4D9" /><br />
 

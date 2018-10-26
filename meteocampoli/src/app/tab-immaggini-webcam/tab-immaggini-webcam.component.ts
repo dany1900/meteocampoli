@@ -3,11 +3,11 @@ import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs/Rx";
 
 @Component({
-  selector: 'tab-webcam',
-  templateUrl: './tab-webcam.component.html',
-  styleUrls: ['./tab-webcam.component.css']
+  selector: 'tab-immaggini-webcam',
+  templateUrl: './tab-immaggini-webcam.component.html',
+  styleUrls: ['./tab-immaggini-webcam.component.css']
 })
-export class TabWebcamComponent implements OnInit {
+export class TabImmagginiWebcamComponent implements OnInit {
 
   private id : number;
   private path: any;
@@ -18,20 +18,17 @@ export class TabWebcamComponent implements OnInit {
 
     let paramTab: any;
     this.path = this.route.url;
-    paramTab = this.path._value[0].path;
+    paramTab = this.path._value[1].path;
 
     switch (paramTab) {
-      case "lazio":
+      case "immagini":
         this.id = 0;
         break;
-      case "abruzzo":
+      case "montagna":
         this.id = 1;
         break;
-      case "molise":
+      case "limitrofe":
         this.id = 2;
-        break;
-      case "umbro-marchigiane":
-        this.id = 3;
         break;
       default:
         this.id = 0;
