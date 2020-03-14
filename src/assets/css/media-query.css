@@ -1,0 +1,146 @@
+@media screen and (max-width: 980px) {
+  h1 {
+    font-size: 35px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 30px;
+  }
+
+  h5 {
+    font-size: 24px;
+  }
+
+  strong {
+    font-size: 18px;
+  }
+
+  .desc-footer {
+    font-size: 24px;
+  }
+
+  #abruzzo-molise{
+    font-size: 20px;
+
+  }
+
+  .btn-primary {
+    font-size: 21px;
+  }
+
+
+  .btn-lg {
+    font-size: 19.4px;
+    height: 60px;
+  }
+
+  .btn-puldown {
+    height: 56px;
+  }
+
+  html{
+    width: 1000px;
+  }
+
+  #logo H2 a{
+    font-size: 16px;
+  }
+
+
+  #riepilogo{
+    height:3800px;
+    width:100%;
+  }
+
+  #content{
+    background-color: #2d65c4;
+  }
+
+  .dropdown-menu>li>a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.428571429;
+    font-weight: bold;
+    color: #f5f5f5;
+    white-space: nowrap;
+    background-color: #2d65c4;
+    height: 40px;
+    font-size: 25px;
+  }
+
+  .divider{
+    margin:9px 0 !important;
+  }
+
+  .row {
+    margin-right: 0px !important;
+  }
+
+  .header-webcam {
+    height: 139px;
+  }
+
+  .last-element-menu{
+    left: -130%;
+  }
+
+  .first-element-menu{
+    left: -15px;
+  }
+
+  .small-left-dropdown{
+    left: -15%;
+  }
+
+  .header-satellite-area{
+    width: 800px;
+    margin-left: 57px;
+  }
+
+  .webcam-script-header{
+    font-size: 17px;
+  }
+
+  .arrow {
+    font-size: 36px;
+  }
+}
+
+
+@media screen and (min-width: 1000px) and (max-width: 1380px) {
+
+  .zoom {
+    padding: 50px;
+    transition: transform .2s;
+    width: 900px;
+    height: 600px;
+    margin: 0 auto;
+  }
+
+  .zoom:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);
+  }
+  /*
+  #bg_clouds
+  {
+  width: 1016px !important;
+  }
+
+  #main {
+      width: 1016px !important;
+  }
+  */
+
+}

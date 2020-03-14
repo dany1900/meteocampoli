@@ -1,0 +1,23 @@
+<br>
+<em class="title-section">Immagini e WebCam - Meteo Campoli</em>
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="Immagini">
+    <br>
+    <div *ngIf="isImmagini">
+    <immagini></immagini>
+    </div>
+  </mat-tab>
+  <mat-tab label="WebCam Montagna">
+    <br>
+    <div *ngIf="isMontagna">
+    <webcam-montagna></webcam-montagna>
+    </div>
+  </mat-tab>
+  <mat-tab label="WebCam Limitrofe">
+    <br>
+    <div *ngIf="isLimitrofe">
+    <webcam-limitrofe></webcam-limitrofe>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,162 @@
+<div class="menu">
+  <div>
+<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+  <div class="btn-group-vertical">
+    <a type="button" class="btn btn-pulup btn-lg" routerLink = "datiAttuali" title="Dati Attuali">Dati Attuali</a>
+    <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-caret-down arrow"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li>
+        <a routerLink = "datiAttuali" title="stazione meteo via treo">Stazione Meteo Treo Bassa (500mt)</a></li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://www.idrografico.roma.it/asp.NET/tempo_reale.aspx?Stazione=246700" target="_blank" title="stazione meteo campoli san pancrazio">Stazione Meteo San Pancrazio Idrografico (680mt)</a></li>
+      <li class="divider"></li>
+      <li>
+        <a href="http://www.idrografico.roma.it/" target="_blank" title="stazioni meteo idrografico">Stazioni Meteo Idrografico Lazio</a></li>
+    </ul>
+  </div>
+
+  <!-- Large button group -->
+  <div class="btn-group-vertical">
+    <a type="button" class="btn btn-pulup btn-lg" routerLink = "riepilogo" title="Statistiche Complessive">Statistiche</a>
+    <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-caret-down arrow"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a routerLink = "riepilogo" title="statistiche stazione meteo treo">Statistiche Campoli Treo bassa (500mt)</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.idrografico.roma.it/annali/" title="statistiche stazione meteo san pancrazio" target="_blank">Statistiche Campoli San Pancrazio (680mt)</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.arsial.regione.lazio.it/portalearsial/agrometeo/D3.asp?anno=16&codice=FR13SIE&misura=8" title="statistiche stazione meteo arpino" target="_blank">Statistiche Arpino (525mt)</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.arsial.regione.lazio.it/portalearsial/agrometeo/D3.asp?anno=16&codice=FR03SPE&misura=8"  title="statistiche stazione meteo alvito"target="_blank">Statistiche Alvito (391mt)</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.meteonetwork.it/rete/" title="statistiche stazioni meteonetwork" target="_blank">Statistiche Giornaliere Italia</a></li>
+    </ul>
+  </div>
+
+
+
+  <!-- Large button group -->
+  <div class="btn-group-vertical">
+    <a type="button" class="btn btn-pulup btn-lg" [routerLink]="['/stazioni-meteo/generale']"  title="Temperature Limitrofe">Temperature </a>
+    <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-caret-down arrow"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a [routerLink]="['/stazioni-meteo/generale']" title="temperature principali">Temperature Limitrofe</a></li>
+      <li class="divider"></li>
+      <li><a [routerLink]="['/stazioni-meteo/lazio']"  title="stazioni meteo lazio">Temperature Lazio</a></li>
+      <li class="divider"></li>
+      <li><a [routerLink]="['/stazioni-meteo/abruzzo']" title="stazioni meteo abruzzo">Temperature Abruzzo</a></li>
+      <li class="divider"></li>
+      <li><a [routerLink]="['/stazioni-meteo/molise']" title="stazioni meteo molise">Temperature Molise</a></li>
+      <li class="divider"></li>
+      <li><a [routerLink]="['/stazioni-meteo/meteonetwork']"  title="stazioni meteonetwork">Temperature Meteonetwork</a></li>
+      <li class="divider"></li>
+      <li><a [routerLink]="['/stazioni-meteo/rete-meteo']" title="retemeteo">Rete Meteo</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.caputfrigoris.it/rete-meteo.htm" title="stazioni meteo caputfrigoris" target="_blank">Temperature Caput Frigoris</a></li>
+    </ul>
+  </div>
+
+
+  <!-- Large button group -->
+  <div class="btn-group-vertical">
+    <a type="button" class="btn btn-pulup btn-lg" routerLink = "previsioni" title="Previsioni Meteo" >Previsioni </a>
+    <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-caret-down arrow"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a routerLink = "previsioni" title="previsioni meteo campoli">Previsioni Base</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.lamma.rete.toscana.it/meteo/modelli" title="previsioni meteo lamma" target="_blank">Previsioni Lamma</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.isac.cnr.it/dinamica/projects/forecasts/moloch/" title="previsioni meteo moloch carte meteo" target="_blank">Previsioni Moloch</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.meteonetwork.it/models/?m=wrfitalia&p=wrf_Prec_TOT_italia#1" title="previsioni meteonetowrk carte meteo" target="_blank">Previsioni Meteonetwork</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.meteociel.fr/modeles/wrfnmm.php?ech=3&mode=16&map=6" title="previsioni WRF carte meteo"target="_blank">Previsioni WRF NMM</a></li>
+      <li class="divider"></li>
+      <li><a href="https://www.ventusky.com/?p=46.2;19.8;3&l=temperature-2m&m=gfs" title="previsioni ventusky mappa" target="_blank">Previsioni Ventusky  &nbsp;<img src="../../assets/img/new.gif" alt="nuova sezione"></a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.meteociel.fr/modeles/gfse_cartes.php?ech=6&code=0&mode=1" title="previsioni meteociel carte" target="_blank">Previsioni Meteociel</a></li>
+    </ul>
+  </div>
+
+  <!-- Large button group -->
+  <div class="btn-group-vertical">
+    <a type="button" class="btn btn-pulup btn-lg" routerLink = "webcam/immagini" title="Immagini & WebCam">WebCam</a>
+    <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-caret-down arrow"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a routerLink = "webcam/immagini" title="immagini e webcam">Immagini & WebCam</a></li>
+      <li class="divider"></li>
+      <li><a routerLink = "webcam/limitrofe" title="webcam limitrofe">WebCam Limitrofe</a></li>
+      <li class="divider"></li>
+      <li><a routerLink = "webcam/montagna" title="webcam montagna centro italia">WebCam Montagna</a></li>
+    </ul>
+  </div>
+
+  <!-- Large button group -->
+  <div class="btn-group-vertical">
+    <a type="button" class="btn btn-pulup btn-lg" routerLink = "satellite/generale" title="Satellite">Satellite</a>
+    <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-caret-down arrow"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a routerLink = "satellite/generale" title="monitoraggio satelliti e radar generale">Satellite Generale</a></li>
+      <li class="divider"></li>
+      <li><a routerLink = "satellite/centro-italia" title="monitoraggio satelliti e radar centro italia">Radar Centro Italia</a></li>
+      <li class="divider"></li>
+      <li><a routerLink = "satellite/nord-italia" title="monitoraggio satelliti e radar nord italia">Radar Nord Italia</a></li>
+      <li class="divider"></li>
+      <li><a routerLink = "satellite/sud-italia"  title="monitoraggio satelliti e radar sud italia">Radar Sud Italia</a></li>
+      <li class="divider"></li>
+      <li><a href="http://www.protezionecivile.gov.it/jcms/it/mappa_radar.wp" title="monitoraggio radar protezione civile" target="_blank">Radar Protezione Civile</a></li>
+
+    </ul>
+  </div>
+
+  <!-- Large button group -->
+  <div class="btn-group-vertical">
+    <a type="button" class="btn btn-pulup btn-lg" routerLink = "terremoti" title="Terremoti">Terremoti</a>
+    <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-caret-down arrow"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a routerLink = "terremoti/italia" title="lista terremoti italia">Terremoti Italia</a></li>
+      <li class="divider"></li>
+      <li><a href="terremoti/italia" title="mappa terremoti mondo">Terremoti Mondo</a></li>
+    </ul>
+  </div>
+
+  <!-- Large button group -->
+  <div class="btn-group-vertical">
+    <a type="button" class="btn btn-pulup btn-lg"  routerLink = "info" title="Info & Curiosita">Curiosita</a>
+    <button type="button" class="btn btn-puldown dropdown-toggle" data-toggle="dropdown">
+      <i class="fa fa-caret-down arrow"></i>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a routerLink = "info" title="curiosità generali"> Generali</a></li>
+      <li class="divider"></li>
+      <li><a href="effemeridi.htm" title="effemeridi campoli appennino">Effemeridi</a></li>
+      <li class="divider"></li>
+      <li><a href="http://freddofili.it/" title="link freddofili" target="_blank">Freddofili</a></li>
+      <li class="divider"></li>
+      <li><a href="ondata-caldo-2017.html" title="ondata caldo storica 2017">Ondata Caldo 2017</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+<!-- <a type="button" class="btn btn-pulup btn-lg btn-primary" routerLink = "home">Home</a>
+
+<a type="button" class="btn btn-pulup btn-lg btn-primary" routerLink = "test">Test</a>-->
+
