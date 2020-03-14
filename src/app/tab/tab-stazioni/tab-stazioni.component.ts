@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {Subscription} from "rxjs/Rx";
 import {StazioniMeteoCostants} from 'app/shared/constants/stazioni-meteo.constants'
 
@@ -8,17 +8,19 @@ import {StazioniMeteoCostants} from 'app/shared/constants/stazioni-meteo.constan
   templateUrl: './tab-stazioni.component.html',
   styleUrls: ['./tab-stazioni.component.css']
 })
-export class TabStazioniComponent implements OnInit , OnDestroy {
+export class TabStazioniComponent implements OnInit, OnDestroy {
 
   _stazioni: StazioniMeteoCostants;
 
-  private tipo : string;
-   id : number;
-  private _route : Subscription;
-private  path: any;
+  private tipo: string;
+  id: number;
+  private _route: Subscription;
+  private path: any;
+  isGenerali: boolean = false;
+  isLazio: boolean = false;
 
 
-  constructor(private route : ActivatedRoute) {
+  constructor(private route: ActivatedRoute) {
 
 
     /* utile nel caso di param messo nel routing
@@ -33,8 +35,6 @@ private  path: any;
     this.path = this.route.url;
     paramTab = this.path._value[1].path;
     console.warn(this.path);
-
-
     switch (paramTab) {
       case "generale":
         this.id = 0;
@@ -43,8 +43,8 @@ private  path: any;
         this.id = 1;
         break;
       case "abruzzo":
-      this.id = 2;
-      break;
+        this.id = 2;
+        break;
       case "molise":
         this.id = 3;
         break;
@@ -56,22 +56,33 @@ private  path: any;
         break;
       default:
         this.id = 0;
-
         break;
-
     }
-
+    this.tabSelectionChanged(this.id);
   }
 
   ngOnInit() {
   }
 
+  tabSelectionChanged(event) {
+    if (event === 0) {
+      this.isGenerali = true;
+    }
+    else if (event === 1) {
+      this.isLazio = true;
+    }
+    // Get the selected tab
+    let selectedTab = event.tab;
+    console.log(selectedTab);
 
-
-  ngOnDestroy() {
-    if(this._route) this._route.unsubscribe();
+    // Call some method that you want
+    //this.someMethod();
   }
 
-  @Input()selectedIndex: number | null;
+  ngOnDestroy() {
+    if (this._route) this._route.unsubscribe();
+  }
+
+  @Input() selectedIndex: number | null;
 
 }

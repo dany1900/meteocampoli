@@ -1,46 +1,35 @@
-
 <br>
 <em class="title-section">Stazioni Meteo Principali - Temperature</em>
 <br>
-<i class= "title-micro-section">Clicca sul nome delle stazioni per accedere ai dati completi</i>
-<mat-tab-group [selectedIndex]="id" [disableRipple]="true">
-
+<i class="title-micro-section">Clicca sul nome delle stazioni per accedere ai dati completi</i>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="Generali">
     <br>
-     <stazioni-meteo></stazioni-meteo>
-
+    <div *ngIf="isGenerali">
+      <stazioni-meteo></stazioni-meteo>
+    </div>
   </mat-tab>
-
-
-  <mat-tab label="Lazio" >
+  <mat-tab label="Lazio">
     <br>
-    <stazioni-lazio></stazioni-lazio>
-
+    <div *ngIf="isLazio">
+      <stazioni-lazio></stazioni-lazio>
+    </div>
   </mat-tab>
-
   <mat-tab label="Abruzzo">
     <br>
     <stazioni-abruzzo></stazioni-abruzzo>
   </mat-tab>
-
-
   <mat-tab label="Molise">
     <br>
     <stazioni-molise></stazioni-molise>
-
-
   </mat-tab>
   <mat-tab label="Meteonetwork">
     <br>
     <stazioni-meteonetwork></stazioni-meteonetwork>
-
-
   </mat-tab>
   <mat-tab label="Rete Meteo">
     <br>
     <stazioni-rete-meteo></stazioni-rete-meteo>
-
-
   </mat-tab>
   <mat-tab label="Caputfrigoris">
     <br>
