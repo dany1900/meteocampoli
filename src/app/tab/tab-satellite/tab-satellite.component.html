@@ -1,4 +1,5 @@
 <br>
+<p class="header-macro-section">Satellite Precipitazioni - Meteo Campoli</p>
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="Radar Generale">
     <br>
@@ -15,5 +16,9 @@
   <mat-tab label="Radar Sud Italia">
     <br>
     <satellite-sud *ngIf="isSudItalia"></satellite-sud>
+  </mat-tab>
+  <mat-tab label="Radar Protezione Civile">
+    <br>
+    <satellite-protezione-civile *ngIf="isProtezioneCivile"></satellite-protezione-civile>
   </mat-tab>
 </mat-tab-group>
