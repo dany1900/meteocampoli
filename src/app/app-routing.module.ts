@@ -2,28 +2,20 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes, Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router, RouterModule, Routes} from '@angular/router';
 
 
-
-import { Title, Meta } from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 import {RiepilogoComponent} from "./riepilogo/riepilogo.component";
-import {StazioniMeteoComponent} from "./stazioni-meteo/stazioni-meteo.component";
 import {InfoComponent} from "./info/info.component";
-import {WebCamLimitrofeComponent} from "./webcam/webcam-centro-italia/webcam-limitrofe/webcamLimitrofe.component";
 import {TestComponent} from "./test/test.component";
 import {HomeComponent} from "./home/home.component";
-import {ImmaginiComponent} from "./immagini/immagini.component";
 import {SatTabComponent} from "./satellite/sat-tab.component";
 import {PrevisioniComponent} from "./previsioni/previsioni.component";
-import {WebcamComponent} from "./webcam/webcam.component";
 import {TerremotiComponent} from "./terremoti/terremoti.component";
 import {TerremotiItaliaComponent} from "./terremoti/terremoti-italia/terremoti-italia.component";
 import {DatiAttualiComponent} from "./dati-attuali/dati-attuali.component";
-import {SatelliteNordComponent} from "./satellite/nord-italia/satellite-nord.component";
-import {SatelliteSudComponent} from "./satellite/sud-italia/satellite-sud.component";
-import {SatelliteCentroComponent} from "./satellite/centro-italia/satellite-centro.component";
 
 import {TabStazioniComponent} from "./tab/tab-stazioni/tab-stazioni.component";
 import {WebcamLazioComponent} from "./webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component";
@@ -148,7 +140,13 @@ export  const routes: Routes = [
       title: 'Satellite Sud Italia - Radar Precipitazioni  - Meteo Campoli'
     }
   },
-
+  {
+    path: 'satellite/protezione-civile',
+    component: SatTabComponent,
+    data: {
+      title: 'Satellite Protezione Civile - Radar Precipitazioni  - Meteo Campoli'
+    }
+  },
 {
   path: 'terremoti',
     component: TerremotiComponent,

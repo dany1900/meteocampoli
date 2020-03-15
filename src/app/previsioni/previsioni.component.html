@@ -1,37 +1,9 @@
 <div class="center">
-
-<em class="title-section">Previsioni Meteo - Monitoraggio Indici Climatici</em>
-
+  <p class="header-macro-section">Previsioni Meteo - Monitoraggio Indici Climatici</p>
 <br>
 <br>
 
-<script>
-  $(document).ready(function() {
-    var select = GetUrlParameter("model");
-    console.log(select);
-    //$("#" + select).attr("selected", "");
-    //$("#" + select).prop("selected", true);
-    $("#modello").val(select);
-
-  });
-
-  function GetUrlParameter(name) {
-    var value;
-    $.each(window.location.search.slice(1).split("&"), function (i, kvp) {
-      var values = kvp.split("=");
-      if (name === values[0]) {
-        value = values[1] ? values[1] : values[0];
-        return false;
-      }
-    });
-
-    return value;
-
-  }
-</script>
-
-
-<em class="title-micro-section" >Meteogramma Campoli Appennino</em>
+  <p class="title-micro-section">Meteogramma Campoli Appennino</p>
   <img class="previsioni-frame" src="http://www.yr.no/sted/Italia/Lazio/Campoli_Appennino/avansert_meteogram.png"width="910" height="340"style="padding:5px; border:2px solid #5DB4D9" /><br />
 
   <br>
@@ -39,7 +11,7 @@
     <img class="previsioni-frame" src="http://modeles.meteociel.fr/modeles/gens/graphe_ens3.php?x=&y=&run=0&lat=41.72&lon=13.687&ext=1&type=0"width="910" style="padding:5px; border:2px solid #5DB4D9" /><br />
 
 
-    <em class="title-micro-section" >Previsioni  5 Giorni</em>
+  <p class="title-micro-section">Previsioni 5 Giorni</p>
     <!-- Inizio codice ilMeteo.it -->
     <iframe width="520" height="510" scrolling="no" frameborder="no" noresize="noresize" src="http://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=500&ico=1&lang=ita&days=6&font=Arial&fontsize=12&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
 
@@ -47,19 +19,20 @@
   <br>
   <br>
 
-    <em class="title-micro-section">Previsione Pioggia 70h</em>
+  <p class="title-micro-section">Previsione Pioggia 70h</p>
     <iframe class="previsioni-frame" style="width: 620px !important;height: 470px;" src="http://pumpkin.aquila.infn.it/forechem/fig/TOPC_ITA.gif"  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ></iframe>
 
 
-    <em class="title-micro-section">Anomalie termiche ultimi 10 giorni</em>
+  <p class="title-micro-section">Anomalie termiche ultimi 10 giorni</p>
     <img class="previsioni-frame" style="width: 750px !important;" src="http://www.cpc.ncep.noaa.gov/products/CFSv2/imagesInd3/glbT850MonInd1.gif" /><br />
 
-    <em class="title-micro-section" >Tendenza Meteo Lungo Termine</em>
+  <p class="title-micro-section">Tendenza Meteo Lungo Termine</p>
     <iframe src="http://img.meteocentre.com/models/compar_eur_00/mgram_Roma.png" width="820" height="720" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ></iframe>
     <iframe src="http://img.meteocentre.com/models/gemglb_eur_00/PN_D5_TT_TT_P1_NT_UV_UU_VV_METE_12000_Roma.png" width="820" height="770" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" ></iframe>
 
 
-    <em class="title-micro-section">Indici Climatici &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://meteotaranto.org/wxnao-ao.php"  title="Info indici climatici" target="_blank" >Info</a></em>
+  <p class="title-micro-section">Indici Climatici &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+    href="http://meteotaranto.org/wxnao-ao.php" title="Info indici climatici" target="_blank">Info</a></p>
 
     <h4>
       L'indice AO (Arctic Oscillation), detto anche Northern Annular Mode e' calcolato dalla differenza di pressione tra l'artico e le basse latitudini, generalmente comprese tra il 37esimo ed il 45esimo parallelo. In presenza di indice AO negativo si avranno formazioni di robusti anticicloni in area artica con conseguente indebolimento del vortice polare che,
@@ -75,7 +48,7 @@
 
   <br>
   <br>
-  <em class="title-micro-section" >Previsioni Meteo Lazio 6 Giorni</em>
+  <p class="title-micro-section">Previsioni Meteo Lazio 6 Giorni</p>
     <a href="http://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img src="http://www.ilmeteo.it/cartine2/0.LAZ.png" alt="Meteo Lazio" border="0" /></a>
     <a href="http://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img src="http://www.ilmeteo.it/cartine2/1.LAZ.png" alt="Meteo Lazio" border="0" /></a>
     <a href="http://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img src="http://www.ilmeteo.it/cartine2/2.LAZ.png" alt="Meteo Lazio" border="0" /></a>
