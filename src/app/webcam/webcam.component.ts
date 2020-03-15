@@ -19,9 +19,10 @@ export class WebcamComponent implements OnInit {
 
   };
 
-   footerTitle = 'Le immagini sono prese ad intervalli regolari';
+  footerTitle = 'Le immagini sono prese ad intervalli regolari';
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

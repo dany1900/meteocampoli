@@ -1,23 +1,19 @@
-
 <br>
-<mat-tab-group [selectedIndex]="id" >
-<!--  <img src="../../assets/img/webcam.png" alt="WebCam Limitrofe" title="WebCam Limitrofe"  /><br /> -->
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="WebCam Montagna">
     <br>
     <!-- <webcam-montagna></webcam-montagna> -->
   </mat-tab>
   <mat-tab label="WebCam Lazio">
     <br>
-    <webcam-lazio></webcam-lazio>
+    <webcam-lazio *ngIf="isLazio"></webcam-lazio>
   </mat-tab>
   <mat-tab label="WebCam Abruzzo">
     <br>
-    <webcam-abruzzo></webcam-abruzzo>
-
+    <webcam-abruzzo *ngIf="isAbruzzo"></webcam-abruzzo>
   </mat-tab>
   <mat-tab label="WebCam Molise">
     <br>
-    <webcam-molise></webcam-molise>
+    <webcam-molise *ngIf="isMolise"></webcam-molise>
   </mat-tab>
-
 </mat-tab-group>

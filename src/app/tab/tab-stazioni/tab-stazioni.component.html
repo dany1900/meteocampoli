@@ -5,31 +5,23 @@
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="Generali">
     <br>
-    <div *ngIf="isGenerali">
-      <stazioni-meteo></stazioni-meteo>
-    </div>
+    <stazioni-meteo *ngIf="isGenerali"></stazioni-meteo>
   </mat-tab>
   <mat-tab label="Lazio">
     <br>
-    <div *ngIf="isLazio">
-      <stazioni-lazio></stazioni-lazio>
-    </div>
+    <stazioni-lazio *ngIf="isLazio"></stazioni-lazio>
   </mat-tab>
   <mat-tab label="Abruzzo">
     <br>
-    <stazioni-abruzzo></stazioni-abruzzo>
+    <stazioni-abruzzo *ngIf="isAbruzzo"></stazioni-abruzzo>
   </mat-tab>
   <mat-tab label="Molise">
     <br>
-    <stazioni-molise></stazioni-molise>
-  </mat-tab>
-  <mat-tab label="Meteonetwork">
-    <br>
-    <stazioni-meteonetwork></stazioni-meteonetwork>
+    <stazioni-molise *ngIf="isMolise"></stazioni-molise>
   </mat-tab>
   <mat-tab label="Rete Meteo">
     <br>
-    <stazioni-rete-meteo></stazioni-rete-meteo>
+    <stazioni-rete-meteo *ngIf="isReteMeteo"></stazioni-rete-meteo>
   </mat-tab>
   <mat-tab label="Caputfrigoris">
     <br>

@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs/Rx";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'tab-webcam',
@@ -11,38 +9,36 @@ export class TabWebcamComponent implements OnInit {
 
    id : number;
   private path: any;
+  isGenerali: boolean = false;
+  isLazio: boolean = false;
+  isAbruzzo: boolean = false;
+  isMolise: boolean = false;
+  isUmbriaMarche: boolean = false;
 
-
-  constructor(private route : ActivatedRoute) {
-
-
-    let paramTab: any;
-    this.path = this.route.url;
-    paramTab = this.path._value[0].path;
-
-    switch (paramTab) {
-      case "lazio":
-        this.id = 0;
-        break;
-      case "abruzzo":
-        this.id = 1;
-        break;
-      case "molise":
-        this.id = 2;
-        break;
-      case "umbro-marchigiane":
-        this.id = 3;
-        break;
-      default:
-        this.id = 0;
-
-        break;
-
-    }
-
+  constructor() {
   }
 
   ngOnInit() {
   }
 
+  tabSelectionChanged(event) {
+    if (event === 0) {
+      this.isGenerali = true;
+    }
+    else if (event === 1) {
+      this.isLazio = true;
+    }
+    else if (event === 2) {
+      this.isAbruzzo = true;
+    }
+    else if (event === 3) {
+      this.isMolise = true;
+    }
+    else if (event === 4) {
+      this.isUmbriaMarche = true;
+    }
+    // Get the selected tab
+    let selectedTab = event.tab;
+    console.log(selectedTab);
+  }
 }

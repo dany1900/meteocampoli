@@ -18,7 +18,9 @@ export class TabStazioniComponent implements OnInit, OnDestroy {
   private path: any;
   isGenerali: boolean = false;
   isLazio: boolean = false;
-
+  isAbruzzo: boolean = false;
+  isMolise: boolean = false;
+  isReteMeteo: boolean = false;
 
   constructor(private route: ActivatedRoute) {
 
@@ -71,12 +73,15 @@ export class TabStazioniComponent implements OnInit, OnDestroy {
     else if (event === 1) {
       this.isLazio = true;
     }
-    // Get the selected tab
-    let selectedTab = event.tab;
-    console.log(selectedTab);
-
-    // Call some method that you want
-    //this.someMethod();
+    else if (event === 2) {
+      this.isAbruzzo = true;
+    }
+    else if (event === 3) {
+      this.isMolise = true;
+    }
+    else if (event === 4) {
+      this.isReteMeteo = true;
+    }
   }
 
   ngOnDestroy() {

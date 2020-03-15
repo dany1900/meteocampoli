@@ -23,6 +23,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/font-awesome/css/font-awesome.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -123,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "meteocampoli"
+  "defaultProject": "meteocampoli",
+  "cli": {
+    "analytics": "8c789ca6-5c8e-4034-acf9-6fc9520dd689"
+  }
 }

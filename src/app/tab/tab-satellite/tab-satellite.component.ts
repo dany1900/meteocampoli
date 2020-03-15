@@ -1,6 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
-import {Subscription} from "rxjs/Rx";
+import {Component} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -8,21 +7,19 @@ import {Subscription} from "rxjs/Rx";
   templateUrl: './tab-satellite.component.html',
   styleUrls: ['./tab-satellite.component.css']
 })
-export class TabSatelliteComponent  {
+export class TabSatelliteComponent {
 
-
-
-   id : number;
+  id: number;
   private path: any;
+  isGenerali: boolean = false;
+  isCentroItalia: boolean = false;
+  isNordItalia: boolean = false;
+  isSudItalia: boolean = false;
 
-
-  constructor(private route : ActivatedRoute) {
-
-
+  constructor(private route: ActivatedRoute) {
     let paramTab: any;
     this.path = this.route.url;
     paramTab = this.path._value[1].path;
-
     switch (paramTab) {
       case "generale":
         this.id = 0;
@@ -38,14 +35,25 @@ export class TabSatelliteComponent  {
         break;
       default:
         this.id = 0;
-
         break;
-
     }
-
+    this.tabSelectionChanged(this.id);
   }
 
-
+  tabSelectionChanged(event) {
+    if (event === 0) {
+      this.isGenerali = true;
+    }
+    else if (event === 1) {
+      this.isCentroItalia = true;
+    }
+    else if (event === 2) {
+      this.isNordItalia = true;
+    }
+    else if (event === 3) {
+      this.isSudItalia = true;
+    }
+  }
 }
 
 
