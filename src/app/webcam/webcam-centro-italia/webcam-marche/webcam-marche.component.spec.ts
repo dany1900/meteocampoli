@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {MarcheComponent} from './marche.component';
+import {WebcamMarcheComponent} from './webcam-marche.component';
 
 describe('MarcheComponent', () => {
-  let component: MarcheComponent;
-  let fixture: ComponentFixture<MarcheComponent>;
+  let component: WebcamMarcheComponent;
+  let fixture: ComponentFixture<WebcamMarcheComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MarcheComponent]
+      declarations: [WebcamMarcheComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MarcheComponent);
+    fixture = TestBed.createComponent(WebcamMarcheComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

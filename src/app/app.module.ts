@@ -29,9 +29,7 @@ import {WebcamMontagnaComponent} from './webcam/webcam-centro-italia/webcam-mont
 import {ValleCominoComponent} from './webcam/webcam-centro-italia/webcam-valle-comino/valle-comino.component';
 import {WebcamIserniaComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-isernia/webcam-isernia.component';
 import {CampobassoComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-campobasso/campobasso.component';
-import {UmbriaComponent} from './webcam/webcam-centro-italia/webcam-umbria/umbria.component';
-import {ToscanaComponent} from './webcam/webcam-centro-italia/webcam-toscana/toscana.component';
-import {MarcheComponent} from './webcam/webcam-centro-italia/webcam-marche/marche.component';
+import {WebcamUmbriaComponent} from './webcam/webcam-centro-italia/webcam-umbria/webcam-umbria.component';
 import {NordItaliaComponent} from './webcam/webcam-nord-italia/nord-italia.component';
 import {SudItaliaComponent} from './webcam/webcam-sud-italia/sud-italia.component';
 import {CentroItaliaComponent} from './webcam/webcam-centro-italia/centro-italia.component';
@@ -62,6 +60,16 @@ import {TabWebcamComponent} from './tab/tab-webcam/tab-webcam.component';
 import {TabStazioniComponent} from './tab/tab-stazioni/tab-stazioni.component';
 import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-webcam.component';
 import {SatelliteProtezioneCivileComponent} from "./satellite/protezione-civile/satellite-protezione-civile.component";
+import {WebcamAnconaComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-ancona/webcam-ancona.component";
+import {WebcamMacerataComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-macerata/webcam-macerata.component";
+import {WebcamTerniComponent} from "./webcam/webcam-centro-italia/webcam-umbria/webcam-terni/webcam-terni.component";
+import {WebcamPerugiaComponent} from "./webcam/webcam-centro-italia/webcam-umbria/webcam-perugia/webcam-perugia.component";
+import {WebcamAscoliComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-ascoli/webcam-ascoli.component";
+import {WebcamFermoComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-fermo/webcam-fermo.component";
+import {WebcamPesaroUrbinoComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-pesaro-urbino/webcam-pesaro-urbino.component";
+import {WebcamToscanaComponent} from "./webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component";
+import {WebcamMarcheComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-marche.component";
+
 
 @NgModule({
 
@@ -92,11 +100,12 @@ import {SatelliteProtezioneCivileComponent} from "./satellite/protezione-civile/
     ValleCominoComponent,
     WebcamIserniaComponent,
     WebcamMoliseComponent,
+    WebcamUmbriaComponent,
     CampobassoComponent,
-    UmbriaComponent,
-    ToscanaComponent,
+    WebcamUmbriaComponent,
     StazioniMoliseComponent,
-    MarcheComponent,
+    WebcamToscanaComponent,
+    WebcamMarcheComponent,
     NordItaliaComponent,
     SudItaliaComponent,
     CentroItaliaComponent,
@@ -120,7 +129,14 @@ import {SatelliteProtezioneCivileComponent} from "./satellite/protezione-civile/
     StazioniMeteoComponent,
     TabWebcamComponent,
     TabStazioniComponent,
-    TabImmagginiWebcamComponent
+    TabImmagginiWebcamComponent,
+    WebcamPerugiaComponent,
+    WebcamTerniComponent,
+    WebcamMacerataComponent,
+    WebcamAnconaComponent,
+    WebcamAscoliComponent,
+    WebcamPesaroUrbinoComponent,
+    WebcamFermoComponent
   ],
   imports: [
     BrowserModule,

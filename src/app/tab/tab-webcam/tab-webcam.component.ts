@@ -7,13 +7,12 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TabWebcamComponent implements OnInit {
 
-  id: number;
-  private path: any;
-  isGenerali: boolean = false;
-  isLazio: boolean = false;
+  isLazio: boolean = true;
   isAbruzzo: boolean = false;
   isMolise: boolean = false;
-  isUmbriaMarche: boolean = false;
+  isUmbria: boolean = false;
+  isMarche: boolean = false;
+  isToscana: boolean = false;
 
   constructor() {
   }
@@ -23,19 +22,22 @@ export class TabWebcamComponent implements OnInit {
 
   tabSelectionChanged(event) {
     if (event === 0) {
-      this.isGenerali = true;
-    }
-    else if (event === 1) {
       this.isLazio = true;
     }
-    else if (event === 2) {
+    else if (event === 1) {
       this.isAbruzzo = true;
     }
-    else if (event === 3) {
+    else if (event === 2) {
       this.isMolise = true;
     }
+    else if (event === 3) {
+      this.isUmbria = true;
+    }
     else if (event === 4) {
-      this.isUmbriaMarche = true;
+      this.isMarche = true;
+    }
+    else if (event === 5) {
+      this.isToscana = true;
     }
     // Get the selected tab
     let selectedTab = event.tab;

@@ -20,6 +20,9 @@ import {WebcamLazioComponent} from "./webcam/webcam-centro-italia/webcam-lazio/w
 import {WebcamAbruzzoComponent} from "./webcam/webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component";
 import {WebcamMoliseComponent} from "./webcam/webcam-centro-italia/webcam-molise/webcam-molise.component";
 import {TabImmagginiWebcamComponent} from "./tab-immaggini-webcam/tab-immaggini-webcam.component";
+import {WebcamUmbriaComponent} from "./webcam/webcam-centro-italia/webcam-umbria/webcam-umbria.component";
+import {WebcamToscanaComponent} from "./webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component";
+import {WebcamMarcheComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-marche.component";
 
 export const routes: Routes = [
 
@@ -206,6 +209,27 @@ export const routes: Routes = [
     component: WebcamMoliseComponent,
     data: {
       title: 'WebCam Molise Montagna - Meteo Campoli'
+    }
+  },
+  {
+    path: 'webcam/montagna/umbria',
+    component: WebcamUmbriaComponent,
+    data: {
+      title: 'WebCam Umbria Montagna - Meteo Campoli'
+    }
+  },
+  {
+    path: 'webcam/montagna/marche',
+    component: WebcamMarcheComponent,
+    data: {
+      title: 'WebCam Marche Montagna - Meteo Campoli'
+    }
+  },
+  {
+    path: 'webcam/montagna/toscana',
+    component: WebcamToscanaComponent,
+    data: {
+      title: 'WebCam Toscana Montagna - Meteo Campoli'
     }
   },
 ];

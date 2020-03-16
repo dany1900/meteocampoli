@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ToscanaComponent} from './toscana.component';
+import {WebcamToscanaComponent} from './webcam-toscana.component';
 
 describe('ToscanaComponent', () => {
-  let component: ToscanaComponent;
-  let fixture: ComponentFixture<ToscanaComponent>;
+  let component: WebcamToscanaComponent;
+  let fixture: ComponentFixture<WebcamToscanaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ToscanaComponent]
+      declarations: [WebcamToscanaComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ToscanaComponent);
+    fixture = TestBed.createComponent(WebcamToscanaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
