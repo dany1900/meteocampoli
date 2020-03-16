@@ -490,7 +490,7 @@ a.nivo-prevNav {
   border-style: solid;
   border-color: #ffffff;
   height: 630px;
-  width: 920px;
+  width: 900px;
 }
 
 .previsioni-frame {
@@ -519,6 +519,52 @@ title-micro-section {
   color: #23252C;
   font-style: italic;
   font-weight: bold;
+}
+
+#footer {
+  font-size: 16px;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0px 0px 0px;
+}
+
+#footer a {
+  color: #ffffff;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.mat-tab-header {
+  /* display: flex; */
+  overflow: hidden;
+  /* position: relative; */
+  /* flex-shrink: 0; */
+  /* background-color: blue; */
+  border-style: solid;
+  border-color: #ffffff !important;
+  background-color: #337ab7;
+  border-radius: 30px;
+  /* border: 10px; */
+  /* padding-top: 3px; */
+  height: 80px;
+}
+
+.mat-tab-nav-bar, .mat-tab-header {
+  border: 7px solid rgba(0, 0, 0, .12);
+}
+
+.mat-tab-label .mat-tab-label-content {
+  color: #ffffff;
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #164db6;
+  height: 7px;
 }
 
 /*

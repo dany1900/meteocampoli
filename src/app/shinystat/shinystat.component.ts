@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-shinystat',
+  selector: 'shinystat',
   templateUrl: './shinystat.component.html',
   styleUrls: ['./shinystat.component.css']
 })

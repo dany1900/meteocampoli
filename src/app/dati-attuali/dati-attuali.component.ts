@@ -3,7 +3,7 @@ import {Meta} from '@angular/platform-browser';
 
 
 @Component({
-  selector: 'app-dati-attuali',
+  selector: 'dati-attuali',
   templateUrl: './dati-attuali.component.html',
   styleUrls: ['./dati-attuali.component.css']
 })
@@ -46,8 +46,6 @@ export class DatiAttualiComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
   }
 
 }
