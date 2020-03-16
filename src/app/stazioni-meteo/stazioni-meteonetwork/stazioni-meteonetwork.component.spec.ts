@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StazioniMeteonetworkComponent } from './stazioni-meteonetwork.component';
+import {StazioniMeteonetworkComponent} from './stazioni-meteonetwork.component';
 
 describe('MeteonetworkComponent', () => {
   let component: StazioniMeteonetworkComponent;
@@ -8,9 +8,9 @@ describe('MeteonetworkComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StazioniMeteonetworkComponent ]
+      declarations: [StazioniMeteonetworkComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

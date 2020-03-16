@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class TabWebcamComponent implements OnInit {
 
-   id : number;
+  id: number;
   private path: any;
   isGenerali: boolean = false;
   isLazio: boolean = false;

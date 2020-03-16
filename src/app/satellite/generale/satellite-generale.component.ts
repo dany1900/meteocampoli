@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {SatTabComponent} from "../sat-tab.component";
+import {Component, OnInit} from '@angular/core';
 import {Meta} from "@angular/platform-browser";
 
 @Component({
@@ -14,12 +13,21 @@ export class SatelliteGeneraleComponent implements OnInit {
   constructor(private meta: Meta) {
     this.meta.addTags([
       {name: 'title', content: 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli'},
-      {name: 'description', content: 'Monitoraggio completo del meteo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.'},
-      {name: 'keywords', content: 'satellite meteo campoli, radar meteo campoli, radar precipitazioni meteo campoli, radar fulmini meteo campoli, radar precipitazioni zoom, radar pioggia meteo campoli'},
+      {
+        name: 'description',
+        content: 'Monitoraggio completo del meteo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.'
+      },
+      {
+        name: 'keywords',
+        content: 'satellite meteo campoli, radar meteo campoli, radar precipitazioni meteo campoli, radar fulmini meteo campoli, radar precipitazioni zoom, radar pioggia meteo campoli'
+      },
       {property: 'og:locale', content: 'it_IT'},
       {property: 'og:type', content: 'website'},
       {property: 'og:title', content: 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli'},
-      {property: 'og:description', content: 'Monitoraggio completo del meteo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.'},
+      {
+        property: 'og:description',
+        content: 'Monitoraggio completo del meteo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.'
+      },
       {property: 'og:url', content: 'www.meteocampoli.altervista.org/satellite/generale'},
       {property: 'og:site_name', content: 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli'},
       {property: 'og:image', content: ''}
@@ -28,12 +36,13 @@ export class SatelliteGeneraleComponent implements OnInit {
 
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
-  public show1:boolean = false;
-  public show2:boolean = false;
+  public show1: boolean = false;
+  public show2: boolean = false;
 
-  public buttonName:any = 'Mostra';
+  public buttonName: any = 'Mostra';
 
   toggle() {
     this.show1 = !this.show1;

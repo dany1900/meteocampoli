@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ValleCominoComponent } from './valle-comino.component';
+import {ValleCominoComponent} from './valle-comino.component';
 
 describe('ValleCominoComponent', () => {
   let component: ValleCominoComponent;
@@ -8,9 +8,9 @@ describe('ValleCominoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ValleCominoComponent ]
+      declarations: [ValleCominoComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

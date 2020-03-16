@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {WebcamComponent} from "../../webcam.component";
 
 
@@ -10,14 +10,12 @@ import {WebcamComponent} from "../../webcam.component";
 export class WebCamLimitrofeComponent extends WebcamComponent implements OnInit {
 
 
-
   constructor() {
     super();
   }
 
   ngOnInit() {
   }
-
 
 
 }

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { StazioniLazioComponent } from './stazioni-lazio.component';
+import {StazioniLazioComponent} from './stazioni-lazio.component';
 
 describe('LazioComponent', () => {
   let component: StazioniLazioComponent;
@@ -8,9 +8,9 @@ describe('LazioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StazioniLazioComponent ]
+      declarations: [StazioniLazioComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'webcam-montagna',
@@ -15,7 +15,7 @@ export class WebcamMontagnaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.footerTitle="Le immagini sono prese ad intervalli regolari"
+    this.footerTitle = "Le immagini sono prese ad intervalli regolari"
 
   }
 

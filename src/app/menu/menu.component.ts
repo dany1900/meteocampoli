@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StazioniMeteoCostants} from 'app/shared/constants/stazioni-meteo.constants'
 
 
@@ -12,7 +12,6 @@ export class MenuComponent implements OnInit {
   stazioni: StazioniMeteoCostants;
 
   constructor() {
-
 
 
   }

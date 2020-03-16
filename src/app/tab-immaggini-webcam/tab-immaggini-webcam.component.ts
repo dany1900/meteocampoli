@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'tab-immaggini-webcam',
@@ -42,13 +41,13 @@ export class TabImmagginiWebcamComponent implements OnInit {
   }
 
   tabSelectionChanged(event) {
-    if (event === 0){
+    if (event === 0) {
       this.isImmagini = true;
     }
     else if (event === 1) {
       this.isMontagna = true;
     }
-    else if (event === 2){
+    else if (event === 2) {
       this.isLimitrofe = true;
     }
     // Get the selected tab

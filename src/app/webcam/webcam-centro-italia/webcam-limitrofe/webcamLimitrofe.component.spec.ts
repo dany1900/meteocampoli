@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { LimitrofeComponent } from './webcamLimitrofe.component';
+import {LimitrofeComponent} from './webcamLimitrofe.component';
 
 describe('LimitrofeComponent', () => {
   let component: LimitrofeComponent;
@@ -8,9 +8,9 @@ describe('LimitrofeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LimitrofeComponent ]
+      declarations: [LimitrofeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

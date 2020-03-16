@@ -2,11 +2,8 @@ import {SatelliteCentroComponent} from "./centro-italia/satellite-centro.compone
 import {SatelliteGeneraleComponent} from "./generale/satellite-generale.component";
 import {SatelliteNordComponent} from "./nord-italia/satellite-nord.component";
 import {SatelliteSudComponent} from "./sud-italia/satellite-sud.component";
-import {TabSatelliteComponent} from "../tab/tab-satellite/tab-satellite.component";
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-
-
 
 
 @NgModule({
@@ -29,7 +26,7 @@ import {RouterModule} from '@angular/router';
         component: SatelliteSudComponent
       },
 
-            ])
+    ])
   ],
   exports: [
     RouterModule

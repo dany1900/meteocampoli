@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TabSatelliteComponent } from './tab-satellite.component';
+import {TabSatelliteComponent} from './tab-satellite.component';
 
 describe('TabGroupComponent', () => {
   let component: TabSatelliteComponent;
@@ -8,9 +8,9 @@ describe('TabGroupComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabSatelliteComponent ]
+      declarations: [TabSatelliteComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

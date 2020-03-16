@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TabWebcamComponent } from './tab-webcam.component';
+import {TabWebcamComponent} from './tab-webcam.component';
 
 describe('TabWebcamComponent', () => {
   let component: TabWebcamComponent;
@@ -8,9 +8,9 @@ describe('TabWebcamComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabWebcamComponent ]
+      declarations: [TabWebcamComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

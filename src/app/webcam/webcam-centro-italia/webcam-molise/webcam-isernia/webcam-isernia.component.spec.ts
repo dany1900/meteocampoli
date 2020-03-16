@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WebcamIserniaComponent } from './webcam-isernia.component';
+import {WebcamIserniaComponent} from './webcam-isernia.component';
 
 describe('IserniaComponent', () => {
   let component: WebcamIserniaComponent;
@@ -8,9 +8,9 @@ describe('IserniaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WebcamIserniaComponent ]
+      declarations: [WebcamIserniaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

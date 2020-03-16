@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SatTabComponent } from './sat-tab.component';
+import {SatTabComponent} from './sat-tab.component';
 
 describe('TabComponent', () => {
   let component: SatTabComponent;
@@ -8,9 +8,9 @@ describe('TabComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SatTabComponent ]
+      declarations: [SatTabComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

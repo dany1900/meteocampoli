@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ShinystatComponent } from './shinystat.component';
+import {ShinystatComponent} from './shinystat.component';
 
 describe('ShinystatComponent', () => {
   let component: ShinystatComponent;
@@ -8,9 +8,9 @@ describe('ShinystatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShinystatComponent ]
+      declarations: [ShinystatComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

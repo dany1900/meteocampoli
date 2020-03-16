@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TabStazioniComponent } from './tab-stazioni.component';
+import {TabStazioniComponent} from './tab-stazioni.component';
 
 describe('TabStazioniComponent', () => {
   let component: TabStazioniComponent;
@@ -8,9 +8,9 @@ describe('TabStazioniComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabStazioniComponent ]
+      declarations: [TabStazioniComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

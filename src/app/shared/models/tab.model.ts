@@ -1,7 +1,4 @@
-import {TodoItem} from "./model";
-
-
-export class TabModel  {
+export class TabModel {
 
   private _id: number;
   private _descrizione: string;

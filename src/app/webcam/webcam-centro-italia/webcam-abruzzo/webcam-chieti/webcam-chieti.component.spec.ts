@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WebcamChietiComponent } from './webcam-chieti.component';
+import {WebcamChietiComponent} from './webcam-chieti.component';
 
 describe('WebcamChietiComponent', () => {
   let component: WebcamChietiComponent;
@@ -8,9 +8,9 @@ describe('WebcamChietiComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WebcamChietiComponent ]
+      declarations: [WebcamChietiComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

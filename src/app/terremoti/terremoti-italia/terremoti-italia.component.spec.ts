@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { TerremotiItaliaComponent } from './terremoti-italia.component';
+import {TerremotiItaliaComponent} from './terremoti-italia.component';
 
 describe('TerremotiItaliaComponent', () => {
   let component: TerremotiItaliaComponent;
@@ -8,9 +8,9 @@ describe('TerremotiItaliaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TerremotiItaliaComponent ]
+      declarations: [TerremotiItaliaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

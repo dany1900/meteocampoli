@@ -1,5 +1,5 @@
 // src/app.component.ts
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 
 @Component({
@@ -9,9 +9,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-
-
-  ngAfterViewChecked() {
+  static ngAfterViewChecked() {
     window.scrollTo(500, 500);
   }
 

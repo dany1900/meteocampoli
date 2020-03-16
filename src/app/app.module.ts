@@ -5,8 +5,6 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {RiepilogoComponent} from "./riepilogo/riepilogo.component";
-import {HomeComponent} from "./home/home.component";
-import {TestComponent} from "./test/test.component";
 import {SatelliteGeneraleComponent} from "./satellite/generale/satellite-generale.component";
 import {MenuComponent} from './menu/menu.component';
 import {SliderComponent} from './slider/slider.component';
@@ -70,8 +68,6 @@ import {SatelliteProtezioneCivileComponent} from "./satellite/protezione-civile/
   declarations: [
     AppComponent,
     RiepilogoComponent,
-    HomeComponent,
-    TestComponent,
     SatelliteGeneraleComponent,
     MenuComponent,
     SliderComponent,
@@ -125,11 +121,11 @@ import {SatelliteProtezioneCivileComponent} from "./satellite/protezione-civile/
     TabWebcamComponent,
     TabStazioniComponent,
     TabImmagginiWebcamComponent
-],
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule ,
+    FormsModule,
     MatTabsModule,
     AccordionModule,
     BrowserAnimationsModule,
@@ -138,4 +134,5 @@ import {SatelliteProtezioneCivileComponent} from "./satellite/protezione-civile/
   providers: [SEOService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

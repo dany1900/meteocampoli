@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'webcam-roma',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WebcamRomaComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

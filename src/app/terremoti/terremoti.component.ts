@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Meta} from "@angular/platform-browser";
 
 @Component({
@@ -21,6 +21,7 @@ export class TerremotiComponent implements OnInit {
       {property: 'og:image', content: ''}
     ]);
   }
+
   ngOnInit() {
   }
 

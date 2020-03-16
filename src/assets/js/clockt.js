@@ -35,6 +35,7 @@ function timeZone(now, loc, mtz, dst) {
   } else moa = am;
   return [dow, moa, hour, minute, second];
 }
+
 function clock(num, clocksize, colnumbers, colseconds, colminutes, colhours, numstyle, font_family, localZone, mytimezone, dst, city, country, fix, xpos, ypos) {
   clocks.push(this);
   this.num = num;
@@ -69,6 +70,7 @@ function clock(num, clocksize, colnumbers, colseconds, colminutes, colhours, num
   this.offset = 16;
   if (this.numstyle < 0 || this.numstyle > 2) this.numstyle = 0;
 }
+
 clock.prototype.move = function (l, e, f) {
   for (var i = l; i > 0; i--) {
     d.getElementById(e + i).style.top = (this.ctrY + i * Math.sin(f)) + 'px';
@@ -186,6 +188,7 @@ clock.prototype.display = function () {
   ctx.appendChild(zn);
   d.getElementById('clock_' + this.num);
 };
+
 /*
 clock.prototype.start = function () {
     if (!d.getElementById) return;
@@ -203,6 +206,7 @@ function updateClocks() {
     clocks[i].updateClock();
   }
 }
+
 /*
 function setClocks() {
     for (var i = clocks.length - 1; i >= 0; i--) {

@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WebcamLazioComponent } from './webcamLazio.component';
+import {WebcamLazioComponent} from './webcamLazio.component';
 
 describe('LazioComponent', () => {
   let component: WebcamLazioComponent;
@@ -8,9 +8,9 @@ describe('LazioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WebcamLazioComponent ]
+      declarations: [WebcamLazioComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

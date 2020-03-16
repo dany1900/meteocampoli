@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,16 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
- public keywords : string;
+  public keywords: string;
   description: string;
   ogLocale: string;
   ogType: string;
   ogDescription: string;
   ogTitle: string;
-  ogSiteName: string
+  ogSiteName: string;
 
-  constructor() { }
-
+  constructor() {
+  }
 
 
   ngOnInit() {

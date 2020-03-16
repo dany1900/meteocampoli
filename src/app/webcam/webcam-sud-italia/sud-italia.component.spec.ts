@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { SudItaliaComponent } from './sud-italia.component';
+import {SudItaliaComponent} from './sud-italia.component';
 
 describe('SudItaliaComponent', () => {
   let component: SudItaliaComponent;
@@ -8,9 +8,9 @@ describe('SudItaliaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SudItaliaComponent ]
+      declarations: [SudItaliaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

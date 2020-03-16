@@ -1,6 +1,6 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { WebcamRomaComponent } from './webcam-roma.component';
+import {WebcamRomaComponent} from './webcam-roma.component';
 
 describe('WebcamRomaComponent', () => {
   let component: WebcamRomaComponent;
@@ -8,9 +8,9 @@ describe('WebcamRomaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WebcamRomaComponent ]
+      declarations: [WebcamRomaComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
