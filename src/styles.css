@@ -1,69 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
-/*
-body {
- font: 10pt Arial, Helvetica, sans-serif;
-
- font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
- font-size: 14px;
- line-height: 1.42857143;
- color: #333;
-}
-
-#main {
-  width: 1000px;
-  margin: 0px auto;
-}
-
-.btn-pulup{
-  color:#fff;
-  background-color:#2d65c4;
-  border-color:#2d65c4;
-  font-size: 19px;
-  margin-right: 1px;
-}
-.btn-puldown
- { color:#fff;
-  background-color:#2d65c4;
-  border-color:#2d65c4;
-  height:30px;
-}
-
-.dropdown-menu{
-  color:#fff;
-  border-color:#026960;
-}
-
-.dropdown-menu>li>a{
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  font-weight: normal;
-  line-height: 1.428571429;
-  font-weight: bold;
-  color: white ;
-  white-space: nowrap;
-  background-color: #2d65c4;
-  height: 31px;
-  font-size: 17px; }
-
-.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus{
-  color:#fff;text-decoration:none;background-color:#0F75CF;}
-
-.dropdown-menu .divider{
-  height:1px;margin:9px 0;overflow:hidden;background-color:#e5e5e5;}
-
-.footer-desc{width:100%;font-family:helvetica;font-size:12px;color:#fff }
-
-.webcam{width: 700px;height: 480px; max-width: 700px;}
-
-.hidden{display: none;}
-
-.center{
-  text-align:center;
-}
-
-.flex {max-width: 100%}
-*/
 
 {
   border: 0
@@ -73,6 +7,10 @@ body {
 }
 img {
   border: 0px;
+}
+
+button {
+  cursor: pointer;
 }
 
 body {
@@ -432,7 +370,7 @@ a.nivo-prevNav {
   border-style: solid;
   border-color: #f6f2f2;
   height: 155px;
-  width: 455px;
+  width: 440px;
 }
 
 .header-regioni-temperature {
@@ -514,7 +452,7 @@ a.nivo-prevNav {
 }
 
 .meteonetwork-sticker {
-  width: 455px;
+  width: 440px;
   height: 155px;
 }
 
@@ -580,6 +518,11 @@ a.nivo-prevNav {
   overflow: hidden !important;
 }
 
+.mat-spinner {
+  position: relative;
+  margin-left: 45%;
+  margin-right: 50%;
+}
 
 
 /*

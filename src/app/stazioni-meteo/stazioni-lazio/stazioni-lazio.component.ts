@@ -8,6 +8,8 @@ import {Meta} from '@angular/platform-browser';
 })
 export class StazioniLazioComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor(private meta: Meta) {
     this.meta.updateTag({
       name: 'description',

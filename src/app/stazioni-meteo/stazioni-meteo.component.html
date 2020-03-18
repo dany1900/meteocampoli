@@ -1,8 +1,10 @@
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
 <table border="0">
   <tr>
     <td> <span><a alt="Stazione meteo di Sora" href="http://my.meteonetwork.it/station/laz039" target="_blank"><img
       style="border:none;" src="http://my.meteonetwork.it/station/laz039/sticker-oriz1"
-      class="meteonetwork-sticker"/></a>
+      class="meteonetwork-sticker" [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
 </span></td>
     <td><span><a alt="Stazione meteo di Isola del Liri" href="http://my.meteonetwork.it/station/laz041" target="_blank"><img
       style="border:none;" src="http://my.meteonetwork.it/station/laz041/sticker-oriz1" class="meteonetwork-sticker"/> </a></span>

@@ -72,6 +72,7 @@ import {StazioniLazioComponent} from './stazioni-meteo/stazioni-lazio/stazioni-l
 import {AccordionModule} from 'ngx-accordion';
 import {SEOService} from './service/seoservice.service';
 import {WebcamToscanaComponent} from './webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -152,7 +153,8 @@ import {WebcamToscanaComponent} from './webcam/webcam-centro-italia/webcam-tosca
     MatTabsModule,
     AccordionModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatProgressSpinnerModule
   ],
   providers: [SEOService],
   bootstrap: [AppComponent]

@@ -1,10 +1,12 @@
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
 <div class="row">
   <div class="col-md-6 col-xs-3 col-sm-3 col-lg-3">
     <span><em><h3>1573mt</h3></em><a
       href="https://www.meteoisernia.net/rete-di-monitoraggio/rete-meteo-molise/stazione-meteo-di-capracotta-prato-gentile.html"
       target="_blank"><img src="http://www.centrometeomolise.it/pratogentile/banner/specchietto.php"
                            alt="Meteo Capracotta Prato Gentile" longdesc="Capracotta Prato Gentile" width=238 height=350
-                           scrolling="No"/></a></span></div>
+                           scrolling="No" [hidden]="imageLoader" (load)="imageLoader = false;"/></a></span></div>
   <div class="col-md-6 col-xs-3 col-sm-3 col-lg-3">
     <span><em><h3>1500mt</h3></em><a
       href="https://www.meteoisernia.net/rete-di-monitoraggio/fuori-regione/roccaraso-aremogna.html"

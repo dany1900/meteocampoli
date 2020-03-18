@@ -1,2 +1,6 @@
-<iframe src="http://retemeteo.lineameteo.it/index.php" width="100%" height="710" frameborder="0" scrolling="no"
+<br>
+<mat-spinner class="center" [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<iframe [hidden]="imageLoader" src="http://retemeteo.lineameteo.it/index.php" (load)="this.imageLoader = false;"
+        width="100%" height="710" frameborder="0" scrolling="no"
         marginheight="0" marginwidth="0"></iframe>

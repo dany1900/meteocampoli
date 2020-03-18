@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from "@angular/platform-browser";
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'stazioni-rete-meteo',
@@ -7,6 +7,8 @@ import {Meta} from "@angular/platform-browser";
   styleUrls: ['./stazioni-rete-meteo.component.css']
 })
 export class StazioniReteMeteoComponent implements OnInit {
+
+  imageLoader = true;
 
   constructor(private meta: Meta) {
     this.meta.updateTag({

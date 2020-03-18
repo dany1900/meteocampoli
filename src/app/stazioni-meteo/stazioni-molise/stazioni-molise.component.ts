@@ -1,12 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from "@angular/platform-browser";
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'stazioni-molise',
-  templateUrl: './stazioni-molisecomponent.html',
+  templateUrl: './stazioni-molise.component.html',
   styleUrls: ['./stazioni-molise.component.css']
 })
 export class StazioniMoliseComponent implements OnInit {
+
+  imageLoader = true;
 
   constructor(private meta: Meta) {
     this.meta.updateTag({
