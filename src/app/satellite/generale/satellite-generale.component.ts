@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from "@angular/platform-browser";
+import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'satellite-generale',
@@ -8,8 +8,6 @@ import {Meta} from "@angular/platform-browser";
 })
 
 export class SatelliteGeneraleComponent implements OnInit {
-  //newcomponent = "Entered in new component created";
-
   constructor(private meta: Meta) {
     this.meta.addTags([
       {name: 'title', content: 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli'},

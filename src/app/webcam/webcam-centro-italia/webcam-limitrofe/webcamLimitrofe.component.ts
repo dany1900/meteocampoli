@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {WebcamComponent} from "../../webcam.component";
+import {WebcamComponent} from '../../webcam.component';
 
 
 @Component({

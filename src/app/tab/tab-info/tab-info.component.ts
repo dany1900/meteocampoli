@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'tab-info',
@@ -10,9 +10,9 @@ export class TabInfoComponent implements OnInit {
 
   id: number;
   private path: any;
-  isArticoli: boolean = false;
-  isCuriosita: boolean = false;
-  isEffemeridi: boolean = false;
+  isArticoli = false;
+  isCuriosita = false;
+  isEffemeridi = false;
 
   constructor(private route: ActivatedRoute) {
     let paramTab: any;
@@ -20,13 +20,13 @@ export class TabInfoComponent implements OnInit {
     paramTab = this.path._value[1].path;
 
     switch (paramTab) {
-      case "articoli":
+      case 'articoli':
         this.id = 0;
         break;
-      case "curiosita":
+      case 'curiosita':
         this.id = 1;
         break;
-      case "effemeridi":
+      case 'effemeridi':
         this.id = 2;
         break;
       default:
@@ -49,8 +49,5 @@ export class TabInfoComponent implements OnInit {
     else if (event === 2) {
       this.isEffemeridi = true;
     }
-    // Get the selected tab
-    //let selectedTab = event.tab;
   }
-
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'tab-immaggini-webcam',
@@ -10,9 +10,9 @@ export class TabImmagginiWebcamComponent implements OnInit {
 
   id: number;
   private path: any;
-  isMontagna: boolean = false;
-  isLimitrofe: boolean = false;
-  isImmagini: boolean = false;
+  isMontagna = false;
+  isLimitrofe = false;
+  isImmagini = false;
 
   constructor(private route: ActivatedRoute) {
     let paramTab: any;
@@ -20,13 +20,13 @@ export class TabImmagginiWebcamComponent implements OnInit {
     paramTab = this.path._value[1].path;
 
     switch (paramTab) {
-      case "immagini":
+      case 'immagini':
         this.id = 0;
         break;
-      case "montagna":
+      case 'montagna':
         this.id = 1;
         break;
-      case "limitrofe":
+      case 'limitrofe':
         this.id = 2;
         break;
       default:
@@ -50,12 +50,6 @@ export class TabImmagginiWebcamComponent implements OnInit {
     else if (event === 2) {
       this.isLimitrofe = true;
     }
-    // Get the selected tab
-    let selectedTab = event.tab;
-    console.log(selectedTab);
-
-    // Call some method that you want
-    //this.someMethod();
   }
 
 

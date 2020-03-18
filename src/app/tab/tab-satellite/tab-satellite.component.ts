@@ -11,30 +11,30 @@ export class TabSatelliteComponent {
 
   id: number;
   private path: any;
-  isGenerali: boolean = false;
-  isCentroItalia: boolean = false;
-  isNordItalia: boolean = false;
-  isSudItalia: boolean = false;
-  isProtezioneCivile: boolean = false;
+  isGenerali = false;
+  isCentroItalia = false;
+  isNordItalia = false;
+  isSudItalia = false;
+  isProtezioneCivile = false;
 
   constructor(private route: ActivatedRoute) {
     let paramTab: any;
     this.path = this.route.url;
     paramTab = this.path._value[1].path;
     switch (paramTab) {
-      case "generale":
+      case 'generale':
         this.id = 0;
         break;
-      case "centro-italia":
+      case 'centro-italia':
         this.id = 1;
         break;
-      case "nord-italia":
+      case 'nord-italia':
         this.id = 2;
         break;
-      case "sud-italia":
+      case 'sud-italia':
         this.id = 3;
         break;
-      case "protezione-civile":
+      case 'protezione-civile':
         this.id = 4;
         break;
       default:

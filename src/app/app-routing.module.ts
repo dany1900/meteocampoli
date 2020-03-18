@@ -1,29 +1,25 @@
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-
 import {NgModule} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterModule, Routes} from '@angular/router';
-
-
 import {Meta, Title} from '@angular/platform-browser';
-import {RiepilogoComponent} from "./riepilogo/riepilogo.component";
-import {InfoComponent} from "./info/info.component";
-import {SatTabComponent} from "./satellite/sat-tab.component";
-import {PrevisioniComponent} from "./previsioni/previsioni.component";
-import {TerremotiComponent} from "./terremoti/terremoti.component";
-import {TerremotiItaliaComponent} from "./terremoti/terremoti-italia/terremoti-italia.component";
-import {DatiAttualiComponent} from "./dati-attuali/dati-attuali.component";
-
-import {TabStazioniComponent} from "./tab/tab-stazioni/tab-stazioni.component";
-import {WebcamLazioComponent} from "./webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component";
-import {WebcamAbruzzoComponent} from "./webcam/webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component";
-import {WebcamMoliseComponent} from "./webcam/webcam-centro-italia/webcam-molise/webcam-molise.component";
-import {TabImmagginiWebcamComponent} from "./tab-immaggini-webcam/tab-immaggini-webcam.component";
-import {WebcamUmbriaComponent} from "./webcam/webcam-centro-italia/webcam-umbria/webcam-umbria.component";
-import {WebcamToscanaComponent} from "./webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component";
-import {WebcamMarcheComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-marche.component";
-import {TabInfoComponent} from "./tab/tab-info/tab-info.component";
+import {DatiAttualiComponent} from './dati-attuali/dati-attuali.component';
+import {RiepilogoComponent} from './riepilogo/riepilogo.component';
+import {TabStazioniComponent} from './tab/tab-stazioni/tab-stazioni.component';
+import {PrevisioniComponent} from './previsioni/previsioni.component';
+import {SatTabComponent} from './satellite/sat-tab.component';
+import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-webcam.component';
+import {WebcamLazioComponent} from './webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component';
+import {WebcamAbruzzoComponent} from './webcam/webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component';
+import {WebcamMoliseComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-molise.component';
+import {WebcamUmbriaComponent} from './webcam/webcam-centro-italia/webcam-umbria/webcam-umbria.component';
+import {WebcamMarcheComponent} from './webcam/webcam-centro-italia/webcam-marche/webcam-marche.component';
+import {WebcamToscanaComponent} from './webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component';
+import {TerremotiComponent} from './terremoti/terremoti.component';
+import {TerremotiItaliaComponent} from './terremoti/terremoti-italia/terremoti-italia.component';
+import {InfoComponent} from './info/info.component';
+import {TabInfoComponent} from './tab/tab-info/tab-info.component';
 
 export const routes: Routes = [
 
@@ -270,22 +266,20 @@ export class AppRoutingModule {
     private titleService: Title,
     private metaService: Meta
   ) {
-    //Boilerplate code to filter out only important router events and to pull out data object field from each route
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .map(() => this.activatedRoute)
       .map(route => {
-        while (route.firstChild) route = route.firstChild;
-        return route;
+        while (route.firstChild) {
+          route = route.firstChild;
+          return route;
+        }
       })
       .filter(route => route.outlet === 'primary')
-      //Data fields are merged so we can use them directly to take title and metaDescription for each route from them
       .mergeMap(route => route.data)
-      //Real action starts there
       .subscribe((event) => {
         //Changing title
         this.titleService.setTitle(event['title']);
-
         //Changing meta with name="description"
         let tag = {name: 'description', content: event['metaDescription']};
         let attributeSelector: string = 'name="description"';
@@ -293,5 +287,4 @@ export class AppRoutingModule {
         this.metaService.addTag(tag, false);
       });
   }
-
 }

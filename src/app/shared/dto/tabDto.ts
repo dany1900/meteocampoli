@@ -14,5 +14,4 @@
 export interface TabDto {
   id: number;
   descrizione: string;
-
 }
