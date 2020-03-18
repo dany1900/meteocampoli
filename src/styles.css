@@ -560,12 +560,23 @@ title-micro-section {
 
 .mat-tab-label .mat-tab-label-content {
   color: #ffffff;
+  font-size: 18px;
 }
 
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: #164db6;
   height: 7px;
 }
+
+::ng-deep .mat-tab-body-content {
+  overflow: visible !important;
+}
+
+.mat-tab-body-content {
+  overflow: hidden !important;
+}
+
+
 
 /*
 @media screen (max-width: 900px) {

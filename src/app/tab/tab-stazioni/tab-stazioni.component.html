@@ -3,27 +3,27 @@
 <br>
 <p class="title-micro-section">Clicca sul nome delle stazioni per accedere ai dati completi</p>
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
-  <mat-tab label="Generali">
+  <mat-tab label="GENERALI">
     <br>
     <stazioni-meteo *ngIf="isGenerali"></stazioni-meteo>
   </mat-tab>
-  <mat-tab label="Lazio">
+  <mat-tab label="LAZIO">
     <br>
     <stazioni-lazio *ngIf="isLazio"></stazioni-lazio>
   </mat-tab>
-  <mat-tab label="Abruzzo">
+  <mat-tab label="ABRUZZO">
     <br>
     <stazioni-abruzzo *ngIf="isAbruzzo"></stazioni-abruzzo>
   </mat-tab>
-  <mat-tab label="Molise">
+  <mat-tab label="MOLISE">
     <br>
     <stazioni-molise *ngIf="isMolise"></stazioni-molise>
   </mat-tab>
-  <mat-tab label="Rete Meteo">
+  <mat-tab label="RETE METEO">
     <br>
     <stazioni-rete-meteo *ngIf="isReteMeteo"></stazioni-rete-meteo>
   </mat-tab>
-  <mat-tab label="Caputfrigoris">
+  <mat-tab label="CAPUTFRIGORIS">
     <br>
     <stazioni-rete-meteo></stazioni-rete-meteo>
   </mat-tab>

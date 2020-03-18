@@ -1,0 +1,16 @@
+<p class="header-macro-section">Info e Curiosita - Meteo Campoli</p>
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="ARTICOLI">
+    <br>
+    <articoli *ngIf="isArticoli"></articoli>
+  </mat-tab>
+  <mat-tab label="CURIOSITA">
+    <br>
+    <curiosita *ngIf="isCuriosita"></curiosita>
+  </mat-tab>
+  <mat-tab label="EFFEMERIDI">
+    <br>
+    <effemeridi *ngIf="isEffemeridi"></effemeridi>
+  </mat-tab>
+</mat-tab-group>

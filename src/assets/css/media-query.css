@@ -32,19 +32,6 @@
 
   }
 
-  .btn-primary {
-    font-size: 21px;
-  }
-
-  .btn-lg {
-    font-size: 19.4px;
-    height: 60px;
-  }
-
-  .btn-puldown {
-    height: 56px;
-  }
-
   html {
     width: 1000px;
   }
@@ -129,7 +116,6 @@
     -webkit-transform: scale(1.5); /* Safari 3-8 */
     transform: scale(1.5);
   }
-
   /*
   #bg_clouds
   {

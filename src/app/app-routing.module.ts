@@ -23,6 +23,7 @@ import {TabImmagginiWebcamComponent} from "./tab-immaggini-webcam/tab-immaggini-
 import {WebcamUmbriaComponent} from "./webcam/webcam-centro-italia/webcam-umbria/webcam-umbria.component";
 import {WebcamToscanaComponent} from "./webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component";
 import {WebcamMarcheComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-marche.component";
+import {TabInfoComponent} from "./tab/tab-info/tab-info.component";
 
 export const routes: Routes = [
 
@@ -170,13 +171,6 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'info',
-    component: InfoComponent,
-    data: {
-      title: 'Info e Curiosita - Qualita Aria - Orari Alba Tramonto'
-    }
-  },
-  {
     path: 'webcam/montagna',
     component: TabImmagginiWebcamComponent,
     data: {
@@ -230,6 +224,34 @@ export const routes: Routes = [
     component: WebcamToscanaComponent,
     data: {
       title: 'WebCam Toscana Montagna - Meteo Campoli'
+    }
+  },
+  {
+    path: 'info',
+    component: InfoComponent,
+    data: {
+      title: 'Info e Curiosita - Qualita Aria - Orari Alba Tramonto'
+    }
+  },
+  {
+    path: 'info/articoli',
+    component: TabInfoComponent,
+    data: {
+      title: 'Articoli - Meteo Campoli'
+    }
+  },
+  {
+    path: 'info/curiosita',
+    component: TabInfoComponent,
+    data: {
+      title: 'Curiosita - Meteo Campoli'
+    }
+  },
+  {
+    path: 'info/effemeridi',
+    component: TabInfoComponent,
+    data: {
+      title: 'Orari Alba Tramonto - Meteo Campoli'
     }
   },
 ];

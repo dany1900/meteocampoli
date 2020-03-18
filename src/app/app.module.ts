@@ -69,6 +69,11 @@ import {WebcamFermoComponent} from "./webcam/webcam-centro-italia/webcam-marche/
 import {WebcamPesaroUrbinoComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-pesaro-urbino/webcam-pesaro-urbino.component";
 import {WebcamToscanaComponent} from "./webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component";
 import {WebcamMarcheComponent} from "./webcam/webcam-centro-italia/webcam-marche/webcam-marche.component";
+import {ArticoliComponent} from './info/articoli/articoli.component';
+import {InquinamentoRimediComponent} from './info/articoli/inquinamento-rimedi/inquinamento-rimedi.component';
+import {TabInfoComponent} from './tab/tab-info/tab-info.component';
+import {CuriositaComponent} from './info/curiosita/curiosita.component';
+import {EffemeridiComponent} from './info/effemeridi/effemeridi.component';
 
 
 @NgModule({
@@ -136,7 +141,12 @@ import {WebcamMarcheComponent} from "./webcam/webcam-centro-italia/webcam-marche
     WebcamAnconaComponent,
     WebcamAscoliComponent,
     WebcamPesaroUrbinoComponent,
-    WebcamFermoComponent
+    WebcamFermoComponent,
+    ArticoliComponent,
+    InquinamentoRimediComponent,
+    TabInfoComponent,
+    CuriositaComponent,
+    EffemeridiComponent
   ],
   imports: [
     BrowserModule,

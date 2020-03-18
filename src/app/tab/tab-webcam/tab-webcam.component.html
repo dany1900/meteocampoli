@@ -1,26 +1,26 @@
 <br>
-<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
-  <mat-tab label="Lazio">
+<mat-tab-group (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="LAZIO">
     <br>
     <webcam-lazio *ngIf="isLazio"></webcam-lazio>
   </mat-tab>
-  <mat-tab label="Abruzzo">
+  <mat-tab label="ABRUZZO">
     <br>
     <webcam-abruzzo *ngIf="isAbruzzo"></webcam-abruzzo>
   </mat-tab>
-  <mat-tab label="Molise">
+  <mat-tab label="MOLISE">
     <br>
     <webcam-molise *ngIf="isMolise"></webcam-molise>
   </mat-tab>
-  <mat-tab label="Umbria">
+  <mat-tab label="UMBRIA">
     <br>
     <webcam-umbria *ngIf="isUmbria"></webcam-umbria>
   </mat-tab>
-  <mat-tab label="Marche">
+  <mat-tab label="MARCHE">
     <br>
     <webcam-marche *ngIf="isMarche"></webcam-marche>
   </mat-tab>
-  <mat-tab label="Toscana">
+  <mat-tab label="TOSCANA">
     <br>
     <webcam-toscana *ngIf="isToscana"></webcam-toscana>
   </mat-tab>
