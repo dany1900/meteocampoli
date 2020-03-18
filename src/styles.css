@@ -283,6 +283,10 @@ a.nivo-prevNav {
   height: 36px;
 }
 
+.btn-group-vertical {
+  width: 120px;
+}
+
 .dropdown-menu {
   color: #fff;
   border-color: #026960;
@@ -514,9 +518,9 @@ a.nivo-prevNav {
   height: 155px;
 }
 
-title-micro-section {
+.title-micro-section {
   font-size: 24px;
-  color: #23252C;
+  color: #333642;
   font-style: italic;
   font-weight: bold;
 }

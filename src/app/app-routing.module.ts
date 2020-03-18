@@ -33,7 +33,7 @@ export const routes: Routes = [
     redirectTo: 'datiAttuali',
     pathMatch: 'full',
     data: {
-      title: 'Meteo Campoli - Monitoraggio Meteo'
+      title: 'Meteo Campoli - Monitoraggio Meteo',
 
     }
 
@@ -51,7 +51,6 @@ export const routes: Routes = [
     component: RiepilogoComponent,
     data: {
       title: 'Statistiche Meteo Campoli - Riepilogo Dati'
-
     }
   },
   {
@@ -150,27 +149,6 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'terremoti',
-    component: TerremotiComponent,
-    data: {
-      title: 'Terremoti Elenco - Meteo Campoli'
-    }
-  },
-  {
-    path: 'terremoti/italia',
-    component: TerremotiItaliaComponent,
-    data: {
-      title: 'Terremoti Elenco Italia - Meteo Campoli'
-    }
-  },
-  {
-    path: 'terremoti/mondo',
-    component: TerremotiItaliaComponent,
-    data: {
-      title: 'Terremoti Elenco Mondo - Meteo Campoli'
-    }
-  },
-  {
     path: 'webcam/montagna',
     component: TabImmagginiWebcamComponent,
     data: {
@@ -224,6 +202,27 @@ export const routes: Routes = [
     component: WebcamToscanaComponent,
     data: {
       title: 'WebCam Toscana Montagna - Meteo Campoli'
+    }
+  },
+  {
+    path: 'terremoti',
+    component: TerremotiComponent,
+    data: {
+      title: 'Terremoti Elenco - Meteo Campoli'
+    }
+  },
+  {
+    path: 'terremoti/italia',
+    component: TerremotiItaliaComponent,
+    data: {
+      title: 'Terremoti Elenco Italia - Meteo Campoli'
+    }
+  },
+  {
+    path: 'terremoti/mondo',
+    component: TerremotiItaliaComponent,
+    data: {
+      title: 'Terremoti Elenco Mondo - Meteo Campoli'
     }
   },
   {

@@ -1,23 +1,23 @@
 <p class="header-macro-section">Satellite Precipitazioni - Meteo Campoli</p>
 <br>
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
-  <mat-tab label="Radar Generale">
+  <mat-tab label="GENERALE">
     <br>
     <satellite-generale *ngIf="isGenerali"></satellite-generale>
   </mat-tab>
-  <mat-tab label="Radar Centro Italia">
+  <mat-tab label="CENTRO">
     <br>
     <satellite-centro *ngIf="isCentroItalia"></satellite-centro>
   </mat-tab>
-  <mat-tab label="Radar Nord Italia">
+  <mat-tab label="NORD">
     <br>
     <satellite-nord *ngIf="isNordItalia"></satellite-nord>
   </mat-tab>
-  <mat-tab label="Radar Sud Italia">
+  <mat-tab label="SUD">
     <br>
     <satellite-sud *ngIf="isSudItalia"></satellite-sud>
   </mat-tab>
-  <mat-tab label="Radar Protezione Civile">
+  <mat-tab label="PROTEZIONE CIVILE">
     <br>
     <satellite-protezione-civile *ngIf="isProtezioneCivile"></satellite-protezione-civile>
   </mat-tab>
