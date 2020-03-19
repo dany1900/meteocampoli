@@ -1,5 +1,7 @@
-<strong><h3>Provincia Viterbo</h3></strong>
-
+<p class="title-micro-section">Provincia Viterbo</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
 <figure>
   <div class="webcam-script-header">
 							<span class="content-webcam-principal">CAPRAROLA (VT) 520
@@ -9,7 +11,7 @@
     href="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fmeteocaprarola.altervista.org%2Fcentro_storico%2Fwebcam.php&w=630"
     data-rel="prettyPhoto"><img
     src="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fmeteocaprarola.altervista.org%2Fcentro_storico%2Fwebcam.php&w=630"
-    class="webcam"/></a></figure>
+    class="webcam" [hidden]="imageLoader" (load)="imageLoader = false;"/></a></figure>
 <figure>
   <div class="webcam-script-header">
 							<span class="content-webcam-principal"> VALENTANO (VT) 538
@@ -20,3 +22,4 @@
     data-rel="prettyPhoto"><img
     src="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.valentano.net%2Fwebcam%2Fvalentano_live.jpg&w=630"
     class="webcam"/></a></figure>
+</div>

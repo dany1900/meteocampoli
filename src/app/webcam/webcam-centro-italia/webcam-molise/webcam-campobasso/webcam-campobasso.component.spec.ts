@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {CampobassoComponent} from './campobasso.component';
+import {WebcamCampobassoComponent} from './webcam-campobasso.component';
 
 describe('CampobassoComponent', () => {
-  let component: CampobassoComponent;
-  let fixture: ComponentFixture<CampobassoComponent>;
+  let component: WebcamCampobassoComponent;
+  let fixture: ComponentFixture<WebcamCampobassoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CampobassoComponent]
+      declarations: [WebcamCampobassoComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CampobassoComponent);
+    fixture = TestBed.createComponent(WebcamCampobassoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

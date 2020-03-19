@@ -8,6 +8,8 @@ import {Meta} from '@angular/platform-browser';
 })
 export class SatelliteProtezioneCivileComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor(private meta: Meta) {
     this.meta.addTags([
       {name: 'title', content: 'Satellite Protezione Civile - Radar Precipitazioni  - Meteo Campoli'},

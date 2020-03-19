@@ -9,6 +9,8 @@ import {WebcamComponent} from '../../webcam.component';
 })
 export class WebCamLimitrofeComponent extends WebcamComponent implements OnInit {
 
+  imageLoader = true;
+
 
   constructor() {
     super();

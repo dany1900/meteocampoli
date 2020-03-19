@@ -9,7 +9,7 @@ import {RiepilogoComponent} from './riepilogo/riepilogo.component';
 import {TabStazioniComponent} from './tab/tab-stazioni/tab-stazioni.component';
 import {PrevisioniComponent} from './previsioni/previsioni.component';
 import {SatTabComponent} from './satellite/sat-tab.component';
-import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-webcam.component';
+import {TabImmagginiWebcamComponent} from './tab/tab-immaggini-webcam/tab-immaggini-webcam.component';
 import {WebcamLazioComponent} from './webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component';
 import {WebcamAbruzzoComponent} from './webcam/webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component';
 import {WebcamMoliseComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-molise.component';

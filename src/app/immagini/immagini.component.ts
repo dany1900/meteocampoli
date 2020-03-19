@@ -8,6 +8,8 @@ import {Meta} from '@angular/platform-browser';
 })
 export class ImmaginiComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor(private meta: Meta) {
     this.meta.addTags([
       {name: 'title', content: 'Immagini e WebCam - Meteo Campoli'},

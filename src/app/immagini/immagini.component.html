@@ -1,9 +1,12 @@
-<em class="title-micro-section">Cliccare sulle immagini per ingrandirle</em>
+<p class="title-micro-section">Cliccare sulle immagini per ingrandirle</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
 <div class="row">
   <div class="col-md-5 col-xs-4 col-sm-4 col-lg-4">
     <a href="../../assets/img/dolina-neve-min.jpg" class="thumbnail">
       <p></p>
-      <img src="../../assets/img/dolina-neve-min.jpg" alt="dolina campoli appennino" style="width:557px;height:246px">
+      <img src="../../assets/img/dolina-neve-min.jpg" alt="dolina campoli appennino" style="width:557px;height:246px"
+           [hidden]="imageLoader" (load)="imageLoader = false;">
     </a>
   </div>
   <div class="col-md-5 col-xs-4 col-sm-4 col-lg-4">

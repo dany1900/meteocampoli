@@ -1,4 +1,7 @@
-<strong><h3>Provincia Aquila</h3></strong>
+<p class="title-micro-section">Provincia Aquila</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
 <figure>
   <div class="webcam-script-header">
     <span class="content-webcam-principal">PESCASSEROLI (AQ) 1167 mt</span> <span>
@@ -7,7 +10,7 @@
     href="http://www.pescasserolionline.it/webcam/webcamm.jpg"
     data-rel="prettyPhoto"><img
     src="http://www.pescasserolionline.it/webcam/webcamm.jpg"
-    class="webcam"/></a></figure>
+    class="webcam" [hidden]="imageLoader" (load)="imageLoader = false;"/></a></figure>
 <figure>
   <div class="webcam-script-header">
     <span class="content-webcam-principal">OPI (AQ) 1250 mT</span> <span>www.prolocopi.it</span></div>
@@ -191,4 +194,4 @@
     href="http://www.caputfrigoris.altervista.org/_altervista_ht/rete-meteo/roccacaramanico/img_web_rocca.jpg?"><img
     src="http://www.caputfrigoris.altervista.org/_altervista_ht/rete-meteo/roccacaramanico/img_web_rocca.jpg?"
     class="webcam"/></a></figure>
-
+</div>

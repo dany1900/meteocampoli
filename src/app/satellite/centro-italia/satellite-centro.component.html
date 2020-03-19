@@ -1,41 +1,38 @@
 <p class="title-micro-section"> Radar Precipitazioni Centro Italia Live</p>
-<img class="radar" src="http://meteorema.aquila.infn.it/radarweb/home/realtime/WEB/spotVMI.gif" scrolling="No"
-     frameborder="no" marginheight="0px" marginwidth="0px">
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
+  <img class="radar" src="http://meteorema.aquila.infn.it/radarweb/home/realtime/WEB/spotVMI.gif" [hidden]="imageLoader"
+       (load)="imageLoader = false;">
 <br>
 <br>
 <p class="title-micro-section">Radar Precipitazioni Lazio e Abruzzo</p>
-<img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo.6.png" scrolling="No" frameborder="no"
-     marginheight="0px" marginwidth="0px">
+  <img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo.6.png" [hidden]="imageLoader"
+       (load)="imageLoader = false;">
 <br>
 <br>
 <p class="title-micro-section">Radar Fulmininazioni Centro Italia</p>
-<img class="radar" src="http://radarweb.aquila.infn.it/cetempsite/fulmini.png" scrolling="No" frameborder="no"
-     marginheight="0px" marginwidth="0px">
+  <img class="radar" src="http://radarweb.aquila.infn.it/cetempsite/fulmini.png">
 <br>
 <br>
 <p class="title-micro-section">Radar Precipitazioni Toscana</p>
-<img class="radar" src="http://www.lamma.rete.toscana.it/radar/elba/images/PPI_1080_0005_25.png?1576413678950"
-     scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+  <img class="radar" src="http://www.lamma.rete.toscana.it/radar/elba/images/PPI_1080_0005_25.png?1576413678950">
 <br>
 <br>
 <p class="title-micro-section">Radar precipitazioni ultime 3 ore Zoom</p>
-<iframe class="radar" src="radar_zoom_3h.php" alt="radar precipitazioni zoom" scrolling="No" frameborder="no"
-        marginheight="0px" marginwidth="0px"></iframe>
-<br>
+  <iframe class="radar" src="../../../assets/php/radar_zoom_3h.php" alt="radar precipitazioni zoom"></iframe>
+  <br>
 <br>
 <p class="title-micro-section">Radar precipitazioni ultime 6 ore Zoom</p>
-<iframe class="radar" src="radar_zoom_6h.php" alt="radar precipitazioni zoom" scrolling="No" frameborder="no"
-        marginheight="0px" marginwidth="0px"></iframe>
+  <iframe class="radar" src="../../../assets/php/radar_zoom_6h.php" alt="radar precipitazioni zoom"></iframe>
 <br>
 <br>
 <p class="title-micro-section">Radar precipitazioni ultime 24h Zoom</p>
-<iframe src="radar_zoom_24h.php" class="radar" alt="radar precipitazioni zoom" scrolling="No" frameborder="no"
-        marginheight="0px" marginwidth="0px"></iframe>
+  <iframe src="../../../assets/php/radar_zoom_24h.php" class="radar" alt="radar precipitazioni zoom"></iframe>
 <br>
 <br>
 <p class="title-micro-section">Radar precipitazioni in tempo reale Zoom</p>
-<iframe class="radar" src="radar_zoom.php" alt="radar precipitazioni zoom" scrolling="No" frameborder="no"
-        marginheight="0px" marginwidth="0px"></iframe>
-
+  <iframe class="radar" src="../../../assets/php/radar_zoom.php" alt="radar precipitazioni zoom"></iframe>
+</div>
 
 

@@ -8,6 +8,9 @@ import {Meta} from '@angular/platform-browser';
 })
 export class SatelliteCentroComponent implements OnInit {
 
+  imageLoader = true;
+  imageLoaderMovimento = true;
+
   constructor(private meta: Meta) {
     this.meta.addTags([
       {name: 'title', content: 'Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli'},

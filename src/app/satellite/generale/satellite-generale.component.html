@@ -1,58 +1,63 @@
 <br>
-
 <p class="title-micro-section"> Satellite Infrarossi in movimento</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
 <img class="radar" id='ex4' src="http://www.meteo60.fr/satellites/animation-satellite-ir-france.gif"
-     alt="satellite infrarossi movimento"/><br/>
+     alt="satellite infrarossi movimento" [hidden]="imageLoader" (load)="imageLoader = false;"/><br/>
 
-<p class="title-micro-section">Satellite Meteosat Immagine Italia</p>
+  <p class="title-micro-section">Satellite Meteosat Immagine Italia</p>
 <img class="radar" src="http://www.sat24.com/image.ashx?country=it&0.6041513127274811"
      alt="satellite meteosat immagine"/><br/>
 
-<p class="title-micro-section">Monitoraggio Fulminazioni Europa in movimento</p>
+  <p class="title-micro-section">Monitoraggio Fulminazioni Europa in movimento</p>
 <img class="radar" src="http://www.meteociel.fr/obs/foudre/anim2h_it.gif"
      alt="satellite fulminazioni europa movimento"/><br/>
 
-<p class="title-micro-section">Satellite Fulminazioni Europa</p>
+  <p class="title-micro-section">Satellite Fulminazioni Europa</p>
 <img class="radar" src="http://images.blitzortung.org/Images/image_b_eu.png?t=22640732" alt="satellite fulminazioni"/>
 <br/>
 
-<p class="title-micro-section">Monitoraggio Fulminazioni Centro Italia</p>
+  <p class="title-micro-section">Monitoraggio Fulminazioni Centro Italia</p>
 <img class="radar" src="http://radarweb.aquila.infn.it/cetempsite/fulmini.png"
      alt="satellite fulminazioni centro italia"/><br/>
 
-<p class="title-micro-section">Vento in tempo reale</p>
+  <p class="title-micro-section">Vento in tempo reale</p>
 <img class="radar" src="https://img2.meteo.it/forecastimg/realtime/0/today_vento.jpg" scrolling="No" frameborder="no"
      marginheight="0px" marginwidth="0px">
-
+  <br>
 <p class="title-micro-section">Satellite Precipitazioni in movimento</p>
-<iframe id="frame-mov" class="radar"
-        src="https://embed.windy.com/embed2.html?lat=41.40&lon=13.37&zoom=8&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=41.40&detailLon=13.37&metricWind=&metricTemp=&radarRange=-1"
-        frameborder="0"></iframe>
+  <mat-spinner [hidden]="!imageLoaderMovimento" mode="indeterminate"></mat-spinner>
+  <div [hidden]="imageLoaderMovimento">
+    <iframe id="frame-mov" class="radar"
+            src="https://embed.windy.com/embed2.html?lat=41.40&lon=13.37&zoom=8&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=41.40&detailLon=13.37&metricWind=&metricTemp=&radarRange=-1"
+            frameborder="0" [hidden]="imageLoaderMovimento" (load)="imageLoaderMovimento = false;"></iframe>
+  </div>
 
-<br>
+  <br>
 <p class="title-micro-section">Sinottica al suolo (aggiornamento orario)</p>
 <img class="radar" src="http://meteocentre.com/analyse/local/eur.gif" alt="sinottica suolo"/><br/>
 
-<br>
+  <br>
 <!--font color="#23252C"><em><b><h3><center>Sinottica in quota [500 Hpa] (aggiornamento step 12/H)</center></h3></b></em></font>
 <img class="radar" src="http://meteocentre.com/analyses/local/eur_500.gif?1422238524" alt="sinottica quota"/><br -->
 
-<p class="title-micro-section">Sinottica con minimi e massimi barometrici</p>
+  <p class="title-micro-section">Sinottica con minimi e massimi barometrici</p>
 <img class="radar" src="http://www.meteomin.it/Dig_Atm_Jpg/Front_map_G.jpg" alt="sinottica"/><br/>
 
-<br>
+  <br>
 <br>
 <p class="title-micro-section">Temperatura 2m in tempo reale</p>
 <img class="radar" src="http://img.meteo.it/forecastimg/realtime/12/today_temperatura.jpg" alt="temperature suolo"/>
 <br/>
 
-<br>
+  <br>
 <br>
 <p class="title-micro-section">Radar Precipitazioni Lazio</p>
 <img class="radar" src="http://img.meteo.it/forecastimg/realtime/12/today_pioggia.jpg" alt="radar precipitazioni lazio"
      scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
 
-<br>
+  <br>
 <br>
 <p class="title-micro-section">Radar Precipitazioni Ultime 3 ore </p>
 <img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt3h_noclass.png" alt="radar precipitazioni"
@@ -63,26 +68,29 @@
 <img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt6h_noclass.png" alt="radar precipitazioni"
      scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
 
-<br>
+  <br>
 <br>
 <p class="title-micro-section">Radar Precipitazioni Ultime 24 ore </p>
 <img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt24h_giornaliero_cetcest_noclass.png"
      alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
 
-<br>
+  <br>
 <br>
 
-<p class="title-micro-section">Radar Precipitazioni Live</p>
+  <p class="title-micro-section">Radar Precipitazioni Live</p>
 <img class="radar" src="http://radarweb.aquila.infn.it/imgmm/ultimo_vmi_120km.png" alt="radar precipitazioni"
      scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
 <br>
 <br>
-<!--
-<p class="title-micro-section">Radar precipitazioni in tempo reale Zoom</p>
-<iframe src="radar_zoom.php" class="radar" alt="radar precipitazioni zoom" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px"></iframe>
 
-<br>
+  <p class="title-micro-section">Radar precipitazioni in tempo reale Zoom</p>
+  <iframe src="../../../assets/php/radar_zoom.php" class="radar" alt="radar precipitazioni zoom" scrolling="No"
+          frameborder="no" marginheight="0px" marginwidth="0px"></iframe>
+
+  <br>
 <br>
 <p class="title-micro-section">Radar precipitazioni 24h Zoom</p>
-<iframe src="radar_zoom_24h.php" class="radar" alt="radar precipitazioni zoom" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px"></iframe>
--->
+  <iframe src="../../../assets/php/radar_zoom_24h.php" class="radar" alt="radar precipitazioni zoom" scrolling="No"
+          frameborder="no" marginheight="0px" marginwidth="0px"></iframe>
+
+</div>

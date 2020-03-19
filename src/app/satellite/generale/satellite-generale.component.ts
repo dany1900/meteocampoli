@@ -4,10 +4,15 @@ import {Meta} from '@angular/platform-browser';
 @Component({
   selector: 'satellite-generale',
   templateUrl: './satellite-generale.component.html',
-  styleUrls: ['../sat-tab.component.css']
+  styleUrls: ['./satellite-generale.component.css']
 })
 
 export class SatelliteGeneraleComponent implements OnInit {
+
+  imageLoader = true;
+  imageLoaderMovimento = true;
+
+
   constructor(private meta: Meta) {
     this.meta.addTags([
       {name: 'title', content: 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli'},
@@ -47,9 +52,9 @@ export class SatelliteGeneraleComponent implements OnInit {
 
     // CHANGE THE NAME OF THE BUTTON.
     if (this.show1)
-      this.buttonName = "Nascondi";
+      this.buttonName = 'Nascondi';
     else
-      this.buttonName = "Mostra";
+      this.buttonName = 'Mostra';
   }
 
   test2() {
@@ -57,9 +62,9 @@ export class SatelliteGeneraleComponent implements OnInit {
 
 
     if (this.show2)
-      this.buttonName = "Nascondi";
+      this.buttonName = 'Nascondi';
     else
-      this.buttonName = "Mostra";
+      this.buttonName = 'Mostra';
 
   }
 }

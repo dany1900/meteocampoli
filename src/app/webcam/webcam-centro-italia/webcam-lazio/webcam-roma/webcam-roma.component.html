@@ -1,7 +1,7 @@
-<strong class="title-micro-section"><h3>Provincia Roma</h3></strong>
-
-
-<figure>
+<p class="title-micro-section">Provincia Roma</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
   <div class="webcam-script-header">
 							<span class="content-webcam-principal">MONTE GUADAGNOLO
 								(RM) 1218 mt - </span> <span>www.meteopalestrina.it </span>
@@ -10,7 +10,7 @@
     href="http://www.webcampalestrina.altervista.org/daxedocu/webcam.php"
     data-rel="prettyPhoto"><img
     src="http://www.webcampalestrina.altervista.org/daxedocu/webcam.php"
-    class="webcam"/></a>
+    class="webcam" [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
   <figure>
     <div class="webcam-script-header">
 							<span class="content-webcam-principal">ROCCA PRIORA (RM)
@@ -108,4 +108,4 @@
        data-rel="prettyPhoto"><img
       src="http://www.meteoliri.it/stazione1/webcamRM.php"
       class="webcam"/></a></figure>
-
+</div>

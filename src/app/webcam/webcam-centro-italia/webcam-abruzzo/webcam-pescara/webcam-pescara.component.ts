@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class WebcamPescaraComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor() {
   }
 

@@ -24,7 +24,6 @@ import {StazioniReteMeteoComponent} from './stazioni-meteo/stazioni-rete-meteo/s
 import {WebcamMontagnaComponent} from './webcam/webcam-centro-italia/webcam-montagna/webcam-montagna.component';
 import {ValleCominoComponent} from './webcam/webcam-centro-italia/webcam-valle-comino/valle-comino.component';
 import {WebcamIserniaComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-isernia/webcam-isernia.component';
-import {CampobassoComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-campobasso/campobasso.component';
 import {WebcamUmbriaComponent} from './webcam/webcam-centro-italia/webcam-umbria/webcam-umbria.component';
 import {NordItaliaComponent} from './webcam/webcam-nord-italia/nord-italia.component';
 import {SudItaliaComponent} from './webcam/webcam-sud-italia/sud-italia.component';
@@ -44,7 +43,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {TabWebcamComponent} from './tab/tab-webcam/tab-webcam.component';
 import {TabStazioniComponent} from './tab/tab-stazioni/tab-stazioni.component';
-import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-webcam.component';
+import {TabImmagginiWebcamComponent} from './tab/tab-immaggini-webcam/tab-immaggini-webcam.component';
 import {ArticoliComponent} from './info/articoli/articoli.component';
 import {InquinamentoRimediComponent} from './info/articoli/inquinamento-rimedi/inquinamento-rimedi.component';
 import {TabInfoComponent} from './tab/tab-info/tab-info.component';
@@ -73,6 +72,7 @@ import {AccordionModule} from 'ngx-accordion';
 import {SEOService} from './service/seoservice.service';
 import {WebcamToscanaComponent} from './webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {WebcamCampobassoComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-campobasso/webcam-campobasso.component';
 
 
 @NgModule({
@@ -104,7 +104,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     WebcamIserniaComponent,
     WebcamMoliseComponent,
     WebcamUmbriaComponent,
-    CampobassoComponent,
+    WebcamCampobassoComponent,
     WebcamUmbriaComponent,
     StazioniMoliseComponent,
     WebcamToscanaComponent,

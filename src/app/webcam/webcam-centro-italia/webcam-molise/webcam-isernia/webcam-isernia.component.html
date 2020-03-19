@@ -1,6 +1,7 @@
-<strong><h3>Provincia Isernia</h3></strong>
-
-
+<p class="title-micro-section">Provincia Isernia</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
 <figure>
   <div class="webcam-script-header">
     <span class="content-webcam-principal">CAPRACOTTA (IS) 1421 MT - </span>
@@ -8,7 +9,8 @@
 
   </div>
   <a href="http://www.meteoinmolise.com/webcam/FI9900P_00626E92391B/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E92391B/snap/webcam.php" class="webcam"/></a>
+    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E92391B/snap/webcam.php" class="webcam" [hidden]="imageLoader"
+    (load)="imageLoader = false;"/></a>
 </figure>
 <figure>
   <div class="webcam-script-header">
@@ -17,7 +19,8 @@
 
   </div>
   <a href="http://www.meteoinmolise.com/webcam/FI9900P_00626E931900/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E931900/snap/webcam.php" class="webcam"/></a>
+    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E931900/snap/webcam.php" class="webcam" [hidden]="imageLoader"
+    (load)="imageLoader = false;"/></a>
 </figure>
 <figure>
   <div class="webcam-script-header">
@@ -25,7 +28,8 @@
     <span>www.meteoinmolise.com </span>
   </div>
   <a href="http://www.meteoinmolise.com/webcam/FI9901EP_00626E708459/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9901EP_00626E708459/snap/webcam.php" class="webcam"/></a>
+    src="http://www.meteoinmolise.com/webcam/FI9901EP_00626E708459/snap/webcam.php" class="webcam"
+    [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
 </figure>
 <figure>
   <div class="webcam-script-header">
@@ -33,7 +37,8 @@
     <span>www.meteoinmolise.com </span>
   </div>
   <a href="http://www.meteoinmolise.com/webcam/FI9900EP_00626ED82870/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9900EP_00626ED82870/snap/webcam.php" class="webcam"/></a>
+    src="http://www.meteoinmolise.com/webcam/FI9900EP_00626ED82870/snap/webcam.php" class="webcam"
+    [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
 </figure>
 <figure>
   <div class="webcam-script-header">
@@ -41,5 +46,7 @@
     <span>www.meteoinmolise.com </span>
   </div>
   <a href="http://www.meteoinmolise.com/webcam/FI9900P_00626E863EB1/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E863EB1/snap/webcam.php" class="webcam"/></a>
+    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E863EB1/snap/webcam.php" class="webcam" [hidden]="imageLoader"
+    (load)="imageLoader = false;"/></a>
 </figure>
+</div>

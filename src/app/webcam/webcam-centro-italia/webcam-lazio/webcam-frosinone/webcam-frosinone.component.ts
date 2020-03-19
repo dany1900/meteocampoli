@@ -8,6 +8,8 @@ import {WebcamComponent} from '../../../webcam.component';
 })
 export class WebcamFrosinoneComponent extends WebcamComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor() {
 
     super();

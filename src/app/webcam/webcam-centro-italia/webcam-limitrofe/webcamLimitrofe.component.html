@@ -1,11 +1,15 @@
-<div class="center">
+<p class="title-micro-section">Webcam Limitrofe</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
   <figure>
     <div class="webcam-script-header">
       <span class="content-webcam-principal">SORA - </span>
       <span> www.meteoliri.it</span>
     </div>
     <a href="http://www.meteoliri.it/stazioneSO/bannerino.php"><img
-      src="http://www.meteoliri.it/stazioneSO/bannerino.php" class="webcam" alt="webcam sora"/></a>
+      src="http://www.meteoliri.it/stazioneSO/bannerino.php" class="webcam" alt="webcam sora" [hidden]="imageLoader"
+      (load)="imageLoader = false;"/></a>
   </figure>
 
   <figure>

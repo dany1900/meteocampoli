@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class WebcamAquilaComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor() {
   }
 

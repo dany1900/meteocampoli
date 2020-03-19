@@ -1,21 +1,24 @@
-<strong><h3>Provincia Rieti</h3></strong>
-
-
-<figure>
-  <div class="webcam-script-header">
+<p class="title-micro-section">Provincia Rieti</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
+  <figure>
+    <div class="webcam-script-header">
 							<span class="content-webcam-principal">NESCE (RI) 850 mt -
 							</span> <span> www.kappu86.altervista.org/</span>
-  </div>
-  <a href="http://www.kappu86.altervista.org/webcam.php"
-     data-rel="prettyPhoto"><img
-    src="http://www.kappu86.altervista.org/webcam.php" class="webcam"/></a>
-</figure>
-<figure>
-  <div class="webcam-script-header">
+    </div>
+    <a href="http://www.kappu86.altervista.org/webcam.php"
+       data-rel="prettyPhoto"><img
+      src="http://www.kappu86.altervista.org/webcam.php" class="webcam" [hidden]="imageLoader"
+      (load)="imageLoader = false;"/></a>
+  </figure>
+  <figure>
+    <div class="webcam-script-header">
 							<span class="content-webcam-principal">TERMINILLO (RI)
 								1800 mT - </span> <span> www.lapiccolabaita.com</span>
-  </div>
-  <a href="http://www.terminilloriders.com/images/webcam/webcam.jpg"
-     data-rel="prettyPhoto"><img
-    src="http://www.terminilloriders.com/images/webcam/webcam.jpg"
-    class="webcam"/></a></figure>
+    </div>
+    <a href="http://www.terminilloriders.com/images/webcam/webcam.jpg"
+       data-rel="prettyPhoto"><img
+      src="http://www.terminilloriders.com/images/webcam/webcam.jpg"
+      class="webcam"/></a></figure>
+</div>

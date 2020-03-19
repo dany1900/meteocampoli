@@ -1,23 +1,26 @@
-<strong><h3>Provincia Chieti</h3></strong>
-
-<figure>
-  <div class="webcam-script-header">
+<p class="title-micro-section">Provincia Chieti</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
+  <figure>
+    <div class="webcam-script-header">
 							<span class="content-webcam-principal">
 								Majelletta (CH) - Partenza impianti  1654 mT</span> <span>www.majellettawe.it</span>
 
-  </div>
-  <a
-    href="http://www.majellettawe.it/webcam/webcam.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://www.majellettawe.it/webcam/webcam.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
+    </div>
+    <a
+      href="http://www.majellettawe.it/webcam/webcam.jpg"
+      data-rel="prettyPhoto"><img
+      src="http://www.majellettawe.it/webcam/webcam.jpg"
+      class="webcam" [hidden]="imageLoader" (load)="imageLoader = false;"/></a></figure>
+  <figure>
+    <div class="webcam-script-header">
 							<span class="content-webcam-principal">Maiella
 								Rifugio Pomilio dir NE (CH) 1940 mT</span> <span>www.pescarameteo.net</span>
 
-  </div>
-  <a href="http://www.pescarameteo.net/maiella2/webcam.php"
-     data-rel="prettyPhoto"><img
-    src="http://www.pescarameteo.net/maiella2/webcam.php"
-    class="webcam"/></a></figure>
+    </div>
+    <a href="http://www.pescarameteo.net/maiella2/webcam.php"
+       data-rel="prettyPhoto"><img
+      src="http://www.pescarameteo.net/maiella2/webcam.php"
+      class="webcam"/></a></figure>
+</div>

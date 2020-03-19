@@ -1,6 +1,7 @@
-<em class="title-micro-section">Provincia di Frosinone</em>
+<p class="title-micro-section">Provincia di Frosinone</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
 <br>
-<div class="center">
+<div class="center" [hidden]="imageLoader">
   <figure>
     <div class="webcam-script-header">
 							<span class="content-webcam-principal">CAMPOCATINO (FR)
@@ -9,7 +10,8 @@
     </div>
     <a href="http://www.campocatinometeo.it/capture1.jpg"
        data-rel="prettyPhoto"><img
-      src="http://www.campocatinometeo.it/capture1.jpg" class="webcam"/></a>
+      src="http://www.campocatinometeo.it/capture1.jpg" class="webcam" [hidden]="imageLoader"
+      (load)="imageLoader = false;"/></a>
   </figure>
   <figure>
     <div class="webcam-script-header">
