@@ -1,22 +1,37 @@
 <div class="header">
-  <div id="wrapper">
-    <div id="slider-wrapper">
-      <div id="slider" class="nivoSlider">
-        <img src="../../assets/img/campoli-verde-min.jpg" alt="slide campoli 1"/>
-        <img src="../../assets/img/campoli-neve-min.jpg" alt="slide campoli 2"/>
-        <img src="../../assets/img/dolina-orso-min.jpg" alt="slide campoli 3"/>
-        <img src="../../assets/img/dolina-alto-min.jpg" alt="slide campoli 4"/>
-        <img src="../../assets/img/tartufi-min.jpg" alt="slide campoli 5"/>
-        <img src="../../assets/img/dolina-neve-min.jpg" alt="slide campoli 6"/>
-      </div>
-    </div>
+  <div class="slider">
+    <ngb-carousel
+      [showNavigationArrows]="true"
+      [showNavigationIndicators]="false"
+      interval="4000"
+      [keyboard]="false"
+      [pauseOnHover]="false"
+      [wrap]="true"
+      [activeId]="'slide1'">
+      <ng-template ngbSlide class="slider">
+        <img src="../../assets/img/campoli-verde-min.jpg" id="slide1">
+        <!--<div class="carousel-caption">
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </div> -->
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="../../assets/img/campoli-neve-min.jpg" alt="Random second slide" id="slide2">
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="./../assets/img/dolina-orso-min.jpg" alt="Random second slide" id="slide3">
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="../../assets/img/dolina-alto-min.jpg" alt="Random second slide" id="slide4">
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="../../assets/img/tartufi-min.jpg" alt="Random second slide" id="slide5">
+      </ng-template>
+      <ng-template ngbSlide>
+        <img src="../../assets/img/dolina-neve-min.jpg" alt="Random second slide" id="slide6">
+      </ng-template>
+    </ngb-carousel>
   </div>
-  <script type="text/javascript" src="../../assets/js/slider-min.js"></script>
-  <script type="text/javascript">
-    $(window).load(function () {
-      $('#slider').nivoSlider();
-    });
-  </script>
-
 </div>
+
 

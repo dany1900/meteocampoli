@@ -26,7 +26,7 @@ export const routes: Routes = [
 
   {
     path: '',
-    redirectTo: 'datiAttuali',
+    redirectTo: 'dati-attuali',
     pathMatch: 'full',
     data: {
       title: 'Meteo Campoli - Monitoraggio Meteo',
@@ -35,7 +35,7 @@ export const routes: Routes = [
 
   },
   {
-    path: 'datiAttuali',
+    path: 'dati-attuali',
     component: DatiAttualiComponent,
     data: {
       title: 'Meteo Campoli - Monitoraggio Meteo'

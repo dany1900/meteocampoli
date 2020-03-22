@@ -73,6 +73,7 @@ import {SEOService} from './service/seoservice.service';
 import {WebcamToscanaComponent} from './webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {WebcamCampobassoComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-campobasso/webcam-campobasso.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -154,7 +155,8 @@ import {WebcamCampobassoComponent} from './webcam/webcam-centro-italia/webcam-mo
     AccordionModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    NgbModule
   ],
   providers: [SEOService],
   bootstrap: [AppComponent]

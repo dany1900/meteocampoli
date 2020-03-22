@@ -126,29 +126,18 @@ h4 {
   padding: 0px 0px 0px 0px;
 }
 
-#slider-wrapper {
-  width: 954px;
-  height: 330px;
-  margin: 0 auto;
-}
-
-#slider {
-  position: relative;
-  width: 954px;
-  height: 330px;
-  background: url(assets/img/loading.gif) no-repeat 50% 50%
-}
-
-#slider img {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  display: none;
-}
-
-#slider a {
-  border: 0;
+.slider {
   display: block;
+  margin-left: 20px !important;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  opacity: unset !important;
 }
 
 .nivo-controlNav {
@@ -503,6 +492,10 @@ a.nivo-prevNav {
 .mat-tab-label .mat-tab-label-content {
   color: #ffffff;
   font-size: 18px;
+}
+
+.mat-tab-label {
+  opacity: unset !important;
 }
 
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
