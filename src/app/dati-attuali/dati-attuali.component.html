@@ -16,6 +16,8 @@
 }
 
 
+
+
 </script>
 
 <script>
@@ -40,12 +42,16 @@
   img.src = "http://meteocampoliappennino.altervista.org/grafico.png?" + (new Date).getTime();
 </script>
 
+
 <div class="center">
 
   <p class="header-macro-section">Meteo Campoli - Monitoraggio Meteo</p>
+  <br>
   <p class="title-micro-section">L'immagine si aggiorna automaticamente dopo qualche istante</p>
-  <a href="http://meteocampoliappennino.altervista.org/grafico.png" title="stazione meteo campoli monitoraggio"><img
-    class="grafico-stazione" id="frame" src="http://meteocampoliappennino.altervista.org/grafico.png"
+  <a href="http://meteocampoliappennino.altervista.org/grafico.png?v=' + Math.random()"
+     title="stazione meteo campoli monitoraggio"><img
+    class="grafico-stazione" id="frame"
+    src="http://meteocampoliappennino.altervista.org/grafico.png?v=' + Math.random()"
     alt="Stazione meteo grafico"></a><br>
 </div>
 <br>
@@ -69,4 +75,3 @@
   title="Link" style="border: 0px solid ; width: 140px; height: 45px;" alt="meteoliri" src="http://www.meteoliri.it/logostyle.png
 "></a> per accedere a MeteoLiri, il sito meteo della Media valle del Liri </p>
 <br>
-

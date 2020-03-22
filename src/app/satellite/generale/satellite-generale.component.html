@@ -8,7 +8,7 @@
 
   <p class="title-micro-section">Satellite Meteosat Immagine Italia</p>
 <img class="radar" src="http://www.sat24.com/image.ashx?country=it&0.6041513127274811"
-     alt="satellite meteosat immagine"/><br/>
+     alt="satellite meteosat immagine" [hidden]="imageLoader" (load)="imageLoader = false;"/><br/>
 
   <p class="title-micro-section">Monitoraggio Fulminazioni Europa in movimento</p>
 <img class="radar" src="http://www.meteociel.fr/obs/foudre/anim2h_it.gif"
@@ -60,37 +60,33 @@
   <br>
 <br>
 <p class="title-micro-section">Radar Precipitazioni Ultime 3 ore </p>
-<img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt3h_noclass.png" alt="radar precipitazioni"
-     scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+  <img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt3h_noclass.png" alt="radar precipitazioni">
 <br>
 <br>
 <p class="title-micro-section">Radar Precipitazioni Ultime 6 ore </p>
-<img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt6h_noclass.png" alt="radar precipitazioni"
-     scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+  <img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt6h_noclass.png" alt="radar precipitazioni">
 
   <br>
 <br>
 <p class="title-micro-section">Radar Precipitazioni Ultime 24 ore </p>
 <img class="radar" src="http://satollo.aquila.infn.it/midia/ref/ultimo_srt24h_giornaliero_cetcest_noclass.png"
-     alt="radar precipitazioni" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+     alt="radar precipitazioni">
 
   <br>
 <br>
 
   <p class="title-micro-section">Radar Precipitazioni Live</p>
-<img class="radar" src="http://radarweb.aquila.infn.it/imgmm/ultimo_vmi_120km.png" alt="radar precipitazioni"
-     scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+  <img class="radar" src="http://radarweb.aquila.infn.it/imgmm/ultimo_vmi_120km.png" alt="radar precipitazioni">
 <br>
 <br>
 
   <p class="title-micro-section">Radar precipitazioni in tempo reale Zoom</p>
-  <iframe src="../../../assets/php/radar_zoom.php" class="radar" alt="radar precipitazioni zoom" scrolling="No"
-          frameborder="no" marginheight="0px" marginwidth="0px"></iframe>
+  <iframe class="radar" src="../../../assets/php/radar_zoom.html" alt="radar precipitazioni zoom"></iframe>
 
   <br>
 <br>
 <p class="title-micro-section">Radar precipitazioni 24h Zoom</p>
-  <iframe src="../../../assets/php/radar_zoom_24h.php" class="radar" alt="radar precipitazioni zoom" scrolling="No"
-          frameborder="no" marginheight="0px" marginwidth="0px"></iframe>
+  <iframe class="radar" src="../../../assets/php/radar_zoom_24.html" alt="radar precipitazioni zoom"></iframe>
+
 
 </div>

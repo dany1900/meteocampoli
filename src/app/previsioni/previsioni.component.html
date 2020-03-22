@@ -1,16 +1,23 @@
-<div class="center">
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
   <p class="header-macro-section">Previsioni Meteo - Monitoraggio Indici Climatici</p>
   <br>
   <br>
 
   <p class="title-micro-section">Meteogramma Campoli Appennino</p>
-  <img class="previsioni-frame" src="http://www.yr.no/sted/Italia/Lazio/Campoli_Appennino/avansert_meteogram.png"/><br/>
+  <img class="previsioni-frame" src="http://www.yr.no/sted/Italia/Lazio/Campoli_Appennino/avansert_meteogram.png"
+       [hidden]="imageLoader"
+       (load)="imageLoader = false;"/><br/>
 
   <br>
   <em class="title-micro-section">Spaghi GFS Campoli Appennino</em>
   <img class="previsioni-frame"
        src="http://modeles.meteociel.fr/modeles/gens/graphe_ens3.php?x=&y=&run=0&lat=41.72&lon=13.687&ext=1&type=0"/><br/>
-
+  <br>
+  <em class="title-micro-section">Pioggia ECMWF 72H</em>
+  <img class="previsioni-frame"
+       src="https://services.meteored.com/img/models/ecmwf/ECMWF_072_IT_APC_es-ES_es.png"/><br/>
 
   <p class="title-micro-section">Previsioni 5 Giorni</p>
   <!-- Inizio codice ilMeteo.it -->
@@ -20,27 +27,27 @@
   <!-- Fine codice ilMeteo.it -->
   <br>
   <br>
-
   <p class="title-micro-section">Previsione Pioggia 70h</p>
   <iframe class="previsioni-frame" style="width: 620px !important;height: 470px;"
           src="http://pumpkin.aquila.infn.it/forechem/fig/TOPC_ITA.gif" frameborder="0" scrolling="no" marginheight="0"
           marginwidth="0"></iframe>
-
-
+  <br>
+  <br>
   <p class="title-micro-section">Anomalie termiche ultimi 10 giorni</p>
   <img class="previsioni-frame" style="width: 750px !important;"
-       src="http://www.cpc.ncep.noaa.gov/products/CFSv2/imagesInd3/glbT850MonInd1.gif"/><br/>
-
+       src="http://www.cpc.ncep.noaa.gov/products/CFSv2/imagesInd3/glbT850MonInd1.gif"/>
+  <br/>
+  <br>
   <p class="title-micro-section">Tendenza Meteo Lungo Termine</p>
   <iframe src="http://img.meteocentre.com/models/compar_eur_00/mgram_Roma.png" width="820" height="720" frameborder="0"
           scrolling="no" marginheight="0" marginwidth="0"></iframe>
   <iframe src="http://img.meteocentre.com/models/gemglb_eur_00/PN_D5_TT_TT_P1_NT_UV_UU_VV_METE_12000_Roma.png"
           width="820" height="770" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+  <br>
+  <br>
 
-
-  <p class="title-micro-section">Indici Climatici &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+  <p class="title-micro-section">Indici Climatici &nbsp;<a
     href="http://meteotaranto.org/wxnao-ao.php" title="Info indici climatici" target="_blank">Info</a></p>
-
   <h4>
     L'indice AO (Arctic Oscillation), detto anche Northern Annular Mode e' calcolato dalla differenza di pressione tra
     l'artico e le basse latitudini, generalmente comprese tra il 37esimo ed il 45esimo parallelo. In presenza di indice
@@ -56,6 +63,7 @@
        src="http://www.cpc.noaa.gov/products/precip/CWlink/daily_ao_index/ao.sprd2.gif" frameborder="0" scrolling="no"
        marginheight="0" marginwidth="0"/>
 
+  <br>
   <br>
   <h4>
     Generalmente, in presenza di indice NAO positivo nella stagione estiva si verifica l'espansione verso l'Europa

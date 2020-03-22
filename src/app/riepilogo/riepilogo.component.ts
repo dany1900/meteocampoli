@@ -9,6 +9,9 @@ import {Meta} from '@angular/platform-browser';
 })
 
 export class RiepilogoComponent implements OnInit {
+
+  imageLoader = true;
+
   constructor(private meta: Meta) {
     this.meta.updateTag({
       name: 'keyword',

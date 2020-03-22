@@ -8,6 +8,8 @@ import {Meta} from '@angular/platform-browser';
 })
 export class TerremotiComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor(private meta: Meta) {
     this.meta.addTags([
       {name: 'description', content: ''},

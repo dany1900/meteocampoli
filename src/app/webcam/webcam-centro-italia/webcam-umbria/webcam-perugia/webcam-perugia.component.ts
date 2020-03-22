@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class WebcamPerugiaComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor() {
   }
 

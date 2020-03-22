@@ -1,5 +1,7 @@
-<strong><h3>Provincia Terni</h3></strong>
-
+<p class="title-micro-section">Provincia Terni</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
 <figure>
   <figcaption>
     <strong> MONTEGABBIONE (TR) 594 mT</strong>
@@ -8,5 +10,6 @@
   <a href="http://www.ilcastellodimontegabbione.it/Web%20Cam%20Meteo%20Montegabbione/Immagini/image00.jpg"
      data-rel="prettyPhoto"><img
     src="http://www.ilcastellodimontegabbione.it/Web%20Cam%20Meteo%20Montegabbione/Immagini/image00.jpg"
-    class="webcam"/></a>
+    class="webcam" [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
 </figure>
+</div>

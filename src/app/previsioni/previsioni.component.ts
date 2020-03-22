@@ -8,6 +8,8 @@ import {Meta} from '@angular/platform-browser';
 })
 export class PrevisioniComponent implements OnInit {
 
+  imageLoader = true;
+
   constructor(private meta: Meta) {
     this.meta.addTags([
       {name: 'title', content: 'Previsioni Meteo - Monitoraggio Indici Climatici - Meteo Campoli'},

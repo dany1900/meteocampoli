@@ -1,5 +1,7 @@
-<strong><h3>Provincia Perugia</h3></strong>
-
+<p class="title-micro-section">Provincia Perugia</p>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
 <figure>
   <div class="webcam-script-header">
     <span class="content-webcam-principal">CASCIA (PG) 653 mT - </span>
@@ -8,7 +10,7 @@
   <a href="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.bimcascia.it%2Fcurrent.jpg&w=630"
      data-rel="prettyPhoto"><img
     src="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.bimcascia.it%2Fcurrent.jpg&w=630"
-    class="webcam"/></a>
+    class="webcam" [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
 </figure>
 <figure>
   <div class="webcam-script-header">
@@ -39,3 +41,4 @@
   <a href="http://webcam.casalenelparco.com/webcam.jpg" data-rel="prettyPhoto"><img
     src="http://webcam.casalenelparco.com/webcam.jpg" class="webcam"/></a>
 </figure>
+</div>

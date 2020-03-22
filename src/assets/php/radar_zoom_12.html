@@ -1,0 +1,738 @@
+<html>
+<head>
+  <style>.gm-style .gm-style-mtc label, .gm-style .gm-style-mtc div {
+    font-weight: 400
+  }
+  </style>
+  <style>.gm-control-active > img {
+    box-sizing: content-box;
+    display: none;
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%)
+  }
+
+  .gm-control-active > img:nth-child(1) {
+    display: block
+  }
+
+  .gm-control-active:hover > img:nth-child(1), .gm-control-active:active > img:nth-child(1) {
+    display: none
+  }
+
+  .gm-control-active:hover > img:nth-child(2), .gm-control-active:active > img:nth-child(3) {
+    display: block
+  }
+  </style>
+  <link type="text/css" rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Google+Sans:400,500,700">
+  <style>.gm-ui-hover-effect {
+    opacity: .6
+  }
+
+  .gm-ui-hover-effect:hover {
+    opacity: 1
+  }
+  </style>
+  <style>.gm-style .gm-style-cc span, .gm-style .gm-style-cc a, .gm-style .gm-style-mtc div {
+    font-size: 10px;
+    box-sizing: border-box
+  }
+  </style>
+  <style>@media print {
+    .gm-style .gmnoprint, .gmnoprint {
+      display: none
+    }
+  }
+
+  @media screen {
+    .gm-style .gmnoscreen, .gmnoscreen {
+      display: none
+    }
+  }</style>
+  <style>.gm-style-pbc {
+    transition: opacity ease-in-out;
+    background-color: rgba(0, 0, 0, 0.45);
+    text-align: center
+  }
+
+  .gm-style-pbt {
+    font-size: 22px;
+    color: white;
+    font-family: Roboto, Arial, sans-serif;
+    position: relative;
+    margin: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%)
+  }
+  </style>
+  <style>.gm-style img {
+    max-width: none;
+  }
+
+  .gm-style {
+    font: 400 11px Roboto, Arial, sans-serif;
+    text-decoration: none;
+  }</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+  <style>
+    html, body, #map-canvas {
+      height: 100%;
+      margin: 0px;
+      padding: 0px
+    }
+
+    .barra {
+      height: 50px;
+      background: #646464;
+      opacity: 0.7;
+      padding: 0;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      z-index: 2;
+      width: 100% !important;
+    }
+
+    .logo_vm {
+      z-index: 3;
+      left: 5px;
+      position: absolute;
+      bottom: 3px;
+    }
+
+    .agg {
+      position: absolute;
+      z-index: 2;
+      right: 1%;
+      color: #ffffff;
+      bottom: 14px;
+      display: inline-block;
+      font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      text-shadow: 0 -1px 0 #333333;
+    }
+  </style>
+
+  <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>-->
+  <script type="text/javascript"
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD26GYTiQczCLzKG3TNOTQfWH9b2PIcSjU&sensor=false"></script>
+  <script type="text/javascript">
+    var url_browser = document.referrer;
+    if (url_browser == "") {
+      host_browser = "http://www.vallemuricana.it";
+    } else {
+      host_browser = url_browser;
+    }
+    var ricercasplit = host_browser.split("/");
+    host_browser = ricercasplit[2];
+
+
+    var overlay;
+    USGSOverlay.prototype = new google.maps.OverlayView();
+
+
+    function initialize() {
+      /*var mapOptions = {
+        zoom: 9,
+        center: new google.maps.LatLng(42.0, 13.026),
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+      };*/
+
+      var mapOptions = {
+        zoom: 8,
+        center: new google.maps.LatLng(42.021, 13.326),
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+          style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+        },
+        zoomControl: true,
+        panControl: false,
+        streetViewControl: false,
+        zoomControlOptions: {
+          style: google.maps.ZoomControlStyle.SMALL
+        },
+        mapTypeId: google.maps.MapTypeId.TERRAIN
+      }
+
+      var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+      var swBound = new google.maps.LatLng(40.975, 11.716);
+      var neBound = new google.maps.LatLng(43.126, 14.632);
+      var bounds = new google.maps.LatLngBounds(swBound, neBound);
+      //var srcImage = 'http://satollo.aquila.infn.it/midia/ref/ultimo_vmi_00.png';
+      //new 2015 luglio
+      var srcImage = 'http://satollo.aquila.infn.it/midia/ref/ultimo.18.png?123';
+      overlay = new USGSOverlay(bounds, srcImage, map);
+    }
+
+    function USGSOverlay(bounds, image, map) {
+
+      // Initialize all properties.
+      this.bounds_ = bounds;
+      this.image_ = image;
+      this.map_ = map;
+
+      this.div_ = null;
+      this.setMap(map);
+    }
+
+
+    USGSOverlay.prototype.onAdd = function () {
+
+      var div = document.createElement('div');
+      div.style.borderStyle = 'none';
+      div.style.borderWidth = '0px';
+      div.style.position = 'absolute';
+      div.style.opacity = "0.5";
+
+      // Create the img element and attach it to the div.
+      var img = document.createElement('img');
+      img.src = this.image_;
+      img.style.width = '100%';
+      img.style.height = '100%';
+      img.style.position = 'absolute';
+      div.appendChild(img);
+      this.div_ = div;
+      var panes = this.getPanes();
+      panes.overlayLayer.appendChild(div);
+    };
+
+    USGSOverlay.prototype.draw = function () {
+
+      var overlayProjection = this.getProjection();
+      var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
+      var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
+
+      var div = this.div_;
+      div.style.left = sw.x + 'px';
+      div.style.top = ne.y + 'px';
+      div.style.width = (ne.x - sw.x) + 'px';
+      div.style.height = (sw.y - ne.y) + 'px';
+    };
+
+    USGSOverlay.prototype.onRemove = function () {
+      this.div_.parentNode.removeChild(this.div_);
+      this.div_ = null;
+    };
+
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
+  <script type="text/javascript" charset="UTF-8"
+          src="https://maps.googleapis.com/maps-api-v3/api/js/40/5/intl/it_ALL/common.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+          src="https://maps.googleapis.com/maps-api-v3/api/js/40/5/intl/it_ALL/util.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+          src="https://maps.googleapis.com/maps-api-v3/api/js/40/5/intl/it_ALL/map.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+          src="https://maps.googleapis.com/maps-api-v3/api/js/40/5/intl/it_ALL/overlay.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+          src="https://maps.googleapis.com/maps-api-v3/api/js/40/5/intl/it_ALL/onion.js"></script>
+  <script type="text/javascript" charset="UTF-8"
+          src="https://maps.googleapis.com/maps-api-v3/api/js/40/5/intl/it_ALL/controls.js"></script>
+</head>
+<body>
+<nav class="barra"></nav>
+
+<div id="map-canvas" style="position: relative; overflow: hidden;">
+  <div
+    style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);">
+    <div class="gm-style"
+         style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;">
+      <div tabindex="0"
+           style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: url('https://maps.gstatic.com/mapfiles/openhand_8_8.cur'), default; touch-action: none;">
+        <div style="z-index: 1; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);">
+          <div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;">
+            <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
+              <div style="position: absolute; z-index: 995; transform: matrix(1, 0, 0, 1, -143, -71);">
+                <div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -512px; top: -512px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -256px; top: -512px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 0px; top: -512px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 256px; top: -512px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -768px; top: 256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -768px; top: 0px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -768px; top: -256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: -768px; top: -512px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 512px; top: -512px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 768px; top: -512px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 768px; top: -256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 512px; top: 256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 768px; top: 0px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+                <div style="position: absolute; left: 768px; top: 256px; width: 256px; height: 256px;">
+                  <div style="width: 256px; height: 256px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;">
+            <div
+              style="border-style: none; border-width: 0px; position: absolute; opacity: 0.5; left: 123.604px; top: -136.78px; width: 66.3552px; height: 65.9275px;">
+              <img src="http://satollo.aquila.infn.it/midia/ref/ultimo.18.png?123"
+                   style="width: 100%; height: 100%; position: absolute;"></div>
+          </div>
+          <div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div>
+          <div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"></div>
+          <div style="position: absolute; left: 0px; top: 0px; z-index: 0;">
+            <div style="position: absolute; z-index: 995; transform: matrix(1, 0, 0, 1, -143, 185);">
+              <div
+                style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i16!3i12!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=26367"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i15!3i12!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=55010"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -256px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i15!3i11!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=57943"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 0px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i16!3i11!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=29300"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 256px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i17!3i11!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=657"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i17!3i12!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=128795"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i17!3i13!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219704!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=55897"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i16!3i13!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219668!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=103596"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i15!3i13!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219824!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=11201"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i14!3i13!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219824!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=39844"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i14!3i12!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219536!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=100141"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -512px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i14!3i11!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219536!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=103074"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -512px; top: -768px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i14!3i10!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219500!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=2252"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -256px; top: -768px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i15!3i10!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=60876"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 0px; top: -768px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i16!3i10!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=32233"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 256px; top: -768px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i17!3i10!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219860!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=3590"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 512px; top: -768px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i18!3i10!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219908!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=53355"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 512px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i18!3i11!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219908!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=50422"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 512px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i18!3i12!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219884!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=38251"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 512px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i18!3i13!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219716!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=61839"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -768px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i13!3i13!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219824!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=68487"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -768px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i13!3i12!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503218768!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=74991"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -768px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i13!3i11!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503218768!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=77924"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: -768px; top: -768px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i13!3i10!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503217730!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=113126"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 768px; top: -768px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i19!3i10!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219908!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=24712"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 768px; top: -512px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i19!3i11!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219908!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=21779"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 768px; top: -256px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i19!3i12!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219884!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=9608"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+              <div
+                style="position: absolute; left: 768px; top: 0px; width: 256px; height: 256px; transition: opacity 200ms linear 0s;">
+                <img draggable="false" alt="" role="presentation"
+                     src="https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i5!2i19!3i13!4i256!2m3!1e4!2st!3i503!2m3!1e0!2sr!3i503219716!3m12!2sit-IT!3sUS!5e18!12m4!1e68!2m2!1sset!2sTerrain!12m3!1e37!2m1!1ssmartmaps!4e0!5m1!5f2&amp;key=AIzaSyCSN5zhH1YypRpNA2Ydc9415o-j-SkwGnY&amp;token=33196"
+                     style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gm-style-pbc"
+             style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0; transition-duration: 0.2s;">
+          <p class="gm-style-pbt"></p></div>
+        <div
+          style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;">
+          <div
+            style="z-index: 4; position: absolute; left: 50%; top: 50%; width: 100%; transform: translate(0px, 0px);">
+            <div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div>
+            <div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div>
+            <div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"></div>
+            <div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+      <iframe aria-hidden="true" frameborder="0" tabindex="-1"
+              style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none;"></iframe>
+      <div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a
+        target="_blank" rel="noopener"
+        href="https://maps.google.com/maps?ll=38.593773,6.284353&amp;z=5&amp;t=p&amp;hl=it-IT&amp;gl=US&amp;mapclient=apiv3"
+        title="Visualizza questa zona in Google Maps (in una nuova finestra)"
+        style="position: static; overflow: visible; float: none; display: inline;">
+        <div style="width: 66px; height: 26px; cursor: pointer;"><img alt=""
+                                                                      src="https://maps.gstatic.com/mapfiles/api-3/images/google4_hdpi.png"
+                                                                      draggable="false"
+                                                                      style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;">
+        </div>
+      </a></div>
+      <div
+        style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-sizing: border-box; box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 300px; height: 180px; position: absolute; left: 723px; top: 203px;"
+        wfd-invisible="true">
+        <div style="padding: 0px 0px 10px; font-size: 16px; box-sizing: border-box;">Dati mappa</div>
+        <div style="font-size: 13px;">Dati mappa ©2020 GeoBasis-DE/BKG (©2009), Google, Inst. Geogr. Nacional, Mapa
+          GISrael, ORION-ME
+        </div>
+        <button draggable="false" title="Chiudi" aria-label="Chiudi" type="button" class="gm-ui-hover-effect"
+                style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: absolute; cursor: pointer; user-select: none; top: 0px; right: 0px; width: 37px; height: 37px;">
+          <img
+            src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M19%206.41L17.59%205%2012%2010.59%206.41%205%205%206.41%2010.59%2012%205%2017.59%206.41%2019%2012%2013.41%2017.59%2019%2019%2017.59%2013.41%2012z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+            style="pointer-events: none; display: block; width: 13px; height: 13px; margin: 12px;"></button>
+      </div>
+      <div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 127px; bottom: 0px; width: 467px;">
+        <div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;">
+          <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
+            <div style="width: 1px;"></div>
+            <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
+          </div>
+          <div
+            style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
+            <a style="text-decoration: none; cursor: pointer; display: none;" wfd-invisible="true">Dati mappa</a><span>Dati mappa ©2020 GeoBasis-DE/BKG (©2009), Google, Inst. Geogr. Nacional, Mapa GISrael, ORION-ME</span>
+          </div>
+        </div>
+      </div>
+      <div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;" wfd-invisible="true">
+        <div
+          style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">
+          Dati mappa ©2020 GeoBasis-DE/BKG (©2009), Google, Inst. Geogr. Nacional, Mapa GISrael, ORION-ME
+        </div>
+      </div>
+      <div class="gmnoprint gm-style-cc" draggable="false"
+           style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;">
+        <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
+          <div style="width: 1px;"></div>
+          <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
+        </div>
+        <div
+          style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
+          <a href="https://www.google.com/intl/it-IT_US/help/terms_maps.html" target="_blank" rel="noopener"
+             style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">Termini e condizioni d'uso</a>
+        </div>
+      </div>
+      <button draggable="false" title="Attiva/disattiva vista schermo intero"
+              aria-label="Attiva/disattiva vista schermo intero" type="button"
+              class="gm-control-active gm-fullscreen-control"
+              style="background: none rgb(255, 255, 255); border: 0px; margin: 10px; padding: 0px; position: absolute; cursor: pointer; user-select: none; border-radius: 2px; height: 40px; width: 40px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; overflow: hidden; top: 0px; right: 0px;">
+        <img
+          src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%20018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+          style="height: 18px; width: 18px;"><img
+        src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+        style="height: 18px; width: 18px;" wfd-invisible="true"><img
+        src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C0v2v4h2V2h4V0H2H0z%20M16%2C0h-4v2h4v4h2V2V0H16z%20M16%2C16h-4v2h4h2v-2v-4h-2V16z%20M2%2C12H0v4v2h2h4v-2H2V12z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+        style="height: 18px; width: 18px;" wfd-invisible="true"></button>
+      <div draggable="false" class="gm-style-cc"
+           style="user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px; display: none;"
+           wfd-invisible="true">
+        <div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;">
+          <div style="width: 1px;"></div>
+          <div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div>
+        </div>
+        <div
+          style="position: relative; padding-right: 6px; padding-left: 6px; box-sizing: border-box; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;">
+          <a target="_blank" rel="noopener" title="Segnala errori nella mappa stradale o nelle altre mappe di Google"
+             href="https://www.google.com/maps/@38.5937732,6.2843526,5z/data=!5m1!1e4!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3"
+             style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">Segnala
+            un errore nella mappa</a></div>
+      </div>
+      <div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="40"
+           controlheight="81" style="margin: 10px; user-select: none; position: absolute; bottom: 95px; right: 40px;">
+        <div class="gmnoprint" controlwidth="40" controlheight="81" style="position: absolute; left: 0px; top: 0px;">
+          <div draggable="false"
+               style="user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 40px; height: 81px;">
+            <button draggable="false" title="Zoom avanti" aria-label="Zoom avanti" type="button"
+                    class="gm-control-active"
+                    style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; overflow: hidden; width: 40px; height: 40px; top: 0px; left: 0px;">
+              <img
+                src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23666%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+                style="height: 18px; width: 18px;"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23333%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 18px; width: 18px;" wfd-invisible="true"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpolygon%20fill%3D%22%23111%22%20points%3D%2218%2C7%2011%2C7%2011%2C0%207%2C0%207%2C7%200%2C7%200%2C11%207%2C11%207%2C18%2011%2C18%2011%2C11%2018%2C11%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 18px; width: 18px;" wfd-invisible="true"></button>
+            <div
+              style="position: relative; overflow: hidden; width: 30px; height: 1px; margin: 0px 5px; background-color: rgb(230, 230, 230); top: 0px;"></div>
+            <button draggable="false" title="Zoom indietro" aria-label="Zoom indietro" type="button"
+                    class="gm-control-active"
+                    style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; overflow: hidden; width: 40px; height: 40px; top: 0px; left: 0px;">
+              <img
+                src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+                style="height: 18px; width: 18px;"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 18px; width: 18px;" wfd-invisible="true"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218%22%20height%3D%2218%22%20viewBox%3D%220%200%2018%2018%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C7h18v4H0V7z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 18px; width: 18px;" wfd-invisible="true"></button>
+          </div>
+        </div>
+        <div class="gmnoprint" controlwidth="40" controlheight="40" style="display: none; position: absolute;"
+             wfd-invisible="true">
+          <div style="width: 40px; height: 40px;">
+            <button draggable="false" title="Ruota la mappa di 90°" aria-label="Ruota la mappa di 90°" type="button"
+                    class="gm-control-active"
+                    style="background: none rgb(255, 255, 255); display: none; border: 0px; margin: 0px 0px 32px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; top: 0px; left: 0px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;">
+              <img
+                src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+                style="height: 18px; width: 18px;"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 18px; width: 18px;"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2222%22%20viewBox%3D%220%200%2024%2022%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20fill-rule%3D%22evenodd%22%20d%3D%22M20%2010c0-5.52-4.48-10-10-10s-10%204.48-10%2010v5h5v-5c0-2.76%202.24-5%205-5s5%202.24%205%205v5h-4l6.5%207%206.5-7h-4v-5z%22%20clip-rule%3D%22evenodd%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 18px; width: 18px;"></button>
+            <button draggable="false" title="Inclina la mappa" aria-label="Inclina la mappa" type="button"
+                    class="gm-tilt gm-control-active"
+                    style="background: none rgb(255, 255, 255); display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 40px; height: 40px; top: 0px; left: 0px; overflow: hidden; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px;">
+              <img
+                src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23666%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+                style="width: 18px;"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="width: 18px;"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2218px%22%20height%3D%2216px%22%20viewBox%3D%220%200%2018%2016%22%3E%0A%20%20%3Cpath%20fill%3D%22%23111%22%20d%3D%22M0%2C16h8V9H0V16z%20M10%2C16h8V9h-8V16z%20M0%2C7h8V0H0V7z%20M10%2C0v7h8V0H10z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="width: 18px;"></button>
+          </div>
+        </div>
+      </div>
+      <div class="gmnoprint gm-style-mtc"
+           style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; text-align: left; width: 120px; left: 0px; top: 0px;">
+        <div role="button" tabindex="0" title="Modifica stile mappa" aria-label="Modifica stile mappa"
+             aria-pressed="false" draggable="false"
+             style="direction: ltr; overflow: hidden; text-align: left; position: relative; color: black; font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 8px 17px; border-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; font-weight: 500;">
+          Mappa<img alt="" src="https://maps.gstatic.com/mapfiles/arrow-down.png" draggable="false"
+                    style="user-select: none; border: 0px; padding: 0px; margin: -2px 0px 0px; position: absolute; right: 6px; top: 50%; width: 7px; height: 4px;">
+        </div>
+        <div
+          style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; top: 100%; left: 0px; right: 0px; text-align: left; display: none;">
+          <div draggable="false" title="Mostra cartina stradale"
+               style="color: black; font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 5px; font-weight: 500;">
+            Mappa
+          </div>
+          <div draggable="false" title="Mostra immagini satellitari"
+               style="color: black; font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 5px;">
+            Satellite
+          </div>
+          <div style="margin: 1px 0px; border-top: 1px solid rgb(235, 235, 235);"></div>
+          <div draggable="false" title="Mostra mappa stradale con rilievo"
+               style="color: black; font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 5px 8px 5px 5px; direction: ltr; text-align: left; white-space: nowrap;">
+            <span role="checkbox" style="vertical-align: middle;"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M19%203H5c-1.11%200-2%20.9-2%202v14c0%201.1.89%202%202%202h14c1.11%200%202-.9%202-2V5c0-1.1-.89-2-2-2zm-9%2014l-5-5%201.41-1.41L10%2014.17l7.59-7.59L19%208l-9%209z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 1em; width: 1em; transform: translateY(0.15em);"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M19%205v14H5V5h14m0-2H5c-1.1%200-2%20.9-2%202v14c0%201.1.9%202%202%202h14c1.1%200%202-.9%202-2V5c0-1.1-.9-2-2-2z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 1em; width: 1em; transform: translateY(0.15em); display: none;"></span><label
+            style="vertical-align: middle; cursor: pointer;">Rilievo</label></div>
+          <div style="margin: 1px 0px; border-top: 1px solid rgb(235, 235, 235); display: none;"></div>
+          <div draggable="false" title="Mostra immagine satellitare con i nomi delle strade"
+               style="color: black; font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 18px; background-color: rgb(255, 255, 255); padding: 5px 8px 5px 5px; direction: ltr; text-align: left; white-space: nowrap; display: none;">
+            <span role="checkbox" style="vertical-align: middle;"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M19%203H5c-1.11%200-2%20.9-2%202v14c0%201.1.89%202%202%202h14c1.11%200%202-.9%202-2V5c0-1.1-.89-2-2-2zm-9%2014l-5-5%201.41-1.41L10%2014.17l7.59-7.59L19%208l-9%209z%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 1em; width: 1em; transform: translateY(0.15em);"><img
+              src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224px%22%20height%3D%2224px%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22%23000000%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M19%205v14H5V5h14m0-2H5c-1.1%200-2%20.9-2%202v14c0%201.1.9%202%202%202h14c1.1%200%202-.9%202-2V5c0-1.1-.9-2-2-2z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%0A%3C%2Fsvg%3E%0A"
+              style="height: 1em; width: 1em; transform: translateY(0.15em); display: none;"></span><label
+            style="vertical-align: middle; cursor: pointer;">Etichette</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  <div style="z-index: 2; left: 0px; position: absolute; bottom: 0px; padding: 0;">
+  <a title="Home Page - Valle Muricana Meteo" onmouseup="window.open('http://www.vallemuricana.it')">
+  <img src="/joomla2/css/logo_scritta2.png" style="width:270px;height:53px;cursor:pointer;position: absolute; bottom: 0px; padding: 0;"/></a></div>-->
+
+<div
+  style="Z-INDEX: 2; LEFT: 25%; POSITION: absolute; TOP: 10px; visibility:visible; background: rgba(255, 255, 255, 0.8); box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); border-radius: 5px; padding:4px; opacity:0.8;">
+  <img src="../img/radar_legenda.jpg" alt="scala pioggia"
+       title="Intensità precipitazioni - Legenda colori radar" style="cursor:help;">
+</div>
+
+
+<div style="Z-INDEX: 2; LEFT: 0px; POSITION: absolute; TOP: 55px; visibility:visible;">
+  <a href="javascript:location.reload()" title="Aggiorna radar" style="cursor:pointer;">
+    <img src="../img/refresh.png" width="35px" height="35px" alt="refresh">
+  </a>
+</div>
+
+</body>
+</html>
