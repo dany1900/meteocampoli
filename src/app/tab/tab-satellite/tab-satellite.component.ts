@@ -16,6 +16,7 @@ export class TabSatelliteComponent {
   isNordItalia = false;
   isSudItalia = false;
   isProtezioneCivile = false;
+  isReteNazionale = false;
 
   constructor(private route: ActivatedRoute) {
     let paramTab: any;
@@ -36,6 +37,9 @@ export class TabSatelliteComponent {
         break;
       case 'protezione-civile':
         this.id = 4;
+        break;
+      case 'rete-nazionale':
+        this.id = 5;
         break;
       default:
         this.id = 0;
@@ -59,6 +63,9 @@ export class TabSatelliteComponent {
     }
     else if (event === 4) {
       this.isProtezioneCivile = true;
+    }
+    else if (event === 5) {
+      this.isReteNazionale = true;
     }
   }
 }

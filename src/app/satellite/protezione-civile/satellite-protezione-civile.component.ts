@@ -24,7 +24,7 @@ export class SatelliteProtezioneCivileComponent implements OnInit {
     this.meta.updateTag({property: 'og:title', content: 'Satellite Protezione Civile - Radar Precipitazioni  - Meteo Campoli'});
     this.meta.updateTag({
       property: 'og:description',
-      content: 'Satellite infrarossi, meteosat, fulminazioni e sinottica relativi al nord italia. Radar dettagliato delle precipitazioni in tempo reale. Focus sul nord italia.
+      content: 'Satellite infrarossi, meteosat, fulminazioni e sinottica relativi al nord italia. Radar dettagliato delle precipitazioni in tempo reale. Focus sul nord italia.'
     });
     this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/satellite/protezione-civile'});
     this.meta.updateTag({

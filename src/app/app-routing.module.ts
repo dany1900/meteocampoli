@@ -130,6 +130,13 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'satellite/satellite-rete-nazionale',
+    component: SatTabComponent,
+    data: {
+      title: 'Rete Meteo  - Mappa Stazioni Meteo  - Meteo Campoli'
+    }
+  },
+  {
     path: 'satellite/protezione-civile',
     component: SatTabComponent,
     data: {

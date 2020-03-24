@@ -30,8 +30,6 @@ export class WebcamMoliseComponent implements OnInit {
       content: 'http://meteocampoli.altervista.org'
     });
     //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
-
-    super();
   }
 
   ngOnInit() {

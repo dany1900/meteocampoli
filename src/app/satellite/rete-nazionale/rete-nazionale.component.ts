@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Meta} from '@angular/platform-browser';
 
 @Component({
-  selector: 'rete-nazionale',
+  selector: 'satellite-rete-nazionale',
   templateUrl: './rete-nazionale.component.html',
   styleUrls: ['./rete-nazionale.component.css']
 })

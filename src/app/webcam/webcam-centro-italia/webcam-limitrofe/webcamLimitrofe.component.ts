@@ -14,6 +14,7 @@ export class WebCamLimitrofeComponent extends WebcamComponent implements OnInit 
 
 
   constructor(private meta: Meta) {
+    super();
     this.meta.updateTag({
       name: 'description',
       content: 'Webcam della valle di comino e del centro italia montano ordinate per regione e localita. Descrizione e altitudine facilmente visualizzabili. Focus sul Lazio e Abruzzo.'
@@ -35,9 +36,8 @@ export class WebCamLimitrofeComponent extends WebcamComponent implements OnInit 
       content: 'http://meteocampoli.altervista.org'
     });
     //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
-
-    super();
   }
+
   ngOnInit() {
   }
 

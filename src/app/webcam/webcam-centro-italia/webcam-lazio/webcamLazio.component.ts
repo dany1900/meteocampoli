@@ -10,6 +10,8 @@ import {Meta} from '@angular/platform-browser';
 export class WebcamLazioComponent extends WebcamComponent implements OnInit {
 
   constructor(private meta: Meta) {
+    super();
+
     this.meta.updateTag({
       name: 'description',
       content: 'Tutte le Webcam del lazio montano ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Link alle migliori fonti.'
@@ -32,7 +34,6 @@ export class WebcamLazioComponent extends WebcamComponent implements OnInit {
     });
     //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
 
-    super();
   }
 
   ngOnInit() {
