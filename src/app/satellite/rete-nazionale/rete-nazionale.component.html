@@ -1,0 +1,12 @@
+<div [hidden]="imageLoader">
+  <div class="center">
+    <p class="header-macro-section">Stazioni Rete Meteo - Dati Nazionali</p>
+    <br>
+    <p class="title-micro-section">Clicca sulle icone a sinistra della mappa per cambiare modalità di
+      visualizzazione</p>
+    <br>
+    <br>
+    <iframe class="radar" src="http://retemeteo.lineameteo.it/index.php" [hidden]="imageLoader"
+            (load)="imageLoader = false;"></iframe>
+  </div>
+</div>

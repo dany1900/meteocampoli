@@ -74,6 +74,7 @@ import {WebcamToscanaComponent} from './webcam/webcam-centro-italia/webcam-tosca
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {WebcamCampobassoComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-campobasso/webcam-campobasso.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ReteNazionaleComponent} from './satellite/rete-nazionale/rete-nazionale.component';
 
 
 @NgModule({
@@ -145,7 +146,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     InquinamentoRimediComponent,
     TabInfoComponent,
     CuriositaComponent,
-    EffemeridiComponent
+    EffemeridiComponent,
+    ReteNazionaleComponent
   ],
   imports: [
     BrowserModule,

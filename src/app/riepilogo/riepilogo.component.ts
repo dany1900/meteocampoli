@@ -5,7 +5,7 @@ import {Meta} from '@angular/platform-browser';
 @Component({
   selector: 'app-riepilogo',
   templateUrl: './riepilogo.component.html',
-  //styleUrls: ['./riepilogo.component.css']
+  styleUrls: ['./riepilogo.component.css']
 })
 
 export class RiepilogoComponent implements OnInit {

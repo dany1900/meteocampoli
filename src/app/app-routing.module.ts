@@ -101,14 +101,6 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'webcam/immagini',
-    component: TabImmagginiWebcamComponent,
-    data: {
-      title: 'Immagini e WebCam - Meteo Campoli'
-    }
-  },
-
-  {
     path: 'satellite/generale',
     component: SatTabComponent,
     data: {
@@ -145,6 +137,13 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'webcam/immagini',
+    component: TabImmagginiWebcamComponent,
+    data: {
+      title: 'Immagini e WebCam - Meteo Campoli'
+    }
+  },
+  {
     path: 'webcam/montagna',
     component: TabImmagginiWebcamComponent,
     data: {
@@ -162,14 +161,14 @@ export const routes: Routes = [
     path: 'webcam/montagna/lazio',
     component: WebcamLazioComponent,
     data: {
-      title: ' WebCam Lazio Montagna - Meteo Campoli'
+      title: 'WebCam Lazio Montagna - Meteo Campoli'
     }
   },
   {
     path: 'webcam/montagna/abruzzo',
     component: WebcamAbruzzoComponent,
     data: {
-      title: ' WebCam Abruzzo Montagna - Meteo Campoli'
+      title: 'WebCam Abruzzo Montagna - Meteo Campoli'
     }
   },
   {

@@ -11,30 +11,29 @@ export class ImmaginiComponent implements OnInit {
   imageLoader = true;
 
   constructor(private meta: Meta) {
-    this.meta.addTags([
-      {name: 'title', content: 'Immagini e WebCam - Meteo Campoli'},
-      {
-        name: 'description',
-        content: 'Immagini di Campoli Appennino, paese della Valle di Comino. Tutte le Webcam del centro italia montano e limitrofe, ordinate per regione e localita. '
-      },
-      {
-        name: 'keywords',
-        content: 'immagini meteo campoli, immagini campoli, immagini stazioni meteo campoli, meteo campoli images, immagini e webcam meteo campoli, webcam meteo campoli'
-      },
-      {property: 'og:locale', content: 'it_IT'},
-      {property: 'og:type', content: 'website'},
-      {property: 'og:title', content: 'Immagini e WebCam - Meteo Campoli'},
-      {
-        property: 'og:description',
-        content: 'Immagini di Campoli Appennino, paese della Valle di Comino. Tutte le Webcam del centro italia montano e limitrofe, ordinate per regione e localita. '
-      },
-      {property: 'og:url', content: 'www.meteocampoli.altervista.org/immagini'},
-      {
-        property: 'og:site_name',
-        content: 'Meteo Campoli - Il sito di Monitoraggio Meteo  - Completo di Mappe,Radar,WebCam'
-      },
-      {property: 'og:image', content: 'http://meteocampoli.altervista.org/images/meteocampoli.jpg'}
-    ]);
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Immagini di Campoli Appennino, paese della Valle di Comino. Tutte le Webcam del centro italia montano e limitrofe, ordinate per regione e localita.'
+    });
+    this.meta.updateTag({
+      name: 'keywords',
+      content: 'immagini meteo campoli, immagini campoli, immagini stazioni meteo campoli, meteo campoli images, immagini e webcam meteo campoli, webcam meteo campoli'
+    });
+    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
+    this.meta.updateTag({property: 'og:type', content: 'website'});
+    this.meta.updateTag({property: 'og:title', content: 'Immagini e WebCam - Meteo Campoli'});
+    this.meta.updateTag({
+      property: 'og:description',
+      content: 'Immagini di Campoli Appennino, paese della Valle di Comino. Tutte le Webcam del centro italia montano e limitrofe, ordinate per regione e localita.'
+    });
+    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/webcam/immagini'});
+    this.meta.updateTag({
+      property: 'og:site_name',
+      content: 'http://meteocampoli.altervista.org'
+    });
+    //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
+
+    super();
   }
 
   ngOnInit() {
