@@ -4,7 +4,6 @@ import 'rxjs/add/operator/mergeMap';
 import {NgModule} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router, RouterModule, Routes} from '@angular/router';
 import {Meta, Title} from '@angular/platform-browser';
-import {DatiAttualiComponent} from './dati-attuali/dati-attuali.component';
 
 export const routes: Routes = [
 
@@ -17,14 +16,7 @@ export const routes: Routes = [
       title: 'Meteo Campoli - Monitoraggio Meteo',
     }
   },
-  {
-    path: 'dati-attuali',
-    component: DatiAttualiComponent,
-    data: {
-      title: 'Meteo Campoli - Monitoraggio Meteo'
-
-    }
-  },
+  {path: 'dati-attuali', loadChildren: './dati-attuali/dati-attuali.module#DatiAttualiModule'},
   {path: 'riepilogo', loadChildren: './riepilogo/riepilogo.module#RiepilogoModule'},
   {path: 'stazioni-meteo', loadChildren: './stazioni-meteo/stazioni-meteo.module#StazioniMeteoModule'},
   {path: 'satellite', loadChildren: './satellite/satellite.module#SatelliteModule'},
