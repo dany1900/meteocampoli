@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 
 @Component({
@@ -10,63 +10,37 @@ import {ActivatedRoute} from '@angular/router';
 export class TabSatelliteComponent {
 
   id: number;
-  private path: any;
-  isGenerali = false;
-  isCentroItalia = false;
-  isNordItalia = false;
-  isSudItalia = false;
-  isProtezioneCivile = false;
-  isReteNazionale = false;
 
-  constructor(private route: ActivatedRoute) {
-    let paramTab: any;
-    this.path = this.route.url;
-    paramTab = this.path._value[1].path;
-    switch (paramTab) {
-      case 'generale':
-        this.id = 0;
-        break;
-      case 'centro-italia':
-        this.id = 1;
-        break;
-      case 'nord-italia':
-        this.id = 2;
-        break;
-      case 'sud-italia':
-        this.id = 3;
-        break;
-      case 'protezione-civile':
-        this.id = 4;
-        break;
-      case 'rete-nazionale':
-        this.id = 5;
-        break;
-      default:
-        this.id = 0;
-        break;
-    }
-    this.tabSelectionChanged(this.id);
-  }
+  constructor(private router: Router,
+              private route: ActivatedRoute) {
 
-  tabSelectionChanged(event) {
-    if (event === 0) {
-      this.isGenerali = true;
-    }
-    else if (event === 1) {
-      this.isCentroItalia = true;
-    }
-    else if (event === 2) {
-      this.isNordItalia = true;
-    }
-    else if (event === 3) {
-      this.isSudItalia = true;
-    }
-    else if (event === 4) {
-      this.isProtezioneCivile = true;
-    }
-    else if (event === 5) {
-      this.isReteNazionale = true;
-    }
+    this.router.events.filter(evt => evt instanceof NavigationEnd)
+      .subscribe((event) => {
+        const paramTab = this.route.firstChild.routeConfig.path;
+        switch (paramTab) {
+          case 'generale':
+            this.id = 0;
+            break;
+          case 'centro-italia':
+            this.id = 1;
+            break;
+          case 'nord-italia':
+            this.id = 2;
+            break;
+          case 'sud-italia':
+            this.id = 3;
+            break;
+          case 'protezione-civile':
+            this.id = 4;
+            break;
+          case 'rete-nazionale':
+            this.id = 5;
+            break;
+          default:
+            this.id = 0;
+            break;
+        }
+      });
   }
 }
 

@@ -74,6 +74,5 @@ export class TabStazioniComponent implements OnInit, OnDestroy {
     if (this._route) {
       this._route.unsubscribe();
     }
-    ;
   }
 }

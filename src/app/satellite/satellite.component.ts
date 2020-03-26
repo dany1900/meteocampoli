@@ -3,12 +3,12 @@ import {Meta} from '@angular/platform-browser';
 
 
 @Component({
-  selector: 'tab-sat',
-  templateUrl: './sat-tab.component.html',
-  styleUrls: ['./sat-tab.component.css']
+  selector: 'satellite',
+  templateUrl: './satellite.component.html',
+  styleUrls: ['./satellite.component.css']
 
 })
-export class SatTabComponent implements OnInit {
+export class SatelliteComponent implements OnInit {
 
   constructor(private meta: Meta) {
     this.meta.addTags([

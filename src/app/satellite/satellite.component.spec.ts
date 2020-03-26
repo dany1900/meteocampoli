@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {SatTabComponent} from './sat-tab.component';
+import {SatelliteComponent} from './satellite.component';
 
 describe('TabComponent', () => {
-  let component: SatTabComponent;
-  let fixture: ComponentFixture<SatTabComponent>;
+  let component: SatelliteComponent;
+  let fixture: ComponentFixture<SatelliteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SatTabComponent]
+      declarations: [SatelliteComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SatTabComponent);
+    fixture = TestBed.createComponent(SatelliteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

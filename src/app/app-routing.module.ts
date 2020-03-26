@@ -8,7 +8,6 @@ import {DatiAttualiComponent} from './dati-attuali/dati-attuali.component';
 import {RiepilogoComponent} from './riepilogo/riepilogo.component';
 import {TabStazioniComponent} from './tab/tab-stazioni/tab-stazioni.component';
 import {PrevisioniComponent} from './previsioni/previsioni.component';
-import {SatTabComponent} from './satellite/sat-tab.component';
 import {TabImmagginiWebcamComponent} from './tab/tab-immaggini-webcam/tab-immaggini-webcam.component';
 import {WebcamLazioComponent} from './webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component';
 import {WebcamAbruzzoComponent} from './webcam/webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component';
@@ -34,6 +33,7 @@ export const routes: Routes = [
     }
 
   },
+  {path: 'satellite', loadChildren: './satellite/satellite.module#SatelliteModule'},
   {
     path: 'dati-attuali',
     component: DatiAttualiComponent,
@@ -98,49 +98,6 @@ export const routes: Routes = [
     component: PrevisioniComponent,
     data: {
       title: 'Previsioni Meteo - Monitoraggio Indici Climatici - Meteo Campoli'
-    }
-  },
-  {
-    path: 'satellite/generale',
-    component: SatTabComponent,
-    data: {
-      title: 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli'
-    },
-
-  },
-  {
-    path: 'satellite/nord-italia',
-    component: SatTabComponent,
-    data: {
-      title: 'Satellite Nord Italia - Radar Precipitazioni  - Meteo Campoli'
-    }
-  },
-  {
-    path: 'satellite/centro-italia',
-    component: SatTabComponent,
-    data: {
-      title: 'Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli'
-    }
-  },
-  {
-    path: 'satellite/sud-italia',
-    component: SatTabComponent,
-    data: {
-      title: 'Satellite Sud Italia - Radar Precipitazioni  - Meteo Campoli'
-    }
-  },
-  {
-    path: 'satellite/satellite-rete-nazionale',
-    component: SatTabComponent,
-    data: {
-      title: 'Rete Meteo  - Mappa Stazioni Meteo  - Meteo Campoli'
-    }
-  },
-  {
-    path: 'satellite/protezione-civile',
-    component: SatTabComponent,
-    data: {
-      title: 'Satellite Protezione Civile - Radar Precipitazioni  - Meteo Campoli'
     }
   },
   {
@@ -262,6 +219,22 @@ export const routes: Routes = [
   exports: [RouterModule]
 })
 
+/*@NgModule({
+  imports: [
+    RouterModule.forRoot([
+      {path: 'satellite', loadChildren: './satellite/satellite.module#SatelliteModule'},
+      {path: 'conti', loadChildren: './conti/conti.module#ContiModule'},
+      {path: '**', component: PageNotFoundComponent}
+    ])
+  ],
+  exports: [
+    RouterModule
+  ],
+  providers: [
+    AuthGuard
+  ]
+})
+*/
 
 export class AppRoutingModule {
 
