@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 
@@ -7,7 +7,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
   templateUrl: './tab-satellite.component.html',
   styleUrls: ['./tab-satellite.component.css']
 })
-export class TabSatelliteComponent {
+export class TabSatelliteComponent implements OnInit {
 
   id: number;
 
@@ -41,6 +41,9 @@ export class TabSatelliteComponent {
             break;
         }
       });
+  }
+
+  ngOnInit() {
   }
 }
 

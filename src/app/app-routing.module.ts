@@ -6,7 +6,6 @@ import {ActivatedRoute, NavigationEnd, Router, RouterModule, Routes} from '@angu
 import {Meta, Title} from '@angular/platform-browser';
 import {DatiAttualiComponent} from './dati-attuali/dati-attuali.component';
 import {RiepilogoComponent} from './riepilogo/riepilogo.component';
-import {TabStazioniComponent} from './tab/tab-stazioni/tab-stazioni.component';
 import {PrevisioniComponent} from './previsioni/previsioni.component';
 import {TabImmagginiWebcamComponent} from './tab/tab-immaggini-webcam/tab-immaggini-webcam.component';
 import {WebcamLazioComponent} from './webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component';
@@ -17,8 +16,6 @@ import {WebcamMarcheComponent} from './webcam/webcam-centro-italia/webcam-marche
 import {WebcamToscanaComponent} from './webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component';
 import {TerremotiComponent} from './terremoti/terremoti.component';
 import {TerremotiItaliaComponent} from './terremoti/terremoti-italia/terremoti-italia.component';
-import {InfoComponent} from './info/info.component';
-import {TabInfoComponent} from './tab/tab-info/tab-info.component';
 
 export const routes: Routes = [
 
@@ -29,11 +26,8 @@ export const routes: Routes = [
     pathMatch: 'full',
     data: {
       title: 'Meteo Campoli - Monitoraggio Meteo',
-
     }
-
   },
-  {path: 'satellite', loadChildren: './satellite/satellite.module#SatelliteModule'},
   {
     path: 'dati-attuali',
     component: DatiAttualiComponent,
@@ -49,50 +43,9 @@ export const routes: Routes = [
       title: 'Statistiche Meteo Campoli - Riepilogo Dati'
     }
   },
-  {
-    path: 'stazioni-meteo/generale',
-    component: TabStazioniComponent,
-    data: {
-      title: 'Stazioni Meteo Limitrofe - Dati - Meteo Campoli'
-    }
-  },
-  {
-    path: 'stazioni-meteo/lazio',
-    component: TabStazioniComponent,
-    data: {
-      title: 'Stazioni Meteo Lazio - Dati - Meteo Campoli'
-    }
-  },
-  {
-    path: 'stazioni-meteo/abruzzo',
-    component: TabStazioniComponent,
-    data: {
-      title: 'Stazioni Meteo Abruzzo - Dati - Meteo Campoli'
-    }
-  },
-  {
-    path: 'stazioni-meteo/molise',
-    component: TabStazioniComponent,
-    data: {
-      title: 'Stazioni Meteo Molise - Dati - Meteo Campoli'
-    }
-  },
-  {
-    path: 'stazioni-meteo/meteonetwork',
-    component: TabStazioniComponent,
-    data: {
-      title: 'Stazioni Meteo Meteonetwork - Dati - Meteo Campoli'
-    }
-  },
-  {
-    path: 'stazioni-meteo/rete-meteo',
-    component: TabStazioniComponent,
-    data: {
-      title: 'Stazioni Meteo Rete Meteo - Dati - Meteo Campoli',
-
-    }
-  },
-
+  {path: 'stazioni-meteo', loadChildren: './stazioni-meteo/stazioni-meteo.module#StazioniMeteoModule'},
+  {path: 'satellite', loadChildren: './satellite/satellite.module#SatelliteModule'},
+  {path: 'info', loadChildren: './info/info.module#InfoModule'},
   {
     path: 'previsioni',
     component: PrevisioniComponent,
@@ -183,35 +136,7 @@ export const routes: Routes = [
     data: {
       title: 'Terremoti Elenco Mondo - Meteo Campoli'
     }
-  },
-  {
-    path: 'info',
-    component: InfoComponent,
-    data: {
-      title: 'Info e Curiosita - Qualita Aria - Orari Alba Tramonto'
-    }
-  },
-  {
-    path: 'info/articoli',
-    component: TabInfoComponent,
-    data: {
-      title: 'Articoli - Meteo Campoli'
-    }
-  },
-  {
-    path: 'info/curiosita',
-    component: TabInfoComponent,
-    data: {
-      title: 'Curiosita - Meteo Campoli'
-    }
-  },
-  {
-    path: 'info/effemeridi',
-    component: TabInfoComponent,
-    data: {
-      title: 'Orari Alba Tramonto - Meteo Campoli'
-    }
-  },
+  }
 ];
 
 @NgModule({

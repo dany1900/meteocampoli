@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'tab-info',
@@ -9,45 +9,32 @@ import {ActivatedRoute} from '@angular/router';
 export class TabInfoComponent implements OnInit {
 
   id: number;
-  private path: any;
-  isArticoli = false;
-  isCuriosita = false;
-  isEffemeridi = false;
 
-  constructor(private route: ActivatedRoute) {
-    let paramTab: any;
-    this.path = this.route.url;
-    paramTab = this.path._value[1].path;
+  constructor(private router: Router,
+              private route: ActivatedRoute) {
 
-    switch (paramTab) {
-      case 'articoli':
-        this.id = 0;
-        break;
-      case 'curiosita':
-        this.id = 1;
-        break;
-      case 'effemeridi':
-        this.id = 2;
-        break;
-      default:
-        this.id = 0;
-        break;
-    }
-    this.tabSelectionChanged(this.id);
+    this.router.events.filter(evt => evt instanceof NavigationEnd)
+      .subscribe((event) => {
+        const paramTab = this.route.firstChild.routeConfig.path;
+
+        switch (paramTab) {
+          case 'articoli':
+            this.id = 0;
+            break;
+          case 'curiosita':
+            this.id = 1;
+            break;
+          case 'effemeridi':
+            this.id = 2;
+            break;
+          default:
+            this.id = 0;
+            break;
+        }
+      });
   }
 
   ngOnInit(): void {
   }
 
-  tabSelectionChanged(event) {
-    if (event === 0) {
-      this.isArticoli = true;
-    }
-    else if (event === 1) {
-      this.isCuriosita = true;
-    }
-    else if (event === 2) {
-      this.isEffemeridi = true;
-    }
-  }
 }
