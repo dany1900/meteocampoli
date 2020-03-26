@@ -3,14 +3,20 @@
 <mat-tab-group [selectedIndex]="id">
   <mat-tab label="ARTICOLI">
     <br>
-    <articoli></articoli>
+    <ng-template matTabContent>
+      <articoli></articoli>
+    </ng-template>
   </mat-tab>
   <mat-tab label="CURIOSITA">
     <br>
-    <curiosita></curiosita>
+    <ng-template matTabContent>
+      <curiosita></curiosita>
+    </ng-template>
   </mat-tab>
   <mat-tab label="EFFEMERIDI">
     <br>
-    <effemeridi></effemeridi>
+    <ng-template matTabContent>
+      <effemeridi></effemeridi>
+    </ng-template>
   </mat-tab>
 </mat-tab-group>

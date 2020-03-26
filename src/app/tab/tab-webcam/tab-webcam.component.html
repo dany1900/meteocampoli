@@ -2,26 +2,38 @@
 <mat-tab-group (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="LAZIO">
     <br>
-    <webcam-lazio *ngIf="isLazio"></webcam-lazio>
+    <ng-template matTabContent>
+      <webcam-lazio></webcam-lazio>
+    </ng-template>
   </mat-tab>
   <mat-tab label="ABRUZZO">
     <br>
-    <webcam-abruzzo *ngIf="isAbruzzo"></webcam-abruzzo>
+    <ng-template matTabContent>
+      <webcam-abruzzo></webcam-abruzzo>
+    </ng-template>
   </mat-tab>
   <mat-tab label="MOLISE">
     <br>
-    <webcam-molise *ngIf="isMolise"></webcam-molise>
+    <ng-template matTabContent>
+      <webcam-molise></webcam-molise>
+    </ng-template>
   </mat-tab>
   <mat-tab label="UMBRIA">
     <br>
-    <webcam-umbria *ngIf="isUmbria"></webcam-umbria>
+    <ng-template matTabContent>
+      <webcam-umbria></webcam-umbria>
+    </ng-template>
   </mat-tab>
   <mat-tab label="MARCHE">
     <br>
-    <webcam-marche *ngIf="isMarche"></webcam-marche>
+    <ng-template matTabContent>
+      <webcam-marche></webcam-marche>
+    </ng-template>
   </mat-tab>
   <mat-tab label="TOSCANA">
     <br>
-    <webcam-toscana *ngIf="isToscana"></webcam-toscana>
+    <ng-template matTabContent>
+      <webcam-toscana></webcam-toscana>
+    </ng-template>
   </mat-tab>
 </mat-tab-group>

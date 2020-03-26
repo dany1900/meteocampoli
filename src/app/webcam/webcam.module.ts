@@ -4,7 +4,6 @@ import {WebcamToscanaComponent} from './webcam-centro-italia/webcam-toscana/webc
 import {WebcamUmbriaComponent} from './webcam-centro-italia/webcam-umbria/webcam-umbria.component';
 import {WebcamMoliseComponent} from './webcam-centro-italia/webcam-molise/webcam-molise.component';
 import {WebcamAbruzzoComponent} from './webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component';
-import {WebcamLazioComponent} from './webcam-centro-italia/webcam-lazio/webcamLazio.component';
 import {WebCamLimitrofeComponent} from './webcam-centro-italia/webcam-limitrofe/webcamLimitrofe.component';
 import {WebcamTerniComponent} from './webcam-centro-italia/webcam-umbria/webcam-terni/webcam-terni.component';
 import {WebcamPerugiaComponent} from './webcam-centro-italia/webcam-umbria/webcam-perugia/webcam-perugia.component';
@@ -25,11 +24,22 @@ import {WebcamRietiComponent} from './webcam-centro-italia/webcam-lazio/webcam-r
 import {WebcamRomaComponent} from './webcam-centro-italia/webcam-lazio/webcam-roma/webcam-roma.component';
 import {WebcamViterboComponent} from './webcam-centro-italia/webcam-lazio/webcam-viterbo/webcam-viterbo.component';
 import {NgModule} from '@angular/core';
+import {WebcamLazioComponent} from './webcam-centro-italia/webcam-lazio/webcam-lazio.component';
+import {TabWebcamComponent} from '../tab/tab-webcam/tab-webcam.component';
+import {WebcamCentroItaliaComponent} from './webcam-centro-italia/webcam-centro-italia.component';
+import {WebcamSudItaliaComponent} from './webcam-sud-italia/webcam-sud-italia.component';
+import {WebcamNordItaliaComponent} from './webcam-nord-italia/webcam-nord-italia.component';
+import {ImmaginiComponent} from '../immagini/immagini.component';
+import {TabImmagginiWebcamComponent} from '../tab/tab-immaggini-webcam/tab-immaggini-webcam.component';
+import {WebcamValleCominoComponent} from './webcam-centro-italia/webcam-valle-comino/webcam-valle-comino.component';
+import {WebcamRoutingModule} from './webcam-routing.module';
+import {SharedModule} from '../shared/shared.module';
 
 
 @NgModule({
   imports: [
-    // SharedModule
+    WebcamRoutingModule,
+    SharedModule
   ],
 
   declarations: [
@@ -58,11 +68,18 @@ import {NgModule} from '@angular/core';
     WebcamPescaraComponent,
     WebcamRietiComponent,
     WebcamRomaComponent,
-    WebcamViterboComponent
+    WebcamViterboComponent,
+    TabWebcamComponent,
+    WebcamValleCominoComponent,
+    WebcamNordItaliaComponent,
+    WebcamSudItaliaComponent,
+    WebcamCentroItaliaComponent,
+    ImmaginiComponent,
+    TabImmagginiWebcamComponent
   ],
   exports: []
 })
-export class WebcamModule {
+export class WebCamModule {
 
   constructor() {
   }

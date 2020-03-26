@@ -7,13 +7,6 @@ import {Meta, Title} from '@angular/platform-browser';
 import {DatiAttualiComponent} from './dati-attuali/dati-attuali.component';
 import {RiepilogoComponent} from './riepilogo/riepilogo.component';
 import {PrevisioniComponent} from './previsioni/previsioni.component';
-import {TabImmagginiWebcamComponent} from './tab/tab-immaggini-webcam/tab-immaggini-webcam.component';
-import {WebcamLazioComponent} from './webcam/webcam-centro-italia/webcam-lazio/webcamLazio.component';
-import {WebcamAbruzzoComponent} from './webcam/webcam-centro-italia/webcam-abruzzo/webcam-abruzzo.component';
-import {WebcamMoliseComponent} from './webcam/webcam-centro-italia/webcam-molise/webcam-molise.component';
-import {WebcamUmbriaComponent} from './webcam/webcam-centro-italia/webcam-umbria/webcam-umbria.component';
-import {WebcamMarcheComponent} from './webcam/webcam-centro-italia/webcam-marche/webcam-marche.component';
-import {WebcamToscanaComponent} from './webcam/webcam-centro-italia/webcam-toscana/webcam-toscana.component';
 import {TerremotiComponent} from './terremoti/terremoti.component';
 import {TerremotiItaliaComponent} from './terremoti/terremoti-italia/terremoti-italia.component';
 
@@ -46,74 +39,12 @@ export const routes: Routes = [
   {path: 'stazioni-meteo', loadChildren: './stazioni-meteo/stazioni-meteo.module#StazioniMeteoModule'},
   {path: 'satellite', loadChildren: './satellite/satellite.module#SatelliteModule'},
   {path: 'info', loadChildren: './info/info.module#InfoModule'},
+  {path: 'webcam', loadChildren: './webcam/webcam.module#WebCamModule'},
   {
     path: 'previsioni',
     component: PrevisioniComponent,
     data: {
       title: 'Previsioni Meteo - Monitoraggio Indici Climatici - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/immagini',
-    component: TabImmagginiWebcamComponent,
-    data: {
-      title: 'Immagini e WebCam - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/montagna',
-    component: TabImmagginiWebcamComponent,
-    data: {
-      title: 'WebCam Montagna Centro Italia - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/limitrofe',
-    component: TabImmagginiWebcamComponent,
-    data: {
-      title: 'Webcam Valle di Comino - Frosinone - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/montagna/lazio',
-    component: WebcamLazioComponent,
-    data: {
-      title: 'WebCam Lazio Montagna - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/montagna/abruzzo',
-    component: WebcamAbruzzoComponent,
-    data: {
-      title: 'WebCam Abruzzo Montagna - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/montagna/molise',
-    component: WebcamMoliseComponent,
-    data: {
-      title: 'WebCam Molise Montagna - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/montagna/umbria',
-    component: WebcamUmbriaComponent,
-    data: {
-      title: 'WebCam Umbria Montagna - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/montagna/marche',
-    component: WebcamMarcheComponent,
-    data: {
-      title: 'WebCam Marche Montagna - Meteo Campoli'
-    }
-  },
-  {
-    path: 'webcam/montagna/toscana',
-    component: WebcamToscanaComponent,
-    data: {
-      title: 'WebCam Toscana Montagna - Meteo Campoli'
     }
   },
   {
@@ -143,23 +74,6 @@ export const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
-/*@NgModule({
-  imports: [
-    RouterModule.forRoot([
-      {path: 'satellite', loadChildren: './satellite/satellite.module#SatelliteModule'},
-      {path: 'conti', loadChildren: './conti/conti.module#ContiModule'},
-      {path: '**', component: PageNotFoundComponent}
-    ])
-  ],
-  exports: [
-    RouterModule
-  ],
-  providers: [
-    AuthGuard
-  ]
-})
-*/
 
 export class AppRoutingModule {
 

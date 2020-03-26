@@ -3,29 +3,41 @@
 <br>
 <p class="title-micro-section">Clicca sul nome delle stazioni per accedere ai dati completi</p>
 <br>
-<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+<mat-tab-group [selectedIndex]="id">
   <mat-tab label="GENERALI">
     <br>
-    <stazioni-meteo></stazioni-meteo>
+    <ng-template matTabContent>
+      <stazioni-meteo></stazioni-meteo>
+    </ng-template>
   </mat-tab>
   <mat-tab label="LAZIO">
     <br>
-    <stazioni-lazio></stazioni-lazio>
+    <ng-template matTabContent>
+      <stazioni-lazio></stazioni-lazio>
+    </ng-template>
   </mat-tab>
   <mat-tab label="ABRUZZO">
     <br>
-    <stazioni-abruzzo></stazioni-abruzzo>
+    <ng-template matTabContent>
+      <stazioni-abruzzo></stazioni-abruzzo>
+    </ng-template>
   </mat-tab>
   <mat-tab label="MOLISE">
     <br>
-    <stazioni-molise></stazioni-molise>
+    <ng-template matTabContent>
+      <stazioni-molise></stazioni-molise>
+    </ng-template>
   </mat-tab>
   <mat-tab label="RETE METEO">
     <br>
-    <stazioni-rete-meteo></stazioni-rete-meteo>
+    <ng-template matTabContent>
+      <stazioni-rete-meteo></stazioni-rete-meteo>
+    </ng-template>
   </mat-tab>
   <mat-tab label="CAPUTFRIGORIS">
     <br>
-    <stazioni-rete-meteo></stazioni-rete-meteo>
+    <ng-template matTabContent>
+      <stazioni-rete-meteo></stazioni-rete-meteo>
+    </ng-template>
   </mat-tab>
 </mat-tab-group>

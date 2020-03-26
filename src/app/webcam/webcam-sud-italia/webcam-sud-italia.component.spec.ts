@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {NordItaliaComponent} from './nord-italia.component';
+import {WebcamSudItaliaComponent} from './webcam-sud-italia.component';
 
-describe('NordItaliaComponent', () => {
-  let component: NordItaliaComponent;
-  let fixture: ComponentFixture<NordItaliaComponent>;
+describe('SudItaliaComponent', () => {
+  let component: WebcamSudItaliaComponent;
+  let fixture: ComponentFixture<WebcamSudItaliaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NordItaliaComponent]
+      declarations: [WebcamSudItaliaComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NordItaliaComponent);
+    fixture = TestBed.createComponent(WebcamSudItaliaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

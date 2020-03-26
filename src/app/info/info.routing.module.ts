@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TabStazioniComponent} from '../tab/tab-stazioni/tab-stazioni.component';
 import {TabInfoComponent} from '../tab/tab-info/tab-info.component';
 
 
@@ -9,7 +8,7 @@ import {TabInfoComponent} from '../tab/tab-info/tab-info.component';
     RouterModule.forChild([
       {
         path: '',
-        component: TabStazioniComponent,
+        component: TabInfoComponent,
         children: [
           {
             path: 'info',

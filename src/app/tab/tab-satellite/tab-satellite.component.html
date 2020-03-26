@@ -3,26 +3,38 @@
 <mat-tab-group [selectedIndex]="id">
   <mat-tab label="GENERALE">
     <br>
-    <satellite-generale></satellite-generale>
+    <ng-template matTabContent>
+      <satellite-generale></satellite-generale>
+    </ng-template>
   </mat-tab>
   <mat-tab label="CENTRO">
     <br>
-    <satellite-centro></satellite-centro>
+    <ng-template matTabContent>
+      <satellite-centro></satellite-centro>
+    </ng-template>
   </mat-tab>
   <mat-tab label="NORD">
     <br>
-    <satellite-nord></satellite-nord>
+    <ng-template matTabContent>
+      <satellite-nord></satellite-nord>
+    </ng-template>
   </mat-tab>
   <mat-tab label="SUD">
     <br>
-    <satellite-sud></satellite-sud>
+    <ng-template matTabContent>
+      <satellite-sud></satellite-sud>
+    </ng-template>
   </mat-tab>
   <mat-tab label="PROTEZIONE CIVILE">
     <br>
-    <satellite-protezione-civile></satellite-protezione-civile>
+    <ng-template matTabContent>
+      <satellite-protezione-civile></satellite-protezione-civile>
+    </ng-template>
   </mat-tab>
   <mat-tab label="RETE NAZIONALE">
     <br>
-    <satellite-rete-nazionale></satellite-rete-nazionale>
+    <ng-template matTabContent>
+      <satellite-rete-nazionale></satellite-rete-nazionale>
+    </ng-template>
   </mat-tab>
 </mat-tab-group>

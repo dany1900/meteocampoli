@@ -1,43 +1,47 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnChanges, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'tab-immaggini-webcam',
   templateUrl: './tab-immaggini-webcam.component.html',
   styleUrls: ['./tab-immaggini-webcam.component.css']
 })
-export class TabImmagginiWebcamComponent implements OnInit {
+export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
 
   id: number;
-  private path: any;
   isMontagna = false;
   isLimitrofe = false;
   isImmagini = false;
 
-  constructor(private route: ActivatedRoute) {
-    let paramTab: any;
-    this.path = this.route.url;
-    paramTab = this.path._value[1].path;
+  constructor(private router: Router,
+              private route: ActivatedRoute) {
 
-    switch (paramTab) {
-      case 'immagini':
-        this.id = 0;
-        break;
-      case 'montagna':
-        this.id = 1;
-        break;
-      case 'limitrofe':
-        this.id = 2;
-        break;
-      default:
-        this.id = 0;
-        break;
-    }
-    this.tabSelectionChanged(this.id);
+    this.router.events.filter(evt => evt instanceof NavigationEnd)
+      .subscribe((event) => {
+        const paramTab = this.route.firstChild.routeConfig.path;
+        switch (paramTab) {
+          case 'immagini':
+            this.id = 0;
+            break;
+          case 'montagna':
+            this.id = 1;
+            break;
+          case 'limitrofe':
+            this.id = 2;
+            break;
+          default:
+            this.id = 0;
+            break;
+        }
+        this.tabSelectionChanged(this.id);
+      });
   }
 
   ngOnInit() {
 
+  }
+
+  ngOnChanges() {
   }
 
   tabSelectionChanged(event) {

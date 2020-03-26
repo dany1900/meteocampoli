@@ -4,8 +4,8 @@ import {Meta} from '@angular/platform-browser';
 
 @Component({
   selector: 'webcam-lazio',
-  templateUrl: './webcamLazio.html',
-  styleUrls: ['./webcamLazio.css']
+  templateUrl: './webcam-lazio.html',
+  styleUrls: ['./webcam-lazio.css']
 })
 export class WebcamLazioComponent extends WebcamComponent implements OnInit {
 

@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {ValleCominoComponent} from './valle-comino.component';
+import {WebcamValleCominoComponent} from './webcam-valle-comino.component';
 
 describe('ValleCominoComponent', () => {
-  let component: ValleCominoComponent;
-  let fixture: ComponentFixture<ValleCominoComponent>;
+  let component: WebcamValleCominoComponent;
+  let fixture: ComponentFixture<WebcamValleCominoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ValleCominoComponent]
+      declarations: [WebcamValleCominoComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ValleCominoComponent);
+    fixture = TestBed.createComponent(WebcamValleCominoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

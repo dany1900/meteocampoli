@@ -4,16 +4,20 @@
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="IMMAGINI">
     <br>
-    <immagini *ngIf="isImmagini"></immagini>
+    <ng-template matTabContent>
+      <immagini></immagini>
+    </ng-template>
   </mat-tab>
   <mat-tab label="WEBCAM MONTAGNA">
     <br>
-    <webcam-montagna *ngIf="isMontagna"></webcam-montagna>
+    <ng-template matTabContent>
+      <webcam-montagna></webcam-montagna>
+    </ng-template>
   </mat-tab>
   <mat-tab label="WEBCAM LIMITROFE">
     <br>
-    <div *ngIf="isLimitrofe">
+    <ng-template matTabContent>
       <webcam-limitrofe></webcam-limitrofe>
-    </div>
+    </ng-template>
   </mat-tab>
 </mat-tab-group>
