@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-terremoti',
+  selector: 'terremoti-info',
   templateUrl: './terremoti.component.html',
   styleUrls: ['./terremoti.component.css']
 })
@@ -10,10 +10,11 @@ export class TerremotiComponent implements OnInit {
 
   imageLoader = true;
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('Terremoti Informazioni - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
-      content: 'Riepilogo delle ultime rilevazioni dei terremoti. Possibilita di accedere a tutte le statistiche mediante indirizzamento. Mappa pericolosità sismica. Focus sull\'Italia'
+      content: 'Informazioni generali sui terremoti. Possibilita di accedere a tutte le statistiche mediante indirizzamento. Mappa pericolosità sismica.'
     });
     this.meta.updateTag({
       name: 'keywords',
@@ -21,12 +22,12 @@ export class TerremotiComponent implements OnInit {
     });
     this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
     this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:title', content: 'Terremoti Elenco - Meteo Campoli'});
+    this.meta.updateTag({property: 'og:title', content: 'Terremoti Informazioni - Meteo Campoli'});
     this.meta.updateTag({
       property: 'og:description',
-      content: 'Riepilogo delle ultime rilevazioni dei terremoti. Possibilita di accedere a tutte le statistiche mediante indirizzamento. Mappa pericolosità sismica. Focus sull\'Italia'
+      content: 'Informazioni generali sui terremoti. Possibilita di accedere a tutte le statistiche mediante indirizzamento. Mappa pericolosità sismica.'
     });
-    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/webcam/montagna/molise'});
+    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/terremoti'});
     this.meta.updateTag({
       property: 'og:site_name',
       content: 'http://meteocampoli.altervista.org'

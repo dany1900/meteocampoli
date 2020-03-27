@@ -1,11 +1,5 @@
 <div class="center">
-  <p class="header-macro-section">Terremoti Italia - Elenco</p>
-  <mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
   <br>
-  <div [hidden]="imageLoader">
-    <!-- posts list -->
-    <!-- posts list -->
-
     <h4>In geofisica i terremoti (dal latino: terrae motus, che vuol dire "movimento della terra"), detti anche sismi o
       scosse telluriche (dal latino Tellus, dea romana della Terra), sono vibrazioni o assestamenti improvvisi della
       crosta terrestre, provocati dallo spostamento improvviso di una massa rocciosa nel sottosuolo.
@@ -39,24 +33,4 @@
       causando l'improvviso e repentino spostamento della massa rocciosa coinvolta. Tale movimento improvviso, che in
       pochi secondi rilascia energia accumulata per decine o centinaia di anni, genera cosi le onde sismiche e il
       terremoto associato. </h4>
-
-    <p class="title-micro-section">Lista aggiornata dei terremoti - fonte INGV</p>
-    <div
-      style='float:left; text-align:center; background:#EBEBE8; border:1px solid; border-radius:0.5em 0.5em 0.5em 0.5em; padding:5px 5px 0;'>
-      <iframe src="http://meteocampoli.altervista.org/terremotiingv.html" width="928" height="1240" scrolling="No"
-              frameborder="no" marginheight="0px" marginwidth="0px" [hidden]="imageLoader"
-              (load)="imageLoader = false;"></iframe>
-    </div>
-    <br>
-
-    <br>
-
-    <i class="title-micro-section"> Mappa Sismica Italia</i>
-    <img src="http://meteocampoli.altervista.org/images/mappa-sismica-italia.jpg" width="528" height="580"
-         alt="mappa rischio sismico">
-    <br>
-
   </div>
-</div>
-
-<br>

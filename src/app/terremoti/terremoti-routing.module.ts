@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TerremotiItaliaComponent} from './terremoti-italia/terremoti-italia.component';
+import {TabTerremotiComponent} from '../tab/tab-terremoti/tab-terremoti.component';
 
 
 @NgModule({
@@ -8,21 +8,15 @@ import {TerremotiItaliaComponent} from './terremoti-italia/terremoti-italia.comp
     RouterModule.forChild([
       {
         path: '',
-        component: TerremotiItaliaComponent,
+        component: TabTerremotiComponent,
         children: [
           {
             path: 'italia',
-            component: TerremotiItaliaComponent,
-            data: {
-              title: 'Terremoti Elenco Italia - Meteo Campoli'
-            }
+            component: TabTerremotiComponent
           },
           {
             path: 'mondo',
-            component: TerremotiItaliaComponent,
-            data: {
-              title: 'Terremoti Elenco Mondo - Meteo Campoli'
-            }
+            component: TabTerremotiComponent,
           }
         ],
       },

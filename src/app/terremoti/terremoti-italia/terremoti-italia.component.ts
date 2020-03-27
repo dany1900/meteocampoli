@@ -1,25 +1,36 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from "@angular/platform-browser";
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-terremoti-italia',
+  selector: 'terremoti-italia',
   templateUrl: './terremoti-italia.component.html',
   styleUrls: ['./terremoti-italia.component.css']
 })
 export class TerremotiItaliaComponent implements OnInit {
 
-  constructor(private meta: Meta) {
-    this.meta.addTags([
-      {name: 'description', content: ''},
-      {name: 'keywords', content: ''},
-      {property: 'og:locale', content: 'it_IT'},
-      {property: 'og:type', content: 'website'},
-      {property: 'og:title', content: ''},
-      {property: 'og:description', content: ''},
-      {property: 'og:url', content: ''},
-      {property: 'og:site_name', content: ''},
-      {property: 'og:image', content: ''}
-    ]);
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('Terremoti Elenco Italia - Meteo Campoli');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Riepilogo delle ultime rilevazioni dei terremoti. Possibilita di accedere a tutte le statistiche mediante indirizzamento. Mappa pericolosità sismica. Focus sull\'Italia'
+    });
+    this.meta.updateTag({
+      name: 'keywords',
+      content: 'terremoti meteo campoli, lista terremoti, ultimi terremoti campoli, terremoti campoli appennino, ultimo terremoto campoli, lista terremoti campoli appennino,elenco terremoti in italia, lista ultimi terremoti,lista terremoti ingv aggiornata,elenco sismico italiano,iside terremoti,iside lista terremoti,elenco scosse terremoto,terremoti elenco,ingv lista terremoti iside,meteo terremoti altervista,istituto nazionale geofisica e vulcanologia lista terremoti,lista terremoti italia,elenco terremoti italia,elenco terremoti,lista terremoti qualsiasi magnitudo,bollettino terremoti'
+    });
+    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
+    this.meta.updateTag({property: 'og:type', content: 'website'});
+    this.meta.updateTag({property: 'og:title', content: 'Terremoti Elenco Italia - Meteo Campoli'});
+    this.meta.updateTag({
+      property: 'og:description',
+      content: 'Riepilogo delle ultime rilevazioni dei terremoti. Possibilita di accedere a tutte le statistiche mediante indirizzamento. Mappa pericolosità sismica. Focus sull\'Italia'
+    });
+    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/terremoti/italia'});
+    this.meta.updateTag({
+      property: 'og:site_name',
+      content: 'http://meteocampoli.altervista.org'
+    });
+    //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
   }
 
   ngOnInit() {

@@ -3,6 +3,8 @@ import {TerremotiItaliaComponent} from './terremoti-italia/terremoti-italia.comp
 import {TerremotiComponent} from './terremoti.component';
 import {NgModule} from '@angular/core';
 import {TerremotiRoutingModule} from './terremoti-routing.module';
+import {TerremotiMondoComponent} from './terremoti-mondo/terremoti-mondo.component';
+import {TabTerremotiComponent} from '../tab/tab-terremoti/tab-terremoti.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import {TerremotiRoutingModule} from './terremoti-routing.module';
 
   declarations: [
     TerremotiComponent,
-    TerremotiItaliaComponent
+    TerremotiItaliaComponent,
+    TerremotiMondoComponent,
+    TabTerremotiComponent
   ],
   exports: []
 })
