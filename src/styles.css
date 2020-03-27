@@ -37,6 +37,7 @@ td {
 #main {
   width: 1000px;
   margin: 0px auto;
+  height: 100%;
 }
 
 #ident {
@@ -75,12 +76,6 @@ td {
   background: url(assets/img/campoli-verde-min.jpg) 23px top no-repeat #FFFFFF;
 }
 
-#content {
-  background: url(assets/img/content.png);
-  padding: 0px 30px 0px 30px;
-  color: #000000;
-  height: 100%
-}
 
 #frame {
   padding: 20px 0px 0px 100px;
@@ -123,7 +118,7 @@ h4 {
 }
 
 .row {
-  padding: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 38px;
 }
 
 .slider {
@@ -251,10 +246,27 @@ a.nivo-prevNav {
   background-color: #e5e5e5;
 }
 
+#footer {
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0px 5px 0px;
+}
+
+#footer a {
+  color: #ffffff;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: #ffffff;
+  font-size: 10px;
+}
+
 .footer-desc {
   width: 100%;
   font-family: helvetica;
-  font-size: 12px;
+  font-size: 19px;
   color: #fff
 }
 
@@ -319,6 +331,9 @@ a.nivo-prevNav {
   border-color: #ffffff;
   padding-top: 15px;
   padding-bottom: 15px !important;
+  min-height: 100vh;
+  background: url(assets/img/content.png);
+  color: #000000;
 }
 
 .header {
@@ -452,24 +467,6 @@ a.nivo-prevNav {
   font-weight: bold;
 }
 
-#footer {
-  font-size: 16px;
-  color: #ffffff;
-  text-align: center;
-  padding: 10px 0px 0px 0px;
-}
-
-#footer a {
-  color: #ffffff;
-  font-size: 15px;
-  text-decoration: none;
-}
-
-#footer a:hover {
-  color: #ffffff;
-  font-size: 10px;
-}
-
 .mat-tab-header {
   /* display: flex; */
   overflow: hidden;
@@ -492,6 +489,7 @@ a.nivo-prevNav {
 .mat-tab-label .mat-tab-label-content {
   color: #ffffff;
   font-size: 18px;
+  margin-left: 10px;
 }
 
 .mat-tab-label {
