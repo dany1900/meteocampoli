@@ -21,6 +21,8 @@ export class RiepilogoComponent implements OnInit {
       name: 'description',
       content: 'Statistiche complessive della stazione meteo di Campoli Appennino posta a 500mt. Completo di tutti i dati giornalieri,mensili,annuali e grafici.'
     });
+    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
+    this.meta.updateTag({property: 'og:type', content: 'website'});
     this.meta.updateTag({property: 'og:title', content: 'Statistiche Stazione Meteo Campoli - Riepilogo Dati'});
     this.meta.updateTag({
       property: 'og:description',

@@ -32,13 +32,15 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
       property: 'og:description',
       content: 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.'
     });
+    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
+    this.meta.updateTag({property: 'og:type', content: 'website'});
     this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org'});
     this.meta.updateTag({
       property: 'og:site_name',
       content: 'Meteo Campoli - Il sito di Monitoraggio Meteo  - Completo di Mappe,Radar,WebCam'
     });
     this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/meteocampoli.jpg'});
-    this.path = 'http://meteocampoliappennino.altervista.org/grafico.png';
+    this.path = 'http://meteocampoliappennino.altervista.org/grafico.png?' + Math.random();
 
 
   }
