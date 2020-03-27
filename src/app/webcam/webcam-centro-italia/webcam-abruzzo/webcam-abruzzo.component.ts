@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'webcam-abruzzo',
@@ -8,7 +8,8 @@ import {Meta} from '@angular/platform-browser';
 })
 export class WebcamAbruzzoComponent implements OnInit {
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('WebCam Abruzzo Montagna - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
       content: 'Tutte le Webcam abruzzesi di montagna ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Focus sull\'appennino con link alle migliori fonti.'

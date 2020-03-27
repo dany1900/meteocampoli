@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TabInfoComponent} from '../tab/tab-info/tab-info.component';
+import {TabInfoComponent} from './tab-info/tab-info.component';
 
 
 @NgModule({

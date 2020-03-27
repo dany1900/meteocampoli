@@ -4,7 +4,7 @@ import {SatelliteSudComponent} from './sud-italia/satellite-sud.component';
 import {SatelliteNordComponent} from './nord-italia/satellite-nord.component';
 import {SatelliteGeneraleComponent} from './generale/satellite-generale.component';
 import {SatelliteCentroComponent} from './centro-italia/satellite-centro.component';
-import {TabSatelliteComponent} from '../tab/tab-satellite/tab-satellite.component';
+import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
 import {SatelliteRoutingModule} from './satellite-routing.module';
 import {SharedModule} from '../shared/shared.module';
 

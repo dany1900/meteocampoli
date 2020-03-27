@@ -25,12 +25,12 @@ import {WebcamRomaComponent} from './webcam-centro-italia/webcam-lazio/webcam-ro
 import {WebcamViterboComponent} from './webcam-centro-italia/webcam-lazio/webcam-viterbo/webcam-viterbo.component';
 import {NgModule} from '@angular/core';
 import {WebcamLazioComponent} from './webcam-centro-italia/webcam-lazio/webcam-lazio.component';
-import {TabWebcamComponent} from '../tab/tab-webcam/tab-webcam.component';
+import {TabWebcamComponent} from './tab-webcam/tab-webcam.component';
 import {WebcamCentroItaliaComponent} from './webcam-centro-italia/webcam-centro-italia.component';
 import {WebcamSudItaliaComponent} from './webcam-sud-italia/webcam-sud-italia.component';
 import {WebcamNordItaliaComponent} from './webcam-nord-italia/webcam-nord-italia.component';
-import {ImmaginiComponent} from '../immagini/immagini.component';
-import {TabImmagginiWebcamComponent} from '../tab/tab-immaggini-webcam/tab-immaggini-webcam.component';
+import {ImmaginiComponent} from './immagini/immagini.component';
+import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-webcam.component';
 import {WebcamValleCominoComponent} from './webcam-centro-italia/webcam-valle-comino/webcam-valle-comino.component';
 import {WebcamRoutingModule} from './webcam-routing.module';
 import {SharedModule} from '../shared/shared.module';

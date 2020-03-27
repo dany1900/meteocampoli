@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'immagini',
@@ -10,7 +10,8 @@ export class ImmaginiComponent implements OnInit {
 
   imageLoader = true;
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('Immagini e WebCam - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
       content: 'Immagini di Campoli Appennino, paese della Valle di Comino. Tutte le Webcam del centro italia montano e limitrofe, ordinate per regione e localita.'

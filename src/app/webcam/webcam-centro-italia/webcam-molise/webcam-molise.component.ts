@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'webcam-molise',
@@ -8,7 +8,8 @@ import {Meta} from '@angular/platform-browser';
 })
 export class WebcamMoliseComponent implements OnInit {
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('WebCam Molise Montagna - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
       content: 'Tutte le stazioni meteo del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.'

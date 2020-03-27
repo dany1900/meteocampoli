@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'webcam-montagna',
@@ -10,7 +10,8 @@ export class WebcamMontagnaComponent implements OnInit {
 
   footerTitle: any;
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('WebCam Montagna Centro Italia - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
       content: 'Tutte le Webcam del centro italia montano ordinate per regione e localita. Descrizione e altitudine facilmente visualizzabili. Focus sulla valle di comino.'

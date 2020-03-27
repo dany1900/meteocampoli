@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WebcamComponent} from '../../webcam.component';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'webcam-valle-comino',
@@ -8,10 +9,9 @@ import {WebcamComponent} from '../../webcam.component';
 })
 export class WebcamValleCominoComponent extends WebcamComponent implements OnInit {
 
-  constructor() {
-
+  constructor(private meta: Meta, private titleService: Title) {
     super();
-
+    titleService.setTitle('Previsioni Meteo - Monitoraggio Indici Climatici - Meteo Campoli');
   }
 
   ngOnInit() {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {WebcamComponent} from '../../webcam.component';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -13,8 +13,9 @@ export class WebCamLimitrofeComponent extends WebcamComponent implements OnInit 
   imageLoader = true;
 
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
     super();
+    titleService.setTitle('Webcam Valle di Comino - Frosinone - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
       content: 'Webcam della valle di comino e del centro italia montano ordinate per regione e localita. Descrizione e altitudine facilmente visualizzabili. Focus sul Lazio e Abruzzo.'

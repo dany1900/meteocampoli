@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TabTerremotiComponent} from '../tab/tab-terremoti/tab-terremoti.component';
+import {TabTerremotiComponent} from './tab-terremoti/tab-terremoti.component';
 
 
 @NgModule({

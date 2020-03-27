@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {TabSatelliteComponent} from '../tab/tab-satellite/tab-satellite.component';
+import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
 
 
 @NgModule({

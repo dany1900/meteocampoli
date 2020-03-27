@@ -6,7 +6,7 @@ import {StazioniLazioComponent} from './stazioni-lazio/stazioni-lazio.component'
 import {StazioniMeteoComponent} from './stazioni-meteo.component';
 import {StazioniMoliseComponent} from './stazioni-molise/stazioni-molise.component';
 import {StazioniReteMeteoComponent} from './stazioni-rete-meteo/stazioni-rete-meteo.component';
-import {TabStazioniComponent} from '../tab/tab-stazioni/tab-stazioni.component';
+import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
 import {ReteNazionaleComponent} from '../satellite/rete-nazionale/rete-nazionale.component';
 
 
