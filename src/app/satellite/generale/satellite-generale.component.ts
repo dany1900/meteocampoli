@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'satellite-generale',
@@ -13,7 +13,8 @@ export class SatelliteGeneraleComponent implements OnInit {
   imageLoaderMovimento = true;
 
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
       content: 'Monitoraggio completo del meteo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.'

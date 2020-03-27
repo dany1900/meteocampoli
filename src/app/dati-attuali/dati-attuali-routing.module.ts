@@ -13,10 +13,6 @@ import {DatiAttualiComponent} from './dati-attuali.component';
           {
             path: 'dati-attuali',
             component: DatiAttualiComponent,
-            data: {
-              title: 'Meteo Campoli - Monitoraggio Meteo'
-
-            }
           },
         ],
       },

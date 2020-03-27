@@ -29,9 +29,7 @@
               "src/styles.css"
             ],
             "scripts": [
-              "src/assets/js/jquery.min.js",
-              "./node_modules/popper.js/dist/popper.js",
-              "src/assets/js/bootstrap.min.js"
+              "./node_modules/popper.js/dist/popper.js"
             ]
           },
           "configurations": {

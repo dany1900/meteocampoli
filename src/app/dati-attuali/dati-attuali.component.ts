@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -10,9 +10,10 @@ import {Meta} from '@angular/platform-browser';
 export class DatiAttualiComponent implements OnInit, OnDestroy {
 
   path: string;
+  title: string;
 
-  constructor(private meta: Meta) {
-
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('Meteo Campoli - Monitoraggio Meteo');
     let headers = new Headers({
       'Cache-Control': 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0',
       'Pragma': 'no-cache',
@@ -45,10 +46,11 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
   ngOnDestroy(): void {
   }
+
 
 }

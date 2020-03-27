@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'satellite-rete-nazionale',
@@ -10,7 +10,8 @@ export class ReteNazionaleComponent implements OnInit {
 
   imageLoader = true;
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('Rete Meteo  - Mappa Stazioni Meteo  - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
       content: 'Tutte le stazioni meteo italiane visualizzabili. Mappa del sito Rete Meteo direttamente incorporata nella pagina web. Possibilita di accedere a tutti i dati in tempo reale.'

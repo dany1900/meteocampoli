@@ -1,4 +1,4 @@
-import {BrowserModule} from '@angular/platform-browser';
+import {BrowserModule, Title} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from './app-routing.module';
 import {SEOService} from './service/seoservice.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {PageErrorComponent} from './page-error/page-error.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     FooterComponent,
     ShinystatComponent,
-    PublicitaComponent
+    PublicitaComponent,
+    PageErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   exports: [
 
   ],
-  providers: [SEOService],
+  providers: [SEOService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule {

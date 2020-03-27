@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'satellite-sud',
@@ -10,7 +10,8 @@ export class SatelliteSudComponent implements OnInit {
 
   imageLoader = true;
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('Satellite Sud Italia - Radar Precipitazioni  - Meteo Campoli');
     this.meta.updateTag({
       name: 'description',
       content: 'Satelliti infrarossi, meteosat, fulminazioni e sinottica relativi al sud italia. Radar dettagliato delle precipitazioni in tempo reale. Focus sul sud italia.'

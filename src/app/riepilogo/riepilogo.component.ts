@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta} from '@angular/platform-browser';
+import {Meta, Title} from '@angular/platform-browser';
 
 
 @Component({
@@ -12,7 +12,8 @@ export class RiepilogoComponent implements OnInit {
 
   imageLoader = true;
 
-  constructor(private meta: Meta) {
+  constructor(private meta: Meta, private titleService: Title) {
+    titleService.setTitle('Statistiche Stazione Meteo Campoli - Riepilogo Dati');
     this.meta.updateTag({
       name: 'keyword',
       content: 'statistiche stazione meteo campoli, riepilogo stazione meteo campoli, statistiche meteo campoli, riepilogo dati stazione meteo campoli, Stazione meteo campoli appennino'
