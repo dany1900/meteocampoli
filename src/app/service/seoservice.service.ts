@@ -15,10 +15,17 @@ export class SEOService {
   ) {
   }
 
-  updateMetaInfo(content, author, category) {
-    this.meta.updateTag({name: 'description', content: content});
-    this.meta.updateTag({name: 'author', content: author});
-    this.meta.updateTag({name: 'keywords', content: category});
+  updateMetaInfo(title, description, keywords, url, image) {
+    this.titleService.setTitle(title);
+    this.meta.updateTag({name: 'description', content: description});
+    this.meta.updateTag({name: 'keywords', content: keywords});
+    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
+    this.meta.updateTag({property: 'og:type', content: 'website'});
+    this.meta.updateTag({property: 'og:title', content: title});
+    this.meta.updateTag({property: 'og:description', content: description});
+    this.meta.updateTag({property: 'og:site_name', content: 'www.meteocampoli.altervista.org'});
+    this.meta.updateTag({property: 'og:url', content: url});
+    this.meta.updateTag({property: 'og:image', content: image});
   }
 
   updateTitle(title?: string) {

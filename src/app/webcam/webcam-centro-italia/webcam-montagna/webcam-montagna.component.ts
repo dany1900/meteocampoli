@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {SEOService} from '../../../service/seoservice.service';
 
 @Component({
   selector: 'webcam-montagna',
@@ -10,34 +10,23 @@ export class WebcamMontagnaComponent implements OnInit {
 
   footerTitle: any;
 
-  constructor(private meta: Meta, private titleService: Title) {
-    titleService.setTitle('WebCam Montagna Centro Italia - Meteo Campoli');
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Tutte le Webcam del centro italia montano ordinate per regione e localita. Descrizione e altitudine facilmente visualizzabili. Focus sulla valle di comino.'
-    });
-    this.meta.updateTag({
-      name: 'keywords',
-      content: 'webcam montagna, webcam centro italia, webcam lazio,web cam abruzzo, webcam meteo campoli, webcam campoli, webcam campoli appennino,webcam rivisondoli,webcam passo godi,webcam ovindoli,webcam campotosto,webcam cappadocia'
-    });
-    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
-    this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:title', content: 'WebCam Montagna Centro Italia - Meteo Campoli'});
-    this.meta.updateTag({
-      property: 'og:description',
-      content: 'Tutte le Webcam del centro italia montano ordinate per regione e localita. Descrizione e altitudine facilmente visualizzabili. Focus sulla valle di comino.'
-    });
-    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/webcam/montagna'});
-    this.meta.updateTag({
-      property: 'og:site_name',
-      content: 'http://meteocampoli.altervista.org'
-    });
-    //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
+  title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
+
+  constructor(private seo: SEOService) {
+    this.title = 'WebCam Montagna Centro Italia - Meteo Campoli';
+    this.description = 'Tutte le Webcam del centro italia montano ordinate per regione e localita. Descrizione e altitudine facilmente visualizzabili. Focus sulla valle di comino.';
+    this.keywords = 'webcam montagna, webcam centro italia, webcam lazio,web cam abruzzo, webcam meteo campoli, webcam campoli, webcam campoli appennino,webcam rivisondoli,webcam passo godi,webcam ovindoli,webcam campotosto,webcam cappadocia';
+    this.ogUrl = 'www.meteocampoli.altervista.org/webcam/montagna';
+    this.ogImage = '';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
   ngOnInit() {
     this.footerTitle = 'Le immagini sono prese ad intervalli regolari';
-
   }
 
 

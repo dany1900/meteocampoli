@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {SEOService} from '../../../service/seoservice.service';
 
 @Component({
   selector: 'webcam-molise',
@@ -8,29 +8,20 @@ import {Meta, Title} from '@angular/platform-browser';
 })
 export class WebcamMoliseComponent implements OnInit {
 
-  constructor(private meta: Meta, private titleService: Title) {
-    titleService.setTitle('WebCam Molise Montagna - Meteo Campoli');
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Tutte le stazioni meteo del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.'
-    });
-    this.meta.updateTag({
-      name: 'keywords',
-      content: 'temperature molise, meteo campoli molise, temperature lazio, temperature stazioni meteo molise, stazioni meteo molise'
-    });
-    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
-    this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:title', content: 'WebCam Molise Montagna - Meteo Campoli'});
-    this.meta.updateTag({
-      property: 'og:description',
-      content: 'Tutte le stazioni meteo del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.'
-    });
-    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/webcam/montagna/molise'});
-    this.meta.updateTag({
-      property: 'og:site_name',
-      content: 'http://meteocampoli.altervista.org'
-    });
-    //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
+  title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
+
+  constructor(private seo: SEOService) {
+    // TODO
+    this.title = 'WebCam Molise Montagna - Meteo Campoli';
+    this.description = 'Tutte le webcam  del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.';
+    this.keywords = 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino';
+    this.ogUrl = 'www.meteocampoli.altervista.org/webcam/montagna/molise';
+    this.ogImage = '';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
   ngOnInit() {

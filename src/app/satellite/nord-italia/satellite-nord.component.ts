@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {SEOService} from '../../service/seoservice.service';
 
 @Component({
   selector: 'satellite-nord',
@@ -9,30 +9,19 @@ import {Meta, Title} from '@angular/platform-browser';
 export class SatelliteNordComponent implements OnInit {
 
   imageLoader = true;
+  title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
 
-  constructor(private meta: Meta, private titleService: Title) {
-    titleService.setTitle('Satellite Nord Italia - Radar Precipitazioni  - Meteo Campoli');
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Satellite infrarossi, meteosat, fulminazioni e sinottica relativi al nord italia. Radar dettagliato delle precipitazioni in tempo reale. Focus sul nord italia.'
-    });
-    this.meta.updateTag({
-      name: 'keywords',
-      content: 'satellite nord meteo campoli, radar nord meteo campoli, radar precipitazioni nord italia meteo campoli, radar fulmini nord italia, radar precipitazioni zoom nord italia, radar pioggia nord italia, satellite nord italia'
-    });
-    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
-    this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:title', content: 'Satellite Nord Italia - Radar Precipitazioni  - Meteo Campoli'});
-    this.meta.updateTag({
-      property: 'og:description',
-      content: 'Satellite infrarossi, meteosat, fulminazioni e sinottica relativi al nord italia. Radar dettagliato delle precipitazioni in tempo reale. Focus sul nord italia.'
-    });
-    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/satellite/nord-italia'});
-    this.meta.updateTag({
-      property: 'og:site_name',
-      content: 'Meteo Campoli'
-    });
-    //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
+  constructor(private seo: SEOService) {
+    this.title = 'Satellite Nord Italia - Radar Precipitazioni  - Meteo Campoli';
+    this.description = 'Satellite infrarossi, meteosat, fulminazioni e sinottica relativi al nord italia. Radar dettagliato delle precipitazioni in tempo reale. Focus sul nord italia.';
+    this.keywords = 'satellite nord meteo campoli, radar nord meteo campoli, radar precipitazioni nord italia meteo campoli, radar fulmini nord italia, radar precipitazioni zoom nord italia, radar pioggia nord italia, satellite nord italia';
+    this.ogUrl = 'www.meteocampoli.altervista.org/satellite/nord-italia';
+    this.ogImage = '';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
   ngOnInit() {

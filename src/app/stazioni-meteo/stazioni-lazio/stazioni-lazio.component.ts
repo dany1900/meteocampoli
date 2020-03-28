@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {SEOService} from '../../service/seoservice.service';
 
 @Component({
   selector: 'stazioni-lazio',
@@ -9,30 +9,19 @@ import {Meta, Title} from '@angular/platform-browser';
 export class StazioniLazioComponent implements OnInit {
 
   imageLoader = true;
+  title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
 
-  constructor(private meta: Meta, private titleService: Title) {
-    titleService.setTitle('Stazioni Meteo Lazio - Dati - Meteo Campoli');
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Tutte le stazioni del Lazio visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.'
-    });
-    this.meta.updateTag({
-      name: 'keywords',
-      content: 'temperature lazio, meteo campoli lazio, temperature lazio meteo campoli, temperature stazioni meteo lazio, stazioni meteo lazio, stazioni meteo lazio meteo campoli,stazioni meteo lazio'
-    });
-    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
-    this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:title', content: 'Stazioni Meteo Lazio - Dati - Meteo Campoli'});
-    this.meta.updateTag({
-      property: 'og:description',
-      content: 'Tutte le stazioni del Lazio visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.'
-    });
-    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/stazioni-meteo/lazio'});
-    this.meta.updateTag({
-      property: 'og:site_name',
-      content: 'Tutte le stazioni del Lazio visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.'
-    });
-    this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
+  constructor(private seo: SEOService) {
+    this.title = 'Stazioni Meteo Lazio - Dati - Meteo Campoli';
+    this.description = 'Tutte le stazioni del Lazio visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.';
+    this.keywords = 'temperature lazio, meteo campoli lazio, temperature lazio meteo campoli, temperature stazioni meteo lazio, stazioni meteo lazio, stazioni meteo lazio meteo campoli,stazioni meteo lazio';
+    this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/lazio';
+    this.ogImage = '';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
   ngOnInit() {

@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {SEOService} from '../service/seoservice.service';
 
 
 @Component({
@@ -11,39 +11,19 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
 
   path: string;
   title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
 
-  constructor(private meta: Meta, private titleService: Title) {
-    titleService.setTitle('Meteo Campoli - Monitoraggio Meteo');
-    let headers = new Headers({
-      'Cache-Control': 'no-cache, no-store, must-revalidate, post-check=0, pre-check=0',
-      'Pragma': 'no-cache',
-      'Expires': '0'
-    });
-
-    this.meta.updateTag({
-      name: 'keyword',
-      content: 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino'
-    });
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.'
-    });
-    this.meta.updateTag({property: 'og:title', content: 'Meteo Campoli - Monitoraggio Meteo'});
-    this.meta.updateTag({
-      property: 'og:description',
-      content: 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.'
-    });
-    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
-    this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org'});
-    this.meta.updateTag({
-      property: 'og:site_name',
-      content: 'Meteo Campoli - Il sito di Monitoraggio Meteo  - Completo di Mappe,Radar,WebCam'
-    });
-    this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/meteocampoli.jpg'});
+  constructor(private seo: SEOService) {
     this.path = 'http://meteocampoliappennino.altervista.org/grafico.png?' + Math.random();
-
-
+    this.title = 'Meteo Campoli - Monitoraggio Meteo';
+    this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
+    this.keywords = 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino';
+    this.ogUrl = 'www.meteocampoli.altervista.org/dati-attuali';
+    this.ogImage = 'http://meteocampoli.altervista.org/images/meteocampoli.jpg';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
   ngOnInit() {

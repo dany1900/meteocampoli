@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {SEOService} from '../service/seoservice.service';
 
 @Component({
   selector: 'stazioni-meteo',
@@ -9,30 +9,19 @@ import {Meta, Title} from '@angular/platform-browser';
 export class StazioniMeteoComponent implements OnInit {
 
   imageLoader = true;
+  title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
 
-  constructor(private meta: Meta, private titleService: Title) {
-    titleService.setTitle('Stazioni Meteo Limitrofe - Dati - Meteo Campoli');
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Tutte le stazioni del centro italia  visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.'
-    });
-    this.meta.updateTag({
-      name: 'keywords',
-      content: 'temperature limitrofe, meteo campoli temperature, temperature lazio, temperature campoli, temperature stazioni meteo, stazioni meteo centro italia,dati stazioni meteo'
-    });
-    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
-    this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:title', content: 'Stazioni Meteo Generali - Meteo Campoli'});
-    this.meta.updateTag({
-      property: 'og:description',
-      content: 'Tutte le stazioni del centro italia  visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.'
-    });
-    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/stazioni-meteo/lazio'});
-    this.meta.updateTag({
-      property: 'og:site_name',
-      content: 'Meteo Campoli'
-    });
-    this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
+  constructor(private seo: SEOService) {
+    this.title = 'Stazioni Meteo Limitrofe - Dati - Meteo Campoli';
+    this.description = 'Tutte le stazioni del centro italia  visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.';
+    this.keywords = 'temperature limitrofe, meteo campoli temperature, temperature lazio, temperature campoli, temperature stazioni meteo, stazioni meteo centro italia,dati stazioni meteo';
+    this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/lazio';
+    this.ogImage = '';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
   ngOnInit() {
