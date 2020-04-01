@@ -209,6 +209,11 @@ a.nivo-prevNav {
   width: 120px;
 }
 
+.btn-group-vertical > .btn.active, .btn-group-vertical > .btn:active, .btn-group-vertical > .btn:focus, .btn-group-vertical > .btn:hover, .btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover {
+  z-index: 2;
+  color: black;
+}
+
 .dropdown-menu {
   color: #fff;
   border-color: #026960;
@@ -513,6 +518,10 @@ a.nivo-prevNav {
   position: relative;
   margin-left: 45%;
   margin-right: 50%;
+}
+
+.image-modal {
+  width: 100%;
 }
 
 

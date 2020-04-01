@@ -1,4 +1,4 @@
-import {BrowserModule, Title} from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {SEOService} from './service/seoservice.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {PageErrorComponent} from './page-error/page-error.component';
+import {UtiliyService} from './service/utiliy.service';
 
 
 @NgModule({
@@ -37,9 +38,8 @@ import {PageErrorComponent} from './page-error/page-error.component';
     AppRoutingModule
   ],
   exports: [
-
   ],
-  providers: [SEOService, Title],
+  providers: [SEOService, UtiliyService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

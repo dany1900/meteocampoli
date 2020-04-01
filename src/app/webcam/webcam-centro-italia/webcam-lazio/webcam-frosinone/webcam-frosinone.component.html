@@ -8,8 +8,7 @@
 								1800 mt - </span> <span> www.campocatinometeo.it</span>
 
     </div>
-    <a href="http://www.campocatinometeo.it/capture1.jpg"
-       data-rel="prettyPhoto"><img
+    <a (click)="openModal('http://www.campocatinometeo.it/capture1.jpg')" data-rel="prettyPhoto"><img
       src="http://www.campocatinometeo.it/capture1.jpg" class="webcam" [hidden]="imageLoader"
       (load)="imageLoader = false;"/></a>
   </figure>
@@ -18,7 +17,7 @@
 							<span class="content-webcam-principal"> ARPINO (FR) 500 mT
 								- </span> <span> www.meteoliri.it</span>
     </div>
-    <a href="http://www.meteoliri.it/webarpino/webcam.php"
+    <a (click)="openModal('http://www.meteoliri.it/webarpino/webcam.php')"
        data-rel="prettyPhoto"><img
       src="http://www.meteoliri.it/webarpino/webcam.php" class="webcam"/></a>
   </figure>
@@ -27,7 +26,7 @@
 							<span class="content-webcam-principal"> ATINA (FR) 500 mT
 								- </span> <span> www.meteocomino.it </span>
     </div>
-    <a href="http://www.meteocomino.it/atinacam/cam-atina.php"
+    <a (click)="openModal('http://www.meteocomino.it/atinacam/cam-atina.php')"
        data-rel="prettyPhoto"><img
       src="http://www.meteocomino.it/atinacam/cam-atina.php"
       class="webcam"/></a></figure>
