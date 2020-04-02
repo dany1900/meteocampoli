@@ -2,11 +2,14 @@
   width: 100%;
   height: 100%;
   display: grid;
-  color: white;
+  /*color: white;*/
 }
 
 #modal-title {
   font-size: 22px;
+}
+
+#modal-body {
 }
 
 #modal-footer {
@@ -20,7 +23,16 @@
   color: white;
 }
 
-#modal-cancel-button {
-  background-color: #4e4e4e;
-  color: white;
+.image-modal {
+  width: 100%;
+  cursor: zoom-in;
+}
+
+img.zoomed {
+  -webkit-transform: scale(1.3);
+  cursor: zoom-out;
+}
+
+.image-close {
+  width: 3%;
 }

@@ -1,13 +1,12 @@
+
 <div id="modal-content-wrapper">
   <header id="modal-header">
-    <h1 id="modal-title"></h1>
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="close()">
-      <span aria-hidden="true">&times;</span>
-    </button>
+    <!-- <h1 id="modal-title"></h1> -->
+    <img mat-button class="close image-close" (click)="modalClose()" src="../../assets/img/close-icon.png"/>
   </header>
   <section id="modal-body">
     <p><img
-      [src]="url" class="image-modal"></p>
+      [src]="url" class="image-modal" (click)="toggleClass($event,'zoomed')"></p>
   </section>
   <footer id="modal-footer">
   </footer>

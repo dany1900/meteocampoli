@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {WebcamComponent} from '../../webcam.component';
 import {SEOService} from '../../../service/seoservice.service';
 
 @Component({
@@ -7,7 +6,7 @@ import {SEOService} from '../../../service/seoservice.service';
   templateUrl: './webcam-valle-comino.component.html',
   styleUrls: ['./webcam-valle-comino.component.css']
 })
-export class WebcamValleCominoComponent extends WebcamComponent implements OnInit {
+export class WebcamValleCominoComponent implements OnInit {
 
   title: string;
   description: string;
@@ -16,7 +15,6 @@ export class WebcamValleCominoComponent extends WebcamComponent implements OnIni
   ogImage: string;
 
   constructor(private seo: SEOService) {
-    super();
     this.title = 'Meteo Campoli - Monitoraggio Meteo';
     this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
     this.keywords = 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino';

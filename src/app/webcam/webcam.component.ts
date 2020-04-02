@@ -1,30 +1,34 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {ModalComponent} from '../modal/modal.component';
 
 @Component({
-  selector: 'app-webcam',
+  selector: 'webcam',
   templateUrl: './webcam.component.html',
   styleUrls: ['./webcam.component.css']
 })
 export class WebcamComponent implements OnInit {
 
-  @Input('iconWebcam') iconWebcam = {
-    MONTAGNA: 'WebCam Montagna',
-    LIMITROFE: 'WebCam Limitrofe',
-    LAZIO: 'WebCam Lazio',
-    ABRUZZO: 'WebCam Abruzzo',
-    MOLISE: 'WebCam Molise',
-    TOSCANA: 'WebCam Toscana',
-    UMBRIA: 'WebCam Umbria',
-    MARCHE: 'WebCam Marche',
+  @Input() luogo: string;
+  @Input() altitudine: string;
+  @Input() urlSite: string;
+  @Input() urlWebcam: string;
+  imageLoader = true;
 
-  };
 
-  footerTitle = 'Le immagini sono prese ad intervalli regolari';
-
-  constructor() {
+  constructor(private matDialog: MatDialog) {
   }
 
   ngOnInit() {
+  }
+
+  openModal(url: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.id = 'modal-component';
+    dialogConfig.width = '60%';
+    dialogConfig.data = url;
+    dialogConfig.autoFocus = true;
+    this.matDialog.open(ModalComponent, dialogConfig);
   }
 
 }

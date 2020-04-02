@@ -1,17 +1,11 @@
 <p class="title-micro-section">Provincia di Frosinone</p>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
-<br>
-<div class="center" [hidden]="imageLoader">
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal">CAMPOCATINO (FR)
-								1800 mt - </span> <span> www.campocatinometeo.it</span>
 
-    </div>
-    <a (click)="openModal('http://www.campocatinometeo.it/capture1.jpg')" data-rel="prettyPhoto"><img
-      src="http://www.campocatinometeo.it/capture1.jpg" class="webcam" [hidden]="imageLoader"
-      (load)="imageLoader = false;"/></a>
-  </figure>
+<webcam [luogo]="'CAMPOCATINO (FR)'"
+        [altitudine]="'1800'"
+        [urlSite]="'www.campocatinometeo.it'"
+        [urlWebcam]="'http://www.campocatinometeo.it/capture1.jpg'"
+>
+</webcam>
   <figure>
     <div class="webcam-script-header">
 							<span class="content-webcam-principal"> ARPINO (FR) 500 mT
@@ -116,7 +110,7 @@
       src="http://www.ferentinomet.it/dahua/camera1.jpg"
       class="webcam"/></a></figure>
 
-</div>
+
 
 
 

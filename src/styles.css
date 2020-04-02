@@ -284,6 +284,7 @@ a.nivo-prevNav {
   border-style: solid;
   border-color: #ffffff;
   padding: 2px;
+  cursor: pointer;
 }
 
 .hidden {
@@ -519,11 +520,6 @@ a.nivo-prevNav {
   margin-left: 45%;
   margin-right: 50%;
 }
-
-.image-modal {
-  width: 100%;
-}
-
 
 /*
 @media screen (max-width: 900px) {

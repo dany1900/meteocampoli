@@ -1,4 +1,14 @@
-<tab-webcam></tab-webcam>
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div class="center" [hidden]="imageLoader">
+  <figure>
+    <div class="webcam-script-header">
+							<span class="content-webcam-principal">{{luogo}}
+								{{altitudine}} mt - </span> <span> {{urlSite}}</span>
 
-<webcam-centro-italia></webcam-centro-italia>
-
+    </div>
+    <a (click)="openModal(urlWebcam)" data-rel="prettyPhoto"><img
+      [src]="urlWebcam" class="webcam" [hidden]="imageLoader"
+      (load)="imageLoader = false;"/></a>
+  </figure>
+</div>

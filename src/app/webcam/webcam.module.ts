@@ -34,14 +34,12 @@ import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-
 import {WebcamValleCominoComponent} from './webcam-centro-italia/webcam-valle-comino/webcam-valle-comino.component';
 import {WebcamRoutingModule} from './webcam-routing.module';
 import {SharedModule} from '../shared/shared.module';
-import {ImageViewerModule} from 'ngx-image-viewer';
 
 
 @NgModule({
   imports: [
     WebcamRoutingModule,
     SharedModule,
-    ImageViewerModule.forRoot()
   ],
 
   declarations: [
