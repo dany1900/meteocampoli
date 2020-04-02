@@ -3,112 +3,76 @@
 <webcam [luogo]="'CAMPOCATINO (FR)'"
         [altitudine]="'1800'"
         [urlSite]="'www.campocatinometeo.it'"
-        [urlWebcam]="'http://www.campocatinometeo.it/capture1.jpg'"
+        [urlWebcam]="'http://www.meteocomino.it/capture1.jpg'"
 >
 </webcam>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal"> ARPINO (FR) 500 mT
-								- </span> <span> www.meteoliri.it</span>
-    </div>
-    <a (click)="openModal('http://www.meteoliri.it/webarpino/webcam.php')"
-       data-rel="prettyPhoto"><img
-      src="http://www.meteoliri.it/webarpino/webcam.php" class="webcam"/></a>
-  </figure>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal"> ATINA (FR) 500 mT
-								- </span> <span> www.meteocomino.it </span>
-    </div>
-    <a (click)="openModal('http://www.meteocomino.it/atinacam/cam-atina.php')"
-       data-rel="prettyPhoto"><img
-      src="http://www.meteocomino.it/atinacam/cam-atina.php"
-      class="webcam"/></a></figure>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal"> ALVITO (FR) 500 mT
-								- </span> <span> www.meteocomino.it </span>
-    </div>
-    <a
-      href="https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteocomino.it%2Falvito_raspberry_cam%2Fcam-alvito.php&w=630"
-      data-rel="prettyPhoto"><img
-      src="https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteocomino.it%2Falvito_raspberry_cam%2Fcam-alvito.php&w=630"
-      class="webcam"/></a></figure>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal"> PICINISCO (FR) 700
-								mT - </span> <span> www.meteocomino.it </span>
-    </div>
-    <a href="http://www.meteoliri.it/stazione1/bannerino5.php"
-       data-rel="prettyPhoto"><img
-      src="http://www.meteoliri.it/stazione1/bannerino5.php"
-      class="webcam" alt="webcam picinisco"/></a></figure>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal"> PIGLIO (FR) 620 mT
-								- </span> <span> www.meteopalestrina.it</span>
-    </div>
-    <a
-      href="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwebcampiglio.altervista.org%2Ffoicam%2Fcam_piglio_fr%2Fwebcam.jpg&w=630"
-      data-rel="prettyPhoto"><img
-      src="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwebcampiglio.altervista.org%2Ffoicam%2Fcam_piglio_fr%2Fwebcam.jpg&w=630"
-      class="webcam"/></a></figure>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal">FILETTINO (FR) 1063
-								mt - </span> <span> www.meteoindiretta.it</span>
-    </div>
-    <a href="http://www.meteofilettino.it/albanetti/filettino4.jpg"
-       data-rel="prettyPhoto"><img
-      src="http://www.meteofilettino.it/albanetti/filettino4.jpg" class="webcam"/></a></figure>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal">COLLEPARDO (FR) 438 mt
-								- </span> <span> hellotelwifi.it</span>
+<webcam [luogo]="'ARPINO (FR)'"
+        [altitudine]="'500'"
+        [urlSite]="'www.meteoliri.it'"
+        [urlWebcam]="'http://www.meteoliri.it/webarpino/webcam.php'"
+>
+</webcam>
+<webcam [luogo]="'ATINA (FR)'"
+        [altitudine]="'500'"
+        [urlSite]="'www.meteocomino.it'"
+        [urlWebcam]="'http://www.meteocomino.it/atinacam/cam-atina.php'"
+>
+</webcam>
+<webcam [luogo]="'ALVITO (FR)'"
+        [altitudine]="'500'"
+        [urlSite]="'www.meteocomino.it'"
+        [urlWebcam]="'https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteocomino.it%2Falvito_raspberry_cam%2Fcam-alvito.php&w=630'"
+>
+</webcam>
+<webcam [luogo]="'PICINISCO (FR)'"
+        [altitudine]="'700'"
+        [urlSite]="'www.meteocomino.it'"
+        [urlWebcam]="'http://www.meteoliri.it/stazione1/bannerino5.php'"
+>
+</webcam>
+<webcam [luogo]="'PIGLIO (FR)'"
+        [altitudine]="'620'"
+        [urlSite]="'www.meteopalestrina.it'"
+        [urlWebcam]="'http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwebcampiglio.altervista.org%2Ffoicam%2Fcam_piglio_fr%2Fwebcam.jpg&w=630'"
+>
+</webcam>
+<webcam [luogo]="'FILETTINO (FR)'"
+        [altitudine]="'1063'"
+        [urlSite]="'www.meteoindiretta.it'"
+        [urlWebcam]="'http://www.meteofilettino.it/albanetti/filettino4.jpg'"
+>
+</webcam>
+<webcam [luogo]="'COLLEPARDO (FR)'"
+        [altitudine]="'438'"
+        [urlSite]="'hellotelwifi.it'"
+        [urlWebcam]="'http://www.hellotelwifi.it/collepardo/webcamcollepardo2.jpg'"
+>
+</webcam>
+<webcam [luogo]="'CAMPOSTAFFI (FR)'"
+        [altitudine]="'1806'"
+        [urlSite]="'www.meteoregionelazio.it'"
+        [urlWebcam]="'http://www.meteoregionelazio.it/webcams/campo_staffi/FI9900P_00626E85D8AA/snap/webcam.php'"
+>
+</webcam>
+<webcam [luogo]="'ALATRI (FR)'"
+        [altitudine]="'502'"
+        [urlSite]="'www.alatrimeteo.altervista.org'"
+        [urlWebcam]="'http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.alatrimeteo.altervista.org%2Fwebcam.jpg&w=630'"
+>
+</webcam>
+<webcam [luogo]="'TECCHIENA (FR)'"
+        [altitudine]="'502'"
+        [urlSite]="'www.meteotecchiena.com'"
+        [urlWebcam]="'http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteotecchiena.com%2Fwebcam%2Fscatto%2Fcam.jpg&w=630'"
+>
+</webcam>
+<webcam [luogo]="'FERENTINO (FR)'"
+        [altitudine]="'395'"
+        [urlSite]="'ferentinomet.it'"
+        [urlWebcam]="'http://www.ferentinomet.it/dahua/camera1.jpg'"
+>
+</webcam>
 
-    </div>
-    <a href="http://www.hellotelwifi.it/collepardo/webcamcollepardo2.jpg"><img
-      src="http://www.hellotelwifi.it/collepardo/webcamcollepardo2.jpg" class="webcam"/></a></figure>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal">CAMPOSTAFFI (FR)
-								1806 mt - </span> <span>www.meteoregionelazio.it</span>
-    </div>
-    <a href="http://www.meteoregionelazio.it/webcams/campo_staffi/FI9900P_00626E85D8AA/snap/webcam.php"
-       data-rel="prettyPhoto"><img
-      src="http://www.meteoregionelazio.it/webcams/campo_staffi/FI9900P_00626E85D8AA/snap/webcam.php"
-      class="webcam"/></a></figure>
-  <figure>
-    <div class="webcam-script-header">
-      <span class="content-webcam-principal"> ALATRI (FR) 502 mT</span>
-      <span> www.alatrimeteo.altervista.org</span>
-    </div>
-    <a
-      href="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.alatrimeteo.altervista.org%2Fwebcam.jpg&w=630"
-      data-rel="prettyPhoto"><img
-      src="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.alatrimeteo.altervista.org%2Fwebcam.jpg&w=630"
-      class="webcam"/></a></figure>
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal"> TECCHIENA (FR) 502
-								mT</span> <span> www.meteotecchiena.com</span>
-    </div>
-    <a
-      href="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteotecchiena.com%2Fwebcam%2Fscatto%2Fcam.jpg&w=630"
-      data-rel="prettyPhoto"><img
-      src="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteotecchiena.com%2Fwebcam%2Fscatto%2Fcam.jpg&w=630"
-      class="webcam"/></a></figure>
-
-  <figure>
-    <div class="webcam-script-header">
-							<span class="content-webcam-principal"> FERENTINO (FR) 395
-								mT</span> <span> ferentinomet.it</span>
-    </div>
-    <a
-      href="http://www.ferentinomet.it/dahua/camera1.jpg"
-      data-rel="prettyPhoto"><img
-      src="http://www.ferentinomet.it/dahua/camera1.jpg"
-      class="webcam"/></a></figure>
 
 
 
