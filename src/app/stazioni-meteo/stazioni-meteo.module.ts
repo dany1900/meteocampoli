@@ -8,6 +8,7 @@ import {StazioniMoliseComponent} from './stazioni-molise/stazioni-molise.compone
 import {StazioniReteMeteoComponent} from './stazioni-rete-meteo/stazioni-rete-meteo.component';
 import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
 import {ReteNazionaleComponent} from '../satellite/rete-nazionale/rete-nazionale.component';
+import {StazioniGeneraliComponent} from './stazioni-generali/stazioni-generali.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {ReteNazionaleComponent} from '../satellite/rete-nazionale/rete-nazionale
     StazioniReteMeteoComponent,
     StazioniMoliseComponent,
     TabStazioniComponent,
-    ReteNazionaleComponent
+    ReteNazionaleComponent,
+    StazioniGeneraliComponent
   ],
   exports: []
 })
