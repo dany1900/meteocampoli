@@ -1,7 +1,4 @@
 <p class="title-micro-section">Provincia Perugia</p>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
-<br>
-<div [hidden]="imageLoader">
 <figure>
   <div class="webcam-script-header">
     <span class="content-webcam-principal">CASCIA (PG) 653 mT - </span>
@@ -41,4 +38,27 @@
   <a href="http://webcam.casalenelparco.com/webcam.jpg" data-rel="prettyPhoto"><img
     src="http://webcam.casalenelparco.com/webcam.jpg" class="webcam"/></a>
 </figure>
-</div>
+<webcam [luogo]="'CASCIA (PG)'"
+        [altitudine]="'653'"
+        [urlSite]="'https://www.meteoindiretta.it'"
+        [urlWebcam]="'http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.bimcascia.it%2Fcurrent.jpg&w=630'"
+>
+</webcam>
+<webcam [luogo]="'GUALDO TADINO (PG)'"
+        [altitudine]="'455'"
+        [urlSite]="'https://www.meteoindiretta.it'"
+        [urlWebcam]="'http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fpalazzomancinelli.lineameteo.it%2Fwebcam2.php&w=630'"
+>
+</webcam>
+<webcam [luogo]="'MONTELAGUARDIA (PG)'"
+        [altitudine]="'493'"
+        [urlSite]="'http://montelaguardia.altervista.org'"
+        [urlWebcam]="'http://montelaguardia.altervista.org/gallery/albums/webcam/montelaguardia.jpg'"
+>
+</webcam>
+<webcam [luogo]="'NORCIA (PG)'"
+        [altitudine]="'604'"
+        [urlSite]="'http://webcam.casalenelparco.com'"
+        [urlWebcam]="'http://webcam.casalenelparco.com/webcam.jpg'"
+>
+</webcam>

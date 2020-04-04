@@ -1,52 +1,31 @@
 <p class="title-micro-section">Provincia Isernia</p>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
-<br>
-<div [hidden]="imageLoader">
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">CAPRACOTTA (IS) 1421 MT - </span>
-    <span>www.meteoinmolise.com</span>
-
-  </div>
-  <a href="http://www.meteoinmolise.com/webcam/FI9900P_00626E92391B/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E92391B/snap/webcam.php" class="webcam" [hidden]="imageLoader"
-    (load)="imageLoader = false;"/></a>
-</figure>
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">CAMPODIPIETRA (IS) 510 MT - </span>
-    <span>www.meteoinmolise.com</span>
-
-  </div>
-  <a href="http://www.meteoinmolise.com/webcam/FI9900P_00626E931900/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E931900/snap/webcam.php" class="webcam" [hidden]="imageLoader"
-    (load)="imageLoader = false;"/></a>
-</figure>
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">CASTEL SAN VINCENZO (IS) 730 MT - </span>
-    <span>www.meteoinmolise.com </span>
-  </div>
-  <a href="http://www.meteoinmolise.com/webcam/FI9901EP_00626E708459/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9901EP_00626E708459/snap/webcam.php" class="webcam"
-    [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
-</figure>
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">SAN PIETRO AVELLANA (IS) 1000 MT - </span>
-    <span>www.meteoinmolise.com </span>
-  </div>
-  <a href="http://www.meteoinmolise.com/webcam/FI9900EP_00626ED82870/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9900EP_00626ED82870/snap/webcam.php" class="webcam"
-    [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
-</figure>
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">VENAFRO (IS) 222 MT - </span>
-    <span>www.meteoinmolise.com </span>
-  </div>
-  <a href="http://www.meteoinmolise.com/webcam/FI9900P_00626E863EB1/snap/webcam.php" data-rel="prettyPhoto"><img
-    src="http://www.meteoinmolise.com/webcam/FI9900P_00626E863EB1/snap/webcam.php" class="webcam" [hidden]="imageLoader"
-    (load)="imageLoader = false;"/></a>
-</figure>
-</div>
+<webcam [luogo]="'CAPRACOTTA (IS)'"
+        [altitudine]="'1421'"
+        [urlSite]="'www.meteoinmolise.com'"
+        [urlWebcam]="'http://www.meteoinmolise.com/webcam/FI9900P_00626E92391B/snap/webcam.php'"
+>
+</webcam>
+<webcam [luogo]="'CAMPODIPIETRA (IS'"
+        [altitudine]="'510'"
+        [urlSite]="'www.meteoinmolise.com'"
+        [urlWebcam]="'ttp://www.meteoinmolise.com/webcam/FI9900P_00626E931900/snap/webcam.php'"
+>
+</webcam>
+<webcam [luogo]="'CASTEL SAN VINCENZO (IS)'"
+        [altitudine]="'730'"
+        [urlSite]="'https://www.meteoindiretta.it'"
+        [urlWebcam]="'http://www.meteoinmolise.com/webcam/FI9900P_00626E931900/snap/webcam.php'"
+>
+</webcam>
+<webcam [luogo]="'SAN PIETRO AVELLANA (IS)'"
+        [altitudine]="'1000'"
+        [urlSite]="'www.meteoinmolise.com'"
+        [urlWebcam]="'http://www.meteoinmolise.com/webcam/FI9900EP_00626ED82870/snap/webcam.php'"
+>
+</webcam>
+<webcam [luogo]="'VENAFRO (IS) '"
+        [altitudine]="'222'"
+        [urlSite]="'www.meteoinmolise.com'"
+        [urlWebcam]="'http://www.meteoinmolise.com/webcam/FI9900P_00626E863EB1/snap/webcam.php'"
+>
+</webcam>

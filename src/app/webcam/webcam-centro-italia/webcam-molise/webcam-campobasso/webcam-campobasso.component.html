@@ -1,35 +1,19 @@
 <p class="title-micro-section">Provincia Campobasso</p>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
-<br>
-<div [hidden]="imageLoader">
-  <figure>
-    <div class="webcam-script-header">
-      <span class="content-webcam-principal">CAMPOBASSO 701 MT - </span>
-      <span>www.meteoinmolise.com</span>
-
-    </div>
-    <a href="http://www.meteoinmolise.com/webcam/FI9901EP_00626E6E509A/snap/webcam.php" data-rel="prettyPhoto"><img
-      src="http://www.meteoinmolise.com/webcam/FI9901EP_00626E6E509A/snap/webcam.php" class="webcam"
-      [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
-  </figure>
-  <figure>
-    <div class="webcam-script-header">
-      <span class="content-webcam-principal">CAMPITELLO MATESE (CB) 1450 MT - </span>
-      <span>www.meteoinmolise.com</span>
-
-    </div>
-    <a href="http://www.campanialive.it/webcam/montagna/campitellomatese/pratone.jpg" data-rel="prettyPhoto"><img
-      src="http://www.campanialive.it/webcam/montagna/campitellomatese/pratone.jpg" class="webcam"
-      [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
-  </figure>
-  <figure>
-    <div class="webcam-script-header">
-      <span class="content-webcam-principal">CERCE MAGGIORE (CB) 930 MT - </span>
-      <span>www.meteoinmolise.com</span>
-
-    </div>
-    <a href="http://www.meteoinmolise.com/webcam/FI9900P_00626E8643B8/snap/webcam.php" data-rel="prettyPhoto"><img
-      src="http://www.meteoinmolise.com/webcam/FI9900P_00626E8643B8/snap/webcam.php" class="webcam"
-      [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
-  </figure>
-</div>
+<webcam [luogo]="'CAMPOBASSO (FR)'"
+        [altitudine]="'701'"
+        [urlSite]="'www.meteoinmolise.com'"
+        [urlWebcam]="'http://www.meteoinmolise.com/webcam/FI9901EP_00626E6E509A/snap/webcam.php'"
+>
+</webcam>
+<webcam [luogo]="'CAMPITELLO MATESE (CB)'"
+        [altitudine]="'1450'"
+        [urlSite]="'www.meteoinmolise.com'"
+        [urlWebcam]="'http://www.campanialive.it/webcam/montagna/campitellomatese/pratone.jpg'"
+>
+</webcam>
+<webcam [luogo]="'CERCE MAGGIORE (CB)'"
+        [altitudine]="'930'"
+        [urlSite]="'www.meteoinmolise.com'"
+        [urlWebcam]="'http://www.meteoinmolise.com/webcam/FI9900P_00626E8643B8/snap/webcam.php'"
+>
+</webcam>
