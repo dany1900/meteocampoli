@@ -1,0 +1,16 @@
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="METEO">
+    <br>
+    <ng-template matTabContent>
+      <articoli></articoli>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="GIARDINAGGIO">
+    <br>
+    <ng-template matTabContent>
+      <giardinaggio></giardinaggio>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
+

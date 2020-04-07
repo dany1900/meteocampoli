@@ -1,197 +1,135 @@
 <p class="title-micro-section">Provincia Aquila</p>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
-<br>
-<div [hidden]="imageLoader">
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">PESCASSEROLI (AQ) 1167 mt</span> <span>
-								www.pescasserolionline.it/</span></div>
-  <a
-    href="http://www.pescasserolionline.it/webcam/webcamm.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://www.pescasserolionline.it/webcam/webcamm.jpg"
-    class="webcam" [hidden]="imageLoader" (load)="imageLoader = false;"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">OPI (AQ) 1250 mT</span> <span>www.prolocopi.it</span></div>
-  <a href="http://www.prolocopi.it/webcamopi/opi_borgo.jpg"
-     data-rel="prettyPhoto"><img
-    src="http://www.prolocopi.it/webcamopi/opi_borgo.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">Lago
-								di Villetta Barrea (AQ) 900 mT</span> <span>www.mediamaint.it</span></div>
-  <a
-    href="http://www.mediamaint.it/webcambarrea/Panorama000M.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://www.mediamaint.it/webcambarrea/Panorama000M.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">LAGO
-								DI CAMPOTOSTO (AQ) 1313 mT</span> <span>www.comune.campotosto.aq.it
-							</span></div>
-  <a href="https://www.caputfrigoris.it/rete-meteo/campotosto/FI9900P_00626E69B77F/snap/webcam.php"
-     data-rel="prettyPhoto"><img
-    src="https://www.caputfrigoris.it/rete-meteo/campotosto/FI9900P_00626E69B77F/snap/webcam.php"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">Duca
-								degli Abruzzi (AQ) 2388 mT</span> <span>www.rifugioducadegliabruzzi.it</span>
 
-  </div>
-  <a
-    href="http://www.rifugioducadegliabruzzi.it/webcam/preview2.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://www.rifugioducadegliabruzzi.it/webcam/preview2.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">OVINDOLI (AQ) 1785 mt</span> <span>
-								www.ovindolimagnola.it</span></div>
-  <a
-    href="https://ovindolimagnola.it/ovindolimagnola.it/webcam05/MMI_image_05.jpg"
-    data-rel="prettyPhoto"><img
-    src="https://ovindolimagnola.it/ovindolimagnola.it/webcam05/MMI_image_05.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">Monte
-								Selva di Cocullo (AQ) 1200 mT</span> <span>www.caputfrigoris.it</span>
+<webcam [luogo]="'PESCASSEROLI (AQ)'"
+        [altitudine]="'1167'"
+        [urlSite]="'www.pescasserolionline.it'"
+        [urlWebcam]="'http://www.pescasserolionline.it/webcam/webcamm.jpg'"
+>
+</webcam>
+<webcam [luogo]="'OPI (AQ)'"
+        [altitudine]="'1250'"
+        [urlSite]="'www.prolocopi.it'"
+        [urlWebcam]="'http://www.prolocopi.it/webcamopi/opi_borgo.jpg'"
+>
+</webcam>
 
-  </div>
-  <a
-    href="http://ipcam.witel.it/img/monteselva/ipcam/01/hires/snapshot.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://ipcam.witel.it/img/monteselva/ipcam/01/hires/snapshot.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">SCANNO
-								(AQ) passo godi 1562 mt</span> <span> www.caputfrigoris.it/</span></div>
-  <a
-    href="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.caputfrigoris.it%2Fwebcam%2Fpassogodi%2Fwebcam.php&w=630"
-    data-rel="prettyPhoto"><img
-    src="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.caputfrigoris.it%2Fwebcam%2Fpassogodi%2Fwebcam.php&w=630"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">AVEZZANO
-								(AQ) 700 mt</span> <span> www.fabriziolombardi.altervista.org </span></div>
-  <a
-    href="http://ipcam.witel.it/img/avezzano/ipcam/01/hires/snapshot.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://ipcam.witel.it/img/avezzano/ipcam/01/hires/snapshot.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">Panoramica
-								sul Fucino da Trasacco M. Alto</span> <span>www.caputfrigoris.it</span>
 
-  </div>
-  <a
-    href="http://ipcam.witel.it/img/montealto/ipcam/01/hires/snapshot.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://ipcam.witel.it/img/montealto/ipcam/01/hires/snapshot.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">Trasacco
-								(AQ) 690 mT</span> <span>www.caputfrigoris.it</span></div>
-  <a
-    href="http://ipcam.witel.it/img/trasaccopellegrina/ipcam/02/hires/snapshot.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://ipcam.witel.it/img/trasaccopellegrina/ipcam/02/hires/snapshot.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">Tagliacozzo
-								Gallo (AQ) 860 mT</span> <span>www.galloditagliacozzo.it</span></div>
-  <a
-    href="http://www.galloditagliacozzo.it/webcam.php"
-    data-rel="prettyPhoto"><img
-    src="http://www.galloditagliacozzo.it/webcam.php" class="webcam"/></a>
-</figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">ROCCA
-								DI MEZZO (AQ) 1320 mt</span> <span> www.vivarovere.it/ </span></div>
-  <a
-    href="https://www.caputfrigoris.it/rete-meteo/roccadimezzo/foscam2/FI9900P_00626E6D21C1/snap/webcam.php"
-    data-rel="prettyPhoto"><img
-    src="https://www.caputfrigoris.it/rete-meteo/roccadimezzo/foscam2/FI9900P_00626E6D21C1/snap/webcam.php"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">CAMPO
-								FELICE (AQ) 1715 mt</span> <span>www.campofelice.it/</span></div>
-  <a
-    href="http://ipcam.witel.it/img/campofelice/ipcam/06/hires/snapshot.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://ipcam.witel.it/img/campofelice/ipcam/06/hires/snapshot.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">RIVISONDOLI
-								(AQ) 1300 mt</span> <span>www.comune.rivisondoli.aq.it/</span></div>
-  <a
-    href="http://www.comune.rivisondoli.aq.it/fotowebcam/piazza.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://www.comune.rivisondoli.aq.it/fotowebcam/piazza.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">L
-							'AQUILA 630 mt</span> <span> www.meteoaquilano.it/ </span></div>
-  <a
-    href="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteoaquilano.it%2Fwebcam%2Fwebcamcivita.jpg&w=630"
-    data-rel="prettyPhoto"><img
-    src="http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteoaquilano.it%2Fwebcam%2Fwebcamcivita.jpg&w=630"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">SCOPPITO
-								(AQ) 720 mt</span> <span> www.meteoliri.it </span></div>
-  <a
-    href="http://www.meteoliri.it/stazione1/webcam.php"
-    data-rel="prettyPhoto"><img
-    src="http://www.meteoliri.it/stazione1/webcam.php" class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">Campo
-								di Giove (AQ) 1100 mT</span> <span>www.wildlifemajella.com</span></div>
-  <a
-    href="http://www.wildlifemajella.com/images/webcam/cdg/cdg.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://www.wildlifemajella.com/images/webcam/cdg/cdg.jpg"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">Cappadocia
-								(AQ) 1100 mT</span> <span>www.caputfrigoris.it</span></div>
-  <a
-    href="http://ipcam.witel.it/img/cappadocia/ipcam/01/hires/snapshot.jpg"
-    data-rel="prettyPhoto"><img
-    src="http://ipcam.witel.it/img/cappadocia/ipcam/01/hires/snapshot.jpg"
-    class="webcam"/></a></figure> <strong><h3>Provincia Pescara</h3></strong>
-<figure>
-  <div class="webcam-script-header">
-							<span class="content-webcam-principal">CARAMANICO
-								TERME (PE) 650 Mt</span> <span>locandadelbarone.it</span></div>
-  <a
-    href="https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2F82.104.87.176%2Fcgi-bin%2Fimage.jpg&w=630"><img
-    src="https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2F82.104.87.176%2Fcgi-bin%2Fimage.jpg&w=630"
-    class="webcam"/></a></figure>
-<figure>
-  <div class="webcam-script-header">
-    <span class="content-webcam-principal">ROCCACARAMANICO (PE) 867 mt</span>
-    <span>www.associazioneroccacaramanico.it/</span>
+<webcam [luogo]="'Lago di Villetta Barrea (AQ)'"
+        [altitudine]="'900'"
+        [urlSite]="'www.mediamaint.it'"
+        [urlWebcam]="'http://www.mediamaint.it/webcambarrea/Panorama000M.jpg'"
+>
+</webcam>
 
-  </div>
-  <a
-    href="http://www.caputfrigoris.altervista.org/_altervista_ht/rete-meteo/roccacaramanico/img_web_rocca.jpg?"><img
-    src="http://www.caputfrigoris.altervista.org/_altervista_ht/rete-meteo/roccacaramanico/img_web_rocca.jpg?"
-    class="webcam"/></a></figure>
-</div>
+<webcam [luogo]="'LAGO DI CAMPOTOSTO (AQ)'"
+        [altitudine]="'1313'"
+        [urlSite]="'www.comune.campotosto.aq.it'"
+        [urlWebcam]="'https://www.caputfrigoris.it/rete-meteo/campotosto/FI9900P_00626E69B77F/snap/webcam.php'"
+>
+</webcam>
+
+<webcam [luogo]="'Duca degli Abruzzi (AQ'"
+        [altitudine]="'2388'"
+        [urlSite]="'www.rifugioducadegliabruzzi.it'"
+        [urlWebcam]="'http://www.rifugioducadegliabruzzi.it/webcam/preview2.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'OVINDOLI (AQ)'"
+        [altitudine]="'1785'"
+        [urlSite]="'www.ovindolimagnola.it'"
+        [urlWebcam]="'https://ovindolimagnola.it/ovindolimagnola.it/webcam05/MMI_image_05.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'Monte Selva di Cocullo (AQ)'"
+        [altitudine]="'1200'"
+        [urlSite]="'www.caputfrigoris.it'"
+        [urlWebcam]="'http://ipcam.witel.it/img/monteselva/ipcam/01/hires/snapshot.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'SCANNO (AQ) passo godi'"
+        [altitudine]="'1562'"
+        [urlSite]="'www.caputfrigoris.it'"
+        [urlWebcam]="'http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.caputfrigoris.it%2Fwebcam%2Fpassogodi%2Fwebcam.php&w=630'"
+>
+</webcam>
+
+<webcam [luogo]="'AVEZZANO (AQ) 700'"
+        [altitudine]="'700'"
+        [urlSite]="'www.fabriziolombardi.altervista.org'"
+        [urlWebcam]="'http://ipcam.witel.it/img/avezzano/ipcam/01/hires/snapshot.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'Panoramica sul Fucino da Trasacco M. Alto'"
+        [altitudine]="'???'"
+        [urlSite]="'www.caputfrigoris.it'"
+        [urlWebcam]="'http://ipcam.witel.it/img/montealto/ipcam/01/hires/snapshot.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'Trasacco (AQ)'"
+        [altitudine]="'690'"
+        [urlSite]="'www.caputfrigoris.it'"
+        [urlWebcam]="'http://ipcam.witel.it/img/trasaccopellegrina/ipcam/02/hires/snapshot.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'Tagliacozzo Gallo (AQ)'"
+        [altitudine]="'860'"
+        [urlSite]="'www.galloditagliacozzo.it'"
+        [urlWebcam]="'http://www.galloditagliacozzo.it/webcam.php'"
+>
+</webcam>
+
+<webcam [luogo]="'ROCCA DI MEZZO (AQ)'"
+        [altitudine]="'1320'"
+        [urlSite]="'www.vivarovere.it'"
+        [urlWebcam]="'https://www.caputfrigoris.it/rete-meteo/roccadimezzo/foscam2/FI9900P_00626E6D21C1/snap/webcam.php'"
+>
+</webcam>
+
+<webcam [luogo]="'CAMPO FELICE (AQ)'"
+        [altitudine]="'1715'"
+        [urlSite]="'www.campofelice.it'"
+        [urlWebcam]="'http://ipcam.witel.it/img/campofelice/ipcam/06/hires/snapshot.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'RIVISONDOLI (AQ)'"
+        [altitudine]="'1300'"
+        [urlSite]="'www.comune.rivisondoli.aq.it'"
+        [urlWebcam]="'http://www.comune.rivisondoli.aq.it/fotowebcam/piazza.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'L AQUILA'"
+        [altitudine]="'630'"
+        [urlSite]="'www.meteoaquilano.it'"
+        [urlWebcam]="'http://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteoaquilano.it%2Fwebcam%2Fwebcamcivita.jpg&w=630'"
+>
+</webcam>
+
+<webcam [luogo]="'SCOPPITO (AQ)'"
+        [altitudine]="'720'"
+        [urlSite]="'www.meteoliri.it'"
+        [urlWebcam]="'http://www.meteoliri.it/stazione1/webcam.php'"
+>
+</webcam>
+
+<webcam [luogo]="'Campo di Giove (AQ)'"
+        [altitudine]="'1100'"
+        [urlSite]="'www.wildlifemajella.com'"
+        [urlWebcam]="'http://www.wildlifemajella.com/images/webcam/cdg/cdg.jpg'"
+>
+</webcam>
+
+<webcam [luogo]="'Cappadocia (AQ)'"
+        [altitudine]="'1100'"
+        [urlSite]="'www.caputfrigoris.it'"
+        [urlWebcam]="'http://ipcam.witel.it/img/cappadocia/ipcam/01/hires/snapshot.jpg'"
+>
+</webcam>
+

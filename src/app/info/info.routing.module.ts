@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TabInfoComponent} from './tab-info/tab-info.component';
+import {TabArticoliComponent} from './tab-articoli/tab-articoli.component';
+import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquinamento-rimedi.component';
 
 
 @NgModule({
@@ -18,13 +20,6 @@ import {TabInfoComponent} from './tab-info/tab-info.component';
             }
           },
           {
-            path: 'articoli',
-            component: TabInfoComponent,
-            data: {
-              title: 'Articoli - Meteo Campoli'
-            }
-          },
-          {
             path: 'curiosita',
             component: TabInfoComponent,
             data: {
@@ -32,12 +27,35 @@ import {TabInfoComponent} from './tab-info/tab-info.component';
             }
           },
           {
-            path: 'ieffemeridi',
+            path: 'effemeridi',
             component: TabInfoComponent,
             data: {
               title: 'Orari Alba Tramonto - Meteo Campoli'
             }
           },
+          {
+            path: 'articoli',
+            component: TabInfoComponent,
+            data: {
+              title: 'Articoli - Meteo Campoli'
+            },
+            children: [
+              {
+                path: 'inquinamento-rimedi',
+                component: InquinamentoRimediComponent,
+                data: {
+                  title: 'Articolo Inquinamento - Meteo Campoli'
+                }
+              },
+              {
+                path: 'giardinaggio/ulivi',
+                component: TabArticoliComponent,
+                data: {
+                  title: 'Articolo Ulivi - Meteo Campoli'
+                }
+              },
+            ]
+          }
         ],
       },
     ]),

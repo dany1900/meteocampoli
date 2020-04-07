@@ -2,13 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
-  selector: 'tab-info',
-  templateUrl: './tab-info.component.html',
-  styleUrls: ['./tab-info.component.css']
+  selector: 'tab-articoli',
+  templateUrl: './tab-articoli.component.html',
+  styleUrls: ['./tab-articoli.component.css']
 })
-export class TabInfoComponent implements OnInit {
+export class TabArticoliComponent implements OnInit {
 
   id: number;
+  isUlivi = false;
   isInquinamento = false;
 
   constructor(private router: Router,
@@ -19,17 +20,14 @@ export class TabInfoComponent implements OnInit {
         const paramTab = this.route.firstChild.routeConfig.path;
 
         switch (paramTab) {
-          case 'articoli':
+          case 'meteo':
             this.id = 0;
             break;
-          case 'curiosita':
+          case 'giardinaggio':
             this.id = 1;
             break;
-          case 'effemeridi':
+          case 'inquinamento-rimedi':
             this.id = 2;
-            break;
-          case 'articoli/inquinamento-rimedi':
-            this.id = 3;
             this.isInquinamento = true;
             break;
           default:
@@ -44,7 +42,7 @@ export class TabInfoComponent implements OnInit {
   }
 
   tabSelectionChanged(id) {
-    if (id === 3) {
+    if (id === 2) {
       this.isInquinamento = true;
     }
   }

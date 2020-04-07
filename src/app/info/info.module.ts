@@ -7,6 +7,8 @@ import {ArticoliComponent} from './articoli/articoli.component';
 import {EffemeridiComponent} from './effemeridi/effemeridi.component';
 import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquinamento-rimedi.component';
 import {InfoAngularComponent} from '../info-angular/info-angular.component';
+import {TabArticoliComponent} from './tab-articoli/tab-articoli.component';
+import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import {InfoAngularComponent} from '../info-angular/info-angular.component';
     EffemeridiComponent,
     TabInfoComponent,
     InquinamentoRimediComponent,
-    InfoAngularComponent
+    InfoAngularComponent,
+    TabArticoliComponent,
+    GiardinaggioComponent
   ],
   exports: []
 })

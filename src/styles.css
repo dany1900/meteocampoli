@@ -287,10 +287,6 @@ a.nivo-prevNav {
   cursor: pointer;
 }
 
-.hidden {
-  display: none;
-}
-
 .center {
   text-align: center;
 }
@@ -462,7 +458,7 @@ a.nivo-prevNav {
 }
 
 .meteonetwork-sticker {
-  width: 440px;
+  width: 470px;
   height: 155px;
 }
 
@@ -525,6 +521,11 @@ a.nivo-prevNav {
   position: relative;
   margin-left: 45%;
   margin-right: 50%;
+}
+
+.image-gallery {
+  width: 557px;
+  height: 246px !important;
 }
 
 /*

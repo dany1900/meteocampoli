@@ -1,27 +1,14 @@
-<p class="title-micro-section">Provincia Pescara</p>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
 <br>
-<div [hidden]="imageLoader">
-<figure>
-  <figcaption>
-    <strong>CARAMANICO TERME (PE) 650 Mt</strong>
-    <span>locandadelbarone.it</span>
-
-  </figcaption>
-  <a href="https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2F82.104.87.176%2Fcgi-bin%2Fimage.jpg&w=630"><img
-    src="https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2F82.104.87.176%2Fcgi-bin%2Fimage.jpg&w=630"
-    class="webcam" [hidden]="imageLoader" (load)="imageLoader = false;"/></a>
-</figure>
-
-
-  <figure>
-    <figcaption>
-      <strong>ROCCACARAMANICO (PE) 867 mt</strong>
-      <span>www.associazioneroccacaramanico.it/</span>
-
-    </figcaption>
-    <a href="http://www.associazioneroccacaramanico.it/images/webcam/camroccacaramanico_1.jpg"><img
-      src="http://www.associazioneroccacaramanico.it/images/webcam/camroccacaramanico_1.jpg" class="webcam"
-    /></a>
-</figure>
-</div>
+<p class="title-micro-section">Provincia Pescara</p>
+<webcam [luogo]="'CARAMANICO TERME (PE)'"
+        [altitudine]="'650'"
+        [urlSite]="'locandadelbarone.it'"
+        [urlWebcam]="'https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2F82.104.87.176%2Fcgi-bin%2Fimage.jpg&w=630'"
+>
+</webcam>
+<webcam [luogo]="'ROCCACARAMANICO (PE)'"
+        [altitudine]="'867'"
+        [urlSite]="'locandadelbarone.it'"
+        [urlWebcam]="'http://www.associazioneroccacaramanico.it/images/webcam/camroccacaramanico_1.jpg'"
+>
+</webcam>

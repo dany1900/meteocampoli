@@ -15,3 +15,22 @@ mat-dialog-container#modal-component {
   background-color: #145214;
   border: 1px solid black;
 }
+
+.thumbnail {
+  display: block;
+  /* padding: 4px; */
+  margin-bottom: 20px;
+  line-height: 1.42857143;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  -webkit-transition: border .2s ease-in-out;
+  -o-transition: border .2s ease-in-out;
+  transition: border .2s ease-in-out;
+  /* border-radius: 100px; */
+  /* border-radius: 30px; */
+  border: 15px;
+  border-style: solid;
+  border-color: #ffffff;
+  margin-right: 35px;
+}
