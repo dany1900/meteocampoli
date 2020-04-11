@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'tab-info',
@@ -9,43 +8,11 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 export class TabInfoComponent implements OnInit {
 
   id: number;
-  isInquinamento = false;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute) {
-
-    this.router.events.filter(evt => evt instanceof NavigationEnd)
-      .subscribe((event) => {
-        const paramTab = this.route.firstChild.routeConfig.path;
-
-        switch (paramTab) {
-          case 'articoli':
-            this.id = 0;
-            break;
-          case 'curiosita':
-            this.id = 1;
-            break;
-          case 'effemeridi':
-            this.id = 2;
-            break;
-          case 'articoli/inquinamento-rimedi':
-            this.id = 3;
-            this.isInquinamento = true;
-            break;
-          default:
-            this.id = 0;
-            break;
-        }
-        this.tabSelectionChanged(this.id);
-      });
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
-  tabSelectionChanged(id) {
-    if (id === 3) {
-      this.isInquinamento = true;
-    }
-  }
 }

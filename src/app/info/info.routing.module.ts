@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TabInfoComponent} from './tab-info/tab-info.component';
-import {TabArticoliComponent} from './tab-articoli/tab-articoli.component';
 import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquinamento-rimedi.component';
 
 
@@ -10,15 +9,7 @@ import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquin
     RouterModule.forChild([
       {
         path: '',
-        component: TabInfoComponent,
         children: [
-          {
-            path: 'info',
-            component: TabInfoComponent,
-            data: {
-              title: 'Info e Curiosita - Qualita Aria - Orari Alba Tramonto'
-            }
-          },
           {
             path: 'curiosita',
             component: TabInfoComponent,
@@ -35,27 +26,36 @@ import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquin
           },
           {
             path: 'articoli',
-            component: TabInfoComponent,
             data: {
-              title: 'Articoli - Meteo Campoli'
+              title: 'Articoli - Meteo Campoli',
             },
             children: [
               {
-                path: 'inquinamento-rimedi',
+                path: 'meteo',
+                component: TabInfoComponent,
+                data: {
+                  title: 'Articoli - meteo - Meteo Campoli',
+                  breadcrumb: 'meteo'
+                },
+              },
+              {
+                path: 'meteo/inquinamento-rimedi',
                 component: InquinamentoRimediComponent,
                 data: {
-                  title: 'Articolo Inquinamento - Meteo Campoli'
+                  title: 'Articolo Inquinamento - Meteo Campoli',
+                  breadcrumb: 'inquinamento-rimedi'
                 }
               },
               {
-                path: 'giardinaggio/ulivi',
-                component: TabArticoliComponent,
+                path: 'giardinaggio',
+                component: TabInfoComponent,
                 data: {
-                  title: 'Articolo Ulivi - Meteo Campoli'
-                }
+                  title: 'Articoli - Giardinaggio - Meteo Campoli',
+                  breadcrumb: 'giardinaggio'
+                },
               },
-            ]
-          }
+            ],
+          },
         ],
       },
     ]),

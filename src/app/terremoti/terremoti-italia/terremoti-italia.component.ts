@@ -12,6 +12,7 @@ export class TerremotiItaliaComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
+  imageLoader = false;
 
   constructor(private seo: SEOService) {
     this.title = 'Terremoti Elenco Italia - Meteo Campoli';

@@ -31,8 +31,8 @@ export class WebcamComponent implements OnInit {
     this.matDialog.open(ModalComponent, dialogConfig);
   }
 
-  errorHandler(event) {
-    this.urlWebcam = 'www.meteocampoli.altervista.org/assets/img/webcam-offline.png';
+  errorHandler() {
+    this.urlWebcam = './assets/img/webcam-offline.png';
     this.imageLoader = false;
   }
 

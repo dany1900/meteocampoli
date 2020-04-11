@@ -25,7 +25,8 @@ export class ArticoliComponent implements OnInit {
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
-  ngOnInit(): void {
+
+  ngOnInit() {
   }
 
 }

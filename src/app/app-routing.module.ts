@@ -15,6 +15,7 @@ export const routes: Routes = [
   {path: 'webcam', loadChildren: './webcam/webcam.module#WebCamModule'},
   {path: 'terremoti', loadChildren: './terremoti/terremoti.module#TerremotiModule'},
   {path: 'info', loadChildren: './info/info.module#InfoModule'},
+  {path: 'articoli', loadChildren: './articoli/articoli.module#ArticoliModule'},
   {path: '**', component: PageErrorComponent}
 ];
 

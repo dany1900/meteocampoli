@@ -9,7 +9,7 @@
     </div>
     <a (click)="openModal(urlWebcam)" data-rel="prettyPhoto"><img
       [src]="urlWebcam" class="webcam" [hidden]="imageLoader"
-      (load)="imageLoader = false;" (error)="errorHandler($event)"/></a>
+      (load)="imageLoader = false;" (error)="errorHandler()"/></a>
   </figure>
 </div>
 

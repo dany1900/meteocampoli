@@ -15,7 +15,7 @@ import {SEOService} from './service/seoservice.service';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {PageErrorComponent} from './page-error/page-error.component';
 import {UtiliyService} from './service/utiliy.service';
-
+import {BreadcrumbModule} from 'angular-crumbs';
 
 @NgModule({
 
@@ -35,10 +35,10 @@ import {UtiliyService} from './service/utiliy.service';
     FormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BreadcrumbModule
   ],
-  exports: [
-  ],
+  exports: [],
   providers: [SEOService, UtiliyService],
   bootstrap: [AppComponent]
 })

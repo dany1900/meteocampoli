@@ -5,10 +5,10 @@ import {TabInfoComponent} from './tab-info/tab-info.component';
 import {CuriositaComponent} from './curiosita/curiosita.component';
 import {ArticoliComponent} from './articoli/articoli.component';
 import {EffemeridiComponent} from './effemeridi/effemeridi.component';
-import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquinamento-rimedi.component';
 import {InfoAngularComponent} from '../info-angular/info-angular.component';
 import {TabArticoliComponent} from './tab-articoli/tab-articoli.component';
 import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.component';
+import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquinamento-rimedi.component';
 
 
 @NgModule({
@@ -22,10 +22,10 @@ import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.compon
     ArticoliComponent,
     EffemeridiComponent,
     TabInfoComponent,
-    InquinamentoRimediComponent,
     InfoAngularComponent,
     TabArticoliComponent,
-    GiardinaggioComponent
+    GiardinaggioComponent,
+    InquinamentoRimediComponent
   ],
   exports: []
 })

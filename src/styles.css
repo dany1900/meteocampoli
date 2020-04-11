@@ -528,6 +528,42 @@ a.nivo-prevNav {
   height: 246px !important;
 }
 
+.terremoti-frame {
+  width: 928px;
+  height: 1240px;
+  border-radius: 20px;
+  border: 10px;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+.info-text {
+  text-align: justify;
+  font-size: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #f7f4f4;
+  border-radius: 20px;
+  border: 18px;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+.terremoti-mondo {
+  border-radius: 20px;
+  border: 18px;
+  border-style: solid;
+  border-color: #ffffff;
+  width: 900px;
+}
+
+.button-indietro {
+  text-align: left;
+  cursor: pointer !important;
+  margin-right: 820px;
+
+}
+
 /*
 @media screen (max-width: 900px) {
   h3 {

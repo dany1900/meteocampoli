@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {ModalComponent} from '../../modal/modal.component';
 
 @Component({
   selector: 'immagini',
@@ -15,11 +16,6 @@ export class ImmaginiComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
-  myThumbnail = 'https://wittlock.github.io/ngx-image-zoom/assets/thumb.jpg';
-  myFullresImage = 'https://wittlock.github.io/ngx-image-zoom/assets/fullres.jpg';
-  enableZoom: Boolean = true;
-  previewImageSrc = 'https://wittlock.github.io/ngx-image-zoom/assets/thumb.jpg';
-  zoomImageSrc = 'https://wittlock.github.io/ngx-image-zoom/assets/thumb.jpg';
 
 
   constructor(private seo: SEOService, public matDialog: MatDialog) {
@@ -32,6 +28,15 @@ export class ImmaginiComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  openModal(url: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.id = 'modal-component';
+    dialogConfig.width = '60%';
+    dialogConfig.data = url;
+    dialogConfig.autoFocus = true;
+    this.matDialog.open(ModalComponent, dialogConfig);
   }
 
 }

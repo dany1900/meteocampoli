@@ -34,10 +34,10 @@
         <li><a href="http://www.idrografico.roma.it/annali/" title="statistiche stazione meteo san pancrazio"
                target="_blank">Statistiche Campoli San Pancrazio (680mt)</a></li>
         <li class="divider"></li>
-        <li><a href="http://www.arsial.regione.lazio.it/portalearsial/agrometeo/D3.asp?anno=16&codice=FR13SIE&misura=8"
+        <li><a href="http://sre.altervista.org/records/"
                title="statistiche stazione meteo arpino" target="_blank">Statistiche Arpino (525mt)</a></li>
         <li class="divider"></li>
-        <li><a href="http://www.arsial.regione.lazio.it/portalearsial/agrometeo/D3.asp?anno=16&codice=FR03SPE&misura=8"
+        <li><a href="http://www.arsial.regione.lazio.it/portalearsial/agrometeo/D3.asp?anno=16&codice=FR13SIE&misura=8"
                title="statistiche stazione meteo alvito" target="_blank">Statistiche Alvito (391mt)</a></li>
         <li class="divider"></li>
         <li><a href="http://www.meteonetwork.it/rete/" title="statistiche stazioni meteonetwork" target="_blank">Statistiche
@@ -65,7 +65,7 @@
         <li><a [routerLink]="['/stazioni-meteo/rete-meteo']" title="retemeteo">Rete Meteo</a></li>
         <li class="divider"></li>
         <li><a href="http://www.caputfrigoris.it/rete-meteo.htm" title="stazioni meteo caputfrigoris" target="_blank">Temperature
-          Caput Frigoris</a></li>
+          Montagne</a></li>
       </ul>
     </div>
 
@@ -155,12 +155,13 @@
 
     <!-- Large button group -->
     <div class="btn-group-vertical">
-      <a type="button" class="btn btn-pulup btn-lg" routerLink="info/articoli" title="Info & Curiosita">Curiosita</a>
+      <a type="button" class="btn btn-pulup btn-lg" routerLink="info/articoli/meteo"
+         title="Info & Curiosita">Curiosita</a>
       <button type="button" class="btn btn-puldown " data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">
-        <li><a routerLink="info/articoli" title="articoli meteo"> Articoli</a></li>
+        <li><a routerLink="info/articoli/meteo" title="articoli meteo"> Articoli</a></li>
         <li class="divider"></li>
         <li><a routerLink="info/curiosita" title="curiosita meteo">Curiosita</a></li>
         <li class="divider"></li>

@@ -1,22 +1,15 @@
+<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
 <div class="center">
-
-
-  <i class="title-section">Lista aggiornata dei terremoti - fonte INGV</i>
-  <div
-    style='float:left; text-align:center; background:#EBEBE8; border:1px solid; border-radius:0.5em 0.5em 0.5em 0.5em; padding:5px 5px 0;'>
-    <iframe src="http://meteocampoli.altervista.org/terremotiingv.html" width="928" height="1240" scrolling="No"
-            frameborder="no" marginheight="0px" marginwidth="0px"></iframe>
-  </div>
+  <p class="title-micro-section">Lista aggiornata dei terremoti - fonte INGV</p>
+  <iframe src="http://meteocampoli.altervista.org/terremotiingv.html" class="terremoti-frame" [hidden]="imageLoader"
+          (load)="imageLoader = false;"></iframe>
+</div>
   <br>
-
-  <br>
-
-  <i class="title-micro-section"> Mappa Sismica Italia</i>
-  <img src="http://meteocampoli.altervista.org/images/mappa-sismica-italia.jpg" width="528" height="580"
+  <p class="title-micro-section"> Mappa Sismica Italia</p>
+  <img src='./assets/img/mappa-sismica.png'
        alt="mappa rischio sismico">
   <br>
-
 </div>
-
-
 <br>
