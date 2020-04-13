@@ -8,13 +8,17 @@ import {EffemeridiComponent} from './effemeridi/effemeridi.component';
 import {InfoAngularComponent} from '../info-angular/info-angular.component';
 import {TabArticoliComponent} from './tab-articoli/tab-articoli.component';
 import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.component';
-import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquinamento-rimedi.component';
+import {InquinamentoRimediComponent} from './articoli/meteo/inquinamento-rimedi/inquinamento-rimedi.component';
+import {UliviComponent} from './articoli/giardinaggio/ulivi/ulivi.component';
+import {PescheComponent} from './articoli/giardinaggio/pesche/pesche.component';
+import {VitiComponent} from './articoli/giardinaggio/viti/viti.component';
+import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche.component';
 
 
 @NgModule({
   imports: [
     InfoRoutingModule,
-    SharedModule
+    SharedModule,
   ],
 
   declarations: [
@@ -25,7 +29,11 @@ import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquin
     InfoAngularComponent,
     TabArticoliComponent,
     GiardinaggioComponent,
-    InquinamentoRimediComponent
+    InquinamentoRimediComponent,
+    UliviComponent,
+    PescheComponent,
+    VitiComponent,
+    AlbicoccheComponent
   ],
   exports: []
 })

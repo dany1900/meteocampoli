@@ -1,13 +1,18 @@
-<p class="header-macro-section">Inquinamento aria - rimedi naturali</p>
+<p class="header-macro-section">
+  <button class="btn btn-primary button-indietro" title="Indietro" (click)="indietro()">&laquo; ARTICOLI</button>
+  Inquinamento aria - rimedi naturali
+</p>
 <br>
-<p class="info-text">L'inquinamento dell'aria sulle aree notoriamente più soggette sta acquisendo sempre
+<br>
+<p class="testo-articoli">L'inquinamento dell'aria sulle aree notoriamente più soggette sta acquisendo sempre
   maggior importanza.
   La pianura padana è in assoluto il territorio italiano dove il problema si presenta in modo più consistente, ma
   anche altre zone orografichamente soggette ne risentono in tutta la penisola.
   Un forte contributo arriva direttamente dalle condizioni meteorologiche <b>(stabilità e scarso rimescolamento della
     bassa troposfera)</b>.
   L'accumulo di inquinanti deriva - come detto - <b>da uno scarso o nullo rimescolamento dell'aria nei primi 600-1000m
-    di colonna d'aria </b>, quindi in bassa troposfera. E' il tipico caso delle <b>situazioni anticicloniche</b>. Un
+    di colonna d'aria </b>, quindi in bassa troposfera. E' il tipico caso delle <b>situazioni anticicloniche</b> (tante
+  giornate con clima stabile consecutive). Un
   provvidenziale rimescolamento può arrivare grazie all'incremento della ventilazione nei bassi strati che quindi
   aiuta a "rompere il tappo" che di fatto va ad imprigionare gli inquinanti negli strati troposferici prossimi al
   suolo (quindi dove noi viviamo).
@@ -28,11 +33,13 @@
 
   Ecco l'elenco dei capoluoghi italiani piu inquinati
 </p>
-  <br>
+<br>
 <div class="center">
   <img src="https://citynews-today.stgy.ovh/~media/43861334588437/1-72-53.jpg">
 </div>
 
 <br>
-<button class="btn btn-primary button-indietro" title="Indietro" (click)="indietro()"> INDIETRO</button>
-
+<button class="btn btn-primary button-indietro" title="Indietro" (click)="indietro()">&laquo; INDIETRO</button>
+<button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+  <i class="fa fa-chevron-up"></i>
+</button>

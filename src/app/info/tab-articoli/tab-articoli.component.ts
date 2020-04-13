@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
+import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
 
 @Component({
   selector: 'tab-articoli',
@@ -9,10 +9,12 @@ export class TabArticoliComponent implements OnInit, OnChanges {
 
   id: number;
 
-  constructor() {
+  constructor(private myElement: ElementRef) {
   }
 
   ngOnInit(): void {
+    const el = this.myElement.nativeElement.querySelector('mat-tab-group');
+    el.scrollIntoView({behavior: 'smooth'});
   }
 
   ngOnChanges() {

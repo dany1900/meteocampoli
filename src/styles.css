@@ -537,16 +537,17 @@ a.nivo-prevNav {
   border-color: #ffffff;
 }
 
-.info-text {
+.testo-articoli {
   text-align: justify;
   font-size: 18px;
   margin-left: 10px;
   margin-right: 10px;
   background-color: #f7f4f4;
   border-radius: 20px;
-  border: 18px;
+  border: 20px;
   border-style: solid;
   border-color: #ffffff;
+  padding: 8px 8px 8px 8px;
 }
 
 .terremoti-mondo {
@@ -560,8 +561,12 @@ a.nivo-prevNav {
 .button-indietro {
   text-align: left;
   cursor: pointer !important;
-  margin-right: 820px;
+  margin-right: 780px;
+}
 
+.img-article {
+  width: 244px;
+  height: 170px;
 }
 
 /*

@@ -1,7 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TabInfoComponent} from './tab-info/tab-info.component';
-import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquinamento-rimedi.component';
+import {InquinamentoRimediComponent} from './articoli/meteo/inquinamento-rimedi/inquinamento-rimedi.component';
+import {UliviComponent} from './articoli/giardinaggio/ulivi/ulivi.component';
+import {VitiComponent} from './articoli/giardinaggio/viti/viti.component';
+import {PescheComponent} from './articoli/giardinaggio/pesche/pesche.component';
+import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche.component';
 
 
 @NgModule({
@@ -42,16 +46,40 @@ import {InquinamentoRimediComponent} from './articoli/inquinamento-rimedi/inquin
                 path: 'meteo/inquinamento-rimedi',
                 component: InquinamentoRimediComponent,
                 data: {
-                  title: 'Articolo Inquinamento - Meteo Campoli',
+                  title: 'Articoli - Inquinamento Aria - Meteo Campoli',
                   breadcrumb: 'inquinamento-rimedi'
                 }
               },
               {
-                path: 'giardinaggio',
-                component: TabInfoComponent,
+                path: 'giardinaggio/ulivi',
+                component: UliviComponent,
                 data: {
-                  title: 'Articoli - Giardinaggio - Meteo Campoli',
-                  breadcrumb: 'giardinaggio'
+                  title: 'Articoli - Ulivi - Meteo Campoli',
+                  breadcrumb: 'ulivi'
+                },
+              },
+              {
+                path: 'giardinaggio/viti',
+                component: VitiComponent,
+                data: {
+                  title: 'Articoli - Viti - Meteo Campoli',
+                  breadcrumb: 'viti'
+                },
+              },
+              {
+                path: 'giardinaggio/pesche',
+                component: PescheComponent,
+                data: {
+                  title: 'Articoli - Pesche - Meteo Campoli',
+                  breadcrumb: 'pesche'
+                },
+              },
+              {
+                path: 'giardinaggio/albicocche',
+                component: AlbicoccheComponent,
+                data: {
+                  title: 'Articoli - Albicocche - Meteo Campoli',
+                  breadcrumb: 'albicocche'
                 },
               },
             ],
