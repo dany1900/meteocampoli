@@ -523,6 +523,13 @@ a.nivo-prevNav {
   margin-right: 50%;
 }
 
+.mat-dialog-container {
+  border-radius: 20px !important;
+  border: 8px;
+  border-style: solid;
+  border-color: white;
+}
+
 .image-gallery {
   width: 557px;
   height: 246px !important;
