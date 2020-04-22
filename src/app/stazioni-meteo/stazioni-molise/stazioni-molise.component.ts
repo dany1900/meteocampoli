@@ -27,7 +27,7 @@ export class StazioniMoliseComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.meteonetwork-sticker');
+    const el = this.myElement.nativeElement.querySelector('.molise-sticker');
     el.scrollIntoView();
   }
 
