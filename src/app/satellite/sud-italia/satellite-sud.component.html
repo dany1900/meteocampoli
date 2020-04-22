@@ -5,6 +5,10 @@
 <iframe class="radar" src="http://cdn-radar.ilmeteo.it/italy.gif?8757865" style="width: 574px; height: 739px;"
         scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px" [hidden]="imageLoader"
         (load)="imageLoader = false;"></iframe>
+  <br>
+  <button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+    <i class="fa fa-chevron-up"></i>
+  </button>
 </div>
 <br>
 <br>

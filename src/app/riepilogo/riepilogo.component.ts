@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
+import {Router} from '@angular/router';
+import {ViewportScroller} from '@angular/common';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class RiepilogoComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'Statistiche Stazione Meteo Campoli - Riepilogo Dati';
     this.description = 'Statistiche complessive della stazione meteo di Campoli Appennino posta a 500mt. Completo di tutti i dati giornalieri,mensili,annuali e grafici.';
     this.keywords = 'statistiche stazione meteo campoli, riepilogo stazione meteo campoli, statistiche meteo campoli, riepilogo dati stazione meteo campoli, Stazione meteo campoli appennino';
@@ -27,5 +29,17 @@ export class RiepilogoComponent implements OnInit {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('iframe');
+    el.scrollIntoView();
   }
+
+  indietro(): void {
+    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
+  }
+
+
 }

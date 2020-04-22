@@ -33,7 +33,7 @@ export class ImmaginiComponent implements OnInit {
   openModal(url: string) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.id = 'modal-component';
-    dialogConfig.width = '60%';
+    dialogConfig.width = '100%';
     dialogConfig.data = url;
     dialogConfig.autoFocus = true;
     this.matDialog.open(ModalComponent, dialogConfig);

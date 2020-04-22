@@ -1,8 +1,9 @@
-<p class="title-micro-section">Radar Precipitazioni Emilia Romagna</p>
+<br>
 <mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
-<img class="radar" src="http://www.arpa.emr.it/sim/datiiningresso/Immagini/Radar/nowcast.png"
+  <p class="title-micro-section">Radar Precipitazioni Emilia Romagna</p>
+  <img class="radar" src="http://www.arpa.emr.it/sim/datiiningresso/Immagini/Radar/nowcast.png"
      alt="Radar Precipitazioni Emilia Romagna" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px"
      [hidden]="imageLoader" (load)="imageLoader = false;">
 <br>
@@ -27,6 +28,8 @@
 <iframe class="radar" src="http://www.vallemuricana.it/veneto_teolo250km.php"
         alt="Radar Precipitazioni Nord ultime 24H Zoom" scrolling="No" frameborder="no" marginheight="0px"
         marginwidth="0px"></iframe>
+  <br>
+  <button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+    <i class="fa fa-chevron-up"></i>
+  </button>
 </div>
-<br>
-<br>

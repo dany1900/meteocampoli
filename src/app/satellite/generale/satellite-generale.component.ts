@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
+import {ViewportScroller} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'satellite-generale',
@@ -17,7 +19,7 @@ export class SatelliteGeneraleComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli';
     this.description = 'Monitoraggio completo del meteo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.';
     this.keywords = 'satellite meteo campoli, radar meteo campoli, radar precipitazioni meteo campoli, radar fulmini meteo campoli, radar precipitazioni zoom, radar pioggia meteo campoli';
@@ -27,6 +29,13 @@ export class SatelliteGeneraleComponent implements OnInit {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.radar');
+    el.scrollIntoView();
+  }
+
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 

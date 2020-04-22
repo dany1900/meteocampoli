@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
+import {ViewportScroller} from '@angular/common';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class WebCamLimitrofeComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'Webcam Valle di Comino - Frosinone - Meteo Campoli';
     this.description = 'Webcam della valle di comino e del centro italia montano ordinate per regione e localita. Descrizione e altitudine facilmente visualizzabili. Focus sul Lazio e Abruzzo.';
     this.keywords = 'webcam, webcam limitrofe, webcam lazio, webcam pianura, webcam meteo campoli, webcam valle di comino, webcam valle di comino meteo campoli,webcam atina,monte comino webcam,picinisco webcam';
@@ -26,6 +28,14 @@ export class WebCamLimitrofeComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  indietro(): void {
+    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 

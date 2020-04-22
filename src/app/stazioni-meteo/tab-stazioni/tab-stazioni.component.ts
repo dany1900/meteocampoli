@@ -15,6 +15,6 @@ export class TabStazioniComponent implements OnInit {
 
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('mat-tab-group');
-    el.scrollIntoView({behavior: 'smooth'});
+    el.scrollIntoView();
   }
 }

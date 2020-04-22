@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
+import {ViewportScroller} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'webcam-marche',
@@ -14,7 +16,7 @@ export class WebcamMarcheComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'WebCam Marche Montagna - Meteo Campoli';
     this.description = '';
     this.keywords = '';
@@ -24,6 +26,14 @@ export class WebcamMarcheComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  indietro(): void {
+    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 }

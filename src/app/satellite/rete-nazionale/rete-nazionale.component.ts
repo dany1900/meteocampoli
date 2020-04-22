@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'satellite-rete-nazionale',
@@ -15,7 +16,7 @@ export class ReteNazionaleComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller) {
     this.title = 'Rete Meteo  - Mappa Stazioni Meteo  - Meteo Campoli';
     this.description = 'Tutte le stazioni meteo italiane visualizzabili. Mappa del sito Rete Meteo direttamente incorporata nella pagina web. Possibilita di accedere a tutti i dati in tempo reale.';
     this.keywords = 'temperature rete meteo,rete meteo meteo campoli, temperature meteo campoli, stazioni meteo nazionali, stazioni meteo nazionai meteo campoli, mappa stazioni meteo campoli';
@@ -24,7 +25,14 @@ export class ReteNazionaleComponent implements OnInit {
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.radar');
+    el.scrollIntoView();
+  }
+
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 }

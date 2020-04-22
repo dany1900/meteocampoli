@@ -43,6 +43,14 @@ import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche
                 },
               },
               {
+                path: 'giardinaggio',
+                component: TabInfoComponent,
+                data: {
+                  title: 'Articoli Giardinaggio - meteo - Meteo Campoli',
+                  breadcrumb: 'giardinaggio'
+                },
+              },
+              {
                 path: 'meteo/inquinamento-rimedi',
                 component: InquinamentoRimediComponent,
                 data: {

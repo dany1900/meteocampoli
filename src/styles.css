@@ -1,4 +1,3 @@
-
 {
   border: 0
 ;
@@ -75,7 +74,6 @@ td {
   height: 330px;
   background: url(assets/img/campoli-verde-min.jpg) 23px top no-repeat #FFFFFF;
 }
-
 
 #frame {
   padding: 20px 0px 0px 100px;
@@ -576,6 +574,12 @@ a.nivo-prevNav {
   height: 170px;
 }
 
+@media screen and (max-width: 980px) {
+  .btn-lg {
+    font-size: 19.4px;
+    height: 60px;
+  }
+}
 /*
 @media screen (max-width: 900px) {
   h3 {

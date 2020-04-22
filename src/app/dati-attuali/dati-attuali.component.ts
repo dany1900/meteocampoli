@@ -1,5 +1,7 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
+import {Router} from '@angular/router';
+import {ViewportScroller} from '@angular/common';
 
 
 @Component({
@@ -16,7 +18,7 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.path = 'http://meteocampoliappennino.altervista.org/grafico.png?' + Math.random();
     this.title = 'Meteo Campoli - Monitoraggio Meteo';
     this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
@@ -27,9 +29,19 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    el.scrollIntoView();
   }
 
   ngOnDestroy(): void {
+  }
+
+  indietro(): void {
+    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 

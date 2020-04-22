@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {Meta, Title} from '@angular/platform-browser';
+import {Component, ElementRef, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {ViewportScroller} from '@angular/common';
+import {SEOService} from '../../service/seoservice.service';
 
 @Component({
   selector: 'satellite-centro',
@@ -10,10 +12,16 @@ export class SatelliteCentroComponent implements OnInit {
 
   imageLoader = true;
   imageLoaderMovimento = true;
+  title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
 
-  constructor(private meta: Meta, private titleService: Title) {
-    titleService.setTitle('Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli');
-    this.meta.updateTag({
+  // TODO
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+    this.title = 'Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli';
+    /* this.meta.updateTag({
       name: 'description',
       content: 'Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale. Focus sul centro italia.'
     });
@@ -32,11 +40,16 @@ export class SatelliteCentroComponent implements OnInit {
     this.meta.updateTag({
       property: 'og:site_name',
       content: 'Meteo Campoli'
-    });
-    //this.meta.updateTag({property: 'og:image', content: 'http://meteocampoli.altervista.org/images/riepilogo.jpg'});
+    }); */
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.radar');
+    el.scrollIntoView();
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 }

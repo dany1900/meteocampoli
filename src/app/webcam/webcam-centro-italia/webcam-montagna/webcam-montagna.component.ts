@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
+import {Router} from '@angular/router';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'webcam-montagna',
@@ -16,7 +18,7 @@ export class WebcamMontagnaComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'WebCam Montagna Centro Italia - Meteo Campoli';
     this.description = 'Tutte le Webcam del centro italia montano ordinate per regione e localita. Descrizione e altitudine facilmente visualizzabili. Focus sulla valle di comino.';
     this.keywords = 'webcam montagna, webcam centro italia, webcam lazio,web cam abruzzo, webcam meteo campoli, webcam campoli, webcam campoli appennino,webcam rivisondoli,webcam passo godi,webcam ovindoli,webcam campotosto,webcam cappadocia';
@@ -27,6 +29,14 @@ export class WebcamMontagnaComponent implements OnInit {
 
   ngOnInit() {
     this.footerTitle = 'Le immagini sono prese ad intervalli regolari';
+  }
+
+  indietro(): void {
+    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 

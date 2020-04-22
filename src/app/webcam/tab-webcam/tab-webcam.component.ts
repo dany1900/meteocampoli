@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 
 @Component({
   selector: 'tab-webcam',
@@ -8,9 +8,11 @@ import {Component, OnInit} from '@angular/core';
 export class TabWebcamComponent implements OnInit {
 
 
-  constructor() {
+  constructor(private myElement: ElementRef) {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('mat-tab-group');
+    el.scrollIntoView();
   }
 }

@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
+import {Router} from '@angular/router';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'webcam-lazio',
@@ -14,7 +16,7 @@ export class WebcamLazioComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'WebCam Lazio Montagna - Meteo Campoli';
     this.description = 'Tutte le Webcam del lazio montano ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Link alle migliori fonti.';
     this.keywords = 'webcam montagna lazio, webcam centro italia montagna, webcam lazio, webcam meteo campoli lazio, webcam meteo campoli lazio montagna,webcam campocatino';
@@ -24,6 +26,14 @@ export class WebcamLazioComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  indietro(): void {
+    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 }

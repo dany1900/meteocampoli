@@ -35,8 +35,11 @@
 .mat-dialog-container {
   border-radius: 20px;
   border: 8px;
+  width: 70% !important;
   border-style: solid;
   border-color: white;
+  margin-left: 270px;
+  max-width: 1000px;
 }
 
 img.zoomed {

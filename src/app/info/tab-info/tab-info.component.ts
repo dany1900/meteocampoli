@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 
 @Component({
   selector: 'tab-info',
@@ -9,10 +9,12 @@ export class TabInfoComponent implements OnInit {
 
   id: number;
 
-  constructor() {
+  constructor(private myElement: ElementRef) {
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('mat-tab-group');
+    el.scrollIntoView();
   }
 
 }

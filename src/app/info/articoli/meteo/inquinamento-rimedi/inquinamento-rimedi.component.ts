@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
+import {SEOService} from '../../../../service/seoservice.service';
 
 @Component({
   selector: 'inquinamento-rimedi',
@@ -10,13 +11,12 @@ import {ViewportScroller} from '@angular/common';
 export class InquinamentoRimediComponent implements OnInit, OnChanges {
 
 
-  constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
   }
-
 
   ngOnInit(): void {
     const el = this.myElement.nativeElement.querySelector('.header-macro-section');
-    el.scrollIntoView({behavior: 'smooth'});
+    el.scrollIntoView();
   }
 
   ngOnChanges() {

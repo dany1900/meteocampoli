@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
+import {Router} from '@angular/router';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'stazioni-abruzzo',
@@ -15,7 +17,7 @@ export class StazioniAbruzzoComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'Stazioni Meteo Abruzzo  - Meteo Campoli';
     this.description = 'Tutte le stazioni del Lazio visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.';
     this.keywords = 'temperature abruzzo, meteo campoli abruzzo, temperature abruzzo meteo campoli, temperature stazioni meteo abruzzo, stazioni meteo abruzzo, stazioni meteo abruzzo meteo campoli';
@@ -25,6 +27,16 @@ export class StazioniAbruzzoComponent implements OnInit {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.meteonetwork-sticker');
+    el.scrollIntoView();
+  }
+
+  indietro(): void {
+    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 }

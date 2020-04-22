@@ -1,5 +1,6 @@
-import {Component, OnChanges, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {ViewportScroller} from '@angular/common';
 
 @Component({
   selector: 'tab-immaggini-webcam',
@@ -10,12 +11,12 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
 
   id: number;
 
-  constructor(private router: Router,
-              private route: ActivatedRoute) {
+  constructor(private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
   }
 
   ngOnInit() {
-
+    const el = this.myElement.nativeElement.querySelector('mat-tab-group');
+    el.scrollIntoView();
   }
 
   ngOnChanges() {

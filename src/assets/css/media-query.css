@@ -99,6 +99,15 @@
   .arrow {
     font-size: 36px;
   }
+
+  .btn-lg {
+    font-size: 19.4px;
+    height: 60px;
+  }
+
+  .menu {
+    height: 110px !important;
+  }
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1380px) {
