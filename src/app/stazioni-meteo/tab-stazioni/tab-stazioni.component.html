@@ -3,7 +3,7 @@
 <br>
 <p class="title-micro-section">Clicca sul nome delle stazioni per accedere ai dati completi</p>
 <br>
-<mat-tab-group [selectedIndex]="id">
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="GENERALI">
     <br>
     <ng-template matTabContent>
