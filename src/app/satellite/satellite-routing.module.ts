@@ -39,13 +39,6 @@ import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
             }
           },
           {
-            path: 'satellite-rete-nazionale',
-            component: TabSatelliteComponent,
-            data: {
-              title: 'Rete Meteo  - Mappa Stazioni Meteo  - Meteo Campoli'
-            }
-          },
-          {
             path: 'protezione-civile',
             component: TabSatelliteComponent,
             data: {

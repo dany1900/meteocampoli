@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnChanges, OnDestroy, OnInit} from '@angular/core';
+import {Component, ElementRef, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 
@@ -9,23 +9,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./tab-stazioni.component.css']
 })
 export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() selectedIndex: number | null;
   id: number;
   private _route: Subscription;
-  isGenerali = false;
-  isLazio = false;
-  isAbruzzo = false;
-  isMolise = false;
-  isReteMeteo = false;
   pathGenerale = '/stazioni-meteo/generale';
   pathLazio = '/stazioni-meteo/lazio';
   pathAbruzzo = '/stazioni-meteo/abruzzo';
   pathMolise = '/stazioni-meteo/molise';
   pathReteMeteo = '/stazioni-meteo/rete-meteo';
 
-  constructor(private route: Router, private myElement: ElementRef) {
+  constructor(private router: Router, private myElement: ElementRef) {
     let paramTab: any;
-    paramTab = this.route.url;
+    paramTab = this.router.url;
     switch (paramTab) {
       case this.pathGenerale:
         this.id = 0;
@@ -59,15 +53,15 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
 
   tabSelectionChanged(event) {
     if (event === 0) {
-      this.route.navigate([this.pathGenerale]);
+      this.router.navigate([this.pathGenerale]);
     } else if (event === 1) {
-      this.route.navigate([this.pathLazio]);
+      this.router.navigate([this.pathLazio]);
     } else if (event === 2) {
-      this.route.navigate([this.pathAbruzzo]);
+      this.router.navigate([this.pathAbruzzo]);
     } else if (event === 3) {
-      this.route.navigate([this.pathMolise]);
+      this.router.navigate([this.pathMolise]);
     } else if (event === 4) {
-      this.route.navigate([this.pathReteMeteo]);
+      this.router.navigate([this.pathReteMeteo]);
     }
   }
 

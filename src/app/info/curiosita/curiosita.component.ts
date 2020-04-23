@@ -27,12 +27,8 @@ export class CuriositaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
+    const el = this.myElement.nativeElement.querySelector('mat-tab-group');
     el.scrollIntoView();
-  }
-
-  indietro(): void {
-    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
   }
 
   scrollToTop() {

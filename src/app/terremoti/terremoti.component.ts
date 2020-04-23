@@ -27,12 +27,8 @@ export class TerremotiComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    const el = this.myElement.nativeElement.querySelector('.testo-articoli');
     el.scrollIntoView();
-  }
-
-  indietro(): void {
-    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
   }
 
   scrollToTop() {

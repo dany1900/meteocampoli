@@ -1,7 +1,7 @@
 <br>
 <p class="header-macro-section">Terremoti - Meteo Campoli</p>
 <br>
-<mat-tab-group>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="ITALIA">
     <br>
     <ng-template matTabContent>

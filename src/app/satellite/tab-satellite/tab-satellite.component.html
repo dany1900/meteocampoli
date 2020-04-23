@@ -1,6 +1,6 @@
 <p class="header-macro-section">Satellite Precipitazioni - Meteo Campoli</p>
 <br>
-<mat-tab-group [selectedIndex]="id">
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="GENERALE">
     <br>
     <ng-template matTabContent>

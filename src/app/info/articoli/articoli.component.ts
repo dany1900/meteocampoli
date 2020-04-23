@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {ViewportScroller} from '@angular/common';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'articoli',
@@ -17,7 +16,7 @@ export class ArticoliComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller) {
     // TODO
     this.title = 'Articoli - Meteo Campoli';
     this.description = 'Monitoraggio del Sole con dati. Analisi e previsioni sulla qualità dell\'aria. Statistiche sulle medie regionali italiane. Effemeridi Campoli App';
@@ -28,12 +27,8 @@ export class ArticoliComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
+    const el = this.myElement.nativeElement.querySelector('.row');
     el.scrollIntoView();
-  }
-
-  indietro(): void {
-    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
   }
 
   scrollToTop() {

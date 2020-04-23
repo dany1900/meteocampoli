@@ -6,6 +6,7 @@ import {UliviComponent} from './articoli/giardinaggio/ulivi/ulivi.component';
 import {VitiComponent} from './articoli/giardinaggio/viti/viti.component';
 import {PescheComponent} from './articoli/giardinaggio/pesche/pesche.component';
 import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche.component';
+import {TabArticoliComponent} from './tab-articoli/tab-articoli.component';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche
               },
               {
                 path: 'giardinaggio',
-                component: TabInfoComponent,
+                component: TabArticoliComponent,
                 data: {
                   title: 'Articoli Giardinaggio - meteo - Meteo Campoli',
                   breadcrumb: 'giardinaggio'
