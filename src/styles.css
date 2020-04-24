@@ -45,29 +45,15 @@ td {
 }
 
 #logo {
-  padding: 20px 0px 0px 0px;
+  padding: 40px 0px 0px 0px;
   height: 50px;
-}
-
-#logo H2 {
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 100;
   font-style: italic;
   background: no-repeat;
-}
-
-#logo a {
   text-decoration: none;
-  font-style: italic;
-  font-size: 24px;
-  color: #ffffff;
-}
-
-#logo H2 a {
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 100;
 }
 
 .header {
@@ -585,6 +571,10 @@ a.nivo-prevNav {
     height: 60px;
   }
 
+  .testo-articoli {
+    font-size: 22px;
+  }
+
   .mat-dialog-container {
     border-radius: 20px;
     border: 8px;
@@ -593,6 +583,12 @@ a.nivo-prevNav {
     border-color: white;
     margin-left: 0px !important;
     max-width: 1000px !important;
+  }
+
+  .mat-tab-label .mat-tab-label-content {
+    color: #ffffff;
+    font-size: 22px;
+    margin-left: 10px;
   }
 }
 /*
