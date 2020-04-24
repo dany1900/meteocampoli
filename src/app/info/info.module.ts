@@ -13,6 +13,7 @@ import {UliviComponent} from './articoli/giardinaggio/ulivi/ulivi.component';
 import {PescheComponent} from './articoli/giardinaggio/pesche/pesche.component';
 import {VitiComponent} from './articoli/giardinaggio/viti/viti.component';
 import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche.component';
+import {ArticoliMeteoComponent} from './articoli/meteo/articoli-meteo.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche
   declarations: [
     CuriositaComponent,
     ArticoliComponent,
+    ArticoliMeteoComponent,
     EffemeridiComponent,
     TabInfoComponent,
     InfoAngularComponent,

@@ -28,4 +28,8 @@ export class WebcamValleCominoComponent implements OnInit {
   ngOnInit() {
   }
 
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
+  }
+
 }

@@ -25,7 +25,12 @@ export class WebcamUmbriaComponent implements OnInit {
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
+
   ngOnInit() {
+  }
+
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
 
 }

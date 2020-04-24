@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {TabTerremotiComponent} from './tab-terremoti.component';
+import {ArticoliMeteoComponent} from './articoli-meteo.component';
 
-describe('TabTerremotiComponent', () => {
-  let component: TabTerremotiComponent;
-  let fixture: ComponentFixture<TabTerremotiComponent>;
+describe('ArticoliComponent', () => {
+  let component: ArticoliMeteoComponent;
+  let fixture: ComponentFixture<ArticoliMeteoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TabTerremotiComponent]
+      declarations: [ArticoliMeteoComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TabTerremotiComponent);
+    fixture = TestBed.createComponent(ArticoliMeteoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

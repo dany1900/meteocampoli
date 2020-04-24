@@ -31,6 +31,10 @@ export class WebcamMontagnaComponent implements OnInit {
     this.footerTitle = 'Le immagini sono prese ad intervalli regolari';
   }
 
+  indietro(): void {
+    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
+  }
+
   scrollToTop() {
     this.scroll.scrollToPosition([0, 0]);
   }
