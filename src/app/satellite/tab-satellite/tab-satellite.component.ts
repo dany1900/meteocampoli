@@ -43,8 +43,7 @@ export class TabSatelliteComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('mat-tab-group');
-    el.scrollIntoView();
+    ;
   }
 
   tabSelectionChanged(event) {

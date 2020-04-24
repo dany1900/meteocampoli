@@ -30,10 +30,6 @@ export class TerremotiMondoComponent implements OnInit {
     el.scrollIntoView();
   }
 
-  indietro(): void {
-    this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
-  }
-
   scrollToTop() {
     this.scroll.scrollToPosition([0, 0]);
   }
