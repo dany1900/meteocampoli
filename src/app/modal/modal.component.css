@@ -6,7 +6,8 @@
 }
 
 #modal-title {
-  font-size: 22px;
+  font-size: 27px;
+  colore: white !important;
 }
 
 #modal-body {
@@ -40,5 +41,12 @@ img.zoomed {
 }
 
 .image-close {
-  width: 3%;
+  width: 4%;
 }
+
+@media screen and (max-width: 1025px) {
+  .image-close {
+    width: 8%;
+  }
+}
+

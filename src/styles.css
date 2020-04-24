@@ -81,12 +81,7 @@ h1 {
 }
 
 h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 18px;
   font-weight: 100;
-  color: #074690;
-  text-align: left;
-  padding: 0px 0px 10px 25px;
   line-height: normal;
 }
 
@@ -454,7 +449,7 @@ a.nivo-prevNav {
 }
 
 .title-micro-section {
-  font-size: 24px;
+  font-size: 25px;
   color: #333642;
   font-style: italic;
   font-weight: bold;
@@ -481,7 +476,7 @@ a.nivo-prevNav {
 
 .mat-tab-label .mat-tab-label-content {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 20px;
   margin-left: 10px;
 }
 
@@ -515,8 +510,6 @@ a.nivo-prevNav {
   width: 100% !important;
   border-style: solid;
   border-color: white;
-  margin-left: 270px !important;
-  max-width: 1000px !important;
 }
 
 .image-gallery {
@@ -565,7 +558,7 @@ a.nivo-prevNav {
   height: 170px;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1025px) {
   .btn-lg {
     font-size: 19.4px;
     height: 60px;
@@ -576,13 +569,11 @@ a.nivo-prevNav {
   }
 
   .mat-dialog-container {
-    border-radius: 20px;
-    border: 8px;
-    width: 1010px !important;
-    border-style: solid;
-    border-color: white;
     margin-left: 0px !important;
-    max-width: 1000px !important;
+  }
+
+  .title-micro-section {
+    font-size: 26px;
   }
 
   .mat-tab-label .mat-tab-label-content {

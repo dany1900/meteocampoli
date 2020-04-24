@@ -41,7 +41,11 @@ export class ImmaginiComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.id = 'modal-component';
     dialogConfig.width = '100%';
+    dialogConfig.height = '100%';
     dialogConfig.data = url;
+    dialogConfig.maxHeight = '100vh';
+    dialogConfig.maxWidth = 'none';
+    dialogConfig.panelClass = 'full-screen-modal';
     dialogConfig.autoFocus = true;
     this.matDialog.open(ModalComponent, dialogConfig);
   }
