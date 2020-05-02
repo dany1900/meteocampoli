@@ -26,7 +26,7 @@ export class ReteNazionaleComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.radar');
+    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
     el.scrollIntoView();
   }
 

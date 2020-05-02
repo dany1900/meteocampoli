@@ -27,7 +27,7 @@ export class StazioniReteMeteoComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.meteonetwork-sticker');
+    const el = this.myElement.nativeElement.querySelector('iframe');
     el.scrollIntoView();
   }
 

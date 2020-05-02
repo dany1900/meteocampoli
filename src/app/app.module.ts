@@ -16,6 +16,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {PageErrorComponent} from './page-error/page-error.component';
 import {UtiliyService} from './service/utiliy.service';
 import {BreadcrumbModule} from 'angular-crumbs';
+import {FbLikeComponent} from './header/fb-like/fb-like.component';
+import {HeaderService} from './service/header.service';
 
 @NgModule({
 
@@ -27,7 +29,8 @@ import {BreadcrumbModule} from 'angular-crumbs';
     FooterComponent,
     ShinystatComponent,
     PublicitaComponent,
-    PageErrorComponent
+    PageErrorComponent,
+    FbLikeComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,7 @@ import {BreadcrumbModule} from 'angular-crumbs';
     BreadcrumbModule
   ],
   exports: [],
-  providers: [SEOService, UtiliyService],
+  providers: [SEOService, UtiliyService, HeaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

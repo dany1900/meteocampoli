@@ -1,35 +1,31 @@
 <br>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
-<br>
-<div [hidden]="imageLoader">
-  <h2 class="title-micro-section">Radar Precipitazioni Emilia Romagna</h2>
-  <img class="radar" src="http://www.arpa.emr.it/sim/datiiningresso/Immagini/Radar/nowcast.png"
-     alt="Radar Precipitazioni Emilia Romagna" scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px"
-     [hidden]="imageLoader" (load)="imageLoader = false;">
+<div></div>
+<satellite [titleImgRadar]="'Radar Precipitazioni Emilia Romagna'"
+           [srcImage]="'http://www.arpa.emr.it/sim/datiiningresso/Immagini/Radar/nowcast.png'"
+           [infoAlt]="'Radar Precipitazioni Emilia Romagna'"></satellite>
 <br>
 <br>
-  <h2 class="title-micro-section">Radar Precipitazioni centro-nord</h2>
-<img class="radar" src="http://servizi-meteoliguria.arpal.gov.it/MSG6H/NORD.jpg" alt="Radar Precipitazioni centro-nord"
-     scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+<satellite [titleImgRadar]="'Radar Precipitazioni centro-nord'"
+           [srcImage]="'http://servizi-meteoliguria.arpal.gov.it/MSG6H/NORD.jpg'"
+           [infoAlt]="'Radar Precipitazioni centro-nord'"></satellite>
 <br>
 <br>
-  <h2 class="title-micro-section">Radar Precipitazioni Trentino Alto Adige</h2>
-<img class="radar" src="http://www.provinz.bz.it/hydro/radarN_now_i.jpg" alt="Radar Precipitazioni  Trentino Alto Adige"
-     scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px">
+<satellite [titleImgRadar]="'Radar Precipitazioni Trentino Alto Adige'"
+           [srcImage]="'http://www.provinz.bz.it/hydro/radarN_now_i.jpg'"
+           [infoAlt]="'Radar Precipitazioni  Trentino Alto Adige'"></satellite>
 <br>
 <br>
-<p class="title-micro-section">Radar Precipitazioni Nord Ovest in movimento</p>
-<img class="radar" src="http://sc05.arpa.piemonte.it/previ/last_movie_compa.gif"
-     alt="Radar Precipitazioni Nord Ovest in movimento" scrolling="No" frameborder="no" marginheight="0px"
-     marginwidth="0px">
+<satellite [titleImgRadar]="'Radar Precipitazioni Nord Ovest in movimento'"
+           [srcImage]="'http://sc05.arpa.piemonte.it/previ/last_movie_compa.gif'"
+           [infoAlt]="'Radar Precipitazioni Nord Ovest in movimento'"></satellite>
 <br>
 <br>
-  <h2 class="title-micro-section">Radar precipitazioni ultime 24H Zoom</h2>
+<!--
+<h2 class="title-micro-section">Radar precipitazioni ultime 24H Zoom</h2>
 <iframe class="radar" src="http://www.vallemuricana.it/veneto_teolo250km.php"
-        alt="Radar Precipitazioni Nord ultime 24H Zoom" scrolling="No" frameborder="no" marginheight="0px"
-        marginwidth="0px"></iframe>
-  <br>
-  <button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
-    <i class="fa fa-chevron-up"></i>
-  </button>
-</div>
+        alt="Radar Precipitazioni Nord ultime 24H Zoom"></iframe>-->
+<br>
+<br>
+<button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+  <i class="fa fa-chevron-up"></i>
+</button>

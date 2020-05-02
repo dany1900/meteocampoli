@@ -27,7 +27,7 @@ export class PrevisioniComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.previsioni-frame');
+    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
     el.scrollIntoView();
   }
 

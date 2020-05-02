@@ -17,6 +17,7 @@ export class SatelliteCentroComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
+  urlSatellite: string;
 
   // TODO
   constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
@@ -50,6 +51,10 @@ export class SatelliteCentroComponent implements OnInit {
 
   scrollToTop() {
     this.scroll.scrollToPosition([0, 0]);
+  }
+
+  errorHandler() {
+    this.urlSatellite = './assets/img/webcam-offline.png';
   }
 
 }

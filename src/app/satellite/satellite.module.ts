@@ -7,6 +7,7 @@ import {SatelliteCentroComponent} from './centro-italia/satellite-centro.compone
 import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
 import {SatelliteRoutingModule} from './satellite-routing.module';
 import {SharedModule} from '../shared/shared.module';
+import {SatelliteComponent} from './satellite.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {SharedModule} from '../shared/shared.module';
     SatelliteNordComponent,
     SatelliteGeneraleComponent,
     SatelliteCentroComponent,
-    TabSatelliteComponent
+    TabSatelliteComponent,
+    SatelliteComponent
   ],
   exports: []
 })

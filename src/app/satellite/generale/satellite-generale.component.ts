@@ -25,11 +25,11 @@ export class SatelliteGeneraleComponent implements OnInit {
     this.keywords = 'satellite meteo campoli, radar meteo campoli, radar precipitazioni meteo campoli, radar fulmini meteo campoli, radar precipitazioni zoom, radar pioggia meteo campoli';
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite-generale';
     this.ogImage = '';
-    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
+
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.radar');
+    const el = this.myElement.nativeElement.querySelector('div');
     el.scrollIntoView();
   }
 
@@ -37,6 +37,5 @@ export class SatelliteGeneraleComponent implements OnInit {
   scrollToTop() {
     this.scroll.scrollToPosition([0, 0]);
   }
-
 
 }

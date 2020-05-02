@@ -29,7 +29,7 @@ export class RiepilogoComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('iframe');
+    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
     el.scrollIntoView();
   }
 

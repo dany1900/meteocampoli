@@ -8,6 +8,33 @@ img {
   border: 0px;
 }
 
+.mat-tab-label {
+  height: 48px;
+  padding: 0 24px;
+  cursor: pointer;
+  box-sizing: border-box;
+  opacity: .6;
+  min-width: 100px;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  position: relative;
+  margin-top: 15px;
+
+}
+
+.mat-tab-body-content {
+  height: 100%;
+  overflow: auto;
+  margin-top: 15px;
+}
+
+.mat-tab-body.mat-tab-body-active {
+  overflow: hidden;
+}
+
 button {
   cursor: pointer;
 }
@@ -15,6 +42,7 @@ button {
 body {
   font: 10pt Arial, Helvetica, sans-serif;
   line-height: 18px;
+  zoom: 0.95;
 }
 
 td {
@@ -71,13 +99,13 @@ td {
 }
 
 h1 {
-  font-family: Arial, Helvetica, sans-serif;
+  /*font-family: Arial, Helvetica, sans-serif;*/
   font-size: 18px;
   font-weight: 100;
-  color: #074690;
+  /*color: #074690;*/
   text-align: left;
   padding: 0px 0px 0px 0px;
-  line-height: normal;
+  /*line-height: normal;*/
 }
 
 h2 {
@@ -174,7 +202,7 @@ a.nivo-prevNav {
   color: #fff;
   background-color: #2d65c4;
   border-color: #2d65c4;
-  font-size: 19px;
+  font-size: 19.4px;
 }
 
 .btn-puldown {
@@ -185,7 +213,8 @@ a.nivo-prevNav {
 }
 
 .btn-group-vertical {
-  width: 120px;
+  margin-top: 3.5px;
+  width: 12.5%;
 }
 
 .btn-group-vertical > .btn.active, .btn-group-vertical > .btn:active, .btn-group-vertical > .btn:focus, .btn-group-vertical > .btn:hover, .btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover {
@@ -470,6 +499,10 @@ a.nivo-prevNav {
   height: 80px;
 }
 
+.mat-tab-body.mat-tab-body-active {
+  overflow: hidden;
+}
+
 .mat-tab-nav-bar, .mat-tab-header {
   border: 7px solid rgba(0, 0, 0, .12);
 }
@@ -560,12 +593,12 @@ a.nivo-prevNav {
 
 @media screen and (max-width: 1025px) {
   .btn-lg {
-    font-size: 19.4px;
+    font-size: 19.8px !important;
     height: 60px;
   }
 
   .testo-articoli {
-    font-size: 22px;
+    font-size: 25px;
   }
 
   .mat-dialog-container {
@@ -581,14 +614,22 @@ a.nivo-prevNav {
     font-size: 22px;
     margin-left: 10px;
   }
-}
-/*
-@media screen (max-width: 900px) {
-  h3 {
-    font-size: 24px;
+
+  .fa {
+    width: 30px;
+    height: 25px;
   }
-  .h3 {
-    font-size: 24px;
-  }
+
 }
-*/
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  .btn-lg {
+    font-size: 19.7px !important;
+    height: 50px;
+  }
+
+  .menu {
+    height: 107px;
+  }
+
+}

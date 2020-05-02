@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Renderer2} from '@angular/core';
 
 
 @Component({
@@ -9,10 +9,36 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SatelliteComponent implements OnInit {
 
-  constructor() {
+  imageLoader = true;
+  @Input() titleImgRadar: string;
+  @Input() srcImage: string;
+  @Input() infoAlt: string;
+
+  constructor(public renderer: Renderer2) {
   }
 
   ngOnInit() {
+  }
+
+  errorHandler() {
+    this.srcImage = './assets/img/immagine-indisponibile.png';
+    this.imageLoader = false;
+  }
+
+  toggleClass(event: any, classe: string) {
+    const hasClass = event.target.classList.contains(classe);
+    if (hasClass) {
+      this.renderer.removeClass(event.target, classe);
+    } else {
+      this.renderer.addClass(event.target, classe);
+    }
+  }
+
+  timeout() {
+    setTimeout(() => {
+      console.log('Test');
+      this.timeout();
+    }, 1000 / 60);
   }
 
 }

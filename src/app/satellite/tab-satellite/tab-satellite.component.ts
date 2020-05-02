@@ -17,6 +17,7 @@ export class TabSatelliteComponent implements OnInit {
   pathProtezioneCivile = '/satellite/protezione-civile';
 
   constructor(private router: Router, private myElement: ElementRef) {
+
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
