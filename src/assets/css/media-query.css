@@ -1,6 +1,6 @@
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1025px) {
   h1 {
-    font-size: 35px;
+    /*font-size: 35px!important;*/
   }
 
   h2 {
@@ -20,33 +20,19 @@
   }
 
   strong {
-    font-size: 18px;
-  }
-
-  .desc-footer {
-    font-size: 24px;
-  }
-
-  #abruzzo-molise {
-    font-size: 20px;
-
+    font-size: 18px !important;
   }
 
   html {
-    width: 1000px;
+    width: 1000px !important;
   }
 
   #logo H2 a {
-    font-size: 16px;
-  }
-
-  #riepilogo {
-    height: 3800px;
-    width: 100%;
+    font-size: 16px !important;
   }
 
   #content {
-    background-color: #2d65c4;
+    background-color: #2d65c4 !important;
   }
 
   .dropdown-menu > li > a {
@@ -60,7 +46,7 @@
     white-space: nowrap;
     background-color: #2d65c4;
     height: 40px;
-    font-size: 25px;
+    font-size: 22px !important;
   }
 
   .divider {
@@ -72,32 +58,27 @@
   }
 
   .header-webcam {
-    height: 139px;
+    height: 139px !important;
   }
 
   .last-element-menu {
-    left: -130%;
+    left: -130% !important;
   }
 
   .first-element-menu {
-    left: -15px;
+    left: -15px !important;
   }
 
   .small-left-dropdown {
-    left: -15%;
-  }
-
-  .header-satellite-area {
-    width: 800px;
-    margin-left: 57px;
+    left: -15% !important;
   }
 
   .webcam-script-header {
-    font-size: 17px;
+    font-size: 17px !important;
   }
 
   .arrow {
-    font-size: 36px;
+    font-size: 30px !important;
   }
 
   .btn-lg {
@@ -108,6 +89,52 @@
   .menu {
     height: 110px !important;
   }
+
+  .btn-pulup {
+    font-size: 22.4px !important;
+  }
+
+  .btn-lg {
+    font-size: 22.4px !important;
+    height: 60px;
+  }
+
+  .testo-articoli {
+    font-size: 25px !important;
+  }
+
+  .mat-dialog-container {
+    margin-left: 0px !important;
+  }
+
+  .title-micro-section {
+    font-size: 26px !important;
+  }
+
+  .mat-tab-label .mat-tab-label-content {
+    color: #ffffff !important;
+    font-size: 24px !important;
+    margin-left: 10px !important;
+  }
+
+  .fa {
+    width: 30px !important;
+    height: 25px !important;
+  }
+
+  .fa-chevron-up:before {
+    font-size: 30px !important;
+  }
+
+  .button-indietro {
+    font-size: 21px !important;
+    margin-right: 750px;
+  }
+
+  .footer-desc {
+    font-size: 22px !important;
+  }
+
 }
 
 @media screen and (min-width: 1000px) and (max-width: 1380px) {
@@ -125,15 +152,18 @@
     -webkit-transform: scale(1.5); /* Safari 3-8 */
     transform: scale(1.5);
   }
-  /*
-  #bg_clouds
-  {
-  width: 1016px !important;
+
+
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+  .btn-lg {
+    font-size: 22.4px !important;
+    height: 50px !important;
   }
 
-  #main {
-      width: 1016px !important;
+  .menu {
+    height: 107px !important;
   }
-  */
 
 }
