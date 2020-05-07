@@ -37,7 +37,7 @@ button {
 body {
   font: 10pt Arial, Helvetica, sans-serif;
   line-height: 18px;
-  zoom: 0.95;
+  zoom: 0.9;
 }
 
 td {
@@ -57,7 +57,7 @@ td {
 }
 
 #main {
-  width: 1000px;
+  width: 1108px;
   margin: 0px auto;
   height: 100%;
 }
@@ -72,7 +72,7 @@ td {
   height: 50px;
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 100;
   font-style: italic;
   background: no-repeat;
@@ -94,13 +94,8 @@ td {
 }
 
 h1 {
-  /*font-family: Arial, Helvetica, sans-serif;*/
-  font-size: 18px;
   font-weight: 100;
-  /*color: #074690;*/
-  text-align: left;
   padding: 0px 0px 0px 0px;
-  /*line-height: normal;*/
 }
 
 h2 {
@@ -126,6 +121,11 @@ h4 {
 .slider {
   display: block;
   margin-left: 20px !important;
+}
+
+.img-slider {
+  width: 1108px;
+  height: 330px;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -197,7 +197,7 @@ a.nivo-prevNav {
   color: #fff;
   background-color: #2d65c4;
   border-color: #2d65c4;
-  font-size: 22px;
+  font-size: 24px;
 }
 
 .btn-puldown {
@@ -210,6 +210,7 @@ a.nivo-prevNav {
 .btn-group-vertical {
   margin-top: 3.5px;
   width: auto;
+  margin-right: 0.6%;
 }
 
 .btn-group-vertical > .btn.active, .btn-group-vertical > .btn:active, .btn-group-vertical > .btn:focus, .btn-group-vertical > .btn:hover, .btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover {
@@ -279,7 +280,7 @@ a.nivo-prevNav {
 }
 
 .webcam {
-  width: 720px;
+  width: 750px;
   height: 500px;
   max-width: 700px;
   border-radius: 20px;
@@ -337,7 +338,7 @@ a.nivo-prevNav {
   border-color: #ffffff;
   padding-top: 15px;
   padding-bottom: 15px !important;
-  min-height: 100vh;
+  min-height: 76vh;
   background: url(assets/img/content.png);
   color: #000000;
 }
@@ -400,14 +401,16 @@ a.nivo-prevNav {
   background-color: #d6e0fc;
   color: black;
   font-weight: Bold;
-  width: 500px;
+  width: 550px;
   padding: 1px;
   border: Solid 2px #070707;
   border-radius: 5px;
   font-size: 14px;
   font-family: Verdana;
   margin-top: 7px;
-  margin-left: 12.5pc;
+  margin-left: 270px;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .header-webcam {
@@ -449,7 +452,7 @@ a.nivo-prevNav {
 }
 
 .meteonetwork-sticker {
-  width: 470px;
+  width: 524px;
   height: 155px;
 }
 
@@ -510,6 +513,14 @@ a.nivo-prevNav {
 
 .mat-tab-body-content {
   overflow: hidden !important;
+}
+
+.content-webcam-principal {
+  font-size: 16px;
+}
+
+.fonte-webcam {
+  font-size: 14px;
 }
 
 .mat-spinner {

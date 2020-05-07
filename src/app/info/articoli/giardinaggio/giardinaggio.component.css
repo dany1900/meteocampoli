@@ -1,6 +1,6 @@
 fieldset {
   padding: 0px;
-  width: 250px;
+  /*width: 250px;*/
   border: Solid 3px #000000;
 }
 
@@ -9,7 +9,10 @@ fieldset {
   padding: 0;
   margin: 0;
   background-color: white;
-  border: 1;
+  margin-right: 12%;
+  border: 4px;
+  border-style: solid;
+  border-color: #ffffff;
 }
 
 legend {
@@ -27,16 +30,19 @@ legend {
 
 .article-header {
   font-size: 18px;
+  line-height: 1;
 }
 
 .article-body {
-  font-size: 19px;
+  font-size: 20px;
   color: black;
   padding-left: 7px;
   margin-top: 7px;
   margin-bottom: 2px;
+  line-height: 1;
+  text-align: initial;
 }
 
 .row.infos {
-  height: 350px;
+  height: 400px;
 }

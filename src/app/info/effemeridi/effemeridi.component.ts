@@ -26,7 +26,7 @@ export class EffemeridiComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const el = this.myElement.nativeElement.querySelector('mat-tab-group');
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
     el.scrollIntoView();
   }
 

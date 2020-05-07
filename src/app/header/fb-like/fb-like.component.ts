@@ -4,9 +4,9 @@ import {ActivatedRoute, Router, RoutesRecognized} from '@angular/router';
 @Component({
   selector: 'fb-like-custom',
   template: `
-    <div class="fb-like" [attr.data-href]="url" data-layout="button_count" data-action="like" data-show-faces="true"
-         data-share="true"></div>`
+    <div [attr.data-href]="url" class="fb-share-button" data-type="button"></div>`
 })
+
 
 export class FbLikeComponent implements AfterViewInit {
   @Input() url;
