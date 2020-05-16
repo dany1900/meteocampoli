@@ -45,7 +45,7 @@ export class SatelliteCentroComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.radar');
+    const el = this.myElement.nativeElement.querySelector('div');
     el.scrollIntoView();
   }
 

@@ -9,7 +9,6 @@ import {Component, Input, OnInit, Renderer2} from '@angular/core';
 })
 export class SatelliteComponent implements OnInit {
 
-  imageLoader = true;
   @Input() titleImgRadar: string;
   @Input() srcImage: string;
   @Input() infoAlt: string;
@@ -22,7 +21,6 @@ export class SatelliteComponent implements OnInit {
 
   errorHandler() {
     this.srcImage = './assets/img/immagine-indisponibile.png';
-    this.imageLoader = false;
   }
 
   toggleClass(event: any, classe: string) {

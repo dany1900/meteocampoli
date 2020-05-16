@@ -8,7 +8,6 @@ import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
     RouterModule.forChild([
       {
         path: '',
-        component: TabStazioniComponent,
         children: [
           {
             path: 'generale',

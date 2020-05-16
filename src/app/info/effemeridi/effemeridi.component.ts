@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {ViewportScroller} from '@angular/common';
 import {Router} from '@angular/router';
@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   templateUrl: './effemeridi.component.html',
   styleUrls: ['./effemeridi.component.css']
 })
-export class EffemeridiComponent implements OnInit {
+export class EffemeridiComponent implements OnInit, AfterViewInit {
 
   title: string;
   description: string;
@@ -28,6 +28,9 @@ export class EffemeridiComponent implements OnInit {
   ngOnInit(): void {
     const el = this.myElement.nativeElement.querySelector('.title-micro-section');
     el.scrollIntoView();
+  }
+
+  ngAfterViewInit() {
   }
 
   scrollToTop() {

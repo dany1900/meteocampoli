@@ -43,7 +43,7 @@ export class ImmaginiComponent implements OnInit {
     dialogConfig.width = '100%';
     dialogConfig.height = '100%';
     dialogConfig.data = url;
-    dialogConfig.maxHeight = '100vh';
+    //dialogConfig.maxHeight = '100vh';
     dialogConfig.maxWidth = 'none';
     dialogConfig.panelClass = 'full-screen-modal';
     dialogConfig.autoFocus = true;

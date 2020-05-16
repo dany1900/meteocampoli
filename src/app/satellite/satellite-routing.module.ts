@@ -8,7 +8,6 @@ import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
     RouterModule.forChild([
       {
         path: '',
-        component: TabSatelliteComponent,
         children: [
           {
             path: 'generale',

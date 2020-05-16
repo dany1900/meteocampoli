@@ -8,7 +8,6 @@ import {TabTerremotiComponent} from './tab-terremoti/tab-terremoti.component';
     RouterModule.forChild([
       {
         path: '',
-        component: TabTerremotiComponent,
         children: [
           {
             path: 'italia',
@@ -16,6 +15,10 @@ import {TabTerremotiComponent} from './tab-terremoti/tab-terremoti.component';
           },
           {
             path: 'mondo',
+            component: TabTerremotiComponent,
+          },
+          {
+            path: 'informazioni',
             component: TabTerremotiComponent,
           }
         ],

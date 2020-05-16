@@ -1,10 +1,12 @@
 @media screen and (max-width: 1025px) {
   h1 {
-    /*font-size: 35px!important;*/
+    color: #337ab7 !important;
+    font-style: italic !important;
+    font-size: 36px !important;
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 30px !important;
   }
 
   h3 {
@@ -23,13 +25,8 @@
     font-size: 18px !important;
   }
 
-
-
-  #logo H2 a {
-    font-size: 24px !important;
-  }
-
-  #logo {
+  .logo {
+    font-family: unset !important;
     font-size: 24px !important;
   }
 
@@ -52,14 +49,8 @@
     white-space: nowrap;
     background-color: #2d65c4;
     height: 40px;
-    font-size: 22px !important;
+    font-size: 22.8px !important;
   }
-
-  .header-macro-section {
-    color: #1469b1 !important;
-    font-size: 36px;
-  }
-
 
   .divider {
     margin: 9px 0 !important;
@@ -74,8 +65,9 @@
   }
 
   .webcam {
-    width: 800px !important;
-    max-width: 800px !important;
+    width: 84% !important;
+    max-width: 84% !important;
+    height: 580px !important;
   }
 
   .fonte-webcam {
@@ -83,7 +75,7 @@
   }
 
   .content-webcam-principal {
-    font-size: 22px !important;
+    font-size: 26px !important;
   }
 
 
@@ -100,9 +92,9 @@
   }
 
   .webcam-script-header {
-    font-size: 24px !important;
-    width: 700px !important;
-    margin-left: 190px !important;
+    font-size: 27px !important;
+    width: 77% !important;
+    margin-left: 125px !important;
   }
 
   .arrow {
@@ -115,7 +107,7 @@
   }
 
   .menu {
-    height: 110px !important;
+    height: 135px !important;
   }
 
   .btn-pulup {
@@ -123,12 +115,12 @@
   }
 
   .btn-lg {
-    font-size: 25.4px !important;
-    height: 60px;
+    font-size: 25.3px !important;
+    height: 75px;
   }
 
   .testo-articoli {
-    font-size: 27px !important;
+    font-size: 30px !important;
   }
 
   .mat-dialog-container {
@@ -136,12 +128,17 @@
   }
 
   .title-micro-section {
-    font-size: 27px !important;
+    font-size: 30px !important;
+  }
+
+  .header-macro-section {
+    color: #1469b1 !important;
+    font-size: 36px;
   }
 
   .mat-tab-label .mat-tab-label-content {
     color: #ffffff !important;
-    font-size: 24px !important;
+    font-size: 27px !important;
     margin-left: 10px !important;
   }
 
@@ -155,20 +152,19 @@
   }
 
   .button-indietro {
-    font-size: 21px !important;
-    margin-right: 750px;
+    font-size: 23px !important;
   }
 
   .footer-desc {
-    font-size: 22px !important;
+    font-size: 27px !important;
   }
 
   .article-header {
-    font-size: 25px !important;
+    font-size: 28px !important;
   }
 
   .article-body {
-    font-size: 25px !important;
+    font-size: 30px !important;
   }
 
   fieldset {
@@ -178,6 +174,15 @@
   .btn-group-vertical {
     margin-right: 0% !important;
   }
+
+  .fb-share-button {
+    width: 800px !important;
+  }
+
+  .rete-meteo {
+  }
+
+
 
 }
 
@@ -202,7 +207,6 @@
 
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
   .btn-lg {
-    font-size: 22.4px !important;
     height: 50px !important;
   }
 

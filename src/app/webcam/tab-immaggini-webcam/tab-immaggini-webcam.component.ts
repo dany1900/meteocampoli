@@ -10,7 +10,7 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
 
   id: number;
   pathImmagini = '/webcam/immagini';
-  pathMontagna = '/webcam/montagna';
+  pathMontagna = '/webcam/montagna/lazio';
   pathLimitrofe = '/webcam/limitrofe';
 
   constructor(private myElement: ElementRef, protected router: Router) {

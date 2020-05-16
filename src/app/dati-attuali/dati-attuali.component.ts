@@ -29,7 +29,7 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
     el.scrollIntoView();
   }
 

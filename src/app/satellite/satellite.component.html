@@ -1,10 +1,9 @@
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
 <br>
-<div class="center" [hidden]="imageLoader">
+<div class="center">
   <h2 class="title-micro-section">{{titleImgRadar}}</h2>
   <img class="radar" src="{{srcImage}}"
        alt="{{infoAlt}}"
-       (load)="imageLoader = false;" (error)="errorHandler()" (click)="toggleClass($event,'zoomed')"/><br/>
+       (error)="errorHandler()" (click)="toggleClass($event,'zoomed')"/><br/>
 
 </div>
 

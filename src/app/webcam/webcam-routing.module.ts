@@ -14,7 +14,6 @@ import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-
     RouterModule.forChild([
       {
         path: '',
-        component: TabImmagginiWebcamComponent,
         children: [
           {
             path: 'immagini',
@@ -23,34 +22,36 @@ import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-
           {
             path: 'montagna',
             component: TabImmagginiWebcamComponent,
+            children: [
+              {
+                path: 'lazio',
+                component: WebcamLazioComponent,
+              },
+              {
+                path: 'abruzzo',
+                component: WebcamAbruzzoComponent,
+              },
+              {
+                path: 'molise',
+                component: WebcamMoliseComponent,
+              },
+              {
+                path: 'umbria',
+                component: WebcamUmbriaComponent,
+              },
+              {
+                path: 'marche',
+                component: WebcamMarcheComponent,
+              },
+              {
+                path: 'toscana',
+                component: WebcamToscanaComponent,
+              },
+            ]
           },
           {
             path: 'limitrofe',
             component: TabImmagginiWebcamComponent,
-          },
-          {
-            path: 'montagna/lazio',
-            component: WebcamLazioComponent,
-          },
-          {
-            path: 'montagna/abruzzo',
-            component: WebcamAbruzzoComponent,
-          },
-          {
-            path: 'montagna/molise',
-            component: WebcamMoliseComponent,
-          },
-          {
-            path: 'montagna/umbria',
-            component: WebcamUmbriaComponent,
-          },
-          {
-            path: 'montagna/marche',
-            component: WebcamMarcheComponent,
-          },
-          {
-            path: 'montagna/toscana',
-            component: WebcamToscanaComponent,
           },
         ],
       },

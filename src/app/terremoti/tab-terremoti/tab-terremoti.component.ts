@@ -12,7 +12,7 @@ export class TabTerremotiComponent implements OnInit {
   id: number;
   pathItalia = '/terremoti/italia';
   pathMondo = '/terremoti/mondo';
-  pathInformazioni = '/terremoti';
+  pathInformazioni = '/terremoti/informazioni';
 
   constructor(private seo: SEOService, private myElement: ElementRef, protected router: Router) {
     let paramTab: any;
