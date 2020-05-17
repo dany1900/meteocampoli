@@ -11,6 +11,7 @@ import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche
 import {PescheComponent} from './articoli/giardinaggio/pesche/pesche.component';
 import {ArticoliMeteoComponent} from './articoli/meteo/articoli-meteo.component';
 import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.component';
+import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/ondata-caldo-2017.component';
 
 
 @NgModule({
@@ -57,6 +58,14 @@ import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.compon
                 },
               },
             ],
+          },
+          {
+            path: 'curiosita/ondata-caldo-2017',
+            component: OndataCaldo2017Component,
+            data: {
+              title: 'Articoli - Ondata Caldo 2017 - Meteo Campoli',
+              breadcrumb: 'ondata-caldo'
+            }
           },
           {
             path: 'articoli/meteo/inquinamento-rimedi',

@@ -15,36 +15,8 @@
 }
 }
 
-
-
-
 </script>
-
-<script>
-  document.getElementById('frame').contentWindow.location.reload(true);
-  // Use an off-screen image to load the next frame.
-  var img = new Image();
-
-  // When it is loaded...
-  img.addEventListener("load", function () {
-
-    // Set the on-screen image to the same source. This should be instant because
-    // it is already loaded.
-    document.getElementById("frame").src = img.src;
-
-    // Schedule loading the next frame.
-    setTimeout(function () {
-      img.src = "http://meteocampoliappennino.altervista.org/grafico.png?" + (new Date).getTime();
-    }, 1000 / 15); // 15 FPS (more or less)
-  })
-
-  // Start the loading process.
-  img.src = "http://meteocampoliappennino.altervista.org/grafico.png?" + (new Date).getTime();
-</script>
-
-
 <div class="center">
-
   <h1>Meteo Campoli - Stazione Meteo</h1>
   <br>
   <h2 class="title-micro-section">L'immagine si aggiorna automaticamente dopo qualche istante</h2>
@@ -55,14 +27,13 @@
     alt="Stazione meteo grafico"></a><br>
 </div>
 <br>
-
 <a href="http://meteocampoliappennino.altervista.org/MyGWStats.php?&link=Full.xml"
    title="riepilogo dati old" target="_blank"></a>
 <a href="https://www.ilmeteo.it/meteo/Campoli+Appennino"
-                                            title="link ilmeteo.it" target="_blank"><img title="Link"
-                                                                                         alt="ilmeteo"
-                                                                                         src="http://sacilemeteo.altervista.org/h/ilmeteo.jpg"
-                                                                                         class="siti-preferiti"></a>
+   title="link ilmeteo.it" target="_blank"><img title="Link"
+                                                alt="ilmeteo"
+                                                src="http://sacilemeteo.altervista.org/h/ilmeteo.jpg"
+                                                class="siti-preferiti"></a>
 <a
   href="http://forum.meteonetwork.it/nowcasting-e-discussioni-climatiche-italia-centrale/"
   title="link forum meteonetwork" target="_blank"><img title="Link MeteoNetwork"

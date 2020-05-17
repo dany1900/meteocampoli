@@ -48,7 +48,7 @@ td {
   padding-left: 0.5em;
 }
 
-#bg_clouds {
+.bg_clouds {
   background: url(assets/img/bg_clouds.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -56,13 +56,13 @@ td {
   background-size: cover;
 }
 
-#main {
+.main {
   width: 1108px;
   margin: 0px auto;
   height: 100%;
 }
 
-#ident {
+.ident {
   width: 1000px;
   height: 80px;
 }
@@ -82,10 +82,6 @@ td {
 .header {
   height: 330px;
   background: url(assets/img/campoli-verde-min.jpg) 23px top no-repeat #FFFFFF;
-}
-
-#frame td {
-  text-align: left;
 }
 
 h1 {
@@ -252,19 +248,19 @@ a.nivo-prevNav {
   background-color: #e5e5e5;
 }
 
-#footer {
+.footer {
   color: #ffffff;
   text-align: center;
   padding: 10px 0px 5px 0px;
 }
 
-#footer a {
+.footer a {
   color: #ffffff;
   font-size: 15px;
   text-decoration: none;
 }
 
-#footer a:hover {
+.footer a:hover {
   color: #ffffff;
   font-size: 10px;
 }
@@ -272,7 +268,7 @@ a.nivo-prevNav {
 .footer-desc {
   width: 100%;
   font-family: helvetica;
-  font-size: 19px;
+  font-size: 21px;
   color: #fff
 }
 
@@ -327,7 +323,7 @@ a.nivo-prevNav {
   font-size: 24px;
 }
 
-#content {
+.content {
   border-radius: 100px;
   border-radius: 50px;
   border: 16px;
@@ -338,6 +334,7 @@ a.nivo-prevNav {
   min-height: 76vh;
   background: url(assets/img/content.png);
   color: #000000;
+  text-align: center
 }
 
 .header {
@@ -358,7 +355,7 @@ a.nivo-prevNav {
 
 .grafico-stazione {
   width: 100%;
-  height: 880px;
+  height: 980px;
   border-radius: 25px;
   border: 8px;
   border-style: solid;
@@ -408,7 +405,7 @@ a.nivo-prevNav {
   font-family: Verdana;
   margin-top: 7px;
   margin-left: 262px;
-  padding-top: 3px;
+  padding-top: 7px;
   padding-bottom: 8px;
 }
 
@@ -430,8 +427,8 @@ a.nivo-prevNav {
   border: 10px;
   border-style: solid;
   border-color: #ffffff;
-  height: 630px;
-  width: 900px;
+  width: 95% !important;
+  height: 850px !important;
 }
 
 .previsioni-frame {
@@ -543,7 +540,7 @@ a.nivo-prevNav {
 }
 
 .terremoti-frame {
-  width: 928px;
+  width: 95%;
   height: 1240px;
   border-radius: 20px;
   border: 10px;
@@ -603,6 +600,19 @@ a.nivo-prevNav {
 .rete-meteo {
   width: 100%;
   height: 1100px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.temp-ondata-caldo {
+  font-weight: bold;
+  color: #e93b3b;
+}
+
+.date-ondata-caldo {
+  font-style: italic;
 }
 
 

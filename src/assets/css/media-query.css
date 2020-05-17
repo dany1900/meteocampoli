@@ -30,11 +30,11 @@
     font-size: 24px !important;
   }
 
-  #content {
+  .content {
     background-color: #2d65c4 !important;
   }
 
-  #bg_clouds {
+  .bg_clouds {
     width: 1108px;
   }
 
@@ -120,7 +120,7 @@
   }
 
   .testo-articoli {
-    font-size: 30px !important;
+    font-size: 32px !important;
   }
 
   .mat-dialog-container {
@@ -128,17 +128,17 @@
   }
 
   .title-micro-section {
-    font-size: 30px !important;
+    font-size: 31px !important;
   }
 
   .header-macro-section {
     color: #1469b1 !important;
-    font-size: 36px;
+    font-size: 36px !important;
   }
 
   .mat-tab-label .mat-tab-label-content {
     color: #ffffff !important;
-    font-size: 27px !important;
+    font-size: 28px !important;
     margin-left: 10px !important;
   }
 
@@ -181,7 +181,6 @@
 
   .rete-meteo {
   }
-
 
 
 }
