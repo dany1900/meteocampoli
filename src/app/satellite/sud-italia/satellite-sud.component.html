@@ -3,9 +3,8 @@
 <br>
 <div [hidden]="imageLoader">
   <h2 class="title-micro-section">Radar precipitazioni animato in tempo reale</h2>
-<iframe class="radar" src="http://cdn-radar.ilmeteo.it/italy.gif?8757865" style="width: 574px; height: 739px;"
-        scrolling="No" frameborder="no" marginheight="0px" marginwidth="0px" [hidden]="imageLoader"
-        (load)="imageLoader = false;"></iframe>
+  <iframe class="radar" src="http://cdn-radar.ilmeteo.it/italy.gif?8757865" id="sat-sud" [hidden]="imageLoader"
+          (load)="imageLoader = false;"></iframe>
   <br>
   <br>
   <button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">

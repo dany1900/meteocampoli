@@ -31,6 +31,18 @@ export class SatelliteSudComponent implements OnInit {
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('.title-micro-section');
     el.scrollIntoView();
+    const iframe = document.getElementById('sat-sud')[0];
+    const style = document.createElement('style');
+    style.textContent =
+      'img {' +
+      '  width: 900px!important;' +
+      '}';
+    if (iframe.contentWindow) {
+      iframe.contentWindow.document.head.appendChild(style);
+    }
+    else if (iframe.contentDocument) {
+      iframe.contentDocument.head.appendChild(style);
+    }
   }
 
   scrollToTop() {
