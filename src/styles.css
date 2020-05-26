@@ -37,7 +37,11 @@ button {
 body {
   font: 10pt Arial, Helvetica, sans-serif;
   line-height: 18px;
-  zoom: 0.89;
+  zoom: 0.8 !important;
+}
+
+.fb-share-button {
+  zoom: 1.2
 }
 
 td {
@@ -431,7 +435,20 @@ a.nivo-prevNav {
   height: 850px !important;
 }
 
+.radar-sud {
+  -webkit-user-select: none;
+  cursor: -webkit-zoom-in;
+  border-radius: 20px;
+  border: 10px;
+  border-style: solid;
+  border-color: #ffffff;
+  width: 712px !important;
+  height: 850px !important;
+}
+
 .previsioni-frame {
+  -webkit-user-select: none;
+  cursor: -webkit-zoom-in;
   border-radius: 20px;
   border: 10px;
   border-style: solid;
@@ -464,6 +481,13 @@ a.nivo-prevNav {
   font-style: italic;
   font-weight: bold;
 }
+
+.title-info {
+  font-size: 23px;
+  color: #333642;
+  font-style: italic;
+}
+
 
 .mat-tab-header {
   /* display: flex; */
@@ -524,6 +548,7 @@ a.nivo-prevNav {
   margin-left: 45%;
   margin-right: 50%;
 }
+
 
 .mat-dialog-container {
   padding-left: 5px !important;
@@ -592,7 +617,7 @@ a.nivo-prevNav {
 }
 
 .effemeridi-schema {
-  zoom: 1.1;
+  zoom: 1.2;
   height: 250px;
   border: none;
 }
@@ -613,6 +638,12 @@ a.nivo-prevNav {
 
 .date-ondata-caldo {
   font-style: italic;
+}
+
+.riepilogo-frame {
+  height: 3800px !important;
+  width: 100% !important;
+  zoom: 0.8 !important;
 }
 
 

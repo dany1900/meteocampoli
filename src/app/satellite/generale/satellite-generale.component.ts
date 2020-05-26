@@ -29,7 +29,7 @@ export class SatelliteGeneraleComponent implements OnInit {
 
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('div');
+    const el = this.myElement.nativeElement.querySelector('.title-info');
     el.scrollIntoView();
   }
 

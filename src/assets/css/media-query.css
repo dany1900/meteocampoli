@@ -1,4 +1,9 @@
 @media screen and (max-width: 1025px) {
+
+  body {
+    zoom: 1.0 !important;
+  }
+
   h1 {
     color: #337ab7 !important;
     font-style: italic !important;
@@ -176,7 +181,7 @@
   }
 
   .fb-share-button {
-    width: 800px !important;
+    zoom: 1 !important;
   }
 
   .rete-meteo {
