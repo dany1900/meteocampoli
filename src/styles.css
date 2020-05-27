@@ -37,7 +37,10 @@ button {
 body {
   font: 10pt Arial, Helvetica, sans-serif;
   line-height: 18px;
-  zoom: 0.8 !important;
+}
+
+html {
+  zoom: 0.8;
 }
 
 .fb-share-button {
@@ -453,8 +456,8 @@ a.nivo-prevNav {
   border: 10px;
   border-style: solid;
   border-color: #ffffff;
-  height: 630px;
-  width: 920px;
+  height: 650px;
+  width: 95%;
 }
 
 .header-macro-section {
@@ -644,6 +647,10 @@ a.nivo-prevNav {
   height: 3800px !important;
   width: 100% !important;
   zoom: 0.8 !important;
+}
+
+.article-header {
+  font-size: 20px !important;
 }
 
 
