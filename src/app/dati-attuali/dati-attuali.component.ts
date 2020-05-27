@@ -23,7 +23,7 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
     this.title = 'Meteo Campoli - Monitoraggio Meteo';
     this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
     this.keywords = 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino';
-    this.ogUrl = 'www.meteocampoli.altervista.org/dati-attuali';
+    this.ogUrl = 'www.meteocampoliapp.altervista.org/dati-attuali';
     this.ogImage = 'http://meteocampoli.altervista.org/images/meteocampoli.jpg';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }

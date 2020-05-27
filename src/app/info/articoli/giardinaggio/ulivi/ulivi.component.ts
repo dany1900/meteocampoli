@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
+import {SEOService} from '../../../../service/seoservice.service';
 
 @Component({
   selector: 'ulivi',
@@ -10,7 +11,19 @@ import {ViewportScroller} from '@angular/common';
 export class UliviComponent implements OnInit, OnChanges {
 
 
-  constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller) {
+  title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
+
+  constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller, private seo: SEOService) {
+    // TODO
+    this.title = 'Informazioni Ulivo - Articoli - Meteo Campoli';
+    this.description = 'Informazioni generali sulla pianta dell ulivo. Ciclo di maturazione, quando  e come preparare il terreno, tutti gli accorgimento necessari per la potatura';
+    this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/giardinaggio/ulivi';
+    this.ogImage = '';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
 

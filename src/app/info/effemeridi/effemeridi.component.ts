@@ -18,9 +18,9 @@ export class EffemeridiComponent implements OnInit, AfterViewInit {
 
   constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'Orari Alba Tramonto - Meteo Campoli';
-    this.description = 'Monitoraggio del Sole con dati. Analisi e previsioni sulla qualità dell\'aria. Statistiche sulle medie regionali italiane. Effemeridi Campoli App';
-    this.keywords = 'curiosita campoli, curiosita meteo campoli, info e curiosita meteo campoli, monitor sole meteo campoli, qualita aria campoli appennino, qualita aria meteo campoli';
-    this.ogUrl = 'www.meteocampoli.altervista.org/webcam/info/effemeridi';
+    this.description = 'Orari di alba e tramonto dettagliati di Campoli Appennino. Informazioni relative alla durata dei giorni per ogni mese, informazioni sulla posizione geografica con coordinate';
+    this.keywords = '';
+    this.ogUrl = 'www.meteocampoli.altervista.org/info/effemeridi';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }

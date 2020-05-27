@@ -29,8 +29,15 @@ legend {
 }
 
 .article-header {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1;
+}
+
+.article-header-coming {
+  font-size: 17px;
+  line-height: 1;
+  color: red;
+  width: 90px !important;
 }
 
 .article-body {
