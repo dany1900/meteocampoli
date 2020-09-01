@@ -1,9 +1,9 @@
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
 <div class="center">
   <h2 class="title-micro-section">Lista aggiornata dei terremoti - fonte INGV</h2>
-  <iframe src="http://meteocampoli.altervista.org/terremotiingv.html" class="terremoti-frame" [hidden]="imageLoader"
+  <iframe src="http://meteocampoli.altervista.org/terremotiingv.html" class="terremoti-frame"
           (load)="imageLoader = false;"></iframe>
 </div>
   <br>

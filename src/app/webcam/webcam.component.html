@@ -1,4 +1,4 @@
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div class="center" [hidden]="imageLoader">
   <figure>

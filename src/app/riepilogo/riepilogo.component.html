@@ -1,12 +1,12 @@
 <br>
 <h1 class="header-macro-section">Riepilogo Stazione Meteo Campoli Appennino - 500 MT</h1>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
 <br>
 <br>
 <iframe class="riepilogo-frame" id="riepilogoFrame"
-        src="http://meteocampoliappennino.altervista.org/rapporto-mensile.php" [hidden]="imageLoader"
+        src="http://meteocampoliapp.altervista.org/rapporto-mensile.php"
         (load)="imageLoader = false;"></iframe>
   <br>
   <br>

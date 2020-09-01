@@ -1,17 +1,17 @@
 <br>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
-<div class="center">
-  <h2 class="title-micro-section">Radar Protezione Civile</h2>
-  <iframe class="radar"
-          src="http://www.protezionecivile.gov.it/radar-dpc/?update=4ffff06b-5c34-77ca-2792-4fed1a26382c#/pages/dashboard"
-          frameborder="0" scrolling="no" marginheight="0" marginwidth="0" [hidden]="imageLoader"
-          (load)="imageLoader = false;"></iframe>
-  <br>
-  <br>
-  <button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
-    <i class="fa fa-chevron-up"></i>
-  </button>
-</div>
+  <div class="center">
+    <h2 class="title-micro-section">Radar Protezione Civile</h2>
+    <iframe class="radar"
+            src="http://www.protezionecivile.gov.it/radar-dpc/?update=4ffff06b-5c34-77ca-2792-4fed1a26382c#/pages/dashboard"
+            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+            (load)="imageLoader = false;"></iframe>
+    <br>
+    <br>
+    <button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+      <i class="fa fa-chevron-up"></i>
+    </button>
+  </div>
 </div>

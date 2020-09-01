@@ -8,12 +8,18 @@ import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
 import {SatelliteRoutingModule} from './satellite-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {SatelliteComponent} from './satellite.component';
+import {CommonModule} from '@angular/common';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 
 @NgModule({
   imports: [
     SatelliteRoutingModule,
-    SharedModule
+    SharedModule,
+    CommonModule,
+    MatProgressSpinnerModule,
+    NgxSpinnerModule
   ],
 
   declarations: [

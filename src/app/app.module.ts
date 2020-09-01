@@ -18,6 +18,7 @@ import {UtiliyService} from './service/utiliy.service';
 import {BreadcrumbModule} from 'angular-crumbs';
 import {FbLikeComponent} from './header/fb-like/fb-like.component';
 import {HeaderService} from './service/header.service';
+import {NgxSpinnerModule} from 'ngx-spinner';
 
 @NgModule({
 
@@ -39,7 +40,8 @@ import {HeaderService} from './service/header.service';
     BrowserAnimationsModule,
     NgbModule,
     AppRoutingModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    NgxSpinnerModule
   ],
   exports: [],
   providers: [SEOService, UtiliyService, HeaderService],

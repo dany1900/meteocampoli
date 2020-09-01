@@ -27,7 +27,7 @@ export class StazioniLazioComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.mat-spinner');
+    const el = this.myElement.nativeElement.querySelector('mat-spinner');
     el.scrollIntoView();
   }
 

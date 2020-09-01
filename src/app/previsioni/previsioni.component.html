@@ -1,4 +1,4 @@
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
   <h1 class="header-macro-section">Previsioni Locali e Generali - Monitoraggio Indici Climatici</h1>
@@ -6,7 +6,6 @@
   <br>
   <h2 class="title-micro-section">Meteogramma Campoli Appennino</h2>
   <img class="previsioni-frame" src="http://www.yr.no/sted/Italia/Lazio/Campoli_Appennino/avansert_meteogram.png"
-       [hidden]="imageLoader"
        (load)="imageLoader = false;"/><br/>
 
   <br>

@@ -123,12 +123,13 @@
     }
   </style>
 
+  <!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>-->
   <script type="text/javascript"
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD26GYTiQczCLzKG3TNOTQfWH9b2PIcSjU"></script>
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD26GYTiQczCLzKG3TNOTQfWH9b2PIcSjU&sensor=false"></script>
   <script type="text/javascript">
     var url_browser = document.referrer;
     if (url_browser == "") {
-      host_browser = "http://www.meteocampoli.altervista.org";
+      host_browser = "http://www.vallemuricana.it";
     } else {
       host_browser = url_browser;
     }
@@ -170,7 +171,7 @@
       var bounds = new google.maps.LatLngBounds(swBound, neBound);
       //var srcImage = 'http://satollo.aquila.infn.it/midia/ref/ultimo_vmi_00.png';
       //new 2015 luglio
-      var srcImage = 'http://radar.aquila.infn.it/network/Output/ultimo_vmi_rmos_mm.png?123';
+      var srcImage = 'http://satollo.aquila.infn.it/midia/ref/ultimo_srt6h_noclass.png';
       overlay = new USGSOverlay(bounds, srcImage, map);
     }
 

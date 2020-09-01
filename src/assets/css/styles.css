@@ -3,6 +3,7 @@ img {
   border: 0px;
 }
 
+
 .mat-tab-label {
   height: 48px;
   padding: 0 24px;
@@ -27,7 +28,8 @@ img {
 }
 
 .mat-tab-body.mat-tab-body-active {
-  overflow: hidden;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
 }
 
 button {
@@ -39,8 +41,13 @@ body {
   line-height: 18px;
 }
 
-html {
+html:fullscreen {
   zoom: 0.8;
+  -webkit-transform: scale(0.8);
+  -moz-transform: scale(0.8);
+  -ms-transform: scale(0.8);
+  -o-transform: scale(0.8);
+  transform: scale(0.8);
 }
 
 .fb-share-button {
@@ -56,7 +63,7 @@ td {
 }
 
 .bg_clouds {
-  background: url(assets/img/bg_clouds.jpg) no-repeat center center fixed;
+  background: url(../img/bg_clouds.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -88,7 +95,7 @@ td {
 
 .header {
   height: 330px;
-  background: url(assets/img/campoli-verde-min.jpg) 23px top no-repeat #FFFFFF;
+  background: url(../img/campoli-verde-min.jpg) 23px top no-repeat #FFFFFF;
 }
 
 h1 {
@@ -128,15 +135,6 @@ h4 {
   height: 330px;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-  width: 60px !important;
-  height: 60px !important;
-}
-
-.carousel-control-prev, .carousel-control-next {
-  opacity: unset !important;
-}
-
 .nivo-controlNav {
   position: absolute;
   left: 260px;
@@ -163,18 +161,9 @@ h4 {
   display: block;
   width: 30px;
   height: 30px;
-  background: url(assets/img/arrows.png) no-repeat;
+  background: url(../img/arrows.png) no-repeat;
   text-indent: -9999px;
   border: 0;
-}
-
-a.nivo-nextNav {
-  background-position: -30px 0;
-  right: 15px;
-}
-
-a.nivo-prevNav {
-  left: 15px;
 }
 
 .nivo-caption {
@@ -197,7 +186,7 @@ a.nivo-prevNav {
   color: #fff;
   background-color: #2d65c4;
   border-color: #2d65c4;
-  font-size: 23px;
+  font-size: 23.5px;
 }
 
 .btn-puldown {
@@ -208,9 +197,9 @@ a.nivo-prevNav {
 }
 
 .btn-group-vertical {
+  display: inline-block;
   margin-top: 3.5px;
   width: auto;
-  margin-right: 0.9%;
 }
 
 .btn-group-vertical > .btn.active, .btn-group-vertical > .btn:active, .btn-group-vertical > .btn:focus, .btn-group-vertical > .btn:hover, .btn-group > .btn.active, .btn-group > .btn:active, .btn-group > .btn:focus, .btn-group > .btn:hover {
@@ -233,12 +222,12 @@ a.nivo-prevNav {
   clear: both;
   font-weight: normal;
   line-height: 1.428571429;
-  font-weight: bold;
+  /*font-weight: bold;*/
   color: white;
   white-space: nowrap;
   background-color: #2d65c4;
   height: 31px;
-  font-size: 18px;
+  font-size: 20px;
   border-radius: 10px;
 }
 
@@ -318,7 +307,7 @@ a.nivo-prevNav {
   border-radius: 13px;
   border-style: solid;
   border-color: #ffffff;
-  height: 99px;
+  height: 105px;
   cursor: pointer;
 }
 
@@ -339,7 +328,7 @@ a.nivo-prevNav {
   padding-top: 15px;
   padding-bottom: 15px !important;
   min-height: 76vh;
-  background: url(assets/img/content.png);
+  background: url(../img/content.png);
   color: #000000;
   text-align: center
 }
@@ -523,11 +512,26 @@ a.nivo-prevNav {
 
 .mat-tab-label {
   opacity: unset !important;
+  display: inline-block !important;
+}
+
+.mat-tab-labels {
+  display: inline-block !important;
 }
 
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
   background-color: #164db6;
   height: 7px;
+  margin-left: 10px;
+  /* max-width: 154px; */
+}
+
+.mat-tab-group {
+  display: inline-block !important;
+}
+
+.mat-tab-label-container {
+  display: inline-block !important;
 }
 
 ::ng-deep .mat-tab-body-content {
@@ -563,7 +567,7 @@ a.nivo-prevNav {
 }
 
 .image-gallery {
-  width: 557px;
+  width: 100%;
   height: 246px !important;
 }
 
@@ -653,6 +657,20 @@ a.nivo-prevNav {
   color: red;
 }
 
+.hidden-element {
+  display: none !important
+}
+
+.flex {
+  flex-basis: auto;
+}
 
 
+html, body {
+  height: 100%;
+}
 
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -2,14 +2,14 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache"/>
+  <script src="assets/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <script src="assets/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css"/>
+  <link rel="stylesheet" type="text/css" href="assets/css/media-query.css"/>
   <title>Meteo Campoli</title>
   <base href="/">
-  <script src="assets/js/jquery.min.js"></script>
-  <link rel="stylesheet" href="assets/css/bootstrap-1.min.css">
-  <link rel="stylesheet" href="assets/css/bootstrap-2.min.css">
-  <script src="assets/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="assets/css/media-query.css"
-        title="css cellulari">
   <style>
     .mat-tab-label {
       height: 48px;
@@ -42,9 +42,19 @@
     .mat-tab-body-wrapper {
       display: unset !important;
     }
+
+    .mat-tab-group {
+      display: inline-block !important;
+    }
+
+    .mat-tab-header {
+      display: inline-block !important;
+    }
   </style>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body class="mat-typography">
 <div id="img-body">
   <app-root></app-root>
 </div>

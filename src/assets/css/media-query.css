@@ -2,6 +2,11 @@
 
   html {
     zoom: 1 !important;
+    -moz-transform: scale(1.0) !important;
+    -webkit-transform: scale(1.0) !important;
+    -ms-transform: scale(1.0) !important;
+    -o-transform: scale(1.0) !important;
+    transform: scale(1.0) !important;
   }
 
   h1 {
@@ -115,17 +120,8 @@
     height: 135px !important;
   }
 
-  .btn-pulup {
-    font-size: 25.4px !important;
-  }
-
-  .btn-lg {
-    font-size: 25.3px !important;
-    height: 75px;
-  }
-
   .testo-articoli {
-    font-size: 33px !important;
+    font-size: 35px !important;
   }
 
   .mat-dialog-container {
@@ -133,7 +129,7 @@
   }
 
   .title-micro-section {
-    font-size: 31px !important;
+    font-size: 34px !important;
   }
 
   .header-macro-section {
@@ -210,6 +206,10 @@
     transform: scale(1.5);
   }
 
+  .btn-pulup {
+    font-size: 22.5px !important;
+  }
+
 
 }
 
@@ -219,7 +219,15 @@
   }
 
   .menu {
-    height: 107px !important;
   }
+
+  .btn-pulup {
+    font-size: 23px !important;
+  }
+
+}
+
+@media screen and (min-width: 1367px) {
+
 
 }

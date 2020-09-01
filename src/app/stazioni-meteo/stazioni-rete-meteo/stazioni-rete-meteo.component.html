@@ -1,5 +1,5 @@
 <br>
-<mat-spinner class="center" [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
   <iframe src="http://retemeteo.lineameteo.it/index.php" (load)="this.imageLoader = false;"
