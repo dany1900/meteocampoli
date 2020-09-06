@@ -1,30 +1,30 @@
 <script type="application/ld+json">
-{
-"@context": "http://schema.org/",
-"@type": "Organization",
-"name": "Meteo Campoli",
-"author": "Daniele Conflitti",
-"image" : "http://meteocampoli.altervista.org",
-"description": "Stazione meteo Campoli",
-"aggregateRating": {
-"@type": "AggregateRating",
-"ratingValue": "5",
-"bestRating": "5",
-"worstRating": "1",
-"ratingCount": "4"
-}
-}
+  {
+    "@context": "http://schema.org/",
+    "@type": "Organization",
+    "name": "Meteo Campoli",
+    "author": "Daniele Conflitti",
+    "image": "http://meteocampoli.altervista.org",
+    "description": "Stazione meteo Campoli",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "4"
+    }
+  }
 
 </script>
 <div class="center">
   <h1>Meteo Campoli - Stazione Meteo</h1>
   <br>
   <h2 class="title-micro-section">L'immagine si aggiorna automaticamente dopo qualche istante</h2>
-  <a href="www.meteocampoliapp.altervista.org/grafico.png?v=' + Math.random()"
-     title="stazione meteo campoli monitoraggio"><img
-    class="grafico-stazione" id="frame"
-    [src]="path"
-    alt="Stazione meteo grafico"></a><br>
+  <img
+    title="stazione meteo campoli monitoraggio"
+    class="grafico-stazione"
+    src="http://meteocampoliapp.altervista.org/grafico.png?v=' + Math.random()"
+    alt="Stazione meteo grafico"><br>
 </div>
 <br>
 <a href="http://meteocampoli.altervista.org/MyGWStats.php?&link=Full.xml"
