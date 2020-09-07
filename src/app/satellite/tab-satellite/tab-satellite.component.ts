@@ -44,7 +44,6 @@ export class TabSatelliteComponent implements OnInit {
   }
 
   ngOnInit() {
-    ;
   }
 
   tabSelectionChanged(event) {

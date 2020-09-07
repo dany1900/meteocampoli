@@ -6,8 +6,12 @@ body {
   font: 10pt Arial, Helvetica, sans-serif;
   line-height: 18px;
   margin: 0;
+}
+
+html {
   zoom: 0.8 !important;
-  }
+}
+
 img {
   border: 0px;
 }
@@ -18,7 +22,7 @@ img {
   padding: 0 24px;
   cursor: pointer;
   box-sizing: border-box;
-  opacity: .6;
+  opacity: 0.9 !important;
   min-width: 100px;
   text-align: center;
   display: inline-flex;
@@ -182,6 +186,10 @@ h4 {
   background-color: #2d65c4;
   border-color: #2d65c4;
   font-size: 23.4px;
+}
+
+.btn-pulup:active {
+  background-color: #31528a;
 }
 
 .btn-puldown {
@@ -503,6 +511,7 @@ h4 {
   color: #ffffff;
   font-size: 21px;
   margin-left: 10px;
+  padding-top: 5px !important;
 }
 
 .mat-tab-label {
@@ -531,11 +540,9 @@ h4 {
 
 
 .mat-tab-group {
-  display: inline-block !important;
 }
 
 .mat-tab-label-container {
-  display: inline-block !important;
 }
 
 ::ng-deep .mat-tab-body-content {
@@ -668,4 +675,51 @@ h4 {
 .flex {
   flex-basis: auto;
 }
+
+.article-header {
+  font-size: 20px;
+  line-height: 1;
+  margin-left: 53px !important;
+}
+
+fieldset {
+  min-width: 258px;
+  padding: 0;
+  margin: 0;
+  background-color: white;
+  border: 4px;
+  border-style: solid;
+  border-color: #ffffff;
+}
+
+legend {
+  text-align: Center;
+  background-color: #0046ff;
+  color: #FFFFFF;
+  font-weight: Bold;
+  width: 200px;
+  padding: 1px;
+  border: Solid 1px #000000;
+  font-size: 13px;
+  font-family: Verdana;
+}
+
+.article-body {
+  font-size: 20px;
+  color: black;
+  padding-left: 7px;
+  margin-top: 7px;
+  margin-bottom: 2px;
+  line-height: 1;
+  text-align: initial;
+}
+
+.article-header-coming {
+  font-size: 17px;
+  line-height: 1;
+  color: red;
+  width: 90px !important;
+}
+
+
 
