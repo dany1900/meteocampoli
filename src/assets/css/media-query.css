@@ -8,6 +8,13 @@
     -o-transform: scale(1.0) !important;
     transform: scale(1.0) !important;
   } */
+  body {
+    zoom: 1.0 !important;
+  }
+
+  .main {
+    width: unset !important;
+  }
 
   h1 {
     color: #337ab7 !important;
@@ -24,7 +31,7 @@
   }
 
   h4 {
-    font-size: 30px;
+    font-size: 22px !important;
   }
 
   h5 {
@@ -48,9 +55,13 @@
     width: 1108px;
   }
 
+  .dropdown-menu {
+    min-width: 0 !important;
+  }
+
   .dropdown-menu > li > a {
     display: block;
-    padding: 3px 20px;
+    /*padding: 3px 20px;*/
     clear: both;
     font-weight: normal;
     line-height: 1.428571429;
@@ -88,6 +99,14 @@
     font-size: 26px !important;
   }
 
+  .btn-puldown {
+    /*padding-top: 16px;*/
+  }
+
+  .btn-pulup {
+    height: 60px !important;
+    font-size: 24.3px !important;
+  }
 
   .last-element-menu {
     left: -130% !important;
@@ -141,6 +160,7 @@
     color: #ffffff !important;
     font-size: 28px !important;
     margin-left: 10px !important;
+    padding-top: 5px !important;
   }
 
   .fa {
@@ -154,6 +174,7 @@
 
   .button-indietro {
     font-size: 23px !important;
+    margin-right: 850px !important;
   }
 
   .footer-desc {
@@ -207,7 +228,7 @@
   }
 
   .btn-pulup {
-    font-size: 22.5px !important;
+    font-size: 24.3px !important;
   }
 
 
@@ -222,12 +243,19 @@
   }
 
   .btn-pulup {
-    font-size: 23px !important;
+    font-size: 23.9px !important;
   }
 
 }
 
-@media screen and (min-width: 1367px) {
+@media screen and (min-width: 5000px) {
 
+  .menu {
+    height: 120px !important;
+  }
 
+  .btn-pulup {
+    font-size: 21.8px !important;
+  }
 }
+

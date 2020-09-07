@@ -181,7 +181,7 @@ h4 {
   color: #fff;
   background-color: #2d65c4;
   border-color: #2d65c4;
-  font-size: 23.5px;
+  font-size: 23.4px;
 }
 
 .btn-puldown {
@@ -222,7 +222,7 @@ h4 {
   white-space: nowrap;
   background-color: #2d65c4;
   height: 31px;
-  font-size: 20px;
+  font-size: 21.5px;
   border-radius: 10px;
 }
 
@@ -520,6 +520,15 @@ h4 {
   margin-left: 10px;
   /* max-width: 154px; */
 }
+
+.btn-group-vertical > .btn:active, .btn-group-vertical > .btn:focus, .btn-group-vertical > .btn:hover {
+  color: white !important;
+}
+
+.btn:focus {
+  outline: 5px auto !important;
+}
+
 
 .mat-tab-group {
   display: inline-block !important;
