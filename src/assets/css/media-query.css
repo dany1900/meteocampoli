@@ -246,6 +246,9 @@
     font-size: 23.9px !important;
   }
 
+  .dropdown-menu {
+    min-width: unset !important;
+  }
 }
 
 @media screen and (min-width: 5000px) {
@@ -255,7 +258,11 @@
   }
 
   .btn-pulup {
-    font-size: 21.8px !important;
+    font-size: 21.5px !important;
+  }
+
+  .dropdown-menu {
+    min-width: unset !important;
   }
 }
 
