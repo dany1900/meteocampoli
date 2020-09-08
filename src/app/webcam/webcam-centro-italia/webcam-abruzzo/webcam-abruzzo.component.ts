@@ -26,6 +26,8 @@ export class WebcamAbruzzoComponent implements OnInit {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.center');
+    el.scrollIntoView();
   }
 
   indietro(): void {

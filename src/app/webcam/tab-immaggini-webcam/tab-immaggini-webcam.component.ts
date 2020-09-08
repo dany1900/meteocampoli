@@ -34,7 +34,7 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('mat-tab-group');
+    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
     el.scrollIntoView();
   }
 

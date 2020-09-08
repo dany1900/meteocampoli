@@ -35,6 +35,10 @@ import {WebcamValleCominoComponent} from './webcam-centro-italia/webcam-valle-co
 import {WebcamRoutingModule} from './webcam-routing.module';
 import {SharedModule} from '../shared/shared.module';
 import {CommonModule} from '@angular/common';
+import {WebcamPistoiaComponent} from './webcam-centro-italia/webcam-toscana/webcam-pistoia/webcam-pistoia.component';
+import {WebcamFirenzeComponent} from './webcam-centro-italia/webcam-toscana/webcam-firenze/webcam-firenze.component';
+import {WebcamGrossetoComponent} from './webcam-centro-italia/webcam-toscana/webcam-grosseto/webcam-grosseto.component';
+import {WebcamPisaComponent} from './webcam-centro-italia/webcam-toscana/webcam-pisa/webcam-pisa.component';
 
 
 @NgModule({
@@ -77,7 +81,11 @@ import {CommonModule} from '@angular/common';
     WebcamSudItaliaComponent,
     WebcamCentroItaliaComponent,
     ImmaginiComponent,
-    TabImmagginiWebcamComponent
+    TabImmagginiWebcamComponent,
+    WebcamPistoiaComponent,
+    WebcamFirenzeComponent,
+    WebcamGrossetoComponent,
+    WebcamPisaComponent
   ],
   exports: []
 })

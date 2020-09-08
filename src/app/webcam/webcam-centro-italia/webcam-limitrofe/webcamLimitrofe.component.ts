@@ -28,6 +28,8 @@ export class WebCamLimitrofeComponent implements OnInit {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    el.scrollIntoView();
   }
 
   indietro(): void {

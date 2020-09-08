@@ -26,6 +26,8 @@ export class WebcamMarcheComponent implements OnInit {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.center');
+    el.scrollIntoView();
   }
 
   scrollToTop() {
