@@ -607,11 +607,13 @@ h4 {
 }
 
 .terremoti-mondo {
+  cursor: -webkit-zoom-in;
   border-radius: 20px;
   border: 18px;
   border-style: solid;
   border-color: #ffffff;
-  width: 900px;
+  width: 1058px;
+  height: 600px;
 }
 
 .button-indietro {
@@ -685,12 +687,11 @@ h4 {
 
 fieldset {
   min-width: 258px;
-  padding: 0;
-  margin: 0;
   background-color: white;
   border: 4px;
   border-style: solid;
   border-color: #ffffff;
+  margin-right: 11%;
 }
 
 legend {
@@ -706,7 +707,7 @@ legend {
 }
 
 .article-body {
-  font-size: 20px;
+  font-size: 21px;
   color: black;
   padding-left: 7px;
   margin-top: 7px;

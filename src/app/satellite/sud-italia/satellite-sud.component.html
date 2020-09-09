@@ -1,10 +1,10 @@
 <br>
-<mat-spinner [hidden]="!imageLoader" mode="indeterminate"></mat-spinner>
+<h2 class="title-micro-section">Radar precipitazioni animato in tempo reale</h2>
+<br>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
-  <h2 class="title-micro-section">Radar precipitazioni animato in tempo reale</h2>
   <iframe class="radar-sud" scrolling="No" frameborder="no" src="http://cdn-radar.ilmeteo.it/italy.gif?8757865"
-          [hidden]="imageLoader"
           (load)="imageLoader = false;"></iframe>
   <br>
   <br>

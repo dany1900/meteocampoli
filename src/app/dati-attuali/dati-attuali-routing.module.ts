@@ -13,6 +13,11 @@ import {DatiAttualiComponent} from './dati-attuali.component';
           {
             path: 'dati-attuali',
             component: DatiAttualiComponent,
+            data: {
+              title: 'About',
+              description: 'Description Meta Tag Content',
+              ogUrl: 'your og url'
+            }
           },
         ],
       },

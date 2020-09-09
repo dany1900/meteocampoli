@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
 import {Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
@@ -17,7 +17,7 @@ export class PrevisioniComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router, public renderer: Renderer2) {
     this.title = 'Previsioni Meteo - Meteogrammi - Monitoraggio Indici Climatici - Meteo Campoli';
     this.description = 'Previsioni meteo dettagliate locali e nazionali. Monitoraggio degli indici climatici. Analisi radio sondaggi e meteogrammi con tendenza a lungo termine.';
     this.keywords = 'Previsioni meteo campoli, indice NOA, Indici climatici, Tendenza meteo, previsioni meteo campoli appennino';
@@ -33,6 +33,15 @@ export class PrevisioniComponent implements OnInit {
 
   scrollToTop() {
     this.scroll.scrollToPosition([0, 0]);
+  }
+
+  toggleClass(event: any, classe: string) {
+    const hasClass = event.target.classList.contains(classe);
+    if (hasClass) {
+      this.renderer.removeClass(event.target, classe);
+    } else {
+      this.renderer.addClass(event.target, classe);
+    }
   }
 
 }

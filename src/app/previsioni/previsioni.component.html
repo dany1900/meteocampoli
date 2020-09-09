@@ -2,23 +2,25 @@
 
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
-<div [hidden]="imageLoader">
+<div [hidden]="imageLoader" class="center">
   <br>
   <br>
   <h2 class="title-micro-section">Meteogramma Campoli Appennino</h2>
   <img class="previsioni-frame" src="http://www.yr.no/sted/Italia/Lazio/Campoli_Appennino/avansert_meteogram.png"
-       (load)="imageLoader = false;"/><br/>
+       (load)="imageLoader = false;" (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
   <em class="title-micro-section">Spaghi GFS Campoli Appennino</em>
   <br>
   <img class="previsioni-frame"
-       src="http://modeles.meteociel.fr/modeles/gens/graphe_ens3.php?x=&y=&run=0&lat=41.72&lon=13.687&ext=1&type=0"/><br/>
+       src="http://modeles.meteociel.fr/modeles/gens/graphe_ens3.php?x=&y=&run=0&lat=41.72&lon=13.687&ext=1&type=0"
+       (click)="toggleClass($event,'zoomed')"/><br/>
   <br>
   <em class="title-micro-section">Pioggia ECMWF 72H</em>
   <br>
   <img class="previsioni-frame"
-       src="https://services.meteored.com/img/models/ecmwf/ECMWF_072_IT_APC_es-ES_es.png"/><br/>
+       src="https://services.meteored.com/img/models/ecmwf/ECMWF_072_IT_APC_es-ES_es.png"
+       (click)="toggleClass($event,'zoomed')"/><br/>
 
   <h2 class="title-micro-section">Previsioni 5 Giorni</h2>
   <!-- Inizio codice ilMeteo.it -->
@@ -29,14 +31,14 @@
   <br>
   <br>
   <h2 class="title-micro-section">Previsione Pioggia 70h</h2>
-  <iframe class="previsioni-frame" style="width: 620px !important;height: 470px;"
-          src="http://pumpkin.aquila.infn.it/forechem/fig/TOPC_ITA.gif" frameborder="0" scrolling="no" marginheight="0"
-          marginwidth="0"></iframe>
+  <iframe class="previsioni-frame" style="width: 770px !important;height: 584px;"
+          src="http://pumpkin.aquila.infn.it/forechem/fig/TOPC_ITA.gif" (click)="toggleClass($event,'zoomed')"></iframe>
   <br>
   <br>
   <h2 class="title-micro-section">Anomalie termiche ultimi 10 giorni</h2>
   <img class="previsioni-frame"
-       src="http://www.cpc.ncep.noaa.gov/products/CFSv2/imagesInd3/glbT850MonInd1.gif"/>
+       src="http://www.cpc.ncep.noaa.gov/products/CFSv2/imagesInd3/glbT850MonInd1.gif"
+       (click)="toggleClass($event,'zoomed')"/>
   <br/>
   <br>
   <h2 class="title-micro-section">Tendenza Meteo Lungo Termine</h2>

@@ -17,8 +17,7 @@ export class SEOService {
 
   updateMetaInfo(title, description, keywords, url, image) {
     this.titleService.setTitle(title);
-    this.meta.updateTag({content: description}, 'name="description"');
-    /*this.meta.updateTag({name: 'description', content: description});*/
+    this.meta.updateTag({name: 'description', content: description});
     this.meta.updateTag({name: 'keywords', content: keywords});
     this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
     this.meta.updateTag({property: 'og:type', content: 'website'});
@@ -29,6 +28,7 @@ export class SEOService {
     this.meta.updateTag({property: 'og:image', content: image});
   }
 
+  // non usato
   updateTitle(title?: string) {
     if (!title) {
       this.router.events
