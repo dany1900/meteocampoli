@@ -17,7 +17,6 @@ export class ArticoliMeteoComponent implements OnInit {
   ogImage: string;
 
   constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller) {
-    // TODO
     this.title = 'Curiosità Metereologia - Articoli - Meteo Campoli';
     this.description = 'Articoli sul fenomeno della metereologia , tutte le curiosità in continuo aggiornamento';
     this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/meteo';

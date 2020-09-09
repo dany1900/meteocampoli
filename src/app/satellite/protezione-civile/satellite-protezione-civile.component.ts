@@ -28,10 +28,9 @@ export class SatelliteProtezioneCivileComponent implements OnInit {
   }
 
   ngOnInit() {
-    //const el = this.myElement.nativeElement.querySelector('.radar');
-    //el.scrollIntoView();
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    el.scrollIntoView();
     this.spinner.show();
-
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();

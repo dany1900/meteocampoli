@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
 import {ViewportScroller} from '@angular/common';
 import {Router} from '@angular/router';
@@ -16,18 +16,16 @@ export class WebcamMarcheComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'WebCam Marche Montagna - Meteo Campoli';
-    this.description = '';
-    this.keywords = '';
+    this.description = 'Tutte le Webcam marche di montagna ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Focus sull\'appennino con link alle migliori fonti.';
+    this.keywords = 'webcam marche, webcam marche meteo campoli, webcam marche montagna, webcam appennino meteo campoli,web cam centro italia montagna,webcam marche montagna';
     this.ogUrl = 'www.meteocampoli.altervista.org/webcam/montagna/marche';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.center');
-    el.scrollIntoView();
   }
 
   scrollToTop() {

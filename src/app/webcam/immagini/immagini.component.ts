@@ -29,8 +29,8 @@ export class ImmaginiComponent implements OnInit {
   }
 
   ngOnInit() {
-    /* const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-     el.scrollIntoView();*/
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    el.scrollIntoView();
   }
 
   scrollToTop() {

@@ -18,7 +18,6 @@ export class UliviComponent implements OnInit, OnChanges {
   ogImage: string;
 
   constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller, private seo: SEOService) {
-    // TODO
     this.title = 'Informazioni Ulivo - Articoli - Meteo Campoli';
     this.description = 'Informazioni generali sulla pianta dell ulivo. Ciclo di maturazione, quando  e come preparare il terreno, tutti gli accorgimento necessari per la potatura';
     this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/giardinaggio/ulivi';

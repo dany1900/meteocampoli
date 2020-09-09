@@ -1,10 +1,18 @@
-import {Component, OnInit} from '@angular/core';
-import {WebcamComponent} from '../../../webcam.component';
+import {Component, ElementRef, OnInit} from '@angular/core';
 
 @Component({
   selector: 'webcam-pistoia',
   templateUrl: './webcam-pistoia.component.html',
   styleUrls: ['./webcam-pistoia.component.css']
 })
-export class WebcamPistoiaComponent extends WebcamComponent implements OnInit {
+export class WebcamPistoiaComponent implements OnInit {
+
+  constructor(private myElement: ElementRef) {
+  }
+
+  ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    el.scrollIntoView();
+  }
+
 }

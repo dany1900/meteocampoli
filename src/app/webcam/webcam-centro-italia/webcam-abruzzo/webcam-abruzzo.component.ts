@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
 import {Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
@@ -16,7 +16,7 @@ export class WebcamAbruzzoComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'WebCam Abruzzo Montagna - Meteo Campoli';
     this.description = 'Tutte le Webcam abruzzesi di montagna ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Focus sull\'appennino con link alle migliori fonti.';
     this.keywords = 'webcam abruzzo, webcam abruzzo meteo campoli, webcam abruzzo montagna, webcam appennino meteo campoli,web cam centro italia montagna,webcam abruzzo montagna,web cam villetta barrea,villetta barrea webcam,webcam barrea,webcam campofelice,webcam avezzano';
@@ -26,8 +26,6 @@ export class WebcamAbruzzoComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.center');
-    el.scrollIntoView();
   }
 
   indietro(): void {

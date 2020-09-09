@@ -19,29 +19,13 @@ export class SatelliteCentroComponent implements OnInit {
   ogImage: string;
   urlSatellite: string;
 
-  // TODO
   constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
     this.title = 'Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli';
-    /* this.meta.updateTag({
-      name: 'description',
-      content: 'Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale. Focus sul centro italia.'
-    });
-    this.meta.updateTag({
-      name: 'keywords',
-      content: 'Satellite centro meteo campoli, radar centro meteo campoli, radar precipitazioni centro italia meteo campoli, radar fulmini centro italia, radar precipitazioni zoom centro italia, radar pioggia centro italia, satellite centro italia'
-    });
-    this.meta.updateTag({property: 'og:locale', content: 'it_IT'});
-    this.meta.updateTag({property: 'og:type', content: 'website'});
-    this.meta.updateTag({property: 'og:title', content: 'Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli'});
-    this.meta.updateTag({
-      property: 'og:description',
-      content: 'Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale. Focus sul centro italia.'
-    });
-    this.meta.updateTag({property: 'og:url', content: 'www.meteocampoli.altervista.org/satellite-centro'});
-    this.meta.updateTag({
-      property: 'og:site_name',
-      content: 'Meteo Campoli'
-    }); */
+    this.description = 'Satellite infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale. Focus sul centro italia.';
+    this.keywords = 'satellite centro meteo campoli, radar centro meteo campoli, radar precipitazioni centro italia meteo campoli, radar fulmini centro italia, radar precipitazioni zoom centro italia, radar pioggia centro italia, satellite centro italia, radar pioggie toscana';
+    this.ogUrl = 'www.meteocampoli.altervista.org/satellite-generale';
+    this.ogImage = '';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
 
   ngOnInit() {

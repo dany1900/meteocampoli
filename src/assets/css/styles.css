@@ -521,6 +521,7 @@ h4 {
 
 .mat-tab-labels {
   display: inline-block !important;
+  cursor: pointer !important;
 }
 
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
 import {ViewportScroller} from '@angular/common';
 import {Router} from '@angular/router';
@@ -16,7 +16,7 @@ export class WebcamMoliseComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, private scroll: ViewportScroller, protected router: Router) {
     // TODO
     this.title = 'WebCam Molise Montagna - Meteo Campoli';
     this.description = 'Tutte le webcam  del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.';
@@ -27,8 +27,6 @@ export class WebcamMoliseComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.center');
-    el.scrollIntoView();
   }
 
   scrollToTop() {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 
 @Component({
   selector: 'webcam-aquila',
@@ -9,10 +9,12 @@ export class WebcamAquilaComponent implements OnInit {
 
   imageLoader = true;
 
-  constructor() {
+  constructor(private myElement: ElementRef) {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    el.scrollIntoView();
   }
 
 }

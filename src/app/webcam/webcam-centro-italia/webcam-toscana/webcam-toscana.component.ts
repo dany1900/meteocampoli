@@ -17,11 +17,10 @@ export class WebcamToscanaComponent implements OnInit {
   ogImage: string;
 
   constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
-    // TODO
-    this.title = 'Meteo Campoli - Monitoraggio Meteo';
-    this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
-    this.keywords = 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino';
-    this.ogUrl = 'www.meteocampoli.altervista.org/dati-attuali';
+    this.title = 'WebCam Toscana Montagna - Meteo Campoli';
+    this.description = 'Tutte le Webcam toscane di montagna ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Focus sull\'appennino con link alle migliori fonti.';
+    this.keywords = 'webcam toscana, webcam toscana meteo campoli, webcam toscana montagna, webcam appennino meteo campoli,web cam centro italia montagna,webcam toscana montagna';
+    this.ogUrl = 'www.meteocampoli.altervista.org/webcam/montagna/toscana';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
   }
