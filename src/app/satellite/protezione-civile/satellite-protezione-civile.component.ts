@@ -35,6 +35,8 @@ export class SatelliteProtezioneCivileComponent implements OnInit {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
     }, 5000);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

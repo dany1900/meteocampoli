@@ -27,6 +27,8 @@ export class WebcamMoliseComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

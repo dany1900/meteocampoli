@@ -29,6 +29,8 @@ export class UliviComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     const el = this.myElement.nativeElement.querySelector('.title-micro-section');
     el.scrollIntoView();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   ngOnChanges() {

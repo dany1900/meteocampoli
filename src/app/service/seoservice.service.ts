@@ -1,7 +1,8 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {Meta, Title} from '@angular/platform-browser';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {filter, map, mergeMap} from 'rxjs/operators';
+import {DOCUMENT} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class SEOService {
     private titleService: Title,
     private meta: Meta,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    @Inject(DOCUMENT) private dom
   ) {
   }
 
@@ -47,6 +49,23 @@ export class SEOService {
       });
     } else {
       this.titleService.setTitle(title + ' | Site name');
+    }
+  }
+
+  setCanonicalURL(url?: string) {
+    const canURL = url === undefined ? this.dom.URL : url;
+    const link: HTMLLinkElement = this.dom.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    this.dom.head.appendChild(link);
+    link.setAttribute('href', canURL);
+  }
+
+  cleanCanonicalUrl() {
+    const link: HTMLLinkElement[] = this.dom.getElementsByTagName('link');
+    for (let i = 0; i < link.length; i++) {
+      if (link[i].rel && link[i].rel.includes('canonical')) {
+        this.dom.head.removeChild(link[i]);
+      }
     }
   }
 }

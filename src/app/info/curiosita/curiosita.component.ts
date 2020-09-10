@@ -28,6 +28,8 @@ export class CuriositaComponent implements OnInit {
   ngOnInit(): void {
     const el = this.myElement.nativeElement.querySelector('.article-header');
     el.scrollIntoView();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

@@ -26,6 +26,8 @@ export class WebcamUmbriaComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

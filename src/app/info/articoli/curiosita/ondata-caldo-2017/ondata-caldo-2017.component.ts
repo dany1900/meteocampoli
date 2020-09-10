@@ -28,6 +28,8 @@ export class OndataCaldo2017Component implements OnInit, OnChanges {
   ngOnInit(): void {
     const el = this.myElement.nativeElement.querySelector('.header-macro-section');
     el.scrollIntoView();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   ngOnChanges() {

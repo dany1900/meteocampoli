@@ -24,6 +24,8 @@ export class GiardinaggioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
 }

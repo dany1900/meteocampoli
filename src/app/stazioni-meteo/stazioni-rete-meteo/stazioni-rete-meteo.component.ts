@@ -29,6 +29,8 @@ export class StazioniReteMeteoComponent implements OnInit {
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('iframe');
     el.scrollIntoView();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

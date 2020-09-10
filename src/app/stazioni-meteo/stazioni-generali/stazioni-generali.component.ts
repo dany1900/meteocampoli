@@ -29,6 +29,8 @@ export class StazioniGeneraliComponent implements OnInit {
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('.meteonetwork-sticker');
     el.scrollIntoView();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

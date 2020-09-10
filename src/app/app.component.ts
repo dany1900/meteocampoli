@@ -1,15 +1,18 @@
-import {Component} from '@angular/core';
-import {HeaderService} from './service/header.service';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(public service: HeaderService) {
+  constructor() {
   }
+
+  ngOnInit() {
+  }
+
 }
 
 

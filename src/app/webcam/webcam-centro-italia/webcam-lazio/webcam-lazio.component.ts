@@ -26,6 +26,8 @@ export class WebcamLazioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
 

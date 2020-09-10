@@ -31,6 +31,8 @@ export class SatelliteCentroComponent implements OnInit {
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('.title-info');
     el.scrollIntoView();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

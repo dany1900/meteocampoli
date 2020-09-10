@@ -26,6 +26,8 @@ export class WebcamValleCominoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

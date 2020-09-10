@@ -27,6 +27,8 @@ export class ArticoliMeteoComponent implements OnInit {
   ngOnInit(): void {
     const el = this.myElement.nativeElement.querySelector('.row');
     el.scrollIntoView();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

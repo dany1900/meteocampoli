@@ -29,6 +29,8 @@ export class WebcamMontagnaComponent implements OnInit {
 
   ngOnInit() {
     this.footerTitle = 'Le immagini sono prese ad intervalli regolari';
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   indietro(): void {

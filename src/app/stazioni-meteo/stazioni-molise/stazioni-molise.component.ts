@@ -29,6 +29,8 @@ export class StazioniMoliseComponent implements OnInit {
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('.molise-sticker');
     el.scrollIntoView();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   scrollToTop() {

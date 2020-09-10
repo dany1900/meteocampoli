@@ -26,6 +26,8 @@ export class WebcamAbruzzoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   indietro(): void {

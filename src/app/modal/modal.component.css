@@ -48,5 +48,20 @@ img.zoomed {
   .image-close {
     width: 8%;
   }
+
+  #modal-title {
+    font-size: 14px !important;
+    colore: white !important;
+  }
+
+  .image-modal {
+    width: 108% !important;
+    height: 210px !important;
+    zoom: 2.5 !important;
+    border-radius: 20px !important;
+    border: 3px !important;
+    border-style: solid !important;
+    border-color: #86bef9 !important;
+  }
 }
 
