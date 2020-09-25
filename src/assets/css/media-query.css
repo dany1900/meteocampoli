@@ -19,7 +19,7 @@
   h1 {
     color: #337ab7 !important;
     font-style: italic !important;
-    font-size: 36px !important;
+    font-size: 38px !important;
   }
 
   h2 {
@@ -49,6 +49,7 @@
 
   .content {
     background-color: #2d65c4 !important;
+    min-height: 1277px !important;
   }
 
   .bg_clouds {
@@ -86,9 +87,8 @@
   }
 
   .webcam {
-    width: 84% !important;
-    max-width: 84% !important;
-    height: 580px !important;
+    width: 90% !important;
+    max-height: 600px !important;
   }
 
   .fonte-webcam {
@@ -104,7 +104,7 @@
   }
 
   .btn-pulup {
-    height: 60px !important;
+    height: 65px !important;
     font-size: 24.3px !important;
   }
 
@@ -140,7 +140,7 @@
   }
 
   .testo-articoli {
-    font-size: 35px !important;
+    font-size: 36px !important;
   }
 
   .mat-dialog-container {
@@ -210,6 +210,7 @@
 
 }
 
+/*
 @media screen and (min-width: 1000px) and (max-width: 1380px) {
 
   .zoom {
@@ -221,8 +222,8 @@
   }
 
   .zoom:hover {
-    -ms-transform: scale(1.5); /* IE 9 */
-    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
     transform: scale(1.5);
   }
 
@@ -232,6 +233,7 @@
 
 
 }
+*/
 
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
   .btn-lg {
@@ -250,7 +252,7 @@
   }
 
   html {
-    zoom: 1.0 !important;
+    zoom: 0.9 !important;
   }
 }
 

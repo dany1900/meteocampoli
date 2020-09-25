@@ -29,10 +29,10 @@ export class RiepilogoComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
-    el.scrollIntoView();
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
+    el.scrollIntoView();
   }
 
   scrollToTop() {

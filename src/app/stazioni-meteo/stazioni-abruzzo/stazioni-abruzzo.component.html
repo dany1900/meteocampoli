@@ -1,4 +1,5 @@
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<div class="scroll-view"></div>
 <br>
 <table border="0">
   <tr>
@@ -97,6 +98,7 @@
 </table>
 <br>
 <br>
-<button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+<button class="btn btn-primary scroll-top" aria-label="scroll-top" data-scroll="up" type="button"
+        (click)="scrollToTop()">
   <i class="fa fa-chevron-up"></i>
 </button>

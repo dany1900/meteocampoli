@@ -2,7 +2,7 @@
   <div class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
     <div class="btn-group-vertical">
       <a type="button" class="btn btn-pulup" routerLink="dati-attuali" title="Dati Attuali">Dati Attuali</a>
-      <button type="button" class="btn btn-puldown " data-toggle="dropdown">
+      <button type="button" class="btn btn-puldown" aria-label="dropdown" data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -11,11 +11,14 @@
         <li class="divider"></li>
         <li>
           <a href="https://www.meteoregionelazio.it/stazioni/forca_acero/forca_acero.php" target="_blank"
-             title="stazione meteo valico forca d'acero">Stazione Meteo Forca D'Acero (1538mt)&nbsp;<img
-            src="../../assets/img/new.gif" alt="nuova sezione"></a></li>
+             rel="noreferrer"
+             title="stazione meteo valico forca d'acero" rel="noreferrer">Stazione Meteo Forca D'Acero
+            (1538mt)&nbsp;<img
+              src="../../assets/img/new.gif" alt="nuova sezione"></a></li>
         <li class="divider"></li>
         <li>
-          <a href="http://sre.altervista.org/" target="_blank" title="stazioni meteo idrografico">Stazione Meteo Arpino
+          <a href="http://sre.altervista.org/" rel="noreferrer" target="_blank" title="stazioni meteo idrografico">Stazione
+            Meteo Arpino
             (460mt)</a></li>
       </ul>
     </div>
@@ -24,7 +27,7 @@
     <div class="btn-group-vertical">
       <a type="button" class="btn btn-pulup" routerLink="riepilogo"
          title="Statistiche Complessive">Statistiche</a>
-      <button type="button" class="btn btn-puldown " data-toggle="dropdown">
+      <button type="button" class="btn btn-puldown" aria-label="dropdown" data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -33,15 +36,18 @@
         <li class="divider"></li>
         <li><a href="http://meteocampoliappennino.altervista.org/MyGWStats.php?&link=Full.xml"
                title="statistiche stazione full"
-               target="_blank">Statistiche Stazione Totali</a></li>
+               target="_blank" rel="noreferrer">Statistiche Stazione Totali</a></li>
         <li class="divider"></li>
         <li><a href="http://sre.altervista.org/records/"
-               title="statistiche stazione meteo arpino" target="_blank">Statistiche Arpino (525mt)</a></li>
+               title="statistiche stazione meteo arpino" target="_blank" rel="noreferrer">Statistiche Arpino (525mt)</a>
+        </li>
         <li class="divider"></li>
         <li><a href="http://www.arsial.regione.lazio.it/portalearsial/agrometeo/D3.asp?anno=16&codice=FR13SIE&misura=8"
-               title="statistiche stazione meteo alvito" target="_blank">Statistiche Alvito (391mt)</a></li>
+               title="statistiche stazione meteo alvito" target="_blank" rel="noreferrer">Statistiche Alvito (391mt)</a>
+        </li>
         <li class="divider"></li>
-        <li><a href="http://www.meteonetwork.it/rete/" title="statistiche stazioni meteonetwork" target="_blank">Statistiche
+        <li><a href="http://www.meteonetwork.it/rete/" rel="noreferrer" title="statistiche stazioni meteonetwork"
+               target="_blank" rel="noreferrer">Statistiche
           Giornaliere Italia</a></li>
       </ul>
     </div>
@@ -51,7 +57,7 @@
     <div class="btn-group-vertical">
       <a type="button" class="btn btn-pulup " [routerLink]="['/stazioni-meteo/generale']"
          title="Temperature Limitrofe">Temperature </a>
-      <button type="button" class="btn btn-puldown " data-toggle="dropdown">
+      <button type="button" class="btn btn-puldown" aria-label="dropdown" data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -65,7 +71,8 @@
         <li class="divider"></li>
         <li><a [routerLink]="['/stazioni-meteo/rete-meteo']" title="retemeteo">Rete Meteo</a></li>
         <li class="divider"></li>
-        <li><a href="http://www.caputfrigoris.it/rete-meteo.htm" title="stazioni meteo caputfrigoris" target="_blank">Temperature
+        <li><a href="http://www.caputfrigoris.it/rete-meteo.htm" title="stazioni meteo caputfrigoris" target="_blank"
+               rel="noreferrer">Temperature
           Montagne</a></li>
       </ul>
     </div>
@@ -74,37 +81,40 @@
     <!-- Large button group -->
     <div class="btn-group-vertical">
       <a type="button" class="btn btn-pulup " routerLink="previsioni" title="Previsioni Meteo">Previsioni </a>
-      <button type="button" class="btn btn-puldown " data-toggle="dropdown">
+      <button type="button" class="btn btn-puldown " aria-label="dropdown" data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">
         <li><a routerLink="previsioni" title="previsioni meteo campoli">Previsioni Base</a></li>
         <li class="divider"></li>
-        <li><a href="http://www.lamma.rete.toscana.it/meteo/modelli" title="previsioni meteo lamma" target="_blank">Previsioni
+        <li><a href="http://www.lamma.toscana.it/modelli/atmo/mappe/atmosfera2?model=mol02ecm"
+               title="previsioni meteo lamma" target="_blank" rel="noreferrer">Previsioni
           Lamma</a></li>
         <li class="divider"></li>
         <li><a href="http://www.isac.cnr.it/dinamica/projects/forecasts/moloch/"
-               title="previsioni meteo moloch carte meteo" target="_blank">Previsioni Moloch</a></li>
+               title="previsioni meteo moloch carte meteo" target="_blank" rel="noreferrer">Previsioni Moloch</a></li>
         <li class="divider"></li>
-        <li><a href="http://www.meteonetwork.it/models/?m=wrfitalia&p=wrf_Prec_TOT_italia#1"
-               title="previsioni meteonetowrk carte meteo" target="_blank">Previsioni Meteonetwork</a></li>
+        <li><a href="https://www.meteonetwork.it/models/?id=55&h=048"
+               title="previsioni meteonetowrk carte meteo" target="_blank" rel="noreferrer">Previsioni Meteonetwork</a>
+        </li>
         <li class="divider"></li>
         <li><a href="http://www.meteociel.fr/modeles/wrfnmm.php?ech=3&mode=16&map=6" title="previsioni WRF carte meteo"
-               target="_blank">Previsioni WRF NMM</a></li>
+               target="_blank" rel="noreferrer">Previsioni WRF NMM</a></li>
         <li class="divider"></li>
         <li><a href="https://www.ventusky.com/?p=46.2;19.8;3&l=temperature-2m&m=gfs" title="previsioni ventusky mappa"
-               target="_blank">Previsioni Ventusky &nbsp;<img src="../../assets/img/new.gif" alt="nuova sezione"></a>
+               target="_blank" rel="noreferrer">Previsioni Ventusky &nbsp;<img src="../../assets/img/new.gif"
+                                                                               alt="nuova sezione"></a>
         </li>
         <li class="divider"></li>
         <li><a href="http://www.meteociel.fr/modeles/gfse_cartes.php?ech=6&code=0&mode=1"
-               title="previsioni meteociel carte" target="_blank">Previsioni Meteociel</a></li>
+               title="previsioni meteociel carte" target="_blank" rel="noreferrer">Previsioni Meteociel</a></li>
       </ul>
     </div>
 
     <!-- Large button group -->
     <div class="btn-group-vertical">
       <a type="button" class="btn btn-pulup " routerLink="webcam/immagini" title="Immagini & WebCam">WebCam</a>
-      <button type="button" class="btn btn-puldown " data-toggle="dropdown">
+      <button type="button" class="btn btn-puldown " aria-label="dropdown" data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -119,7 +129,7 @@
     <!-- Large button group -->
     <div class="btn-group-vertical">
       <a type="button" class="btn btn-pulup " routerLink="satellite/generale" title="Satellite">Satellite</a>
-      <button type="button" class="btn btn-puldown " data-toggle="dropdown">
+      <button type="button" class="btn btn-puldown " aria-label="dropdown" data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -144,7 +154,7 @@
     <!-- Large button group -->
     <div class="btn-group-vertical">
       <a type="button" class="btn btn-pulup " routerLink="terremoti/italia" title="Terremoti">Terremoti</a>
-      <button type="button" class="btn btn-puldown " data-toggle="dropdown">
+      <button type="button" class="btn btn-puldown" aria-label="dropdown" data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">
@@ -160,7 +170,7 @@
     <div class="btn-group-vertical">
       <a type="button" class="btn btn-pulup " routerLink="info/articoli/meteo"
          title="Info & Curiosita">Curiosita</a>
-      <button type="button" class="btn btn-puldown " data-toggle="dropdown">
+      <button type="button" class="btn btn-puldown " aria-label="dropdown" data-toggle="dropdown">
         <i class="fa fa-caret-down arrow"></i>
       </button>
       <ul class="dropdown-menu" role="menu">

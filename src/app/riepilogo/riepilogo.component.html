@@ -6,11 +6,12 @@
 <br>
 <br>
 <iframe class="riepilogo-frame" id="riepilogoFrame"
-        src="http://meteocampoliapp.altervista.org/rapporto-mensile.php"
-        (load)="imageLoader = false;"></iframe>
+        src="http://meteocampoliappennino.altervista.org/rapporto-mensile.php"
+        (load)="imageLoader = false;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
   <br>
   <br>
-  <button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+  <button class="btn btn-primary scroll-top" aria-label="scroll-top" data-scroll="up" type="button"
+          (click)="scrollToTop()">
     <i class="fa fa-chevron-up"></i>
   </button>
 </div>

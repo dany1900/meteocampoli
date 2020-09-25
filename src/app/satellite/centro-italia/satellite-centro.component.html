@@ -3,22 +3,26 @@
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Centro Italia Live'"
            [srcImage]="'http://meteorema.aquila.infn.it/radarweb/home/realtime/WEB/spotVMI.gif'"
-           [infoAlt]="'radar precipitazioni centro live'"></satellite>
+           [infoAlt]="'radar precipitazioni centro live'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Lazio e Abruzzo'"
            [srcImage]="'http://satollo.aquila.infn.it/midia/ref/ultimo.6.png'"
-           [infoAlt]="'radar precipitazioni lazio abruzzo'"></satellite>
+           [infoAlt]="'radar precipitazioni lazio abruzzo'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Fulmininazioni Centro Italia'"
            [srcImage]="'http://radarweb.aquila.infn.it/cetempsite/fulmini.png'"
-           [infoAlt]="'radar fulminazioni centro italia'"></satellite>
+           [infoAlt]="'radar fulminazioni centro italia'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Toscana'"
            [srcImage]="'http://www.lamma.rete.toscana.it/radar/elba/images/PPI_1080_0005_25.png?1576413678950'"
-           [infoAlt]="'radar precipitazioni toscana'"></satellite>
+           [infoAlt]="'radar precipitazioni toscana'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <p class="title-micro-section">Radar precipitazioni ultime 3 ore Zoom</p>
@@ -38,7 +42,8 @@
 
 <br>
 <br>
-<button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+<button class="btn btn-primary scroll-top" aria-label="scroll-top" data-scroll="up" type="button"
+        (click)="scrollToTop()">
   <i class="fa fa-chevron-up"></i>
 </button>
 

@@ -1,12 +1,14 @@
 <br>
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<div class="scroll-view"></div>
 <br>
 <div [hidden]="imageLoader">
   <iframe src="http://retemeteo.lineameteo.it/index.php" (load)="this.imageLoader = false;"
           class="rete-meteo"></iframe>
 <br>
   <br>
-  <button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
-  <i class="fa fa-chevron-up"></i>
-</button>
+  <button class="btn btn-primary scroll-top" aria-label="scroll-top" data-scroll="up" type="button"
+          (click)="scrollToTop()">
+    <i class="fa fa-chevron-up"></i>
+  </button>
 </div>

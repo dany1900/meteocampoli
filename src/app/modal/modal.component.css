@@ -41,12 +41,12 @@ img.zoomed {
 }
 
 .image-close {
-  width: 4%;
+  width: 5%;
 }
 
 @media screen and (max-width: 1025px) {
   .image-close {
-    width: 8%;
+    width: 11%;
   }
 
   #modal-title {

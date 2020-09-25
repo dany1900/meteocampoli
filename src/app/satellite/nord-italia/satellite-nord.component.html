@@ -3,22 +3,26 @@
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Emilia Romagna'"
            [srcImage]="'http://www.arpa.emr.it/sim/datiiningresso/Immagini/Radar/nowcast.png'"
-           [infoAlt]="'Radar Precipitazioni Emilia Romagna'"></satellite>
+           [infoAlt]="'Radar Precipitazioni Emilia Romagna'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni centro-nord'"
            [srcImage]="'http://servizi-meteoliguria.arpal.gov.it/MSG6H/NORD.jpg'"
-           [infoAlt]="'Radar Precipitazioni centro-nord'"></satellite>
+           [infoAlt]="'Radar Precipitazioni centro-nord'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Trentino Alto Adige'"
            [srcImage]="'http://www.provinz.bz.it/hydro/radarN_now_i.jpg'"
-           [infoAlt]="'Radar Precipitazioni  Trentino Alto Adige'"></satellite>
+           [infoAlt]="'Radar Precipitazioni  Trentino Alto Adige'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Nord Ovest in movimento'"
            [srcImage]="'http://sc05.arpa.piemonte.it/previ/last_movie_compa.gif'"
-           [infoAlt]="'Radar Precipitazioni Nord Ovest in movimento'"></satellite>
+           [infoAlt]="'Radar Precipitazioni Nord Ovest in movimento'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <!--
@@ -27,6 +31,7 @@
         alt="Radar Precipitazioni Nord ultime 24H Zoom"></iframe>-->
 <br>
 <br>
-<button class="btn btn-primary scroll-top" data-scroll="up" type="button" (click)="scrollToTop()">
+<button class="btn btn-primary scroll-top" aria-label="scroll-top" data-scroll="up" type="button"
+        (click)="scrollToTop()">
   <i class="fa fa-chevron-up"></i>
 </button>

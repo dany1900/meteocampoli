@@ -38,6 +38,13 @@ import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
             }
           },
           {
+            path: 'test',
+            component: TabSatelliteComponent,
+            data: {
+              title: 'Satellite Test Italia - Radar Precipitazioni  - Meteo Campoli'
+            }
+          },
+          {
             path: 'protezione-civile',
             component: TabSatelliteComponent,
             data: {

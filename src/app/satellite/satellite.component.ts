@@ -12,6 +12,9 @@ export class SatelliteComponent implements OnInit {
   @Input() titleImgRadar: string;
   @Input() srcImage: string;
   @Input() infoAlt: string;
+  @Input() class = 'radar-test';
+  @Input() zoom: string;
+
 
   constructor(public renderer: Renderer2) {
   }

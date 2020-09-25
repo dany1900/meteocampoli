@@ -1,8 +1,6 @@
 <br>
-<div class="center">
-  <h2 class="title-micro-section">{{titleImgRadar}}</h2>
-  <img class="radar" src="{{srcImage}}"
-       alt="{{infoAlt}}"
-       (error)="errorHandler()" (click)="toggleClass($event,'zoomed')"/><br/>
-</div>
+<h2 class="title-micro-section">{{titleImgRadar}}</h2>
+<img [ngClass]="class" src="{{srcImage}}"
+     alt="{{infoAlt}}"
+     (error)="errorHandler()" (click)="toggleClass($event,'zoomed')" [ngStyle]="{zoom: zoom}"/><br/>
 
