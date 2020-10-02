@@ -53,6 +53,10 @@ import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-
             path: 'limitrofe',
             component: TabImmagginiWebcamComponent,
           },
+          {
+            path: 'nord-italia',
+            component: TabImmagginiWebcamComponent,
+          },
         ],
       },
     ]),

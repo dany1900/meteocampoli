@@ -12,6 +12,7 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
   pathImmagini = '/webcam/immagini';
   pathMontagna = '/webcam/montagna/lazio';
   pathLimitrofe = '/webcam/limitrofe';
+  pathNord = '/webcam/nord-italia';
 
   constructor(private myElement: ElementRef, protected router: Router) {
     let paramTab: any;
@@ -25,6 +26,9 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
         break;
       case this.pathLimitrofe:
         this.id = 2;
+        break;
+      case this.pathNord:
+        this.id = 3;
         break;
       default:
         this.id = 0;
@@ -48,6 +52,8 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
       this.router.navigate([this.pathMontagna]);
     } else if (event === 2) {
       this.router.navigate([this.pathLimitrofe]);
+    } else if (event === 3) {
+      this.router.navigate([this.pathNord]);
     }
   }
 

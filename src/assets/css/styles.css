@@ -197,6 +197,7 @@ h4 {
   background-color: #2d65c4;
   border-color: #2d65c4;
   height: 36px;
+  margin-top: 1% !important;
 }
 
 .btn-group-vertical {
@@ -318,7 +319,7 @@ h4 {
 }
 
 .arrow {
-  font-size: 24px;
+  font-size: 26px !important;
 }
 
 .content {
