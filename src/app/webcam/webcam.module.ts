@@ -41,6 +41,7 @@ import {WebcamGrossetoComponent} from './webcam-centro-italia/webcam-toscana/web
 import {WebcamPisaComponent} from './webcam-centro-italia/webcam-toscana/webcam-pisa/webcam-pisa.component';
 import {WebcamNordEstComponent} from './webcam-nord-italia/webcam-nord-est/webcam-nord-est.component';
 import {WebcamNordOvestComponent} from './webcam-nord-italia/webcam-nord-ovest/webcam-nord-ovest.component';
+import {WebcamTeramoComponent} from './webcam-centro-italia/webcam-abruzzo/webcam-teramo/webcam-teramo.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import {WebcamNordOvestComponent} from './webcam-nord-italia/webcam-nord-ovest/w
     WebcamGrossetoComponent,
     WebcamPisaComponent,
     WebcamNordEstComponent,
-    WebcamNordOvestComponent
+    WebcamNordOvestComponent,
+    WebcamTeramoComponent
   ],
   exports: []
 })
