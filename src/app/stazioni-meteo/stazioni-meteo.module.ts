@@ -7,7 +7,6 @@ import {StazioniMeteoComponent} from './stazioni-meteo.component';
 import {StazioniMoliseComponent} from './stazioni-molise/stazioni-molise.component';
 import {StazioniReteMeteoComponent} from './stazioni-rete-meteo/stazioni-rete-meteo.component';
 import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
-import {ReteNazionaleComponent} from '../satellite/rete-nazionale/rete-nazionale.component';
 import {StazioniGeneraliComponent} from './stazioni-generali/stazioni-generali.component';
 import {CommonModule} from '@angular/common';
 
@@ -26,7 +25,6 @@ import {CommonModule} from '@angular/common';
     StazioniReteMeteoComponent,
     StazioniMoliseComponent,
     TabStazioniComponent,
-    ReteNazionaleComponent,
     StazioniGeneraliComponent
   ],
   exports: []
