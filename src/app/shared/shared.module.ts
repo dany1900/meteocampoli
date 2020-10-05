@@ -5,7 +5,6 @@ import {AccordionModule} from 'ngx-accordion';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ModalComponent} from '../modal/modal.component';
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -14,8 +13,7 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
     MatProgressSpinnerModule,
     AccordionModule,
     NgbModule,
-    MatDialogModule,
-    FontAwesomeModule
+    MatDialogModule
   ],
 
   declarations: [

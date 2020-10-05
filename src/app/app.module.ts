@@ -19,6 +19,8 @@ import {BreadcrumbModule} from 'angular-crumbs';
 import {FbLikeComponent} from './header/fb-like/fb-like.component';
 import {HeaderService} from './service/header.service';
 import {NgxSpinnerModule} from 'ngx-spinner';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {environment} from '../environments/environment';
 
 @NgModule({
 
@@ -41,7 +43,8 @@ import {NgxSpinnerModule} from 'ngx-spinner';
     NgbModule,
     AppRoutingModule,
     BreadcrumbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
   ],
   exports: [],
   providers: [SEOService, UtiliyService, HeaderService],

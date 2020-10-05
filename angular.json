@@ -20,7 +20,8 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "./node_modules/font-awesome/css/font-awesome.css",
@@ -51,8 +52,18 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "vendorChunk": true,
+              "buildOptimizer": true,
+              "serviceWorker": true,
+              "deleteOutputPath": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "ngswConfigPath": "ngsw-config.json"
             }
           }
         },
@@ -87,7 +98,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ]
           }
         },
@@ -135,6 +147,6 @@
   },
   "defaultProject": "meteocampoli",
   "cli": {
-    "analytics": "efbf878e-0233-4638-9a90-3a63b4ea8246"
+    "analytics": "4119d203-1bf9-4664-9698-7bb47eb75869"
   }
 }
