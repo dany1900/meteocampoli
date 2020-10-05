@@ -10,7 +10,6 @@ import {SharedModule} from '../shared/shared.module';
 import {SatelliteComponent} from './satellite.component';
 import {CommonModule} from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {NgxSpinnerModule} from 'ngx-spinner';
 import {SatelliteTestComponent} from './satellite-test/satellite-test.component';
 
 
@@ -19,8 +18,7 @@ import {SatelliteTestComponent} from './satellite-test/satellite-test.component'
     SatelliteRoutingModule,
     SharedModule,
     CommonModule,
-    MatProgressSpinnerModule,
-    NgxSpinnerModule
+    MatProgressSpinnerModule
   ],
 
   declarations: [
