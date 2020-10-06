@@ -11,7 +11,10 @@
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
-          "/*.js"
+          "/*.js",
+          "/assets/*.png",
+          "/assets/*.jpg",
+          "/assets/*.gif"
         ]
       }
     },
