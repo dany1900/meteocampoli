@@ -15,12 +15,14 @@ import {VitiComponent} from './articoli/giardinaggio/viti/viti.component';
 import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche.component';
 import {ArticoliMeteoComponent} from './articoli/meteo/articoli-meteo.component';
 import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/ondata-caldo-2017.component';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
   imports: [
     InfoRoutingModule,
     SharedModule,
+    CommonModule,
   ],
 
   declarations: [

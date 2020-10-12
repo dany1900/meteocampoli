@@ -5,12 +5,14 @@ import {NgModule} from '@angular/core';
 import {TerremotiRoutingModule} from './terremoti-routing.module';
 import {TerremotiMondoComponent} from './terremoti-mondo/terremoti-mondo.component';
 import {TabTerremotiComponent} from './tab-terremoti/tab-terremoti.component';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
   imports: [
     TerremotiRoutingModule,
-    SharedModule
+    SharedModule,
+    CommonModule
   ],
 
   declarations: [

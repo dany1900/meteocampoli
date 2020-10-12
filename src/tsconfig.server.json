@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app-server",
+    "target": "es2015",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "main.server.ts"
+  ],
+  "angularCompilerOptions": {
+    "entryModule": "./app/app.server.module#AppServerModule",
+    "enableIvy": false,
+    "target": "es2015",
+    "module": "esnext"
+  }
+}

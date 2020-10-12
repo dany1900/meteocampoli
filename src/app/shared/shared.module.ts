@@ -4,10 +4,12 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {MatDialogModule} from '@angular/material/dialog';
 import {ModalComponent} from '../modal/modal.component';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
   imports: [
+    CommonModule,
     MatTabsModule,
     MatProgressSpinnerModule,
     NgbModule,

@@ -1,15 +1,15 @@
 import {inject, TestBed} from '@angular/core/testing';
 
-import {SEOServiceService} from './seoservice.service';
+import {SEOService} from './seoservice.service';
 
 describe('SEOServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SEOServiceService]
+      providers: [SEOService]
     });
   });
 
-  it('should be created', inject([SEOServiceService], (service: SEOServiceService) => {
+  it('should be created', inject([SEOService], (service: SEOService) => {
     expect(service).toBeTruthy();
   }));
 });

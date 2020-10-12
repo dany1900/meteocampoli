@@ -17,9 +17,9 @@ import {PageErrorComponent} from './page-error/page-error.component';
 import {UtiliyService} from './service/utiliy.service';
 import {BreadcrumbModule} from 'angular-crumbs';
 import {FbLikeComponent} from './header/fb-like/fb-like.component';
-import {HeaderService} from './service/header.service';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
 
@@ -35,17 +35,18 @@ import {environment} from '../environments/environment';
     FbLikeComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
+    AppRoutingModule,
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     NgbModule,
-    AppRoutingModule,
     BreadcrumbModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production})
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production, registrationStrategy: 'registerImmediately'})
   ],
   exports: [],
-  providers: [SEOService, UtiliyService, HeaderService],
+  providers: [SEOService, UtiliyService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

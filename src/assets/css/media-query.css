@@ -1,4 +1,4 @@
-@media screen and (max-width: 1025px) {
+@media only screen and (max-width: 1025px) and (orientation: portrait) {
 
   /*html {
     zoom: 1 !important;
@@ -14,6 +14,15 @@
 
   .main {
     width: unset !important;
+  }
+
+  .content {
+    background-color: #2d65c4 !important;
+    min-height: 1277px !important;
+  }
+
+  .bg_clouds {
+    width: 1123px;
   }
 
   h1 {
@@ -45,15 +54,6 @@
   .logo {
     font-family: unset !important;
     font-size: 24px !important;
-  }
-
-  .content {
-    background-color: #2d65c4 !important;
-    min-height: 1277px !important;
-  }
-
-  .bg_clouds {
-    width: 1108px;
   }
 
   .dropdown-menu {
@@ -241,6 +241,28 @@
   }
 
   .menu {
+  }
+
+  .btn-pulup {
+    font-size: 23.9px !important;
+  }
+
+  .dropdown-menu {
+    min-width: unset !important;
+  }
+
+  html {
+    zoom: 0.7 !important;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+  .btn-lg {
+    height: 50px !important;
+  }
+
+  .bg_clouds {
+    width: unset !important;
   }
 
   .btn-pulup {

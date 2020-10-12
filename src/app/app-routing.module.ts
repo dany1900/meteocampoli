@@ -7,14 +7,23 @@ import {PageErrorComponent} from './page-error/page-error.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: '/dati-attuali', pathMatch: 'full'},
-  {path: 'dati-attuali', loadChildren: './dati-attuali/dati-attuali.module#DatiAttualiModule', runGuardsAndResolvers: 'always'},
-  {path: 'riepilogo', loadChildren: './riepilogo/riepilogo.module#RiepilogoModule'},
-  {path: 'stazioni-meteo', loadChildren: './stazioni-meteo/stazioni-meteo.module#StazioniMeteoModule'},
-  {path: 'previsioni', loadChildren: './previsioni/previsioni.module#PrevisioniModule'},
-  {path: 'satellite', loadChildren: './satellite/satellite.module#SatelliteModule', runGuardsAndResolvers: 'always'},
-  {path: 'webcam', loadChildren: './webcam/webcam.module#WebCamModule'},
-  {path: 'terremoti', loadChildren: './terremoti/terremoti.module#TerremotiModule'},
-  {path: 'info', loadChildren: './info/info.module#InfoModule'},
+  // tslint:disable-next-line:max-line-length
+  {
+    path: 'dati-attuali',
+    loadChildren: () => import(`./dati-attuali/dati-attuali.module`).then(m => m.DatiAttualiModule),
+    runGuardsAndResolvers: 'always'
+  },
+  {path: 'riepilogo', loadChildren: () => import(`./riepilogo/riepilogo.module`).then(m => m.RiepilogoModule)},
+  {path: 'stazioni-meteo', loadChildren: () => import(`./stazioni-meteo/stazioni-meteo.module`).then(m => m.StazioniMeteoModule)},
+  {path: 'previsioni', loadChildren: () => import(`./previsioni/previsioni.module`).then(m => m.PrevisioniModule)},
+  {
+    path: 'satellite',
+    loadChildren: () => import(`./satellite/satellite.module`).then(m => m.SatelliteModule),
+    runGuardsAndResolvers: 'always'
+  },
+  {path: 'webcam', loadChildren: () => import(`./webcam/webcam.module`).then(m => m.WebCamModule)},
+  {path: 'terremoti', loadChildren: () => import(`./terremoti/terremoti.module`).then(m => m.TerremotiModule)},
+  {path: 'info', loadChildren: () => import(`./info/info.module`).then(m => m.InfoModule)},
   {path: 'index.htm', redirectTo: '/dati-attuali', pathMatch: 'full'},
   {path: 'riepilogo.htm', redirectTo: '/riepilogo', pathMatch: 'full'},
   {path: 'temperature-meteonetwork.html', redirectTo: '/stazioni-meteo/generale', pathMatch: 'full'},

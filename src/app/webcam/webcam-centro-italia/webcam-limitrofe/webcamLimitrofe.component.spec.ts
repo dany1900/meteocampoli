@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {LimitrofeComponent} from './webcamLimitrofe.component';
+import {WebCamLimitrofeComponent} from './webcamLimitrofe.component';
 
 describe('LimitrofeComponent', () => {
-  let component: LimitrofeComponent;
-  let fixture: ComponentFixture<LimitrofeComponent>;
+  let component: WebCamLimitrofeComponent;
+  let fixture: ComponentFixture<WebCamLimitrofeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LimitrofeComponent]
+      declarations: [WebCamLimitrofeComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LimitrofeComponent);
+    fixture = TestBed.createComponent(WebCamLimitrofeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

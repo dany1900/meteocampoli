@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {WebcamFrosinoneComponent} from './webcam-pisa.component';
+import {WebcamPisaComponent} from './webcam-pisa.component';
 
-describe('WebcamFrosinoneComponent', () => {
-  let component: WebcamFrosinoneComponent;
-  let fixture: ComponentFixture<WebcamFrosinoneComponent>;
+describe('WebcamPisaComponent', () => {
+  let component: WebcamPisaComponent;
+  let fixture: ComponentFixture<WebcamPisaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [WebcamFrosinoneComponent]
+      declarations: [WebcamPisaComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WebcamFrosinoneComponent);
+    fixture = TestBed.createComponent(WebcamPisaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

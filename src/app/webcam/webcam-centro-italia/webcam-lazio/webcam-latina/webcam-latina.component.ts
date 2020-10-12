@@ -7,7 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class WebcamLatinaComponent implements OnInit {
 
-  //imageLoader = true;
+  // imageLoader = true;
 
   constructor() {
   }
