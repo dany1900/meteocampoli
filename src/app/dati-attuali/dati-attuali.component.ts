@@ -32,7 +32,11 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
     const el = this.myElement.nativeElement.querySelector('h1');
-    el.scrollIntoView();
+    if (el.scrollIntoViewIfNeeded) {
+      el.scrollIntoViewIfNeeded();
+    } else {
+      el.scrollIntoView();
+    }
   }
 
   ngOnDestroy(): void {

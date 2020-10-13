@@ -27,6 +27,12 @@ export class WebcamSudItaliaComponent implements OnInit {
   }
 
   ngOnInit() {
+    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    if (el.scrollIntoViewIfNeeded) {
+      el.scrollIntoViewIfNeeded();
+    } else {
+      el.scrollIntoView();
+    }
   }
 
   scrollToTop() {

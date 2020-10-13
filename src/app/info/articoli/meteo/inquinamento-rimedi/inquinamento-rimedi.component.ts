@@ -27,7 +27,11 @@ export class InquinamentoRimediComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     const el = this.myElement.nativeElement.querySelector('.header-macro-section');
-    el.scrollIntoView();
+    if (el.scrollIntoViewIfNeeded) {
+      el.scrollIntoViewIfNeeded();
+    } else {
+      el.scrollIntoView();
+    }
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }

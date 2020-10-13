@@ -28,7 +28,11 @@ export class StazioniGeneraliComponent implements OnInit {
 
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('.scroll-view');
-    el.scrollIntoView();
+    if (el.scrollIntoViewIfNeeded) {
+      el.scrollIntoViewIfNeeded();
+    } else {
+      el.scrollIntoView();
+    }
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }

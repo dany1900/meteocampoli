@@ -12,7 +12,11 @@ export class WebcamAscoliComponent implements OnInit {
 
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    el.scrollIntoView();
+    if (el.scrollIntoViewIfNeeded) {
+      el.scrollIntoViewIfNeeded();
+    } else {
+      el.scrollIntoView();
+    }
   }
 
 }

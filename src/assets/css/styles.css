@@ -653,6 +653,7 @@ h4 {
   border-style: solid;
   border-color: #ffffff;
   width: 20%;
+  height: 100%;
   margin-right: 2%;
 }
 
@@ -743,6 +744,11 @@ legend {
 .button-fb {
   margin-top: 38px;
   zoom: 1.1;
+}
+
+.img-new {
+  width: 28px;
+  height: 11px;
 }
 
 

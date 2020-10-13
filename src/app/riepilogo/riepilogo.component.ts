@@ -32,7 +32,11 @@ export class RiepilogoComponent implements OnInit {
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
     const el = this.myElement.nativeElement.querySelector('.header-macro-section');
-    el.scrollIntoView();
+    if (el.scrollIntoViewIfNeeded) {
+      el.scrollIntoViewIfNeeded();
+    } else {
+      el.scrollIntoView();
+    }
   }
 
   scrollToTop() {

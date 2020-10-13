@@ -12,3 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic().bootstrapModule(AppModule)
     .catch(err => console.log(err));
 });
+
+const terminationEvent = 'onpagehide' in self ? 'pagehide' : 'unload';
+
+addEventListener(terminationEvent, (event) => {
+  // Note: if the browser is able to cache the page, `event.persisted`
+  // is `true`, and the state is frozen rather than terminated.
+}, {capture: true});
+
+
+

@@ -13,7 +13,8 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --color",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run meteocampoli:server:production --bundleDependencies all"
+    "build:client-and-server-bundles": "ng build --prod && ng run meteocampoli:server:production --bundleDependencies all",
+    "sw": "sw-precache --root=dist --config=sw-precache-config.js"
   },
   "private": true,
   "dependencies": {
@@ -75,6 +76,7 @@
     "karma-jasmine": "~4.0.1",
     "karma-jasmine-html-reporter": "^1.5.4",
     "protractor": "^7.0.0",
+    "sw-precache": "^5.2.1",
     "ts-loader": "^8.0.4",
     "ts-node": "~9.0.0",
     "tslint": "^6.1.3",

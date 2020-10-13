@@ -27,7 +27,11 @@ export class TerremotiItaliaComponent implements OnInit {
 
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    el.scrollIntoView();
+    if (el.scrollIntoViewIfNeeded) {
+      el.scrollIntoViewIfNeeded();
+    } else {
+      el.scrollIntoView();
+    }
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }

@@ -46,3 +46,7 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Node Express server listening on http://localhost:${PORT}`);
 });
+
+app.get('/sitemap.xml', function (req, res) {
+  res.sendFile(DIST_FOLDER + '/sitemap.xml');
+});
