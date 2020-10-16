@@ -36,6 +36,8 @@ export const routes: Routes = [
   {path: 'images.htm', redirectTo: '/webcam/immagini', pathMatch: 'full'},
   {path: 'webcam.htm', redirectTo: '/webcam/montagna/lazio', pathMatch: 'full'},
   {path: 'webcam1.htm', redirectTo: '/webcam/limitrofe', pathMatch: 'full'},
+  {path: 'webcam-lazio.html', redirectTo: '/webcam/montagna/lazio', pathMatch: 'full'},
+  {path: 'webcam-abruzzo.html', redirectTo: '/webcam/montagna/abruzzo', pathMatch: 'full'},
   {path: 'satellite.htm', redirectTo: '/satellite/generale', pathMatch: 'full'},
   {path: 'satellite-centro.html', redirectTo: '/satellite/centro-italia', pathMatch: 'full'},
   {path: 'satellite-nord.html', redirectTo: '/satellite/nord-italia', pathMatch: 'full'},

@@ -3,6 +3,7 @@ import {SEOService} from '../../service/seoservice.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ModalComponent} from '../../modal/modal.component';
 import {ViewportScroller} from '@angular/common';
+import {DeviceDetectorService} from 'ngx-device-detector';
 
 @Component({
   selector: 'immagini',
@@ -19,7 +20,8 @@ export class ImmaginiComponent implements OnInit {
   ogImage: string;
 
 
-  constructor(private seo: SEOService, private myElement: ElementRef, public matDialog: MatDialog, private scroll: ViewportScroller) {
+  constructor(private seo: SEOService, private myElement: ElementRef, public matDialog: MatDialog, private scroll: ViewportScroller,
+              private deviceService: DeviceDetectorService) {
     this.title = 'Immagini e WebCam - Meteo Campoli';
     this.description = 'Immagini di Campoli Appennino, paese della Valle di Comino. Tutte le Webcam del centro italia montano e limitrofe, ordinate per regione e localita.';
     this.keywords = 'immagini meteo campoli, immagini campoli, immagini stazioni meteo campoli, meteo campoli images, immagini e webcam meteo campoli, webcam meteo campoli';
@@ -44,16 +46,20 @@ export class ImmaginiComponent implements OnInit {
   }
 
   openModal(url: string) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.id = 'modal-component';
-    dialogConfig.width = '100%';
-    dialogConfig.height = '100%';
-    dialogConfig.data = url;
-    // dialogConfig.maxHeight = '100vh';
-    dialogConfig.maxWidth = 'none';
-    dialogConfig.panelClass = 'full-screen-modal';
-    dialogConfig.autoFocus = true;
-    this.matDialog.open(ModalComponent, dialogConfig);
+    if (!this.deviceService.isMobile()) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.id = 'modal-component';
+      dialogConfig.width = '95%';
+      dialogConfig.height = '100%';
+      dialogConfig.data = url;
+      // dialogConfig.maxHeight = '100vh';
+      dialogConfig.maxWidth = 'none';
+      dialogConfig.panelClass = 'full-screen-modal';
+      dialogConfig.autoFocus = true;
+      this.matDialog.open(ModalComponent, dialogConfig);
+    } else {
+      window.location.href = url;
+    }
   }
 
 }

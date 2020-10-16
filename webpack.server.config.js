@@ -7,7 +7,7 @@ module.exports = {
   mode: 'development',
   entry: {
     // This is our Express server for Dynamic universal
-    server: './server.ts'
+    server: './src/server.ts'
   },
   target: 'node',
   resolve: {extensions: ['.ts', '.js']},

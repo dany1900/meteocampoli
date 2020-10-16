@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/service-worker/config/schema.json",
-  "index": "/index.html",
+  "index": "/",
   "assetGroups": [
     {
       "name": "app",
@@ -11,10 +11,25 @@
           "/index.html",
           "/manifest.webmanifest",
           "/*.css",
+          "/*.*.css",
+          "/assets/*.css",
+          "/assets/css/*.css",
           "/*.js",
+          "/*.*.js",
+          "/js/*.js",
+          "/assets/js/*.js",
+          "/*.png",
+          "/*.jpg",
           "/assets/*.png",
           "/assets/*.jpg",
-          "/assets/*.gif"
+          "/assets/img/*.jpg",
+          "/assets/img/*.png",
+          "/assets/img/*.png",
+          "/assets/img/*.gif",
+          "/assets/icons/*.png",
+          "/*.bundle.css",
+          "/*.bundle.js",
+          "/*.chunk.js"
         ]
       }
     },

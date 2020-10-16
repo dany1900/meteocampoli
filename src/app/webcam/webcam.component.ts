@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ModalComponent} from '../modal/modal.component';
+import {DeviceDetectorService} from 'ngx-device-detector';
 
 @Component({
   selector: 'webcam',
@@ -16,23 +17,27 @@ export class WebcamComponent implements OnInit {
   imageLoader = true;
 
 
-  constructor(private matDialog: MatDialog) {
+  constructor(private matDialog: MatDialog, private deviceService: DeviceDetectorService) {
   }
 
   ngOnInit() {
   }
 
   openModal(url: string) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.id = 'modal-component';
-    dialogConfig.width = '100%';
-    dialogConfig.height = '100%';
-    dialogConfig.data = url;
-    // dialogConfig.maxHeight = '100vh';
-    dialogConfig.maxWidth = 'none';
-    dialogConfig.panelClass = 'full-screen-modal';
-    dialogConfig.autoFocus = true;
-    this.matDialog.open(ModalComponent, dialogConfig);
+    if (!this.deviceService.isMobile()) {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.id = 'modal-component';
+      dialogConfig.width = '100%';
+      dialogConfig.height = '100%';
+      dialogConfig.data = url;
+      // dialogConfig.maxHeight = '100vh';
+      dialogConfig.maxWidth = 'none';
+      dialogConfig.panelClass = 'full-screen-modal';
+      dialogConfig.autoFocus = true;
+      this.matDialog.open(ModalComponent, dialogConfig);
+    } else {
+      window.location.href = url;
+    }
   }
 
   errorHandler() {
