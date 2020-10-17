@@ -1,1 +1,17 @@
-<tab-articoli></tab-articoli>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader">
+  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 center">
+    <fieldset>
+      <legend class="article-header">{{titleArticle}}</legend>
+      <img src="{{srcImage}}" [ngClass]="class"
+           (load)="imageLoader = false;" alt="{{titleArticle}}" width="274" height="200">
+      <br>
+      <div class="article-body">
+        <a routerLink="{{routerArticle}}">
+          <b>{{descArticle}}</b>
+        </a>
+      </div>
+    </fieldset>
+  </div>
+</div>

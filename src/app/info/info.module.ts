@@ -16,6 +16,7 @@ import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche
 import {ArticoliMeteoComponent} from './articoli/meteo/articoli-meteo.component';
 import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/ondata-caldo-2017.component';
 import {CommonModule} from '@angular/common';
+import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {CommonModule} from '@angular/common';
     PescheComponent,
     VitiComponent,
     AlbicoccheComponent,
-    OndataCaldo2017Component
+    OndataCaldo2017Component,
+    RosaVentiComponent
   ],
   exports: []
 })

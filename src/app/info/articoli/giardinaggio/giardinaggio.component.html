@@ -1,17 +1,12 @@
 <div class="row infos">
-  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-    <fieldset>
-      <legend class="article-header">Ulivo</legend>
-      <img src="./assets/img/ulivi.png" routerLink="articoli/giardinaggio/ulivi" class="img-article"
-           alt="articolo ulivo">
-      <br>
-      <div class="article-body">
-        <a routerLink="giardinaggio/ulivi">
-          <b>Ciclo di vita e potatura, tutto quello che bisogna sapere...</b>
-        </a>
-      </div>
-    </fieldset>
-  </div>
+
+  <articoli [titleArticle]="'Ulivo'"
+            [descArticle]="'Ciclo di vita e potatura, tutto quello che bisogna sapere...'"
+            [srcImage]="'./assets/img/ulivi.png'"
+            [routerArticle]="'giardinaggio/ulivi'"
+  >
+  </articoli>
+
   <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
     <fieldset>
       <legend class="article-header">Vite</legend>

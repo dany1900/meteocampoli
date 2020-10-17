@@ -20,6 +20,7 @@ import {FbLikeComponent} from './header/fb-like/fb-like.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {CommonModule} from '@angular/common';
+import {AdsenseModule} from 'ng2-adsense';
 
 @NgModule({
 
@@ -43,7 +44,11 @@ import {CommonModule} from '@angular/common';
     BrowserAnimationsModule,
     NgbModule,
     BreadcrumbModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production, registrationStrategy: 'registerImmediately'})
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production, registrationStrategy: 'registerImmediately'}),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-6215193089819382',
+      adSlot: 9724605079,
+    }),
   ],
   exports: [],
   providers: [SEOService, UtiliyService],

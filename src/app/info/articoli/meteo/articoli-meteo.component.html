@@ -1,20 +1,16 @@
-<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
-<br>
-<div [hidden]="imageLoader">
-  <div class="row infos">
-    <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4 center">
-      <fieldset>
-        <legend class="article-header">Inquinamento dell'aria e rimedi naturali</legend>
-        <img src="../../assets/img/articolo-inquinamento.png" class="img-article"
-             (load)="imageLoader = false;" alt="articolo inquinamento" width="274" height="200">
-        <br>
-        <div class="article-body">
-          <a routerLink="meteo/inquinamento-rimedi">
-            <b>L'inquinamento dell'aria sulle aree notoriamente piu soggette sta acquisendo sempre maggior
-              importanza..</b>
-          </a>
-        </div>
-      </fieldset>
-    </div>
-  </div>
-</div>
+<articoli [titleArticle]="'Inquinamento dell\'aria e rimedi naturali'"
+          [descArticle]="'L\'inquinamento dell\'aria sulle aree notoriamente piu soggette sta acquisendo sempre maggior\n'+
+'            importanza..'"
+          [srcImage]="'../../assets/img/articolo-inquinamento.png'"
+          [routerArticle]="'meteo/inquinamento-rimedi'"
+>
+</articoli>
+
+<articoli [titleArticle]="'Rosa dei venti'"
+          [descArticle]="'La rosa dei venti è un diagramma che rappresenta la provenienza dei venti..'"
+          [srcImage]="'../../assets/img/rosa-venti.png'"
+          [routerArticle]="'meteo/rosa-venti'"
+>
+</articoli>
+
+

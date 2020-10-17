@@ -12,6 +12,7 @@ import {PescheComponent} from './articoli/giardinaggio/pesche/pesche.component';
 import {ArticoliMeteoComponent} from './articoli/meteo/articoli-meteo.component';
 import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.component';
 import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/ondata-caldo-2017.component';
+import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.component';
 
 
 @NgModule({
@@ -73,6 +74,14 @@ import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/o
             data: {
               title: 'Articoli - Inquinamento Aria - Meteo Campoli',
               breadcrumb: 'inquinamento-rimedi'
+            }
+          },
+          {
+            path: 'articoli/meteo/rosa-venti',
+            component: RosaVentiComponent,
+            data: {
+              title: 'Articoli - Rosa dei Venti - Meteo Campoli',
+              breadcrumb: 'rosa-venti'
             }
           },
           {

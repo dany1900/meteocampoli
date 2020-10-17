@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'articoli',
@@ -7,6 +7,13 @@ import {Component} from '@angular/core';
 })
 export class ArticoliComponent {
 
+  @Input() titleArticle: string;
+  @Input() descArticle: string;
+  @Input() routerArticle: string;
+  @Input() srcImage: string;
+  @Input() class = 'img-article';
+  @Input() zoom: string;
+  imageLoader = true;
 
   constructor() {
   }
