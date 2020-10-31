@@ -29,12 +29,8 @@ export class SatelliteSudComponent implements OnInit {
 
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
+    /* const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    el.scrollIntoView(true); */
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }

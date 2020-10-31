@@ -1,5 +1,9 @@
 <!doctype html>
 <html lang="it">
+<?php include('../assets/php/head.php'); ?>
+<?php require '../assets/php/head.php';?>
+<script src="assets/php/head.php"></script>
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
@@ -12,14 +16,67 @@
         content="Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.">
   <meta property="og:site_name" content="www.meteocampoli.altervista.org">
   <meta property="og:url" content="www.meteocampoli.altervista.org">
-  <link rel="apple-touch-icon" href="favicon.ico">
-  <link rel="preload" as="style" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
-        onload="this.rel='stylesheet'"/>
-  <link rel="preload" as="font" type="font/woff2"
-        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0&display=swap"
-        crossorigin/>
   <base href="/">
-  <script async src=//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js></script>
+  <link rel="apple-touch-icon" href="favicon.ico">
+  <script async>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-85484839-1', 'auto');
+  </script>
+
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+
+  <link rel="preload" as="script" href="https://cdn.iubenda.com/cs/iubenda_cs.js"/>
+  <link rel="preconnect" href="https://www.iubenda.com"/>
+  <link rel="preconnect" href="https://iubenda.mgr.consensu.org"/>
+  <link rel="preconnect" href="https://hits-i.iubenda.com"/>
+  <link rel="preload" as="script" href="https://cdn.iubenda.com/cs/tcf/stub-v2.js"/>
+  <script defer src="https://cdn.iubenda.com/cs/tcf/stub-v2.js"></script>
+  <script defer>
+    (_iub = self._iub || []).csConfiguration = {
+      cookiePolicyId: 89567827,
+      siteId: 2039052,
+      localConsentDomain: 'meteocampoli.altervista.org',
+      timeoutLoadConfiguration: 30000,
+      lang: 'it',
+      enableTcf: true,
+      tcfVersion: 2,
+      googleAdditionalConsentMode: true,
+      consentOnContinuedBrowsing: false,
+      banner: {
+        position: "bottom",
+        acceptButtonDisplay: true,
+        customizeButtonDisplay: true,
+        closeButtonDisplay: false,
+        fontSizeBody: "14px",
+      },
+    }
+  </script>
+  <script defer async src="https://cdn.iubenda.com/cs/iubenda_cs.js"></script>
+  <!-- <script type="text/javascript">
+    var _iub = _iub || [];
+    _iub.csConfiguration = {"consentOnContinuedBrowsing":false,"whitelabel":false,"lang":"it","siteId":2025957,"cookiePolicyId":90562100, "banner":{ "acceptButtonDisplay":true,"customizeButtonDisplay":true,"position":"float-top-center" }};
+  </script> -->
+  <script type="text/javascript" src="https://cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" defer></script>
+  <style>
+    @media (max-width: 639px) {
+      #iubenda-cs-banner.iubenda-cs-default .iubenda-cs-rationale {
+        height: 55vh !important;
+        min-height: 320px !important;
+      }
+    }
+  </style>
+
   <style>
     .mat-tab-label {
       height: 48px;

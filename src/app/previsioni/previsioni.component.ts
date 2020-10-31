@@ -27,12 +27,8 @@ export class PrevisioniComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
+    /* const el = this.myElement.nativeElement.querySelector('.header-macro-section');
+    el.scrollIntoView(true); */
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }

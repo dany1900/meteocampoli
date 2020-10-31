@@ -27,12 +27,8 @@ export class SatelliteProtezioneCivileComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
+    /*  const el = this.myElement.nativeElement.querySelector('.title-micro-section');
+    el.scrollIntoView(true); */
     /*this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();

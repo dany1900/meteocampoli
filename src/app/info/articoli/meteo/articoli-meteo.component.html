@@ -1,16 +1,63 @@
-<articoli [titleArticle]="'Inquinamento dell\'aria e rimedi naturali'"
-          [descArticle]="'L\'inquinamento dell\'aria sulle aree notoriamente piu soggette sta acquisendo sempre maggior\n'+
+<div class="row infos">
+
+  <articoli [titleArticle]="'Inquinamento dell\'aria e rimedi naturali'"
+            [descArticle]="'L\'inquinamento dell\'aria sulle aree notoriamente piu soggette sta acquisendo sempre maggior\n'+
 '            importanza..'"
-          [srcImage]="'../../assets/img/articolo-inquinamento.png'"
-          [routerArticle]="'meteo/inquinamento-rimedi'"
->
-</articoli>
+            [srcImage]="'../../assets/img/articolo-inquinamento.png'"
+            [routerArticle]="'meteo/inquinamento-rimedi'"
+  >
+  </articoli>
 
-<articoli [titleArticle]="'Rosa dei venti'"
-          [descArticle]="'La rosa dei venti è un diagramma che rappresenta la provenienza dei venti..'"
-          [srcImage]="'../../assets/img/rosa-venti.png'"
-          [routerArticle]="'meteo/rosa-venti'"
->
-</articoli>
+  <articoli [titleArticle]="'Rosa dei venti'"
+            [descArticle]="'La rosa dei venti è un diagramma che rappresenta la provenienza dei venti..'"
+            [srcImage]="'../../assets/img/rosa-venti.png'"
+            [routerArticle]="'meteo/rosa-venti'"
+  >
+  </articoli>
 
+  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+    <fieldset>
+      <legend class="article-header">Atmosfera</legend>
+      <img src="./assets/img/articolo-atmosfera.png" class="img-article" alt="articolo atmosfera" width="274"
+           height="200">
+      <br>
+      <div class="article-body">
+        <a routerLink="articoli/meteo/atmosfera">
+          <b class="red">disponibile a breve...</b>
+        </a>
+      </div>
+    </fieldset>
+  </div>
+
+</div>
+<div class="row infos">
+
+  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+    <fieldset>
+      <legend class="article-header">Stratworming</legend>
+      <img src="./assets/img/articolo-stratwarming.png" class="img-article" alt="articolo stratwarming" width="274"
+           height="200">
+      <br>
+      <div class="article-body">
+        <a routerLink="articoli/meteo/stratwarming">
+          <b class="red">disponibile a breve...</b>
+        </a>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+    <fieldset>
+      <legend class="article-header">Vortice Polare</legend>
+      <img src="./assets/img/articolo-vortice-polare.png" class="img-article" alt="articolo vortice polare" width="274"
+           height="200">
+      <br>
+      <div class="article-body">
+        <a routerLink="articoli/meteo/vortice-polare">
+          <b class="red">disponibile a breve...</b>
+        </a>
+      </div>
+    </fieldset>
+  </div>
+</div>
 

@@ -27,11 +27,11 @@ export class TerremotiMondoComponent implements OnInit {
 
   ngOnInit() {
     const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
+    /*  if (el.scrollIntoViewIfNeeded) {
+        el.scrollIntoViewIfNeeded();
+      } else {
+        el.scrollIntoView();
+      } */
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }

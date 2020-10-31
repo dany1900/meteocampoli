@@ -8,18 +8,18 @@
 ></satellite>
 
 <satellite [titleImgRadar]="'Satellite Meteosat Immagine Italia'"
-           [srcImage]="'https:///www.sat24.com/image.ashx?country=it&0.6041513127274811'"
+           [srcImage]="'https://www.sat24.com/image.ashx?country=it&0.6041513127274811'"
            [infoAlt]="'satellite meteosat immagine'"
            [class]="'radar'"
 ></satellite>
 
 <satellite [titleImgRadar]="'Monitoraggio Fulminazioni Europa in movimento'"
-           [srcImage]="'https:///www.meteociel.fr/obs/foudre/anim2h_it.gif'"
+           [srcImage]="'https://www.meteociel.fr/obs/foudre/anim2h_it.gif'"
            [infoAlt]="'satellite fulminazioni europa movimento'"
            [class]="'radar'"></satellite>
 
 <satellite [titleImgRadar]="'Satellite Fulminazioni Europa'"
-           [srcImage]="'http:///images.blitzortung.org/Images/image_b_eu.png?t=22640732'"
+           [srcImage]="'http://images.blitzortung.org/Images/image_b_eu.png?t=22640732'"
            [infoAlt]="'satellite fulminazioni'"
            [class]="'radar'"></satellite>
 
@@ -29,10 +29,9 @@
            [infoAlt]="'satellite fulminazioni centro italia'"
            [class]="'radar'"></satellite>
 
-<satellite [titleImgRadar]="'Vento in tempo reale'"
-           [srcImage]="'https://img2.meteo.it/forecastimg/realtime/0/today_vento.jpg'"
-           [infoAlt]="'vento live italia'"
-           [class]="'radar'"></satellite>
+<iframe id="frame-mov" class="radar-windy"
+        src="https://embed.windy.com/embed2.html?lat=41.874&lon=12.651&detailLat=41.890&detailLon=12.512&width=500&height=500&zoom=5&level=surface&overlay=gust&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
+        frameborder="0"></iframe>
 
 <div>
   <h2 class="title-micro-section">Satellite Precipitazioni in movimento</h2>
@@ -49,20 +48,21 @@
            [srcImage]="'http:///www.meteomin.it/Dig_Atm_Jpg/Front_map_G.jpg'"
            [infoAlt]="'sinottica'"
            [class]="'radar'"></satellite>
+
 <br>
 <br>
-<satellite [titleImgRadar]="'Temperatura 2m in tempo reale'"
-           [srcImage]="'https:///img.meteo.it/forecastimg/realtime/12/today_temperatura.jpg'"
-           [infoAlt]="'temperature suolo'"
-           [class]="'radar'"></satellite>
+
+<satellite [titleImgRadar]="'Temperature in tempo reale calcolate'"
+           [srcImage]="'https://meteo-lazio.it/interpolate/radar/temp.png'"
+           [infoAlt]="'temperature calcolate'"
+           [class]="'radar-zoomed'"
+           [zoom]="1.2"></satellite>
+
 <br>
 <br>
-<satellite [titleImgRadar]="'Radar Precipitazioni Lazio'"
-           [srcImage]="'https:///img.meteo.it/forecastimg/realtime/12/today_pioggia.jpg'"
-           [infoAlt]="'radar precipitazioni lazio'"
-           [class]="'radar'"></satellite>
 <br>
 <br>
+
 <satellite [titleImgRadar]="'Radar Precipitazioni Ultime 3 ore'"
            [srcImage]="'http:///satollo.aquila.infn.it/midia/ref/ultimo_srt3h_noclass.png'"
            [infoAlt]="'radar precipitazioni'"

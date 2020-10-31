@@ -21,6 +21,7 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {CommonModule} from '@angular/common';
 import {AdsenseModule} from 'ng2-adsense';
+import {GtagModule} from 'angular-gtag';
 
 @NgModule({
 
@@ -43,6 +44,7 @@ import {AdsenseModule} from 'ng2-adsense';
     FormsModule,
     BrowserAnimationsModule,
     NgbModule,
+    GtagModule.forRoot({trackingId: 'UA-85484839-1', trackPageviews: true}),
     BreadcrumbModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production, registrationStrategy: 'registerImmediately'}),
     AdsenseModule.forRoot({

@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {environment} from '../environments/environment';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 
 
 @Component({
@@ -8,11 +8,12 @@ import {ActivatedRoute, Router} from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   pathGenerale = '/satellite/generale';
   pathCentroItalia = '/satellite/centro-italia';
   pathNordItalia = '/satellite/nord-italia';
+
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {
   }
@@ -21,22 +22,26 @@ export class AppComponent implements OnInit {
     if (environment.production && location.protocol === 'https:') {
       window.location.href = location.href.replace('https', 'http');
     }
+  }
 
-    /* if (environment.production) {
-      this.router.events.filter(event => event instanceof NavigationEnd)
-        .subscribe(event => {
-          if (event instanceof RouterEvent) {
-            const currentRoute = event.url;
-            if (!this.isConvertibleHttps(currentRoute) && location.protocol === 'https:') {
-              window.location.href = location.href.replace('https', 'http');
-              console.warn(event + 'path uguale a generale');
-            } else if (this.isConvertibleHttps(currentRoute) && location.protocol === 'http:') {
-              window.location.href = location.href.replace('http', 'https');
-              console.warn(event + 'path diverso da generale');
-            }
+  ngAfterViewInit() {
+    //this.initGoogleAnalyticsPageView();
+  }
+
+  private initGoogleAnalyticsPageView() {
+    const interval = setInterval(() => {
+      if ((window as any).ga && (window as any).ga.getAll) {
+        this.router.events.subscribe(event => {
+          const ga = (window as any).ga;
+          if (event instanceof NavigationEnd) {
+            const tracker = ga.getAll()[0];
+            tracker.set('page', event.urlAfterRedirects);
+            tracker.send('pageview');
           }
         });
-    } */
+        clearInterval(interval);
+      }
+    }, 50);
   }
 
   /*

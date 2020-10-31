@@ -44,5 +44,4 @@ export class WebcamComponent implements OnInit {
     this.urlWebcam = './assets/img/webcam-offline.png';
     this.imageLoader = false;
   }
-
 }

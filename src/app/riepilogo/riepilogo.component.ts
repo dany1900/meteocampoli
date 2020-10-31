@@ -31,12 +31,8 @@ export class RiepilogoComponent implements OnInit {
   ngOnInit() {
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
-    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
+    /* const el = this.myElement.nativeElement.querySelector('.header-macro-section');
+    el.scrollIntoView(true); */
   }
 
   scrollToTop() {
