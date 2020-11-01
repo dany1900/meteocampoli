@@ -1,9 +1,9 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ModalComponent} from '../../modal/modal.component';
-import {ViewportScroller} from '@angular/common';
 import {DeviceDetectorService} from 'ngx-device-detector';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'immagini',
@@ -20,29 +20,19 @@ export class ImmaginiComponent implements OnInit {
   ogImage: string;
 
 
-  constructor(private seo: SEOService, private myElement: ElementRef, public matDialog: MatDialog, private scroll: ViewportScroller,
-              private deviceService: DeviceDetectorService) {
+  constructor(private seo: SEOService, public matDialog: MatDialog, private deviceService: DeviceDetectorService, public utilityService: UtiliyService) {
     this.title = 'Immagini e WebCam - Meteo Campoli';
     this.description = 'Immagini di Campoli Appennino, paese della Valle di Comino. Tutte le Webcam del centro italia montano e limitrofe, ordinate per regione e localita.';
     this.keywords = 'immagini meteo campoli, immagini campoli, immagini stazioni meteo campoli, meteo campoli images, immagini e webcam meteo campoli, webcam meteo campoli';
     this.ogUrl = 'www.meteocampoli.altervista.org/webcam/immagini';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
-  }
-
-  ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }
 
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
+  ngOnInit() {
+    this.utilityService.scrollToSpecifyPosition();
   }
 
   openModal(url: string) {

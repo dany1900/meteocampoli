@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ViewportScroller} from '@angular/common';
 import {SEOService} from '../../../../service/seoservice.service';
+import {UtiliyService} from '../../../../service/utiliy.service';
 
 @Component({
   selector: 'ulivi',
@@ -17,24 +17,19 @@ export class UliviComponent implements OnInit, OnChanges {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller, private seo: SEOService) {
+  constructor(protected router: Router, private seo: SEOService, public utilityService: UtiliyService) {
     this.title = 'Informazioni Ulivo - Articoli - Meteo Campoli';
     this.description = 'Informazioni generali sulla pianta dell ulivo. Ciclo di maturazione, quando  e come preparare il terreno, tutti gli accorgimento necessari per la potatura';
     this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/giardinaggio/ulivi';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
 
   ngOnInit(): void {
-    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
-    this.seo.cleanCanonicalUrl();
-    this.seo.setCanonicalURL();
+    this.utilityService.scrollToSpecifyPosition();
   }
 
   ngOnChanges() {
@@ -43,10 +38,4 @@ export class UliviComponent implements OnInit, OnChanges {
   indietro(): void {
     this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
   }
-
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
-  }
-
-
 }

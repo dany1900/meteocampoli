@@ -1,7 +1,7 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
-import {ViewportScroller} from '@angular/common';
 import {Router} from '@angular/router';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'effemeridi',
@@ -16,31 +16,21 @@ export class EffemeridiComponent implements OnInit, AfterViewInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.title = 'Orari Alba Tramonto - Meteo Campoli';
     this.description = 'Orari di alba e tramonto dettagliati di Campoli Appennino. Informazioni relative alla durata dei giorni per ogni mese, informazioni sulla posizione geografica con coordinate';
-    this.keywords = '';
+    this.keywords = 'effemeridi campoli, orario alba campoli appennino';
     this.ogUrl = 'www.meteocampoli.altervista.org/info/effemeridi';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
-  }
-
-  ngOnInit(): void {
-    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }
 
+  ngOnInit(): void {
+    this.utilityService.scrollToSpecifyPosition();
+  }
+
   ngAfterViewInit() {
   }
-
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
-  }
-
 }

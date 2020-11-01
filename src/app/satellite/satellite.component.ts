@@ -20,6 +20,7 @@ export class SatelliteComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   errorHandler() {

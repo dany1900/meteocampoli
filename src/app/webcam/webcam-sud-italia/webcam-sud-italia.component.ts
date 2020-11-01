@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
-import {ViewportScroller} from '@angular/common';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'webcam-sud-italia',
@@ -16,7 +16,7 @@ export class WebcamSudItaliaComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     // TODO
     this.title = 'Meteo Campoli - Monitoraggio Meteo';
     this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
@@ -27,16 +27,6 @@ export class WebcamSudItaliaComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
+    this.utilityService.scrollToSpecifyPosition();
   }
-
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
-  }
-
 }

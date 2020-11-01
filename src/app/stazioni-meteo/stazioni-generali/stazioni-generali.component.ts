@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
-import {ViewportScroller} from '@angular/common';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'stazioni-generali',
@@ -17,28 +17,19 @@ export class StazioniGeneraliComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.title = 'Stazioni Meteo Limitrofe - Dati - Meteo Campoli';
     this.description = 'Tutte le stazioni del centro italia  visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.';
     this.keywords = 'temperature limitrofe, meteo campoli temperature, temperature lazio, temperature campoli, temperature stazioni meteo, stazioni meteo centro italia,dati stazioni meteo';
     this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/lazio';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
-  }
-
-  ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.scroll-view');
-    if (el.scrollIntoViewIfNeeded) {
-      el.scrollIntoViewIfNeeded();
-    } else {
-      el.scrollIntoView();
-    }
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }
 
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
+  ngOnInit() {
+    this.utilityService.scrollToSpecifyPosition();
   }
 
 }

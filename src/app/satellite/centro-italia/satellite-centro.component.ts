@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ViewportScroller} from '@angular/common';
 import {SEOService} from '../../service/seoservice.service';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'satellite-centro',
@@ -19,7 +19,7 @@ export class SatelliteCentroComponent implements OnInit {
   ogImage: string;
   urlSatellite: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router) {
     this.title = 'Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli';
     this.description = 'Satellite infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale. Focus sul centro italia.';
     this.keywords = 'satellite centro meteo campoli, radar centro meteo campoli, radar precipitazioni centro italia meteo campoli, radar fulmini centro italia, radar precipitazioni zoom centro italia, radar pioggia centro italia, satellite centro italia, radar pioggie toscana';
@@ -29,14 +29,7 @@ export class SatelliteCentroComponent implements OnInit {
   }
 
   ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.title-info');
-    el.scrollIntoView(true);
-    this.seo.cleanCanonicalUrl();
-    this.seo.setCanonicalURL();
-  }
-
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
+    this.utilityService.scrollToSpecifyPosition();
   }
 
   errorHandler() {

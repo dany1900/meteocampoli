@@ -1,5 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
-import {ViewportScroller} from '@angular/common';
+import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
 
 @Component({
@@ -16,21 +15,16 @@ export class ArticoliMeteoComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller) {
+  constructor(private seo: SEOService) {
     this.title = 'Curiosità Metereologia - Articoli - Meteo Campoli';
     this.description = 'Articoli sul fenomeno della metereologia , tutte le curiosità in continuo aggiornamento';
     this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/meteo';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
-  }
-
-  ngOnInit(): void {
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }
 
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
+  ngOnInit(): void {
   }
-
 }

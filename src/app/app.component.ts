@@ -1,6 +1,8 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {environment} from '../environments/environment';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
+import {ViewportScroller} from '@angular/common';
+import {SEOService} from './service/seoservice.service';
 
 
 @Component({
@@ -15,13 +17,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   pathNordItalia = '/satellite/nord-italia';
 
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller) {
   }
 
   ngOnInit() {
     if (environment.production && location.protocol === 'https:') {
       window.location.href = location.href.replace('https', 'http');
     }
+    this.scroll.scrollToPosition([0, 570]);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   ngAfterViewInit() {

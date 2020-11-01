@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnInit, Renderer2} from '@angular/core';
+import {Component, OnInit, Renderer2} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
-import {ViewportScroller} from '@angular/common';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'terremoti-mondo',
@@ -16,28 +16,19 @@ export class TerremotiMondoComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router, public renderer: Renderer2) {
+  constructor(private seo: SEOService, protected router: Router, public renderer: Renderer2, public utilityService: UtiliyService) {
     this.title = 'Terremoti Mondo - Meteo Campoli';
     this.description = 'Informazioni generali sui terremoti. Mappa pericolosità sismica degli ultimi 50 anni nel mondo.';
     this.keywords = 'terremoti meteo campoli, lista terremoti, ultimi terremoti campoli, terremoti campoli appennino, ultimo terremoto campoli, lista terremoti campoli appennino,elenco terremoti in italia, lista ultimi terremoti,lista terremoti ingv aggiornata,elenco sismico italiano,iside terremoti,iside lista terremoti,elenco scosse terremoto,terremoti elenco,ingv lista terremoti iside,meteo terremoti altervista,istituto nazionale geofisica e vulcanologia lista terremoti,lista terremoti italia,elenco terremoti italia,elenco terremoti,lista terremoti qualsiasi magnitudo,bollettino terremoti';
     this.ogUrl = 'www.meteocampoli.altervista.org/terremoti/mondo';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
-  }
-
-  ngOnInit() {
-    const el = this.myElement.nativeElement.querySelector('.title-micro-section');
-    /*  if (el.scrollIntoViewIfNeeded) {
-        el.scrollIntoViewIfNeeded();
-      } else {
-        el.scrollIntoView();
-      } */
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }
 
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
+  ngOnInit() {
+    this.utilityService.scrollToSpecifyPosition();
   }
 
   toggleClass(event: any, classe: string) {

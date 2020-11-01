@@ -1,7 +1,7 @@
-import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
 import {Router} from '@angular/router';
-import {ViewportScroller} from '@angular/common';
+import {UtiliyService} from '../service/utiliy.service';
 
 
 @Component({
@@ -18,7 +18,7 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, private myElement: ElementRef, private scroll: ViewportScroller, protected router: Router) {
+  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.path = 'https://www.meteocampoliappennino.altervista.org/grafico.png?v=' + Math.random();
     this.title = 'Meteo Campoli - Monitoraggio Meteo';
     this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
@@ -26,13 +26,12 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
     this.ogUrl = 'www.meteocampoli.altervista.org/dati-attuali';
     this.ogImage = 'http://meteocampoli.altervista.org/images/meteocampoli.jpg';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   ngOnInit() {
-    this.seo.cleanCanonicalUrl();
-    this.seo.setCanonicalURL();
-    const el = this.myElement.nativeElement.querySelector('h1');
-    el.scrollIntoView(true);
+    this.utilityService.scrollToSpecifyPosition();
   }
 
   ngOnDestroy(): void {
@@ -40,10 +39,6 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
 
   indietro(): void {
     this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
-  }
-
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
   }
 
 }
