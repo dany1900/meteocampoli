@@ -23,6 +23,10 @@ export class WebcamComponent implements OnInit {
   ngOnInit() {
   }
 
+  redirect() {
+    window.open('http://' + this.urlSite, '_blank');
+  }
+
   openModal(url: string) {
     if (!this.deviceService.isMobile()) {
       const dialogConfig = new MatDialogConfig();

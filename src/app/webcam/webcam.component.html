@@ -4,7 +4,8 @@
   <figure>
     <div class="webcam-script-header">
 							<span class="content-webcam-principal">{{luogo}}
-                {{altitudine}} mt - </span> <a href="{{urlSite}}" target="_blank" rel="noopener"> {{urlSite}}</a>
+                {{altitudine}} mt - </span> <a (click)="redirect()" target="_blank"
+                                               rel="noopener"><span>{{ urlSite }}</span> </a>
 
     </div>
     <a (click)="openModal(urlWebcam)" data-rel="prettyPhoto"><img
