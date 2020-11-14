@@ -1,10 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {WebcamComponent} from '../../../webcam.component';
+import {UtiliyService} from '../../../../service/utiliy.service';
 
 @Component({
   selector: 'webcam-frosinone',
   templateUrl: './webcam-frosinone.component.html',
   styleUrls: ['./webcam-frosinone.component.css']
 })
-export class WebcamFrosinoneComponent extends WebcamComponent implements OnInit {
+export class WebcamFrosinoneComponent implements OnInit {
+
+  constructor(public utilityService: UtiliyService) {
+  }
+
+  ngOnInit() {
+    this.utilityService.scrollToSpecifyPosition();
+  }
+
 }

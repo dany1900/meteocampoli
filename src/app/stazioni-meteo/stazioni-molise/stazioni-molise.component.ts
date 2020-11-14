@@ -20,7 +20,7 @@ export class StazioniMoliseComponent implements OnInit {
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.title = 'Stazioni Meteo Molise - Dati - Meteo Campoli';
     this.description = 'Tutte le stazioni del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.';
-    this.keywords = 'temperature abruzzo, meteo campoli abruzzo, temperature abruzzo meteo campoli, temperature stazioni meteo abruzzo, stazioni meteo abruzzo, stazioni meteo abruzzo meteo campoli';
+    this.keywords = 'temperature molise, meteo campoli molise, temperature molise meteo campoli, temperature stazioni meteo molise, stazioni meteo molise, stazioni meteo molise meteo campoli';
     this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/molise';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);

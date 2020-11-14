@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../../service/seoservice.service';
+import {UtiliyService} from '../../../service/utiliy.service';
 
 @Component({
   selector: 'articoli-meteo',
@@ -15,7 +16,7 @@ export class ArticoliMeteoComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService) {
+  constructor(private seo: SEOService, public utilityService: UtiliyService) {
     this.title = 'Curiosità Metereologia - Articoli - Meteo Campoli';
     this.description = 'Articoli sul fenomeno della metereologia , tutte le curiosità in continuo aggiornamento';
     this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/meteo';
@@ -26,5 +27,6 @@ export class ArticoliMeteoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.utilityService.scrollToSpecifyPosition();
   }
 }

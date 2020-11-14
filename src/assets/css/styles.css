@@ -763,9 +763,22 @@ legend {
   height: 11px;
 }
 
-hidden-element {
+.hidden-element {
   display: none;
 }
+
+.mouse-pointer {
+  cursor: pointer;
+}
+
+.frame-notizie {
+  border: none;
+  min-height: 265px;
+  width: 80%;
+  height: 100%;
+}
+
+
 
 
 

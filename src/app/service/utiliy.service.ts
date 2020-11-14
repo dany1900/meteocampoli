@@ -6,6 +6,8 @@ import {ViewportScroller} from '@angular/common';
 })
 export class UtiliyService {
 
+  preventCache = Math.random();
+
   constructor(private scroll: ViewportScroller) {
   }
 
@@ -14,7 +16,15 @@ export class UtiliyService {
   }
 
   scrollToSpecifyPosition() {
-    this.scroll.scrollToPosition([0, 565]);
+    if (this.isMobile()) {
+      this.scroll.scrollToPosition([0, 950]);
+    } else {
+      this.scroll.scrollToPosition([0, 810]);
+    }
+  }
+
+  isMobile(): boolean {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   }
 
 }

@@ -14,13 +14,13 @@ export class SatelliteComponent implements OnInit {
   @Input() infoAlt: string;
   @Input() class = 'radar-test';
   @Input() zoom: string;
+  imageLoader = true;
 
 
   constructor(public renderer: Renderer2) {
   }
 
   ngOnInit() {
-
   }
 
   errorHandler() {

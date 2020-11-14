@@ -28,5 +28,6 @@ export class WebcamLazioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.utilityService.scrollToSpecifyPosition();
   }
 }
