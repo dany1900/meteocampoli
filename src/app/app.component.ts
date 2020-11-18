@@ -16,6 +16,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   pathCentroItalia = '/satellite/centro-italia';
   pathNordItalia = '/satellite/nord-italia';
 
+  data: any;
+
 
   constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller) {
   }
@@ -27,11 +29,26 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.scroll.scrollToPosition([0, 570]);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+    //this.data = this.getTestData();
+    console.log(this.data);
   }
 
   ngAfterViewInit() {
     //this.initGoogleAnalyticsPageView();
   }
+
+  /*
+  getTestData() {
+    return this._http.get('assets/php/head.php') // <-- Here
+      .subscribe(
+        (res: Response) => {
+          this.data = res;
+          console.log(this.data);
+        },
+        (err: Error) => console.log(err)
+      );
+  }
+  */
 
   private initGoogleAnalyticsPageView() {
     const interval = setInterval(() => {

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Compiler, Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
@@ -19,13 +19,14 @@ export class SatelliteGeneraleComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router) {
+  constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router, private _compiler: Compiler) {
     this.title = 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli';
     this.description = 'Monitoraggio completo del meteo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.';
     this.keywords = 'satellite meteo campoli, radar meteo campoli, radar precipitazioni meteo campoli, radar fulmini meteo campoli, radar precipitazioni zoom, radar pioggia meteo campoli';
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite-generale';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this._compiler.clearCache();
   }
 
 

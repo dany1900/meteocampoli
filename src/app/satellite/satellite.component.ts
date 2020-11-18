@@ -16,7 +16,6 @@ export class SatelliteComponent implements OnInit {
   @Input() zoom: string;
   imageLoader = true;
 
-
   constructor(public renderer: Renderer2) {
   }
 
