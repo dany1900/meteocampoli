@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../service/utiliy.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {environment} from '../../environments/environment.prod';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
   ogUrl: string;
   ogImage: string;
 
-  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
+  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService, private http: HttpClient) {
     this.path = 'https://www.meteocampoliappennino.altervista.org/grafico.png?v=' + Math.random();
     this.title = 'Meteo Campoli - Monitoraggio Meteo';
     this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
@@ -32,6 +34,13 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
+    if (environment.production) {
+      let headers = new HttpHeaders().set('header-name', 'header-value');
+      headers = headers.set('header-name-2', 'header-value-2');
+      this.http
+        .get(this.router.url, {headers: headers})
+        .subscribe();
+    }
   }
 
   ngOnDestroy(): void {

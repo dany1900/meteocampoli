@@ -3,6 +3,7 @@ import {environment} from '../environments/environment';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 import {SEOService} from './service/seoservice.service';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   data: any;
 
 
-  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller) {
+  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller, private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -29,12 +30,12 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.scroll.scrollToPosition([0, 570]);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
-    //this.data = this.getTestData();
-    console.log(this.data);
+    // this.data = this.getTestData();
+    // console.log(this.data);
   }
 
   ngAfterViewInit() {
-    //this.initGoogleAnalyticsPageView();
+    this.initGoogleAnalyticsPageView();
   }
 
   /*
