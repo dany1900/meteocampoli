@@ -17,40 +17,49 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
   pathMontagnaToscana = '/webcam/montagna/toscana';
   pathLimitrofe = '/webcam/limitrofe';
   pathNord = '/webcam/nord-italia';
+  pathGlobale = '';
 
   constructor(private myElement: ElementRef, protected router: Router) {
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
       case this.pathImmagini:
+        this.pathGlobale = this.pathImmagini;
         this.id = 0;
         break;
       case this.pathMontagnaLazio:
+        this.pathGlobale = this.pathMontagnaLazio;
         this.id = 1;
         break;
       case this.pathLimitrofe:
+        this.pathGlobale = this.pathLimitrofe;
         this.id = 2;
         break;
       case this.pathNord:
+        this.pathGlobale = this.pathNord;
         this.id = 3;
         break;
       case this.pathMontagnaAbruzzo:
+        this.pathGlobale = this.pathMontagnaAbruzzo;
         this.id = 1;
         break;
       case this.pathMontagnaMolise:
+        this.pathGlobale = this.pathMontagnaMolise;
         this.id = 1;
         break;
       case this.pathMontagnaUmbria:
+        this.pathGlobale = this.pathMontagnaUmbria;
         this.id = 1;
         break;
       case this.pathMontagnaToscana:
+        this.pathGlobale = this.pathMontagnaToscana;
         this.id = 1;
         break;
       default:
         this.id = 0;
         break;
     }
-    this.tabSelectionChanged(this.id);
+    this.router.navigate([this.pathGlobale]);
   }
 
   ngOnInit() {
@@ -60,19 +69,4 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
 
   ngOnChanges() {
   }
-
-  tabSelectionChanged(event) {
-    if (event === 0) {
-      this.router.navigate([this.pathImmagini]);
-    } else if (event === 1) {
-      this.router.navigate([this.pathMontagnaLazio]);
-    } else if (event === 2) {
-      this.router.navigate([this.pathLimitrofe]);
-    } else if (event === 3) {
-      this.router.navigate([this.pathNord]);
-    } else if (event === 4) {
-      this.router.navigate([this.pathMontagnaAbruzzo]);
-    }
-  }
-
 }

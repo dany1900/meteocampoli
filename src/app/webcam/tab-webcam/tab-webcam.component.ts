@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -15,6 +15,7 @@ export class TabWebcamComponent implements OnInit {
   pathWebUmbria = '/webcam/montagna/umbria';
   pathWebMarche = '/webcam/montagna/marche';
   pathWebToscana = '/webcam/montagna/toscana';
+  @Input() path;
 
 
   constructor(private myElement: ElementRef, protected router: Router) {
