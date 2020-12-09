@@ -2,8 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../service/utiliy.service';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from '../../environments/environment.prod';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -34,13 +33,13 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
-    if (environment.production) {
+    /*if (environment.production) {
       let headers = new HttpHeaders().set('header-name', 'header-value');
       headers = headers.set('header-name-2', 'header-value-2');
       this.http
         .get(this.router.url, {headers: headers})
         .subscribe();
-    }
+    } */
   }
 
   ngOnDestroy(): void {
