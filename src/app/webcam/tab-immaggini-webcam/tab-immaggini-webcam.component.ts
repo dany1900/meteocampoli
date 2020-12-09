@@ -15,6 +15,7 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
   pathMontagnaMolise = '/webcam/montagna/molise';
   pathMontagnaUmbria = '/webcam/montagna/umbria';
   pathMontagnaToscana = '/webcam/montagna/toscana';
+  pathMontagnaMarche = '/webcam/montagna/marche';
   pathLimitrofe = '/webcam/limitrofe';
   pathNord = '/webcam/nord-italia';
   pathGlobale = '';
@@ -49,6 +50,10 @@ export class TabImmagginiWebcamComponent implements OnInit, OnChanges {
         break;
       case this.pathMontagnaUmbria:
         this.pathGlobale = this.pathMontagnaUmbria;
+        this.id = 1;
+        break;
+      case this.pathMontagnaMarche:
+        this.pathGlobale = this.pathMontagnaMarche;
         this.id = 1;
         break;
       case this.pathMontagnaToscana:
