@@ -23,6 +23,8 @@ export class WebcamNordItaliaComponent implements OnInit {
     this.ogUrl = 'www.meteocampoli.altervista.org/webcam/nord-italia';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   ngOnInit() {

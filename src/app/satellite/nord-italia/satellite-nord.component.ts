@@ -23,6 +23,8 @@ export class SatelliteNordComponent implements OnInit {
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite/nord-italia';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   ngOnInit() {

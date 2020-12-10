@@ -17,7 +17,7 @@ export class EffemeridiComponent implements OnInit, AfterViewInit {
   ogImage: string;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
-    this.title = 'Orari Alba Tramonto - Meteo Campoli';
+    this.title = 'Orari Alba Tramonto Campoli Appennino - Meteo Campoli';
     this.description = 'Orari di alba e tramonto dettagliati di Campoli Appennino. Informazioni relative alla durata dei giorni per ogni mese, informazioni sulla posizione geografica con coordinate';
     this.keywords = 'effemeridi campoli, orario alba campoli appennino';
     this.ogUrl = 'www.meteocampoli.altervista.org/info/effemeridi';

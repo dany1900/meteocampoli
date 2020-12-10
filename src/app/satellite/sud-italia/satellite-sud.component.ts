@@ -25,6 +25,8 @@ export class SatelliteSudComponent implements OnInit {
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite/sud-italia';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
 

@@ -17,10 +17,9 @@ export class WebcamMoliseComponent implements OnInit {
   ogImage: string;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
-    // TODO
     this.title = 'WebCam Molise Montagna - Meteo Campoli';
     this.description = 'Tutte le webcam  del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.';
-    this.keywords = 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino';
+    this.keywords = 'webcam molise, webcam molise meteo campoli, webcam molise montagna, webcam appennino meteo campoli,web cam centro italia montagna,webcam molise montagna';
     this.ogUrl = 'www.meteocampoli.altervista.org/webcam/montagna/molise';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);

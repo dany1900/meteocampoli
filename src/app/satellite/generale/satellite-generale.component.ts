@@ -27,6 +27,8 @@ export class SatelliteGeneraleComponent implements OnInit {
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this._compiler.clearCache();
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
 

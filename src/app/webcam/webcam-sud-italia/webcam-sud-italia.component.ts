@@ -17,13 +17,14 @@ export class WebcamSudItaliaComponent implements OnInit {
   ogImage: string;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
-    // TODO
-    this.title = 'Meteo Campoli - Monitoraggio Meteo';
-    this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
-    this.keywords = 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino';
-    this.ogUrl = 'www.meteocampoli.altervista.org/dati-attuali';
-    this.ogImage = 'http://meteocampoli.altervista.org/images/meteocampoli.jpg';
+    this.title = 'WebCam Sud Montagna - Meteo Campoli';
+    this.description = 'Tutte le Webcam del sud italia montanare ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Disponibilita di focus e zoom.';
+    this.keywords = 'webcam sud, webcam sud italia, webcam sud meteo campoli, webcam sud montagna, webcam sud italia meteo campoli,web cam sud italia montagna,webcam sud montagna';
+    this.ogUrl = 'www.meteocampoli.altervista.org/webcam/sud-italia';
+    this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
   ngOnInit() {
