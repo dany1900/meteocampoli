@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
+import {UtiliyService} from '../../service/utiliy.service';
 
 
 @Component({
@@ -17,27 +18,33 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
   pathMolise = '/stazioni-meteo/molise';
   pathReteMeteo = '/stazioni-meteo/rete-meteo';
 
-  constructor(private router: Router, private myElement: ElementRef) {
+  constructor(private router: Router, private myElement: ElementRef, public utility: UtiliyService) {
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
       case this.pathGenerale:
         this.id = 0;
+        this.utility.titleMatTab = 'Stazioni Meteo - Temperature e Storico Dati ';
         break;
       case this.pathLazio:
         this.id = 1;
+        this.utility.titleMatTab = 'Stazioni Meteo Lazio - Temperature e Storico Dati ';
         break;
       case this.pathAbruzzo:
         this.id = 2;
+        this.utility.titleMatTab = 'Stazioni Meteo Abruzzo - Temperature e Storico Dati ';
         break;
       case this.pathMolise:
         this.id = 3;
+        this.utility.titleMatTab = 'Stazioni Meteo Molise - Temperature e Storico Dati ';
         break;
       case this.pathReteMeteo:
         this.id = 4;
+        this.utility.titleMatTab = 'Stazioni Meteo Italia - Mappa Interattiva ';
         break;
       default:
         this.id = 0;
+        this.utility.titleMatTab = 'Stazioni Meteo - Temperature e Storico Dati ';
         break;
     }
     this.tabSelectionChanged(this.id);

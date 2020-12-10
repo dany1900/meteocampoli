@@ -17,7 +17,7 @@ export class TabSatelliteComponent implements OnInit {
   pathSudItalia = '/satellite/sud-italia';
   pathProtezioneCivile = '/satellite/protezione-civile';
 
-  constructor(private router: Router, private utility: UtiliyService) {
+  constructor(private router: Router, public utility: UtiliyService) {
 
     let paramTab: any;
     paramTab = this.router.url;
