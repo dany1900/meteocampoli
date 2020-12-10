@@ -7,6 +7,7 @@ import {ViewportScroller} from '@angular/common';
 export class UtiliyService {
 
   preventCache = Math.random();
+  titleMatTab = '';
 
   constructor(private scroll: ViewportScroller) {
   }

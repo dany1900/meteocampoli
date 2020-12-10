@@ -1,5 +1,6 @@
-import {Component, ElementRef, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {UtiliyService} from '../../service/utiliy.service';
 
 
 @Component({
@@ -16,27 +17,33 @@ export class TabSatelliteComponent implements OnInit {
   pathSudItalia = '/satellite/sud-italia';
   pathProtezioneCivile = '/satellite/protezione-civile';
 
-  constructor(private router: Router, private myElement: ElementRef) {
+  constructor(private router: Router, private utility: UtiliyService) {
 
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
       case this.pathGenerale:
         this.id = 0;
+        this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
         break;
       case this.pathCentroItalia:
         this.id = 1;
+        this.utility.titleMatTab = 'Radar Precipitazioni Centro Italia - Satellite Meteo';
         break;
       case this.pathNordItalia:
         this.id = 2;
+        this.utility.titleMatTab = 'Radar Precipitazioni Nord Italia - Satellite Meteo';
         break;
       case this.pathSudItalia:
         this.id = 3;
+        this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia - Satellite Meteo ';
         break;
       case this.pathProtezioneCivile:
         this.id = 4;
+        this.utility.titleMatTab = 'Radar Precipitazioni Protezione Civile';
         break;
       default:
+        this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
         this.id = 0;
         break;
     }

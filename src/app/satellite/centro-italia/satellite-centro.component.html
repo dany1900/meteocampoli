@@ -38,6 +38,10 @@
 <!--<p class="title-micro-section">Radar precipitazioni ultime 12 ore Zoom</p>
 <iframe class="radar" src="../../../assets/php/radar_zoom_12.html" alt="radar precipitazioni 12h zoom"
         title="radar pecipitazioni ultime 12h"></iframe>-->
+<satellite [titleImgRadar]="'Radar Precipitazioni Ultime 12 ore'"
+           [srcImage]="'http://satollo.aquila.infn.it/midia/ref/ultimo_srt12h_noclass.png?v=' + utilityService.preventCache"
+           [infoAlt]="'radar precipitazioni ultime 12 ore'"
+           [class]="'radar'"></satellite>
 <br>
 <br>
 <p class="title-micro-section">Radar precipitazioni ultime 24h Zoom</p>

@@ -69,9 +69,15 @@
            [class]="'radar'"></satellite>
 <br>
 <br>
-<satellite [titleImgRadar]="'Radar Precipitazioni Ultime 6 ore'"
+<!--<satellite [titleImgRadar]="'Radar Precipitazioni Ultime 6 ore'"
            [srcImage]="'http:///satollo.aquila.infn.it/midia/ref/ultimo_srt6h_noclass.png?v=' + utilityService.preventCache"
            [infoAlt]="'radar precipitazioni'"
+           [class]="'radar'"></satellite>
+<br>
+<br>-->
+<satellite [titleImgRadar]="'Radar Precipitazioni Ultime 12 ore'"
+           [srcImage]="'http://satollo.aquila.infn.it/midia/ref/ultimo_srt12h_noclass.png?v=' + utilityService.preventCache"
+           [infoAlt]="'radar precipitazioni ultime 12 ore'"
            [class]="'radar'"></satellite>
 <br>
 <br>
@@ -81,6 +87,7 @@
            [class]="'radar'"></satellite>
 <br>
 <br>
+
 <satellite [titleImgRadar]="'Radar Precipitazioni Live'"
            [srcImage]="'http:///satollo.aquila.infn.it/midia/ref/ultimo.15.png?v=' + utilityService.preventCache"
            [infoAlt]="'radar precipitazioni live'"

@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'tab-webcam',
@@ -17,8 +18,7 @@ export class TabWebcamComponent implements OnInit {
   pathWebToscana = '/webcam/montagna/toscana';
   @Input() path;
 
-
-  constructor(private myElement: ElementRef, protected router: Router) {
+  constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
@@ -54,16 +54,22 @@ export class TabWebcamComponent implements OnInit {
 
   tabSelectionChanged(event) {
     if (event === 0) {
+      this.utility.titleMatTab = 'WebCam Lazio Montagna';
       this.router.navigate([this.pathWebLazio]);
     } else if (event === 1) {
+      this.utility.titleMatTab = 'WebCam Abruzzo Montagna';
       this.router.navigate([this.pathWebAbruzzo]);
     } else if (event === 2) {
+      this.utility.titleMatTab = 'WebCam Molise Montagna';
       this.router.navigate([this.pathWebMolise]);
     } else if (event === 3) {
+      this.utility.titleMatTab = 'WebCam Umbria Montagna';
       this.router.navigate([this.pathWebUmbria]);
     } else if (event === 4) {
+      this.utility.titleMatTab = 'WebCam Marche Montagna';
       this.router.navigate([this.pathWebMarche]);
     } else if (event === 5) {
+      this.utility.titleMatTab = 'WebCam Toscana Montagna';
       this.router.navigate([this.pathWebToscana]);
     }
   }
