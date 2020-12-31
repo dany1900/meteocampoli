@@ -20,7 +20,7 @@ export class SatelliteCentroComponent implements OnInit {
   urlSatellite: string;
 
   constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router) {
-    this.title = 'Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli';
+    this.title = 'Radar Precipitazioni Centro Italia - Satellite Meteo';
     this.description = 'Satellite infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale. Focus sul centro italia.';
     this.keywords = 'satellite centro meteo campoli, radar centro meteo campoli, radar precipitazioni centro italia meteo campoli, radar fulmini centro italia, radar precipitazioni zoom centro italia, radar pioggia centro italia, satellite centro italia, radar pioggie toscana';
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite-generale';

@@ -17,7 +17,7 @@ export class WebcamUmbriaComponent implements OnInit {
   ogImage: string;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
-    this.title = 'WebCam Marche Montagna - Meteo Campoli';
+    this.title = 'WebCam Umbria Montagna - Meteo Campoli';
     this.description = 'Tutte le Webcam umbre di montagna ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Focus sull\'appennino con link alle migliori fonti.';
     this.keywords = 'webcam umbria, webcam umbria meteo campoli, webcam umbria montagna, webcam appennino meteo campoli,web cam centro italia montagna,webcam umbria montagna';
     this.ogUrl = 'www.meteocampoli.altervista.org/webcam/montagna/umbria';

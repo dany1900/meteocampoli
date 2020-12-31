@@ -19,7 +19,7 @@ export class SatelliteSudComponent implements OnInit {
 
 
   constructor(private seo: SEOService, public utilityService: UtiliyService) {
-    this.title = 'Satellite Sud Italia - Radar Precipitazioni  - Meteo Campoli';
+    this.title = 'Radar Precipitazioni Sud Italia - Satellite Meteo';
     this.description = 'Satelliti infrarossi, meteosat, fulminazioni e sinottica relativi al sud italia. Radar dettagliato delle precipitazioni in tempo reale. Focus sul sud italia.';
     this.keywords = 'satellite sud meteo campoli, radar sud meteo campoli, radar precipitazioni sud italia meteo campoli, radar fulmini sud italia, radar precipitazioni zoom sud italia, radar pioggia sud italia, satellite sud italia';
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite/sud-italia';

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
+import {environment} from '../../../environments/environment';
 
 @Component({
   selector: 'curiosita',
@@ -15,6 +16,7 @@ export class CuriositaComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
+  environmentsProd: any;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.title = 'Curiosita - Meteo Campoli';
@@ -29,5 +31,6 @@ export class CuriositaComponent implements OnInit {
 
   ngOnInit(): void {
     this.utilityService.scrollToSpecifyPosition();
+    this.environmentsProd = environment.production;
   }
 }

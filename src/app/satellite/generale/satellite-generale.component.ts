@@ -20,7 +20,7 @@ export class SatelliteGeneraleComponent implements OnInit {
   ogImage: string;
 
   constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router, private _compiler: Compiler) {
-    this.title = 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli';
+    this.title = 'Radar Precipitazioni - Satellite Meteo';
     this.description = 'Monitoraggio completo del meteo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.';
     this.keywords = 'satellite meteo campoli, radar meteo campoli, radar precipitazioni meteo campoli, radar fulmini meteo campoli, radar precipitazioni zoom, radar pioggia meteo campoli';
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite-generale';

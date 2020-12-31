@@ -48,8 +48,7 @@ import {GtagModule} from 'angular-gtag';
     BreadcrumbModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production, registrationStrategy: 'registerImmediately'}),
     AdsenseModule.forRoot({
-      adClient: 'ca-pub-6215193089819382',
-      adSlot: 9724605079,
+      adClient: 'ca-pub-6215193089819382'
     }),
   ],
   exports: [],

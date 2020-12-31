@@ -2,6 +2,7 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../service/utiliy.service';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-previsioni',
@@ -16,6 +17,7 @@ export class PrevisioniComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
+  environmentsProd: any;
 
   constructor(private seo: SEOService, protected router: Router, public renderer: Renderer2, public utilityService: UtiliyService) {
     this.title = 'Previsioni Meteo - Meteogrammi - Monitoraggio Indici Climatici - Meteo Campoli';
@@ -26,6 +28,7 @@ export class PrevisioniComponent implements OnInit {
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+    this.environmentsProd = environment.production;
   }
 
   ngOnInit() {
