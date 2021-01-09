@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {DatiAttualiComponent} from './dati-attuali.component';
+import {RadioSondaggiComponent} from './radio-sondaggi/radio-sondaggi.component';
 
 
 @NgModule({
@@ -8,16 +9,22 @@ import {DatiAttualiComponent} from './dati-attuali.component';
     RouterModule.forChild([
       {
         path: '',
-        component: DatiAttualiComponent,
         children: [
           {
-            path: 'dati-attuali',
+            path: '',
             component: DatiAttualiComponent,
             data: {
-              title: 'About',
-              description: 'Description Meta Tag Content',
-              ogUrl: 'your og url'
-            }
+              title: 'Meteo Campoli - Monitoraggio Meteo',
+              description: 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.',
+              ogUrl: 'www.meteocampoli.altervista.org'
+            },
+          },
+          {
+            path: 'radio-sondaggi',
+            component: RadioSondaggiComponent,
+            data: {
+              title: 'RadioSondaggi - Meteo Campoli',
+            },
           },
         ],
       },

@@ -2,6 +2,7 @@ import {SharedModule} from '../shared/shared.module';
 import {NgModule} from '@angular/core';
 import {DatiAttualiRoutingModule} from './dati-attuali-routing.module';
 import {DatiAttualiComponent} from './dati-attuali.component';
+import {RadioSondaggiComponent} from './radio-sondaggi/radio-sondaggi.component';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import {DatiAttualiComponent} from './dati-attuali.component';
   ],
 
   declarations: [
-    DatiAttualiComponent
+    DatiAttualiComponent,
+    RadioSondaggiComponent
   ],
   exports: []
 })
