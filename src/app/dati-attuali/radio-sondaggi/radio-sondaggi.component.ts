@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
-import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'radio-sondaggi',
@@ -22,12 +21,12 @@ export class RadioSondaggiComponent implements OnInit {
   link: string;
 
 
-  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService, private http: HttpClient) {
-    this.title = 'Meteo Campoli - RadioSondaggi';
-    this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';
-    this.keywords = 'Previsioni meteo campoli, stazione meteo campoli, Dati attuali campoli, temperature stazioni meteo, stazioni meteo centro italia, Stazione campoli appennino';
+  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
+    this.title = 'RadioSondaggi - Meteo Campoli';
+    this.description = 'Radio Sondaggi Europa. Riepilogo dettagliato del radiosondaggio di pratica di mare. Link al riepilogo di tutti i sistemi di rilevazione.';
+    this.keywords = 'radiosondaggio meteo campoli, radiosondaggio pratica di mare, radiosondaggio, radiosondaggio italia, radiosondaggio europa, radiosondaggi';
     this.ogUrl = 'www.meteocampoli.altervista.org/dati-attuali/radio-sondaggi';
-    this.ogImage = 'http://meteocampoli.altervista.org/images/meteocampoli.jpg';
+    this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
@@ -35,14 +34,17 @@ export class RadioSondaggiComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.utilityService.scrollToSpecifyPosition();
   }
 
   calculateDate() {
-    this.link = 'http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=2021&MONTH=01&FROM=0912&TO=0912&STNM=16245';
+    // tslint:disable-next-line:no-console
     const today = new Date();
     this.year = today.getFullYear();
-    this.month = '01';
-    this.day = today.getUTCDay().toString();
+    this.month = today.getMonth().toString() + 1;
+    this.day = String(today.getDate()).padStart(2, '0');
+    this.link = 'http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=' + this.year + '&MONTH=' + this.month + '&FROM=' + this.day + 12 + '&TO=' + this.day + 12 + '&STNM=16245';
+    console.info(this.link);
   }
 
 }

@@ -12,11 +12,13 @@
        (load)="imageLoader = false;" (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
-  <em class="title-micro-section">Spaghi GFS Campoli Appennino</em>
+  <em class="title-micro-section">Spaghi modello GFS Campoli Appennino, clicca <a [href]="link" target="_blank"><b>
+    QUI</b></a> per spaghi ECMWF</em>
   <br>
   <img class="previsioni-frame" width="95%" height="650" alt="spaghi"
        src="https://modeles.meteociel.fr/modeles/gens/graphe_ens3.php?x=&y=&run=0&lat=41.72&lon=13.687&ext=1&type=0"
        (click)="toggleClass($event,'zoomed')"/><br/>
+
   <br>
   <em class="title-micro-section">Pioggia ECMWF 72H</em>
   <br>
@@ -27,7 +29,7 @@
   <br>
   <h2 class="title-micro-section">Previsioni 5 Giorni</h2>
   <!-- Inizio codice ilMeteo.it -->
-  <iframe width="520" height="510" scrolling="no" frameborder="no" noresize="noresize" title="previsioni-ilmeteo"
+  <iframe width="720" height="510" scrolling="no" frameborder="no" noresize="noresize" title="previsioni-ilmeteo"
           src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=500&ico=1&lang=ita&days=6&font=Arial&fontsize=12&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
   <br>
   <br>
@@ -44,8 +46,9 @@
   <br>
   <br>
 
-  <h2 class="title-micro-section">Indici Climatici &nbsp;<a
-    href="https://meteotaranto.org/wxnao-ao.php" title="Info indici climatici" target="_blank">Info</a></h2>
+  <em class="title-micro-section">Indici Climatici - Teleconnessioni Troposferiche &nbsp;<a
+    href="https://meteotaranto.org/wxnao-ao.php" title="Info indici climatici e teleconnessioni"
+    target="_blank">Info</a></em>
   <p class="testo-articoli">
     <b>L'indice AO</b> (Arctic Oscillation), detto anche Northern Annular Mode e' calcolato dalla differenza di
     pressione tra
@@ -64,9 +67,9 @@
     AO ha avuto un magior numero di fasi positive caratterizzate da modeste fasi piovose in sede mediterranea.
     <br>
     <img class="previsioni-frame" width="95%" height="650"
-         src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/ao.sprd2.gif" alt="previsioni"/>
+         src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/ao.sprd2.gif"
+         alt="indice climatico ao"/>
   </p>
-  <br>
   <br>
   <p class="testo-articoli">
     Generalmente, in presenza di <b>indice NAO positivo</b> nella stagione <b>estiva</b> si verifica l'espansione verso
@@ -86,9 +89,49 @@
     <b>Mediterraneo</b>.
     <img class="previsioni-frame" width="95%" height="650"
          src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/nao.sprd2.gif"
-         alt="info nao">
+         alt="indice climatico nao">
   </p>
   <br>
+  <p class="testo-articoli">
+    <b>L'indice PNA</b> è legato alle altezze di geopotenziale sul Pacifico e sull'America del Nord.
+    <br>
+    Generalmente, in presenza di <b>indice PNA positivo</b> è legata la formazione di un forte anticiclone di blocco in
+    Atlantico settentrionale, con conseguente <b>discesa di aria artica sull'Europa centro-meridionale</b> con
+    traiettoria nord-sud (esempio gennaio 1981).
+    <br>
+    <b>PNA negativi</b> sono invece associati ad intensa attività depressionaria in Atlantico che non consente
+    formazione di alta pressione stabile, dunque <b>discese fredde in genere assenti in Italia</b>.
+    <img class="previsioni-frame" width="95%" height="650"
+         src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/pna.sprd2.gif"
+         alt="indice climatico aao">
+  </p>
+  <br>
+  <p class="testo-articoli">
+    Lo <b>Scandinavian Pattern</b>, è un indice troposferico che riguarda solo la regione Scandinava.
+    <br>
+    Generalmente, in presenza di <b>indice SCAND positivo (SCAND+)</b> la Scandinavia viene interessata da una vasta
+    area anticiclonica, lungo il cui bordo orientale e meridionale scivolano le gelide correnti d'estrazione
+    artico-marittima o artico-continentale, responsabili delle <b>grandi ondate di freddo sul Mediterraneo</b>.
+    <br>In corrispondenza di tali eventi l'aria umida atlantica richiamata dalla bassa pressione sull'Europa
+    occidentale, favorisce abbondanti nevicate sul nord-Italia, anche a quote di pianura, come capitato il 26-28 Gennaio
+    2006.
+    Viceversa, in presenza di <b>indice SCAND negativo (SCAND-)</b>, ed è associato ad una circolazione maggiormente
+    improntata sulle aree depressionarie, segno di <b>un'attività piuttosto intensa del Vortice Polare</b> in questo
+    contesto diminuisce notevolmente la possibilità di irruzioni fredde sulla nostra penisola.
+    <img class="previsioni-frame" width="95%" height="650"
+         src="https://www.cpc.ncep.noaa.gov/data/teledoc/scand.timeseries.gif"
+         alt="indice climatico SCAND">
+  </p>
+  <br>
+  <p class="testo-articoli">
+    Generalmente, in presenza di <b>indice AAO positivo</b> c'è una forte antizonalità nel nord emisfero, per l'italia
+    le <b>discese fredde sono poco probabili</b>.
+    <br>
+    L'indice <b>AOO negativo</b> vicersa, è piu <b>favorevole alle discese fredde</b> in sede mediterranea.
+    <img class="previsioni-frame" width="95%" height="650"
+         src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/aao.sprd2.gif"
+         alt="indice climatico aao">
+  </p>
   <br>
   <h2 class="title-micro-section">Previsioni Meteo Lazio 6 Giorni</h2>
   <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img

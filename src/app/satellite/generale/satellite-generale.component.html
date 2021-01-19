@@ -53,13 +53,18 @@
 <br>
 
 <satellite [titleImgRadar]="'Temperature in tempo reale calcolate'"
-           [srcImage]="'https://meteo-lazio.it/interpolate/radar/temp.png?v=' + utilityService.preventCache"
+           [srcImage]="'https://meteo-lazio.it/interpolate/temp.png?v=' + utilityService.preventCache"
            [infoAlt]="'temperature calcolate'"
            [class]="'radar-zoomed'"
            [zoom]="1.2"></satellite>
 
 <br>
 <br>
+<satellite [titleImgRadar]="'Pioggia giornaliera calcolata'"
+           [srcImage]="'https://www.meteo-lazio.it/interpolate/Pioggia.png?v=' + utilityService.preventCache"
+           [infoAlt]="'pioggia giornaliera lazio calcolata'"
+           [class]="'radar-zoomed'"
+           [zoom]="1.2"></satellite>
 <br>
 <br>
 
