@@ -22,6 +22,9 @@ import {environment} from '../environments/environment';
 import {CommonModule} from '@angular/common';
 import {AdsenseModule} from 'ng2-adsense';
 import {GtagModule} from 'angular-gtag';
+import {MainPipe} from './utils/pipe/main-pipe.module';
+import {QRCodeModule} from 'angularx-qrcode';
+
 
 @NgModule({
 
@@ -42,6 +45,7 @@ import {GtagModule} from 'angular-gtag';
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     HttpClientModule,
     FormsModule,
+    MainPipe,
     BrowserAnimationsModule,
     NgbModule,
     GtagModule.forRoot({trackingId: 'UA-85484839-1', trackPageviews: true}),
@@ -50,6 +54,7 @@ import {GtagModule} from 'angular-gtag';
     AdsenseModule.forRoot({
       adClient: 'ca-pub-6215193089819382'
     }),
+    QRCodeModule
   ],
   exports: [],
   providers: [SEOService, UtiliyService],

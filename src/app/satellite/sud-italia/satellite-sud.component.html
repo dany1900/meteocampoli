@@ -1,16 +1,16 @@
 <br>
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <div [hidden]="imageLoader">
-  <!--
+
   <satellite [titleImgRadar]="'Radar Precipitazioni Sardegna'"
-             [srcImage]="'http://www.sar.sardegna.it/servizi_live/meteo/radar/dBZ.cappi/2020121019200300dBZ.cappi.png?v=' + utilityService.preventCache"
+             [srcImage]="'http://www.sar.sardegna.it/servizi_live/meteo/radar/dBZ.cappi/2021051321500400dBZ.cappi.png?v=' + utilityService.preventCache"
              [infoAlt]="'radar precipitazioni sardegna'"
-             [class]="'radar'"></satellite> -->
+             [class]="'radar'"></satellite>
   <br>
   <br>
-  <h2 class="title-micro-section">Radar Precipitazioni Sardegna</h2>
+  <h2 class="title-micro-section">Radar Precipitazioni Sardegna Zoom</h2>
   <iframe class="radar-sardegna" scrolling="No" frameborder="no" src="http://prohu.altervista.org/radar/radar.html"
-          (load)="imageLoader = false;" title="radar pecipitazioni sardegna"></iframe>
+          (load)="imageLoader = false;" title="radar pecipitazioni sardegna zoom"></iframe>
 
   <h2 class="title-micro-section">Radar precipitazioni animato in tempo reale</h2>
   <iframe class="radar-sud" scrolling="No" frameborder="no" src="https://cdn-radar.ilmeteo.it/italy.gif?8757865"

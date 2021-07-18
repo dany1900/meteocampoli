@@ -12,11 +12,11 @@
        (load)="imageLoader = false;" (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
-  <em class="title-micro-section">Spaghi modello GFS Campoli Appennino, clicca <a [href]="link" target="_blank"><b>
+  <em class="title-micro-section">Spaghi modello GFS Campoli Appennino, clicca <a [href]="linkEcmwf" target="_blank"><b>
     QUI</b></a> per spaghi ECMWF</em>
   <br>
   <img class="previsioni-frame" width="95%" height="650" alt="spaghi"
-       src="https://modeles.meteociel.fr/modeles/gens/graphe_ens3.php?x=&y=&run=0&lat=41.72&lon=13.687&ext=1&type=0"
+       [src]="runGfs | safe"
        (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
@@ -30,7 +30,7 @@
   <h2 class="title-micro-section">Previsioni 5 Giorni</h2>
   <!-- Inizio codice ilMeteo.it -->
   <iframe width="720" height="510" scrolling="no" frameborder="no" noresize="noresize" title="previsioni-ilmeteo"
-          src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=500&ico=1&lang=ita&days=6&font=Arial&fontsize=12&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
+          src="http://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=500&ico=1&lang=ita&days=6&font=Arial&fontsize=12&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
   <br>
   <br>
   <h2 class="title-micro-section">Previsioni 7 Giorni 3bMeteo</h2>

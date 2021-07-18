@@ -14,10 +14,13 @@
   piano orizzontale,
   fra stazioni di rilascio diverse.</p>
 <br>
-<p class="title-micro-section">Radiosondaggi Europa, clicca su LIRE per ultimo report pratica di mare
-  <!--<a href="http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR={{this.year}}&MONTH={{this.month}}&FROM={{this.day}}12&TO={{this.day}}12&STNM=16245" target="_blank" rel="noopener">
-    <b>QUI</b>
-  </a>--></p>
+<p class="title-micro-section">Radiosondaggio Pratica di Mare</p>
+<iframe class="radiosondaggio-pratica"
+        [src]="link | safe"
+        frameborder="0"></iframe>
+<br>
+<br>
+<p class="title-micro-section">Radiosondaggi Europa, clicca su LIRE per ultimo report pratica di mare</p>
 <iframe class="radiosondaggio-europa" src="http://weather.uwyo.edu/upperair/europe.html" alt="radiosondaggi europa"
         title="radiosondaggi europa" scrolling="no"></iframe>
 <br>
@@ -25,13 +28,9 @@
 <p class="title-micro-section">Grafico Radiosondaggio Pratica di Mare</p>
 <img src='http://www.lamma.rete.toscana.it/models/mol02gfs/snd/last/snd_Roma_3.png' alt="radiosondaggio pratica di mare"
      title="radiosondaggio pratica di mare" scrolling="no">
-<!--<p class="title-micro-section">Radiosondaggio Pratica di Mare</p>
 
-  <img class="radiosondaggio"  [src]=link alt="radiosondaggio pratica di mare"
-       title="radiosondaggio pratica di mare"  scrolling="no">
-<iframe class="radiosondaggio"  src="http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR={{this.year}}&MONTH={{this.month}}&FROM={{this.day}}12&TO={{this.day}}12&STNM=16245" alt="radiosondaggio pratica di mare"
-        title="radiosondaggio pratica di mare"  scrolling="no"></iframe>
-&lt;!&ndash;<iframe class="radiosondaggio"  src="http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=2021&MONTH=01&FROM=1212&TO=1212&STNM=16245" alt="radiosondaggio pratica di mare"
-        title="radiosondaggio pratica di mare"  scrolling="no"></iframe>&ndash;&gt;-->
 
+<!--
+<qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+-->
 

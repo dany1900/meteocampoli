@@ -36,7 +36,7 @@ export class TabSatelliteComponent implements OnInit {
         break;
       case this.pathSudItalia:
         this.id = 3;
-        this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia - Satellite Meteo ';
+        this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia e Isole - Satellite Meteo ';
         break;
       case this.pathProtezioneCivile:
         this.id = 4;

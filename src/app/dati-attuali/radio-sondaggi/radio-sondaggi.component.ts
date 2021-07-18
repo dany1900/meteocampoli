@@ -15,10 +15,9 @@ export class RadioSondaggiComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
-  year: number;
-  month: string;
-  day: string;
   link: string;
+  month: string;
+  myAngularxQrCode: string;
 
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
@@ -30,21 +29,33 @@ export class RadioSondaggiComponent implements OnInit {
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
-    this.calculateDate();
+    this.link = this.calculateDate();
+    this.myAngularxQrCode = 'https://www.liceoluciopiccolo.edu.it/e-teacher/italiano/Alessandro_Manzoni.pdf';
   }
 
   ngOnInit(): void {
     this.utilityService.scrollToSpecifyPosition();
   }
 
-  calculateDate() {
+  calculateDate(): string {
     // tslint:disable-next-line:no-console
     const today = new Date();
-    this.year = today.getFullYear();
-    this.month = today.getMonth().toString() + 1;
-    this.day = String(today.getDate()).padStart(2, '0');
-    this.link = 'http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=' + this.year + '&MONTH=' + this.month + '&FROM=' + this.day + 12 + '&TO=' + this.day + 12 + '&STNM=16245';
-    console.info(this.link);
+    const year = today.getFullYear();
+    this.month = (today.getMonth() + 1).toString();
+    if (Number(this.month) < 9) {
+      this.month = '0' + this.month.toString();
+    }
+    let day = String(today.getDate()).padStart(2, '0');
+    const hours = today.getHours();
+    let run = '00';
+    if (hours <= 2) {
+      run = '12';
+      day = (Number(day) - 1).toString();
+    } else if (hours >= 15) {
+      run = '12';
+    }
+    this.link = 'http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=' + year + '&MONTH=' + this.month + '&FROM=' + day + run + '&TO=' + day + run + '&STNM=16245';
+    return this.link;
   }
 
 }
