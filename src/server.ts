@@ -11,6 +11,7 @@ import {join} from 'path';
 // Express server
 const app = express();
 
+
 const PORT = process.env.PORT || 4000;
 const DIST_FOLDER = join(process.cwd(), 'dist/browser');
 
@@ -51,3 +52,4 @@ app.route('/sitemap.xml')
   .get((req, res) => {
     res.sendFile(join(DIST_FOLDER, 'sitemap.xml'));
   });
+

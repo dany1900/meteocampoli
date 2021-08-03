@@ -6,6 +6,7 @@ import {RadioSondaggiComponent} from './radio-sondaggi/radio-sondaggi.component'
 import {CommonModule} from '@angular/common';
 import {MainPipe} from '../utils/pipe/main-pipe.module';
 import {QRCodeModule} from 'angularx-qrcode';
+import {IncendiComponent} from './incendi/incendi.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {QRCodeModule} from 'angularx-qrcode';
 
   declarations: [
     DatiAttualiComponent,
-    RadioSondaggiComponent
+    RadioSondaggiComponent,
+    IncendiComponent
   ],
   exports: []
 })

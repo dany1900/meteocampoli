@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {DatiAttualiComponent} from './dati-attuali.component';
 import {RadioSondaggiComponent} from './radio-sondaggi/radio-sondaggi.component';
+import {IncendiComponent} from './incendi/incendi.component';
 
 
 @NgModule({
@@ -24,6 +25,13 @@ import {RadioSondaggiComponent} from './radio-sondaggi/radio-sondaggi.component'
             component: RadioSondaggiComponent,
             data: {
               title: 'RadioSondaggi - Meteo Campoli',
+            },
+          },
+          {
+            path: 'incendi',
+            component: IncendiComponent,
+            data: {
+              title: 'Mappa Incendi Live - Meteo Campoli',
             },
           },
         ],

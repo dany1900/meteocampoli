@@ -24,6 +24,7 @@ import {AdsenseModule} from 'ng2-adsense';
 import {GtagModule} from 'angular-gtag';
 import {MainPipe} from './utils/pipe/main-pipe.module';
 import {QRCodeModule} from 'angularx-qrcode';
+import {LazyLoadImageModule} from 'ng-lazyload-image';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {QRCodeModule} from 'angularx-qrcode';
     AdsenseModule.forRoot({
       adClient: 'ca-pub-6215193089819382'
     }),
-    QRCodeModule
+    QRCodeModule,
+    LazyLoadImageModule
   ],
   exports: [],
   providers: [SEOService, UtiliyService],

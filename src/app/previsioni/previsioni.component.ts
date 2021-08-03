@@ -69,7 +69,7 @@ export class PrevisioniComponent implements OnInit {
     const today = new Date();
     const hours = today.getHours();
     const year = today.getFullYear();
-    const month = today.getMonth() + 1;
+    const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
     this.runGfs = year + month.toString() + day;
 
