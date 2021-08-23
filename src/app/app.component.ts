@@ -3,7 +3,6 @@ import {environment} from '../environments/environment';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 import {SEOService} from './service/seoservice.service';
-import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -13,14 +12,10 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AppComponent implements OnInit, AfterViewInit {
 
-  pathGenerale = '/satellite/generale';
-  pathCentroItalia = '/satellite/centro-italia';
-  pathNordItalia = '/satellite/nord-italia';
-
   data: any;
 
 
-  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller, private http: HttpClient) {
+  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller) {
   }
 
   ngOnInit() {

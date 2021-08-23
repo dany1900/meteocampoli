@@ -17,6 +17,7 @@ import {ArticoliMeteoComponent} from './articoli/meteo/articoli-meteo.component'
 import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/ondata-caldo-2017.component';
 import {CommonModule} from '@angular/common';
 import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.component';
+import {AdsenseModule} from 'ng2-adsense';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.compone
     InfoRoutingModule,
     SharedModule,
     CommonModule,
+    AdsenseModule,
   ],
 
   declarations: [

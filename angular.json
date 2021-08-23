@@ -27,10 +27,10 @@
               "src/web.config.xml"
             ],
             "styles": [
-              "./node_modules/font-awesome/css/font-awesome.css",
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/css/styles.css",
+              "./node_modules/font-awesome/css/font-awesome.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/assets/css/slider-carousel.css",
               "src/assets/css/media-query.css"
             ],
@@ -72,6 +72,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "evalSourceMap": false,
           "options": {
             "browserTarget": "meteocampoli:build"
           },

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'header',
@@ -7,7 +8,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() {
+  link: string;
+
+  constructor(protected router: Router) {
+    this.link = this.router.url;
+    console.warn(this.link);
   }
 
 
