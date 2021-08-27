@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/browser",
+            "outputPath": "dist/meteocampoli/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,7 +27,6 @@
               "src/web.config.xml"
             ],
             "styles": [
-              "./node_modules/bootstrap/dist/css/bootstrap.css",
               "src/assets/css/styles.css",
               "./node_modules/font-awesome/css/font-awesome.css",
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
@@ -123,7 +122,7 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/server",
-            "main": "src/main.server.ts",
+            "main": "server.ts",
             "tsConfig": "src/tsconfig.server.json"
           },
           "configurations": {
@@ -136,6 +135,39 @@
               ]
             }
           }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "meteocampoli:build:development",
+              "serverTarget": "meteocampoli:server:development"
+            },
+            "production": {
+              "browserTarget": "meteocampoli:build:production",
+              "serverTarget": "meteocampoli:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "meteocampoli:build:production",
+              "serverTarget": "meteocampoli:server:production"
+            },
+            "development": {
+              "browserTarget": "meteocampoli:build:development",
+              "serverTarget": "meteocampoli:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     },
@@ -153,6 +185,53 @@
             "production": {
               "devServerTarget": "meteocampoli:serve:production"
             }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/meteocampoli/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "meteocampoli:build",
+            "serverTarget": "meteocampoli:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "meteocampoli:build:production",
+              "serverTarget": "meteocampoli:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "meteocampoli:build:production",
+            "serverTarget": "meteocampoli:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
           }
         },
         "lint": {

@@ -18,5 +18,10 @@
       "esnext",
       "dom"
     ]
-  }
+  },
+  "include": [
+    "server.ts",
+    "./src/main.ts",
+    "./src/polyfills.ts"
+  ]
 }

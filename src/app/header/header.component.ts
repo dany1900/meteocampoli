@@ -11,8 +11,6 @@ export class HeaderComponent implements OnInit {
   link: string;
 
   constructor(protected router: Router) {
-    this.link = this.router.url;
-    console.warn(this.link);
   }
 
 

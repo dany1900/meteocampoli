@@ -18,6 +18,8 @@ export class SatelliteGeneraleComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
+  urlSat: string;
+  preventCache: number;
 
   constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router, private _compiler: Compiler) {
     this.title = 'Radar Precipitazioni - Satellite Meteo';
@@ -29,6 +31,9 @@ export class SatelliteGeneraleComponent implements OnInit {
     this._compiler.clearCache();
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+    this.urlSat = 'https:///www.meteo60.fr/satellites/animation-satellite-ir-france.gif?v=' + Math.random();
+    this.preventCache = Math.random();
+
   }
 
 

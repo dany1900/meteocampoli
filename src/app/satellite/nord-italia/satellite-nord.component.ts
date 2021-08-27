@@ -15,6 +15,7 @@ export class SatelliteNordComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
+  preventCache: number;
 
   constructor(private seo: SEOService, public utilityService: UtiliyService) {
     this.title = 'Radar Precipitazioni Nord Italia - Satellite Meteo';
@@ -25,6 +26,7 @@ export class SatelliteNordComponent implements OnInit {
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+    this.preventCache = Math.random();
   }
 
   ngOnInit() {

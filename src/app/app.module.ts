@@ -24,9 +24,6 @@ import {AdsenseModule} from 'ng2-adsense';
 import {GtagModule} from 'angular-gtag';
 import {MainPipe} from './utils/pipe/main-pipe.module';
 import {QRCodeModule} from 'angularx-qrcode';
-import {LazyLoadImageModule} from 'ng-lazyload-image';
-import {ShareButtonsModule} from 'ngx-sharebuttons/buttons';
-import {ShareIconsModule} from 'ngx-sharebuttons/icons';
 
 @NgModule({
 
@@ -44,7 +41,7 @@ import {ShareIconsModule} from 'ngx-sharebuttons/icons';
   imports: [
     CommonModule,
     AppRoutingModule,
-    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    BrowserModule.withServerTransition({appId: 'meteocampoli'}),
     HttpClientModule,
     FormsModule,
     MainPipe,
@@ -57,11 +54,6 @@ import {ShareIconsModule} from 'ngx-sharebuttons/icons';
       adClient: 'ca-pub-6215193089819382'
     }),
     QRCodeModule,
-    LazyLoadImageModule,
-    ShareButtonsModule.withConfig({
-      debug: true
-    }),
-    ShareIconsModule
   ],
   exports: [
     PublicitaComponent

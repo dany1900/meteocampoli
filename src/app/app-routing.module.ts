@@ -1,6 +1,3 @@
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/mergeMap';
 import {NgModule, OnInit} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {PageErrorComponent} from './page-error/page-error.component';
@@ -55,7 +52,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload', initialNavigation: 'enabled'})],
   exports: [RouterModule]
 })
 

@@ -3,6 +3,7 @@ import {environment} from '../environments/environment';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 import {SEOService} from './service/seoservice.service';
+import {UtiliyService} from './service/utiliy.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   data: any;
 
 
-  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller) {
+  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller, public utilityService: UtiliyService) {
   }
 
   ngOnInit() {

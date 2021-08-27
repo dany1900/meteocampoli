@@ -2,25 +2,25 @@
 <p class="title-info">Cliccare sulle immagini per zoom</p>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Nord Est'"
-           [srcImage]="'https://www.arpa.veneto.it/bollettini/meteo/radar/imgs/teolo/1_BASE.jpg?' + utilityService.preventCache"
+           [srcImage]="'https://www.arpa.veneto.it/bollettini/meteo/radar/imgs/teolo/1_BASE.jpg?' + preventCache"
            [infoAlt]="'Radar Precipitazioni Nord Est'"
            [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni centro-nord'"
-           [srcImage]="'https:///servizi-meteoliguria.arpal.gov.it/MSG6H/NORD.jpg?' + utilityService.preventCache"
+           [srcImage]="'https:///servizi-meteoliguria.arpal.gov.it/MSG6H/NORD.jpg?' + preventCache"
            [infoAlt]="'Radar Precipitazioni centro-nord'"
            [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Trentino Alto Adige'"
-           [srcImage]="'http:///www.provinz.bz.it/hydro/radarN_now_i.jpg?' + utilityService.preventCache"
+           [srcImage]="'http:///www.provinz.bz.it/hydro/radarN_now_i.jpg?' + preventCache"
            [infoAlt]="'Radar Precipitazioni  Trentino Alto Adige'"
            [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Nord Ovest in movimento'"
-           [srcImage]="'http:///sc05.arpa.piemonte.it/previ/last_movie_compa.gif?' + utilityService.preventCache"
+           [srcImage]="'http:///sc05.arpa.piemonte.it/previ/last_movie_compa.gif?' + preventCache"
            [infoAlt]="'Radar Precipitazioni Nord Ovest in movimento'"
            [class]="'radar'"></satellite>
 
@@ -28,7 +28,7 @@
 <br>
 
 <satellite [titleImgRadar]="'Radar Precipitazioni Nord in movimento'"
-           [srcImage]="'https://cdn4.3bmeteo.com/images/radar/SWI_animation.gif?' + utilityService.preventCache"
+           [srcImage]="'https://cdn4.3bmeteo.com/images/radar/SWI_animation.gif?' + preventCache"
            [infoAlt]="'Radar Precipitazioni Nord  in movimento'"
            [class]="'radar'"></satellite>
 
@@ -40,9 +40,4 @@
 <h2 class="title-micro-section">Radar precipitazioni ultime 24H Zoom</h2>
 <iframe class="radar" src="https:///www.vallemuricana.it/veneto_teolo250km.php"
         alt="Radar Precipitazioni Nord ultime 24H Zoom"></iframe>-->
-<br>
-<br>
-<button class="btn btn-primary scroll-top" aria-label="scroll-top" data-scroll="up" type="button"
-        (click)="utilityService.scrollToTop()">
-  <i class="fa fa-chevron-up"></i>
-</button>
+

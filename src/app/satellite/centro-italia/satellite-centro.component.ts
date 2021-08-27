@@ -18,6 +18,7 @@ export class SatelliteCentroComponent implements OnInit {
   ogUrl: string;
   ogImage: string;
   urlSatellite: string;
+  preventCache: number;
 
   constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router) {
     this.title = 'Radar Precipitazioni Centro Italia - Satellite Meteo';
@@ -26,6 +27,7 @@ export class SatelliteCentroComponent implements OnInit {
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite-generale';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this.preventCache = Math.random();
   }
 
   ngOnInit() {

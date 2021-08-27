@@ -8,19 +8,19 @@
 <br>
 <br> -->
 <satellite [titleImgRadar]="'Radar Precipitazioni Lazio e Abruzzo'"
-           [srcImage]="'http://satollo.aquila.infn.it/midia/ref/ultimo.6.png?' + utilityService.preventCache"
+           [srcImage]="'http://satollo.aquila.infn.it/midia/ref/ultimo.6.png?' + preventCache"
            [infoAlt]="'radar precipitazioni lazio abruzzo'"
            [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Fulmininazioni Centro Italia'"
-           [srcImage]="'http://radarweb.aquila.infn.it/cetempsite/fulmini.png?' + utilityService.preventCache"
+           [srcImage]="'http://radarweb.aquila.infn.it/cetempsite/fulmini.png?' + preventCache"
            [infoAlt]="'radar fulminazioni centro italia'"
            [class]="'radar'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Toscana'"
-           [srcImage]="'https://www.lamma.rete.toscana.it/radar/elba/images/PPI_1080_0005_25.png?1576413678950?' + utilityService.preventCache"
+           [srcImage]="'https://www.lamma.rete.toscana.it/radar/elba/images/PPI_1080_0005_25.png?1576413678950?' + preventCache"
            [infoAlt]="'radar precipitazioni toscana'"
            [class]="'radar'"></satellite>
 <br>
@@ -39,7 +39,7 @@
 <iframe class="radar" src="../../../assets/php/radar_zoom_12.html" alt="radar precipitazioni 12h zoom"
         title="radar pecipitazioni ultime 12h"></iframe>-->
 <satellite [titleImgRadar]="'Radar Precipitazioni Ultime 12 ore'"
-           [srcImage]="'http://satollo.aquila.infn.it/midia/ref/ultimo_srt12h_noclass.png?v=' + utilityService.preventCache"
+           [srcImage]="'http://satollo.aquila.infn.it/midia/ref/ultimo_srt12h_noclass.png?v=' + preventCache"
            [infoAlt]="'radar precipitazioni ultime 12 ore'"
            [class]="'radar'"></satellite>
 <br>
@@ -52,11 +52,5 @@
 <p class="title-micro-section">Radar precipitazioni in tempo reale Zoom</p>
 <iframe class="radar" src="../../../assets/php/radar_zoom.html" alt="radar precipitazioni zoom"
         title="radar pecipitazioni live maps"></iframe>
-<br>
-<br>
-<button class="btn btn-primary scroll-top" aria-label="scroll-top" data-scroll="up" type="button"
-        (click)="utilityService.scrollToTop()">
-  <i class="fa fa-chevron-up"></i>
-</button>
 
 
