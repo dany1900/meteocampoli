@@ -49,11 +49,16 @@ import {QRCodeModule} from 'angularx-qrcode';
     NgbModule,
     GtagModule.forRoot({trackingId: 'UA-85484839-1', trackPageviews: true}),
     BreadcrumbModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production, registrationStrategy: 'registerImmediately'}),
     AdsenseModule.forRoot({
       adClient: 'ca-pub-6215193089819382'
     }),
     QRCodeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   exports: [
     PublicitaComponent

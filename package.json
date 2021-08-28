@@ -16,7 +16,10 @@
     "dev:ssr": "ng run meteocampoli:serve-ssr",
     "serve:ssr": "node dist/server/main.js",
     "build:ssr": "ng build --configuration production && ng run meteocampoli:server:production",
-    "prerender": "ng run meteocampoli:prerender"
+    "prerender": "ng run meteocampoli:prerender",
+    "start-pwa": "ng build --configuration production && http-server -p 8080 -c-1 dist/meteocampoli/browser",
+    "predeploy": "ng build --configuration production --base-href=/meteocampoli/browser/",
+    "deploy": "npx gh-pages -d dist/meteocampoli/browser"
   },
   "private": true,
   "dependencies": {

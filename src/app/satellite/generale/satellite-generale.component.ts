@@ -33,7 +33,6 @@ export class SatelliteGeneraleComponent implements OnInit {
     this.seo.setCanonicalURL();
     this.urlSat = 'https:///www.meteo60.fr/satellites/animation-satellite-ir-france.gif?v=' + Math.random();
     this.preventCache = Math.random();
-
   }
 
 

@@ -22,6 +22,7 @@
   "include": [
     "server.ts",
     "./src/main.ts",
-    "./src/polyfills.ts"
+    "./src/polyfills.ts",
+    "src/**/*.ts"
   ]
 }
