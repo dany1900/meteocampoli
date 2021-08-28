@@ -1,0 +1,10 @@
+<system.webServer>
+  <httpProtocol>
+    <customHeaders>
+      <clear/>
+      <add name="X-Frame-Options" value="SAMEORIGIN"/>
+      <add name="Content-Security-Policy" value="frame-ancestors http://localhost:4086"/>
+    </customHeaders>
+  </httpProtocol>
+
+</system.webServer>
