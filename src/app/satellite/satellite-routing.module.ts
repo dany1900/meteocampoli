@@ -45,10 +45,10 @@ import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
             }
           },
           {
-            path: 'protezione-civile',
+            path: 'italia',
             component: TabSatelliteComponent,
             data: {
-              title: 'Satellite Protezione Civile - Radar Precipitazioni  - Meteo Campoli'
+              title: 'Satellite Italia - Radar Precipitazioni  - Meteo Campoli'
             }
           },
         ],

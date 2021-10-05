@@ -413,6 +413,17 @@ h4 {
   height: 750px !important;
 }
 
+.radar-italia-windy {
+  -webkit-user-select: none;
+  cursor: -webkit-zoom-in;
+  border-radius: 20px;
+  border: 10px;
+  border-style: solid;
+  border-color: #ffffff;
+  width: 97% !important;
+  height: 800px !important;
+}
+
 .radar-protezione-civile {
   -webkit-user-select: none;
   cursor: -webkit-zoom-in;

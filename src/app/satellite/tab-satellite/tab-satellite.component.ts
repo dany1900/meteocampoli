@@ -15,7 +15,7 @@ export class TabSatelliteComponent implements OnInit {
   pathCentroItalia = '/satellite/centro-italia';
   pathNordItalia = '/satellite/nord-italia';
   pathSudItalia = '/satellite/sud-italia';
-  pathProtezioneCivile = '/satellite/protezione-civile';
+  pathProtezioneCivile = '/satellite/italia';
 
   constructor(private router: Router, public utility: UtiliyService) {
 

@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {SatelliteProtezioneCivileComponent} from './protezione-civile/satellite-protezione-civile.component';
+import {SatelliteItaliaComponent} from './italia/satellite-italia.component';
 import {SatelliteSudComponent} from './sud-italia/satellite-sud.component';
 import {SatelliteNordComponent} from './nord-italia/satellite-nord.component';
 import {SatelliteGeneraleComponent} from './generale/satellite-generale.component';
@@ -22,7 +22,7 @@ import {SatelliteTestComponent} from './satellite-test/satellite-test.component'
   ],
 
   declarations: [
-    SatelliteProtezioneCivileComponent,
+    SatelliteItaliaComponent,
     SatelliteSudComponent,
     SatelliteNordComponent,
     SatelliteGeneraleComponent,

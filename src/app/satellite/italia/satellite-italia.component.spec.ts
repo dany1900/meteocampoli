@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {SatelliteProtezioneCivileComponent} from './satellite-protezione-civile.component';
+import {SatelliteItaliaComponent} from './satellite-italia.component';
 
 describe('SatelliteNordComponent', () => {
-  let component: SatelliteProtezioneCivileComponent;
-  let fixture: ComponentFixture<SatelliteProtezioneCivileComponent>;
+  let component: SatelliteItaliaComponent;
+  let fixture: ComponentFixture<SatelliteItaliaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SatelliteProtezioneCivileComponent]
+      declarations: [SatelliteItaliaComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SatelliteProtezioneCivileComponent);
+    fixture = TestBed.createComponent(SatelliteItaliaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
