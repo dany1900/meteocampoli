@@ -26,6 +26,10 @@ import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
             component: TabStazioniComponent,
           },
           {
+            path: 'umbria',
+            component: TabStazioniComponent,
+          },
+          {
             path: 'rete-meteo',
             component: TabStazioniComponent,
           },

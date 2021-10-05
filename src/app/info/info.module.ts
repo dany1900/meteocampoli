@@ -18,6 +18,7 @@ import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/o
 import {CommonModule} from '@angular/common';
 import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.component';
 import {AdsenseModule} from 'ng2-adsense';
+import {NoccioloComponent} from './articoli/giardinaggio/nocciolo/nocciolo.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {AdsenseModule} from 'ng2-adsense';
     InquinamentoRimediComponent,
     UliviComponent,
     PescheComponent,
+    NoccioloComponent,
     VitiComponent,
     AlbicoccheComponent,
     OndataCaldo2017Component,

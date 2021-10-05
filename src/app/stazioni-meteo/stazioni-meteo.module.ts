@@ -9,6 +9,7 @@ import {StazioniReteMeteoComponent} from './stazioni-rete-meteo/stazioni-rete-me
 import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
 import {StazioniGeneraliComponent} from './stazioni-generali/stazioni-generali.component';
 import {CommonModule} from '@angular/common';
+import {StazioniUmbriaComponent} from './stazioni-umbria/stazioni-umbria.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {CommonModule} from '@angular/common';
     StazioniMeteoComponent,
     StazioniReteMeteoComponent,
     StazioniMoliseComponent,
+    StazioniUmbriaComponent,
     TabStazioniComponent,
     StazioniGeneraliComponent
   ],

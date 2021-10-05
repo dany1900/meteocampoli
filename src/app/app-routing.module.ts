@@ -39,6 +39,7 @@ export const routes: Routes = [
   {path: 'webcam-molise.html', redirectTo: '/webcam/montagna/molise', pathMatch: 'full'},
   {path: 'satellite.htm', redirectTo: '/satellite/generale', pathMatch: 'full'},
   {path: 'satellite-centro.html', redirectTo: '/satellite/centro-italia', pathMatch: 'full'},
+  {path: 'satelliteCentro.html', redirectTo: '/satellite/centro-italia', pathMatch: 'full'},
   {path: 'satellite-nord.html', redirectTo: '/satellite/nord-italia', pathMatch: 'full'},
   {path: 'satellite-sud.html', redirectTo: '/satellite/sud-italia', pathMatch: 'full'},
   {path: 'terremoti.html', redirectTo: '/terremoti/italia', pathMatch: 'full'},

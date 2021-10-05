@@ -1,17 +1,31 @@
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
-<div class="scroll-view"></div>
 <br>
+<table border="0">
+  <tr>
+    <td> <span><a href="https://my.meteonetwork.it/station/laz473" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/laz473/sticker-oriz1?v=' + preventCache"
+      alt="Stazione meteo di Campoli Appennino San Pancrazio" title="Stazione meteo di Campoli Appennino San Pancrazio"
+      class="meteonetwork-sticker" [hidden]="imageLoader"
+      (load)="imageLoader = false;" width="524" height="155"/></a>
+</span></td>
+    <td>
+      <a alt="Stazione meteo di Campoli Appennino Val Di Rio" href="http://my.meteonetwork.it/station/laz353"
+         target="_blank"><img
+        style="border:none;" [src]="'http://my.meteonetwork.it/station/laz353/sticker-oriz1?v=' + preventCache"
+        width="524"
+        height="155"/></a></td>
+  </tr>
+</table>
 <table border="0">
   <tr>
     <td> <span><a href="https://my.meteonetwork.it/station/laz039" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz039/sticker-oriz1?v=' + preventCache"
-      alt="Stazione meteo di Sora" class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
-      [hidden]="imageLoader"
-      (load)="imageLoader = false;"/></a>
+      alt="Stazione meteo di Sora" class="meteonetwork-sticker" width="524" height="155"
+    /></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz041" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz041/sticker-oriz1?v=' + preventCache"
-      alt="Stazione meteo di Isola del Liri" class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"/> </a></span>
+      alt="Stazione meteo di Isola del Liri" class="meteonetwork-sticker" width="524" height="155"/> </a></span>
     <td></td>
   </tr>
 </table>
@@ -19,30 +33,46 @@
   <tr>
     <td> <span><a href="https://my.meteonetwork.it/station/laz258" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz258/sticker-oriz1?v=' + preventCache"
-      alt="Stazione meteo di Guarcino?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"/></a>
+      alt="Stazione meteo di Guarcino"
+      class="meteonetwork-sticker" width="524" height="155"/></a>
 </span></td>
+    <td>
+      <a alt="Stazione meteo di Atina" href="http://my.meteonetwork.it/station/laz474" target="_blank"><img
+        style="border:none;" [src]="'http://my.meteonetwork.it/station/laz474/sticker-oriz1?v=' + preventCache"
+        width="524"
+        height="155"/></a></td>
+  </tr>
+</table>
+
+
+<table border="0">
+  <tr>
     <td><span><a href="https://my.meteonetwork.it/station/laz042" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz042/sticker-oriz1?v=' + preventCache"
-      alt="Stazione meteo di Guarcino?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"/></a> </span>
+      alt="Stazione meteo di Guarcino"
+      class="meteonetwork-sticker" width="524" height="155"/></a> </span>
+    <td><span><a href="https://my.meteonetwork.it/station/laz277" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/laz277/sticker-oriz1?v=' + preventCache"
+      class="meteonetwork-sticker" width="524" height="155"
+      alt="Stazione meteo di Guarcino"/></a></span>
     <td></td>
   </tr>
 </table>
+
+
 <table border="0">
   <tr>
     <td> <span><a href="https://my.meteonetwork.it/station/mls012"
                   target="_blank" rel="noopener"><img style="border:none;"
                                                       [src]="'https://my.meteonetwork.it/station/mls012/sticker-oriz1?v=' + preventCache"
-                                                      class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                      class="meteonetwork-sticker" width="524"
                                                       height="155"
                                                       alt="Stazione meteo di Capracotta"/></a>
 </span></td>
-    <td><span><a href="https://my.meteonetwork.it/station/laz277" target="_blank" rel="noopener"><img
-      style="border:none;" [src]="'https://my.meteonetwork.it/station/laz277/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
-      alt="Stazione meteo di Guarcino"/></a></span>
-    <td></td>
+    <td> <span> <a href="https://my.meteonetwork.it/station/abr108" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/abr108/sticker-oriz1?v=' + preventCache"
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Roccaraso"/></a>
+</span></td>
   </tr>
 </table>
 <table border="0">
@@ -50,7 +80,7 @@
     <!--<td> <span><a href="https://my.meteonetwork.it/station/mls006"
                   target="_blank" rel="noopener"><img style="border:none;"
                                                       [src]="'https://my.meteonetwork.it/station/mls006/sticker-oriz1?v=' + preventCache"
-                                                      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+                                                      class="meteonetwork-sticker" width="524" height="155"
                                                       alt="Stazione meteo di Campitello Matese"/></a>
 </span></td>-->
     <td>
@@ -71,11 +101,11 @@
   <tr>
     <td> <span> <a href="https://my.meteonetwork.it/station/abr007" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/abr007/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Avezzano"/></a>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Avezzano"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz056" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz056/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Roma"/></a></span>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Roma"/></a></span>
     <td></td>
   </tr>
 </table>
@@ -83,12 +113,12 @@
   <tr>
     <td> <span><a href="https://my.meteonetwork.it/station/laz169" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz169/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Ariccia"/></a>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Ariccia"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz110"
                  target="_blank" rel="noopener"><img style="border:none;"
                                                      [src]="'https://my.meteonetwork.it/station/laz110/sticker-oriz1?v=' + preventCache"
-                                                     class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                     class="meteonetwork-sticker" width="524"
                                                      height="155"
                                                      alt="Stazione meteo di Rocca Priora"/></a></span>
     <td></td>
@@ -101,14 +131,14 @@
     <td> <span>     <a href="https://my.meteonetwork.it/station/laz054"
                        target="_blank" rel="noopener"><img style="border:none;"
                                                            [src]="'https://my.meteonetwork.it/station/laz054/sticker-oriz1?v=' + preventCache"
-                                                           class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                           class="meteonetwork-sticker" width="524"
                                                            height="155"
                                                            alt="Stazione meteo di Anagni"/> </a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz144" target="_blank" rel="noopener"><img
       alt="stazione-meteo"
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz144/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+      class="meteonetwork-sticker" width="524" height="155"
       alt="Stazione meteo di Alatri"/></a></span>
     </td>
   </tr>
@@ -119,14 +149,14 @@
     <td> <span><a href="https://my.meteonetwork.it/station/laz216"
                   target="_blank" rel="noopener"><img style="border:none;"
                                                       [src]="'https://my.meteonetwork.it/station/laz216/sticker-oriz1?v=' + preventCache"
-                                                      class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                      class="meteonetwork-sticker" width="524"
                                                       height="155"
                                                       alt="Stazione meteo di Pontecorvo"/></a>
 </span>
     <td><span><a href="https://my.meteonetwork.it/station/laz099" target="_blank" rel="noopener"><img
       alt="stazione-meteo"
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz099/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+      class="meteonetwork-sticker" width="524" height="155"
       alt="Stazione meteo di Alatri"/></a></span>
     </td>
   </tr>
@@ -136,11 +166,11 @@
   <tr>
     <td> <span> <a href="https://my.meteonetwork.it/station/laz200" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz200/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Lariano"/></a>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Lariano"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz176" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz176/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Olevano Romano"/></a></span>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Olevano Romano"/></a></span>
     <td></td>
   </tr>
 </table>
@@ -149,11 +179,11 @@
   <tr>
     <td> <span> <a href="https://my.meteonetwork.it/station/laz248" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz248/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Cave"/></a>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Cave"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz177" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz177/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+      class="meteonetwork-sticker" width="524" height="155"
       alt="Stazione meteo di Tivoli"/></a></span>
     <td></td>
   </tr>
@@ -163,13 +193,13 @@
     <td> <span><a href="https://my.meteonetwork.it/station/laz166"
                   target="_blank" rel="noopener"><img style="border:none;"
                                                       [src]="'https://my.meteonetwork.it/station/laz166/sticker-oriz1?v=' + preventCache"
-                                                      class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                      class="meteonetwork-sticker" width="524"
                                                       height="155"
                                                       alt="Stazione meteo di Contigliano"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz201" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz201/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+      class="meteonetwork-sticker" width="524" height="155"
       alt="Stazione meteo di Amatrice"/></a></span>
     <td></td>
   </tr>
@@ -179,14 +209,14 @@
     <td> <span>     <a href="https://my.meteonetwork.it/station/laz172"
                        target="_blank" rel="noopener"><img style="border:none;"
                                                            [src]="'https://my.meteonetwork.it/station/laz172/sticker-oriz1?v=' + preventCache"
-                                                           class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                           class="meteonetwork-sticker" width="524"
                                                            height="155"
                                                            alt="Stazione meteo di Ronciglione"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz090"
                  target="_blank" rel="noopener"><img style="border:none;"
                                                      [src]="'https://my.meteonetwork.it/station/laz090/sticker-oriz1?v=' + preventCache"
-                                                     class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                     class="meteonetwork-sticker" width="524"
                                                      height="155"
                                                      alt="Stazione meteo di San Lorenzo Nuovo"/></a></span>
     <td></td>
@@ -197,13 +227,13 @@
     <td> <span><a href="https://my.meteonetwork.it/station/laz286"
                   target="_blank" rel="noopener"><img style="border:none;"
                                                       [src]="'https://my.meteonetwork.it/station/laz286/sticker-oriz1?v=' + preventCache"
-                                                      class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                      class="meteonetwork-sticker" width="524"
                                                       height="155"
                                                       alt="Stazione meteo di Cisterna di Latina"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz276" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz276/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+      class="meteonetwork-sticker" width="524" height="155"
       alt="Stazione meteo di Latina"/></a></span>
     <td></td>
   </tr>
@@ -212,11 +242,11 @@
   <tr>
     <td> <span><a href="https://my.meteonetwork.it/station/laz270" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz270/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Priverno"/></a>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Priverno"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/laz211" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/laz211/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+      class="meteonetwork-sticker" width="524" height="155"
       alt="Stazione meteo di Sezze"/></a></span>
     <td></td>
   </tr>
@@ -225,11 +255,11 @@
   <tr>
     <td> <span> <a href="https://my.meteonetwork.it/station/abr007" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/abr007/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Avezzano"/></a>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Avezzano"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/abr034" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/abr034/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+      class="meteonetwork-sticker" width="524" height="155"
       alt="Stazione meteo di L'Aquila"/></a></span>
     <td></td>
   </tr>
@@ -239,12 +269,12 @@
   <tr>
     <td> <span><a href="https://my.meteonetwork.it/station/abr086" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/abr086/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Pizzoli"/></a>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Pizzoli"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/abr063"
                  target="_blank" rel="noopener"><img style="border:none;"
                                                      [src]="'https://my.meteonetwork.it/station/abr063/sticker-oriz1?v=' + preventCache"
-                                                     class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                     class="meteonetwork-sticker" width="524"
                                                      height="155"
                                                      alt="Stazione meteo di Fara San Martino"/></a></span>
     <td></td>
@@ -256,14 +286,14 @@
     <td> <span><a href="https://my.meteonetwork.it/station/mls001"
                   target="_blank" rel="noopener"><img style="border:none;"
                                                       [src]="'https://my.meteonetwork.it/station/mls001/sticker-oriz1?v=' + preventCache"
-                                                      class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                      class="meteonetwork-sticker" width="524"
                                                       height="155"
                                                       alt="Stazione meteo di Campobasso"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/mls014"
                  target="_blank" rel="noopener"><img style="border:none;"
                                                      [src]="'https://my.meteonetwork.it/station/mls014/sticker-oriz1?v=' + preventCache"
-                                                     class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                     class="meteonetwork-sticker" width="524"
                                                      height="155"
                                                      alt="Stazione meteo di Campodipietra"/></a></span>
     <td></td>
@@ -275,13 +305,13 @@
     <td> <span><a href="https://my.meteonetwork.it/station/mls027"
                   target="_blank" rel="noopener"><img style="border:none;"
                                                       [src]="'https://my.meteonetwork.it/station/mls027/sticker-oriz1?v=' + preventCache"
-                                                      class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                      class="meteonetwork-sticker" width="524"
                                                       height="155"
                                                       alt="Stazione meteo di Castel San Vincenzo"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/mls025" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/mls025/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155"
+      class="meteonetwork-sticker" width="524" height="155"
       alt="Stazione meteo di Frosolone"/></a></span>
     <td></td>
   </tr>
@@ -291,12 +321,12 @@
   <tr>
     <td> <span><a href="https://my.meteonetwork.it/station/mls010" target="_blank" rel="noopener"><img
       style="border:none;" [src]="'https://my.meteonetwork.it/station/mls010/sticker-oriz1?v=' + preventCache"
-      class="meteonetwork-sticker?v=' + preventCache" width="524" height="155" alt="Stazione meteo di Isernia"/></a>
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Isernia"/></a>
 </span></td>
     <td><span><a href="https://my.meteonetwork.it/station/mls036"
                  target="_blank" rel="noopener"><img style="border:none;"
                                                      [src]="'https://my.meteonetwork.it/station/mls036/sticker-oriz1?v=' + preventCache"
-                                                     class="meteonetwork-sticker?v=' + preventCache" width="524"
+                                                     class="meteonetwork-sticker" width="524"
                                                      height="155"
                                                      alt="Stazione meteo di San Pietro Avellana"/></a></span>
     <td></td>

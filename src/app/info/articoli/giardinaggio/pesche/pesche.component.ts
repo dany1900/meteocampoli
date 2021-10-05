@@ -1,6 +1,7 @@
-import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {ViewportScroller} from '@angular/common';
+import {SEOService} from '../../../../service/seoservice.service';
+import {UtiliyService} from '../../../../service/utiliy.service';
 
 @Component({
   selector: 'pesche',
@@ -10,13 +11,25 @@ import {ViewportScroller} from '@angular/common';
 export class PescheComponent implements OnInit, OnChanges {
 
 
-  constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller) {
+  title: string;
+  description: string;
+  keywords: string;
+  ogUrl: string;
+  ogImage: string;
+
+  constructor(protected router: Router, private seo: SEOService, public utilityService: UtiliyService) {
+    this.title = 'Pesco - Articoli - Meteo Campoli';
+    this.description = 'Informazioni generali sulla pianta del pesco. Ciclo di maturazione, quando  e come preparare il terreno, tutti gli accorgimento necessari per la potatura';
+    this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/giardinaggio/pesche';
+    this.ogImage = '';
+    this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
+    this.seo.cleanCanonicalUrl();
+    this.seo.setCanonicalURL();
   }
 
 
   ngOnInit(): void {
-    const el = this.myElement.nativeElement.querySelector('.header-macro-section');
-    el.scrollIntoView({behavior: 'smooth'});
+    this.utilityService.scrollToSpecifyPosition();
   }
 
   ngOnChanges() {
@@ -25,10 +38,5 @@ export class PescheComponent implements OnInit, OnChanges {
   indietro(): void {
     this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
   }
-
-  scrollToTop() {
-    this.scroll.scrollToPosition([0, 0]);
-  }
-
 
 }

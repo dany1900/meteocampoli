@@ -13,6 +13,7 @@ import {ArticoliMeteoComponent} from './articoli/meteo/articoli-meteo.component'
 import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.component';
 import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/ondata-caldo-2017.component';
 import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.component';
+import {NoccioloComponent} from './articoli/giardinaggio/nocciolo/nocciolo.component';
 
 
 @NgModule({
@@ -106,6 +107,14 @@ import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.compone
             data: {
               title: 'Articoli - Pesche - Meteo Campoli',
               breadcrumb: 'pesche'
+            },
+          },
+          {
+            path: 'articoli/giardinaggio/nocciolo',
+            component: NoccioloComponent,
+            data: {
+              title: 'Articoli - Nocciolo - Meteo Campoli',
+              breadcrumb: 'nocciolo'
             },
           },
           {

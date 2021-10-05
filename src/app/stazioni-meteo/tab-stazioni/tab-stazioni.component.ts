@@ -16,6 +16,7 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
   pathLazio = '/stazioni-meteo/lazio';
   pathAbruzzo = '/stazioni-meteo/abruzzo';
   pathMolise = '/stazioni-meteo/molise';
+  pathUmbria = '/stazioni-meteo/umbria';
   pathReteMeteo = '/stazioni-meteo/rete-meteo';
 
   constructor(private router: Router, private myElement: ElementRef, public utility: UtiliyService) {
@@ -38,8 +39,12 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
         this.id = 3;
         this.utility.titleMatTab = 'Stazioni Meteo Molise - Temperature e Storico Dati ';
         break;
-      case this.pathReteMeteo:
+      case this.pathUmbria:
         this.id = 4;
+        this.utility.titleMatTab = 'Stazioni Meteo Umbria - Temperature e Storico Dati ';
+        break;
+      case this.pathReteMeteo:
+        this.id = 5;
         this.utility.titleMatTab = 'Stazioni Meteo Italia - Mappa Interattiva ';
         break;
       default:
@@ -68,6 +73,8 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
     } else if (event === 3) {
       this.router.navigate([this.pathMolise]);
     } else if (event === 4) {
+      this.router.navigate([this.pathUmbria]);
+    } else if (event === 5) {
       this.router.navigate([this.pathReteMeteo]);
     }
   }

@@ -2,7 +2,7 @@
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <div [hidden]="imageLoader">
 
-  <satellite [titleImgRadar]="'Radar Precipitazioni Sardegna'"
+ <!-- <satellite [titleImgRadar]="'Radar Precipitazioni Sardegna'"
              [srcImage]="'http://www.sar.sardegna.it/servizi_live/meteo/radar/dBZ.cappi/2021051321500400dBZ.cappi.png?v=' + utilityService.preventCache"
              [infoAlt]="'radar precipitazioni sardegna'"
              [class]="'radar'"></satellite>
@@ -11,10 +11,29 @@
   <h2 class="title-micro-section">Radar Precipitazioni Sardegna Zoom</h2>
   <iframe class="radar-sardegna" scrolling="No" frameborder="no" src="http://prohu.altervista.org/radar/radar.html"
           (load)="imageLoader = false;" title="radar pecipitazioni sardegna zoom"></iframe>
+  <br>
+  <br>-->
 
   <h2 class="title-micro-section">Radar precipitazioni animato in tempo reale</h2>
   <iframe class="radar-sud" scrolling="No" frameborder="no"
           src="http://media.ilmeteo.it/radar/radar-ita-650.gif?8275574?Tue Aug 03 2021 21:04:29 GMT+0200 (Ora legale dell’Europa centrale)"
           height="800" width="800"
           (load)="imageLoader = false;" title="radar pecipitazioni sud italia"></iframe>
+  <br>
+  <br>
+  <div>
+    <h2 class="title-micro-section">Satellite Precipitazioni in movimento - Sud Italia</h2>
+    <iframe class="radar-sud-windy"
+            src="https://embed.windy.com/embed2.html?lat=39.40&lon=16.15&zoom=7.5&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=39.40&detailLon=16.15&metricWind=&metricTemp=&radarRange=-1"
+            frameborder="0" title="satellite pecipitazioni sud"></iframe>
+  </div>
+
+  <br>
+  <br>
+  <div>
+    <h2 class="title-micro-section">Satellite Precipitazioni in movimento - Sardegna</h2>
+    <iframe class="radar-sardegna-windy"
+            src="https://embed.windy.com/embed2.html?lat=40.05&lon=09.15&zoom=7.5&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=40.05&detailLon=09.15&metricWind=&metricTemp=&radarRange=-1"
+            frameborder="0" title="satellite pecipitazioni sardegna"></iframe>
+  </div>
 </div>

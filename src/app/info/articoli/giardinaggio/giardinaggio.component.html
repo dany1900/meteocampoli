@@ -35,19 +35,12 @@
 
 </div>
 <div class="row infos">
-  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
-    <fieldset>
-      <legend class="article-header">Pesco</legend>
-      <img src="./assets/img/pesco.png" routerLink="articoli/giardinaggio/pesco" class="img-article"
-           alt="articolo pesco">
-      <br>
-      <div class="article-body">
-        <a routerLink="articoli/giardinaggio/pesco">
-          <b class="red">disponibile a breve...</b>
-        </a>
-      </div>
-    </fieldset>
-  </div>
+  <articoli [titleArticle]="'Pesco'"
+            [descArticle]="'Il pesco è un albero originario...'"
+            [srcImage]="'./assets/img/pesco.png'"
+            [routerArticle]="'giardinaggio/pesche'"
+  >
+  </articoli>
   <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
     <fieldset>
       <legend class="article-header">Albicocco</legend>
@@ -68,6 +61,71 @@
       <br>
       <div class="article-body">
         <a routerLink="articoli/giardinaggio/fico">
+          <b class="red">disponibile a breve...</b>
+        </a>
+      </div>
+    </fieldset>
+  </div>
+</div>
+<div class="row infos">
+
+  <articoli [titleArticle]="'Nocciolo'"
+            [descArticle]="'La coltivazione delle piante di nocciolo avviene nel periodo autunnale...'"
+            [srcImage]="'./assets/img/nocciolo.png'"
+            [routerArticle]="'giardinaggio/nocciolo'"
+  >
+  </articoli>
+
+  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+    <fieldset>
+      <legend class="article-header">Melo</legend>
+      <img src="./assets/img/melo.png" routerLink="articoli/giardinaggio/melo" class="img-article" alt="articolo melo">
+      <br>
+      <div class="article-body">
+        <a routerLink="articoli/giardinaggio/melo">
+          <b class="red">disponibile a breve...</b>
+        </a>
+      </div>
+    </fieldset>
+  </div>
+  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+    <fieldset>
+      <legend class="article-header">Pero</legend>
+      <img src="./assets/img/pero.png" routerLink="articoli/giardinaggio/pero" class="img-article"
+           alt="articolo pero">
+      <br>
+      <div class="article-body">
+        <a routerLink="articoli/giardinaggio/pero">
+          <b class="red">disponibile a breve...</b>
+        </a>
+      </div>
+    </fieldset>
+  </div>
+
+</div>
+<div class="row infos">
+
+  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+    <fieldset>
+      <legend class="article-header">Ciliegio</legend>
+      <img src="./assets/img/ciliegio.png" routerLink="articoli/giardinaggio/ciliegio" class="img-article"
+           alt="articolo ciliegio">
+      <br>
+      <div class="article-body">
+        <a routerLink="articoli/giardinaggio/ciliegio">
+          <b class="red">disponibile a breve...</b>
+        </a>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="col-md-4 col-xs-4 col-sm-4 col-lg-4">
+    <fieldset>
+      <legend class="article-header">Caco</legend>
+      <img src="./assets/img/caco.png" routerLink="articoli/giardinaggio/caco" class="img-article" alt="articolo caco">
+      <br>
+      <div class="article-body">
+        <a routerLink="articoli/giardinaggio/caco">
           <b class="red">disponibile a breve...</b>
         </a>
       </div>
