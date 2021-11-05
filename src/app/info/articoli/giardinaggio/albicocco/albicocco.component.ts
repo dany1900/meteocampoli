@@ -3,11 +3,11 @@ import {Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 
 @Component({
-  selector: 'viti',
-  templateUrl: './viti.component.html',
-  styleUrls: ['./viti.component.css']
+  selector: 'albicocco',
+  templateUrl: './albicocco.component.html',
+  styleUrls: ['./albicocco.component.css']
 })
-export class VitiComponent implements OnInit, OnChanges {
+export class AlbicoccoComponent implements OnInit, OnChanges {
 
 
   constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller) {

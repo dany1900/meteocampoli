@@ -2,10 +2,9 @@ import {Component, OnInit, Renderer2} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../service/utiliy.service';
-import {environment} from '../../environments/environment';
 
 @Component({
-  selector: 'app-previsioni',
+  selector: 'previsioni',
   templateUrl: './previsioni.component.html',
   styleUrls: ['./previsioni.component.css']
 })
@@ -17,7 +16,6 @@ export class PrevisioniComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
-  environmentsProd: any;
   date: string;
   linkGfs: string;
   linkEcmwf: string;
@@ -32,7 +30,6 @@ export class PrevisioniComponent implements OnInit {
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
-    this.environmentsProd = environment.production;
     this.linkEcmwf = this.calculateDateEcmwf();
     this.runGfs = this.calculateDateGfs();
   }

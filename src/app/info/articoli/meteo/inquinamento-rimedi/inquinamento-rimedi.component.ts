@@ -20,7 +20,7 @@ export class InquinamentoRimediComponent implements OnInit, OnChanges {
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.title = 'Inquinamento aria - Articoli - Meteo Campoli';
     this.description = 'L\'inquinamento dell\'aria sulle aree notoriamente più soggette sta acquisendo sempre maggior importanza. Un forte contributo arriva direttamente dalle condizioni meteorologiche...';
-    this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/giardinaggio/ulivi';
+    this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/giardinaggio/ulivo';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();

@@ -3,11 +3,11 @@ import {Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 
 @Component({
-  selector: 'fichi',
-  templateUrl: './fichi.component.html',
-  styleUrls: ['./fichi.component.css']
+  selector: 'vite',
+  templateUrl: './vite.component.html',
+  styleUrls: ['./vite.component.css']
 })
-export class FichiComponent implements OnInit, OnChanges {
+export class ViteComponent implements OnInit, OnChanges {
 
 
   constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller) {

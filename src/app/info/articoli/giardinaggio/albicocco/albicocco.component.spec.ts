@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {PescheComponent} from './pesche.component';
+import {AlbicoccoComponent} from './albicocco.component';
 
 describe('InquinamentoRimediComponent', () => {
-  let component: PescheComponent;
-  let fixture: ComponentFixture<PescheComponent>;
+  let component: AlbicoccoComponent;
+  let fixture: ComponentFixture<AlbicoccoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PescheComponent]
+      declarations: [AlbicoccoComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PescheComponent);
+    fixture = TestBed.createComponent(AlbicoccoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

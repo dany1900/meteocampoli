@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {UliviComponent} from './ulivi.component';
+import {FicoComponent} from './fico.component';
 
 describe('InquinamentoRimediComponent', () => {
-  let component: UliviComponent;
-  let fixture: ComponentFixture<UliviComponent>;
+  let component: FicoComponent;
+  let fixture: ComponentFixture<FicoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [UliviComponent]
+      declarations: [FicoComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UliviComponent);
+    fixture = TestBed.createComponent(FicoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

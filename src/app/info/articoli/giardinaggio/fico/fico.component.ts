@@ -3,11 +3,11 @@ import {Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 
 @Component({
-  selector: 'albicocche',
-  templateUrl: './albicocche.component.html',
-  styleUrls: ['./albicocche.component.css']
+  selector: 'fico',
+  templateUrl: './fico.component.html',
+  styleUrls: ['./fico.component.css']
 })
-export class AlbicoccheComponent implements OnInit, OnChanges {
+export class FicoComponent implements OnInit, OnChanges {
 
 
   constructor(private myElement: ElementRef, protected router: Router, private scroll: ViewportScroller) {

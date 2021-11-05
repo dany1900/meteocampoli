@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {VitiComponent} from './viti.component';
+import {ViteComponent} from './vite.component';
 
 describe('InquinamentoRimediComponent', () => {
-  let component: VitiComponent;
-  let fixture: ComponentFixture<VitiComponent>;
+  let component: ViteComponent;
+  let fixture: ComponentFixture<ViteComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [VitiComponent]
+      declarations: [ViteComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VitiComponent);
+    fixture = TestBed.createComponent(ViteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

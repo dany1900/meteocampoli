@@ -4,11 +4,11 @@ import {SEOService} from '../../../../service/seoservice.service';
 import {UtiliyService} from '../../../../service/utiliy.service';
 
 @Component({
-  selector: 'pesche',
-  templateUrl: './pesche.component.html',
-  styleUrls: ['./pesche.component.css']
+  selector: 'ulivo',
+  templateUrl: './ulivo.component.html',
+  styleUrls: ['./ulivo.component.css']
 })
-export class PescheComponent implements OnInit, OnChanges {
+export class UlivoComponent implements OnInit, OnChanges {
 
 
   title: string;
@@ -18,9 +18,9 @@ export class PescheComponent implements OnInit, OnChanges {
   ogImage: string;
 
   constructor(protected router: Router, private seo: SEOService, public utilityService: UtiliyService) {
-    this.title = 'Pesco - Articoli - Meteo Campoli';
-    this.description = 'Informazioni generali sulla pianta del pesco. Ciclo di maturazione, quando  e come preparare il terreno, tutti gli accorgimento necessari per la potatura';
-    this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/giardinaggio/pesche';
+    this.title = 'Ulivo - Articoli - Meteo Campoli';
+    this.description = 'Informazioni generali sulla pianta dell ulivo. Ciclo di maturazione, quando  e come preparare il terreno, tutti gli accorgimento necessari per la potatura';
+    this.ogUrl = 'www.meteocampoli.altervista.org/info/articoli/giardinaggio/ulivo';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
@@ -38,5 +38,4 @@ export class PescheComponent implements OnInit, OnChanges {
   indietro(): void {
     this.router.navigate([this.router.url.slice(0, this.router.url.lastIndexOf('/'))]);
   }
-
 }

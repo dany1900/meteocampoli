@@ -9,10 +9,10 @@ import {InfoAngularComponent} from '../info-angular/info-angular.component';
 import {TabArticoliComponent} from './tab-articoli/tab-articoli.component';
 import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.component';
 import {InquinamentoRimediComponent} from './articoli/meteo/inquinamento-rimedi/inquinamento-rimedi.component';
-import {UliviComponent} from './articoli/giardinaggio/ulivi/ulivi.component';
-import {PescheComponent} from './articoli/giardinaggio/pesche/pesche.component';
-import {VitiComponent} from './articoli/giardinaggio/viti/viti.component';
-import {AlbicoccheComponent} from './articoli/giardinaggio/albicocche/albicocche.component';
+import {UlivoComponent} from './articoli/giardinaggio/ulivo/ulivo.component';
+import {PescoComponent} from './articoli/giardinaggio/pesco/pesco.component';
+import {ViteComponent} from './articoli/giardinaggio/vite/vite.component';
+import {AlbicoccoComponent} from './articoli/giardinaggio/albicocco/albicocco.component';
 import {ArticoliMeteoComponent} from './articoli/meteo/articoli-meteo.component';
 import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/ondata-caldo-2017.component';
 import {CommonModule} from '@angular/common';
@@ -39,11 +39,11 @@ import {NoccioloComponent} from './articoli/giardinaggio/nocciolo/nocciolo.compo
     TabArticoliComponent,
     GiardinaggioComponent,
     InquinamentoRimediComponent,
-    UliviComponent,
-    PescheComponent,
+    UlivoComponent,
+    PescoComponent,
     NoccioloComponent,
-    VitiComponent,
-    AlbicoccheComponent,
+    ViteComponent,
+    AlbicoccoComponent,
     OndataCaldo2017Component,
     RosaVentiComponent
   ],

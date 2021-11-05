@@ -10,6 +10,7 @@
   },
 
   "angularCompilerOptions": {
+    "debug": true,
     "enableIvy": false,
     "entryModule": "./src/app/app.server.module#AppServerModule"
   }
