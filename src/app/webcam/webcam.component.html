@@ -10,7 +10,7 @@
     </div>
     <a (click)="openModal(urlWebcam)" data-rel="prettyPhoto"><img
       [src]="urlWebcam" alt="webcam {{luogo}}" [hidden]="imageLoader"
-      (load)="imageLoader = false;" (error)="errorHandler()" width="85%" height="100%" class="webcam"/></a>
+      (load)="imageLoader = false;" (error)="errorHandler(timeout)" width="85%" height="100%" class="webcam"/></a>
   </figure>
 </div>
 

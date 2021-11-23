@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {ModalComponent} from '../modal/modal.component';
 import {DeviceDetectorService} from 'ngx-device-detector';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'webcam',
@@ -14,10 +15,11 @@ export class WebcamComponent implements OnInit {
   @Input() altitudine: string;
   @Input() urlSite: string;
   @Input() urlWebcam: string;
+  @Input() timeout: boolean = false;
   imageLoader = true;
 
 
-  constructor(private matDialog: MatDialog, private deviceService: DeviceDetectorService) {
+  constructor(private matDialog: MatDialog, private deviceService: DeviceDetectorService, private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -44,8 +46,35 @@ export class WebcamComponent implements OnInit {
     }
   }
 
-  errorHandler() {
-    this.urlWebcam = './assets/img/webcam-offline.png';
-    this.imageLoader = false;
+  errorHandler(timeout: boolean) {
+    if (timeout) {
+      /*setInterval(function(){
+        this.http.get(urlWebcam).subscribe(
+          response => {
+            this.urlWebcam = urlWebcam;
+            this.imageLoader = false;
+          },
+          error => {
+            setTimeout(function(){
+              this.urlWebcam = './assets/img/webcam-offline.png';
+              this.imageLoader = false;
+            }, 1000);
+          }
+        );
+      }, 1000);
+      interval(1000)
+        .pipe(takeWhile(() => !stop))
+        .subscribe(() => {
+          this.http.get(urlWebcam).subscribe(
+            response => {
+              this.urlWebcam = urlWebcam;
+              console.log(urlWebcam);
+              this.imageLoader = false;
+            })
+        }); */
+    } else {
+      this.urlWebcam = './assets/img/webcam-offline.png';
+      this.imageLoader = false;
+    }
   }
 }
