@@ -840,6 +840,11 @@ legend {
   zoom: 5;
 }
 
+.iubenda-embed:not(.no-brand):not(.iubenda-nostyle) {
+  font-size: 15px !important
+}
+
+
 
 
 
