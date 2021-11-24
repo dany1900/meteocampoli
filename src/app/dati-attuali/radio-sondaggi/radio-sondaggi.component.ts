@@ -2,7 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
-import {HttpClient} from '@angular/common/http';
+import {Http} from '@angular/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {catchError, tap} from 'rxjs';
 
 @Component({
   selector: 'radio-sondaggi',
@@ -51,25 +53,17 @@ export class RadioSondaggiComponent implements OnInit {
     if (hours <= 2) {
       run = '12';
       day = (Number(day) - 1).toString();
-    } else if (hours >= 16) {
+    } else if (hours >= 15) {
       run = '12';
     }
-    this.link = 'http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=' + year + '&MONTH=' + this.month + '&FROM=' + day + run + '&TO=' + day + run + '&STNM=16245';
-    return this.getImageUrlStatus(this.link, year, this.month, day, run);
+    return this.link = 'http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=' + year + '&MONTH=' + this.month + '&FROM=' + day + run + '&TO=' + day + run + '&STNM=16245';
   }
 
-  getImageUrlStatus(url: string, year: number, month: string, day: string, run: string): string {
+  errorHandler(url: string) {
     this.http.get(url).subscribe(
       response => this.link,
       error => {
-        if (run === '12') {
-          run = '00';
-        } else if (run === '00') {
-          run = '12';
-        }
-        this.link = 'http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=' + year + '&MONTH=' + this.month + '&FROM=' + day + '00' + '&TO=' + day + '00' + '&STNM=16245';
       }
     );
-    return this.link;
   }
 }

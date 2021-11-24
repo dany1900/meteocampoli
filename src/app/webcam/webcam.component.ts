@@ -72,6 +72,8 @@ export class WebcamComponent implements OnInit {
               this.imageLoader = false;
             })
         }); */
+      this.urlWebcam = './assets/img/webcam-offline.png';
+      this.imageLoader = false;
     } else {
       this.urlWebcam = './assets/img/webcam-offline.png';
       this.imageLoader = false;
