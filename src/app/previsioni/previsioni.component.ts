@@ -51,7 +51,7 @@ export class PrevisioniComponent implements OnInit {
   calculateDateEcmwf(): string {
     const today = new Date();
     const year = today.getFullYear();
-    const month = today.getMonth().toString() + 1;
+    const month = (today.getMonth() + 1).toString();
     const day = String(today.getDate()).padStart(2, '0');
     const hours = today.getHours();
     let emission = '00';

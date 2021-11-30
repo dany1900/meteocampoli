@@ -1,0 +1,17 @@
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="SUD">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <webcam-sud></webcam-sud>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="ISOLE">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <webcam-isole></webcam-isole>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

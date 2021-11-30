@@ -1,45 +1,29 @@
 <br>
+<h1 class="header-macro-section">{{utility.titleMatTab}}</h1>
+<br>
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
-  <mat-tab label="LAZIO">
+  <mat-tab label="WEBCAM MONTAGNA">
     <br>
     <ng-template matTabContent>
-      <br>
-      <webcam-lazio></webcam-lazio>
+      <tab-centro-webcam [path]="pathGlobale"></tab-centro-webcam>
     </ng-template>
   </mat-tab>
-  <mat-tab label="ABRUZZO">
+  <mat-tab label="LIMITROFE">
     <br>
     <ng-template matTabContent>
-      <br>
-      <webcam-abruzzo></webcam-abruzzo>
+      <webcam-limitrofe></webcam-limitrofe>
     </ng-template>
   </mat-tab>
-  <mat-tab label="MOLISE">
+  <mat-tab label="CAM NORD">
     <br>
     <ng-template matTabContent>
-      <br>
-      <webcam-molise></webcam-molise>
+      <tab-nord-webcam></tab-nord-webcam>
     </ng-template>
   </mat-tab>
-  <mat-tab label="UMBRIA">
+  <mat-tab label="CAM SUD/ISOLE">
     <br>
     <ng-template matTabContent>
-      <br>
-      <webcam-umbria></webcam-umbria>
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="MARCHE">
-    <br>
-    <ng-template matTabContent>
-      <br>
-      <webcam-marche></webcam-marche>
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="TOSCANA">
-    <br>
-    <ng-template matTabContent>
-      <br>
-      <webcam-toscana></webcam-toscana>
+      <tab-sud-webcam [path]="pathGlobale"></tab-sud-webcam>
     </ng-template>
   </mat-tab>
 </mat-tab-group>

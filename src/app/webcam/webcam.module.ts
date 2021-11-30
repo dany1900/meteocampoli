@@ -25,12 +25,12 @@ import {WebcamRomaComponent} from './webcam-centro-italia/webcam-lazio/webcam-ro
 import {WebcamViterboComponent} from './webcam-centro-italia/webcam-lazio/webcam-viterbo/webcam-viterbo.component';
 import {NgModule} from '@angular/core';
 import {WebcamLazioComponent} from './webcam-centro-italia/webcam-lazio/webcam-lazio.component';
-import {TabWebcamComponent} from './tab-webcam/tab-webcam.component';
+import {TabCentroWebcamComponent} from './tab-centro-webcam/tab-centro-webcam.component';
 import {WebcamCentroItaliaComponent} from './webcam-centro-italia/webcam-centro-italia.component';
 import {WebcamSudItaliaComponent} from './webcam-sud-italia/webcam-sud-italia.component';
 import {WebcamNordItaliaComponent} from './webcam-nord-italia/webcam-nord-italia.component';
 import {ImmaginiComponent} from './immagini/immagini.component';
-import {TabImmagginiWebcamComponent} from './tab-immaggini-webcam/tab-immaggini-webcam.component';
+import {TabWebcamComponent} from './tab-webcam/tab-webcam.component';
 import {WebcamValleCominoComponent} from './webcam-centro-italia/webcam-valle-comino/webcam-valle-comino.component';
 import {WebcamRoutingModule} from './webcam-routing.module';
 import {SharedModule} from '../shared/shared.module';
@@ -42,6 +42,12 @@ import {WebcamPisaComponent} from './webcam-centro-italia/webcam-toscana/webcam-
 import {WebcamNordEstComponent} from './webcam-nord-italia/webcam-nord-est/webcam-nord-est.component';
 import {WebcamNordOvestComponent} from './webcam-nord-italia/webcam-nord-ovest/webcam-nord-ovest.component';
 import {WebcamTeramoComponent} from './webcam-centro-italia/webcam-abruzzo/webcam-teramo/webcam-teramo.component';
+import {WebcamSardegnaComponent} from './webcam-sud-italia/webcam-isole/webcam-sardegna/webcam-sardegna.component';
+import {WebcamSiciliaComponent} from './webcam-sud-italia/webcam-isole/webcam-sicilia/webcam-sicilia.component';
+import {WebcamSudComponent} from './webcam-sud-italia/webcam-sud/webcam-sud.component';
+import {WebcamIsoleComponent} from './webcam-sud-italia/webcam-isole/webcam-isole.component';
+import {TabSudWebcamComponent} from './tab-sud-webcam/tab-sud-webcam.component';
+import {TabNordWebcamComponent} from './tab-nord-webcam/tab-nord-webcam.component';
 
 
 @NgModule({
@@ -78,20 +84,27 @@ import {WebcamTeramoComponent} from './webcam-centro-italia/webcam-abruzzo/webca
     WebcamRietiComponent,
     WebcamRomaComponent,
     WebcamViterboComponent,
-    TabWebcamComponent,
+    TabCentroWebcamComponent,
     WebcamValleCominoComponent,
     WebcamNordItaliaComponent,
     WebcamSudItaliaComponent,
     WebcamCentroItaliaComponent,
     ImmaginiComponent,
-    TabImmagginiWebcamComponent,
+    TabWebcamComponent,
+    TabSudWebcamComponent,
+    TabNordWebcamComponent,
     WebcamPistoiaComponent,
     WebcamFirenzeComponent,
     WebcamGrossetoComponent,
     WebcamPisaComponent,
     WebcamNordEstComponent,
     WebcamNordOvestComponent,
-    WebcamTeramoComponent
+    WebcamTeramoComponent,
+    WebcamSudItaliaComponent,
+    WebcamSudComponent,
+    WebcamSardegnaComponent,
+    WebcamSiciliaComponent,
+    WebcamIsoleComponent
   ],
   exports: []
 })

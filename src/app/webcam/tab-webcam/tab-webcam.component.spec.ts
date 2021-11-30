@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TabWebcamComponent} from './tab-webcam.component';
 
-describe('TabWebcamComponent', () => {
+describe('TabImmagginiWebcamComponent', () => {
   let component: TabWebcamComponent;
   let fixture: ComponentFixture<TabWebcamComponent>;
 

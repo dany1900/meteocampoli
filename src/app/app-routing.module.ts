@@ -47,7 +47,9 @@ export const routes: Routes = [
   {path: 'terremoti-mondo.html', redirectTo: '/terremoti/mondo', pathMatch: 'full'},
   {path: 'terremoti-mondo.html', redirectTo: '/terremoti/mondo', pathMatch: 'full'},
   {path: 'infos.htm', redirectTo: '/info/curiosita', pathMatch: 'full'},
-  {path: 'ondata-caldo-2017.html', redirectTo: '/info/curiosita/ondata-caldo-2017', pathMatch: 'full'},
+  {path: 'effemeridi.htm', redirectTo: '/info/effemeridi', pathMatch: 'full'},
+  {path: 'sole-monitoraggio.html', redirectTo: '/info/effemeridi', pathMatch: 'full'},
+  {path: 'ondata-caldo-2017.html', redirectTo: 'info/curiosita/ondata-caldo-2017', pathMatch: 'full'},
   {path: '**', component: PageErrorComponent}
 
 ];
