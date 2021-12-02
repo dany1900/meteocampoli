@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class TabWebcamComponent implements OnInit, OnChanges {
   paramTab: string;
   pathGlobale = '';
 
-  constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
+  constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService, private activatedRoute: ActivatedRoute) {
     this.paramTab = this.router.url;
     switch (this.paramTab) {
       case this.pathMontagnaLazio:
@@ -84,6 +84,7 @@ export class TabWebcamComponent implements OnInit, OnChanges {
         break;
     }
     this.router.navigate([this.pathGlobale]);
+    this.subscribeRouteChange();
   }
 
   ngOnInit() {
@@ -92,6 +93,15 @@ export class TabWebcamComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
+  }
+
+  subscribeRouteChange() {
+    this.activatedRoute.params.subscribe((params = {}) => {
+      // Will log any change to the route.
+      // You can add your own logic here
+      console.log(params.category);
+      console.log(params.subcategory);
+    });
   }
 
   tabSelectionChanged(event) {

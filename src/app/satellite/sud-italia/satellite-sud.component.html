@@ -37,6 +37,37 @@
 <br>
 <br>
 
+<satellite [titleImgRadar]="'Totale Precipitazioni Sud Italia ultime 24 ore'"
+           [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_prec_sud.png?' + preventCache"
+           [infoAlt]="'totale precipitazioni Sud italia'"
+           [class]="'radar-centro-precipitazioni'"></satellite>
+<br>
+<br>
+<satellite [titleImgRadar]="'Totale Precipitazioni Sud Italia ultime 24 ore in movimento'"
+           [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/sud/prec/mov_prec_sud.gif?v=1638446096?' + preventCache"
+           [infoAlt]="'totale precipitazioni Sud italia in movimento'"
+           [class]="'radar-centro-precipitazioni'"></satellite>
+<br>
+<br>
+<h2 class="title-micro-section">Temperature in tempo reale Sud Italia </h2>
+<satellite [titleImgRadar]="'Temperature in tempo reale Sud Italia'"
+           [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_temp_sud.png?v=' + preventCache"
+           [infoAlt]="'temperature live Sud italia'"
+           [class]="'radar-zoomed-centro'"
+           [zoom]="1.2"></satellite>
+
+<br>
+<br>
+<br>
+<br>
+<satellite [titleImgRadar]="'Temperature giornaliere Sud Italia in movimento'"
+           [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/sud/temp/mov_temp_sud.gif?v=1638446096?v=' + preventCache"
+           [infoAlt]="'temperature giornaliere Sud italia in movimento'"
+           [class]="'radar'"
+           [zoom]="1.2"></satellite>
+
+<br>
+
 <div>
   <h2 class="title-micro-section">Satellite Novolosità - Sud Italia</h2>
   <iframe class="radar-novolosita-sud"

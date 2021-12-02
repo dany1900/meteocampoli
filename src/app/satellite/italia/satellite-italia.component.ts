@@ -15,6 +15,7 @@ export class SatelliteItaliaComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
+  preventCache: number;
 
   // tslint:disable-next-line:max-line-length
   constructor(private seo: SEOService, public utilityService: UtiliyService) {
@@ -26,6 +27,7 @@ export class SatelliteItaliaComponent implements OnInit {
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+    this.preventCache = Math.random();
   }
 
   ngOnInit() {

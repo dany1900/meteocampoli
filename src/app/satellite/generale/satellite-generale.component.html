@@ -31,17 +31,56 @@
 <div>
   <br>
   <br>
+
+  <div>
+    <h2 class="title-micro-section">Satellite Precipitazioni in movimento</h2>
+    <iframe class="radar"
+            src="https://embed.windy.com/embed2.html?lat=42.11&lon=13.30&zoom=8&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=42.11&detailLon=13.30&metricWind=&metricTemp=&radarRange=-1"
+            frameborder="0" title="satellite pecipitazioni"></iframe>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <satellite [titleImgRadar]="'Pioggia giornaliera'"
+             [srcImage]="'https://www.meteo-lazio.it/interpolate/Pioggia.png?v=' + preventCache"
+             [infoAlt]="'pioggia giornaliera lazio calcolata'"
+             [class]="'radar-zoomed'"
+             [zoom]="1.2"></satellite>
+  <br>
+  <br>
+  <br>
+  <br>
+  <satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia ultime 24 ore in movimento'"
+             [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/centro/prec/mov_prec_centro.gif?v=1638446096?' + preventCache"
+             [infoAlt]="'totale precipitazioni centro italia in movimento'"
+             [class]="'radar-centro-precipitazioni'"></satellite>
+  <br>
+  <h2 class="title-micro-section">Temperature in tempo reale </h2>
+  <satellite [titleImgRadar]="'Temperature in tempo reale'"
+             [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_temp_lazio.png?v=' + preventCache"
+             [infoAlt]="'temperature calcolate'"
+             [class]="'radar-zoomed'"
+             [zoom]="1.2"></satellite>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <satellite [titleImgRadar]="'Temperature giornaliere in movimento'"
+             [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/lazio/temp/mov_temp_lazio.gif?v=1638446096?v=' + preventCache"
+             [infoAlt]="'temperature giornaliere in movimento'"
+             [class]="'radar'"
+             [zoom]="1.2"></satellite>
+
+  <br>
+
   <h2 class="title-micro-section">Satellite Interattivo Live</h2>
   <iframe id="frame-mov" class="radar"
           src="https://embed.windy.com/embed2.html?lat=41.874&lon=12.651&detailLat=41.890&detailLon=12.512&width=500&height=500&zoom=5&level=surface&overlay=gust&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
           frameborder="0"></iframe>
 </div>
-<div>
-  <h2 class="title-micro-section">Satellite Precipitazioni in movimento</h2>
-  <iframe class="radar"
-          src="https://embed.windy.com/embed2.html?lat=42.11&lon=13.30&zoom=8&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=42.11&detailLon=13.30&metricWind=&metricTemp=&radarRange=-1"
-          frameborder="0" title="satellite pecipitazioni"></iframe>
-</div>
+<br>
 <satellite [titleImgRadar]="'Sinottica al suolo (aggiornamento orario)'"
            [srcImage]="'http:///meteocentre.com/analyse/local/eur.gif?v=' + preventCache"
            [infoAlt]="'sinottica suolo'"
@@ -63,23 +102,6 @@
 <br>
 <br>
 
-<satellite [titleImgRadar]="'Temperature in tempo reale calcolate'"
-           [srcImage]="'https://meteo-lazio.it/interpolate/temp.png?v=' + preventCache"
-           [infoAlt]="'temperature calcolate'"
-           [class]="'radar-zoomed'"
-           [zoom]="1.2"></satellite>
-
-<br>
-<br>
-<satellite [titleImgRadar]="'Pioggia giornaliera calcolata'"
-           [srcImage]="'https://www.meteo-lazio.it/interpolate/Pioggia.png?v=' + preventCache"
-           [infoAlt]="'pioggia giornaliera lazio calcolata'"
-           [class]="'radar-zoomed'"
-           [zoom]="1.2"></satellite>
-<br>
-<br>
-<br>
-<br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Ultime 3 ore'"
            [srcImage]="'http:///satollo.aquila.infn.it/midia/ref/ultimo_srt3h_noclass.png?v=' + preventCache"
            [infoAlt]="'radar precipitazioni'"

@@ -9,6 +9,45 @@
 </div>
 
 <br>
+
+
+<satellite [titleImgRadar]="'Totale Precipitazioni Nord Italia ultime 24 ore'"
+           [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_prec_nord.png?' + preventCache"
+           [infoAlt]="'totale precipitazioni nord italia'"
+           [class]="'radar-centro-precipitazioni'"></satellite>
+<br>
+<br>
+<satellite [titleImgRadar]="'Totale Precipitazioni Nord Italia ultime 24 ore in movimento'"
+           [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/nord/prec/mov_prec_nord.gif?v=1638446096?v=1638446096?' + preventCache"
+           [infoAlt]="'totale precipitazioni nord italia in movimento'"
+           [class]="'radar-centro-precipitazioni'"></satellite>
+<br>
+<br>
+<h2 class="title-micro-section">Temperature in tempo reale Nord Italia </h2>
+<satellite [titleImgRadar]="'Temperature in tempo reale'"
+           [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_temp_nord.png?v=' + preventCache"
+           [infoAlt]="'temperature live nord italia'"
+           [class]="'radar-zoomed-centro'"
+           [zoom]="1.2"></satellite>
+
+<br>
+<br>
+<br>
+<br>
+<satellite [titleImgRadar]="'Temperature giornaliere in movimento'"
+           [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/nord/temp/mov_temp_nord.gif?v=1638446096?v=' + preventCache"
+           [infoAlt]="'temperature giornaliere nord italia in movimento'"
+           [class]="'radar'"
+           [zoom]="1.2"></satellite>
+
+<br>
+
+<satellite [titleImgRadar]="'Radar Precipitazioni Nord in movimento'"
+           [srcImage]="'https://cdn4.3bmeteo.com/images/radar/SWI_animation.gif?' + preventCache"
+           [infoAlt]="'Radar Precipitazioni Nord  in movimento'"
+           [class]="'radar'"></satellite>
+
+<br>
 <br>
 <satellite [titleImgRadar]="'Radar Precipitazioni Nord Est'"
            [srcImage]="'https://www.arpa.veneto.it/bollettini/meteo/radar/imgs/teolo/1_BASE.jpg?' + preventCache"
@@ -35,16 +74,6 @@
 
 <br>
 <br>
-
-<satellite [titleImgRadar]="'Radar Precipitazioni Nord in movimento'"
-           [srcImage]="'https://cdn4.3bmeteo.com/images/radar/SWI_animation.gif?' + preventCache"
-           [infoAlt]="'Radar Precipitazioni Nord  in movimento'"
-           [class]="'radar'"></satellite>
-
-<br>
-<br>
-
-
 <!--
 <h2 class="title-micro-section">Radar precipitazioni ultime 24H Zoom</h2>
 <iframe class="radar" src="https:///www.vallemuricana.it/veneto_teolo250km.php"

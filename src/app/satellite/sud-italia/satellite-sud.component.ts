@@ -16,6 +16,7 @@ export class SatelliteSudComponent implements OnInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
+  preventCache: number;
 
 
   constructor(private seo: SEOService, public utilityService: UtiliyService) {
@@ -27,6 +28,7 @@ export class SatelliteSudComponent implements OnInit {
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+    this.preventCache = Math.random();
   }
 
 
