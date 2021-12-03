@@ -32,9 +32,9 @@ export class UtiliyService {
 
   scrollToSpecifyPosition() {
     if (this.isMobile()) {
-      this.scroll.scrollToPosition([0, 950]);
+      this.scroll.scrollToPosition([0, 1130]);
     } else {
-      this.scroll.scrollToPosition([0, 810]);
+      this.scroll.scrollToPosition([0, 940]);
     }
   }
 

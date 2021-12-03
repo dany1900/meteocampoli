@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {PrevisioniComponent} from './previsioni.component';
+import {IndiciClimaticiComponent} from './indici-climatici/indici-climatici.component';
 
 
 @NgModule({
@@ -8,7 +9,16 @@ import {PrevisioniComponent} from './previsioni.component';
     RouterModule.forChild([
       {
         path: '',
-        component: PrevisioniComponent
+        children: [
+          {
+            path: 'indici-climatici',
+            component: IndiciClimaticiComponent,
+          },
+          {
+            path: '',
+            component: PrevisioniComponent,
+          },
+],
       },
     ]),
   ],

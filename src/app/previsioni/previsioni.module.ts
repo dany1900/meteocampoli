@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {PrevisioniRoutingModule} from './previsioni-routing.module';
 import {CommonModule} from '@angular/common';
 import {MainPipe} from '../utils/pipe/main-pipe.module';
+import {IndiciClimaticiComponent} from './indici-climatici/indici-climatici.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {MainPipe} from '../utils/pipe/main-pipe.module';
   ],
 
   declarations: [
-    PrevisioniComponent
+    PrevisioniComponent,
+    IndiciClimaticiComponent
   ],
   exports: []
 })

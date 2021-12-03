@@ -1,31 +1,26 @@
 <br>
 <p class="title-info">Cliccare sulle immagini per zoom</p>
 <br>
-<!-- <satellite [titleImgRadar]="'Radar Precipitazioni Centro Italia Live'"
-           [srcImage]="'http://meteorema.aquila.infn.it/radarweb/home/realtime/WEB/spotVMI.gif'"
-           [infoAlt]="'radar precipitazioni centro live'"
-           [class]="'radar'"></satellite>
-<br>
-<br> -->
+
 <div>
-  <h2 class="title-micro-section">Satellite Precipitazioni in movimento - Centro Italia</h2>
-  <iframe class="radar-centro-precipitazioni"
+  <h2 class="title-micro-section">Radar Precipitazioni Centro Italia</h2>
+  <iframe class="radar-centro-precipitazioni-windy"
           src="https://embed.windy.com/embed2.html?lat=42.75&lon=12.40&zoom=7.5&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=42.75&detailLon=12.40&metricWind=&metricTemp=&radarRange=-1"
-          frameborder="0" title="satellite pecipitazioni centro"></iframe>
+          frameborder="0" title="satellite radar pecipitazioni centro"></iframe>
 </div>
 <br>
 <br>
 
-<satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia ultime 24 ore'"
+<satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia - Giornaliere'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_prec_centro.png?' + preventCache"
            [infoAlt]="'totale precipitazioni centro italia'"
-           [class]="'radar-centro-precipitazioni'"></satellite>
+           [class]="'radar-meteonetwork'"></satellite>
 <br>
 <br>
-<satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia ultime 24 ore in movimento'"
+<satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia - Animazione Ultime 24 Ore'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/centro/prec/mov_prec_centro.gif?v=1638446096?' + preventCache"
            [infoAlt]="'totale precipitazioni centro italia in movimento'"
-           [class]="'radar-centro-precipitazioni'"></satellite>
+           [class]="'radar-meteonetwork'"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Radar Fulmininazioni Centro Italia'"
@@ -35,8 +30,9 @@
 <br>
 <br>
 
-<h2 class="title-micro-section">Temperature in tempo reale Centro Italia </h2>
-<satellite [titleImgRadar]="'Temperature in tempo reale'"
+<h2 class="title-micro-section">Temperature In Tempo Reale Centro Italia </h2>
+<br>
+<satellite [titleImgRadar]="''"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_temp_centro.png?v=' + preventCache"
            [infoAlt]="'temperature live centro italia'"
            [class]="'radar-zoomed-centro'"
@@ -46,10 +42,10 @@
 <br>
 <br>
 <br>
-<satellite [titleImgRadar]="'Temperature giornaliere in movimento'"
+<satellite [titleImgRadar]="'Temperature Giornaliere Centro Italia - Animazione Ultime 24 Ore'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/centro/temp/mov_temp_centro.gif?v=1638446096?v=' + preventCache"
            [infoAlt]="'temperature giornaliere centro italia in movimento'"
-           [class]="'radar'"
+           [class]="'radar-meteonetwork'"
            [zoom]="1.2"></satellite>
 
 <br>

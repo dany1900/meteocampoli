@@ -33,10 +33,10 @@
   <br>
 
   <div>
-    <h2 class="title-micro-section">Satellite Precipitazioni in movimento</h2>
+    <h2 class="title-micro-section">Radar Precipitazioni</h2>
     <iframe class="radar"
             src="https://embed.windy.com/embed2.html?lat=42.11&lon=13.30&zoom=8&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=42.11&detailLon=13.30&metricWind=&metricTemp=&radarRange=-1"
-            frameborder="0" title="satellite pecipitazioni"></iframe>
+            frameborder="0" title="satellite radar pecipitazioni"></iframe>
   </div>
   <br>
   <br>
@@ -51,12 +51,15 @@
   <br>
   <br>
   <br>
-  <satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia ultime 24 ore in movimento'"
+  <br>
+  <satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia - Animazione Ultime 24 Ore'"
              [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/centro/prec/mov_prec_centro.gif?v=1638446096?' + preventCache"
              [infoAlt]="'totale precipitazioni centro italia in movimento'"
-             [class]="'radar-centro-precipitazioni'"></satellite>
+             [class]="'radar-meteonetwork'"></satellite>
+  <br>
   <br>
   <h2 class="title-micro-section">Temperature in tempo reale </h2>
+  <br>
   <satellite [titleImgRadar]="'Temperature in tempo reale'"
              [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_temp_lazio.png?v=' + preventCache"
              [infoAlt]="'temperature calcolate'"
@@ -67,11 +70,11 @@
   <br>
   <br>
   <br>
-  <satellite [titleImgRadar]="'Temperature giornaliere in movimento'"
+  <satellite [titleImgRadar]="'Temperature giornaliere - Animazione Ultime 24 Ore'"
              [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/lazio/temp/mov_temp_lazio.gif?v=1638446096?v=' + preventCache"
              [infoAlt]="'temperature giornaliere in movimento'"
-             [class]="'radar'"
-             [zoom]="1.2"></satellite>
+             [class]="'radar-meteonetwork'"
+             [zoom]="1.0"></satellite>
 
   <br>
 

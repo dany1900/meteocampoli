@@ -1,4 +1,4 @@
-<h1 class="header-macro-section">Previsioni Locali e Generali - Monitoraggio Indici Climatici</h1>
+<h1 class="header-macro-section">Previsioni Meteo - Monitoraggio Indici Climatici</h1>
 
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
@@ -29,7 +29,7 @@
   <br>
   <h2 class="title-micro-section">Previsioni 5 Giorni</h2>
   <!-- Inizio codice ilMeteo.it -->
-  <iframe width="720" height="510" scrolling="no" frameborder="no" noresize="noresize" title="previsioni ilmeteo"
+  <iframe width="720" height="590" class="frame-ilmeteo" scrolling="no" frameborder="no" noresize="noresize" title="previsioni ilmeteo"
           src="http://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=500&ico=1&lang=ita&days=6&font=Arial&fontsize=12&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
   <br>
   <br>
@@ -37,6 +37,9 @@
   <iframe src="https://www.3bmeteo.com/moduli_esterni/localita_7_giorni_orario/1194/ffffff/286fe2/d02525/ffffff/it"
           width=1026 height=567 frameborder="0" title="previsioni 3bMeteo"></iframe>
   <br>
+  <br>
+  <h2 class="title-micro-section">Previsioni MeteoGiuliacci</h2>
+  <div><iframe src="https://www.meteogiuliacci.it/previsioni/widget_comunali.php?staz=Campoli Appennino" width="1020"  height="550" scrolling="no" border="0"></iframe></div>
   <br>
   <h2 class="title-micro-section">Anomalie termiche ultimi 10 giorni</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="anomalie termiche"
@@ -47,92 +50,8 @@
   <br>
   <br>
 
-  <em class="title-micro-section">Indici Climatici - Teleconnessioni Troposferiche &nbsp;<a
-    href="https://meteotaranto.org/wxnao-ao.php" title="Info indici climatici e teleconnessioni"
-    target="_blank">Info</a></em>
-  <p class="testo-articoli">
-    <b>L'indice AO</b> (Arctic Oscillation), detto anche Northern Annular Mode e' calcolato dalla differenza di
-    pressione tra
-    l'artico e le basse latitudini, generalmente comprese tra il 37esimo ed il 45esimo parallelo.
-    <br>
-    In presenza di <b>indice AO negativo</b> si avranno formazioni di robusti anticicloni in area artica con conseguente
-    <b>indebolimento del vortice polare</b> che, rallentando il suo movimento, consentirebbe alle <b>correnti fredde</b>
-    di penetrare attraverso il Midwest degli Stati
-    Uniti ed <b>Europa meridionale</b>, generando forti piogge e temporali in area mediterranea.
-    <br>
-    In presenza di <b>indice positivo</b>
-    invece si avranno <b>condizioni opposte</b> ovvero tempeste e forti piogge verso latitudini superiori (Alaska,
-    Scozia e
-    Scandinavia) e <b>correnti secche</b> verso California ed <b>Europa meridionale</b>.
-    <br>Negli ultimi anni si e' notato che l'indice
-    AO ha avuto un magior numero di fasi positive caratterizzate da modeste fasi piovose in sede mediterranea.
-    <br>
-    <img class="previsioni-frame" width="95%" height="650"
-         src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/ao.sprd2.gif"
-         alt="indice climatico ao"/>
-  </p>
-  <br>
-  <p class="testo-articoli">
-    Generalmente, in presenza di <b>indice NAO positivo</b> nella stagione <b>estiva</b> si verifica l'espansione verso
-    l'Europa
-    dell'Anticiclone subtropicale africano che genera <b>onde di calore sull'Italia</b> e sull'Europa
-    centro-meridionale,
-    fondendosi talvolta con l'alta pressione delle Azzorre. Nella <b>stagione invernale</b>, invece, l'indice positivo
-    e'
-    responsabile di ciclogenesi sull'Europa sud-occidentale e nell'area meridionale del bacino del Mediterraneo per
-    <b>richiamo di aria polare o subpolare</b>.
-    <br>
-    L'indice <b>NAO negativo</b> e' responsabile, invece, di limitate interazioni tra depressione d'Islanda e
-    anticiclone delle
-    Azzorre, con una conseguente prevalenza del <b>flusso occidentale</b> che puo' generare, nei periodi in cui si
-    verifica,
-    depressioni atlantiche moderate e molto estese arealmente, in grado di giungere e stazionare fino al
-    <b>Mediterraneo</b>.
-    <img class="previsioni-frame" width="95%" height="650"
-         src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/nao.sprd2.gif"
-         alt="indice climatico nao">
-  </p>
-  <br>
-  <p class="testo-articoli">
-    <b>L'indice PNA</b> è legato alle altezze di geopotenziale sul Pacifico e sull'America del Nord.
-    <br>
-    Generalmente, in presenza di <b>indice PNA positivo</b> è legata la formazione di un forte anticiclone di blocco in
-    Atlantico settentrionale, con conseguente <b>discesa di aria artica sull'Europa centro-meridionale</b> con
-    traiettoria nord-sud (esempio gennaio 1981).
-    <br>
-    <b>PNA negativi</b> sono invece associati ad intensa attività depressionaria in Atlantico che non consente
-    formazione di alta pressione stabile, dunque <b>discese fredde in genere assenti in Italia</b>.
-    <img class="previsioni-frame" width="95%" height="650"
-         src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/pna/pna.sprd2.gif"
-         alt="indice climatico aao">
-  </p>
-  <br>
-  <p class="testo-articoli">
-    Lo <b>Scandinavian Pattern</b>, è un indice troposferico che riguarda solo la regione Scandinava.
-    <br>
-    Generalmente, in presenza di <b>indice SCAND positivo (SCAND+)</b> la Scandinavia viene interessata da una vasta
-    area anticiclonica, lungo il cui bordo orientale e meridionale scivolano le gelide correnti d'estrazione
-    artico-marittima o artico-continentale, responsabili delle <b>grandi ondate di freddo sul Mediterraneo</b>.
-    <br>In corrispondenza di tali eventi l'aria umida atlantica richiamata dalla bassa pressione sull'Europa
-    occidentale, favorisce abbondanti nevicate sul nord-Italia, anche a quote di pianura, come capitato il 26-28 Gennaio
-    2006.
-    Viceversa, in presenza di <b>indice SCAND negativo (SCAND-)</b>, ed è associato ad una circolazione maggiormente
-    improntata sulle aree depressionarie, segno di <b>un'attività piuttosto intensa del Vortice Polare</b> in questo
-    contesto diminuisce notevolmente la possibilità di irruzioni fredde sulla nostra penisola.
-    <img class="previsioni-frame" width="95%" height="650"
-         src="https://www.cpc.ncep.noaa.gov/data/teledoc/scand.timeseries.gif"
-         alt="indice climatico SCAND">
-  </p>
-  <br>
-  <p class="testo-articoli">
-    Generalmente, in presenza di <b>indice AAO positivo</b> c'è una forte antizonalità nel nord emisfero, per l'italia
-    le <b>discese fredde sono poco probabili</b>.
-    <br>
-    L'indice <b>AOO negativo</b> vicersa, è piu <b>favorevole alle discese fredde</b> in sede mediterranea.
-    <img class="previsioni-frame" width="95%" height="650"
-         src="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/aao.sprd2.gif"
-         alt="indice climatico aao">
-  </p>
+  <indici-climatici></indici-climatici>
+
   <br>
   <h2 class="title-micro-section">Previsioni Meteo Lazio 6 Giorni</h2>
   <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img

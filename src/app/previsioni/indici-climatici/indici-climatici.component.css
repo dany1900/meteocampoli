@@ -1,0 +1,7 @@
+img.zoomed {
+  -webkit-transform: scale(1.6);
+  cursor: zoom-out;
+  overflow: scroll;
+  overflow-x: hidden;
+  max-width: 680px;
+}

@@ -1,6 +1,7 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {SEOService} from '../../service/seoservice.service';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'tab-terremoti',
@@ -14,18 +15,21 @@ export class TabTerremotiComponent implements OnInit {
   pathMondo = '/terremoti/mondo';
   pathInformazioni = '/terremoti/informazioni';
 
-  constructor(private seo: SEOService, private myElement: ElementRef, protected router: Router) {
+  constructor(private seo: SEOService, private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
       case this.pathItalia:
         this.id = 0;
+        this.utility.titleMatTab = 'Terremoti Italia';
         break;
       case this.pathMondo:
         this.id = 1;
+        this.utility.titleMatTab = 'Terremoti Mondo';
         break;
       case this.pathInformazioni:
         this.id = 2;
+        this.utility.titleMatTab = 'Terremoti - Informazioni';
         break;
       default:
         this.id = 0;

@@ -394,7 +394,7 @@ h4 {
   height: 950px !important;
 }
 
-.radar-centro-precipitazioni {
+.radar-centro-precipitazioni-windy {
   -webkit-user-select: none;
   cursor: -webkit-zoom-in;
   border-radius: 20px;
@@ -404,6 +404,18 @@ h4 {
   width: 97% !important;
   height: 950px !important;
 }
+
+.radar-meteonetwork {
+  -webkit-user-select: none;
+  cursor: -webkit-zoom-in;
+  border-radius: 20px;
+  border: 10px;
+  border-style: solid;
+  border-color: #ffffff;
+  width: 97% !important;
+}
+
+
 
 .radar-sud-windy {
   -webkit-user-select: none;
@@ -484,6 +496,18 @@ h4 {
   -webkit-transform: scale(1.17);
 }
 
+.radar-zoomed-nord {
+  -webkit-user-select: none;
+  cursor: -webkit-zoom-in;
+  border-radius: 20px;
+  border: 10px;
+  border-style: solid;
+  border-color: #ffffff;
+  width: 92% !important;
+  height: 730px !important;
+  -webkit-transform: scale(1.12);
+}
+
 .radar-test {
   -webkit-user-select: none;
   cursor: -webkit-zoom-in;
@@ -528,6 +552,10 @@ h4 {
   border-color: #ffffff;
   height: 650px;
   width: 95%;
+}
+
+.frame-ilmeteo {
+  height: 580px;
 }
 
 .previsioni-spaghi {
@@ -840,8 +868,22 @@ legend {
 .frame-notizie {
   border: none;
   min-height: 265px;
-  width: 80%;
-  height: 100%;
+  width: 49%;
+  height: 430px;
+}
+
+.televideo {
+  border: none;
+  min-height: 265px;
+  width: 49%;
+  height: 430px;
+  margin-left: 0.25%;
+  margin-right: 0.25%;
+  border-radius: 14px;
+  border: 5px;
+  border-style: solid;
+  border-color: #ffffff;
+  cursor: pointer;
 }
 
 .radiosondaggio {

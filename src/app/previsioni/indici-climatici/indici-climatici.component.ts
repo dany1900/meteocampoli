@@ -1,14 +1,14 @@
 import {Component, OnInit, Renderer2} from '@angular/core';
-import {SEOService} from '../service/seoservice.service';
+import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
-import {UtiliyService} from '../service/utiliy.service';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
-  selector: 'previsioni',
-  templateUrl: './previsioni.component.html',
-  styleUrls: ['./previsioni.component.css']
+  selector: 'indici-climatici',
+  templateUrl: './indici-climatici.component.html',
+  styleUrls: ['./indici-climatici.component.css']
 })
-export class PrevisioniComponent implements OnInit {
+export class IndiciClimaticiComponent implements OnInit {
 
   imageLoader = true;
   title: string;
@@ -22,10 +22,10 @@ export class PrevisioniComponent implements OnInit {
   runGfs: string;
 
   constructor(private seo: SEOService, protected router: Router, public renderer: Renderer2, public utilityService: UtiliyService) {
-    this.title = 'Previsioni Meteo - Meteogrammi';
-    this.description = 'Previsioni meteo dettagliate locali e nazionali. Analisi radio sondaggi e meteogrammi con tendenza a lungo termine.';
-    this.keywords = 'previsioni meteo campoli, previsioni italia, meteogrammi, meteogramma gfs, meteogramma ecmwf, previsiono campoli 3bmeteo, previsioni campoli appennino, Tendenza meteo, previsioni meteo campoli appennino';
-    this.ogUrl = 'www.meteocampoli.altervista.org/previsioni';
+    this.title = 'Monitoraggio Indici Climatici e Teleconnessioni - Previsioni Meteo ';
+    this.description = 'Analisi dettagliata dei pattern atmosferici mediante la meteorologia teleconnettiva. Grafici e informazioni aggiornate ogni ora.';
+    this.keywords = 'monitoraggio indici troposfera, indice NAO, indice AO, indice PNA, indice AAO, Indici climatici, teleconnessioni, pattern atmosferici';
+    this.ogUrl = 'www.meteocampoli.altervista.org/previsioni/indici-climatici';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();

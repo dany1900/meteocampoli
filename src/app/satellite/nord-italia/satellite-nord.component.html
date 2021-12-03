@@ -2,49 +2,49 @@
 <p class="title-info">Cliccare sulle immagini per zoom</p>
 <br>
 <div>
-  <h2 class="title-micro-section">Satellite Precipitazioni in movimento</h2>
+  <h2 class="title-micro-section">Radar Precipitazioni Nord Italia </h2>
   <iframe class="radar-nord-windy"
           src="https://embed.windy.com/embed2.html?lat=45.40&lon=10.70&zoom=7.5&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=45.40&detailLon=10.70&metricWind=&metricTemp=&radarRange=-1"
-          frameborder="0" title="satellite pecipitazioni"></iframe>
+          frameborder="0" title="satellite radar pecipitazioni nord italia"></iframe>
 </div>
 
 <br>
 
 
-<satellite [titleImgRadar]="'Totale Precipitazioni Nord Italia ultime 24 ore'"
+<satellite [titleImgRadar]="'Totale Precipitazioni Nord Italia - Giornaliere'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_prec_nord.png?' + preventCache"
            [infoAlt]="'totale precipitazioni nord italia'"
-           [class]="'radar-centro-precipitazioni'"></satellite>
+           [class]="'radar-meteonetwork'"></satellite>
 <br>
 <br>
-<satellite [titleImgRadar]="'Totale Precipitazioni Nord Italia ultime 24 ore in movimento'"
+<satellite [titleImgRadar]="'Totale Precipitazioni Nord Italia - Animazione Ultime 24 Ore'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/nord/prec/mov_prec_nord.gif?v=1638446096?v=1638446096?' + preventCache"
            [infoAlt]="'totale precipitazioni nord italia in movimento'"
-           [class]="'radar-centro-precipitazioni'"></satellite>
+           [class]="'radar-meteonetwork'"></satellite>
 <br>
 <br>
-<h2 class="title-micro-section">Temperature in tempo reale Nord Italia </h2>
-<satellite [titleImgRadar]="'Temperature in tempo reale'"
+<h2 class="title-micro-section">Temperature In Tempo Reale Nord Italia</h2>
+<satellite [titleImgRadar]="''"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_temp_nord.png?v=' + preventCache"
            [infoAlt]="'temperature live nord italia'"
-           [class]="'radar-zoomed-centro'"
+           [class]="'radar-zoomed-nord'"
            [zoom]="1.2"></satellite>
 
 <br>
 <br>
 <br>
 <br>
-<satellite [titleImgRadar]="'Temperature giornaliere in movimento'"
+<satellite [titleImgRadar]="'Temperature Giornaliere Nord Italia - Animazione Ultime 24 Ore'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/nord/temp/mov_temp_nord.gif?v=1638446096?v=' + preventCache"
            [infoAlt]="'temperature giornaliere nord italia in movimento'"
-           [class]="'radar'"
-           [zoom]="1.2"></satellite>
+           [class]="'radar-meteonetwork'"
+           [zoom]="1.0"></satellite>
 
 <br>
 
-<satellite [titleImgRadar]="'Radar Precipitazioni Nord in movimento'"
+<satellite [titleImgRadar]="'Radar Precipitazioni Nord Italia - Animazione'"
            [srcImage]="'https://cdn4.3bmeteo.com/images/radar/SWI_animation.gif?' + preventCache"
-           [infoAlt]="'Radar Precipitazioni Nord  in movimento'"
+           [infoAlt]="'Radar Precipitazioni Nord Italia in movimento'"
            [class]="'radar'"></satellite>
 
 <br>

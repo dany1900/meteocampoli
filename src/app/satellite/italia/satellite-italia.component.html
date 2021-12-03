@@ -1,20 +1,10 @@
-<!--
-<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
--->
+
 <br>
-<!--<div >
-<h2 class="title-micro-section">Radar Protezione Civile</h2>
-  <div class="center">
-    <iframe class="radar-protezione-civile"
-            src="https://radar.protezionecivile.it/radar-dpc/#/pages/dashboard"
-            frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
-             title="satellite protezione civile"></iframe>
-  </div>
-</div>-->
+
 <br>
 <br>
 <div>
-  <h2 class="title-micro-section">Satellite Precipitazioni in movimento - Italia</h2>
+  <h2 class="title-micro-section">Radar Precipitazioni Italia</h2>
   <iframe class="radar-italia-windy"
           src="https://embed.windy.com/embed2.html?lat=42.00&lon=12.40&zoom=6.4&level=surface&overlay=radar&menu=&message=true&marker=&calendar=&pressure=&type=map&location=coordinates&detail=&detailLat=42.00&detailLon=12.40&metricWind=&metricTemp=&radarRange=-1"
           frameborder="0" title="satellite pecipitazioni italia"></iframe>
@@ -22,7 +12,7 @@
 <br>
 <br>
 <div>
-  <h2 class="title-micro-section">Radar Precipitazioni - Italia</h2>
+  <h2 class="title-micro-section">Radar Precipitazioni Italia - Protezione Civile</h2>
   <iframe class="radar-protezione-civile"
           src="https://www.ilmeteo.it/altro/radar-italia-rainviewer.html#0"
           frameborder="0" title="pecipitazioni italia"></iframe>
@@ -30,22 +20,23 @@
 <br>
 <br>
 
-<satellite [titleImgRadar]="'Totale Precipitazioni Italia ultime 24 ore'"
+<satellite [titleImgRadar]="'Totale Precipitazioni Italia - Giornaliere'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_prec_italia.png?' + preventCache"
            [infoAlt]="'totale precipitazioni italia'"
-           [class]="'radar-centro-precipitazioni'"></satellite>
+           [class]="'radar-meteonetwork'"></satellite>
 <br>
 <br>
-<satellite [titleImgRadar]="'Totale Precipitazioni Italia ultime 24 ore in movimento'"
+<satellite [titleImgRadar]="'Totale Precipitazioni Italia - Animazione Ultime 24 Ore'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/italia/prec/mov_prec_italia.gif?v=1638446096?v=1638446096?' + preventCache"
            [infoAlt]="'totale precipitazioni italia in movimento'"
-           [class]="'radar-centro-precipitazioni'"></satellite>
+           [class]="'radar-meteonetwork'"></satellite>
 <br>
 <br>
-<h2 class="title-micro-section">Temperature in tempo reale Italia </h2>
-<satellite [titleImgRadar]="'Temperature in tempo reale Italia'"
+<h2 class="title-micro-section">Temperature In Tempo Reale Italia </h2>
+<br>
+<satellite [titleImgRadar]="''"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_temp_italia.png?v=' + preventCache"
-           [infoAlt]="'temperature live Sud italia'"
+           [infoAlt]="'temperature live italia'"
            [class]="'radar-zoomed-centro'"
            [zoom]="1.2"></satellite>
 
@@ -53,10 +44,10 @@
 <br>
 <br>
 <br>
-<satellite [titleImgRadar]="'Temperature giornaliere in movimento'"
+<satellite [titleImgRadar]="'Temperature Giornaliere Italia - Animazione Ultime 24 Ore'"
            [srcImage]="'http://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/animazioni/italia/temp/mov_temp_italia.gif?v=1638446096?v=' + preventCache"
-           [infoAlt]="'temperature giornaliere Sud italia in movimento'"
-           [class]="'radar'"
+           [infoAlt]="'temperature giornaliere italia in movimento'"
+           [class]="'radar-meteonetwork'"
            [zoom]="1.2"></satellite>
 
 <br>
