@@ -11,6 +11,7 @@ import {SatelliteComponent} from './satellite.component';
 import {CommonModule} from '@angular/common';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {SatelliteTestComponent} from './satellite-test/satellite-test.component';
+import {SatelliteEuropaComponent} from './europa/satellite-europa.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {SatelliteTestComponent} from './satellite-test/satellite-test.component'
     SatelliteCentroComponent,
     TabSatelliteComponent,
     SatelliteComponent,
-    SatelliteTestComponent
+    SatelliteTestComponent,
+    SatelliteEuropaComponent
   ],
   exports: []
 })

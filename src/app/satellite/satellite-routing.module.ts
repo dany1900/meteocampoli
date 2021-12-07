@@ -13,42 +13,42 @@ import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
             path: 'generale',
             component: TabSatelliteComponent,
             data: {
-              title: 'Satellite Metereologico - Radar Precipitazioni  - Meteo Campoli'
+              title: 'Radar Precipitazioni - Satellite Meteo'
             }
           },
           {
             path: 'nord-italia',
             component: TabSatelliteComponent,
             data: {
-              title: 'Satellite Nord Italia - Radar Precipitazioni  - Meteo Campoli'
+              title: 'Radar Precipitazioni Nord Italia - Satellite Meteo'
             }
           },
           {
             path: 'centro-italia',
             component: TabSatelliteComponent,
             data: {
-              title: 'Satellite Centro Italia - Radar Precipitazioni  - Meteo Campoli'
+              title: 'Radar Precipitazioni Centro Italia - Satellite Meteo'
             }
           },
           {
             path: 'sud-italia',
             component: TabSatelliteComponent,
             data: {
-              title: 'Satellite Sud Italia - Radar Precipitazioni  - Meteo Campoli'
+              title: 'Radar Precipitazioni Sud Italia - Satellite Meteo'
             }
           },
           {
-            path: 'test',
+            path: 'europa',
             component: TabSatelliteComponent,
             data: {
-              title: 'Satellite Test Italia - Radar Precipitazioni  - Meteo Campoli'
+              title: 'Satellite Europa - Radar Precipitazioni'
             }
           },
           {
             path: 'italia',
             component: TabSatelliteComponent,
             data: {
-              title: 'Satellite Italia - Radar Precipitazioni  - Meteo Campoli'
+              title: 'Radar Precipitazioni Italia - Satellite Meteo'
             }
           },
         ],

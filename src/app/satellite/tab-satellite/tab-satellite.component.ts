@@ -15,7 +15,8 @@ export class TabSatelliteComponent implements OnInit {
   pathCentroItalia = '/satellite/centro-italia';
   pathNordItalia = '/satellite/nord-italia';
   pathSudItalia = '/satellite/sud-italia';
-  pathProtezioneCivile = '/satellite/italia';
+  pathItalia = '/satellite/italia';
+  pathEuropa = '/satellite/europa';
 
   constructor(private router: Router, public utility: UtiliyService) {
 
@@ -38,9 +39,13 @@ export class TabSatelliteComponent implements OnInit {
         this.id = 3;
         this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia e Isole - Satellite Meteo ';
         break;
-      case this.pathProtezioneCivile:
+      case this.pathItalia:
         this.id = 4;
         this.utility.titleMatTab = 'Radar Precipitazioni Protezione Civile';
+        break;
+      case this.pathEuropa:
+        this.id = 5;
+        this.utility.titleMatTab = 'Radar Precipitazioni Europa - Satellite Meteo';
         break;
       default:
         this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
@@ -63,7 +68,9 @@ export class TabSatelliteComponent implements OnInit {
     } else if (event === 3) {
       this.router.navigate([this.pathSudItalia]);
     } else if (event === 4) {
-      this.router.navigate([this.pathProtezioneCivile]);
+      this.router.navigate([this.pathItalia]);
+    } else if (event === 5) {
+      this.router.navigate([this.pathEuropa]);
     }
   }
 }
