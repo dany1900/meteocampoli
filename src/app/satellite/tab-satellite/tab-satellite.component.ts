@@ -16,7 +16,10 @@ export class TabSatelliteComponent implements OnInit {
   pathNordItalia = '/satellite/nord-italia';
   pathSudItalia = '/satellite/sud-italia';
   pathItalia = '/satellite/italia';
+  pathTabEstero = '/satellite/estero';
   pathEuropa = '/satellite/europa';
+  pathMondo = '/satellite/mondo';
+  pathGlobale = '';
 
   constructor(private router: Router, public utility: UtiliyService) {
 
@@ -43,9 +46,17 @@ export class TabSatelliteComponent implements OnInit {
         this.id = 4;
         this.utility.titleMatTab = 'Radar Precipitazioni Protezione Civile';
         break;
+      case this.pathTabEstero:
       case this.pathEuropa:
         this.id = 5;
+        this.pathGlobale = this.pathEuropa;
         this.utility.titleMatTab = 'Radar Precipitazioni Europa - Satellite Meteo';
+        break;
+      case this.pathTabEstero:
+      case this.pathMondo:
+        this.id = 5;
+        this.pathGlobale = this.pathMondo;
+        this.utility.titleMatTab = 'Radar Precipitazioni Mondo - Satellite Meteo';
         break;
       default:
         this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';

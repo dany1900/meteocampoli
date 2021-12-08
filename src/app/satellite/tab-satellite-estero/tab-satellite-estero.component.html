@@ -1,0 +1,17 @@
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="EUROPA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <satellite-europa></satellite-europa>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="MONDO">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <satellite-mondo></satellite-mondo>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
