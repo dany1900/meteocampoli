@@ -28,55 +28,54 @@ import {WebcamNordOvestComponent} from './webcam-nord-italia/webcam-nord-ovest/w
           },
           {
             path: 'montagna',
-            component: TabWebcamComponent,
             children: [
               {
                 path: 'lazio',
-                component: WebcamLazioComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'abruzzo',
-                component: WebcamAbruzzoComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'molise',
-                component: WebcamMoliseComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'umbria',
-                component: WebcamUmbriaComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'marche',
-                component: WebcamMarcheComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'toscana',
-                component: WebcamToscanaComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'sud',
-                component: TabSudWebcamComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'nord',
-                component: TabNordWebcamComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'nord-est',
-                component: WebcamNordEstComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'nord-ovest',
-                component: WebcamNordOvestComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'sud-italia',
-                component: WebcamSudComponent,
+                component: TabWebcamComponent,
               },
               {
                 path: 'isole',
-                component: WebcamIsoleComponent,
+                component: TabWebcamComponent,
               },
             ]
           },

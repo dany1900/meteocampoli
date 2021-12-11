@@ -20,70 +20,115 @@ export class TabSatelliteComponent implements OnInit {
   pathEuropa = '/satellite/europa';
   pathMondo = '/satellite/mondo';
   pathGlobale = '';
+  isEstero: boolean;
+  paramTab: string;
 
   constructor(private router: Router, public utility: UtiliyService) {
-
-    let paramTab: any;
-    paramTab = this.router.url;
-    switch (paramTab) {
-      case this.pathGenerale:
-        this.id = 0;
-        this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
-        break;
-      case this.pathCentroItalia:
-        this.id = 1;
-        this.utility.titleMatTab = 'Radar Precipitazioni Centro Italia - Satellite Meteo';
-        break;
-      case this.pathNordItalia:
-        this.id = 2;
-        this.utility.titleMatTab = 'Radar Precipitazioni Nord Italia - Satellite Meteo';
-        break;
-      case this.pathSudItalia:
-        this.id = 3;
-        this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia e Isole - Satellite Meteo ';
-        break;
-      case this.pathItalia:
-        this.id = 4;
-        this.utility.titleMatTab = 'Radar Precipitazioni Protezione Civile';
-        break;
-      case this.pathTabEstero:
-      case this.pathEuropa:
-        this.id = 5;
-        this.pathGlobale = this.pathEuropa;
-        this.utility.titleMatTab = 'Radar Precipitazioni Europa - Satellite Meteo';
-        break;
-      case this.pathTabEstero:
-      case this.pathMondo:
-        this.id = 5;
-        this.pathGlobale = this.pathMondo;
-        this.utility.titleMatTab = 'Radar Precipitazioni Mondo - Satellite Meteo';
-        break;
-      default:
-        this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
-        this.id = 0;
-        break;
+    this.isEstero = false;
+    this.paramTab = this.router.url;
+    if (this.paramTab === this.pathEuropa || this.paramTab === this.pathMondo) {
+      this.isEstero = true;
+      switch (this.paramTab) {
+        case this.pathEuropa:
+          this.id = 5;
+          this.pathGlobale = this.pathEuropa;
+          this.utility.titleMatTab = 'Radar Precipitazioni Europa - Satellite Meteo';
+          break;
+        case this.pathMondo:
+          this.id = 6;
+          this.pathGlobale = this.pathMondo;
+          this.utility.titleMatTab = 'Radar Precipitazioni Mondo - Satellite Meteo';
+          break;
+      }
+    } else {
+      switch (this.paramTab) {
+        case this.pathGenerale:
+          this.id = 0;
+          this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
+          break;
+        case this.pathCentroItalia:
+          this.id = 1;
+          this.utility.titleMatTab = 'Radar Precipitazioni Centro Italia - Satellite Meteo';
+          break;
+        case this.pathNordItalia:
+          this.id = 2;
+          this.utility.titleMatTab = 'Radar Precipitazioni Nord Italia - Satellite Meteo';
+          break;
+        case this.pathSudItalia:
+          this.id = 3;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia e Isole - Satellite Meteo ';
+          break;
+        case this.pathItalia:
+          this.id = 4;
+          this.utility.titleMatTab = 'Radar Precipitazioni Protezione Civile';
+          break;
+        case this.pathEuropa:
+          this.id = 5;
+          this.pathGlobale = this.pathEuropa;
+          this.utility.titleMatTab = 'Radar Precipitazioni Europa - Satellite Meteo';
+          break;
+        case this.pathMondo:
+          this.id = 5;
+          this.pathGlobale = this.pathMondo;
+          this.utility.titleMatTab = 'Radar Precipitazioni Mondo - Satellite Meteo';
+          break;
+        default:
+          this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
+          this.id = 0;
+          break;
+      }
     }
-    this.tabSelectionChanged(this.id);
+    this.tabSelectionTabs(this.id);
   }
 
   ngOnInit() {
   }
 
   tabSelectionChanged(event) {
-    if (event === 0) {
-      this.router.navigate([this.pathGenerale]);
-    } else if (event === 1) {
-      this.router.navigate([this.pathCentroItalia]);
-    } else if (event === 2) {
-      this.router.navigate([this.pathNordItalia]);
-    } else if (event === 3) {
-      this.router.navigate([this.pathSudItalia]);
-    } else if (event === 4) {
-      this.router.navigate([this.pathItalia]);
-    } else if (event === 5) {
-      this.router.navigate([this.pathEuropa]);
+      if (event === 0) {
+        this.router.navigate([this.pathGenerale]);
+        this.isEstero = false;
+      } else if (event === 1) {
+        this.router.navigate([this.pathCentroItalia]);
+        this.isEstero = false;
+      } else if (event === 2) {
+        this.router.navigate([this.pathNordItalia]);
+        this.isEstero = false;
+      } else if (event === 3) {
+        this.router.navigate([this.pathSudItalia]);
+        this.isEstero = false;
+      } else if (event === 4) {
+        this.router.navigate([this.pathItalia]);
+        this.isEstero = false;
+      } else if (event === 5) {
+        this.router.navigate([this.pathEuropa]);
+        this.isEstero = true;
+      }
+  }
+
+
+  tabSelectionTabs(event) {
+    if (this.isEstero) {
+      if (event === 0 || event === 5) {
+        this.router.navigate([this.pathEuropa]);
+      } else if (event === 1 || event === 6) {
+        this.router.navigate([this.pathMondo]);
+      }
+    } else {
+      if (event === 0) {
+        this.router.navigate([this.pathGenerale]);
+      } else if (event === 1) {
+        this.router.navigate([this.pathCentroItalia]);
+      } else if (event === 2) {
+        this.router.navigate([this.pathNordItalia]);
+      } else if (event === 3) {
+        this.router.navigate([this.pathSudItalia]);
+      } else if (event === 4) {
+        this.router.navigate([this.pathItalia]);
+      } else if (event === 5) {
+        this.router.navigate([this.pathEuropa]);
+      }
     }
   }
+
 }
-
-

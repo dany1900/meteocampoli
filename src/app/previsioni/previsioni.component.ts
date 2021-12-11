@@ -83,7 +83,8 @@ export class PrevisioniComponent implements OnInit {
       this.runGfs += '12';
     }
     //return this.linkGfs = 'https://modeles.meteociel.fr/modeles/gens/graphe_ens3.php?x=&y=&run=' + this.runGfs + '&lat=41.72&lon=13.687&ext=1&type=0';
-    return this.linkGfs = 'https://modeles16.meteociel.fr/modeles/gensp/runs/' + this.runGfs + '/graphe9_00000___13.687_41.72_.gif';
+    return this.linkGfs = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=&date=' + year + '-' + month + '-' + day + '&model=gfs&member=ENS&bw=1'
+    //return this.linkGfs = 'https://modeles16.meteociel.fr/modeles/gensp/runs/' + this.runGfs + '/graphe9_00000___13.687_41.72_.gif';
   }
 
 }

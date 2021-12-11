@@ -38,7 +38,7 @@ export class TabSudWebcamComponent implements OnInit {
 
   tabSelectionChanged(event) {
     if (event === 0) {
-      this.utility.titleMatTab = 'WebCam Sud Montagna';
+      this.utility.titleMatTab = 'WebCam Sud Italia Montagna';
       this.router.navigate([this.pathWebSud]);
     } else if (event === 1) {
       this.utility.titleMatTab = 'WebCam Sardegna e Sicilia Montagna';
