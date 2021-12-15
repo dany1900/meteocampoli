@@ -8,41 +8,41 @@
   <h2 class="title-micro-section">Meteogramma Campoli Appennino</h2>
   <img class="previsioni-frame" width="95%" height="650"
        src="https://www.yr.no/sted/Italia/Lazio/Campoli_Appennino/avansert_meteogram.png"
-       alt="meteogramma"
+       alt="meteogramma" rel="noreferrer"
        (load)="imageLoader = false;" (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
-  <em class="title-micro-section">Spaghi modello GFS Campoli Appennino, clicca <a [href]="linkEcmwf" target="_blank"><b>
+  <em class="title-micro-section">Spaghi modello GFS Campoli Appennino, clicca <a [href]="linkEcmwf" rel="noreferrer" metarget="_blank"><b>
     QUI</b></a> per spaghi ECMWF</em>
   <br>
-  <img class="previsioni-spaghi" width="95%" height="100" alt="spaghi"
+  <img class="previsioni-spaghi" rel="noreferrer" width="95%" height="100" alt="spaghi"
        [src]="runGfs | safe"
        (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
   <em class="title-micro-section">Pioggia ECMWF 72H</em>
   <br>
-  <img class="previsioni-frame" width="95%" height="650" alt="pioggia-ecmwf"
+  <img class="previsioni-frame" width="95%" height="650" alt="pioggia-ecmwf" rel="noreferrer"
        src="https://services.meteored.com/img/models/ecmwf/ECMWF_072_IT_APC_es-ES_es.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <h2 class="title-micro-section">Previsioni 5 Giorni Campoli Appennino ilMeteo</h2>
-  <iframe width="1030" height="720" scrolling="no" frameborder="no" title="previsioni campoli appennino IlMeteo" noresize="noresize" src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=999&ico=4&lang=ita&days=6&font=Arial&fontsize=17&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
+  <iframe width="1030" height="720" scrolling="no" frameborder="no" title="previsioni campoli appennino IlMeteo" rel="noreferrer" noresize="noresize" src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=999&ico=4&lang=ita&days=6&font=Arial&fontsize=17&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
   <br>
   <br>
   <h2 class="title-micro-section">Previsioni 7 Giorni Campoli Appennino 3bMeteo</h2>
   <iframe src="https://www.3bmeteo.com/moduli_esterni/localita_7_giorni_orario/1194/ffffff/286fe2/d02525/ffffff/it"
-          width=1030 height=567 frameborder="0" title="previsioni campoli 3bMeteo"></iframe>
+          width=1030 height=567 frameborder="0" title="previsioni campoli 3bMeteo" rel="preload" ></iframe>
   <br>
   <br>
   <h2 class="title-micro-section">Previsioni Campoli Appennino MeteoGiuliacci </h2>
-  <div><iframe src="https://www.meteogiuliacci.it/previsioni/widget_comunali.php?staz=Campoli Appennino" width="1030"  height="500" scrolling="no" border="0"></iframe></div>
+  <div><iframe rel="noreferrer" src="https://www.meteogiuliacci.it/previsioni/widget_comunali.php?staz=Campoli Appennino"  title="previsioni campoli meteogiuliacci" width="1030"  height="500" scrolling="no" border="0" rel='preload' as='font' type='font/woff' crossorigin></iframe></div>
   <br>
   <h2 class="title-micro-section">Anomalie termiche ultimi 10 giorni</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="anomalie termiche"
        src="https://www.cpc.ncep.noaa.gov/products/CFSv2/imagesInd3/glbT850MonInd1.gif"
-       title="Anomalie termiche ultimi 10 giorni"
+       title="Anomalie termiche ultimi 10 giorni" rel="noreferrer"
        (click)="toggleClass($event,'zoomed')"/>
 
   <br>
@@ -52,16 +52,16 @@
 
   <br>
   <h2 class="title-micro-section">Previsioni Meteo Lazio 6 Giorni</h2>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img
-    src="https://www.ilmeteo.it/cartine2/0.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"/></a>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img
-    src="https://www.ilmeteo.it/cartine2/1.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"/></a>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img
-    src="https://www.ilmeteo.it/cartine2/2.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"/></a>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img
-    src="https://www.ilmeteo.it/cartine2/3.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"/></a>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank"><img
-    src="https://www.ilmeteo.it/cartine2/4.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"/></a>
-  <a href="https://www.ilmeteo.it/LAzio" title="Meteo Piemonte" target="_blank"><img
-    src="https://www.ilmeteo.it/cartine2/5.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"/></a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
+    src="https://www.ilmeteo.it/cartine2/0.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
+    src="https://www.ilmeteo.it/cartine2/1.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
+    src="https://www.ilmeteo.it/cartine2/2.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
+    src="https://www.ilmeteo.it/cartine2/3.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
+    src="https://www.ilmeteo.it/cartine2/4.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
+  <a href="https://www.ilmeteo.it/LAzio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
+    src="https://www.ilmeteo.it/cartine2/5.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
 </div>
