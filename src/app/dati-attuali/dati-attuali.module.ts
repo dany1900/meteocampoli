@@ -5,7 +5,6 @@ import {DatiAttualiComponent} from './dati-attuali.component';
 import {RadioSondaggiComponent} from './radio-sondaggi/radio-sondaggi.component';
 import {CommonModule} from '@angular/common';
 import {MainPipe} from '../utils/pipe/main-pipe.module';
-import {QRCodeModule} from 'angularx-qrcode';
 import {IncendiComponent} from './incendi/incendi.component';
 
 
@@ -14,8 +13,7 @@ import {IncendiComponent} from './incendi/incendi.component';
     DatiAttualiRoutingModule,
     SharedModule,
     CommonModule,
-    MainPipe,
-    QRCodeModule
+    MainPipe
   ],
 
   declarations: [

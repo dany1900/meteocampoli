@@ -10,7 +10,7 @@ body {
 }
 
 html {
-  zoom: 0.90 !important;
+  zoom: 0.77 !important;
   overflow-x: hidden;
 }
 
@@ -65,7 +65,7 @@ td {
 }
 
 .bg_clouds {
-  background: url(~assets/img/bg_clouds.jpg) no-repeat center center fixed;
+  background: url(~assets/img/bg_clouds.webp) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -146,7 +146,7 @@ h4 {
   background-color: #2d65c4;
   border-color: #2d65c4;
   /*font-size: 23.7px;*/
-  font-size: 23.7px;
+  font-size: 23.58px;
   width: 100%;
 }
 
@@ -272,7 +272,7 @@ h4 {
   border-radius: 13px;
   border-style: solid;
   border-color: #ffffff;
-  height: 105px;
+  height: 110px;
   cursor: pointer;
 }
 
@@ -304,7 +304,7 @@ h4 {
   border-radius: 30px;
   border-style: solid;
   border-color: #ffffff;
-  background: url(~assets/img/campoli-verde-min.jpg) 23px center no-repeat #FFFFFF;
+  background: url(~assets/img/campoli-verde-min.webp) 23px center no-repeat #FFFFFF;
 }
 
 .grafico-stazione {
@@ -444,7 +444,7 @@ h4 {
   border-style: solid;
   border-color: #ffffff;
   width: 97% !important;
-  height: 750px !important;
+  height: 850px !important;
 }
 
 .radar-italia-windy {
@@ -783,8 +783,7 @@ h4 {
 }
 
 .effemeridi-schema {
-  zoom: 1.2;
-  height: 250px;
+  height: 330px;
   border: none;
 }
 
@@ -807,7 +806,7 @@ h4 {
 }
 
 .riepilogo-frame {
-  height: 3800px !important;
+  height: 4200px !important;
   width: 100% !important;
   zoom: 0.8 !important;
 }
@@ -912,7 +911,7 @@ legend {
 
 .radiosondaggio-europa {
   width: 67% !important;
-  height: 650px !important;
+  height: 730px !important;
 }
 
 .radiosondaggio-pratica {

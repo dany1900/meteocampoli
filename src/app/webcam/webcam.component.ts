@@ -15,7 +15,7 @@ export class WebcamComponent implements OnInit {
   @Input() altitudine: string;
   @Input() urlSite: string;
   @Input() urlWebcam: string;
-  @Input() timeout: boolean = false;
+  @Input() timeout = false;
   imageLoader = true;
 
 

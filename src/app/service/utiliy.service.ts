@@ -34,7 +34,7 @@ export class UtiliyService {
     if (this.isMobile()) {
       this.scroll.scrollToPosition([0, 1130]);
     } else {
-      this.scroll.scrollToPosition([0, 990]);
+      this.scroll.scrollToPosition([0, 845]);
     }
   }
 

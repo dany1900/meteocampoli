@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
@@ -28,7 +28,7 @@ export class TabWebcamComponent implements OnInit, OnChanges {
   isNord: boolean;
   isSud: boolean;
 
-  constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService, private activatedRoute: ActivatedRoute) {
+  constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
     this.paramTab = this.router.url;
     if (this.paramTab === this.pathNordOvest || this.paramTab === this.pathNordEst) {
       this.isNord = true;
@@ -108,7 +108,6 @@ export class TabWebcamComponent implements OnInit, OnChanges {
       }
     }
     this.router.navigate([this.pathGlobale]);
-    //this.tabSelectionTabs(this.id);
   }
 
   ngOnInit() {
@@ -130,8 +129,6 @@ export class TabWebcamComponent implements OnInit, OnChanges {
     } else if (event === 3) {
       this.router.navigate([this.pathTabSud]);
       this.isSud = false;
-    } else if (event === 4) {
-      this.router.navigate([this.pathMontagnaAbruzzo]);
     }
   }
 
@@ -151,8 +148,6 @@ export class TabWebcamComponent implements OnInit, OnChanges {
         this.router.navigate([this.pathTabNord]);
       } else if (event === 3) {
         this.router.navigate([this.pathTabSud]);
-      } else if (event === 4) {
-        this.router.navigate([this.pathMontagnaAbruzzo]);
       }
     }
   }

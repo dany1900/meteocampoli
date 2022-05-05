@@ -23,7 +23,7 @@ export class SatelliteMondoComponent implements OnInit {
 
   constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router, private _compiler: Compiler) {
     this.title = 'Radar Precipitazioni Mondo - Satellite Meteo';
-    this.description = 'Monitoraggio del meteo nel mondo. Satelliti infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.';
+    this.description = 'Monitoraggio del meteo nel mondo. Satellite infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale.';
     this.keywords = 'meteo satellite mondo, meteo satellitare estero, satellite estero meteo campoli, radar meteo mondo , radar precipitazioni mondo meteo campoli, radar fulmini estero meteo campoli, radar precipitazioni mondo zoom, radar pioggia mondo meteo campoli';
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite/mondo';
     this.ogImage = '';

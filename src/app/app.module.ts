@@ -23,7 +23,6 @@ import {CommonModule} from '@angular/common';
 import {AdsenseModule} from 'ng2-adsense';
 import {GtagModule} from 'angular-gtag';
 import {MainPipe} from './utils/pipe/main-pipe.module';
-import {QRCodeModule} from 'angularx-qrcode';
 
 @NgModule({
 
@@ -52,7 +51,6 @@ import {QRCodeModule} from 'angularx-qrcode';
     AdsenseModule.forRoot({
       adClient: 'ca-pub-6215193089819382'
     }),
-    QRCodeModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable

@@ -1,8 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
-import {TabSatelliteEsteroComponent} from './tab-satellite-estero/tab-satellite-estero.component';
-import {SatelliteGeneraleComponent} from './generale/satellite-generale.component';
 
 
 @NgModule({
@@ -37,6 +35,13 @@ import {SatelliteGeneraleComponent} from './generale/satellite-generale.componen
             component: TabSatelliteComponent,
             data: {
               title: 'Radar Precipitazioni Sud Italia - Satellite Meteo'
+            }
+          },
+          {
+            path: 'isole',
+            component: TabSatelliteComponent,
+            data: {
+              title: 'Radar Precipitazioni Sardegna e Sicilia'
             }
           },
           {

@@ -15,12 +15,14 @@ export class TabSatelliteComponent implements OnInit {
   pathCentroItalia = '/satellite/centro-italia';
   pathNordItalia = '/satellite/nord-italia';
   pathSudItalia = '/satellite/sud-italia';
+  pathIsole = '/satellite/isole';
   pathItalia = '/satellite/italia';
   pathTabEstero = '/satellite/estero';
   pathEuropa = '/satellite/europa';
   pathMondo = '/satellite/mondo';
   pathGlobale = '';
   isEstero: boolean;
+  isSudIsole: boolean;
   paramTab: string;
 
   constructor(private router: Router, public utility: UtiliyService) {
@@ -40,26 +42,50 @@ export class TabSatelliteComponent implements OnInit {
           this.utility.titleMatTab = 'Radar Precipitazioni Mondo - Satellite Meteo';
           break;
       }
+    } else if (this.paramTab === this.pathSudItalia || this.paramTab === this.pathIsole) {
+      this.isSudIsole = true;
+      switch (this.paramTab) {
+        case this.pathSudItalia:
+          this.id = 3;
+          this.pathGlobale = this.pathSudItalia;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia - Satellite Meteo';
+          break;
+        case this.pathIsole:
+          this.id = 3;
+          this.pathGlobale = this.pathIsole;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sardegna e Sicilia - Satellite Meteo';
+          break;
+      }
     } else {
       switch (this.paramTab) {
         case this.pathGenerale:
           this.id = 0;
+          this.pathGlobale = this.pathGenerale;
           this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
           break;
         case this.pathCentroItalia:
           this.id = 1;
+          this.pathGlobale = this.pathCentroItalia;
           this.utility.titleMatTab = 'Radar Precipitazioni Centro Italia - Satellite Meteo';
           break;
         case this.pathNordItalia:
           this.id = 2;
+          this.pathGlobale = this.pathNordItalia;
           this.utility.titleMatTab = 'Radar Precipitazioni Nord Italia - Satellite Meteo';
           break;
         case this.pathSudItalia:
           this.id = 3;
-          this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia e Isole - Satellite Meteo ';
+          this.pathGlobale = this.pathSudItalia;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia - Satellite Meteo ';
+          break;
+        case this.pathIsole:
+          this.id = 3;
+          this.pathGlobale = this.pathIsole;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sardegna e Sicilia - Satellite Meteo ';
           break;
         case this.pathItalia:
           this.id = 4;
+          this.pathGlobale = this.pathItalia;
           this.utility.titleMatTab = 'Radar Precipitazioni Protezione Civile';
           break;
         case this.pathEuropa:
@@ -73,12 +99,13 @@ export class TabSatelliteComponent implements OnInit {
           this.utility.titleMatTab = 'Radar Precipitazioni Mondo - Satellite Meteo';
           break;
         default:
+          this.pathGlobale = this.pathGenerale;
           this.utility.titleMatTab = 'Radar Precipitazioni - Satellite Meteo';
           this.id = 0;
           break;
       }
     }
-    this.tabSelectionTabs(this.id);
+    this.router.navigate([this.pathGlobale]);
   }
 
   ngOnInit() {
@@ -114,7 +141,7 @@ export class TabSatelliteComponent implements OnInit {
       } else if (event === 1 || event === 6) {
         this.router.navigate([this.pathMondo]);
       }
-    } else {
+    }  else {
       if (event === 0) {
         this.router.navigate([this.pathGenerale]);
       } else if (event === 1) {

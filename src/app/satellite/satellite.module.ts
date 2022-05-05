@@ -14,6 +14,8 @@ import {SatelliteTestComponent} from './satellite-test/satellite-test.component'
 import {SatelliteEuropaComponent} from './europa/satellite-europa.component';
 import {TabSatelliteEsteroComponent} from './tab-satellite-estero/tab-satellite-estero.component';
 import {SatelliteMondoComponent} from './mondo/satellite-mondo.component';
+import {SatelliteIsoleComponent} from './isole/satellite-isole.component';
+import {TabSatelliteSudComponent} from './tab-satellite-sud/tab-satellite-sud.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import {SatelliteMondoComponent} from './mondo/satellite-mondo.component';
     SatelliteComponent,
     SatelliteTestComponent,
     SatelliteEuropaComponent,
-    SatelliteMondoComponent
+    SatelliteMondoComponent,
+    SatelliteIsoleComponent,
+    TabSatelliteSudComponent
   ],
   exports: []
 })
