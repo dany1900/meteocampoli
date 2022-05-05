@@ -20,7 +20,7 @@ export class SatelliteItaliaComponent implements OnInit {
   // tslint:disable-next-line:max-line-length
   constructor(private seo: SEOService, public utilityService: UtiliyService) {
     this.title = 'Radar Precipitazioni Italia';
-    this.description = 'Satellite infrarossi, meteosat, fulminazioni e sinottica dello stivale. Radar dettagliato delle precipitazioni in tempo reale. Focus sulle precipitazioni.';
+    this.description = 'Satellite infrarossi, meteosat, fulminazioni e sinottica italia. Radar dettagliato delle precipitazioni in tempo reale.';
     this.keywords = 'satellite italia meteo campoli, radar italia meteo campoli, radar precipitazioni italia  meteo campoli, radar fulmini  italia, radar precipitazioni zoom  italia, radar pioggia italia, satellite italia';
     this.ogUrl = 'www.meteocampoli.altervista.org/satellite/italia';
     this.ogImage = '';
