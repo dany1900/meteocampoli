@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {RiepilogoComponent} from './riepilogo.component';
+import {TemperatureMareComponent} from './temperature-mare/temperature-mare.component';
 
 
 @NgModule({
@@ -9,6 +10,10 @@ import {RiepilogoComponent} from './riepilogo.component';
       {
         path: '',
         component: RiepilogoComponent,
+      },
+      {
+        path: 'temperature-mare',
+        component: TemperatureMareComponent,
       },
     ]),
   ],

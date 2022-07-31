@@ -3,6 +3,7 @@ import {RiepilogoComponent} from './riepilogo.component';
 import {NgModule} from '@angular/core';
 import {RiepilogoRoutingModule} from './riepilogo-routing.module';
 import {CommonModule} from '@angular/common';
+import {TemperatureMareComponent} from './temperature-mare/temperature-mare.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import {CommonModule} from '@angular/common';
   ],
 
   declarations: [
-    RiepilogoComponent
+    RiepilogoComponent,
+    TemperatureMareComponent
   ],
   exports: []
 })
