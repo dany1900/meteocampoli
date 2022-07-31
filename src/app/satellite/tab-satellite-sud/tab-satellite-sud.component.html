@@ -1,0 +1,17 @@
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="SUD">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <satellite-sud></satellite-sud>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="ISOLE">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <satellite-isole></satellite-isole>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
