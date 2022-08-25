@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {environment} from '../environments/environment';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 import {SEOService} from './service/seoservice.service';
@@ -20,9 +19,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    if (environment.production && location.protocol === 'https:') {
+    /*if (environment.production && location.protocol === 'https:') {
       window.location.href = location.href.replace('https', 'http');
-    }
+    }*/
     this.scroll.scrollToPosition([0, 570]);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();

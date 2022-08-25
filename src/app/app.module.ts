@@ -23,6 +23,7 @@ import {CommonModule} from '@angular/common';
 import {AdsenseModule} from 'ng2-adsense';
 import {GtagModule} from 'angular-gtag';
 import {MainPipe} from './utils/pipe/main-pipe.module';
+import {MdbCarouselModule} from 'mdb-angular-ui-kit/carousel';
 
 @NgModule({
 
@@ -48,6 +49,7 @@ import {MainPipe} from './utils/pipe/main-pipe.module';
     NgbModule,
     GtagModule.forRoot({trackingId: 'UA-85484839-1', trackPageviews: true}),
     BreadcrumbModule,
+    MdbCarouselModule,
     AdsenseModule.forRoot({
       adClient: 'ca-pub-6215193089819382'
     }),
