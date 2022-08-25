@@ -1,6 +1,6 @@
 <div class="header">
   <div class="slider">
-    <ngb-carousel
+   <!-- <ngb-carousel
       [showNavigationArrows]="true"
       [showNavigationIndicators]="false"
       [interval]="5000"
@@ -33,7 +33,38 @@
              id="slide6"
              width="950" height="330">
       </ng-template>
-    </ngb-carousel>
+    </ngb-carousel>-->
+    <mdb-carousel [controls]="true" [animation]="'fade'" [interval]="5000">
+      <mdb-carousel-item>
+        <img
+          src="../../assets/img/campoli-verde-min.jpg"
+          class="img-slider" alt="campoli verde" width="950" height="330"
+        />
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          src="../../assets/img/campoli-neve-min.jpg"
+          class="img-slider" alt="campoli neve"
+          width="950" height="330"
+        />
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          src="../../assets/img/dolina-alto-min.jpg" loading="lazy"  alt="campoli dolina"
+          width="950" height="330" class="img-slider"
+        />
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+        <img
+          src="../../assets/img/tartufi-min.jpg" loading="lazy" class="img-slider" alt="campoli tartufi"
+          width="950"  height="330"
+        />
+      </mdb-carousel-item>
+      <mdb-carousel-item>
+      <img src="../../assets/img/dolina-neve-min.jpg" loading="lazy" class="img-slider" alt="campoli dolina neve"
+           width="950" height="330">
+      </mdb-carousel-item>
+    </mdb-carousel>
   </div>
 </div>
 
