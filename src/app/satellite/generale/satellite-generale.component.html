@@ -7,9 +7,9 @@
            [class]="'radar'"
 ></satellite>
 
-<satellite [titleImgRadar]="'Satellite Meteosat Immagine Italia'"
-           [srcImage]="'https://www.sat24.com/image.ashx?country=it&0.6041513127274811?v=' + preventCache"
-           [infoAlt]="'satellite meteosat immagine'"
+<satellite [titleImgRadar]="'Satellite Europa'"
+           [srcImage]="'https://www.sat24.com/image.ashx?country=eu&type=zoom&format=640x480001001&rnd=610703?v=' + preventCache"
+           [infoAlt]="'satellite europa'"
            [class]="'radar'"
 ></satellite>
 <satellite [titleImgRadar]="'Satellite Meteosat Italia - Animazione'"
@@ -24,7 +24,7 @@
            [class]="'radar'"></satellite>
 
 <satellite [titleImgRadar]="'Satellite Fulminazioni Europa'"
-           [srcImage]="'http://images.blitzortung.org/Images/image_b_eu.png?t=22640732?v=' + preventCache"
+           [srcImage]="'https://www.blitzortung.org/en/Images/image_b_fr.png?t=27701165?v=' + preventCache"
            [infoAlt]="'satellite fulminazioni'"
            [class]="'radar'"></satellite>
 
@@ -47,7 +47,7 @@
   <br>
   <br>
   <satellite [titleImgRadar]="'Radar Precipitazioni - Animazione'"
-             [srcImage]="'http://www.centrometeomolise.it/radar/gif.php?v=' + preventCache"
+             [srcImage]="'https://www.centrometeomolise.it/radar/gif.php?v=' + preventCache"
              [infoAlt]="'radar precipitazioni animazione'"
              [class]="'radar'"
   ></satellite>
@@ -102,8 +102,15 @@
            [class]="'radar'"></satellite>
 <br>
 <satellite [titleImgRadar]="'Sinottica con minimi e massimi barometrici'"
-           [srcImage]="'http:///www.meteomin.it/Dig_Atm_Jpg/Front_map_G.jpg?v=' + preventCache"
-           [infoAlt]="'sinottica'"
+           [srcImage]="'https://www.dwd.de/DWD/wetter/wv_spez/hobbymet/wetterkarten/bwk_bodendruck_na_ana.png?v=' + preventCache"
+           [infoAlt]="'sinottica europa pressione'"
+           [class]="'radar'"></satellite>
+
+<br>
+<br>
+<satellite [titleImgRadar]="'Analisi con isobare e temperature a 500 Hpa - modello ECMWF'"
+           [srcImage]="'https://www.wetterzentrale.de/maps/ECMOPEU00_0_1.png?v=' + preventCache"
+           [infoAlt]="'sinottica europa pressione'"
            [class]="'radar'"></satellite>
 
 <br>

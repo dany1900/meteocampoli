@@ -2,9 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
-import {Http} from '@angular/http';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {catchError, tap} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'radio-sondaggi',
@@ -56,7 +54,8 @@ export class RadioSondaggiComponent implements OnInit {
     } else if (hours >= 15) {
       run = '12';
     }
-    return this.link = 'http://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=' + year + '&MONTH=' + this.month + '&FROM=' + day + run + '&TO=' + day + run + '&STNM=16245';
+    return this.link = 'https://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=' + year + '&MONTH=' + this.month + '&FROM=' + day + run + '&TO=' + day + run + '&STNM=16245';
+    //return this.link = 'https://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=2022&MONTH=09&FROM=0112&TO=0112&STNM=16245';
   }
 
   errorHandler(url: string) {
