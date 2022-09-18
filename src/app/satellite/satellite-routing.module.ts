@@ -38,10 +38,17 @@ import {TabSatelliteComponent} from './tab-satellite/tab-satellite.component';
             }
           },
           {
-            path: 'isole',
+            path: 'sardegna',
             component: TabSatelliteComponent,
             data: {
-              title: 'Radar Precipitazioni Sardegna e Sicilia'
+              title: 'Radar Precipitazioni Sardegna'
+            }
+          },
+          {
+            path: 'sicilia',
+            component: TabSatelliteComponent,
+            data: {
+              title: 'Radar Precipitazioni Sicilia'
             }
           },
           {

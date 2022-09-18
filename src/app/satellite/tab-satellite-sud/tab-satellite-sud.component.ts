@@ -11,7 +11,8 @@ export class TabSatelliteSudComponent implements OnInit {
 
   id: number;
   pathWebSud = '/satellite/sud-italia';
-  pathWebIsole = '/satellite/isole';
+  pathWebSardegna = '/satellite/sardegna';
+  pathWebSicilia = '/satellite/sicilia';
   @Input() path;
 
   constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
@@ -21,8 +22,11 @@ export class TabSatelliteSudComponent implements OnInit {
       case this.pathWebSud:
         this.id = 0;
         break;
-      case this.pathWebIsole:
+      case this.pathWebSardegna:
         this.id = 1;
+        break;
+      case this.pathWebSicilia:
+        this.id = 2;
         break;
       default:
         this.id = 0;
@@ -41,8 +45,11 @@ export class TabSatelliteSudComponent implements OnInit {
       this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia - Satellite Meteo';
       this.router.navigate([this.pathWebSud]);
     } else if (event === 1) {
-      this.utility.titleMatTab = 'Radar Precipitazioni Sardegna e Sicilia';
-      this.router.navigate([this.pathWebIsole]);
+      this.utility.titleMatTab = 'Radar Precipitazioni Sardegna';
+      this.router.navigate([this.pathWebSardegna]);
+    } else if (event === 2) {
+      this.utility.titleMatTab = 'Radar Precipitazioni Sicilia';
+      this.router.navigate([this.pathWebSicilia]);
     }
   }
 }

@@ -15,7 +15,8 @@ export class TabSatelliteComponent implements OnInit {
   pathCentroItalia = '/satellite/centro-italia';
   pathNordItalia = '/satellite/nord-italia';
   pathSudItalia = '/satellite/sud-italia';
-  pathIsole = '/satellite/isole';
+  pathSardegna = '/satellite/sardegna';
+  pathSicilia = '/satellite/sicilia';
   pathItalia = '/satellite/italia';
   pathTabEstero = '/satellite/estero';
   pathEuropa = '/satellite/europa';
@@ -42,7 +43,7 @@ export class TabSatelliteComponent implements OnInit {
           this.utility.titleMatTab = 'Radar Precipitazioni Mondo - Satellite Meteo';
           break;
       }
-    } else if (this.paramTab === this.pathSudItalia || this.paramTab === this.pathIsole) {
+    } else if (this.paramTab === this.pathSudItalia || this.paramTab === this.pathSardegna) {
       this.isSudIsole = true;
       switch (this.paramTab) {
         case this.pathSudItalia:
@@ -50,10 +51,15 @@ export class TabSatelliteComponent implements OnInit {
           this.pathGlobale = this.pathSudItalia;
           this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia - Satellite Meteo';
           break;
-        case this.pathIsole:
+        case this.pathSardegna:
           this.id = 3;
-          this.pathGlobale = this.pathIsole;
-          this.utility.titleMatTab = 'Radar Precipitazioni Sardegna e Sicilia - Satellite Meteo';
+          this.pathGlobale = this.pathSardegna;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sardegna - Satellite Meteo';
+          break;
+        case this.pathSicilia:
+          this.id = 3;
+          this.pathGlobale = this.pathSicilia;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sicilia - Satellite Meteo';
           break;
       }
     } else {
@@ -78,10 +84,15 @@ export class TabSatelliteComponent implements OnInit {
           this.pathGlobale = this.pathSudItalia;
           this.utility.titleMatTab = 'Radar Precipitazioni Sud Italia - Satellite Meteo ';
           break;
-        case this.pathIsole:
+        case this.pathSardegna:
           this.id = 3;
-          this.pathGlobale = this.pathIsole;
-          this.utility.titleMatTab = 'Radar Precipitazioni Sardegna e Sicilia - Satellite Meteo ';
+          this.pathGlobale = this.pathSardegna;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sardegna - Satellite Meteo ';
+          break;
+        case this.pathSicilia:
+          this.id = 3;
+          this.pathGlobale = this.pathSicilia;
+          this.utility.titleMatTab = 'Radar Precipitazioni Sicilia - Satellite Meteo ';
           break;
         case this.pathItalia:
           this.id = 4;

@@ -14,8 +14,9 @@ import {SatelliteTestComponent} from './satellite-test/satellite-test.component'
 import {SatelliteEuropaComponent} from './europa/satellite-europa.component';
 import {TabSatelliteEsteroComponent} from './tab-satellite-estero/tab-satellite-estero.component';
 import {SatelliteMondoComponent} from './mondo/satellite-mondo.component';
-import {SatelliteIsoleComponent} from './isole/satellite-isole.component';
+import {SatelliteSardegnaComponent} from './sardegna/satellite-sardegna.component';
 import {TabSatelliteSudComponent} from './tab-satellite-sud/tab-satellite-sud.component';
+import {SatelliteSiciliaComponent} from './sicilia/satellite-sicilia.component';
 
 
 @NgModule({
@@ -38,8 +39,10 @@ import {TabSatelliteSudComponent} from './tab-satellite-sud/tab-satellite-sud.co
     SatelliteTestComponent,
     SatelliteEuropaComponent,
     SatelliteMondoComponent,
-    SatelliteIsoleComponent,
-    TabSatelliteSudComponent
+    SatelliteSardegnaComponent,
+    TabSatelliteSudComponent,
+    SatelliteSardegnaComponent,
+    SatelliteSiciliaComponent,
   ],
   exports: []
 })

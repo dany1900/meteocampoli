@@ -20,9 +20,11 @@ export class TabWebcamComponent implements OnInit, OnChanges {
   pathTabNord = '/webcam/montagna/nord';
   pathTabSud = '/webcam/montagna/sud';
   pathSud = '/webcam/montagna/sud-italia';
-  pathIsole = '/webcam/montagna/isole';
+  pathSardegna = '/webcam/montagna/sardegna';
+  pathSicilia = '/webcam/montagna/sicilia';
   pathNordEst = '/webcam/montagna/nord-est';
   pathNordOvest = '/webcam/montagna/nord-ovest';
+  pathEmiliaRomagna = '/webcam/montagna/emilia-romagna';
   paramTab: string;
   pathGlobale = '';
   isNord: boolean;
@@ -30,7 +32,7 @@ export class TabWebcamComponent implements OnInit, OnChanges {
 
   constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
     this.paramTab = this.router.url;
-    if (this.paramTab === this.pathNordOvest || this.paramTab === this.pathNordEst) {
+    if (this.paramTab === this.pathNordOvest || this.paramTab === this.pathNordEst || this.paramTab === this.pathEmiliaRomagna) {
       this.isNord = true;
       switch (this.paramTab) {
         case this.pathNordOvest:
@@ -42,6 +44,11 @@ export class TabWebcamComponent implements OnInit, OnChanges {
           this.id = 2;
           this.pathGlobale = this.pathNordEst;
           this.utility.titleMatTab = 'WebCam Nord Est Montagna';
+          break;
+        case this.pathEmiliaRomagna:
+          this.id = 2;
+          this.pathGlobale = this.pathEmiliaRomagna;
+          this.utility.titleMatTab = 'WebCam Emilia Romagna Montagna';
           break;
       }
     } else {
@@ -66,15 +73,25 @@ export class TabWebcamComponent implements OnInit, OnChanges {
           this.id = 2;
           this.utility.titleMatTab = 'WebCam Nord Ovest Montagna';
           break;
+        case this.pathEmiliaRomagna:
+          this.pathGlobale = this.pathEmiliaRomagna;
+          this.id = 2;
+          this.utility.titleMatTab = 'WebCam Emilia Romagna Montagna';
+          break;
         case this.pathSud:
           this.pathGlobale = this.pathSud;
           this.id = 3;
           this.utility.titleMatTab = 'WebCam Sud Italia Montagna';
           break;
-        case this.pathIsole:
-          this.pathGlobale = this.pathIsole;
+        case this.pathSardegna:
+          this.pathGlobale = this.pathSardegna;
           this.id = 3;
-          this.utility.titleMatTab = 'WebCam Sardegna e Sicilia Montagna';
+          this.utility.titleMatTab = 'WebCam Sardegna Montagna';
+          break;
+        case this.pathSicilia:
+          this.pathGlobale = this.pathSicilia;
+          this.id = 3;
+          this.utility.titleMatTab = 'WebCam Sicilia Montagna';
           break;
         case this.pathMontagnaAbruzzo:
           this.pathGlobale = this.pathMontagnaAbruzzo;
@@ -138,6 +155,8 @@ export class TabWebcamComponent implements OnInit, OnChanges {
         this.router.navigate([this.pathNordOvest]);
       } else if (event === 1 || event === 6) {
         this.router.navigate([this.pathNordEst]);
+      } else if (event === 2 || event === 7) {
+        this.router.navigate([this.pathEmiliaRomagna]);
       }
     } else {
       if (event === 0) {

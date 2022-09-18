@@ -12,6 +12,7 @@ export class TabNordWebcamComponent implements OnInit {
   id: number;
   pathWebNordEst = '/webcam/montagna/nord-est';
   pathWebNordOvest = '/webcam/montagna/nord-ovest';
+  pathWebEmiliaRomagna = '/webcam/montagna/emilia-romagna';
   @Input() path;
 
   constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
@@ -23,6 +24,9 @@ export class TabNordWebcamComponent implements OnInit {
         break;
       case this.pathWebNordOvest:
         this.id = 1;
+        break;
+      case this.pathWebEmiliaRomagna:
+        this.id = 2;
         break;
       default:
         this.id = 0;
@@ -43,6 +47,9 @@ export class TabNordWebcamComponent implements OnInit {
     } else if (event === 1) {
       this.utility.titleMatTab = 'WebCam Nord Ovest Montagna';
       this.router.navigate([this.pathWebNordOvest]);
+    } else if (event === 2) {
+      this.utility.titleMatTab = 'WebCam Emilia Romagna Montagna';
+      this.router.navigate([this.pathWebEmiliaRomagna]);
     }
   }
 }

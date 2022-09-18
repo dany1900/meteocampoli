@@ -11,7 +11,8 @@ export class TabSudWebcamComponent implements OnInit {
 
   id: number;
   pathWebSud = '/webcam/montagna/sud-italia';
-  pathWebIsole = '/webcam/montagna/isole';
+  pathWebSardegna = '/webcam/montagna/sardegna';
+  pathWebSicilia = '/webcam/montagna/sicilia';
   @Input() path;
 
   constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
@@ -21,8 +22,11 @@ export class TabSudWebcamComponent implements OnInit {
       case this.pathWebSud:
         this.id = 0;
         break;
-      case this.pathWebIsole:
+      case this.pathWebSardegna:
         this.id = 1;
+        break;
+      case this.pathWebSicilia:
+        this.id = 2;
         break;
       default:
         this.id = 0;
@@ -41,8 +45,11 @@ export class TabSudWebcamComponent implements OnInit {
       this.utility.titleMatTab = 'WebCam Sud Italia Montagna';
       this.router.navigate([this.pathWebSud]);
     } else if (event === 1) {
-      this.utility.titleMatTab = 'WebCam Sardegna e Sicilia Montagna';
-      this.router.navigate([this.pathWebIsole]);
+      this.utility.titleMatTab = 'WebCam Sardegna Montagna';
+      this.router.navigate([this.pathWebSardegna]);
+    } else if (event === 2) {
+      this.utility.titleMatTab = 'WebCam Sicilia Montagna';
+      this.router.navigate([this.pathWebSicilia]);
     }
   }
 }

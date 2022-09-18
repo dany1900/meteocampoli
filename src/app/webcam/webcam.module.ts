@@ -48,6 +48,7 @@ import {WebcamSudComponent} from './webcam-sud-italia/webcam-sud/webcam-sud.comp
 import {WebcamIsoleComponent} from './webcam-sud-italia/webcam-isole/webcam-isole.component';
 import {TabSudWebcamComponent} from './tab-sud-webcam/tab-sud-webcam.component';
 import {TabNordWebcamComponent} from './tab-nord-webcam/tab-nord-webcam.component';
+import {WebcamEmiliaRomagnaComponent} from './webcam-nord-italia/webcam-emilia-romagna/webcam-emilia-romagna.component';
 
 
 @NgModule({
@@ -104,7 +105,8 @@ import {TabNordWebcamComponent} from './tab-nord-webcam/tab-nord-webcam.componen
     WebcamSudComponent,
     WebcamSardegnaComponent,
     WebcamSiciliaComponent,
-    WebcamIsoleComponent
+    WebcamIsoleComponent,
+    WebcamEmiliaRomagnaComponent
   ],
   exports: []
 })
