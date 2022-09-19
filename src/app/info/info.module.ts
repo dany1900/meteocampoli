@@ -19,6 +19,9 @@ import {CommonModule} from '@angular/common';
 import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.component';
 import {AdsenseModule} from 'ng2-adsense';
 import {NoccioloComponent} from './articoli/giardinaggio/nocciolo/nocciolo.component';
+import {StratwarmingComponent} from './articoli/meteo/stratwarming/stratwarming.component';
+import {AtmosferaComponent} from './articoli/meteo/atmosfera/atmosfera.component';
+import {VorticePolareComponent} from './articoli/meteo/vortice-polare/vortice-polare.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import {NoccioloComponent} from './articoli/giardinaggio/nocciolo/nocciolo.compo
     ViteComponent,
     AlbicoccoComponent,
     OndataCaldo2017Component,
-    RosaVentiComponent
+    RosaVentiComponent,
+    StratwarmingComponent,
+    AtmosferaComponent,
+    VorticePolareComponent
   ],
   exports: []
 })

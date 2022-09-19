@@ -14,6 +14,9 @@ import {GiardinaggioComponent} from './articoli/giardinaggio/giardinaggio.compon
 import {OndataCaldo2017Component} from './articoli/curiosita/ondata-caldo-2017/ondata-caldo-2017.component';
 import {RosaVentiComponent} from './articoli/meteo/rosa-venti/rosa-venti.component';
 import {NoccioloComponent} from './articoli/giardinaggio/nocciolo/nocciolo.component';
+import {StratwarmingComponent} from './articoli/meteo/stratwarming/stratwarming.component';
+import {AtmosferaComponent} from './articoli/meteo/atmosfera/atmosfera.component';
+import {VorticePolareComponent} from './articoli/meteo/vortice-polare/vortice-polare.component';
 
 
 @NgModule({
@@ -83,6 +86,30 @@ import {NoccioloComponent} from './articoli/giardinaggio/nocciolo/nocciolo.compo
             data: {
               title: 'Articoli - Rosa dei Venti - Meteo Campoli',
               breadcrumb: 'rosa-venti'
+            }
+          },
+          {
+            path: 'articoli/meteo/stratwarming',
+            component: StratwarmingComponent,
+            data: {
+              title: 'Articoli - Stratwarming - Meteo Campoli',
+              breadcrumb: 'stratwarming'
+            }
+          },
+          {
+            path: 'articoli/meteo/atmosfera',
+            component: AtmosferaComponent,
+            data: {
+              title: 'Articoli - Atmosfera - Meteo Campoli',
+              breadcrumb: 'atmosfera'
+            }
+          },
+          {
+            path: 'articoli/meteo/vortice-polare',
+            component: VorticePolareComponent,
+            data: {
+              title: 'Articoli - Vortice Polare - Meteo Campoli',
+              breadcrumb: 'vortice-polare'
             }
           },
           {

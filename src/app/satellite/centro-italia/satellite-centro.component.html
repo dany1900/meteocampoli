@@ -31,8 +31,14 @@
 <br>
 
 <satellite [titleImgRadar]="'Radar Precipitazioni Lazio e Abruzzo'"
-           [srcImage]="'http://satollo.aquila.infn.it/midia/ref/ultimo.6.png?' + preventCache"
+           [srcImage]="imageToShow"
            [infoAlt]="'radar precipitazioni lazio abruzzo'"
+           [class]="'radar'"></satellite>
+<br>
+<br>
+<satellite [titleImgRadar]="'Radar Precipitazioni Centro italia - Animazione'"
+           [srcImage]="'https://www.ilmeteo.it/altro/radar-centro.gif?' + preventCache"
+           [infoAlt]="'radar precipitazioni centro italia in movimento'"
            [class]="'radar'"></satellite>
 <br>
 <br>

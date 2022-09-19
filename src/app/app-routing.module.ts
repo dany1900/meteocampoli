@@ -38,6 +38,8 @@ export const routes: Routes = [
   {path: 'webcam-umbro-marchigiane.html', redirectTo: '/webcam/montagna/umbria', pathMatch: 'full'},
   {path: 'webcam-molise.html', redirectTo: '/webcam/montagna/molise', pathMatch: 'full'},
   {path: 'webcam/montagna/isole', redirectTo: '/webcam/montagna/sardegna', pathMatch: 'full'},
+  {path: 'webcam/nord-italia', redirectTo: '/webcam/montagna/nord-est', pathMatch: 'full'},
+  {path: 'webcam/sud-italia', redirectTo: '/webcam/montagna/sud-italia', pathMatch: 'full'},
   {path: 'satellite.htm', redirectTo: '/satellite/generale', pathMatch: 'full'},
   {path: 'satellite-centro.html', redirectTo: '/satellite/centro-italia', pathMatch: 'full'},
   {path: 'satelliteCentro.html', redirectTo: '/satellite/centro-italia', pathMatch: 'full'},
