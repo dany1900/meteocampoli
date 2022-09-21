@@ -49,7 +49,6 @@ export const routes: Routes = [
   {path: 'terremoti.html', redirectTo: '/terremoti/italia', pathMatch: 'full'},
   {path: 'terremoti-italia.html', redirectTo: '/terremoti/italia', pathMatch: 'full'},
   {path: 'terremoti-mondo.html', redirectTo: '/terremoti/mondo', pathMatch: 'full'},
-  {path: 'terremoti-mondo.html', redirectTo: '/terremoti/mondo', pathMatch: 'full'},
   {path: 'infos.htm', redirectTo: '/info/curiosita', pathMatch: 'full'},
   {path: 'effemeridi.htm', redirectTo: '/info/effemeridi', pathMatch: 'full'},
   {path: 'sole-monitoraggio.html', redirectTo: '/info/effemeridi', pathMatch: 'full'},
