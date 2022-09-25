@@ -2,11 +2,96 @@
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
-  <div class="center">
-    <h2 class="title-micro-section">Lista aggiornata dei terremoti - fonte INGV</h2>
-    <iframe src="http://cnt.rm.ingv.it/" frameborder="0" scrolling="si" style="margin-top: -400px;  margin-left: 0px"
-            width="958" height="1800" class="terremoti-frame" title="terremoti-ingv"
-            (load)="imageLoader = false;"></iframe>
+  <h2 class="title-micro-section"> Lista Terremoti Italia ultimi 4 giorni > 2.0 Magnitudo </h2>
+  <div class="mat-elevation-z8 table-meteocampoli center " *ngIf="isVisible">
+    <!--<form [formGroup]="terremotiFormGroup" (ngSubmit)="submitTerremoti()">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+          <mat-form-field>
+            <mat-label>Magnitudo Minima</mat-label>
+            <br>
+            <select matSelect formControlName='magnitudoMinimaControl'>
+              <input matInput>
+              <option matOption>Seleziona</option>
+              <option matOption *ngFor="let magnitudo of [1,2,3,4,5,6,7]" [value]="magnitudo">{{magnitudo}}</option>
+            </select>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+          <mat-form-field>
+            <mat-label>Magnitudo Massima</mat-label>
+            <br>
+            <select matSelect formControlName='magnitudoMassimaControl'>
+              <input matInput>
+              <option matOption>Seleziona</option>
+              <option matOption *ngFor="let magnitudo of [1,2,3,4,5,6,7]" [value]="magnitudo">{{magnitudo}}</option>
+            </select>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+          <mat-form-field>
+            <mat-label>Data Inizio</mat-label>
+            <input matInput [matDatepicker]="picker1">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+          <mat-form-field>
+            <mat-label>Data Inizio</mat-label>
+            <input matInput [matDatepicker]="picker2">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" type="button" (click)="submitTerremoti()">Cerca</button>
+    </form>
+    <br>-->
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="dataOra">
+        <th class="terremoti-data-ora" mat-header-cell *matHeaderCellDef mat-sort-header> Data e ora</th>
+        <td class="terremoti-data-ora" mat-cell *matCellDef="let element"> {{element.dataOra}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="magnitudo">
+        <th class="terremoti-magnitudo" mat-header-cell *matHeaderCellDef mat-sort-header> Magnitudo</th>
+        <td class="terremoti-magnitudo" mat-cell *matCellDef="let element"> {{element.magnitudo}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="zona">
+        <th class="terremoti-zona" mat-header-cell *matHeaderCellDef mat-sort-header> Zona</th>
+        <td class="terremoti-zona" mat-cell *matCellDef="let element"> {{element.zona}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="profondita">
+        <th class="terremoti-profondita" mat-header-cell *matHeaderCellDef mat-sort-header> Profondità</th>
+        <td class="terremoti-profondita" mat-cell *matCellDef="let element"> {{element.profondita}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <!--<tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>-->
+    </table>
+    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
+                   [length]="totalSize"
+                   [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)"
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
   </div>
   <br>
   <h2 class="title-micro-section"> Mappa Sismica Italia</h2>

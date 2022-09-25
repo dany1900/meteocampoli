@@ -963,7 +963,54 @@ legend {
   visibility: hidden;
 }
 
+.table-meteocampoli{
+  border-radius: 25px;
+  border: 14px;
+  border-style: solid;
+  border-color: #ffffff;
+  width: 95%;
+  margin-left: 2%;
+}
 
+.mat-header-cell {
+  font-size: 20px!important;
+  color: black!important;
+}
+
+.mat-cell, .mat-footer-cell {
+  font-size: 21px!important;
+  text-align: left!important;
+}
+
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+  text-align: center!important;
+}
+
+.terremoti-data-ora{
+  background-color: #e3dede;
+  width: 23%;
+}
+
+.terremoti-magnitudo{
+  background-color: #ffeaea;
+  font-weight: bold;
+  width: 7%!important;
+}
+
+.terremoti-zona{
+  background-color: #f1fdf7;;
+  /*font-weight: bold;*/
+}
+
+.terremoti-profondita{
+  background-color: #ececfa;
+  /*font-weight: bold;*/
+}
+
+.mat-form-field-infix {
+  font-size: 20px!important;
+  font-weight: bold!important;
+}
 
 
 

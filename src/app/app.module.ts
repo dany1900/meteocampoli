@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MenuComponent} from './menu/menu.component';
 import {SliderComponent} from './slider/slider.component';
 import {HeaderComponent} from './header/header.component';
@@ -50,6 +50,7 @@ import {MdbCarouselModule} from 'mdb-angular-ui-kit/carousel';
     GtagModule.forRoot({trackingId: 'UA-85484839-1', trackPageviews: true}),
     BreadcrumbModule,
     MdbCarouselModule,
+    ReactiveFormsModule,
     AdsenseModule.forRoot({
       adClient: 'ca-pub-6215193089819382'
     }),

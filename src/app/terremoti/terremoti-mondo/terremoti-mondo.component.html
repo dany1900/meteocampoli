@@ -1,4 +1,50 @@
 <br>
+<div>
+  <h2 class="title-micro-section"> Lista Terremoti Mondo ultimi 10 giorni > 5.0 Magnitudo</h2>
+  <div class="mat-elevation-z8 table-meteocampoli center " *ngIf="isVisible">
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource"  matSort>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="dataOra">
+        <th class="terremoti-data-ora" mat-header-cell *matHeaderCellDef mat-sort-header> Data e ora </th>
+        <td class="terremoti-data-ora" mat-cell *matCellDef="let element"> {{element.dataOra}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="magnitudo">
+        <th class="terremoti-magnitudo" mat-header-cell *matHeaderCellDef mat-sort-header> Magnitudo </th>
+        <td class="terremoti-magnitudo" mat-cell *matCellDef="let element"> {{element.magnitudo}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="zona">
+        <th class="terremoti-zona" mat-header-cell *matHeaderCellDef mat-sort-header> Zona </th>
+        <td class="terremoti-zona" mat-cell *matCellDef="let element"> {{element.zona}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="profondita">
+        <th class="terremoti-profondita"mat-header-cell *matHeaderCellDef mat-sort-header> Profondità </th>
+        <td class="terremoti-profondita" mat-cell *matCellDef="let element"> {{element.profondita}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <!--<tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>-->
+    </table>
+    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize"
+                   [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)"
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+  <br>
 <h2 class="title-micro-section"> Terremoti Mondo Anni 1973 - 2019</h2>
 <img src='./assets/img/terremoti-mondo.png'
      alt="mappa rischio sismico mondiale" class="terremoti-mondo" width="642" height="285"
