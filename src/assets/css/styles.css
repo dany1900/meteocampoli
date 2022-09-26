@@ -1050,4 +1050,18 @@ table.mat-table {
   width: 100% !important;
 }
 
+.mappa-terremoti{
+  width: 95%;
+  border-radius: 20px;
+  border: 14px;
+  border-style: solid;
+  border-color: #ffffff;
+  -webkit-user-select: none;
+  cursor: -webkit-zoom-in;
+}
+
+iframe#aswift_1 {
+  width: 1300px!important;
+}
+
 

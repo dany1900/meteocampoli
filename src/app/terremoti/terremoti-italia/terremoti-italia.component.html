@@ -54,7 +54,7 @@
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
     </mat-form-field>
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
       <!-- Data Ora Column -->
       <ng-container matColumnDef="dataOra">
@@ -89,15 +89,21 @@
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr>-->
     </table>
-    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"
+    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[10, 20, 40]" [showFirstLastButtons]="true"
                    [length]="totalSize"
                    [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)"
                    aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
   <br>
-  <h2 class="title-micro-section"> Mappa Sismica Italia</h2>
-  <img src='./assets/img/mappa-sismica.png'
-       alt="mappa rischio sismico" width="689" height="900">
+  <br>
+  <h2 class="title-micro-section"> Mappa Sismica Italia - Pericolosità</h2>
+  <img src='./assets/img/mappa-sismica-italia.png'
+       alt="mappa rischio sismico" class="mappa-terremoti" (click)="toggleClass($event,'zoomed')">
+<br>
+  <br>
+  <h2 class="title-micro-section"> Mappa Sismica Italia - Intensità</h2>
+  <img src='./assets/img/mappa-sismica-italia-2.png'
+       alt="mappa terremoti italia intensita" class="mappa-terremoti" (click)="toggleClass($event,'zoomed')">
 
 </div>

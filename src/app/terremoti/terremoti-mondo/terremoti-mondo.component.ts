@@ -26,7 +26,11 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
   isVisible = false;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatSort) set matSort(sort: MatSort) {
+    if (!this.dataSource.sort) {
+      this.dataSource.sort = sort;
+    }
+  }
   public pageSize = 20;
   public currentPage = 0;
   public totalSize = 0;
@@ -51,7 +55,6 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
   }
 
   tabellaTerremoti() {
@@ -75,7 +78,7 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
       const eachLine = data?.toString().split('\n');
       let count = 0;
       eachLine?.forEach((line: string) => {
-        if (count !== 0) {
+        if (count !== 0 && line) {
           const lineSplit = line.split('|');
           const date = new Date(lineSplit[1]);
           const dateFormatted = date.toLocaleString().replace(',', ' ');
@@ -93,7 +96,6 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
       if (this.isVisible) {
         this.dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
         this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
         this.totalSize = this.arrResponse.length;
         this.iterator();
       }

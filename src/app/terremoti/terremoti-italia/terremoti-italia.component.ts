@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
@@ -28,7 +28,12 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
   isVisible = false;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild(MatSort) set matSort(sort: MatSort) {
+    if (!this.dataSource.sort) {
+      this.dataSource.sort = sort;
+    }
+  }
+
   public pageSize = 20;
   public currentPage = 0;
   public totalSize = 0;
@@ -39,7 +44,7 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
   selectedMagnitudo = this.magnitudos;
   terremotiFormGroup: FormGroup;
 
-  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService, private http: HttpClient) {
+  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService, private http: HttpClient, public renderer: Renderer2) {
     this.title = 'Terremoti Elenco Italia - Meteo Campoli';
     this.description = 'Riepilogo delle ultime rilevazioni dei terremoti. Possibilita di accedere a tutte le statistiche mediante indirizzamento. Mappa pericolosità sismica. Focus sull\'Italia';
     this.keywords = 'terremoti meteo campoli, lista terremoti, ultimi terremoti campoli, terremoti campoli appennino, ultimo terremoto campoli, lista terremoti campoli appennino,elenco terremoti in italia, lista ultimi terremoti,lista terremoti ingv aggiornata,elenco sismico italiano,iside terremoti,iside lista terremoti,elenco scosse terremoto,terremoti elenco,ingv lista terremoti iside,meteo terremoti altervista,istituto nazionale geofisica e vulcanologia lista terremoti,lista terremoti italia,elenco terremoti italia,elenco terremoti,lista terremoti qualsiasi magnitudo,bollettino terremoti';
@@ -59,7 +64,15 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  }
+
+  toggleClass(event: any, classe: string) {
+    const hasClass = event.target.classList.contains(classe);
+    if (hasClass) {
+      this.renderer.removeClass(event.target, classe);
+    } else {
+      this.renderer.addClass(event.target, classe);
+    }
   }
 
   tabellaTerremoti(minMag: number, maxMag: number, startDate: string, endDate: string) {
@@ -92,25 +105,24 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
       const eachLine = data?.toString().split('\n');
       let count = 0;
       eachLine?.forEach((line: string) => {
-        if (count !== 0) {
+        if (count !== 0 && line) {
           const lineSplit = line.split('|');
           const date = new Date(lineSplit[1]);
           const dateFormatted = date.toLocaleString().replace(',', ' ');
-          const terremoti: TerremotiResponse = {
-            dataOra: dateFormatted,
-            magnitudo: lineSplit[10],
-            profondita: lineSplit[4],
-            zona: lineSplit[12],
-          };
-          this.arrResponse.push(terremoti);
+            const terremoti: TerremotiResponse = {
+              dataOra: dateFormatted,
+              magnitudo: lineSplit[10],
+              profondita: lineSplit[4],
+              zona: lineSplit[12],
+            };
+            this.arrResponse.push(terremoti);
+          }
           this.isVisible = true;
-        }
         count++;
       });
       if (this.isVisible) {
         this.dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
         this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
         this.totalSize = this.arrResponse.length;
         this.iterator();
         this.imageLoader = false;
@@ -138,10 +150,6 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
     const start = this.currentPage * this.pageSize;
     const part = this.arrResponse.slice(start, end);
     this.dataSource = new MatTableDataSource<TerremotiResponse>(part);
-  }
-
-  onKey(value) {
-    /*this.selectedMagnitudo = this.searchMagnitudo(value);*/
   }
 
   searchMagnitudo(value: number) {
