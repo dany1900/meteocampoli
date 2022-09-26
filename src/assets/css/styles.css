@@ -986,23 +986,47 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   text-align: center!important;
 }
 
-.terremoti-data-ora{
+.terremoti-data-ora-header{
   background-color: #e3dede;
   width: 23%;
+  padding-left: 7% !important;
 }
 
-.terremoti-magnitudo{
+.terremoti-data-ora-body{
+  background-color: #e3dede;
+  width: 24%;
+}
+
+.terremoti-magnitudo-header{
   background-color: #ffeaea;
   font-weight: bold;
-  width: 7%!important;
+  padding-left: 3%!important;
 }
 
-.terremoti-zona{
+.terremoti-magnitudo-body{
+  background-color: #ffeaea;
+  font-weight: bold;
+  padding-left: 3%!important;
+}
+
+.terremoti-zona-header{
+  background-color: #f1fdf7;
+  padding-left: 23%!important;
+  /*font-weight: bold;*/
+}
+
+.terremoti-zona-body{
   background-color: #f1fdf7;;
   /*font-weight: bold;*/
 }
 
-.terremoti-profondita{
+.terremoti-profondita-header{
+  background-color: #ececfa;
+  padding-left: 1%!important;
+  /*font-weight: bold;*/
+}
+
+.terremoti-profondita-body{
   background-color: #ececfa;
   /*font-weight: bold;*/
 }
@@ -1012,5 +1036,18 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   font-weight: bold!important;
 }
 
+.mat-paginator-container {
+  /*
+  font-size: 20px !important;
+  */
+}
+
+.mat-paginator, .mat-paginator-page-size .mat-select-trigger {
+  font-size: 20px!important;
+}
+
+table.mat-table {
+  width: 100% !important;
+}
 
 

@@ -1,6 +1,6 @@
 <br>
 <div>
-  <h2 class="title-micro-section"> Lista Terremoti Mondo ultimi 10 giorni > 5.0 Magnitudo</h2>
+  <h2 class="title-micro-section"> Lista Terremoti Mondo ultimi 15 giorni > 5.0 Magnitudo</h2>
   <div class="mat-elevation-z8 table-meteocampoli center " *ngIf="isVisible">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
@@ -8,28 +8,30 @@
     </mat-form-field>
     <table mat-table [dataSource]="dataSource"  matSort>
 
-      <!-- Name Column -->
+      <!-- Data Ora Column -->
       <ng-container matColumnDef="dataOra">
-        <th class="terremoti-data-ora" mat-header-cell *matHeaderCellDef mat-sort-header> Data e ora </th>
-        <td class="terremoti-data-ora" mat-cell *matCellDef="let element"> {{element.dataOra}} </td>
+        <th class="terremoti-data-ora-header" mat-header-cell *matHeaderCellDef mat-sort-header> Data e ora</th>
+        <td class="terremoti-data-ora-body" mat-cell *matCellDef="let element"> {{element.dataOra}} </td>
       </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="magnitudo">
-        <th class="terremoti-magnitudo" mat-header-cell *matHeaderCellDef mat-sort-header> Magnitudo </th>
-        <td class="terremoti-magnitudo" mat-cell *matCellDef="let element"> {{element.magnitudo}} </td>
-      </ng-container>
-
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="zona">
-        <th class="terremoti-zona" mat-header-cell *matHeaderCellDef mat-sort-header> Zona </th>
-        <td class="terremoti-zona" mat-cell *matCellDef="let element"> {{element.zona}} </td>
-      </ng-container>
-
+      <!-- Profondita Column -->
       <ng-container matColumnDef="profondita">
-        <th class="terremoti-profondita"mat-header-cell *matHeaderCellDef mat-sort-header> Profondità </th>
-        <td class="terremoti-profondita" mat-cell *matCellDef="let element"> {{element.profondita}} </td>
+        <th class="terremoti-profondita-header" mat-header-cell *matHeaderCellDef mat-sort-header> Profondità</th>
+        <td class="terremoti-profondita-body" mat-cell *matCellDef="let element"> {{element.profondita}} </td>
       </ng-container>
+
+      <!-- Zona Column -->
+      <ng-container matColumnDef="zona">
+        <th class="terremoti-zona-header" mat-header-cell *matHeaderCellDef mat-sort-header> Zona</th>
+        <td class="terremoti-zona-body" mat-cell *matCellDef="let element"> {{element.zona}} </td>
+      </ng-container>
+
+      <!-- Magnitudo Column -->
+      <ng-container matColumnDef="magnitudo">
+        <th class="terremoti-magnitudo-header" mat-header-cell *matHeaderCellDef mat-sort-header> Magnitudo</th>
+        <td class="terremoti-magnitudo-body" mat-cell *matCellDef="let element"> {{element.magnitudo}} </td>
+      </ng-container>
+
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -22,7 +22,7 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
   ogUrl: string;
   ogImage: string;
   arrResponse: TerremotiResponse[] = [];
-  displayedColumns: string[] = ['dataOra', 'magnitudo', 'zona', 'profondita'];
+  displayedColumns: string[] = ['dataOra', 'profondita', 'zona', 'magnitudo'];
   dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
   isVisible = false;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -57,7 +57,7 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
   tabellaTerremoti() {
     const today = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
     const d = new Date(today);
-    d.setDate(d.getDate() - 10); // subtract 10 days
+    d.setDate(d.getDate() - 15); // subtract 15 days
     const dateMinus4Day = d.toISOString().split('T')[0];
     const url = 'https://webservices.ingv.it/fdsnws/event/1/query';
     const headers = new HttpHeaders();

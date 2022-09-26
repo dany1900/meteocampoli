@@ -10,6 +10,7 @@ import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
 import {StazioniGeneraliComponent} from './stazioni-generali/stazioni-generali.component';
 import {CommonModule} from '@angular/common';
 import {StazioniUmbriaComponent} from './stazioni-umbria/stazioni-umbria.component';
+import {StazioniMarcheComponent} from './stazioni-marche/stazioni-marche.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {StazioniUmbriaComponent} from './stazioni-umbria/stazioni-umbria.compone
     StazioniMoliseComponent,
     StazioniUmbriaComponent,
     TabStazioniComponent,
-    StazioniGeneraliComponent
+    StazioniGeneraliComponent,
+    StazioniMarcheComponent
   ],
   exports: []
 })

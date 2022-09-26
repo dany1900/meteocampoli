@@ -16,7 +16,7 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
   pathLazio = '/stazioni-meteo/lazio';
   pathAbruzzo = '/stazioni-meteo/abruzzo';
   pathMolise = '/stazioni-meteo/molise';
-  pathUmbria = '/stazioni-meteo/umbria';
+  pathUmbria = '/stazioni-meteo/umbria-marche';
   pathReteMeteo = '/stazioni-meteo/rete-meteo';
 
   constructor(private router: Router, private myElement: ElementRef, public utility: UtiliyService) {
@@ -41,7 +41,7 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
         break;
       case this.pathUmbria:
         this.id = 4;
-        this.utility.titleMatTab = 'Stazioni Meteo Umbria - Temperature e Storico Dati ';
+        this.utility.titleMatTab = 'Stazioni Meteo Umbria e Marche - Temperature e Storico Dati ';
         break;
       case this.pathReteMeteo:
         this.id = 5;
@@ -74,7 +74,7 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
       this.router.navigate([this.pathMolise]);
     } else if (event === 4) {
       this.router.navigate([this.pathUmbria]);
-    } else if (event === 5) {
+    }  else if (event === 5) {
       this.router.navigate([this.pathReteMeteo]);
     }
   }

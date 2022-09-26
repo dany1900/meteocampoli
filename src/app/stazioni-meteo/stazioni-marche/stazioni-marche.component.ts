@@ -4,11 +4,11 @@ import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
-  selector: 'stazioni-umbria',
-  templateUrl: './stazioni-umbria.component.html',
-  styleUrls: ['./stazioni-umbria.component.css']
+  selector: 'stazioni-marche',
+  templateUrl: './stazioni-marche.component.html',
+  styleUrls: ['./stazioni-marche.component.css']
 })
-export class StazioniUmbriaComponent implements OnInit {
+export class StazioniMarcheComponent implements OnInit {
 
   imageLoader = true;
   title: string;
@@ -19,10 +19,10 @@ export class StazioniUmbriaComponent implements OnInit {
   preventCache: number;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
-    this.title = 'Stazioni Meteo Umbria e Marche - Dati - Meteo Campoli';
-    this.description = 'Tutte le stazioni del umbria e marche visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.';
-    this.keywords = 'temperature umbria, meteo campoli umbria e marche, temperature umbria e marche meteo campoli, temperature stazioni meteo umbria marche, stazioni meteo umbria marche, stazioni meteo umbria marche meteo campoli';
-    this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/umbria-marche';
+    this.title = 'Stazioni Meteo Marche - Dati - Meteo Campoli';
+    this.description = 'Tutte le stazioni del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.';
+    this.keywords = 'temperature Marche, meteo campoli Marche, temperature Marche meteo campoli, temperature stazioni meteo Marche, stazioni meteo Marche, stazioni meteo Marche meteo campoli';
+    this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/marche';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();

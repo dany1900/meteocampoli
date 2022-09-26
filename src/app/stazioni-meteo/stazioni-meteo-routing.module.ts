@@ -26,7 +26,7 @@ import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
             component: TabStazioniComponent,
           },
           {
-            path: 'umbria',
+            path: 'umbria-marche',
             component: TabStazioniComponent,
           },
           {

@@ -24,7 +24,7 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
   ogImage: string;
   imageLoader = false;
   arrResponse: TerremotiResponse[] = [];
-  displayedColumns: string[] = ['dataOra', 'magnitudo', 'zona', 'profondita'];
+  displayedColumns: string[] = ['dataOra', 'profondita', 'zona', 'magnitudo'];
   dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
   isVisible = false;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
@@ -65,7 +65,7 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
   tabellaTerremoti(minMag: number, maxMag: number, startDate: string, endDate: string) {
     const today = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
     const d = new Date(today);
-    d.setDate(d.getDate() - 4); // subtract 4 days
+    d.setDate(d.getDate() - 5); // subtract 4 days
     const dateMinus4Day = d.toISOString().split('T')[0];
     if (!minMag) {
       minMag = 2;
