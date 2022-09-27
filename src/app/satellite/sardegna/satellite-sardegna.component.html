@@ -10,6 +10,32 @@
 <br>
 <br>
 
+<satellite [titleImgRadar]="'Radar Precipitazioni Sardegna - Animazione 7h'"
+           [srcImage]="'https://www.ilmeteo.it/altro/radar-sardegna.gif'"
+           [infoAlt]="'radar precipitazioni Sardegna animazione'"
+           [class]="'radar-meteonetwork'"></satellite>
+<br>
+<br>
+
+<satellite [titleImgRadar]="'Satellite - Nuvolosità'"
+           [srcImage]="'https://media.ilmeteo.it/sat/sat-ita.gif'"
+           [infoAlt]="'satellite nuvolosità sud'"
+           [class]="'radar-meteonetwork'"
+           [zoom]="1.1"></satellite>
+
+<satellite [titleImgRadar]="'Totale Precipitazioni - Giornaliere'"
+           [srcImage]="'https://retemeteo.lineameteo.it/mappe/rain_sud.png?time=1664276901456?time=1664276901462?' + preventCache"
+           [infoAlt]="'totale precipitazioni Sardegna'"
+           [class]="'radar-meteonetwork'"></satellite>
+<br>
+<br>
+<satellite [titleImgRadar]="'Temperature In Tempo Reale'"
+           [srcImage]="'https://retemeteo.lineameteo.it/mappe/t2m_sud.png?time=1664276901455?time=1664276901461?v=' + preventCache"
+           [infoAlt]="'temperature live Sardegna'"
+           [class]="'radar-no-heigth'"></satellite>
+
+<br>
+<br>
 <satellite [titleImgRadar]="'Totale Precipitazioni Sardegna - Giornaliere'"
            [srcImage]="'//www.centrometeo.com/stations/lmt/station_rain_sardegna.png?time=1639947919978?time=1639947919981?' + preventCache"
            [infoAlt]="'totale precipitazioni Sardegna'"
@@ -33,15 +59,6 @@
            [class]="'radar-meteonetwork'"
            [zoom]="1.2"></satellite>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<satellite [titleImgRadar]="'Satellite - Nuvolosità'"
-           [srcImage]="'https://media.ilmeteo.it/sat/sat-ita.gif'"
-           [infoAlt]="'satellite nuvolosità sud'"
-           [class]="'radar-meteonetwork'"
-           [zoom]="1.1"></satellite>
+
 
 
