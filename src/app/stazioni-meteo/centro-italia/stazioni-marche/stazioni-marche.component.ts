@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {SEOService} from '../../service/seoservice.service';
+import {SEOService} from '../../../service/seoservice.service';
 import {Router} from '@angular/router';
-import {UtiliyService} from '../../service/utiliy.service';
+import {UtiliyService} from '../../../service/utiliy.service';
 
 @Component({
-  selector: 'stazioni-molise',
-  templateUrl: './stazioni-molise.component.html',
-  styleUrls: ['./stazioni-molise.component.css']
+  selector: 'stazioni-marche',
+  templateUrl: './stazioni-marche.component.html',
+  styleUrls: ['./stazioni-marche.component.css']
 })
-export class StazioniMoliseComponent implements OnInit {
+export class StazioniMarcheComponent implements OnInit {
 
   imageLoader = true;
   title: string;
@@ -19,10 +19,10 @@ export class StazioniMoliseComponent implements OnInit {
   preventCache: number;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
-    this.title = 'Stazioni Meteo Molise - Dati - Meteo Campoli';
+    this.title = 'Stazioni Meteo Marche - Dati - Meteo Campoli';
     this.description = 'Tutte le stazioni del molise visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.';
-    this.keywords = 'temperature molise, meteo campoli molise, temperature molise meteo campoli, temperature stazioni meteo molise, stazioni meteo molise, stazioni meteo molise meteo campoli';
-    this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/molise';
+    this.keywords = 'temperature Marche, meteo campoli Marche, temperature Marche meteo campoli, temperature stazioni meteo Marche, stazioni meteo Marche, stazioni meteo Marche meteo campoli';
+    this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/marche';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();

@@ -1,0 +1,45 @@
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="LAZIO">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-lazio></stazioni-lazio>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="ABRUZZO">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-abruzzo></stazioni-abruzzo>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="MOLISE">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-molise></stazioni-molise>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="UMBRIA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-umbria></stazioni-umbria>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="MARCHE">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-marche></stazioni-marche>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="TOSCANA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-toscana></stazioni-toscana>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

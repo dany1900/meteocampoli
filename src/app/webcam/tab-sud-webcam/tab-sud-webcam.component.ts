@@ -10,7 +10,6 @@ import {UtiliyService} from '../../service/utiliy.service';
 export class TabSudWebcamComponent implements OnInit {
 
   id: number;
-  pathWebSud = '/webcam/montagna/sud-italia';
   pathWebSardegna = '/webcam/montagna/sardegna';
   pathWebSicilia = '/webcam/montagna/sicilia';
   @Input() path;
@@ -19,14 +18,11 @@ export class TabSudWebcamComponent implements OnInit {
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
-      case this.pathWebSud:
+      case this.pathWebSardegna:
         this.id = 0;
         break;
-      case this.pathWebSardegna:
-        this.id = 1;
-        break;
       case this.pathWebSicilia:
-        this.id = 2;
+        this.id = 1;
         break;
       default:
         this.id = 0;
@@ -41,13 +37,10 @@ export class TabSudWebcamComponent implements OnInit {
   }
 
   tabSelectionChanged(event) {
-    if (event === 0) {
-      this.utility.titleMatTab = 'WebCam Sud Italia Montagna';
-      this.router.navigate([this.pathWebSud]);
-    } else if (event === 1) {
+     if (event === 0) {
       this.utility.titleMatTab = 'WebCam Sardegna Montagna';
       this.router.navigate([this.pathWebSardegna]);
-    } else if (event === 2) {
+    } else if (event === 1) {
       this.utility.titleMatTab = 'WebCam Sicilia Montagna';
       this.router.navigate([this.pathWebSicilia]);
     }

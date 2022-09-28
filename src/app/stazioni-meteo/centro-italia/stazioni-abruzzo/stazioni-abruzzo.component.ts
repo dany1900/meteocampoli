@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {SEOService} from '../../service/seoservice.service';
+import {SEOService} from '../../../service/seoservice.service';
 import {Router} from '@angular/router';
-import {UtiliyService} from '../../service/utiliy.service';
+import {UtiliyService} from '../../../service/utiliy.service';
 
 @Component({
   selector: 'stazioni-abruzzo',
@@ -20,7 +20,7 @@ export class StazioniAbruzzoComponent implements OnInit {
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.title = 'Stazioni Meteo Abruzzo  - Meteo Campoli';
-    this.description = 'Tutte le stazioni del Lazio visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.';
+    this.description = 'Tutte le stazioni dell\'abruzzo visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.';
     this.keywords = 'temperature abruzzo, meteo campoli abruzzo, temperature abruzzo meteo campoli, temperature stazioni meteo abruzzo, stazioni meteo abruzzo, stazioni meteo abruzzo meteo campoli';
     this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/abruzzo';
     this.ogImage = '';

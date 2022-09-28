@@ -17,8 +17,6 @@ export class TabWebcamComponent implements OnInit, OnChanges {
   pathMontagnaToscana = '/webcam/montagna/toscana';
   pathMontagnaMarche = '/webcam/montagna/marche';
   pathLimitrofe = '/webcam/limitrofe';
-  pathTabNord = '/webcam/montagna/nord';
-  pathTabSud = '/webcam/montagna/sud';
   pathSud = '/webcam/montagna/sud-italia';
   pathSardegna = '/webcam/montagna/sardegna';
   pathSicilia = '/webcam/montagna/sicilia';
@@ -85,12 +83,12 @@ export class TabWebcamComponent implements OnInit, OnChanges {
           break;
         case this.pathSardegna:
           this.pathGlobale = this.pathSardegna;
-          this.id = 3;
+          this.id = 4;
           this.utility.titleMatTab = 'WebCam Sardegna Montagna';
           break;
         case this.pathSicilia:
           this.pathGlobale = this.pathSicilia;
-          this.id = 3;
+          this.id = 4;
           this.utility.titleMatTab = 'WebCam Sicilia Montagna';
           break;
         case this.pathMontagnaAbruzzo:
@@ -141,33 +139,14 @@ export class TabWebcamComponent implements OnInit, OnChanges {
     } else if (event === 1) {
       this.router.navigate([this.pathLimitrofe]);
     } else if (event === 2) {
-      this.router.navigate([this.pathTabNord]);
+      this.router.navigate([this.pathNordEst]);
       this.isNord = false;
     } else if (event === 3) {
-      this.router.navigate([this.pathTabSud]);
+      this.router.navigate([this.pathSud]);
       this.isSud = false;
-    }
-  }
-
-  tabSelectionTabs(event) {
-    if (this.isNord) {
-      if (event === 0 || event === 5) {
-        this.router.navigate([this.pathNordOvest]);
-      } else if (event === 1 || event === 6) {
-        this.router.navigate([this.pathNordEst]);
-      } else if (event === 2 || event === 7) {
-        this.router.navigate([this.pathEmiliaRomagna]);
-      }
-    } else {
-      if (event === 0) {
-        this.router.navigate([this.pathMontagnaLazio]);
-      } else if (event === 1) {
-        this.router.navigate([this.pathLimitrofe]);
-      } else if (event === 2) {
-        this.router.navigate([this.pathTabNord]);
-      } else if (event === 3) {
-        this.router.navigate([this.pathTabSud]);
-      }
+    } else if (event === 4) {
+      this.router.navigate([this.pathSardegna]);
+      this.isSud = false;
     }
   }
 }

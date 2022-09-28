@@ -1,5 +1,4 @@
-import {Component, ElementRef, OnChanges, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs';
+import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
 
@@ -9,50 +8,113 @@ import {UtiliyService} from '../../service/utiliy.service';
   templateUrl: './tab-stazioni.component.html',
   styleUrls: ['./tab-stazioni.component.css']
 })
-export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
+export class TabStazioniComponent implements OnInit, OnChanges {
   id: number;
-  private _route: Subscription;
+  paramTab: string;
+  pathGlobale = '';
   pathGenerale = '/stazioni-meteo/generale';
   pathLazio = '/stazioni-meteo/lazio';
   pathAbruzzo = '/stazioni-meteo/abruzzo';
   pathMolise = '/stazioni-meteo/molise';
-  pathUmbria = '/stazioni-meteo/umbria-marche';
+  pathUmbria = '/stazioni-meteo/umbria';
+  pathMarche = '/stazioni-meteo/marche';
+  pathToscana = '/stazioni-meteo/toscana';
+  pathNordEst = '/stazioni-meteo/nord-est';
+  pathNordOvest = '/stazioni-meteo/nord-ovest';
+  pathEmiliaRomagna = '/stazioni-meteo/emilia-romagna';
+  pathSud = '/stazioni-meteo/sud-italia';
+  pathSicilia = '/stazioni-meteo/sicilia';
+  pathSardegna = '/stazioni-meteo/sardegna';
   pathReteMeteo = '/stazioni-meteo/rete-meteo';
+  isNord: boolean;
+  isSud: boolean;
 
   constructor(private router: Router, private myElement: ElementRef, public utility: UtiliyService) {
-    let paramTab: any;
-    paramTab = this.router.url;
-    switch (paramTab) {
-      case this.pathGenerale:
-        this.id = 0;
-        this.utility.titleMatTab = 'Stazioni Meteo - Temperature e Storico Dati ';
-        break;
-      case this.pathLazio:
-        this.id = 1;
-        this.utility.titleMatTab = 'Stazioni Meteo Lazio - Temperature e Storico Dati ';
-        break;
-      case this.pathAbruzzo:
-        this.id = 2;
-        this.utility.titleMatTab = 'Stazioni Meteo Abruzzo - Temperature e Storico Dati ';
-        break;
-      case this.pathMolise:
-        this.id = 3;
-        this.utility.titleMatTab = 'Stazioni Meteo Molise - Temperature e Storico Dati ';
-        break;
-      case this.pathUmbria:
-        this.id = 4;
-        this.utility.titleMatTab = 'Stazioni Meteo Umbria e Marche - Temperature e Storico Dati ';
-        break;
-      case this.pathReteMeteo:
-        this.id = 5;
-        this.utility.titleMatTab = 'Stazioni Meteo Italia - Mappa Interattiva ';
-        break;
-      default:
-        this.id = 0;
-        this.utility.titleMatTab = 'Stazioni Meteo - Temperature e Storico Dati ';
-        break;
+    this.paramTab = this.router.url;
+    if (this.paramTab === this.pathNordOvest || this.paramTab === this.pathNordEst || this.paramTab === this.pathEmiliaRomagna) {
+      this.isNord = true;
+      switch (this.paramTab) {
+        case this.pathNordOvest:
+          this.id = 2;
+          this.pathGlobale = this.pathNordOvest;
+          this.utility.titleMatTab = 'Stazioni Meteo Nord Ovest - Temperature e Storico Dati';
+          break;
+        case this.pathNordEst:
+          this.id = 2;
+          this.pathGlobale = this.pathNordEst;
+          this.utility.titleMatTab = 'Stazioni Meteo Nord est - Temperature e Storico Dati';
+          break;
+        case this.pathEmiliaRomagna:
+          this.id = 2;
+          this.pathGlobale = this.pathEmiliaRomagna;
+          this.utility.titleMatTab = 'Stazioni Meteo Emilia Romagna - Temperature e Storico Dati';
+          break;
+      }
+    } else {
+      switch (this.paramTab) {
+        case this.pathGenerale:
+          this.id = 0;
+          this.pathGlobale = this.pathGenerale;
+          this.utility.titleMatTab = 'Stazioni Meteo - Temperature e Storico Dati ';
+          break;
+        case this.pathLazio:
+          this.id = 1;
+          this.pathGlobale = this.pathLazio;
+          this.utility.titleMatTab = 'Stazioni Meteo Lazio - Temperature e Storico Dati ';
+          break;
+        case this.pathAbruzzo:
+          this.id = 1;
+          this.pathGlobale = this.pathAbruzzo;
+          this.utility.titleMatTab = 'Stazioni Meteo Abruzzo - Temperature e Storico Dati ';
+          break;
+        case this.pathMolise:
+          this.id = 1;
+          this.pathGlobale = this.pathMolise;
+          this.utility.titleMatTab = 'Stazioni Meteo Molise - Temperature e Storico Dati ';
+          break;
+        case this.pathUmbria:
+          this.id = 1;
+          this.pathGlobale = this.pathUmbria;
+          this.utility.titleMatTab = 'Stazioni Meteo Umbria - Temperature e Storico Dati ';
+          break;
+        case this.pathMarche:
+          this.id = 1;
+          this.pathGlobale = this.pathMarche;
+          this.utility.titleMatTab = 'Stazioni Meteo Marche - Temperature e Storico Dati ';
+          break;
+        case this.pathToscana:
+          this.id = 1;
+          this.pathGlobale = this.pathToscana;
+          this.utility.titleMatTab = 'Stazioni Meteo Toscana - Temperature e Storico Dati ';
+          break;
+        case this.pathSud:
+          this.id = 3;
+          this.pathGlobale = this.pathSud;
+          this.utility.titleMatTab = 'Stazioni Meteo Sud italia - Temperature e Storico Dati ';
+          break;
+        case this.pathSardegna:
+          this.id = 4;
+          this.pathGlobale = this.pathSardegna;
+          this.utility.titleMatTab = 'Stazioni Meteo Sardegna - Temperature e Storico Dati ';
+          break;
+        case this.pathSicilia:
+          this.id = 4;
+          this.pathGlobale = this.pathSicilia;
+          this.utility.titleMatTab = 'Stazioni Meteo Sicilia - Temperature e Storico Dati ';
+          break;
+        case this.pathReteMeteo:
+          this.id = 5;
+          this.pathGlobale = this.pathReteMeteo;
+          this.utility.titleMatTab = 'Stazioni Meteo Italia - Mappa Interattiva ';
+          break;
+        default:
+          this.id = 0;
+          this.pathGlobale = this.pathGenerale;
+          this.utility.titleMatTab = 'Stazioni Meteo - Temperature e Storico Dati ';
+          break;
+      }
     }
-    this.tabSelectionChanged(this.id);
+    this.router.navigate([this.pathGlobale]);
   }
 
   ngOnInit() {
@@ -69,19 +131,15 @@ export class TabStazioniComponent implements OnInit, OnDestroy, OnChanges {
     } else if (event === 1) {
       this.router.navigate([this.pathLazio]);
     } else if (event === 2) {
-      this.router.navigate([this.pathAbruzzo]);
+      this.router.navigate([this.pathNordEst]);
+      this.isNord = false;
     } else if (event === 3) {
-      this.router.navigate([this.pathMolise]);
+      this.router.navigate([this.pathSud]);
+      this.isSud = false;
     } else if (event === 4) {
-      this.router.navigate([this.pathUmbria]);
-    }  else if (event === 5) {
+      this.router.navigate([this.pathSardegna]);
+    } else if (event === 5) {
       this.router.navigate([this.pathReteMeteo]);
-    }
-  }
-
-  ngOnDestroy() {
-    if (this._route) {
-      this._route.unsubscribe();
     }
   }
 }

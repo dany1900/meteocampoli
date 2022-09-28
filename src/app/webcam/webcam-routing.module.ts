@@ -42,14 +42,6 @@ import {ImmaginiComponent} from './immagini/immagini.component';
                 component: TabWebcamComponent,
               },
               {
-                path: 'sud',
-                component: TabWebcamComponent,
-              },
-              {
-                path: 'nord',
-                component: TabWebcamComponent,
-              },
-              {
                 path: 'nord-est',
                 component: TabWebcamComponent,
               },

@@ -1,16 +1,26 @@
 import {NgModule} from '@angular/core';
 import {StazioniMeteoRoutingModule} from './stazioni-meteo-routing.module';
 import {SharedModule} from '../shared/shared.module';
-import {StazioniAbruzzoComponent} from './stazioni-abruzzo/stazioni-abruzzo.component';
-import {StazioniLazioComponent} from './stazioni-lazio/stazioni-lazio.component';
+import {StazioniAbruzzoComponent} from './centro-italia/stazioni-abruzzo/stazioni-abruzzo.component';
+import {StazioniLazioComponent} from './centro-italia/stazioni-lazio/stazioni-lazio.component';
 import {StazioniMeteoComponent} from './stazioni-meteo.component';
-import {StazioniMoliseComponent} from './stazioni-molise/stazioni-molise.component';
+import {StazioniMoliseComponent} from './centro-italia/stazioni-molise/stazioni-molise.component';
 import {StazioniReteMeteoComponent} from './stazioni-rete-meteo/stazioni-rete-meteo.component';
 import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
-import {StazioniGeneraliComponent} from './stazioni-generali/stazioni-generali.component';
+import {StazioniGeneraliComponent} from './centro-italia/stazioni-generali/stazioni-generali.component';
 import {CommonModule} from '@angular/common';
-import {StazioniUmbriaComponent} from './stazioni-umbria/stazioni-umbria.component';
-import {StazioniMarcheComponent} from './stazioni-marche/stazioni-marche.component';
+import {StazioniUmbriaComponent} from './centro-italia/stazioni-umbria/stazioni-umbria.component';
+import {StazioniMarcheComponent} from './centro-italia/stazioni-marche/stazioni-marche.component';
+import {TabCentroStazioniComponent} from './tab-centro-stazioni/tab-centro-stazioni.component';
+import {TabNordStazioniComponent} from './tab-nord-stazioni/tab-nord-stazioni.component';
+import {TabIsoleStazioniComponent} from './tab-isole-webcam/tab-isole-stazioni.component';
+import {StazioniNordEstComponent} from './nord-italia/stazioni-nord-est/stazioni-nord-est.component';
+import {StazioniNordOvestComponent} from './nord-italia/stazioni-nord-ovest/stazioni-nord-ovest.component';
+import {StazioniEmiliaRomagnaComponent} from './nord-italia/stazioni-emilia-romagna/stazioni-emilia-romagna.component';
+import {StazioniSardegnaComponent} from './isole/stazioni-sardegna/stazioni-sardegna.component';
+import {StazioniSiciliaComponent} from './isole/stazioni-sicilia/stazioni-sicilia.component';
+import {StazioniSudItaliaComponent} from './sud-italia/stazioni-sud-italia/stazioni-sud-italia.component';
+import {StazioniToscanaComponent} from './centro-italia/stazioni-toscana/stazioni-toscana.component';
 
 
 @NgModule({
@@ -29,7 +39,17 @@ import {StazioniMarcheComponent} from './stazioni-marche/stazioni-marche.compone
     StazioniUmbriaComponent,
     TabStazioniComponent,
     StazioniGeneraliComponent,
-    StazioniMarcheComponent
+    StazioniMarcheComponent,
+    TabCentroStazioniComponent,
+    TabNordStazioniComponent,
+    TabIsoleStazioniComponent,
+    StazioniNordEstComponent,
+    StazioniNordOvestComponent,
+    StazioniEmiliaRomagnaComponent,
+    StazioniSardegnaComponent,
+    StazioniSiciliaComponent,
+    StazioniSudItaliaComponent,
+    StazioniToscanaComponent
   ],
   exports: []
 })
