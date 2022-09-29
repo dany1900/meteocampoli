@@ -4,11 +4,11 @@ import {Router} from '@angular/router';
 import {UtiliyService} from '../../../service/utiliy.service';
 
 @Component({
-  selector: 'stazioni-sud-italia',
-  templateUrl: './stazioni-sud-italia.component.html',
-  styleUrls: ['./stazioni-sud-italia.component.css']
+  selector: 'stazioni-puglia',
+  templateUrl: './stazioni-puglia.component.html',
+  styleUrls: ['./stazioni-puglia.component.css']
 })
-export class StazioniSudItaliaComponent implements OnInit {
+export class StazioniPugliaComponent implements OnInit {
 
   imageLoader = true;
   title: string;
@@ -19,16 +19,15 @@ export class StazioniSudItaliaComponent implements OnInit {
   preventCache: number;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
-    this.title = 'Stazioni Meteo sud italia - Dati';
-    this.description = 'Tutte le stazioni del sud italia visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche sempre aggiornate. Link ai migliori siti.';
-    this.keywords = 'temperature sud italia, meteo campoli sud italia, temperature sud italia meteo campoli, temperature stazioni meteo sud italia, stazioni meteo sud italia, stazioni meteo sud italia meteo campoli';
-    this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/sud italia';
+    this.title = 'Stazioni Meteo Puglia  - Meteo Campoli';
+    this.description = 'Tutte le stazioni della puglia visualizzabili con comodi script. Possibilita di accedere a tutte le statistiche. Link ai migliori siti.';
+    this.keywords = 'temperature puglia, meteo campoli puglia, temperature puglia meteo campoli, temperature stazioni meteo puglia, stazioni meteo puglia, stazioni meteo puglia meteo campoli';
+    this.ogUrl = 'www.meteocampoli.altervista.org/stazioni-meteo/puglia';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
     this.preventCache = Math.random();
-
   }
 
   ngOnInit() {

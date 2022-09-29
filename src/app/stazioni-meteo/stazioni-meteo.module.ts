@@ -19,8 +19,12 @@ import {StazioniNordOvestComponent} from './nord-italia/stazioni-nord-ovest/staz
 import {StazioniEmiliaRomagnaComponent} from './nord-italia/stazioni-emilia-romagna/stazioni-emilia-romagna.component';
 import {StazioniSardegnaComponent} from './isole/stazioni-sardegna/stazioni-sardegna.component';
 import {StazioniSiciliaComponent} from './isole/stazioni-sicilia/stazioni-sicilia.component';
-import {StazioniSudItaliaComponent} from './sud-italia/stazioni-sud-italia/stazioni-sud-italia.component';
 import {StazioniToscanaComponent} from './centro-italia/stazioni-toscana/stazioni-toscana.component';
+import {TabSudStazioniComponent} from './tab-sud-stazioni/tab-sud-stazioni.component';
+import {StazioniCalabriaComponent} from './sud-italia/stazioni-calabria/stazioni-calabria.component';
+import {StazioniBasilicataComponent} from './sud-italia/stazioni-basilicata/stazioni-basilicata.component';
+import {StazioniPugliaComponent} from './sud-italia/stazioni-puglia/stazioni-puglia.component';
+import {StazioniCampaniaComponent} from './sud-italia/stazioni-campania/stazioni-campania.component';
 
 
 @NgModule({
@@ -48,8 +52,12 @@ import {StazioniToscanaComponent} from './centro-italia/stazioni-toscana/stazion
     StazioniEmiliaRomagnaComponent,
     StazioniSardegnaComponent,
     StazioniSiciliaComponent,
-    StazioniSudItaliaComponent,
-    StazioniToscanaComponent
+    StazioniToscanaComponent,
+    TabSudStazioniComponent,
+    StazioniCalabriaComponent,
+    StazioniBasilicataComponent,
+    StazioniPugliaComponent,
+    StazioniCampaniaComponent
   ],
   exports: []
 })

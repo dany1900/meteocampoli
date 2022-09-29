@@ -1,0 +1,46 @@
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<div class="scroll-view"></div>
+<br>
+<table border="0">
+  <tr>
+    <td> <span> <a href="https://my.meteonetwork.it/station/bsl023" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/bsl023/sticker-oriz1?v=' + preventCache"
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Castelluccio Inferiore" [hidden]="imageLoader"
+      (load)="imageLoader = false;"/></a>
+</span></td>
+    <td><span><a href="https://my.meteonetwork.it/station/bsl020" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/bsl020/sticker-oriz1?v=' + preventCache"
+      class="meteonetwork-sticker" width="524" height="tsc238" alt="Stazione meteo di lagonegro"/></a></span>
+    </td>
+  </tr>
+</table>
+
+<hr>
+
+<table border="0">
+  <tr>
+    <td> <span> <a href="https://my.meteonetwork.it/station/bsl026" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/bsl026/sticker-oriz1?v=' + preventCache"
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Grassano Nord" [hidden]="imageLoader"
+      (load)="imageLoader = false;"/></a>
+</span></td>
+    <td><span><a href="https://my.meteonetwork.it/station/bsl008" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/bsl008/sticker-oriz1?v=' + preventCache"
+      class="meteonetwork-sticker" width="524" height="tsc238" alt="Stazione meteo di Miglionico,via Aldo Moro"/></a></span>
+    </td>
+  </tr>
+</table>
+<table border="0">
+  <tr>
+    <td> <span> <a href="https://my.meteonetwork.it/station/bsl031" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/bsl031/sticker-oriz1?v=' + preventCache"
+      class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Corso Metaponto, Pisticci Sud" [hidden]="imageLoader"
+      (load)="imageLoader = false;"/></a>
+</span></td>
+    <td><span><a href="https://my.meteonetwork.it/station/bsl030" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/bsl030/sticker-oriz1?v=' + preventCache"
+      class="meteonetwork-sticker" width="524" height="tsc238" alt="Stazione meteo di Contrada Piani Sottani - Tricarico"/></a></span>
+    </td>
+  </tr>
+</table>
+

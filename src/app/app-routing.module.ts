@@ -29,6 +29,7 @@ export const routes: Routes = [
   {path: 'abruzzo.html', redirectTo: '/stazioni-meteo/abruzzo', pathMatch: 'full'},
   {path: 'molise.html', redirectTo: '/stazioni-meteo/molise', pathMatch: 'full'},
   {path: 'stazioni-meteo/umbria-marche', redirectTo: '/stazioni-meteo/umbria', pathMatch: 'full'},
+  {path: 'stazioni-meteo/sud-italia', redirectTo: '/stazioni-meteo/campania', pathMatch: 'full'},
   {path: 'retemeteo.html', redirectTo: '/stazioni-meteo/rete-meteo', pathMatch: 'full'},
   {path: 'thisyear.htm', redirectTo: '/previsioni', pathMatch: 'full'},
   {path: 'images.htm', redirectTo: '/webcam/immagini', pathMatch: 'full'},

@@ -1,20 +1,20 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import {StazioniSudItaliaComponent} from './stazioni-sud-italia.component';
+import {StazioniPugliaComponent} from './stazioni-puglia.component';
 
-describe('MoliseComponent', () => {
-  let component: StazioniSudItaliaComponent;
-  let fixture: ComponentFixture<StazioniSudItaliaComponent>;
+describe('AbruzzoComponent', () => {
+  let component: StazioniPugliaComponent;
+  let fixture: ComponentFixture<StazioniPugliaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [StazioniSudItaliaComponent]
+      declarations: [StazioniPugliaComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(StazioniSudItaliaComponent);
+    fixture = TestBed.createComponent(StazioniPugliaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

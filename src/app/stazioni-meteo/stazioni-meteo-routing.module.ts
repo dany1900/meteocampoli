@@ -1,7 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule} from '@angular/router';
 import {TabStazioniComponent} from './tab-stazioni/tab-stazioni.component';
-import {TabWebcamComponent} from '../webcam/tab-webcam/tab-webcam.component';
 
 
 @NgModule({
@@ -59,20 +58,20 @@ import {TabWebcamComponent} from '../webcam/tab-webcam/tab-webcam.component';
             component: TabStazioniComponent,
           },
           {
-            path: 'sud-italia',
+            path: 'campania',
             component: TabStazioniComponent,
           },
           {
-            path: 'sud',
-            component: TabWebcamComponent,
+            path: 'calabria',
+            component: TabStazioniComponent,
           },
           {
-            path: 'nord',
-            component: TabWebcamComponent,
+            path: 'puglia',
+            component: TabStazioniComponent,
           },
           {
-            path: 'isole',
-            component: TabWebcamComponent,
+            path: 'basilicata',
+            component: TabStazioniComponent,
           },
           {
             path: 'rete-meteo',

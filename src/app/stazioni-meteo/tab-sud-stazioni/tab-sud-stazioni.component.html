@@ -1,0 +1,31 @@
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="CAMPANIA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-campania></stazioni-campania>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="CALABRIA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-calabria></stazioni-calabria>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="PUGLIA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-puglia></stazioni-puglia>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="BASILICATA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <stazioni-basilicata></stazioni-basilicata>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

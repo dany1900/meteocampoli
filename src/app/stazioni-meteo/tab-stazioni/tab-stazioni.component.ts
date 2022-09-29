@@ -22,12 +22,14 @@ export class TabStazioniComponent implements OnInit, OnChanges {
   pathNordEst = '/stazioni-meteo/nord-est';
   pathNordOvest = '/stazioni-meteo/nord-ovest';
   pathEmiliaRomagna = '/stazioni-meteo/emilia-romagna';
-  pathSud = '/stazioni-meteo/sud-italia';
+  pathCampania = '/stazioni-meteo/campania';
+  pathCalabria = '/stazioni-meteo/calabria';
+  pathPuglia = '/stazioni-meteo/puglia';
+  pathBasilicata = '/stazioni-meteo/basilicata';
   pathSicilia = '/stazioni-meteo/sicilia';
   pathSardegna = '/stazioni-meteo/sardegna';
   pathReteMeteo = '/stazioni-meteo/rete-meteo';
   isNord: boolean;
-  isSud: boolean;
 
   constructor(private router: Router, private myElement: ElementRef, public utility: UtiliyService) {
     this.paramTab = this.router.url;
@@ -87,10 +89,25 @@ export class TabStazioniComponent implements OnInit, OnChanges {
           this.pathGlobale = this.pathToscana;
           this.utility.titleMatTab = 'Stazioni Meteo Toscana - Temperature e Storico Dati ';
           break;
-        case this.pathSud:
+        case this.pathCampania:
           this.id = 3;
-          this.pathGlobale = this.pathSud;
-          this.utility.titleMatTab = 'Stazioni Meteo Sud italia - Temperature e Storico Dati ';
+          this.pathGlobale = this.pathCampania;
+          this.utility.titleMatTab = 'Stazioni Meteo Campania - Temperature e Storico Dati ';
+          break;
+        case this.pathCalabria:
+          this.id = 3;
+          this.pathGlobale = this.pathCalabria;
+          this.utility.titleMatTab = 'Stazioni Meteo Calabria - Temperature e Storico Dati ';
+          break;
+        case this.pathPuglia:
+          this.id = 3;
+          this.pathGlobale = this.pathPuglia;
+          this.utility.titleMatTab = 'Stazioni Meteo Puglia - Temperature e Storico Dati ';
+          break;
+        case this.pathBasilicata:
+          this.id = 3;
+          this.pathGlobale = this.pathBasilicata;
+          this.utility.titleMatTab = 'Stazioni Meteo Basilicata - Temperature e Storico Dati ';
           break;
         case this.pathSardegna:
           this.id = 4;
@@ -134,8 +151,7 @@ export class TabStazioniComponent implements OnInit, OnChanges {
       this.router.navigate([this.pathNordEst]);
       this.isNord = false;
     } else if (event === 3) {
-      this.router.navigate([this.pathSud]);
-      this.isSud = false;
+      this.router.navigate([this.pathCampania]);
     } else if (event === 4) {
       this.router.navigate([this.pathSardegna]);
     } else if (event === 5) {
