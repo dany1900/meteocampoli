@@ -60,7 +60,7 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
   tabellaTerremoti() {
     const today = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
     const d = new Date(today);
-    d.setDate(d.getDate() - 15); // subtract 15 days
+    d.setDate(d.getDate() - 60); // subtract 60 days
     const dateMinus4Day = d.toISOString().split('T')[0];
     const url = 'https://webservices.ingv.it/fdsnws/event/1/query';
     const headers = new HttpHeaders();
@@ -89,17 +89,17 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
             zona: lineSplit[12],
           };
           this.arrResponse.push(terremoti);
-          this.isVisible = true;
         }
         count++;
       });
-      if (this.isVisible) {
+      if (count === eachLine.length) {
         this.dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
         this.dataSource.paginator = this.paginator;
         this.totalSize = this.arrResponse.length;
         this.iterator();
+        this.isVisible = true;
       }
-    });
+    }, () =>  this.isVisible = true);
   }
 
   applyFilter(event: Event) {

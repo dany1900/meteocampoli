@@ -1,55 +1,9 @@
 <br>
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
-<div [hidden]="imageLoader">
-  <h2 class="title-micro-section"> Lista Terremoti Italia ultimi 5 giorni > 2.0 Magnitudo </h2>
-  <div class="mat-elevation-z8 table-meteocampoli center " *ngIf="isVisible">
-    <!--<form [formGroup]="terremotiFormGroup" (ngSubmit)="submitTerremoti()">
-      <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-          <mat-form-field>
-            <mat-label>Magnitudo Minima</mat-label>
-            <br>
-            <select matSelect formControlName='magnitudoMinimaControl'>
-              <input matInput>
-              <option matOption>Seleziona</option>
-              <option matOption *ngFor="let magnitudo of [1,2,3,4,5,6,7]" [value]="magnitudo">{{magnitudo}}</option>
-            </select>
-          </mat-form-field>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-          <mat-form-field>
-            <mat-label>Magnitudo Massima</mat-label>
-            <br>
-            <select matSelect formControlName='magnitudoMassimaControl'>
-              <input matInput>
-              <option matOption>Seleziona</option>
-              <option matOption *ngFor="let magnitudo of [1,2,3,4,5,6,7]" [value]="magnitudo">{{magnitudo}}</option>
-            </select>
-          </mat-form-field>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-          <mat-form-field>
-            <mat-label>Data Inizio</mat-label>
-            <input matInput [matDatepicker]="picker1">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-          </mat-form-field>
-        </div>
-        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-          <mat-form-field>
-            <mat-label>Data Inizio</mat-label>
-            <input matInput [matDatepicker]="picker2">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
-        </div>
-      </div>
-      <button mat-raised-button color="primary" type="button" (click)="submitTerremoti()">Cerca</button>
-    </form>
-    <br>-->
+<div [hidden]="imageLoader" *ngIf="isVisible">
+  <h2 class="title-micro-section"> Lista Terremoti Italia ultimi 10 giorni > 2.0 Magnitudo </h2>
+  <div class="mat-elevation-z8 table-meteocampoli center">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>

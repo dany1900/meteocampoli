@@ -1,12 +1,12 @@
 <br>
-<div>
-  <h2 class="title-micro-section"> Lista Terremoti Mondo ultimi 15 giorni > 5.0 Magnitudo</h2>
-  <div class="mat-elevation-z8 table-meteocampoli center " *ngIf="isVisible">
+<div *ngIf="isVisible">
+  <h2 class="title-micro-section"> Lista Terremoti Mondo ultimi 60 giorni > 5.0 Magnitudo</h2>
+  <div class="mat-elevation-z8 table-meteocampoli center ">
     <mat-form-field appearance="standard">
       <mat-label>Filter</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
     </mat-form-field>
-    <table mat-table [dataSource]="dataSource"  matSort>
+    <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- Data Ora Column -->
       <ng-container matColumnDef="dataOra">
@@ -33,7 +33,7 @@
       </ng-container>
 
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
       <!-- Row shown when there is no matching data. -->
@@ -41,15 +41,16 @@
         <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
       </tr>-->
     </table>
-    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize"
+    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[10, 20, 40]" [showFirstLastButtons]="true"
+                   [length]="totalSize"
                    [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)"
                    aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
   <br>
-<h2 class="title-micro-section"> Terremoti Mondo Anni 1973 - 2019</h2>
-<img src='./assets/img/terremoti-mondo.png'
-     alt="mappa rischio sismico mondiale" class="terremoti-mondo" width="642" height="285"
-     (click)="toggleClass($event,'zoomed')">
-<br>
-
+  <h2 class="title-micro-section"> Terremoti Mondo Anni 1973 - 2019</h2>
+  <img src='./assets/img/terremoti-mondo.png'
+       alt="mappa rischio sismico mondiale" class="terremoti-mondo" width="642" height="285"
+       (click)="toggleClass($event,'zoomed')">
+  <br>
+</div>

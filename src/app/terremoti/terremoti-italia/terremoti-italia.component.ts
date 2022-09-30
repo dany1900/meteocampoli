@@ -78,7 +78,7 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
   tabellaTerremoti(minMag: number, maxMag: number, startDate: string, endDate: string) {
     const today = formatDate(new Date(), 'yyyy-MM-dd', 'en-US');
     const d = new Date(today);
-    d.setDate(d.getDate() - 5); // subtract 4 days
+    d.setDate(d.getDate() - 10); // subtract 10 days
     const dateMinus4Day = d.toISOString().split('T')[0];
     if (!minMag) {
       minMag = 2;
@@ -117,17 +117,17 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
             };
             this.arrResponse.push(terremoti);
           }
-          this.isVisible = true;
         count++;
       });
-      if (this.isVisible) {
+      if (count === eachLine.length) {
         this.dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
         this.dataSource.paginator = this.paginator;
         this.totalSize = this.arrResponse.length;
         this.iterator();
+        this.isVisible = true;
         this.imageLoader = false;
       }
-    });
+    }, () => { this.isVisible = true; this.imageLoader = false; });
   }
 
   applyFilter(event: Event) {

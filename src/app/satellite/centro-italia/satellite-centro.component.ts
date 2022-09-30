@@ -28,7 +28,7 @@ export class SatelliteCentroComponent implements OnInit {
     this.title = 'Radar Precipitazioni Centro Italia - Satellite Meteo';
     this.description = 'Satellite infrarossi, meteosat, fulminazioni e sinottica. Radar dettagliato delle precipitazioni in tempo reale. Focus sul centro italia.';
     this.keywords = 'satellite centro meteo campoli, radar centro meteo campoli, radar precipitazioni centro italia meteo campoli, radar fulmini centro italia, radar precipitazioni zoom centro italia, radar pioggia centro italia, satellite centro italia, radar pioggie toscana';
-    this.ogUrl = 'www.meteocampoli.altervista.org/satellite-generale';
+    this.ogUrl = 'www.meteocampoli.altervista.org/satellite/centro-italia';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.preventCache = Math.random();
@@ -36,7 +36,14 @@ export class SatelliteCentroComponent implements OnInit {
 
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
-    //this.getImageFromService();
+    // this.getImageFromService();
+    /*const frm = frames['iframe1'].document;
+    const otherhead = frm.getElementsByTagName('head')[0];
+    const css = '<style type="text/css">' +
+      '#plugin-radar #radar-wrapper .sound-onoff, #plugin-radar #radar-wrapper .play-pause {font-size: 52px!important;\n' +
+      '</style>';
+    otherhead.append(css);*/
+    //frames['iframe1'].document.head.append(css);
   }
 
   errorHandler() {

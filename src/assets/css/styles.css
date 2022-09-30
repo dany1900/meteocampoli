@@ -937,8 +937,8 @@ legend {
 }
 
 .radiosondaggio-europa {
-  width: 67% !important;
-  height: 730px !important;
+  width: 73% !important;
+  height: 720px !important;
 }
 
 .radiosondaggio-pratica {
@@ -1066,4 +1066,6 @@ iframe#aswift_1 {
   width: 1300px!important;
 }
 
-
+#plugin-radar #radar-wrapper .sound-onoff, #plugin-radar #radar-wrapper .play-pause {
+  font-size: 52px!important;
+}
