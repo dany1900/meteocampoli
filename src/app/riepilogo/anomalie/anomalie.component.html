@@ -1,0 +1,70 @@
+<h1 class="header-macro-section">Statistiche Meteo - Anomalie</h1>
+
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader" class="center">
+  <br>
+  <br>
+  <h2 class="title-micro-section">Anomalie Media Temperature Scorso Mese - Italia</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalie Media Temperature Scorso Mese Italia" rel="noreferrer"
+       src="https://www.isac.cnr.it/~climstor/climate/latest_month_TMM.jpg"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalie Termiche Scorsa Settimana - Europa</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalie Termiche Ultima Settimana Europa" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/wctan1.png" (load)="imageLoader = false;"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalie Precipitazioni Scorsa Settimana - Europa</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalie Precipitazioni Scorsa Settimana Europa" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/wcpcp1.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+
+  <h2 class="title-micro-section">Anomalie Temperature Ultimo Mese - Europa</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalie Temperature Ultimo Mese Europa" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/1cavg1.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalie Media Temperature Ultimo Mese - Europa</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalie Media Temperature Ultimo Mese Europa" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/1ctan1.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalie Media Precipitazioni Ultimo Mese - Europa</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalie Media Precipitazioni Ultimo Mese Europa" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/1cpnp1.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Preciptazioni Ultimo Mese - Europa</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Preciptazioni Ultimo Mese Europa" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/1cpcp1.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalia Di Temperatura Odierna - Mondo</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalia Di Temperatura Odierna Mondo" rel="noreferrer"
+       src="https://climatereanalyzer.org/wx_frames/gfs/ds/gfs_nh-sat1_t2anom_1-day.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalia Di Temperatura Oceano Ultimi 2 Mesi - Mondo</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalia Di Temperatura Oceano Ultimi 2 Mesi Mondo" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/GODAS/pent_gif/xy/movie.oisst.gif"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalia Livello Oceano Ultimi 2 Mesi - Mondo</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalia livello Oceano Ultimi 2 Mesi Mondo" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/GODAS/pent_gif/xy/movie.sl.gif"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <br>
+
+</div>

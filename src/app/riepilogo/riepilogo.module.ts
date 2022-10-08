@@ -4,6 +4,7 @@ import {NgModule} from '@angular/core';
 import {RiepilogoRoutingModule} from './riepilogo-routing.module';
 import {CommonModule} from '@angular/common';
 import {TemperatureMareComponent} from './temperature-mare/temperature-mare.component';
+import {AnomalieComponent} from './anomalie/anomalie.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import {TemperatureMareComponent} from './temperature-mare/temperature-mare.comp
 
   declarations: [
     RiepilogoComponent,
-    TemperatureMareComponent
+    TemperatureMareComponent,
+    AnomalieComponent
   ],
   exports: []
 })

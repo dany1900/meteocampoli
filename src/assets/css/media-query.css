@@ -12,10 +12,6 @@
     zoom: 1.0 !important;
   }
 
-  .main {
-    width: unset !important;
-  }
-
   .content {
     background-color: #2d65c4 !important;
     min-height: 1277px !important;
@@ -332,3 +328,10 @@
   }
 }
 
+/*
+@media (min-width: 576px) {
+  .main {
+    max-width: 540px;
+  }
+}
+*/
