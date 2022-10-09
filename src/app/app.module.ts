@@ -24,6 +24,7 @@ import {AdsenseModule} from 'ng2-adsense';
 import {GtagModule} from 'angular-gtag';
 import {MainPipe} from './utils/pipe/main-pipe.module';
 import {MdbCarouselModule} from 'mdb-angular-ui-kit/carousel';
+import {NgxGoogleAnalyticsModule} from 'ngx-google-analytics';
 
 @NgModule({
 
@@ -42,6 +43,7 @@ import {MdbCarouselModule} from 'mdb-angular-ui-kit/carousel';
     CommonModule,
     AppRoutingModule,
     BrowserModule.withServerTransition({appId: 'meteocampoli'}),
+    NgxGoogleAnalyticsModule.forRoot('UA-85484839-1'),
     HttpClientModule,
     FormsModule,
     MainPipe,

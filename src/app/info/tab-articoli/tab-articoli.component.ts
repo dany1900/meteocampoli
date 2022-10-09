@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnChanges, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'tab-articoli',
@@ -12,7 +13,7 @@ export class TabArticoliComponent implements OnInit, OnChanges {
   pathArticoliMeteo = '/info/articoli/meteo';
   pathArticoliGiardinaggio = '/info/articoli/giardinaggio';
 
-  constructor(private router: Router, private myElement: ElementRef) {
+  constructor(private router: Router, private myElement: ElementRef, public utility: UtiliyService) {
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
@@ -39,8 +40,10 @@ export class TabArticoliComponent implements OnInit, OnChanges {
 
   tabSelectionChanged(event) {
     if (event === 0) {
+      this.utility.titleMatTab = 'Curiosità Metereologia - Articoli - Meteo Campoli';
       this.router.navigate([this.pathArticoliMeteo]);
     } else if (event === 1) {
+      this.utility.titleMatTab = 'Curiosità Giardinaggio - Articoli - Meteo Campoli';
       this.router.navigate([this.pathArticoliGiardinaggio]);
     }
   }

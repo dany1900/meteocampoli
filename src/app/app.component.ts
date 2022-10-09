@@ -3,6 +3,7 @@ import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {ViewportScroller} from '@angular/common';
 import {SEOService} from './service/seoservice.service';
 import {UtiliyService} from './service/utiliy.service';
+import {DeviceDetectorService} from 'ngx-device-detector';
 
 
 @Component({
@@ -13,9 +14,10 @@ import {UtiliyService} from './service/utiliy.service';
 export class AppComponent implements OnInit, AfterViewInit {
 
   data: any;
+  isMobile: boolean;
 
-
-  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller, public utilityService: UtiliyService) {
+  constructor(private router: Router, private seo: SEOService, private activatedRoute: ActivatedRoute, private scroll: ViewportScroller, public utilityService: UtiliyService,
+              private deviceService: DeviceDetectorService) {
   }
 
   ngOnInit() {
@@ -25,6 +27,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.scroll.scrollToPosition([0, 570]);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+    if (this.deviceService.isMobile()) {
+      this.isMobile = true;
+    }
     // this.data = this.getTestData();
     // console.log(this.data);
   }

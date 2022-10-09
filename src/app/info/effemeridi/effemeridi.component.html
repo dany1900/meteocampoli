@@ -1,9 +1,53 @@
-<div class="center">
-  <h2 class="title-micro-section"> Orari alba e tramonto locali</h2>
+<br>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader" *ngIf="isVisible">
+  <h2 class="title-micro-section"> Orari Alba e Tramonto Locali </h2>
+  <div class="mat-elevation-z8 table-meteocampoli center">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+      <!-- Data Ora Column -->
+      <ng-container matColumnDef="giorno">
+        <th class="effemeridi-giorno-header" mat-header-cell *matHeaderCellDef mat-sort-header> Giorno</th>
+        <td class="effemeridi-giorno-body" mat-cell *matCellDef="let element"> {{element.giorno}} </td>
+      </ng-container>
+
+      <!-- Profondita Column -->
+      <ng-container matColumnDef="durataGiorno">
+        <th class="effemeridi-durata-header" mat-header-cell *matHeaderCellDef mat-sort-header> Durata Giorno</th>
+        <td class="effemeridi-durata-body" mat-cell *matCellDef="let element"> {{element.dayLength}} </td>
+      </ng-container>
+
+      <!-- Zona Column -->
+      <ng-container matColumnDef="alba">
+        <th class="effemeridi-alba-header" mat-header-cell *matHeaderCellDef mat-sort-header> Alba</th>
+        <td class="effemeridi-alba-body" mat-cell *matCellDef="let element"> {{element.sunset}} </td>
+      </ng-container>
+
+      <!-- Magnitudo Column -->
+      <ng-container matColumnDef="tramonto">
+        <th class="effemeridi-tramonto-header" mat-header-cell *matHeaderCellDef mat-sort-header> Tramonto</th>
+        <td class="effemeridi-tramonto-body" mat-cell *matCellDef="let element"> {{element.sunrise}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="inizioCrepuscolo">
+        <th class="effemeridi-inizio-crepuscolo-header" mat-header-cell *matHeaderCellDef mat-sort-header> Inizio Crepuscolo</th>
+        <td class="effemeridi-inizio-crepuscolo-body" mat-cell *matCellDef="let element"> {{element.civilTwilightBegin}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fineCrepuscolo">
+        <th class="effemeridi-fine-crepuscolo-header" mat-header-cell *matHeaderCellDef mat-sort-header> Fine Crepuscolo</th>
+        <td class="effemeridi-fine-crepuscolo-body" mat-cell *matCellDef="let element"> {{element.civilTwilightEnd}} </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
   <br>
-  <iframe src="http://www.comuni-italiani.it/soleluna/gbox/?cod=060016" class="effemeridi-schema"
-          title="effemeridi" frameborder="0" scrolling="no"></iframe>
-</div>
+  <br>
+
 <div class="testo-articoli">
   <p class="center"><b>Dati Geografici di Riferimento</b></p>
   <p>Latitudine: <b>41°44'12" N</b>, Longitudine: <b>13°41'4" E</b></p>
@@ -26,6 +70,7 @@
   <p><b>Ottobre:</b> undici ore e quindici minuti</p>
   <p><b>Novembre:</b> dieci ore ed un minuto</p>
   <p><b>Dicembre:</b> nove ore e ventitre minuti</p>
+</div>
 </div>
 <br>
 

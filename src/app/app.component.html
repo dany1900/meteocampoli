@@ -1,23 +1,36 @@
 <div class="bg_clouds">
   <div class="main">
-      <header></header>
+    <header></header>
     <app-menu></app-menu>
     <slider></slider>
     <div class="content">
       <br>
-      <!--
-             <publicita></publicita>
-      -->
-      <!--<iframe src="https://it.euronews.com/embed/timeline" scrolling="no" class="frame-notizie"
-              title="notizie euronews" width="100"></iframe>-->
-      <a target="_blank" href="https://www.servizitelevideo.rai.it/televideo/pub/pagina.jsp?p=101&s=0&r=Nazionale&idmenumain=11" rel="noreferrer"><img class= "televideo"  src="https://www.servizitelevideo.rai.it/televideo/pub/tt4web/Nazionale/16_9_page-101.png"  rel="noreferrer" alt="Ultima Televideo RAI" title="Ultima Televideo RAI" width="529" height="430"></a>
+      <a target="_blank"
+         href="https://www.servizitelevideo.rai.it/televideo/pub/pagina.jsp?p=101&s=0&r=Nazionale&idmenumain=11"
+         rel="noreferrer"><img class="televideo"
+                               src="https://www.servizitelevideo.rai.it/televideo/pub/tt4web/Nazionale/16_9_page-101.png"
+                               rel="noreferrer" alt="Ultima Televideo RAI" title="Ultima Televideo RAI" width="529"
+                               height="430"></a>
 
-      <a  target="_blank" href="https://www.servizitelevideo.rai.it/televideo/pub/pagina.jsp?p=103&s=0&r=Nazionale&idmenumain=11" rel="noreferrer"><img class= "televideo"  src="https://www.servizitelevideo.rai.it/televideo/pub/tt4web/Nazionale/16_9_page-103.png"  rel="noreferrer" alt="Anteprima Televideo RAI" title="Anteprima Televideo RAI" width="529" height="430"></a>
+      <a target="_blank"
+         href="https://www.servizitelevideo.rai.it/televideo/pub/pagina.jsp?p=103&s=0&r=Nazionale&idmenumain=11"
+         rel="noreferrer"><img class="televideo"
+                               src="https://www.servizitelevideo.rai.it/televideo/pub/tt4web/Nazionale/16_9_page-103.png"
+                               rel="noreferrer" alt="Anteprima Televideo RAI" title="Anteprima Televideo RAI"
+                               width="529" height="430"></a>
+      <br>
+      <br>
+      <ng-container *ngIf="isMobile">
+        <publicita></publicita>
+      </ng-container>
       <br>
       <br>
       <router-outlet></router-outlet>
       <br>
-      <publicita></publicita>
+      <ng-container *ngIf="!isMobile">
+        <publicita></publicita>
+      </ng-container>
+      <br>
       <br>
       <button class="btn btn-primary scroll-top" aria-label="scroll-top" data-scroll="up" type="button"
               (click)="utilityService.scrollToTop() ">

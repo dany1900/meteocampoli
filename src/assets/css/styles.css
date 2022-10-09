@@ -1032,6 +1032,77 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   /*font-weight: bold;*/
 }
 
+.effemeridi-giorno-header{
+  background-color: #e3dede;
+  /* width: 24%; */
+  padding-left: 5% !important;
+}
+
+.effemeridi-giorno-body{
+  background-color: #e3dede;
+  font-weight: bold;
+  /* width: 24%; */
+}
+
+.effemeridi-durata-header{
+  background-color: #ffeaea;
+  padding-left: 3%!important;
+  width: 17.5%;
+}
+
+.effemeridi-durata-body{
+  background-color: #ffeaea;
+  padding-left: 3%!important;
+}
+
+.effemeridi-alba-header{
+  /* width: 24%; */
+  background-color: #f1fdf7;
+  padding-left: 4%!important;
+  font-weight: bold;
+}
+
+.effemeridi-alba-body{
+  /* width: 24%; */
+  background-color: #f1fdf7;;
+  font-weight: bold;
+}
+
+.effemeridi-tramonto-header{
+  /* width: 24%; */
+  background-color: #ececfa;
+  padding-left: 2%!important;
+  font-weight: bold;
+}
+
+.effemeridi-tramonto-body{
+  /* width: 24%; */
+  background-color: #ececfa;
+  font-weight: bold;
+}
+
+.effemeridi-inizio-crepuscolo-header{
+  background-color: #c9e7eb;
+  padding-left: 3%!important;
+  width: 20.2%;
+}
+
+.effemeridi-inizio-crepuscolo-body{
+  background-color: #c9e7eb;
+  padding-left: 3%!important;
+}
+
+.effemeridi-fine-crepuscolo-header{
+  background-color: #efa4a4;
+  width: 22.8%;
+  padding-left: 4%!important;
+}
+
+.effemeridi-fine-crepuscolo-body{
+  background-color: #efa4a4;
+  padding-left: 3%!important;
+}
+
 .mat-form-field-infix {
   font-size: 20px!important;
   font-weight: bold!important;
@@ -1062,9 +1133,17 @@ table.mat-table {
 }
 
 iframe#aswift_1 {
-  width: 1300px!important;
+  width: 1070px!important;
+  margin-left: 5px;
+}
+
+#mys-wrapper {
+  width: 1070px!important;
 }
 
 #plugin-radar #radar-wrapper .sound-onoff, #plugin-radar #radar-wrapper .play-pause {
   font-size: 52px!important;
 }
+
+.example_responsive_1 { width: 728px !important; height: 90px!important; }
+

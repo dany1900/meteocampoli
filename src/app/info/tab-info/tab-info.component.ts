@@ -1,5 +1,6 @@
 import {Component, ElementRef, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'tab-info',
@@ -13,18 +14,21 @@ export class TabInfoComponent implements OnInit {
   pathCuriosita = '/info/curiosita';
   pathEffemeridi = '/info/effemeridi';
 
-  constructor(private router: Router, private myElement: ElementRef) {
+  constructor(private router: Router, private myElement: ElementRef, public utility: UtiliyService) {
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
       case this.pathArticoli:
         this.id = 0;
+        this.utility.titleMatTab = 'Curiosità Metereologia - Articoli - Meteo Campoli';
         break;
       case this.pathCuriosita:
         this.id = 1;
+        this.utility.titleMatTab = 'Curiosita - Meteo Campoli';
         break;
       case this.pathEffemeridi:
         this.id = 2;
+        this.utility.titleMatTab = 'Orari Alba Tramonto Campoli Appennino - Meteo Campoli';
         break;
       default:
         this.id = 0;

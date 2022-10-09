@@ -27,12 +27,9 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest",
-              "src/robots.txt",
-              "src/web.config.xml",
-              "src/manifest.webmanifest"
+              "src/web.config.xml"
             ],
             "styles": [
               "src/assets/css/bootstrap.css",
