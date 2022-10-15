@@ -837,6 +837,11 @@ h4 {
   zoom: 0.8 !important;
 }
 
+.grafici-noaa {
+  height: 1500px !important;
+  width: 100% !important;
+}
+
 .red {
   color: red;
 }
@@ -1133,9 +1138,17 @@ table.mat-table {
 }
 
 iframe#aswift_1 {
-  width: 1070px!important;
+  width: 1080px!important;
+  /*
   margin-left: 5px;
+  */
 }
+
+/*
+iframe#aswift_3 {
+  width: 1320px!important;
+}
+*/
 
 #mys-wrapper {
   width: 1070px!important;
@@ -1146,4 +1159,8 @@ iframe#aswift_1 {
 }
 
 .example_responsive_1 { width: 728px !important; height: 90px!important; }
+
+.adsbygoogle{
+  width: 100%!important;
+}
 

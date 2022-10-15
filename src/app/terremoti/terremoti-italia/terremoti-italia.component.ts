@@ -22,7 +22,7 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
   keywords: string;
   ogUrl: string;
   ogImage: string;
-  imageLoader = false;
+  imageLoader = true;
   arrResponse: TerremotiResponse[] = [];
   displayedColumns: string[] = ['dataOra', 'profondita', 'zona', 'magnitudo'];
   dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);

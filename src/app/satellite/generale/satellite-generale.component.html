@@ -29,7 +29,7 @@
            [class]="'radar'"></satellite>
 
 
-<satellite [titleImgRadar]="'Monitoraggio Fulminazioni Centro Italia'"
+<satellite *ngIf="!isHttps" [titleImgRadar]="'Monitoraggio Fulminazioni Centro Italia'"
            [srcImage]="'http:///radarweb.aquila.infn.it/cetempsite/fulmini.png?v=' + preventCache"
            [infoAlt]="'satellite fulminazioni centro italia'"
            [class]="'radar'"></satellite>
@@ -130,7 +130,7 @@
 
 <br>
 <br>-->
-
+<ng-container *ngIf="!isHttps">
 <satellite [titleImgRadar]="'Radar Precipitazioni Ultime 3 ore'"
            [srcImage]="'http:///satollo.aquila.infn.it/midia/ref/ultimo_srt3h_noclass.png?v=' + preventCache"
            [infoAlt]="'radar precipitazioni'"
@@ -172,3 +172,4 @@
 <iframe class="radar" src="../../../assets/php/radar_zoom_24.html" alt="radar precipitazioni zoom"
         title="radar pecipitazioni ultime 24h"></iframe>
 
+</ng-container>

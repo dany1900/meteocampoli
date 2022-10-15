@@ -12,6 +12,11 @@
     zoom: 1.0 !important;
   }
 
+  /*iframe#aswift_1 {
+    width: 1070px!important;
+    margin-left: 5px;
+  }*/
+
   .content {
     background-color: #2d65c4 !important;
     min-height: 1277px !important;
@@ -237,6 +242,10 @@
   .radar-sud-windy {
     width: 85% !important;
     height: 1550px !important;
+  }
+
+  .grafici-noaa {
+    height: 900px !important;
   }
 
 }

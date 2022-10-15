@@ -1,5 +1,7 @@
 <br>
-<div *ngIf="isVisible">
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<div [hidden]="imageLoader" *ngIf="isVisible">
   <h2 class="title-micro-section"> Lista Terremoti Mondo ultimi 60 giorni > 5.0 Magnitudo</h2>
   <div class="mat-elevation-z8 table-meteocampoli center ">
     <mat-form-field appearance="standard">

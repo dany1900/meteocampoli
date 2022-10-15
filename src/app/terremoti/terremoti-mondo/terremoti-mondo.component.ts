@@ -25,6 +25,7 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
   displayedColumns: string[] = ['dataOra', 'profondita', 'zona', 'magnitudo'];
   dataSource = new MatTableDataSource<TerremotiResponse>(this.arrResponse);
   isVisible = false;
+  imageLoader = true;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     if (!this.dataSource.sort) {
@@ -97,6 +98,7 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
         this.dataSource.paginator = this.paginator;
         this.totalSize = this.arrResponse.length;
         this.iterator();
+        this.imageLoader = false;
         this.isVisible = true;
       }
     }, () =>  this.isVisible = true);

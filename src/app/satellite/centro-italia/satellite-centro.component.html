@@ -10,7 +10,18 @@
 </div>
 <br>
 <br>
-
+<satellite [titleImgRadar]="'Radar Precipitazioni Centro italia - Animazione'"
+           [srcImage]="'https://www.ilmeteo.it/altro/radar-centro.gif?' + preventCache"
+           [infoAlt]="'radar precipitazioni centro italia in movimento'"
+           [class]="'radar'"></satellite>
+<br>
+<br>
+<satellite [titleImgRadar]="'Monitoraggio Fulminazioni - Animazione'"
+           [srcImage]="'https://www.meteociel.fr/obs/foudre/anim2h_it.gif?v=' + preventCache"
+           [infoAlt]="'satellite fulminazioni europa in movimento'"
+           [class]="'radar'"></satellite>
+<br>
+<br>
 <satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia - Giornaliere'"
            [srcImage]="'https://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_prec_centro.png?' + preventCache"
            [infoAlt]="'totale precipitazioni centro italia'"
@@ -23,31 +34,23 @@
            [class]="'radar-meteonetwork'"></satellite>
 <br>
 <br>
+
+<ng-container *ngIf="!isHttps">
 <satellite [titleImgRadar]="'Radar Fulmininazioni Centro Italia'"
            [srcImage]="'http://radarweb.aquila.infn.it/cetempsite/fulmini.png?' + preventCache"
            [infoAlt]="'radar fulminazioni centro italia'"
            [class]="'radar'"></satellite>
 
 <br>
+<br>
 
-<satellite [titleImgRadar]="'Radar Precipitazioni Lazio e Abruzzo'"
-           [srcImage]="imageToShow"
-           [infoAlt]="'radar precipitazioni lazio abruzzo'"
-           [class]="'radar'"></satellite>
-<br>
-<br>
-<satellite [titleImgRadar]="'Radar Precipitazioni Centro italia - Animazione'"
-           [srcImage]="'https://www.ilmeteo.it/altro/radar-centro.gif?' + preventCache"
-           [infoAlt]="'radar precipitazioni centro italia in movimento'"
-           [class]="'radar'"></satellite>
-<br>
-<br>
 <!--<satellite [titleImgRadar]="'Radar Precipitazioni Toscana'"
            [srcImage]="'https://www.lamma.rete.toscana.it/radar/elba/images/PPI_1080_0005_25.png?1576413678950?' + preventCache"
            [infoAlt]="'radar precipitazioni toscana'"
            [class]="'radar'"></satellite>
 <br>
 <br>-->
+
 <p class="title-micro-section">Radar precipitazioni ultime 3 ore Zoom</p>
 <iframe class="radar" src="../../../assets/php/radar_zoom_3.html" alt="radar precipitazioni 3H zoom"
         title="radar pecipitazioni ultime 3h"></iframe>
@@ -58,6 +61,7 @@
         title="radar pecipitazioni ultime 6h"></iframe>
 <br>
 <br>
+
 <!--<p class="title-micro-section">Radar precipitazioni ultime 12 ore Zoom</p>
 <iframe class="radar" src="../../../assets/php/radar_zoom_12.html" alt="radar precipitazioni 12h zoom"
         title="radar pecipitazioni ultime 12h"></iframe>-->
@@ -68,7 +72,7 @@
 
 <br>
 <br>
-
+</ng-container>
 <h2 class="title-micro-section">Temperature In Tempo Reale Centro Italia </h2>
 <br>
 <satellite [titleImgRadar]="''"

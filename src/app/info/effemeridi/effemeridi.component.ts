@@ -78,6 +78,9 @@ export class EffemeridiComponent implements OnInit, AfterViewInit {
         this.arrResponse.push(effemeridi);
         countFinished ++;
         if (countFinished === maxCount) {
+          // to put where you want the sort to be programmatically triggered, for example inside ngOnInit
+          /*this.dataSource.sortData(this.arrResponse, { active: this.displayedColumns[0], start: 'desc'} as MatSort);
+          this.dataSource.sort = this.matSort;*/
           this.isVisible = true;
           this.imageLoader = false;
         }

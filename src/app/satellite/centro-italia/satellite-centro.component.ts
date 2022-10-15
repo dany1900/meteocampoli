@@ -23,6 +23,7 @@ export class SatelliteCentroComponent implements OnInit {
   preventCache: number;
   imageToShow: any;
   isImageLoading: boolean;
+  isHttps: boolean;
 
   constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router, private http: HttpClient) {
     this.title = 'Radar Precipitazioni Centro Italia - Satellite Meteo';
@@ -36,6 +37,9 @@ export class SatelliteCentroComponent implements OnInit {
 
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
+    if (location.protocol === 'https:') {
+      this.isHttps = true;
+    }
     // this.getImageFromService();
     /*const frm = frames['iframe1'].document;
     const otherhead = frm.getElementsByTagName('head')[0];
