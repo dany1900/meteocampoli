@@ -10,10 +10,14 @@
     [src]="path"
     alt="Stazione meteo grafico" id="refresh" width="1080" height="980" fetchpriority="high"></a><br>
 
-  <iframe class="grafici-noaa" id="graficiNoaa"
+  <iframe class="grafici-noaa" id="graficiNoaaMese"
           src="https://meteocampoliappennino.altervista.org/noaa/NOAA_test.php"
           frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
           title="grafico noaa stazione mese corrente" rel="noreferrer"></iframe>
+  <iframe class="grafici-noaa" id="graficiNoaaAnno"
+          [src] = "linkRapportoAnnuale | safe"
+          frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+          title="grafico noaa stazione anno corrente" rel="noreferrer"></iframe>
 </div>
 <br>
 <a href="https://www.meteocampoliappennino.altervista.org/MyGWStats.php?&link=Full.xml"

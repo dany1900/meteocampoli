@@ -67,7 +67,9 @@ export class RadioSondaggiComponent implements OnInit {
     const url = this.link;
     const headers = new HttpHeaders();
     headers.set('content-type', 'text/plain; charset=utf-8');
-    return this.http.get(url, {headers: headers,  responseType: 'text'}).subscribe(data => {
+    headers.set('Access-Control-Allow-Origin', '*');
+    headers.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    return this.http.get(url, {headers: headers, responseType: 'text'}).subscribe(data => {
       const eachLine = data?.toString().split('\n');
       let count = 0;
       eachLine?.forEach((line: string) => {
@@ -93,7 +95,9 @@ export class RadioSondaggiComponent implements OnInit {
         this.iterator();
         this.imageLoader = false;
       }*/
-    });
+    }, (error => {
+      let aaa = error;
+    }));
   }
 
   errorHandler(url: string) {

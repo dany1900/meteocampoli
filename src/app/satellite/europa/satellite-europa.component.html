@@ -18,14 +18,22 @@
 
 <br>
 <br>
+<satellite [titleImgRadar]="'Nuvolosità Europa - Animazione'"
+           [srcImage]="'https://www1.niederschlagsradar.de/onweer/loop_onweer.gif?v=' + preventCache"
+           [infoAlt]="'novolosità europa animazione'"
+           [class]="'radar'"></satellite>
+
+
+<br>
+<br>
 <satellite [titleImgRadar]="'Satellite Europa'"
            [srcImage]="'https://www.sat24.com/image.ashx?country=eu&type=zoom&format=640x480001001&rnd=610703?v=' + preventCache"
            [infoAlt]="'satellite europa'"
            [class]="'radar'"
 ></satellite>
+<br>
+<br>
 
-<br>
-<br>
 <h2 class="title-micro-section">Satellite Interattivo Europa Live</h2>
 <iframe id="frame-mov" class="radar"
         src="https://embed.windy.com/embed2.html?lat=49.500&lon=12.651&detailLat=49.500&detailLon=12.512&width=500&height=500&zoom=4&level=surface&overlay=gust&product=ecmwf&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1"
@@ -39,6 +47,7 @@
            [class]="'radar'"></satellite>
 <br>
 <br>
+
 <satellite [titleImgRadar]="'Monitoraggio Fulminazioni Europa - Animazione'"
            [srcImage]="'https://images.lightningmaps.org/blitzortung/europe/index.php?animation=5&t=5462912?v=' + preventCache"
            [infoAlt]="'satellite fulminazioni europa in movimento'"
@@ -58,6 +67,7 @@
 
 <br>
 <br>
+
 
 <satellite [titleImgRadar]="'Temperature Europa Live'"
            [srcImage]="'https://www.meteociel.fr/cartes_obs/temp_eur2.png?v=' + preventCache"
