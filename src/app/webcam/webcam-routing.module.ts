@@ -54,7 +54,19 @@ import {ImmaginiComponent} from './immagini/immagini.component';
                 component: TabWebcamComponent,
               },
               {
-                path: 'sud-italia',
+                path: 'campania',
+                component: TabWebcamComponent,
+              },
+              {
+                path: 'calabria',
+                component: TabWebcamComponent,
+              },
+              {
+                path: 'puglia',
+                component: TabWebcamComponent,
+              },
+              {
+                path: 'basilicata',
                 component: TabWebcamComponent,
               },
               {

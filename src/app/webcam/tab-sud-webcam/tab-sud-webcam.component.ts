@@ -10,19 +10,27 @@ import {UtiliyService} from '../../service/utiliy.service';
 export class TabSudWebcamComponent implements OnInit {
 
   id: number;
-  pathWebSardegna = '/webcam/montagna/sardegna';
-  pathWebSicilia = '/webcam/montagna/sicilia';
+  pathCampania = '/webcam/montagna/campania';
+  pathCalabria = '/webcam/montagna/calabria';
+  pathPuglia = '/webcam/montagna/puglia';
+  pathBasilicata = '/webcam/montagna/basilicata';
   @Input() path;
 
   constructor(private myElement: ElementRef, protected router: Router, public utility: UtiliyService) {
     let paramTab: any;
     paramTab = this.router.url;
     switch (paramTab) {
-      case this.pathWebSardegna:
+      case this.pathCampania:
         this.id = 0;
         break;
-      case this.pathWebSicilia:
+      case this.pathCalabria:
         this.id = 1;
+        break;
+      case this.pathPuglia:
+        this.id = 2;
+        break;
+      case this.pathBasilicata:
+        this.id = 3;
         break;
       default:
         this.id = 0;
@@ -37,12 +45,18 @@ export class TabSudWebcamComponent implements OnInit {
   }
 
   tabSelectionChanged(event) {
-     if (event === 0) {
-      this.utility.titleMatTab = 'WebCam Sardegna Montagna';
-      this.router.navigate([this.pathWebSardegna]);
+    if (event === 0) {
+      this.utility.titleMatTab = 'WebCam Campania Montagna';
+      this.router.navigate([this.pathCampania]);
     } else if (event === 1) {
-      this.utility.titleMatTab = 'WebCam Sicilia Montagna';
-      this.router.navigate([this.pathWebSicilia]);
+      this.utility.titleMatTab = 'WebCam Calabria Montagna';
+      this.router.navigate([this.pathCalabria]);
+    } else if (event === 2) {
+      this.utility.titleMatTab = 'WebCam Puglia Montagna';
+      this.router.navigate([this.pathPuglia]);
+    } else if (event === 3) {
+      this.utility.titleMatTab = 'WebCam Basilicata Montagna';
+      this.router.navigate([this.pathBasilicata]);
     }
   }
 }

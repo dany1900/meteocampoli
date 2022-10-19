@@ -1,17 +1,31 @@
 <br>
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
-  <mat-tab label="SARDEGNA">
+  <mat-tab label="CAMPANIA">
     <br>
     <ng-template matTabContent>
       <br>
-      <webcam-sardegna></webcam-sardegna>
+      <webcam-campania></webcam-campania>
     </ng-template>
   </mat-tab>
-  <mat-tab label="SICILIA">
+  <mat-tab label="CALABRIA">
     <br>
     <ng-template matTabContent>
       <br>
-      <webcam-sicilia></webcam-sicilia>
+      <webcam-calabria></webcam-calabria>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="PUGLIA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <webcam-puglia></webcam-puglia>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="BASILICATA">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <webcam-basilicata></webcam-basilicata>
     </ng-template>
   </mat-tab>
 </mat-tab-group>

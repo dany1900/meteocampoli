@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {UtiliyService} from '../../../service/utiliy.service';
+import {UtiliyService} from '../../service/utiliy.service';
 
 @Component({
   selector: 'webcam-isole',

@@ -17,7 +17,10 @@ export class TabWebcamComponent implements OnInit, OnChanges {
   pathMontagnaToscana = '/webcam/montagna/toscana';
   pathMontagnaMarche = '/webcam/montagna/marche';
   pathLimitrofe = '/webcam/limitrofe';
-  pathSud = '/webcam/montagna/sud-italia';
+  pathCampania = '/webcam/montagna/campania';
+  pathCalabria = '/webcam/montagna/calabria';
+  pathPuglia = '/webcam/montagna/puglia';
+  pathBasilicata = '/webcam/montagna/basilicata';
   pathSardegna = '/webcam/montagna/sardegna';
   pathSicilia = '/webcam/montagna/sicilia';
   pathNordEst = '/webcam/montagna/nord-est';
@@ -76,10 +79,25 @@ export class TabWebcamComponent implements OnInit, OnChanges {
           this.id = 2;
           this.utility.titleMatTab = 'WebCam Emilia Romagna Montagna';
           break;
-        case this.pathSud:
-          this.pathGlobale = this.pathSud;
+        case this.pathCampania:
           this.id = 3;
-          this.utility.titleMatTab = 'WebCam Sud Italia Montagna';
+          this.pathGlobale = this.pathCampania;
+          this.utility.titleMatTab = 'WebCam Campania Montagna';
+          break;
+        case this.pathCalabria:
+          this.id = 3;
+          this.pathGlobale = this.pathCalabria;
+          this.utility.titleMatTab = 'WebCam Calabria Montagna';
+          break;
+        case this.pathPuglia:
+          this.id = 3;
+          this.pathGlobale = this.pathPuglia;
+          this.utility.titleMatTab = 'WebCam Puglia Montagna';
+          break;
+        case this.pathBasilicata:
+          this.id = 3;
+          this.pathGlobale = this.pathBasilicata;
+          this.utility.titleMatTab = 'WebCam Basilicata Montagna';
           break;
         case this.pathSardegna:
           this.pathGlobale = this.pathSardegna;
@@ -142,7 +160,7 @@ export class TabWebcamComponent implements OnInit, OnChanges {
       this.router.navigate([this.pathNordEst]);
       this.isNord = false;
     } else if (event === 3) {
-      this.router.navigate([this.pathSud]);
+      this.router.navigate([this.pathCampania]);
       this.isSud = false;
     } else if (event === 4) {
       this.router.navigate([this.pathSardegna]);

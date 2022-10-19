@@ -10,6 +10,14 @@
 </div>
 <br>
 <br>
+<satellite [titleImgRadar]="'Precipitazioni Europa - Animazione'"
+           [srcImage]="'https://www.meteox.com/images.aspx?jaar=-3&voor=&soort=loop3uur&c=&n=?v=' + preventCache"
+           [infoAlt]="'satellite infrarossi europa movimento'"
+           [class]="'radar'"
+></satellite>
+
+<br>
+<br>
 <satellite [titleImgRadar]="'Satellite Infrarossi Europa - Animazione'"
            [srcImage]="'https:///www.meteo60.fr/satellites/animation-satellite-ir-france.gif?v=' + preventCache"
            [infoAlt]="'satellite infrarossi europa movimento'"
@@ -76,6 +84,7 @@
 
 <br>
 <br>
+<ng-container *ngIf="isHttps">
 <h2 class="title-micro-section">Previsioni Precipitazioni Europa</h2>
 <table  class="radar-precipitazioni-europa">
   <tr>
@@ -122,3 +131,4 @@
   </tr>
 </table>
 <iframe class="previsioni-europa" src="https://www.meteonetwork.it/models/malawi/GFS/prec_eu_6.png" height="820"width="1020" name="iframe1" scrolling="no" frameborder="0"></iframe>
+</ng-container>

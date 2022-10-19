@@ -20,6 +20,7 @@ export class SatelliteEuropaComponent implements OnInit {
   ogImage: string;
   urlSat: string;
   preventCache: number;
+  isHttps: boolean;
 
   constructor(private seo: SEOService, public utilityService: UtiliyService, protected router: Router, private _compiler: Compiler) {
     this.title = 'Radar Precipitazioni Europa - Satellite Meteo';
@@ -38,6 +39,9 @@ export class SatelliteEuropaComponent implements OnInit {
 
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
+    if (location.protocol === 'https:') {
+      this.isHttps = true;
+    }
   }
 
 

@@ -42,13 +42,17 @@ import {WebcamPisaComponent} from './webcam-centro-italia/webcam-toscana/webcam-
 import {WebcamNordEstComponent} from './webcam-nord-italia/webcam-nord-est/webcam-nord-est.component';
 import {WebcamNordOvestComponent} from './webcam-nord-italia/webcam-nord-ovest/webcam-nord-ovest.component';
 import {WebcamTeramoComponent} from './webcam-centro-italia/webcam-abruzzo/webcam-teramo/webcam-teramo.component';
-import {WebcamSardegnaComponent} from './webcam-sud-italia/webcam-isole/webcam-sardegna/webcam-sardegna.component';
-import {WebcamSiciliaComponent} from './webcam-sud-italia/webcam-isole/webcam-sicilia/webcam-sicilia.component';
-import {WebcamSudComponent} from './webcam-sud-italia/webcam-sud/webcam-sud.component';
-import {WebcamIsoleComponent} from './webcam-sud-italia/webcam-isole/webcam-isole.component';
-import {TabSudWebcamComponent} from './tab-sud-webcam/tab-sud-webcam.component';
+import {WebcamSardegnaComponent} from './webcam-isole/webcam-sardegna/webcam-sardegna.component';
+import {WebcamSiciliaComponent} from './webcam-isole/webcam-sicilia/webcam-sicilia.component';
+import {WebcamIsoleComponent} from './webcam-isole/webcam-isole.component';
+import {TabIsoleWebcamComponent} from './tab-isole-webcam/tab-isole-webcam.component';
 import {TabNordWebcamComponent} from './tab-nord-webcam/tab-nord-webcam.component';
 import {WebcamEmiliaRomagnaComponent} from './webcam-nord-italia/webcam-emilia-romagna/webcam-emilia-romagna.component';
+import {TabSudWebcamComponent} from './tab-sud-webcam/tab-sud-webcam.component';
+import {WebcamCampaniaComponent} from './webcam-sud-italia/webcam-campania/webcam-campania.component';
+import {WebcamPugliaComponent} from './webcam-sud-italia/webcam-puglia/webcam-puglia.component';
+import {WebcamBasilicataComponent} from './webcam-sud-italia/webcam-basilicata/webcam-basilicata.component';
+import {WebcamCalabriaComponent} from './webcam-sud-italia/webcam-calabria/webcam-calabria.component';
 
 
 @NgModule({
@@ -92,7 +96,7 @@ import {WebcamEmiliaRomagnaComponent} from './webcam-nord-italia/webcam-emilia-r
     WebcamCentroItaliaComponent,
     ImmaginiComponent,
     TabWebcamComponent,
-    TabSudWebcamComponent,
+    TabIsoleWebcamComponent,
     TabNordWebcamComponent,
     WebcamPistoiaComponent,
     WebcamFirenzeComponent,
@@ -102,11 +106,15 @@ import {WebcamEmiliaRomagnaComponent} from './webcam-nord-italia/webcam-emilia-r
     WebcamNordOvestComponent,
     WebcamTeramoComponent,
     WebcamSudItaliaComponent,
-    WebcamSudComponent,
     WebcamSardegnaComponent,
     WebcamSiciliaComponent,
     WebcamIsoleComponent,
-    WebcamEmiliaRomagnaComponent
+    WebcamEmiliaRomagnaComponent,
+    TabSudWebcamComponent,
+    WebcamCampaniaComponent,
+    WebcamPugliaComponent,
+    WebcamBasilicataComponent,
+    WebcamCalabriaComponent
   ],
   exports: []
 })
