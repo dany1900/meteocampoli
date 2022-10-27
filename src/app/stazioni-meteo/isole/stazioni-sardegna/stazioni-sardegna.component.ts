@@ -28,7 +28,6 @@ export class StazioniSardegnaComponent implements OnInit {
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
     this.preventCache = Math.random();
-
   }
 
   ngOnInit() {

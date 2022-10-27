@@ -3,8 +3,8 @@
 <br>
 <table border="0">
   <tr>
-    <td> <span> <a href="https://my.meteonetwork.it/station/clb181" target="_blank" rel="noopener"><img
-      style="border:none;" [src]="'https://my.meteonetwork.it/station/clb181/sticker-oriz1?v=' + preventCache"
+    <td> <span> <a href="https://my.meteonetwork.it/station/clb215" target="_blank" rel="noopener"><img
+      style="border:none;" [src]="'https://my.meteonetwork.it/station/clb215/sticker-oriz1?v=' + preventCache"
       class="meteonetwork-sticker" width="524" height="155" alt="Stazione meteo di Altilia  " [hidden]="imageLoader"
       (load)="imageLoader = false;"/></a>
 </span></td>
@@ -135,4 +135,4 @@
   </tr>
 </table>
 <br>
-<h2 class="red">Altre stazioni disponibili ad inizio ottobre 2022</h2>
+<h2 class="red">{{ utilityService.messageStazioni }}</h2>

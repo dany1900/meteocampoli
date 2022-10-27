@@ -18,8 +18,8 @@ export class WebcamPugliaComponent implements OnInit {
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.title = 'WebCam Puglia Montagna - Meteo Campoli';
-    this.description = 'Tutte le Webcam della puglia montana ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Link alle migliori fonti.';
-    this.keywords = 'webcam montagna puglia, webcam sud italia montagna, webcam puglia, webcam meteo campoli puglia, webcam meteo campoli puglia montagna';
+    this.description = 'Tutte le Webcam della puglia ordinate per localita. Descrizione e altitudine facilmente visualizzabili. Link alle migliori fonti.';
+    this.keywords = 'webcam montagna puglia, webcam puglia, webcam meteo campoli puglia, webcam meteo campoli puglia';
     this.ogUrl = 'www.meteocampoli.altervista.org/webcam/montagna/puglia';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
