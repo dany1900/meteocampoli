@@ -32,7 +32,7 @@ export class RadioSondaggiComponent implements OnInit {
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
     this.link = this.calculateDate();
-    // this.tabellaRadiosondaggi();
+    //this.tabellaRadiosondaggi();
   }
 
   ngOnInit(): void {
@@ -64,11 +64,11 @@ export class RadioSondaggiComponent implements OnInit {
     const d = new Date(today);
     d.setDate(d.getDate() - 5); // subtract 4 days
     const dateMinus4Day = d.toISOString().split('T')[0];
-    const url = this.link;
+    const url = 'https://weather.uwyo.edu/cgi-bin/sounding?region=europe&TYPE=TEXT%3ALIST&YEAR=2022&MONTH=11&FROM=0500&TO=0500&STNM=16245';
     const headers = new HttpHeaders();
+    headers.set('Access-Control-Allow-Headers', 'Access-Control-Allow-Origin, Content-Type, Accept, Accept-Language, Origin, User-Agent');
     headers.set('content-type', 'text/plain; charset=utf-8');
     headers.set('Access-Control-Allow-Origin', '*');
-    headers.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     return this.http.get(url, {headers: headers, responseType: 'text'}).subscribe(data => {
       const eachLine = data?.toString().split('\n');
       let count = 0;
