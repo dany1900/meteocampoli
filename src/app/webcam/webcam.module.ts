@@ -38,7 +38,7 @@ import {CommonModule} from '@angular/common';
 import {WebcamPistoiaComponent} from './webcam-centro-italia/webcam-toscana/webcam-pistoia/webcam-pistoia.component';
 import {WebcamFirenzeComponent} from './webcam-centro-italia/webcam-toscana/webcam-firenze/webcam-firenze.component';
 import {WebcamGrossetoComponent} from './webcam-centro-italia/webcam-toscana/webcam-grosseto/webcam-grosseto.component';
-import {WebcamSienaComponent} from './webcam-centro-italia/webcam-toscana/webcam-pisa/webcam-siena.component';
+import {WebcamSienaComponent} from './webcam-centro-italia/webcam-toscana/webcam-siena/webcam-siena.component';
 import {WebcamNordEstComponent} from './webcam-nord-italia/webcam-nord-est/webcam-nord-est.component';
 import {WebcamNordOvestComponent} from './webcam-nord-italia/webcam-nord-ovest/webcam-nord-ovest.component';
 import {WebcamTeramoComponent} from './webcam-centro-italia/webcam-abruzzo/webcam-teramo/webcam-teramo.component';
@@ -53,7 +53,7 @@ import {WebcamCampaniaComponent} from './webcam-sud-italia/webcam-campania/webca
 import {WebcamPugliaComponent} from './webcam-sud-italia/webcam-puglia/webcam-puglia.component';
 import {WebcamBasilicataComponent} from './webcam-sud-italia/webcam-basilicata/webcam-basilicata.component';
 import {WebcamCalabriaComponent} from './webcam-sud-italia/webcam-calabria/webcam-calabria.component';
-import {WebcamPisaComponent} from './webcam-centro-italia/webcam-toscana/webcam-siena/webcam-pisa.component';
+import {WebcamPisaComponent} from './webcam-centro-italia/webcam-toscana/webcam-pisa/webcam-pisa.component';
 
 
 @NgModule({
