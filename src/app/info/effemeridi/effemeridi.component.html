@@ -21,13 +21,13 @@
       <!-- Zona Column -->
       <ng-container matColumnDef="alba">
         <th class="effemeridi-alba-header" mat-header-cell *matHeaderCellDef mat-sort-header> Alba</th>
-        <td class="effemeridi-alba-body" mat-cell *matCellDef="let element"> {{element.sunset}} </td>
+        <td class="effemeridi-alba-body" mat-cell *matCellDef="let element"> {{element.sunrise}} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="tramonto">
         <th class="effemeridi-tramonto-header" mat-header-cell *matHeaderCellDef mat-sort-header> Tramonto</th>
-        <td class="effemeridi-tramonto-body" mat-cell *matCellDef="let element"> {{element.sunrise}} </td>
+        <td class="effemeridi-tramonto-body" mat-cell *matCellDef="let element"> {{element.sunset}} </td>
       </ng-container>
 
       <ng-container matColumnDef="inizioCrepuscolo">

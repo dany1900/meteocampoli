@@ -4,6 +4,7 @@
  */
 export interface EffemeridiResponse {
   giorno?: string;
+  giornoDate?: Date;
   sunrise?: number;
   sunset?: string;
   dayLength?: string;

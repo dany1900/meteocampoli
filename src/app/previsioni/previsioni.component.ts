@@ -59,7 +59,7 @@ export class PrevisioniComponent implements OnInit {
       emission = '12';
     }
     this.date = year + month + day + emission;
-    return this.linkEcmwf = 'https://www.ecmwf.int/en/forecasts/charts/web/classical_meteogram?facets=undefined&time=' + this.date + ',0,' + this.date + '&epsgram=classical_plume&lat=41.7357&lon=13.6837&station_name=Campoli%20Appennino,%20Italy&altitude=600';
+    return this.linkEcmwf = 'https://charts.ecmwf.int/products/opencharts_meteogram?base_time=' + this.date + '00&epsgram=classical_plume&lat=41.7357&lon=13.6837&station_name=Campoli%20Appennino';
   }
 
   calculateDateGfs(): string {
@@ -68,23 +68,20 @@ export class PrevisioniComponent implements OnInit {
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0');
     const day = String(today.getDate()).padStart(2, '0');
-    this.runGfs = year + month.toString() + day;
 
     if (hours >= 1 && hours < 7) {
-      this.runGfs += '18';
+      this.runGfs = '18';
     }
     if (hours >= 7 && hours < 13) {
-      this.runGfs += '0';
+      this.runGfs = '00';
     }
     if (hours >= 13 && hours < 18) {
-      this.runGfs += '06';
+      this.runGfs = '06';
     }
-    if (hours >= 19 || hours === 0) {
-      this.runGfs += '12';
+    if (hours >= 19 || (hours >= 0 && hours < 1)) {
+      this.runGfs = '12';
     }
-    //return this.linkGfs = 'https://modeles.meteociel.fr/modeles/gens/graphe_ens3.php?x=&y=&run=' + this.runGfs + '&lat=41.72&lon=13.687&ext=1&type=0';
-    return this.linkGfs = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=&date=' + year + '-' + month + '-' + day + '&model=gfs&member=ENS&bw=1'
-    //return this.linkGfs = 'https://modeles16.meteociel.fr/modeles/gensp/runs/' + this.runGfs + '/graphe9_00000___13.687_41.72_.gif';
+    return this.linkGfs = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runGfs + '&date=' + year + '-' + month + '-' + day + '&model=gfs&member=ENS&bw=1';
   }
 
 }

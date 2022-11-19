@@ -26,6 +26,7 @@ export class EffemeridiComponent implements OnInit, AfterViewInit {
   giorno: string;
   dataSource = new MatTableDataSource<EffemeridiResponse>(this.arrResponse);
   isVisible = false;
+
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     if (!this.dataSource.sort) {
       this.dataSource.sort = sort;
@@ -68,7 +69,8 @@ export class EffemeridiComponent implements OnInit, AfterViewInit {
 
       this.http.get(url, {headers: headers, params: queryParams}).subscribe((data: any) => {
         const effemeridi: EffemeridiResponse = {
-          giorno:  formatDate(d, 'dd-MM-yyyy', 'en-US'),
+          giorno: formatDate(d, 'dd-MM-yyyy', 'en-US'),
+          giornoDate: d,
           sunset: data.results.sunset,
           sunrise: data.results.sunrise,
           dayLength: data.results.day_length,
@@ -76,17 +78,18 @@ export class EffemeridiComponent implements OnInit, AfterViewInit {
           civilTwilightEnd: data.results.civil_twilight_end
         };
         this.arrResponse.push(effemeridi);
-        countFinished ++;
+        countFinished++;
         if (countFinished === maxCount) {
-          // to put where you want the sort to be programmatically triggered, for example inside ngOnInit
-          /*this.dataSource.sortData(this.arrResponse, { active: this.displayedColumns[0], start: 'desc'} as MatSort);
-          this.dataSource.sort = this.matSort;*/
-          this.isVisible = true;
-          this.imageLoader = false;
+            this.arrResponse.sort((a: EffemeridiResponse, b: EffemeridiResponse) => {
+              return a.giornoDate.getTime() - b.giornoDate.getTime();
+            });
+            this.isVisible = true;
+            this.imageLoader = false;
         }
       }, () => {
         this.isVisible = true;
         this.imageLoader = false;
+      }).add(() => {
       });
     }
   }

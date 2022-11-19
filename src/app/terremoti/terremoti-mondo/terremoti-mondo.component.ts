@@ -32,7 +32,7 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
       this.dataSource.sort = sort;
     }
   }
-  public pageSize = 20;
+  public pageSize = 40;
   public currentPage = 0;
   public totalSize = 0;
   pageEvent: PageEvent;
