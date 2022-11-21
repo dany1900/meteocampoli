@@ -16,10 +16,11 @@
            [class]="'radar'"></satellite>
 <br>
 <br>
-<satellite [titleImgRadar]="'Monitoraggio Fulminazioni - Centro Nord'"
-           [srcImage]="'https://www.meteosestola.it/public/fulmini.php?v=' + preventCache"
-           [infoAlt]="'monitoraggio fulminazioni centro nord'"
-           [class]="'radar'"></satellite>
+<satellite [titleImgRadar]="'Satellite Meteosat Immagine Italia'"
+           [srcImage]="'https://www.sat24.com/image.ashx?country=it&0.6041513127274811?v=' + preventCache"
+           [infoAlt]="'satellite meteosat immagine'"
+           [class]="'radar'"
+></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Monitoraggio Fulminazioni - Centro Sud'"
@@ -32,6 +33,12 @@
            [srcImage]="'https://www.meteociel.fr/obs/foudre/anim2h_it.gif?v=' + preventCache"
            [infoAlt]="'satellite fulminazioni europa in movimento'"
            [class]="'radar'"></satellite>
+<br>
+<br>
+<satellite [titleImgRadar]="'Sinottica Italia'"
+           [srcImage]="'https://meteocentre.com/analysis/local/it.gif?' + preventCache"
+           [infoAlt]="'sinottica italia'"
+           [class]="''"></satellite>
 <br>
 <br>
 <satellite [titleImgRadar]="'Totale Precipitazioni Centro Italia - Giornaliere'"

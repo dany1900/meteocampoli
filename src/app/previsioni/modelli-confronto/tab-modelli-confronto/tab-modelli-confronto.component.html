@@ -1,0 +1,26 @@
+<br>
+<h1 class="header-macro-section">{{utility.titleMatTab}}</h1>
+<br>
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="GFS">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <tab-modelli-tipologia [modello]=modelloGFS></tab-modelli-tipologia>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="ECMWF">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <tab-modelli-tipologia [modello]=modelloECMWF></tab-modelli-tipologia>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="GEM">
+    <br>
+    <ng-template matTabContent>
+      <br>
+      <tab-modelli-tipologia [modello]=modelloGEM></tab-modelli-tipologia>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>
