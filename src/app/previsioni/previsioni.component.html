@@ -16,7 +16,7 @@
     QUI</b></a> per spaghi ECMWF</em>
   <br>
   <img class="previsioni-spaghi" rel="noreferrer" width="95%" height="100" alt="spaghi"
-       [src]="runGfs | safe"
+       [src]="linkGfs | safe"
        (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
@@ -37,35 +37,42 @@
   <em class="title-micro-section">Pioggia modello GFS prossime 72H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia gfs 72h" rel="noreferrer"
-       src="https://www.wetterzentrale.de/maps/GFSOPIT00_72_18.png"
+       src="https://www.wetterzentrale.de/maps/GFSOPIT{{runGfs}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Pioggia modello UKMO prossime 72H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia ukmo 72h" rel="noreferrer"
-       src="https://www.wetterzentrale.de/maps/UKMHDOPIT00_72_18.png"
+       src="https://www.wetterzentrale.de/maps/UKMHDOPIT{{runGem}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Pioggia modello GEM prossime 72H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia gem 72h" rel="noreferrer"
-       src="https://www.wetterzentrale.de/maps/GEMOPIT00_72_18.png"
+       src="https://www.wetterzentrale.de/maps/GEMOPIT{{runGem}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Pioggia modello ICON prossime 72H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia icon 72h" rel="noreferrer"
-       src="https://www.wetterzentrale.de/maps/ICOOPIT00_72_18.png"
+       src="https://www.wetterzentrale.de/maps/ICOOPIT{{runGfs}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
-  <em class="title-micro-section">Previsioni 9 giorni GFS - Mosaico</em>
+  <em class="title-micro-section">Previsioni 9 giorni ECMWF - AVG 850Hpa - Mosaico</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="650" alt="mosaico gfs 7 giorni" rel="noreferrer"
-       src="https://www.wetterzentrale.de/maps/GFSPANELOPEU00_1.png"
+  <img class="previsioni-no-heigth" width="95%" height="650" alt="mosaico 850hpa gfs 9 giorni" rel="noreferrer"
+       src="https://www.wetterzentrale.de/maps/ECMPANELAVGEU{{runGfs}}_2.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <br>
+  <em class="title-micro-section">Previsioni 9 giorni GFS - OPE Precipitazioni - Mosaico</em>
+  <br>
+  <img class="previsioni-no-heigth" width="95%" height="650" alt="mosaico precipitazioni gfs 9 giorni" rel="noreferrer"
+       src="https://www.wetterzentrale.de/maps/GFSPANELOPEU{{runGfs}}_4.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>

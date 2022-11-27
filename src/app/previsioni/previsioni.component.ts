@@ -20,6 +20,7 @@ export class PrevisioniComponent implements OnInit {
   linkGfs: string;
   linkEcmwf: string;
   runGfs: string;
+  runGem: string;
 
   constructor(private seo: SEOService, protected router: Router, public renderer: Renderer2, public utilityService: UtiliyService) {
     this.title = 'Previsioni Meteo - Meteogrammi';
@@ -31,7 +32,7 @@ export class PrevisioniComponent implements OnInit {
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
     this.linkEcmwf = this.calculateDateEcmwf();
-    this.runGfs = this.calculateDateGfs();
+    this.linkGfs = this.calculateDateGfs();
   }
 
   ngOnInit() {
@@ -80,6 +81,12 @@ export class PrevisioniComponent implements OnInit {
     }
     if (hours >= 19 || (hours >= 0 && hours < 1)) {
       this.runGfs = '12';
+    }
+    if ((hours >= 0 && hours < 7) || hours >= 20) {
+      this.runGem = '12';
+    }
+    if (hours >= 7 && hours <= 19) {
+      this.runGem = '00';
     }
     return this.linkGfs = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runGfs + '&date=' + year + '-' + month + '-' + day + '&model=gfs&member=ENS&bw=1';
   }
