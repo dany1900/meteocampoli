@@ -20,71 +20,72 @@
        (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
-  <em class="title-micro-section">Pioggia modello MOLOCH prossime 24H</em>
+  <em class="title-micro-section">Pioggia modello WRF prossime 48H</em>
   <br>
-  <img class="previsioni-frame" width="95%" height="650" alt="pioggia moloch 24 h" rel="noreferrer"
-       src="https://www.meteoinmolise.com/cnr/molise7-prp24h.png?t=62e6447143a67"
+  <img class="previsioni-no-heigth" width="95%" height="1077"  alt="pioggia wrf 48 h" rel="noreferrer"
+       src="https://cdn1.meteonetwork.it/models/malawi/wrf/output/lastrun/wrf_italia_prectot.png?_1670578702"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Pioggia modello ECMWF prossime 72H</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia ecmwf 72h" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia ecmwf 72h" rel="noreferrer"
        src="https://services.meteored.com/img/models/ecmwf/ECMWF_072_IT_APC_es-ES_es.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Pioggia modello GFS prossime 72H</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia gfs 72h" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" height="797"  alt="pioggia gfs 72h" rel="noreferrer"
        src="https://www.wetterzentrale.de/maps/GFSOPIT{{runGfs}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Pioggia modello UKMO prossime 72H</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia ukmo 72h" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia ukmo 72h" rel="noreferrer"
        src="https://www.wetterzentrale.de/maps/UKMHDOPIT{{runGem}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Pioggia modello GEM prossime 72H</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia gem 72h" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia gem 72h" rel="noreferrer"
        src="https://www.wetterzentrale.de/maps/GEMOPIT{{runGem}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Pioggia modello ICON prossime 72H</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="650" alt="pioggia icon 72h" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia icon 72h" rel="noreferrer"
        src="https://www.wetterzentrale.de/maps/ICOOPIT{{runGfs}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Previsioni 9 giorni ECMWF - AVG 850Hpa - Mosaico</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="650" alt="mosaico 850hpa gfs 9 giorni" rel="noreferrer"
-       src="https://www.wetterzentrale.de/maps/ECMPANELAVGEU{{runGfs}}_2.png"
+  <img class="previsioni-no-heigth" width="95%" height="797" alt="mosaico 850hpa ecmwf 9 giorni" rel="noreferrer"
+       src="https://www.wetterzentrale.de/maps/ECMPANELAVGEU{{runEcmwf}}_2.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <em class="title-micro-section">Previsioni 9 giorni GFS - OPE Precipitazioni - Mosaico</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="650" alt="mosaico precipitazioni gfs 9 giorni" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" height="797" alt="mosaico precipitazioni gfs 9 giorni" rel="noreferrer"
        src="https://www.wetterzentrale.de/maps/GFSPANELOPEU{{runGfs}}_4.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
   <h2 class="title-micro-section">Previsioni 5 Giorni Campoli Appennino ilMeteo</h2>
-  <iframe width="1070" height="799" scrolling="no" frameborder="no" title="previsioni campoli appennino IlMeteo" rel="noreferrer" noresize="noresize" src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=999&ico=4&lang=ita&days=6&font=Arial&fontsize=17&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
+  <iframe *ngIf="!deviceService.isMobile()" width="1070" height="940" scrolling="no" frameborder="no" title="previsioni campoli appennino IlMeteo" rel="noreferrer" noresize="noresize" src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=750&ico=4&lang=ita&days=6&font=Arial&fontsize=17&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
+  <iframe *ngIf="deviceService.isMobile()" width="1060" height="790" scrolling="no" frameborder="no" title="previsioni campoli appennino IlMeteo" rel="noreferrer" noresize="noresize" src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=1150&ico=4&lang=ita&days=6&font=Arial&fontsize=18.5&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
   <br>
   <br>
   <br>
   <br>
   <h2 class="title-micro-section">Previsioni 7 Giorni Campoli Appennino 3bMeteo</h2>
   <iframe src="https://www.3bmeteo.com/moduli_esterni/localita_7_giorni_orario/1194/ffffff/286fe2/d02525/ffffff/it"
-          width=1030 height=650 frameborder="0" title="previsioni campoli 3bMeteo" rel="preload" ></iframe>
+          width=1030 height=650  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="previsioni campoli 3bMeteo" rel="preload" ></iframe>
   <br>
   <br>
   <h2 class="title-micro-section">Previsioni Campoli Appennino MeteoGiuliacci </h2>
