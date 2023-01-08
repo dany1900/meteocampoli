@@ -54,6 +54,7 @@ import {WebcamPugliaComponent} from './webcam-sud-italia/webcam-puglia/webcam-pu
 import {WebcamBasilicataComponent} from './webcam-sud-italia/webcam-basilicata/webcam-basilicata.component';
 import {WebcamCalabriaComponent} from './webcam-sud-italia/webcam-calabria/webcam-calabria.component';
 import {WebcamPisaComponent} from './webcam-centro-italia/webcam-toscana/webcam-pisa/webcam-pisa.component';
+import {WebcamArezzoComponent} from './webcam-centro-italia/webcam-toscana/webcam-arezzo/webcam-arezzo.component';
 
 
 @NgModule({
@@ -120,7 +121,8 @@ import {WebcamPisaComponent} from './webcam-centro-italia/webcam-toscana/webcam-
     WebcamPisaComponent,
     WebcamPistoiaComponent,
     WebcamFirenzeComponent,
-    WebcamGrossetoComponent
+    WebcamGrossetoComponent,
+    WebcamArezzoComponent
   ],
   exports: []
 })
