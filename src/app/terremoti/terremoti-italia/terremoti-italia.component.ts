@@ -97,6 +97,8 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
     }
     queryParams = queryParams.append('orderby', 'time');
     queryParams = queryParams.append('format', 'text');
+    queryParams = queryParams.append('lat', '41.44');
+    queryParams = queryParams.append('lon', '13.41');
     queryParams = queryParams.append('includeallorigins', false);
     queryParams = queryParams.append('includeallmagnitudes', false);
     queryParams = queryParams.append('includeallstationsmagnitudes', false);

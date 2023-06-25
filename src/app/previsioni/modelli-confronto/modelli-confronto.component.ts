@@ -63,7 +63,7 @@ export class ModelliConfrontoComponent implements OnInit {
       if (hours >= 7 && hours < 13) {
         this.modelsRun = '00';
       }
-      if (hours >= 13 && hours < 18) {
+      if (hours >= 13 && hours <= 18) {
         this.modelsRun = '06';
       }
       if (hours >= 19 || (hours >= 0 && hours < 1)) {

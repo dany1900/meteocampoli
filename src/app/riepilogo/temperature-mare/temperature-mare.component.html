@@ -5,26 +5,26 @@
 <div [hidden]="imageLoader" class="center">
   <br>
   <br>
-  <h2 class="title-micro-section">Temperature superficiali Mare - Europa</h2>
+  <h2 class="title-micro-section">Temperature Superficiali Mare - Europa</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="temperatura superficiale mar mediterraneo" rel="noreferrer"
-       src="https://www.meteociel.fr/obs/sst/world/sstEurope_2022-07-30.png"
+       src="https://www.meteociel.fr/obs/sst/world/sstEurope_{{todayDate}}.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
-  <br>
-  <h2 class="title-micro-section">Temperature superficiali Mare - Italia</h2>
+  <hr>
+  <h2 class="title-micro-section">Temperature Superficiali Mare - Italia</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="temperatura superficiale italia mar mediterraneo" rel="noreferrer"
        src="https://www.meteociel.fr/cartes_obs/sstit.gif"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
-  <br>
+  <hr>
 
-  <h2 class="title-micro-section">Anomalia di temperature superficiali Mare - Europa</h2>
+  <h2 class="title-micro-section">Anomalia Temperature Superficiali Mare - Europa</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="anomalia temperature mar mediterraneo" rel="noreferrer"
-       src="https://www.meteociel.fr/obs/sst/world/sstEurope_anom_2022-07-30.png"
+       src="https://www.meteociel.fr/obs/sst/world/sstEurope_anom_{{todayDate}}.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
-  <br>
-  <h2 class="title-micro-section">Temperature globali superficiali dei Mari</h2>
+  <hr>
+  <h2 class="title-micro-section">Temperature Globali Superficiali Dei Mari</h2>
   <img class="previsioni-frame" width="95%" height="650"
        src="https://www.esrl.noaa.gov/psd/map/images/sst/sst.daily.gif"
        alt="temperature globabali mare" rel="noreferrer"
@@ -33,16 +33,35 @@
        src="https://www.ssec.wisc.edu/data/sst/latest_sst.gif"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
-  <br>
+  <hr>
   <h2 class="title-micro-section">Media Temperature Mare Ultima Settimana - Europa</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="media 7 giorni temperatura mare europa" rel="noreferrer"
        src="https://www.lamma.rete.toscana.it/previ/ita/sst_msg/msg_ave_7gg.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
-  <br>
-  <h2 class="title-micro-section">Anomalia di temperature superficiali Mare - Mondo</h2>
+  <hr>
+  <h2 class="title-micro-section">Anomalia Temperature Superficiali Mare - Mondo</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="anomalia temperatura mare mondo" rel="noreferrer"
        src="https://www.meteociel.fr/cartes_obs/sstMonde_anom.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalia Temperature Superficiali Mare - Animazione 2 mesi</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalia di temperature superficiali Animazione" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/GODAS/pent_gif/xy/movie.oisst.gif"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+  <h2 class="title-micro-section">Anomalia Livello Mare - Animazione 2 mesi</h2>
+  <img class="previsioni-no-heigth" width="95%"  alt="Anomalia livello mare Animazione" rel="noreferrer"
+       src="https://www.cpc.ncep.noaa.gov/products/GODAS/pent_gif/xy/movie.sl.gif"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <hr>
+
+  <h2 class="title-micro-section">Andamento Climatico Temperatura Mediterraneo</h2>
+  <img class="previsioni-frame" width="95%" height="650" alt="andamento climatico mediterraneo" rel="noreferrer"
+       src="https://www.meteoplanet.it/view/?url=http://www.ceam.es/ceamet/SST/MAPS/NCEI/TREND/SST-NCEI-Mediterranean-global-daily-trend-deseason.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>

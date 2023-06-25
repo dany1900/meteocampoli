@@ -10,26 +10,11 @@
 </div>
 <br>
 <br>
-<satellite [titleImgRadar]="'Precipitazioni Europa - Animazione'"
-           [srcImage]="'https://www.meteox.com/images.aspx?jaar=-3&voor=&soort=loop3uur&c=&n=?v=' + preventCache"
-           [infoAlt]="'satellite infrarossi europa movimento'"
-           [class]="'radar'"
-></satellite>
+<h2 class="title-micro-section">Precipitazioni Europa - Animazione</h2>
+<iframe id="frame-europ-mov" class="radar-no-heigth"
+        src="https://cdn.fmi.fi/demos/eumetnet-web-site-radar-animator" width="100%" height="1195"
+        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
 
-<br>
-<br>
-<satellite [titleImgRadar]="'Satellite Infrarossi Europa - Animazione'"
-           [srcImage]="'https:///www.meteo60.fr/satellites/animation-satellite-ir-france.gif?v=' + preventCache"
-           [infoAlt]="'satellite infrarossi europa movimento'"
-           [class]="'radar'"
-></satellite>
-
-<br>
-<br>
-<satellite [titleImgRadar]="'Nuvolosità Europa - Animazione'"
-           [srcImage]="'https://www1.niederschlagsradar.de/onweer/loop_onweer.gif?v=' + preventCache"
-           [infoAlt]="'novolosità europa animazione'"
-           [class]="'radar'"></satellite>
 
 
 <br>
@@ -39,8 +24,37 @@
            [infoAlt]="'satellite europa'"
            [class]="'radar'"
 ></satellite>
+
 <br>
 <br>
+<satellite [titleImgRadar]="'Satellite Infrarossi Europa - Animazione Giornaliera'"
+           [srcImage]="'https://www.meteosatonline.it/anim2022/espana_infra.php?v=' + preventCache"
+           [infoAlt]="'satellite infrarossi europa movimento'"
+           [class]="'radar'"
+></satellite>
+<br>
+<br>
+
+
+
+<satellite [titleImgRadar]="'Satellite Infrarossi Europa - Animazione'"
+           [srcImage]="'https:///www.meteo60.fr/satellites/animation-satellite-ir-france.gif?v=' + preventCache"
+           [infoAlt]="'satellite infrarossi europa movimento'"
+           [class]="'radar'"
+></satellite>
+
+<br>
+<br>
+
+<satellite [titleImgRadar]="'Nuvolosità Europa e Fulminazioni - Animazione 2H'"
+           [srcImage]="'https://www1.niederschlagsradar.de/onweer/loop_onweer.gif?v=' + preventCache"
+           [infoAlt]="'novolosità europa animazione'"
+           [class]="'radar'"></satellite>
+
+
+<br>
+<br>
+
 
 <h2 class="title-micro-section">Satellite Interattivo Europa Live</h2>
 <iframe id="frame-mov" class="radar"
@@ -49,14 +63,15 @@
 <br>
 <br>
 
-<satellite [titleImgRadar]="'Satellite Fulminazioni Europa - Zoom'"
-           [srcImage]="'https://www.blitzortung.org/en/Images/image_b_fr.png?t=27701165?v=' + preventCache"
-           [infoAlt]="'satellite fulminazioni europa zoom'"
+<satellite [titleImgRadar]="'Satellite Fulminazioni Europa'"
+           [srcImage]="'https://images.blitzortung.org/Images/image_b_eu.png'"
+           [infoAlt]="'satellite fulminazioni europa'"
            [class]="'radar'"></satellite>
 <br>
 <br>
+<!--
 <satellite [titleImgRadar]="'Satellite Fulminazioni Europa'"
-           [srcImage]="'https://images.lightningmaps.org/blitzortung/europe/index.php?map=0?v=' + preventCache"
+           [srcImage]="'https://images.lightningmaps.org/blitzortung/europe/index.php?map=0'"
            [infoAlt]="'satellite fulminazioni europa'"
            [class]="'radar'"></satellite>
 <br>
@@ -65,6 +80,7 @@
            [srcImage]="'https://images.lightningmaps.org/blitzortung/europe/index.php?animation=5&t=5462912?v=' + preventCache"
            [infoAlt]="'satellite fulminazioni europa in movimento'"
            [class]="'radar'"></satellite>
+-->
 
 
 
@@ -85,5 +101,13 @@
 <satellite [titleImgRadar]="'Temperature Europa Live'"
            [srcImage]="'https://www.meteociel.fr/cartes_obs/temp_eur2.png?v=' + preventCache"
            [infoAlt]="'temperature europa live'"
+           [class]="'radar-no-heigth'"></satellite>
+<br>
+<br>
+
+
+<satellite [titleImgRadar]="'Previsioni Europa Oggi'"
+           [srcImage]="'https://www.dwd.de/DWD/wetter/aktuell/welt/bilder/wx_europa_akt.jpg?v=' + preventCache"
+           [infoAlt]="'Previsioni Europa Oggi'"
            [class]="'radar-no-heigth'"></satellite>
 

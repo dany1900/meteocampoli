@@ -1,35 +1,71 @@
 <br>
 <h1 class="header-macro-section">{{utility.titleMatTab}}</h1>
 <br>
+<ng-container *ngIf="!utility.isMobile()">
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
   <mat-tab label="CENTRO ITALIA MONTAGNA">
-    <br>
-    <ng-template matTabContent>
-      <tab-centro-webcam></tab-centro-webcam>
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="LIMITROFE">
-    <br>
-    <ng-template matTabContent>
-      <webcam-limitrofe></webcam-limitrofe>
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="NORD ITALIA">
-    <br>
-    <ng-template matTabContent>
-      <tab-nord-webcam></tab-nord-webcam>
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="SUD ITALIA">
-    <br>
-    <ng-template matTabContent>
-      <tab-sud-webcam></tab-sud-webcam>
-    </ng-template>
-  </mat-tab>
-  <mat-tab label="ISOLE">
-    <br>
-    <ng-template matTabContent>
-      <tab-isole-webcam></tab-isole-webcam>
-    </ng-template>
-  </mat-tab>
+      <br>
+      <ng-template matTabContent>
+        <tab-centro-webcam></tab-centro-webcam>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="LIMITROFE">
+      <br>
+      <ng-template matTabContent>
+        <webcam-limitrofe></webcam-limitrofe>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="NORD ITALIA">
+      <br>
+      <ng-template matTabContent>
+        <tab-nord-webcam></tab-nord-webcam>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="SUD ITALIA">
+      <br>
+      <ng-template matTabContent>
+        <tab-sud-webcam></tab-sud-webcam>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="ISOLE">
+      <br>
+      <ng-template matTabContent>
+        <tab-isole-webcam></tab-isole-webcam>
+      </ng-template>
+    </mat-tab>
 </mat-tab-group>
+</ng-container>
+<ng-container *ngIf="utility.isMobile()">
+  <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+    <mat-tab label="CENTRO ITALIA">
+      <br>
+      <ng-template matTabContent>
+        <tab-centro-webcam></tab-centro-webcam>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="LIMITROFE">
+      <br>
+      <ng-template matTabContent>
+        <webcam-limitrofe></webcam-limitrofe>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="NORD ITALIA">
+      <br>
+      <ng-template matTabContent>
+        <tab-nord-webcam></tab-nord-webcam>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="SUD ITALIA">
+      <br>
+      <ng-template matTabContent>
+        <tab-sud-webcam></tab-sud-webcam>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="ISOLE">
+      <br>
+      <ng-template matTabContent>
+        <tab-isole-webcam></tab-isole-webcam>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>

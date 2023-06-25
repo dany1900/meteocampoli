@@ -29,6 +29,7 @@
            [class]="'radar-meteonetwork'"></satellite>
 <br>
 <br>
+<ng-container *ngIf="!utilityService.isHttps()">
 <satellite [titleImgRadar]="'Temperature In Tempo Reale'"
            [srcImage]="'https://retemeteo.lineameteo.it/mappe/t2m_sud.png?time=1664276901455?time=1664276901461?v=' + preventCache"
            [infoAlt]="'temperature live Sardegna'"
@@ -58,6 +59,12 @@
            [infoAlt]="'pressione sardegna'"
            [class]="'radar-meteonetwork'"
            [zoom]="1.2"></satellite>
+
+<br>
+<br>
+</ng-container>
+<h2 class="title-micro-section">Rete Sardegna </h2>
+<iframe width="95%" height="1000" title="satellite sardegna" scrolling="no" src="https://www.sardegna-clima.it/google_earth/mappe/webmaps.php"></iframe>
 
 
 

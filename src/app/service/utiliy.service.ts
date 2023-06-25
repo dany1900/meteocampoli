@@ -46,4 +46,10 @@ export class UtiliyService {
   isMobile(): boolean {
     return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
   }
+
+  isHttps(): boolean {
+    if (location.protocol === 'https:') {
+      return true;
+    }
+  }
 }

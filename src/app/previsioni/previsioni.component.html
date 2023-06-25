@@ -12,14 +12,24 @@
        (load)="imageLoader = false;" (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
-  <em class="title-micro-section">Spaghi modello GFS Campoli Appennino, clicca <a [href]="linkEcmwf" target="_blank" rel="noreferrer" metarget="_blank"><b>
-    QUI</b></a> per spaghi ECMWF</em>
-  <br>
-  <img class="previsioni-spaghi" rel="noreferrer" width="95%" height="100" alt="spaghi"
+  <h2 class="title-micro-section">Spaghi modello GFS Campoli Appennino</h2>
+  <img class="previsioni-spaghi" rel="noreferrer" width="95%" height="100" alt="spaghi modello GFS"
        [src]="linkGfs | safe"
        (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
+  <h2 class="title-micro-section">Spaghi modello ECMWF Campoli Appennino</h2>
+  <img class="previsioni-spaghi" rel="noreferrer" width="95%" height="100" alt="spaghi modello ECMWF"
+       [src]="linkEcmwf | safe"
+       (click)="toggleClass($event,'zoomed')"/><br/>
+
+  <br>
+    <h2 class="title-micro-section">Spaghi modello GEM Campoli Appennino</h2>
+      <img class="previsioni-spaghi" rel="noreferrer" width="95%" height="100" alt="spaghi modello GEM"
+           [src]="linkGem | safe"
+           (click)="toggleClass($event,'zoomed')"/><br/>
+
+      <br>
   <em class="title-micro-section">Pioggia modello WRF prossime 48H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="1077"  alt="pioggia wrf 48 h" rel="noreferrer"
@@ -99,7 +109,13 @@
 
   <br>
   <br>
-
+  <em class="title-micro-section">Precisione Modelli - Confronto 30 giorni</em>
+  <br>
+  <img class="previsioni-no-heigth" width="95%"  alt="confronto precisione modelli 30 giorni" rel="noreferrer"
+       src="https://www.emc.ncep.noaa.gov/users/verification/global/gfs/ops/grid2grid_all_models/images/acc_valid00Z_HGT_P500_fhr120_G002NHX.png"
+       (click)="toggleClass($event,'zoomed')"/>
+  <br>
+  <br>
   <indici-climatici></indici-climatici>
 
   <br>

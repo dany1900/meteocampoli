@@ -19,6 +19,7 @@ export class PrevisioniComponent implements OnInit {
   ogImage: string;
   date: string;
   linkGfs: string;
+  linkGem: string;
   linkEcmwf: string;
   runGfs: string;
   runGem: string;
@@ -56,15 +57,19 @@ export class PrevisioniComponent implements OnInit {
   calculateDateEcmwf(): string {
     const today = new Date();
     const year = today.getFullYear();
-    const month = (today.getMonth() + 1).toString();
-    const day = String(today.getDate()).padStart(2, '0');
+    let month = (today.getMonth() + 1).toString();
+    const day = String(today.getDate());
+    if (Number(month) > 0 &&  Number(month) < 10) {
+      month = '0' + month;
+    }
     const hours = today.getHours();
     this.runEcmwf = '00';
     if (hours >= 21) {
       this.runEcmwf = '12';
     }
     this.date = year + month + day + this.runEcmwf;
-    return this.linkEcmwf = 'https://charts.ecmwf.int/products/opencharts_meteogram?base_time=' + this.date + '00&epsgram=classical_plume&lat=41.7357&lon=13.6837&station_name=Campoli%20Appennino';
+    //return this.linkEcmwf = 'https://charts.ecmwf.int/products/opencharts_meteogram?base_time=' + this.date + '00&epsgram=classical_plume&lat=41.7357&lon=13.6837&station_name=Campoli%20Appennino';
+    return this.linkEcmwf = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runEcmwf + '&date=' + year + '-' + month + '-' + day + '&model=ecm&member=ENS&bw=1';
   }
 
   calculateDateGfs(): string {
@@ -77,13 +82,13 @@ export class PrevisioniComponent implements OnInit {
     if (hours >= 1 && hours < 7) {
       this.runGfs = '18';
     }
-    if (hours >= 7 && hours < 13) {
+    if (hours >= 7 && hours < 12) {
       this.runGfs = '00';
     }
-    if (hours >= 13 && hours < 18) {
+    if (hours >= 12 && hours < 18) {
       this.runGfs = '06';
     }
-    if (hours >= 19 || (hours >= 0 && hours < 1)) {
+    if (hours >= 18 || (hours >= 0 && hours < 1)) {
       this.runGfs = '12';
     }
     if ((hours >= 0 && hours < 7) || hours >= 19) {
@@ -92,6 +97,7 @@ export class PrevisioniComponent implements OnInit {
     if (hours >= 7 && hours < 19) {
       this.runGem = '00';
     }
+    this.linkGem = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runGem + '&date=' + year + '-' + month + '-' + day + '&model=gem&member=ENS&bw=1';
     return this.linkGfs = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runGfs + '&date=' + year + '-' + month + '-' + day + '&model=gfs&member=ENS&bw=1';
   }
 

@@ -20,6 +20,7 @@ export class TemperatureMareComponent implements OnInit {
   linkGfs: string;
   linkEcmwf: string;
   runGfs: string;
+  todayDate: string;
 
   constructor(private seo: SEOService, protected router: Router, public renderer: Renderer2, public utilityService: UtiliyService) {
     this.title = 'Temperature Mare - Meteo Campoli';
@@ -34,6 +35,9 @@ export class TemperatureMareComponent implements OnInit {
 
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
+    const date = new Date();
+    date.setDate(date.getDate() - 1);
+    this.todayDate = date.toISOString().slice(0, 10);
   }
 
 
