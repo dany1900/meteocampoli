@@ -8,7 +8,7 @@
 ></satellite>
 
 <satellite [titleImgRadar]="'Satellite Europa'"
-           [srcImage]="'https://www.sat24.com/image.ashx?country=eu&type=zoom&format=640x480001001&rnd=610703?v=' + preventCache"
+           [srcImage]="'https://neige.meteociel.fr/satellite/latest-vis.jpg?v=' + preventCache"
            [infoAlt]="'satellite europa'"
            [class]="'radar'"
 ></satellite>
@@ -53,11 +53,10 @@
   ></satellite>
   <br>
   <br>
-  <satellite [titleImgRadar]="'Pioggia giornaliera'"
-             [srcImage]="'https://www.meteo-lazio.it/interpolate/Pioggia.png?v=' + preventCache"
-             [infoAlt]="'pioggia giornaliera lazio calcolata'"
-             [class]="'radar-zoomed'"
-             [zoom]="1.2"></satellite>
+  <satellite [titleImgRadar]="'Pioggia Giornaliera - Italia'"
+             [srcImage]="'https://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_prec_italia.png?v=' + preventCache"
+             [infoAlt]="'pioggia giornaliera italia calcolata'"
+             [class]="'radar-no-heigth'"></satellite>
   <br>
   <br>
   <br>
