@@ -33,7 +33,7 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.utilityService.scrollToSpecifyPosition();
+    this.utilityService.scrollToSpecifyPosition(true);
     const today = new Date();
     const year = today.getFullYear();
     this.linkRapportoAnnuale = 'https://meteocampoliappennino.altervista.org/noaa/NOAA_ANNUALE.php?annee1=' + year + '&period=r_annuel';

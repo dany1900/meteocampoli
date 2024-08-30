@@ -6,6 +6,9 @@ import {RadioSondaggiComponent} from './radio-sondaggi/radio-sondaggi.component'
 import {CommonModule} from '@angular/common';
 import {MainPipe} from '../utils/pipe/main-pipe.module';
 import {IncendiComponent} from './incendi/incendi.component';
+import {StazionePratoComponent} from './stazione-prato/stazione-prato.component';
+import {TabDatiComponent} from './tab-dati/tab-dati.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -13,13 +16,16 @@ import {IncendiComponent} from './incendi/incendi.component';
     DatiAttualiRoutingModule,
     SharedModule,
     CommonModule,
-    MainPipe
+    MainPipe,
+    MatProgressSpinnerModule
   ],
 
   declarations: [
     DatiAttualiComponent,
     RadioSondaggiComponent,
-    IncendiComponent
+    IncendiComponent,
+    StazionePratoComponent,
+    TabDatiComponent
   ],
   exports: []
 })
