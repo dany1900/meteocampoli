@@ -5,19 +5,42 @@ import {RiepilogoRoutingModule} from './riepilogo-routing.module';
 import {CommonModule} from '@angular/common';
 import {TemperatureMareComponent} from './temperature-mare/temperature-mare.component';
 import {AnomalieComponent} from './anomalie/anomalie.component';
+import {StatisticheStazionePratoComponent} from './statistiche-stazione-prato/statistiche-stazione-prato.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {DateAdapter, MAT_DATE_FORMATS, MatNativeDateModule} from '@angular/material/core';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MY_DATE_FORMATS, MyDateAdapter} from '../utils/adapter/date-adapter';
+import {TabRiepilogoComponent} from './tab-riepilogo/tab-riepilogo.component';
 
 
 @NgModule({
   imports: [
     RiepilogoRoutingModule,
     SharedModule,
-    CommonModule
+    CommonModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatGridListModule,
+    ReactiveFormsModule
   ],
 
   declarations: [
     RiepilogoComponent,
     TemperatureMareComponent,
-    AnomalieComponent
+    AnomalieComponent,
+    StatisticheStazionePratoComponent,
+    TabRiepilogoComponent
+  ],
+  providers: [
+    { provide: DateAdapter, useClass: MyDateAdapter },
+    { provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS },
   ],
   exports: []
 })

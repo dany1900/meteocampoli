@@ -13,6 +13,7 @@
           "/*.css",
           "/*.*.css",
           "/assets/*.css",
+          "/assets/*.CSV",
           "/assets/css/*.css",
           "/*.js",
           "/*.*.js",
@@ -27,7 +28,9 @@
           "/assets/*.jpg",
           "/assets/img/*.jpg",
           "/assets/img/*.png",
-          "/assets/img/*.png",
+          "/assets/storico-prato/*.CSV",
+          "/assets/storico-prato/2024/*.CSV",
+          "/assets/storico-prato/2025/*.CSV",
           "/assets/img/*.gif",
           "/assets/icons/*.png",
           "/*.bundle.css",
@@ -43,7 +46,7 @@
       "resources": {
         "files": [
           "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani|CSV|csv)"
         ]
       }
     }

@@ -842,7 +842,7 @@ h4 {
 }
 
 .red {
-  color: red;
+  color: red!important;
 }
 
 .flex {
@@ -991,6 +991,16 @@ legend {
   margin-left: 2%;
 }
 
+.table-riepilogo-stazione-prato{
+  border-radius: 25px;
+  border: 14px;
+  border-style: solid;
+  border-color: #ffffff;
+  width: 95%;
+  margin-left: 2%;
+  zoom: 0.78;
+}
+
 .mat-header-cell {
   font-size: 20px!important;
   color: black!important;
@@ -1003,6 +1013,94 @@ legend {
 
 th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   text-align: center!important;
+}
+
+.riepilogo-giorno-header{
+  background-color: #e3dede;
+  width: 5%;
+  font-weight: bold;
+  padding-left: 1% !important;
+}
+
+.riepilogo-giorno-body{
+  background-color: #e3dede;
+  width: 5%;
+  font-weight: bold;
+  padding-left: 0% !important;
+}
+
+.riepilogo-temMin-header{
+  background-color: #ececfa;
+  padding-left: 1%!important;
+  font-weight: bold;
+  width: 8%;
+}
+
+.riepilogo-temMin-body{
+  background-color: #ececfa;
+  font-weight: bold;
+  width: 8%;
+}
+
+.riepilogo-temMax-header{
+  background-color: #e3dede;
+  width: 8%;
+  font-weight: bold;
+  padding-left: 1% !important;
+}
+
+.riepilogo-temMax-body{
+  background-color: #e3dede;
+  width: 8%;
+  font-weight: bold;
+}
+
+.riepilogo-temMedia-header{
+  background-color: #ececfa;
+  padding-left: 1%!important;
+  font-weight: bold;
+  width: 8%;
+}
+
+.riepilogo-temMedia-body{
+  background-color: #ececfa;
+  font-weight: bold;
+  width: 8%;
+}
+
+.esegui{
+  font-size: 20px;
+  width: 100px;
+  height: 50px;
+  margin-left: 10px;
+  background-color: #cddbe1;
+}
+
+.riepilogo-vento-header{
+  background-color: #ffeaea;
+  font-weight: bold;
+  padding-left: 1%!important;
+  width: 10%;
+}
+
+.riepilogo-vento-body{
+  background-color: #ffeaea;
+  font-weight: bold;
+  padding-left: 1%!important;
+  width: 10%;
+}
+
+.riepilogo-pioggia-header{
+  background-color: #ececfa;
+  padding-left: 1%!important;
+  font-weight: bold;
+  width: 10%;
+}
+
+.riepilogo-pioggia-body{
+  background-color: #ececfa;
+  font-weight: bold;
+  width: 10%;
 }
 
 .terremoti-data-ora-header{

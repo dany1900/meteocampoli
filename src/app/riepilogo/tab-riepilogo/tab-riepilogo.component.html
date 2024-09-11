@@ -1,0 +1,16 @@
+<!--<h1 class="header-macro-section">{{utility.titleMatTab}}</h1>
+<br>-->
+<mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
+  <mat-tab label="STAZIONE VIA TREO">
+    <br>
+    <ng-template matTabContent>
+      <riepilogo></riepilogo>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="STAZIONE LOCALITA' PRATO">
+    <br>
+    <ng-template matTabContent>
+      <statistiche-stazione-prato></statistiche-stazione-prato>
+    </ng-template>
+  </mat-tab>
+</mat-tab-group>

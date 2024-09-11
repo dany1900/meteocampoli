@@ -6,7 +6,7 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 
 @Component({
-  selector: 'app-riepilogo',
+  selector: 'riepilogo',
   templateUrl: './riepilogo.component.html',
   styleUrls: ['./riepilogo.component.css']
 })
@@ -39,7 +39,7 @@ export class RiepilogoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.utilityService.scrollToSpecifyPosition();
+    this.utilityService.scrollToSpecifyPosition(true);
   }
 
 }
