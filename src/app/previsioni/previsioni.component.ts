@@ -68,8 +68,8 @@ export class PrevisioniComponent implements OnInit {
       this.runEcmwf = '12';
     }
     this.date = year + month + day + this.runEcmwf;
-    //return this.linkEcmwf = 'https://charts.ecmwf.int/products/opencharts_meteogram?base_time=' + this.date + '00&epsgram=classical_plume&lat=41.7357&lon=13.6837&station_name=Campoli%20Appennino';
-    return this.linkEcmwf = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runEcmwf + '&date=' + year + '-' + month + '-' + day + '&model=ecm&member=ENS&bw=1';
+    //return this.linkEcmwf = 'https://charts.ecmwf.int/products/opencharts_meteogram?base_time=' + this.date-adapter.ts + '00&epsgram=classical_plume&lat=41.7357&lon=13.6837&station_name=Campoli%20Appennino';
+    return this.linkEcmwf = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runEcmwf + '&date-adapter.ts=' + year + '-' + month + '-' + day + '&model=ecm&member=ENS&bw=1';
   }
 
   calculateDateGfs(): string {
@@ -97,8 +97,8 @@ export class PrevisioniComponent implements OnInit {
     if (hours >= 7 && hours < 19) {
       this.runGem = '00';
     }
-    this.linkGem = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runGem + '&date=' + year + '-' + month + '-' + day + '&model=gem&member=ENS&bw=1';
-    return this.linkGfs = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runGfs + '&date=' + year + '-' + month + '-' + day + '&model=gfs&member=ENS&bw=1';
+    this.linkGem = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runGem + '&date-adapter.ts=' + year + '-' + month + '-' + day + '&model=gem&member=ENS&bw=1';
+    return this.linkGfs = 'https://www.wetterzentrale.de/de/ens_image.php?geoid=75620&var=201&run=' + this.runGfs + '&date-adapter.ts=' + year + '-' + month + '-' + day + '&model=gfs&member=ENS&bw=1';
   }
 
 }

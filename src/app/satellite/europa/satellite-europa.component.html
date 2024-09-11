@@ -46,11 +46,11 @@
 <br>
 <br>
 
-<satellite [titleImgRadar]="'Nuvolosità Europa e Fulminazioni - Animazione 2H'"
-           [srcImage]="'https://www1.niederschlagsradar.de/onweer/loop_onweer.gif?v=' + preventCache"
-           [infoAlt]="'novolosità europa animazione'"
-           [class]="'radar'"></satellite>
-
+<satellite [titleImgRadar]="'Totale Precipitazioni Europa - Ultime 24H'"
+           [srcImage]="'https://www.meteociel.fr/cartes_obs/rr_eur2.png?v=' + preventCache"
+           [infoAlt]="'totale precipitazioni europa ultime 2H'"
+           [class]="'radar-mondo'"
+></satellite>
 
 <br>
 <br>
@@ -94,6 +94,20 @@
 <satellite [titleImgRadar]="'Temperature Europa Live'"
            [srcImage]="'https://www.meteociel.fr/cartes_obs/temp_eur2.png?v=' + preventCache"
            [infoAlt]="'temperature europa live'"
+           [class]="'radar-no-heigth'"></satellite>
+<br>
+<br>
+
+<satellite [titleImgRadar]="'Temperature Minime Europa Oggi'"
+           [srcImage]="'https://www.meteociel.fr/cartes_obs/tn_eur2.png?v=' + preventCache"
+           [infoAlt]="'temperature minime europa oggi'"
+           [class]="'radar-no-heigth'"></satellite>
+<br>
+<br>
+
+<satellite [titleImgRadar]="'Temperature Massime Europa Oggi'"
+           [srcImage]="'https://www.meteociel.fr/cartes_obs/txint_eur2.png?v=' + preventCache"
+           [infoAlt]="'temperature massime europa oggi'"
            [class]="'radar-no-heigth'"></satellite>
 <br>
 <br>

@@ -53,6 +53,12 @@
   ></satellite>
   <br>
   <br>
+  <satellite [titleImgRadar]="'Radar Precipitazioni Italia - Animazione Ultima Ora'"
+             [srcImage]="'https://www.meteociel.fr/cartes_obs/radar/lastradar_it.gif?' + preventCache"
+             [infoAlt]="'totale precipitazioni italia in movimento ultima ora'"
+             [class]="'radar-no-heigth'"></satellite>
+  <br>
+  <br>
   <satellite [titleImgRadar]="'Pioggia Giornaliera - Italia'"
              [srcImage]="'https://cdn1.meteonetwork.it/models/malawi/wnetwork/mappe_realtime/realtime_prec_italia.png?v=' + preventCache"
              [infoAlt]="'pioggia giornaliera italia calcolata'"
@@ -69,6 +75,7 @@
              [class]="'radar-meteonetwork'"></satellite>
   <br>
   <br>
+
   <h2 class="title-micro-section">Temperature in tempo reale </h2>
   <br>
   <satellite [titleImgRadar]="'Temperature in tempo reale'"
@@ -108,7 +115,7 @@
 <br>
 <br>
 <satellite [titleImgRadar]="'Sinottica italia'"
-           [srcImage]="'https://www.meteociel.fr/cartes_obs/pression2_it.png?v=' + preventCache"
+           [srcImage]="'https://modeles2.meteociel.fr/modeles_gfs/runs/2024090912/3-21IT.GIF?09-12?v=' + preventCache"
            [infoAlt]="'sinottica italia pressione'"
            [class]="'radar-no-heigth'"></satellite>
 
