@@ -10,8 +10,13 @@ export interface StatisticheStazioneInterface {
   tempMedia: string;
   ventoMax: string;
   pioggia: string;
-  umidita?: string;
+  pioggiaMaxEvento?: string;
+  umiditaMax?: string;
+  umiditaMin?: string;
+  pressioneMax?: string;
+  pressioneMin?: string;
   pioggiaMese?: string;
+  pioggiaAnno?: string;
   tempMinMese?: string;
   tempMaxMese?: string;
   tempMediaMese?: string;
