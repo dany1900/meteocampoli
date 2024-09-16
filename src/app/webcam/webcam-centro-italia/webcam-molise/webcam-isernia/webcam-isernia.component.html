@@ -7,15 +7,15 @@
 </webcam>-->
 <webcam [luogo]="'CAPRACOTTA - PIAZZA FALCONI (IS)'"
         [altitudine]="'1421'"
-        [urlSite]="'www.meteoinmolise.com'"
-        [urlWebcam]="'https://www.meteoinmolise.com/webcam/FoscamCamera_408C4C55F979/snap/webcam.php'"
+        [urlSite]="'www.meteoplanet.it'"
+        [urlWebcam]="'https://www.meteoplanet.it/layout/webcam/view/?url=https://www.campanialive.it/webcam/montagna/capracotta/falconi.jpg'"
 >
 </webcam>
 
-<webcam [luogo]="'CAPRACOTTA - VISTA OVEST (IS)'"
+<webcam [luogo]="'CAPRACOTTA - VISTA EST (IS)'"
         [altitudine]="'1399'"
-        [urlSite]="'www.neveappennino.it'"
-        [urlWebcam]="'https://www.neveappennino.it/foscam2/FI9800P_00626E8580B0/snap/webcam.php'"
+        [urlSite]="'www.windy.com/'"
+        [urlWebcam]="'https://images-webcams.windy.com/59/1685256759/current/full/1685256759.jpg'"
 >
 </webcam>
 <webcam [luogo]="'PESCOPENNATTARO (IS)'"
@@ -32,14 +32,14 @@
 </webcam>-->
 <webcam [luogo]="'RIONERO SANNITICO (IS)'"
         [altitudine]="'1051'"
-        [urlSite]="'www.windy.com'"
-        [urlWebcam]="'https://images-webcams.windy.com/public/28/1239391928/current/full/1239391928.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3ZWJjYW1faWQiOjEyMzkzOTE5MjgsInVzZXJfdHlwZSI6MSwiYXZhaWxhYmxlX3NpemVzIjoidGVhc2VyYmcsaWNvbix0aHVtYm5haWwscHJldmlldyxub3JtYWwsZnVsbCxwYW5vcmFtYSIsImlhdCI6MTcwNzc0NTg5NCwiZXhwIjoxNzA3ODMyMjk0fQ.HLCbZfg1a1gFfNuglVjGq3k4tu9EUncikdge4NXRA68'"
+        [urlSite]="'webcams.ventusky.com'"
+        [urlWebcam]="'https://webcams.ventusky.com/data/86/141529786/hour/20240915_1100.jpg?1726400376'"
 >
 </webcam>
-<webcam [luogo]="'PIETRABBONDANTE (IS)'"
+<webcam *ngIf="!utilityService.isHttps()" [luogo]="'PIETRABBONDANTE (IS)'"
         [altitudine]="'1027'"
         [urlSite]="'www.meteoinmolise.com'"
-        [urlWebcam]="'https://www.meteoinmolise.com/wp-content/uploads/2017/01/pietrabbondante-1.jpg'"
+        [urlWebcam]="'http://195.32.24.180:1024/mjpg/video.mjpg'"
 >
 </webcam>
 <webcam [luogo]="'SAN PIETRO AVELLANA (IS)'"
@@ -48,24 +48,25 @@
         [urlWebcam]="'https://www.meteoinmolise.com/webcam/FI9900EP_00626ED82870/snap/webcam.php'"
 >
 </webcam>
-<webcam [luogo]="'SANT ANGELO IN GROTTE (IS)'"
+<!--<webcam [luogo]="'SANT ANGELO IN GROTTE (IS)'"
         [altitudine]="'970'"
-        [urlSite]="'www.meteoinmolise.com'"
-        [urlWebcam]="'https://www.meteoinmolise.com/webcam/FI9900P_00626E863E71/snap/webcam.php'"
+        [urlSite]="'cdn.skylinewebcams.com'"
+        [urlWebcam]="'https://cdn.skylinewebcams.com/live4560.webp'"
 >
-</webcam>
+</webcam>-->
 <webcam [luogo]="'MACCHIAGODENA (IS)'"
         [altitudine]="'864'"
         [urlSite]="'www.meteoinmolise.com'"
         [urlWebcam]="'https://www.meteoinmolise.com/webcam/FoscamCamera_A0E381AE92B9/snap/webcam.php'"
 >
 </webcam>
-<webcam [luogo]="'CASTEL DEL GIUDICE (IS)'"
+<!--<webcam [luogo]="'CASTEL DEL GIUDICE (IS)'"
         [altitudine]="'800'"
         [urlSite]="'comune.casteldelgiudice.is.it'"
         [urlWebcam]="'https://w1.cdgwebcam.it/webcam.jpg'"
 >
-</webcam>
+</webcam>-->
+
 <webcam [luogo]="'CASTELPETROSO (IS)'"
         [altitudine]="'800'"
         [urlSite]="'www.meteoinmolise.com'"
@@ -78,6 +79,8 @@
         [urlWebcam]="'https://images-webcams.windy.com/30/1267919030/current/full/1267919030.jpg'"
 >
 </webcam>
+
+
 <webcam [luogo]="'PETTORANELLO DEL MOLISE (IS)'"
         [altitudine]="'737'"
         [urlSite]="'www.meteoinmolise.com'"
@@ -105,12 +108,12 @@
 <webcam [luogo]="'VENAFRO (IS) '"
         [altitudine]="'222'"
         [urlSite]="'www.meteoinmolise.com'"
-        [urlWebcam]="'https://www.meteoinmolise.com/webcam/FI9900P_00626E863EB1/snap/img.jpg'"
+        [urlWebcam]="'https://www.meteoinmolise.com/webcam/FI9900P_00626E863EB1/snap/webcam.php'"
 >
 </webcam>
-<webcam [luogo]="'SANT\'EUSANIO DEL SANGRO (IS) '"
-        [altitudine]="'200'"
+<webcam [luogo]="'MONTERODUNI - PIAZZA SANT\'EUSANIO (IS) '"
+        [altitudine]="'231'"
         [urlSite]="'www.windy.com'"
-        [urlWebcam]="'https://images-webcams.windy.com/public/60/1368738760/current/full/1368738760.jpg?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3ZWJjYW1faWQiOjEzNjg3Mzg3NjAsInVzZXJfdHlwZSI6MSwiYXZhaWxhYmxlX3NpemVzIjoidGVhc2VyYmcsaWNvbix0aHVtYm5haWwscHJldmlldyxub3JtYWwsZnVsbCxwYW5vcmFtYSIsImlhdCI6MTcwNzc0NTg5NCwiZXhwIjoxNzA3ODMyMjk0fQ.fZa88Imj8-NVDtqNRSp_81oOqU5CbmgbJGrBS_0DNIk'"
+        [urlWebcam]="'https://images-webcams.windy.com/60/1368738760/current/full/1368738760.jpg'"
 >
 </webcam>

@@ -34,8 +34,6 @@ export class UtiliyService {
   }
 
   isHttps(): boolean {
-    if (location.protocol === 'https:') {
-      return true;
-    }
+    return location.protocol === 'https:';
   }
 }

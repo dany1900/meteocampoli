@@ -60,10 +60,10 @@
         [urlWebcam]="'https://www.meteocollepardomontiernici.it/webcam/FoscamCamera_00626EEDFFC3/snap/webcam.php'"
 >
 </webcam>
-<webcam [luogo]="'ARPINO (FR)'"
+<webcam *ngIf="!utilityService.isHttps()" [luogo]="'ARPINO (FR)'"
         [altitudine]="'500'"
         [urlSite]="'sre.altervista.org'"
-        [urlWebcam]="'https://sre.altervista.org/webcam/webcam.php'"
+        [urlWebcam]="'http://sre.altervista.org/webcam/webcam.php'"
 >
 </webcam>
 <webcam [luogo]="'ANAGNI (FR)'"

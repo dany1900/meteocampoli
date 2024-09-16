@@ -19,18 +19,18 @@
           [urlWebcam]="'https://images-webcams.windy.com/59/1275214259/current/full/1275214259.jpg'"
   >
   </webcam>
-  <webcam [luogo]="'ARPINO (FR)'"
+  <webcam *ngIf="!utilityService.isHttps()" [luogo]="'ARPINO (FR)'"
           [altitudine]="'500'"
           [urlSite]="'sre.altervista.org'"
-          [urlWebcam]="'https://sre.altervista.org/webcam/webcam.php'"
+          [urlWebcam]="'http://sre.altervista.org/webcam/webcam.php'"
   >
   </webcam>
-  <webcam [luogo]="'ATINA (FR)'"
+  <!--<webcam [luogo]="'ATINA (FR)'"
           [altitudine]="'500'"
           [urlSite]="'www.meteocomino.it'"
           [urlWebcam]="'https://www.meteocomino.it/atina/atinaest/atina_est.php'"
   >
-  </webcam>
+  </webcam>-->
   <webcam [luogo]="'CASTELLIRI - VIA SELVA (FR)'"
           [altitudine]="'285'"
           [urlSite]="'www.meteoliri.it'"
@@ -83,8 +83,8 @@
 
   <webcam [luogo]="'FROSINONE (FR)'"
           [altitudine]="'300'"
-          [urlSite]="'www.meteoceccano.it'"
-          [urlWebcam]="'https://www.meteoceccano.it/webcam/webcam.php'"
+          [urlSite]="'alatrimeteo.altervista.org'"
+          [urlWebcam]="'https://alatrimeteo.altervista.org/foscam/FoscamCamera_00626EECEA8F/snap/webcamlogo1.php'"
   >
   </webcam>
   <webcam [luogo]="'FERENTINO (FR)'"
@@ -93,16 +93,10 @@
           [urlWebcam]="'https://www.meteoferentino.it/webcam/current.jpg'"
   >
   </webcam>
-  <webcam [luogo]="'CECCANO (FR)'"
-          [altitudine]="'200'"
-          [urlSite]="'www.meteoceccano.it'"
-          [urlWebcam]="'https://www.meteoceccano.it/webcam/webcam.php'"
-  >
-  </webcam>
   <webcam [luogo]="'CERVARO (FR)'"
           [altitudine]="'70'"
-          [urlSite]="'www.meteosystem.com'"
-          [urlWebcam]="'https://www.meteosystem.com/webcam/cervaro/cervaro.jpg'"
+          [urlSite]="'www.meteoproject.it'"
+          [urlWebcam]="'https://www.meteoproject.it/ftp/webcam/cervaro/cervaro.jpg'"
   >
   </webcam>
   <webcam [luogo]="'ROCCASECCA (FR)'"
@@ -113,8 +107,14 @@
   </webcam>
   <webcam [luogo]="'FILETTINO (FR)'"
           [altitudine]="'1063'"
-          [urlSite]="'www.meteoferentino.it'"
-          [urlWebcam]="'https://www.meteofilettino.it/albanetti/filettino4.jpg'"
+          [urlSite]="'www.meteofilettino.it'"
+          [urlWebcam]="'https://www.meteofilettino.it/cam.jpg'"
+  >
+  </webcam>
+  <webcam [luogo]="'FILETTINO (FR)'"
+          [altitudine]="'1063'"
+          [urlSite]="'www.meteofilettino.it'"
+          [urlWebcam]="'https://www.meteofilettino.it/piazza.jpg'"
   >
   </webcam>
   <webcam [luogo]="'TECCHIENA (FR)'"
