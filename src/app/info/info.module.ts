@@ -22,6 +22,16 @@ import {NoccioloComponent} from './articoli/giardinaggio/nocciolo/nocciolo.compo
 import {StratwarmingComponent} from './articoli/meteo/stratwarming/stratwarming.component';
 import {AtmosferaComponent} from './articoli/meteo/atmosfera/atmosfera.component';
 import {VorticePolareComponent} from './articoli/meteo/vortice-polare/vortice-polare.component';
+import {ContattiComponent} from './contatti/contatti.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -30,6 +40,15 @@ import {VorticePolareComponent} from './articoli/meteo/vortice-polare/vortice-po
     SharedModule,
     CommonModule,
     AdsenseModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatGridListModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    HttpClientModule
   ],
 
   declarations: [
@@ -51,7 +70,8 @@ import {VorticePolareComponent} from './articoli/meteo/vortice-polare/vortice-po
     RosaVentiComponent,
     StratwarmingComponent,
     AtmosferaComponent,
-    VorticePolareComponent
+    VorticePolareComponent,
+    ContattiComponent
   ],
   exports: []
 })

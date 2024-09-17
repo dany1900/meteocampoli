@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SEOService} from '../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../service/utiliy.service';
-import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -20,7 +19,7 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
   ogImage: string;
   linkRapportoAnnuale: string;
 
-  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService, private http: HttpClient) {
+  constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.path = 'https://www.meteocampoliappennino.altervista.org/grafico.png?v=' + Math.random();
     this.title = 'Meteo Campoli - Monitoraggio Meteo';
     this.description = 'Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.';

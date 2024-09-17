@@ -33,6 +33,13 @@ import {VorticePolareComponent} from './articoli/meteo/vortice-polare/vortice-po
             }
           },
           {
+            path: 'contatti',
+            component: TabInfoComponent,
+            data: {
+              title: 'Contatti - Meteo Campoli'
+            }
+          },
+          {
             path: 'effemeridi',
             component: TabInfoComponent,
             data: {

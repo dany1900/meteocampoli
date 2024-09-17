@@ -974,6 +974,19 @@ legend {
   font-size: 15px !important
 }
 
+.message-post-mail {
+  font-size: 25px !important;
+  color: #1000ff;
+  max-width: 95%;
+  margin: 50px auto !important;
+  padding: 20px;
+  border-radius: 20px;
+  border: 10px;
+  border-style: solid;
+  border-color: #ffffff;
+  background-color: white;
+}
+
 .carousel-control-next, .carousel-control-prev {
   width: 0% !important;
 }

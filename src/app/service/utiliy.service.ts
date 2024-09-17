@@ -21,6 +21,11 @@ export class UtiliyService {
     this.scroll.scrollToPosition([0, 0]);
   }
 
+  scrollToDown() {
+    const scrollHeight = document.body.scrollHeight;
+    this.scroll.scrollToPosition([0, scrollHeight]);
+  }
+
   scrollToSpecifyPosition(isDati?: boolean) {
     if (this.isMobile()) {
       this.scroll.scrollToPosition([0, !isDati ? 1130 : 1130]);

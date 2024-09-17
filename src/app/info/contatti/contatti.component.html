@@ -1,0 +1,45 @@
+<mat-card [hidden]="imageLoader" *ngIf="isVisible" class="contact-card">
+  <mat-card-title></mat-card-title>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" placeholder="Inserisci il tuo nome" />
+      <mat-error *ngIf="contactForm.get('name').hasError('required')">
+        Il nome è obbligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" placeholder="Inserisci la tua email" />
+      <mat-error *ngIf="contactForm.get('email').hasError('required')">
+        L'email è obbligatoria
+      </mat-error>
+      <mat-error *ngIf="contactForm.get('email').hasError('email')">
+        Inserisci un'email valida
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Messaggio</mat-label>
+      <textarea matInput formControlName="message" rows="5" placeholder="Scrivi il tuo messaggio"></textarea>
+      <mat-error *ngIf="contactForm.get('message').hasError('required')">
+        Il messaggio è obbligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="contactForm.invalid" class="custom-button">
+        Invia Messaggio
+      </button>
+    </div>
+  </form>
+</mat-card>
+<br>
+<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<br>
+<ng-container [hidden]="imageLoader" *ngIf="messageAfterSend">
+  <p class="message-post-mail">{{ messageAfterSend }}</p>
+</ng-container>
+<br>
+

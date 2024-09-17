@@ -13,6 +13,7 @@ export class TabInfoComponent implements OnInit {
   pathArticoli = '/info/articoli/meteo';
   pathCuriosita = '/info/curiosita';
   pathEffemeridi = '/info/effemeridi';
+  pathContattaci = '/info/contatti';
 
   constructor(private router: Router, private myElement: ElementRef, public utility: UtiliyService) {
     let paramTab: any;
@@ -30,6 +31,10 @@ export class TabInfoComponent implements OnInit {
         this.id = 2;
         this.utility.titleMatTab = 'Orari Alba Tramonto Campoli Appennino - Meteo Campoli';
         break;
+      case this.pathContattaci:
+        this.id = 3;
+        this.utility.titleMatTab = 'Contattaci - Meteo Campoli';
+        break;
       default:
         this.id = 0;
         break;
@@ -44,6 +49,8 @@ export class TabInfoComponent implements OnInit {
       this.router.navigate([this.pathCuriosita]);
     } else if (event === 2) {
       this.router.navigate([this.pathEffemeridi]);
+    } else if (event === 3) {
+      this.router.navigate([this.pathContattaci]);
     }
   }
 
