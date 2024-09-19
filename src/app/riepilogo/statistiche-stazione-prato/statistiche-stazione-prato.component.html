@@ -1,7 +1,6 @@
+<h1> Riepilogo Stazione Meteo Campoli Loc Prato - 586 mt </h1>
 <br>
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
-<br>
-<h1> Riepilogo Stazione Meteo Campoli Loc Prato - 586 mt </h1>
 <br>
 <div [hidden]="imageLoader" *ngIf="isVisible">
   <div class="mat-elevation-z8 table-riepilogo-stazione-prato center">
@@ -44,58 +43,58 @@
       <ng-container matColumnDef="giorno">
         <th class="riepilogo-giorno-header" mat-header-cell *matHeaderCellDef mat-sort-header> Giorno</th>
         <td class="riepilogo-giorno-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : '#e3dede'} "> {{(element?.giorno) ? element?.giorno : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : '#e3dede'} "> {{(element?.giorno) ? element?.giorno : '-' }} </td>
       </ng-container>
 
       <!-- Profondita Column -->
       <ng-container matColumnDef="tempMin">
         <th class="riepilogo-temMin-header" mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura Minima</th>
         <td class="riepilogo-temMin-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getCellColor(element?.tempMin)}"> {{(element?.tempMin) ? element?.tempMin + '°' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getCellColor(element?.tempMin)}"> {{(element?.tempMin) ? element?.tempMin + '°' : '-' }} </td>
       </ng-container>
 
       <!-- Zona Column -->
       <ng-container matColumnDef="tempMax">
         <th class="riepilogo-temMax-header" mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura Massima</th>
         <td class="riepilogo-temMax-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getCellColor(element?.tempMax)}"> {{(element?.tempMax) ? element?.tempMax + '°' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getCellColor(element?.tempMax)}"> {{(element?.tempMax) ? element?.tempMax + '°' : '-' }} </td>
       </ng-container>
 
       <!-- Profondita Column -->
       <ng-container matColumnDef="tempMedia">
         <th class="riepilogo-temMedia-header" mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura Media</th>
         <td class="riepilogo-temMedia-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getCellColor(element?.tempMedia)}"> {{(element?.tempMedia && element?.tempMedia !== 'NaN') ? element?.tempMedia + '°' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getCellColor(element?.tempMedia)}"> {{(element?.tempMedia && element?.tempMedia !== 'NaN') ? element?.tempMedia + '°' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="vento">
         <th class="riepilogo-vento-header" mat-header-cell *matHeaderCellDef mat-sort-header> Vento Raffica Max</th>
         <td class="riepilogo-vento-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getVentoColor(element?.ventoMax)}"> {{(element?.ventoMax) ? element?.ventoMax + ' Km/h' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getVentoColor(element?.ventoMax)}"> {{(element?.ventoMax) ? element?.ventoMax + ' Km/h' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="pressione">
-        <th class="riepilogo-vento-header" mat-header-cell *matHeaderCellDef mat-sort-header> Pressione Rel Min - Max
+        <th class="riepilogo-pressione-heder" mat-header-cell *matHeaderCellDef mat-sort-header> Pressione Relativa  Min-Max
           hPa
         </th>
-        <td class="riepilogo-vento-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getPressioneColor(element?.pressioneMin)}"> {{(element?.pressioneMax) ? element?.pressioneMin + ' - ' + element?.pressioneMax + '' : '-' }} </td>
+        <td class="riepilogo-pressione-body" mat-cell *matCellDef="let element"
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getPressioneColor(element?.pressioneMin)}"> {{(element?.pressioneMax) ? element?.pressioneMin + ' - ' + element?.pressioneMax + '' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="umidita">
-        <th class="riepilogo-vento-header" mat-header-cell *matHeaderCellDef mat-sort-header> Umidità Rel Min - Max</th>
-        <td class="riepilogo-vento-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getUmiditaColor(element?.umiditaMax)}"> {{(element?.umiditaMin) ? element?.umiditaMin + ' - ' + element?.umiditaMax + ' %' : '-' }} </td>
+        <th class="riepilogo-umidita-header" mat-header-cell *matHeaderCellDef mat-sort-header> Umidità Relativa Min-Max</th>
+        <td class="riepilogo-umidita-body" mat-cell *matCellDef="let element"
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getUmiditaColor(element?.umiditaMax)}"> {{(element?.umiditaMin) ? element?.umiditaMin + ' - ' + element?.umiditaMax + ' %' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="pioggia">
         <th class="riepilogo-pioggia-header" mat-header-cell *matHeaderCellDef mat-sort-header> Pioggia</th>
         <td class="riepilogo-pioggia-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getPioggiaColor(element?.pioggia)}"> {{(element?.pioggia) ? element?.pioggia + ' mm' : '0.0 mm' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getPioggiaColor(element?.pioggia)}"> {{(element?.pioggia) ? element?.pioggia + ' mm' : '0.0 mm' }} </td>
       </ng-container>
 
 
@@ -144,51 +143,51 @@
       <ng-container matColumnDef="tempMin">
         <th class="riepilogo-temMin-header" mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura Minima</th>
         <td class="riepilogo-temMin-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getCellColor(element?.tempMin)}"> {{(element?.tempMin) ? element?.tempMin + '°' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getCellColor(element?.tempMin)}"> {{(element?.tempMin) ? element?.tempMin + '°' : '-' }} </td>
       </ng-container>
 
       <!-- Zona Column -->
       <ng-container matColumnDef="tempMax">
-        <th class="riepilogo-vento-header" mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura Massima</th>
-        <td class="riepilogo-vento-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getCellColor(element?.tempMax)}"> {{(element?.tempMax) ? element?.tempMax + '°' : '-' }} </td>
+        <th class="riepilogo-temMax-header" mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura Massima</th>
+        <td class="riepilogo-temMax-body" mat-cell *matCellDef="let element"
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getCellColor(element?.tempMax)}"> {{(element?.tempMax) ? element?.tempMax + '°' : '-' }} </td>
       </ng-container>
 
       <!-- Profondita Column -->
       <ng-container matColumnDef="tempMedia">
         <th class="riepilogo-temMedia-header" mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura Media</th>
         <td class="riepilogo-temMedia-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getCellColor(element?.tempMedia)}"> {{(element?.tempMedia && element?.tempMedia !== 'NaN') ? element?.tempMedia + '°' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getCellColor(element?.tempMedia)}"> {{(element?.tempMedia && element?.tempMedia !== 'NaN') ? element?.tempMedia + '°' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="vento">
-        <th class="riepilogo-temMax-header" mat-header-cell *matHeaderCellDef mat-sort-header> Vento Raffica Max</th>
-        <td class="riepilogo-temMax-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getVentoColor(element?.ventoMax)}"> {{(element?.ventoMax) ? element?.ventoMax + ' Km/h' : '-' }} </td>
+        <th class="riepilogo-vento-header" mat-header-cell *matHeaderCellDef mat-sort-header> Vento Raffica Max</th>
+        <td class="riepilogo-vento-body" mat-cell *matCellDef="let element"
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getVentoColor(element?.ventoMax)}"> {{(element?.ventoMax) ? element?.ventoMax + ' Km/h' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="pressione">
-        <th class="riepilogo-vento-header" mat-header-cell *matHeaderCellDef mat-sort-header> Pressione Relat Min - Max
+        <th class="riepilogo-vento-header" mat-header-cell *matHeaderCellDef mat-sort-header> Pressione Rel Min-Max
           hPa
         </th>
         <td class="riepilogo-vento-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getPressioneColor(element?.pressioneMin)}"> {{(element?.pressioneMax) ? element?.pressioneMin + ' - ' + element?.pressioneMax + '' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getPressioneColor(element?.pressioneMin)}"> {{(element?.pressioneMax) ? element?.pressioneMin + ' - ' + element?.pressioneMax + '' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="pioggiaGiornalieraMax">
         <th class="riepilogo-pioggia-header" mat-header-cell *matHeaderCellDef mat-sort-header> Pioggia Giornaliera Massima</th>
         <td class="riepilogo-pioggia-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getUmiditaColor(element?.pioggiaMaxEvento)}"> {{(element?.pioggiaMaxEvento) ? element?.pioggiaMaxEvento + ' mm' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getPioggiaColor(element?.pioggiaMaxEvento)}"> {{(element?.pioggiaMaxEvento) ? element?.pioggiaMaxEvento + ' mm' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="pioggia">
         <th class="riepilogo-pioggia-header" mat-header-cell *matHeaderCellDef mat-sort-header> Pioggia</th>
         <td class="riepilogo-pioggia-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' || element?.giorno === 'Annuale' ? 'rgb(159 153 153)' : getPioggiaColor(element?.pioggia)}"> {{(element?.pioggia) ? element?.pioggia + ' mm' : '0.0 mm' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getUmiditaColor(element?.pioggia)}"> {{(element?.pioggia) ? element?.pioggia + ' mm' : '0.0 mm' }} </td>
       </ng-container>
 
 

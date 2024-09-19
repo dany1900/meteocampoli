@@ -17,6 +17,10 @@ import {TabRiepilogoComponent} from './tab-riepilogo/tab-riepilogo.component';
         component: TabRiepilogoComponent,
       },
       {
+        path: 'stazione-cicerone',
+        component: TabRiepilogoComponent,
+      },
+      {
         path: 'temperature-mare',
         component: TemperatureMareComponent,
       },

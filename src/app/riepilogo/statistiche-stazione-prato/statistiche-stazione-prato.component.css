@@ -73,6 +73,14 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   border-color: #ffffff;
 }
 
+::ng-deep .mat-sort-header-content ::ng-deep {
+  padding-left: 3px!important;
+  font-size: 24px!important;
+  padding-bottom: 3px!important;
+  padding-top: 3px!important;
+  line-height: 1.1 !important;
+}
+
 @media only screen and (max-width: 1025px) and (orientation: portrait) {
 
   ::ng-deep .mat-button .mat-button-wrapper > *, .mat-flat-button .mat-button-wrapper > *, .mat-stroked-button .mat-button-wrapper > *, .mat-raised-button .mat-button-wrapper > *, .mat-icon-button .mat-button-wrapper > *, .mat-fab .mat-button-wrapper > *, .mat-mini-fab .mat-button-wrapper > * ::ng-deep {
@@ -96,6 +104,10 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
     margin-bottom: 600px!important;
   }
 
+  ::ng-deep .mat-sort-header-content ::ng-deep {
+    padding-left: 3px!important;
+    font-size: 18px!important;
+  }
 }
 
 

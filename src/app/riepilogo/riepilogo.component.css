@@ -1,1 +1,66 @@
+/*::ng-deep html ::ng-deep{
+  zoom: 1 !important;
+}*/
+
+::ng-deep .scelta-rapporto ::ng-deep{
+  font-size: 18pt;
+}
+
+::ng-deep select ::ng-deep{
+  font-size: 20pt;
+}
+
+input{
+  font-size: 20pt;
+}
+
+a{
+  font-size: 16pt;
+}
+
+p{
+  font-size: 16pt;
+}
+
+td{
+  font-size: 13pt;
+}
+
+option{
+  font-size: 13pt;
+}
+
+.button-esegui{
+  font-size: 14pt;
+}
+
+table{
+  font-size: 14pt;
+}
+
+@media screen and (max-width: 890px) {
+  .scelta-rapporto{
+    font-size: 17pt !important;
+  }
+
+  select{
+    font-size: 17pt !important;
+  }
+
+  input{
+    font-size: 17pt !important;
+  }
+
+  option{
+    font-size: 17pt !important;
+  }
+
+  .button-esegui{
+    font-size: 18pt !important;
+  }
+
+  table{
+    font-size: 18pt;
+  }
+}
 

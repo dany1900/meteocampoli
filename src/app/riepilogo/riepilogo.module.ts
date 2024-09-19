@@ -15,6 +15,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MY_DATE_FORMATS, MyDateAdapter} from '../utils/adapter/date-adapter';
 import {TabRiepilogoComponent} from './tab-riepilogo/tab-riepilogo.component';
+import {StatisticheStazioneCiceroneComponent} from './statistiche-stazione-cicerone/statistiche-stazione-cicerone.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {TabRiepilogoComponent} from './tab-riepilogo/tab-riepilogo.component';
     TemperatureMareComponent,
     AnomalieComponent,
     StatisticheStazionePratoComponent,
-    TabRiepilogoComponent
+    TabRiepilogoComponent,
+    StatisticheStazioneCiceroneComponent
   ],
   providers: [
     { provide: DateAdapter, useClass: MyDateAdapter },

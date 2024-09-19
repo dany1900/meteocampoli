@@ -1030,14 +1030,14 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 
 .riepilogo-giorno-header{
   background-color: #e3dede;
-  width: 5%;
+  width: 3%;
   font-weight: bold;
   padding-left: 1% !important;
 }
 
 .riepilogo-giorno-body{
   background-color: #e3dede;
-  width: 5%;
+  width: 3%;
   font-weight: bold;
   padding-left: 0% !important;
 }
@@ -1046,25 +1046,25 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   background-color: #ececfa;
   padding-left: 1%!important;
   font-weight: bold;
-  width: 8%;
+  width: 6%;
 }
 
 .riepilogo-temMin-body{
   background-color: #ececfa;
   font-weight: bold;
-  width: 8%;
+  width: 6%;
 }
 
 .riepilogo-temMax-header{
-  background-color: #e3dede;
-  width: 8%;
+  background-color: #ffeaea;
+  width: 6%;
   font-weight: bold;
   padding-left: 1% !important;
 }
 
 .riepilogo-temMax-body{
-  background-color: #e3dede;
-  width: 8%;
+  background-color: #ffeaea;
+  width: 6%;
   font-weight: bold;
 }
 
@@ -1072,13 +1072,13 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
   background-color: #ececfa;
   padding-left: 1%!important;
   font-weight: bold;
-  width: 8%;
+  width: 6%;
 }
 
 .riepilogo-temMedia-body{
   background-color: #ececfa;
   font-weight: bold;
-  width: 8%;
+  width: 6%;
 }
 
 .esegui{
@@ -1090,30 +1090,57 @@ th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
 }
 
 .riepilogo-vento-header{
-  background-color: #ffeaea;
+  background-color: #e3dede;
   font-weight: bold;
   padding-left: 1%!important;
-  width: 10%;
+  width: 15%;
 }
 
 .riepilogo-vento-body{
-  background-color: #ffeaea;
+  background-color: #e3dede;
   font-weight: bold;
   padding-left: 1%!important;
-  width: 10%;
+  width: 15%;
 }
+
+.riepilogo-pressione-header{
+  background-color: #ececfa;
+  padding-left: 1%!important;
+  font-weight: bold;
+  width: 21%;
+}
+
+.riepilogo-pressione-body{
+  background-color: #ececfa;
+  font-weight: bold;
+  width: 21%;
+}
+
+.riepilogo-umidita-header{
+  background-color: #ececfa;
+  padding-left: 1%!important;
+  font-weight: bold;
+  width: 12%;
+}
+
+.riepilogo-umidita-body{
+  background-color: #ececfa;
+  font-weight: bold;
+  width: 12%;
+}
+
 
 .riepilogo-pioggia-header{
   background-color: #ececfa;
   padding-left: 1%!important;
   font-weight: bold;
-  width: 10%;
+  width: 5%;
 }
 
 .riepilogo-pioggia-body{
   background-color: #ececfa;
   font-weight: bold;
-  width: 10%;
+  width: 5%;
 }
 
 .terremoti-data-ora-header{
