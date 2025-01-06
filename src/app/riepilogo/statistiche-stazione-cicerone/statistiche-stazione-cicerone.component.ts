@@ -54,7 +54,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   public pageSize;
   public currentPage;
   public pageSizeAnno;
-  public currentPageAnno;
+  public currentPageAnno = 2;
   public totalSize;
   pageEvent: PageEvent;
   pageEventAnno: PageEvent;
@@ -80,6 +80,8 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   csvDataMonthly: any[] = [];  // I dati CSV caricati ordinati
   month: string;
   year: number;
+  yearMonth: number;
+  precYear: number;
   today: Date;
   dateControl = new FormControl(new Date());  // Imposta la data odierna
   dateControlAnnuale = new FormControl(new Date());  // Imposta la data odierna
@@ -102,6 +104,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     this.utilityService.scrollToSpecifyPosition();
     this.today = new Date();
     this.year = this.today.getFullYear();
+    this.yearMonth = this.year;
     this.month = (this.today.getMonth() + 1).toString();
     this.currentPage = this.today.getMonth();
     if (Number(this.month) <= 9) {
@@ -109,7 +112,6 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     }
     this.loadCSVMeseData();
     this.loadCSVAnnoData();
-    //this.tabellaTerremoti();
   }
 
   ngAfterViewInit() {
@@ -117,86 +119,79 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     this.dataSourceAnno.paginator = this.paginatorAnno;
   }
 
-  /*tabellaTerremoti( startDate?: string, endDate?: string) {
-    const url = 'https://temporeale.regione.lazio.it/datascapeA/v3/data-combo/51438?from=2024-01-01T00%3A00%3A00%2B01%3A00&to=2024-09-19T23%3A59%3A59%2B01%3A00&basicType=Plausible&part=EpochTime&part=ValueWithInvalid&timing=ReducedEquispaced&loadAlsoExtemp=true&ui_culture=it&reduction=60&_=1726774986980';
-    const headers = new HttpHeaders();
-    let queryParams = new HttpParams();
-    headers.set('content-type', 'text/plain; charset=utf-8');
-    headers.set('Authorization', 'Bearer CfDJ8DxULupjwt9CttBpgUW8nBw0ySGtuJwwCZJS_nGfk3Mlmfr4a3e3aqK6jnFKsu3o_suDbeKEE0e2sAy34ur2IdtzS_rrCcWCtlOYdSIMxO9xZCWYHMb-qN0EGpwvgvUqNZb3Mlwdjkey4fOhPX1EIv16_OVUcmX7pA3M6JSIIU-mAyR8UYCZZSOtM_xG1JpGT2qA_I43nVCV5mTe_83LGm7Ro3FRlB6nQQ-godjs9NApXAGO846gQjTPXPePQKhfpf97dXDa_UGOzz8qSKIFAILl13rApO8ThEjeYHnZWnFpZNCaiaxzEfMd1vZEn-OybkQWFkBWjdGkUXHG54yUB_AsxAdc5mdbAzByD6apF3hVY65y_pKh72RVXFsOX-ddPDuFFjhWJxVPIw-3hrPdG4vz8LmYqKc_bgF7jHJxKLq-tKQESzjBXHZSnbfEKg-LGfTrlm-Dk196CvdWCY7QuML4lQAAKCla8Fo_hmGy3FM7S05HNIBVnM3bT4OgW-0WeM8uFJccYC9kCRzx_3cdInlBRNepzNKeYj7ezcCBBxa22MevVcUrV_hnobEVVp91ZQwy_R69nJBAeGQivhbt8_dJgh1zcVwrzHu4OO288FVpxQa0ht9PR_DJ0niLI_3QCBHpsDPwDN6VratfeYNJ7ExPdt5wfN5cGNYKXPI5FWuyca4532t9rcpCW2HsehWmjw'):
-    /!*queryParams = queryParams.append('starttime', dateMinus4Day);
-    if (endDate) {
-      queryParams = queryParams.append('endtime', endDate);
-    }
-    queryParams = queryParams.append('minmag', minMag);
-    if (maxMag) {
-      queryParams = queryParams.append('maxmag', maxMag);
-    }
-    queryParams = queryParams.append('orderby', 'time');
-    queryParams = queryParams.append('format', 'text');
-    queryParams = queryParams.append('lat', '41.44');
-    queryParams = queryParams.append('lon', '13.41');
-    queryParams = queryParams.append('includeallorigins', false);
-    queryParams = queryParams.append('includeallmagnitudes', false);
-    queryParams = queryParams.append('includeallstationsmagnitudes', false);
-    queryParams = queryParams.append('includearrivals', false);*!/
-    return this.http.get(url, {headers: headers, params: queryParams, responseType: 'text'}).subscribe(data => {
-     let res = data;
-    }, () => { this.isVisible = true; this.imageLoader = false; });
-  }*/
-
   loadCSVAnnoData() {
+    this.imageLoaderAnno = true;
+
     this.csvAnnoPath = 'assets/storico-cicerone/cicerone-' + this.year + '.csv';
 
     this.fileService.getCSV(this.csvAnnoPath).subscribe(res => {
-      this.csvDataAnno = this.fileService.parseCSV(res, ';');
-      let minTemperature = Infinity;
-      let maxTemperature = -20;
-      let avgTemperature = 0;
-      let minUr = Infinity;
-      let maxUr = 0;
-      let tempCount = 1;
-      this.csvDataAnno.forEach(anno => {
-        const temp = parseFloat(anno['Valle del Rio - Temperatura Aria - 51436 (°C)']);
-        const ur = parseFloat(anno['Valle del Rio - Umidità Relativa - 51437 (%)']) || 0;  // Se non ci sono dati di vento, usa 0
+        this.csvDataAnno = this.fileService.parseCSV(res, ';');
+        let minTemperature = Infinity;
+        let maxTemperature = -20;
+        let avgTemperature = 0;
+        let minUr = Infinity;
+        let maxUr = 0;
+        let tempCount = 1;
+        this.csvDataAnno.forEach(anno => {
+          const temp = parseFloat(anno['Valle del Rio - Temperatura Aria - 51436 (°C)']);
+          const ur = parseFloat(anno['Valle del Rio - Umidità Relativa - 51437 (%)']) || 0;  // Se non ci sono dati di vento, usa 0
 
-        if (!isNaN(temp) && temp < minTemperature) {
-          minTemperature = temp;
-        }
-        if (!isNaN(temp) && temp > maxTemperature) {
-          maxTemperature = temp;
-        }
-        if (!isNaN(temp)) {
-          avgTemperature += temp;
-          tempCount += 1;
-        }
-        if (!isNaN(ur) && ur < minUr) {
-          minUr = ur;
-        }
-        if (!isNaN(ur) && ur > maxUr) {
-          maxUr = ur;
-        }
-      });
-
-
-      this.arrResponseAnno.push({
-        giorno: 'Annuale',
-        tempMin: minTemperature.toString(),
-        tempMax: maxTemperature.toString(),
-        tempMedia: (avgTemperature / tempCount).toFixed(1),
-        umiditaMax: maxUr.toString(),
-        umiditaMin: minUr.toString(),
-        pioggia: this.csvDataAnno && this.csvDataAnno.length ? this.csvDataAnno[this.csvDataAnno.length - 1]['Valle del Rio - Pioggia Cumulata - 51438 (mm)'] : null
-      });
-
-      //const rainAnno = parseFloat(this.csvDataAnno[this.csvDataAnno.length - 1]['Pioggia annuale(mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
+          if (!isNaN(temp) && temp < 43 && temp < minTemperature) {
+            minTemperature = temp;
+          }
+          if (!isNaN(temp) && temp < 43 && temp > maxTemperature) {
+            maxTemperature = temp;
+          }
+          if (!isNaN(temp) && temp < 43) {
+            avgTemperature += temp;
+            tempCount += 1;
+          }
+          if (!isNaN(ur) && ur < minUr) {
+            minUr = ur;
+          }
+          if (!isNaN(ur) && ur > maxUr) {
+            maxUr = ur;
+          }
+        });
 
 
-      this.dataSourceAnno.data = this.arrResponseAnno;
-      this.dataSourceAnno.data.length = this.arrResponseAnno.length;
-      this.imageLoaderAnno = false;
-      this.isVisibleAnno = true;
-      //const tempMinEstrema = Math.min(...this.csvDataAnno.map(dato => dato['Temperatura esterna(℃)'] ? parseFloat(dato['Temperatura esterna(℃)']) : null));
-    });
+        this.arrResponseAnno.push({
+          giorno: 'Annuale',
+          tempMin: minTemperature.toString(),
+          tempMax: maxTemperature.toString(),
+          tempMedia: (avgTemperature / tempCount).toFixed(1),
+          umiditaMax: maxUr.toString(),
+          umiditaMin: minUr.toString(),
+          pioggia: this.csvDataAnno && this.csvDataAnno.length ? this.csvDataAnno[this.csvDataAnno.length - 1]['Valle del Rio - Pioggia Cumulata - 51438 (mm)'] : null
+        });
+
+        /*if (this.paginatorAnno) {
+          if (this.dateControl && this.dateControl.value.getFullYear() < (this.today.getFullYear())) {
+            this.paginatorAnno.length = 400;
+          } else {
+            this.paginatorAnno.length = 0;
+          }
+        }*/
+        //this.dataSourceAnno.paginator = this.paginatorAnno;
+        this.dataSourceAnno.data = this.arrResponseAnno;
+        this.dataSourceAnno.data.length = this.arrResponseAnno.length;
+        this.imageLoaderAnno = false;
+        this.isVisibleAnno = true;
+      }, (error) => {
+        /*this.currentPage = this.dateControl.value.getMonth() - 1;
+        if (this.currentPage === 0) {
+          this.currentPage = 1;
+        }*/
+       /* this.dataSourceAnno.data.length = 1;
+        this.dataSourceAnno.data = [];
+        if(this.paginatorAnno) {
+          this.paginatorAnno.length = 400;
+          this.dataSourceAnno.paginator = this.paginatorAnno;
+        }*/
+        this.imageLoaderAnno = false;
+        this.isVisibleAnno = true;
+      }
+    );
   }
 
 
@@ -244,7 +239,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
                 };
               } else {
                 // Aggiorna la temperatura minima e massima
-                if (temp) {
+                if (temp && temp < 43) {
                   dailyTemperatures[day].tempMin = Math.min(dailyTemperatures[day].tempMin, temp);
                   dailyTemperatures[day].tempMax = Math.max(dailyTemperatures[day].tempMax, temp);
                   // Aggiorna la somma e il conteggio delle temperature per calcolare la media
@@ -292,8 +287,6 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
           const umiditaEstremaMax = Math.max(...result.map(dato => dato.umiditaMax ? parseFloat(dato.umiditaMax) : null));
           const umiditaEstremaMin = Math.min(...result.map(dato => dato.umiditaMin ? parseFloat(dato.umiditaMin) : null));
 
-          this.arrResponse = result;
-
           result.push({
             pioggiaMese: undefined,
             giorno: 'Mensile',
@@ -324,6 +317,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
           }
           this.dataSource.sort = this.matSort;
           this.utilityService.scrollToSpecifyPosition();
+          this.yearMonth = this.year;
           this.imageLoader = false;
           this.isVisible = true;
         },
@@ -337,7 +331,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
           this.paginator.length = 400;
           this.imageLoader = false;
           this.utilityService.scrollToSpecifyPosition();
-        }
+      }
       );
   }
 
@@ -496,7 +490,8 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
 
 
   // Filtra i dati CSV per mese e anno
-  filterData(selectedDate = this.dateControl.value) {
+  filterData(selectedDate = this.dateControl.value, onlyYear?: boolean) {
+
     if (!selectedDate) {
       return;
     }
@@ -506,7 +501,14 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
       this.month = '0' + this.month.toString();
     }
     this.year = selectedDate.getFullYear();
-    this.loadCSVMeseData();
+    if (!onlyYear) {
+      this.loadCSVMeseData();
+    }
+    if (this.year !== this.precYear) {
+      this.arrResponseAnno = [];
+      this.loadCSVAnnoData();
+    }
+    this.precYear = this.year;
   }
 
   public handlePage(e: any) {
@@ -548,6 +550,9 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   }
 
   public handlePageAnno(e: any) {
-    //this.filterData(this.dateControl.value);
+    this.currentPageAnno = e.pageIndex;
+    const selectedDate = new Date(e.pageIndex < e.previousPageIndex ? this.year - 1 : this.year + 1, this.dateControl.value.getMonth()); // Anno, mese (da 0)
+    this.dateControl.setValue(selectedDate);
+    this.filterData(this.dateControl.value, true);
   }
 }

@@ -16,6 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MY_DATE_FORMATS, MyDateAdapter} from '../utils/adapter/date-adapter';
 import {TabRiepilogoComponent} from './tab-riepilogo/tab-riepilogo.component';
 import {StatisticheStazioneCiceroneComponent} from './statistiche-stazione-cicerone/statistiche-stazione-cicerone.component';
+import {StatisticheStazioneSanPancrazioComponent} from './statistiche-stazione-san-pancrazio/statistiche-stazione-san-pancrazio.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import {StatisticheStazioneCiceroneComponent} from './statistiche-stazione-cicer
     AnomalieComponent,
     StatisticheStazionePratoComponent,
     TabRiepilogoComponent,
-    StatisticheStazioneCiceroneComponent
+    StatisticheStazioneCiceroneComponent,
+    StatisticheStazioneSanPancrazioComponent
   ],
   providers: [
     { provide: DateAdapter, useClass: MyDateAdapter },

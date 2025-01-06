@@ -1,15 +1,15 @@
 <!--<h1 class="header-macro-section">{{utility.titleMatTab}}</h1>
 <br>-->
 <mat-tab-group [selectedIndex]="id" (selectedIndexChange)="tabSelectionChanged($event)">
-  <mat-tab label="STAZIONE VIA TREO">
+  <mat-tab label="VIA TREO">
     <br>
     <ng-template matTabContent>
       <riepilogo></riepilogo>
     </ng-template>
   </mat-tab>
-  <mat-tab label="STAZIONE LOCALITA' PRATO">
+  <mat-tab label="STAZIONE LOC. PRATO">
     <ng-template mat-tab-label>
-      STAZIONE LOCALITA' PRATO  &nbsp;
+      LOCALITA' PRATO  &nbsp;
       <img
         src="../../assets/img/new.gif"
         alt="nuova sezione" class="img-new"
@@ -20,10 +20,28 @@
     </ng-template>
     <!-- Contenuto del tab -->
   </mat-tab>
-  <mat-tab label="STAZIONE CICERONE">
-    <br>
+  <mat-tab label="CICERONE">
+    <ng-template mat-tab-label>
+      CICERONE &nbsp;
+      <img
+        src="../../assets/img/new.gif"
+        alt="nuova sezione" class="img-new"
+        width="28" height="11">
+    </ng-template>
     <ng-template matTabContent>
       <statistiche-stazione-cicerone></statistiche-stazione-cicerone>
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="SAN PANCRAZIO">
+    <ng-template mat-tab-label>
+      S. PANCRAZIO &nbsp;
+      <img
+        src="../../assets/img/new.gif"
+        alt="nuova sezione" class="img-new"
+        width="28" height="11">
+    </ng-template>
+    <ng-template matTabContent>
+      <statistiche-stazione-san-pancrazio></statistiche-stazione-san-pancrazio>
     </ng-template>
   </mat-tab>
 </mat-tab-group>

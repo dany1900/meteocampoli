@@ -54,7 +54,7 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   public pageSize;
   public currentPage;
   public pageSizeAnno;
-  public currentPageAnno;
+  public currentPageAnno = 1;
   public totalSize;
   pageEvent: PageEvent;
   pageEventAnno: PageEvent;
@@ -81,6 +81,7 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   month: string;
   year: number;
   today: Date;
+  precYear: number;
   dateControl = new FormControl(new Date());  // Imposta la data odierna
   dateControlAnnuale = new FormControl(new Date());  // Imposta la data odierna
   csvUrlMese: string;  // URL del file CSV
@@ -117,6 +118,9 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   }
 
   loadCSVAnnoData() {
+    this.imageLoaderAnno = true;
+    this.isVisibleAnno = false;
+    this.csvAnnoPath = 'assets/storico-prato/' + this.year + '.csv';
     this.fileService.getCSV(this.csvAnnoPath).subscribe(res => {
       this.csvDataAnno = this.fileService.parseCSV(res, ',');
       let minTemperature = Infinity;
@@ -197,7 +201,6 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   loadCSVMeseData(): void {
     this.imageLoader = true;
     this.csvUrlMese = 'assets/storico-prato/' + this.year + this.month + '.csv';
-    this.csvAnnoPath = 'assets/storico-prato/' + this.year + '.csv';
 
     const dailyTemperatures: { [key: string]: { giorno, tempMin, tempMax, tempMedia, vento, pressioneMax, pressioneMin, umiditaMax, umiditaMin, pioggia, pioggiaMese, pioggiaAnno, tempCount } } = {};
     // Ottenere e parsare il CSV al caricamento del componente
@@ -248,10 +251,15 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
                 };
               } else {
                 // Aggiorna la temperatura minima e massima
-                dailyTemperatures[day].tempMin = Math.min(dailyTemperatures[day].tempMin, csv['Temperatura esterna(℃)']);
-                dailyTemperatures[day].tempMax = Math.max(dailyTemperatures[day].tempMax, csv['Temperatura esterna(℃)']);
+                if (!isNaN(csv['Temperatura esterna(℃)'])) {
+                  dailyTemperatures[day].tempMin = Math.min(dailyTemperatures[day].tempMin, csv['Temperatura esterna(℃)']);
+                  dailyTemperatures[day].tempMax = Math.max(dailyTemperatures[day].tempMax, csv['Temperatura esterna(℃)']);
+                  // Aggiorna la somma e il conteggio delle temperature per calcolare la media
+                  dailyTemperatures[day].tempMedia += parseFloat(csv['Temperatura esterna(℃)']);
+                  dailyTemperatures[day].tempCount += 1;
+                }
                 // Somma la pioggia totale del giorno
-                 dailyTemperatures[day].pioggia = Math.max(dailyTemperatures[day].pioggia, rain);
+                dailyTemperatures[day].pioggia = Math.max(dailyTemperatures[day].pioggia, rain);
 
                 // Raffica massima del vento
                 dailyTemperatures[day].vento = Math.max(dailyTemperatures[day].vento, wind);
@@ -266,9 +274,6 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
                 // umidita
                 dailyTemperatures[day].pressioneMin = Math.min(dailyTemperatures[day].pressioneMin, pressione);
 
-                // Aggiorna la somma e il conteggio delle temperature per calcolare la media
-                dailyTemperatures[day].tempMedia += parseFloat(csv['Temperatura esterna(℃)']);
-                dailyTemperatures[day].tempCount += 1;
               }
             }
           }));
@@ -520,19 +525,34 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   }
 
 
-
   // Filtra i dati CSV per mese e anno
-  filterData(selectedDate = this.dateControl.value) {
+  filterData(selectedDate = this.dateControl.value, onlyYear?: boolean) {
+
     if (!selectedDate) {
       return;
     }
+
 
     this.month = (selectedDate.getMonth() + 1).toString();  // I mesi vanno da 0 a 11
     if (Number(this.month) <= 9) {
       this.month = '0' + this.month.toString();
     }
     this.year = selectedDate.getFullYear();
-    this.loadCSVMeseData();
+    if (this.year === 2025) {
+      this.currentPageAnno = 1;
+    } else {
+      if (this.year < 2025) {
+        this.currentPageAnno = 0;
+      }
+    }
+    if (!onlyYear) {
+      this.loadCSVMeseData();
+    }
+    if (this.year !== this.precYear) {
+      this.arrResponseAnno = [];
+      this.loadCSVAnnoData();
+    }
+    this.precYear = this.year;
   }
 
   public handlePage(e: any) {
@@ -574,6 +594,11 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   }
 
   public handlePageAnno(e: any) {
-    //this.filterData(this.dateControl.value);
+    this.currentPageAnno = e.pageIndex;
+    this.paginatorAnno.length = 400;
+    this.dataSourceAnno.paginator = this.paginatorAnno;
+    const selectedDate = new Date(e.pageIndex < e.previousPageIndex ? this.year - 1 : this.year + 1, this.dateControl.value.getMonth()); // Anno, mese (da 0)
+    this.dateControl.setValue(selectedDate);
+    this.filterData(this.dateControl.value, true);
   }
 }

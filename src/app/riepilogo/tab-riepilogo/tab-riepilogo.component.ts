@@ -14,6 +14,7 @@ export class TabRiepilogoComponent implements OnInit {
   pathStazioneTreo = '/riepilogo';
   pathStazionePrato = '/riepilogo/stazione-prato';
   pathStazioneCicerone = '/riepilogo/stazione-cicerone';
+  pathStazioneSanPancrazio = '/riepilogo/stazione-san-pancrazio';
   paramTab: string;
   pathGlobale: string;
 
@@ -35,6 +36,11 @@ export class TabRiepilogoComponent implements OnInit {
         this.pathGlobale = this.pathStazioneCicerone;
         this.utility.titleMatTab = 'Riepilogo Stazione Meteo Campoli Loc Cicerone - 900mt';
         break;
+      case this.pathStazioneSanPancrazio:
+        this.id = 3;
+        this.pathGlobale = this.pathStazioneSanPancrazio;
+        this.utility.titleMatTab = 'Riepilogo Stazione Meteo Campoli Loc San Pancrazio - 680mt';
+        break;
       default:
         this.pathGlobale = this.pathStazioneTreo;
         this.utility.titleMatTab = 'Riepilogo Stazione Meteo Campoli Via treo - 500mt';
@@ -54,6 +60,8 @@ export class TabRiepilogoComponent implements OnInit {
       this.router.navigate([this.pathStazionePrato]);
     } else if (event === 2) {
       this.router.navigate([this.pathStazioneCicerone]);
+    } else if (event === 3) {
+      this.router.navigate([this.pathStazioneSanPancrazio]);
     }
   }
 
@@ -65,6 +73,8 @@ export class TabRiepilogoComponent implements OnInit {
       this.router.navigate([this.pathStazionePrato]);
     } else if (event === 2) {
       this.router.navigate([this.pathStazioneCicerone]);
+    } else if (event === 3) {
+      this.router.navigate([this.pathStazioneSanPancrazio]);
     }
   }
 }
