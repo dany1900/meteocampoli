@@ -167,23 +167,19 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
         this.dataSourceAnno.sort = this.matSortAnno;
         this.imageLoaderAnno = false;
         this.isVisibleAnno = true;
-      }, (error) => {
-        /*this.currentPage = this.dateControl.value.getMonth() - 1;
-        if (this.currentPage === 0) {
-          this.currentPage = 1;
-        }*/
-      if(this.paginatorAnno){
+      },
+      (error) => {
+        this.currentPageAnno = this.dateControl.value.getMonth() - 1;
+        if (this.currentPageAnno === 0) {
+          this.currentPageAnno = 1;
+        }
         this.dataSourceAnno.data.length = 1;
         this.dataSourceAnno.data = [];
         this.paginatorAnno.length = 400;
-        this.dataSourceAnno.paginator = this.paginatorAnno;
-
-      }
-
         this.imageLoaderAnno = false;
         this.isVisibleAnno = true;
-      }
-    );
+        this.utilityService.scrollToSpecifyPosition();
+      });
   }
 
 
@@ -527,9 +523,9 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
   }
 
   public handlePageAnno(e: any) {
-    //this.currentPageAnno = e.pageIndex;
+    this.currentPageAnno = e.pageIndex;
     const selectedDate = new Date(e.pageIndex < e.previousPageIndex ? this.year - 1 : this.year + 1, this.dateControl.value.getMonth()); // Anno, mese (da 0)
-    this.dateControl.setValue(selectedDate);
-    this.filterData(this.dateControl.value, true);
+    //this.dateControl.setValue(selectedDate);
+    this.filterData(selectedDate, true);
   }
 }

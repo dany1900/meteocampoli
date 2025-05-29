@@ -177,21 +177,19 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
         this.dataSourceAnno.data.length = this.arrResponseAnno.length;
         this.imageLoaderAnno = false;
         this.isVisibleAnno = true;
-      }, (error) => {
-        /*this.currentPage = this.dateControl.value.getMonth() - 1;
-        if (this.currentPage === 0) {
-          this.currentPage = 1;
-        }*/
-       /* this.dataSourceAnno.data.length = 1;
+      },
+      (error) => {
+        this.currentPageAnno = this.dateControl.value.getMonth() - 1;
+        if (this.currentPageAnno === 0) {
+          this.currentPageAnno = 1;
+        }
+        this.dataSourceAnno.data.length = 1;
         this.dataSourceAnno.data = [];
-        if(this.paginatorAnno) {
-          this.paginatorAnno.length = 400;
-          this.dataSourceAnno.paginator = this.paginatorAnno;
-        }*/
+        this.paginatorAnno.length = 400;
         this.imageLoaderAnno = false;
         this.isVisibleAnno = true;
-      }
-    );
+        this.utilityService.scrollToSpecifyPosition();
+      });
   }
 
 
@@ -331,7 +329,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
           this.paginator.length = 400;
           this.imageLoader = false;
           this.utilityService.scrollToSpecifyPosition();
-      }
+        }
       );
   }
 
@@ -552,7 +550,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   public handlePageAnno(e: any) {
     this.currentPageAnno = e.pageIndex;
     const selectedDate = new Date(e.pageIndex < e.previousPageIndex ? this.year - 1 : this.year + 1, this.dateControl.value.getMonth()); // Anno, mese (da 0)
-    this.dateControl.setValue(selectedDate);
-    this.filterData(this.dateControl.value, true);
+    //this.dateControl.setValue(selectedDate);
+    this.filterData(selectedDate, true);
   }
 }
