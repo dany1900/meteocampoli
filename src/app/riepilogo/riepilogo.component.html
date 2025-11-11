@@ -37,7 +37,7 @@
 <br>
   <br>
   <h2 class="title-micro-section">Storico Nuova Stazione</h2>
-  <div style="border: 2px solid white; padding: 10px;">
+  <!--<div style="border: 2px solid white; padding: 10px;">
     <iframe
       src="https://meteocampoli.altervista.org/ecowitt/monthlyrecord.htm"
       width="100%"
@@ -45,5 +45,8 @@
       style="border: none;"
       (load)="imageLoader = false;">
     </iframe>
+  </div>-->
+  <div>
+    <statistiche-stazione-treo (dataLoaded)="imageLoader = false"></statistiche-stazione-treo>
   </div>
 </div>
