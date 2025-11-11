@@ -17,7 +17,8 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
   keywords: string;
   ogUrl: string;
   ogImage: string;
-  linkRapportoAnnuale: string;
+  height: string;
+
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService) {
     this.path = 'https://www.meteocampoliappennino.altervista.org/grafico.png?v=' + Math.random();
@@ -33,9 +34,11 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition(true);
-    const today = new Date();
-    const year = today.getFullYear();
-    this.linkRapportoAnnuale = 'https://meteocampoliappennino.altervista.org/noaa/NOAA_ANNUALE.php?annee1=' + year + '&period=r_annuel';
+    if (this.utilityService.isMobile()) {
+      this.height = '2400';
+    } else {
+      this.height = '3200';
+    }
     /*if (environment.production) {
       let headers = new HttpHeaders().set('header-name', 'header-value');
       headers = headers.set('header-name-2', 'header-value-2');

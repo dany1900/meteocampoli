@@ -6,12 +6,12 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 
 @Component({
-  selector: 'riepilogo',
-  templateUrl: './riepilogo.component.html',
-  styleUrls: ['./riepilogo.component.css']
+  selector: 'cumulus-site',
+  templateUrl: './cumulus-site.component.html',
+  styleUrls: ['./cumulus-site.component.css']
 })
 
-export class RiepilogoComponent implements OnInit {
+export class CumulusSiteComponent implements OnInit {
 
   imageLoader = true;
   title: string;
@@ -25,7 +25,7 @@ export class RiepilogoComponent implements OnInit {
     this.title = 'Statistiche Stazione Meteo Campoli - Riepilogo Dati';
     this.description = 'Statistiche complessive della stazione meteo di Campoli Appennino posta a 500mt. Completo di tutti i dati giornalieri,mensili,annuali e grafici.';
     this.keywords = 'statistiche stazione meteo campoli, riepilogo stazione meteo campoli, statistiche meteo campoli, riepilogo dati stazione meteo campoli, Stazione meteo campoli appennino';
-    this.ogUrl = 'www.meteocampoli.altervista.org/riepilogo';
+    this.ogUrl = 'www.meteocampoli.altervista.org/ecowitt/index.html';
     this.ogImage = '';
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();

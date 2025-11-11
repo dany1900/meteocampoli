@@ -6,6 +6,11 @@ export const routes: Routes = [
   {path: '', redirectTo: '/dati-attuali', pathMatch: 'full'},
   // tslint:disable-next-line:max-line-length
   {
+    path: 'cumulus-site',
+    loadChildren: () => import(`./cumulus-site/cumulus-site.module`).then(m => m.CumulusSiteModule),
+    runGuardsAndResolvers: 'always'
+  },
+  {
     path: 'dati-attuali',
     loadChildren: () => import(`./dati-attuali/dati-attuali.module`).then(m => m.DatiAttualiModule),
     runGuardsAndResolvers: 'always'

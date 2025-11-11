@@ -17,6 +17,7 @@ import {MY_DATE_FORMATS, MyDateAdapter} from '../utils/adapter/date-adapter';
 import {TabRiepilogoComponent} from './tab-riepilogo/tab-riepilogo.component';
 import {StatisticheStazioneCiceroneComponent} from './statistiche-stazione-cicerone/statistiche-stazione-cicerone.component';
 import {StatisticheStazioneSanPancrazioComponent} from './statistiche-stazione-san-pancrazio/statistiche-stazione-san-pancrazio.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import {StatisticheStazioneSanPancrazioComponent} from './statistiche-stazione-s
     MatInputModule,
     MatNativeDateModule,
     MatGridListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatExpansionModule
   ],
 
   declarations: [
