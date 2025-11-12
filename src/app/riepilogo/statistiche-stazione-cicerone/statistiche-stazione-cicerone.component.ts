@@ -35,23 +35,21 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   isVisible = false;
   isVisibleAnno = false;
 
-  @ViewChild('paginatorMensile') paginator: MatPaginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     if (!this.dataSource.sort) {
       this.dataSource.sort = sort;
     }
   }
 
-  @ViewChild('paginatorAnnuale') paginatorAnno: MatPaginator;
+  @ViewChild(MatPaginator) paginatorAnno: MatPaginator;
 
   @ViewChild(MatSort) set matSortAnno(sort: MatSort) {
     if (!this.dataSourceAnno.sort) {
       this.dataSourceAnno.sort = sort;
     }
   }
-
-  paginatorLengthMensile = 400;
-  paginatorLengthAnnuale = 9999;
 
   public pageSize;
   public currentPage;

@@ -73,16 +73,10 @@
         <td class="mat-cell red" colspan="7">Nessun dato disponibile</td>
       </tr>
     </table>
-    <mat-paginator
-      #paginatorMensile
-      [pageIndex]="currentPage"
-      [hidePageSize]="true"
-      [pageSize]="dataSource?.data?.length || 31"
-      [length]="paginatorLengthMensile"
-      [showFirstLastButtons]="false"
-      [disabled]="imageLoader"
-      (page)="handlePage($event)"
-      aria-label="Naviga mesi">
+    <mat-paginator [pageIndex]="currentPage" [hidePageSize]="true" [pageSize]="dataSource?.data?.length"
+                   [showFirstLastButtons]="false"
+                   (page)="pageEvent = handlePage($event)"
+                   aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
 </div>
@@ -149,16 +143,10 @@
         <td class="mat-cell red" colspan="7">Nessun dato disponibile</td>
       </tr>
     </table>
-    <mat-paginator
-      #paginatorAnnuale
-      [pageIndex]="currentPageAnno"
-      [hidePageSize]="true"
-      [pageSize]="dataSourceAnno?.data?.length || 1"
-      [length]="paginatorLengthAnnuale"
-      [showFirstLastButtons]="false"
-      [disabled]="imageLoaderAnno"
-      (page)="handlePageAnno($event)"
-      aria-label="Naviga anni">
+    <mat-paginator [pageIndex]="currentPageAnno" [hidePageSize]="true" [pageSize]="dataSourceAnno?.data?.length"
+                   [showFirstLastButtons]="false"
+                   (page)="pageEventAnno = handlePageAnno($event)"
+                   aria-label="Select page of periodic elements">
     </mat-paginator>
   </div>
 </div>
