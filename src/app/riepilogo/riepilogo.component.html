@@ -5,10 +5,8 @@
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
 <div [hidden]="imageLoader">
-<br>
-  <p class="red">In allestimento </p>
-  <br>
-  <mat-accordion class="storico-accordion">
+
+  <!--<mat-accordion class="storico-accordion">
     <mat-expansion-panel (opened)="mostraIframe = true" (closed)="mostraIframe = false">
 
       <mat-expansion-panel-header>
@@ -33,19 +31,10 @@
       </div>
 
     </mat-expansion-panel>
-  </mat-accordion>
+  </mat-accordion>-->
 <br>
   <br>
   <h2 class="title-micro-section">Storico Nuova Stazione con recupero dei vecchi</h2>
-  <!--<div style="border: 2px solid white; padding: 10px;">
-    <iframe
-      src="https://meteocampoli.altervista.org/ecowitt/monthlyrecord.htm"
-      width="100%"
-      height="1500"
-      style="border: none;"
-      (load)="imageLoader = false;">
-    </iframe>
-  </div>-->
   <div>
     <statistiche-stazione-treo (dataLoaded)="imageLoader = false"></statistiche-stazione-treo>
   </div>

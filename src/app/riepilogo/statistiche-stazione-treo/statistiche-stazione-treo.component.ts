@@ -120,7 +120,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
 
     try {
 
-      // helpers
+      // Helpers matematici
       const num = (a: number[]) => a.filter(v => typeof v === 'number' && !isNaN(v));
       const min = (a: number[]) => Math.min(...num(a));
       const max = (a: number[]) => Math.max(...num(a));
@@ -134,73 +134,47 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       let datiMese: DatoGiornalieroRaw[] = [];
 
       // ================================================================
-      // 1️⃣ CARICO ANNO (annualStats + dayfile)
+      // 1️⃣ CARICO ANNUALE — year.xml se disponibile
       // ================================================================
-      if (this.cacheAnnuale[this.year]) {
-
-        datiAnno = this.cacheAnnuale[this.year];
-
-      } else {
-
-        // 🔹 ANNI < 2025 — YEAR.XML COMPLETO + DAYFILE
-        if (this.year < 2025) {
-
-          console.warn("Carico year.xml PRE-2025", this.year);
-
-          this.annualStats = await this.loadXmlYearStats(this.year);
-
-          console.warn("annualStats:", this.annualStats);
-
-          const txt = await this.http.get(
-            'assets/storico-treo/dayfile.txt?v=' + Date.now(),
-            { responseType: 'text' }
-          ).toPromise();
-
-          datiAnno = this.parseDayfile(txt, this.year);
-        }
-
-
-        // 🔹 ANNO 2025 — YEAR.XML GEN–AGO + DAYFILE COMPLETO (SET–DIC dopo)
-        else if (this.year === 2025) {
-          this.annualStats = await this.loadXmlYearStats(2025);
-
-          const txt = await this.http.get(
-            'assets/storico-treo/dayfile.txt?v=' + Date.now(),
-            { responseType: 'text' }
-          ).toPromise();
-
-          datiAnno = this.parseDayfile(txt, 2025);
-        }
-
-        // 🔹 ANNI > 2025 — SOLO DAYFILE
-        else {
-          const txt = await this.http.get(
-            'assets/storico-treo/dayfile.txt?v=' + Date.now(),
-            { responseType: 'text' }
-          ).toPromise();
-
-          datiAnno = this.parseDayfile(txt, this.year);
-        }
-
-        this.cacheAnnuale[this.year] = datiAnno;
+      if (this.year <= 2025) {
+        this.annualStats = await this.loadXmlYearStats(this.year);
       }
 
       // ================================================================
-      // 2️⃣ CARICO MESE (solo quello richiesto)
+      // 2️⃣ CARICO DATI GIORNALIERI (dayfile sempre usato)
       // ================================================================
+      const txt = await this.http.get(
+        'assets/storico-treo/dayfile.txt?v=' + Date.now(),
+        { responseType: 'text' }
+      ).toPromise();
+
+      datiAnno = this.parseDayfile(txt, this.year);
+
+      // ================================================================
+      // 3️⃣ CARICO SOLO IL MESE RICHIESTO
+      // ================================================================
+
       if (this.year < 2025) {
         datiMese = await this.loadXmlMonthlyData(this.year, monthNum);
+        if (!datiMese.length) {
+          datiMese = datiAnno.filter(d => d.mese === monthNum);
+        }
       }
+
       else if (this.year === 2025) {
-        if (monthNum <= 8) datiMese = await this.loadXmlMonthlyData(2025, monthNum);
-        else datiMese = datiAnno.filter(d => d.mese === monthNum);
+        if (monthNum <= 8) {
+          datiMese = await this.loadXmlMonthlyData(2025, monthNum);
+        } else {
+          datiMese = datiAnno.filter(d => d.mese === monthNum);
+        }
       }
+
       else {
         datiMese = datiAnno.filter(d => d.mese === monthNum);
       }
 
       // ================================================================
-      // 3️⃣ SE MENSILE VUOTO
+      // 4️⃣ SE MENSILE VUOTO
       // ================================================================
       if (!datiMese.length) {
         this.arrResponse = [{
@@ -213,7 +187,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       }
 
       // ================================================================
-      // 4️⃣ COSTRUZIONE MENSILE
+      // 5️⃣ COSTRUZIONE TABELLA MENSILE
       // ================================================================
       const giorniOrd = [...datiMese].sort((a, b) => Number(a.giorno) - Number(b.giorno));
 
@@ -227,7 +201,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         umiditaMin: min(datiMese.map(d => d.umiditaMin)),
         umiditaMax: max(datiMese.map(d => d.umiditaMax)),
         pioggia: sum(datiMese.map(d => d.pioggia)),
-        pioggiaGiornalieraMax: max(datiMese.map(d => d.pioggia))
+        pioggiaGiornalieraMax: max(datiMese.map(d => d.pioggia)),
       };
 
       this.arrResponse = [
@@ -243,6 +217,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
           umiditaMax: g.umiditaMax.toFixed(0),
           pioggia: g.pioggia.toFixed(1)
         })),
+
         {
           giorno: 'Mensile',
           tempMin: mensileRaw.tempMin.toFixed(1),
@@ -261,99 +236,129 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       this.dataSource.data = this.arrResponse;
 
       // ================================================================
-      // 5️⃣ ANNUALE FORMATTATO
+      // 6️⃣ COSTRUZIONE ANNUALE
       // ================================================================
-      const dati = datiAnno;
 
-      const ann_tempMedia = avg(dati.map(d => d.tempMedia));
-      const ann_ventoMax = max(dati.map(d => d.ventoMax));
-      const ann_umMin = min(dati.map(d => d.umiditaMin));
-      const ann_umMax = max(dati.map(d => d.umiditaMax));
-      const ann_pressMin = min(dati.map(d => d.pressioneMin));
-      const ann_pressMax = max(dati.map(d => d.pressioneMax));
+      const ann = this.annualStats;
 
-      let ann = this.annualStats;
+      const ann_tempMedia_fromDayfile = avg(datiAnno.map(d => d.tempMedia));
+      const ann_ventoMax_fromDayfile = max(datiAnno.map(d => d.ventoMax));
+      const ann_pressMin_fromDayfile = min(datiAnno.map(d => d.pressioneMin));
+      const ann_pressMax_fromDayfile = max(datiAnno.map(d => d.pressioneMax));
+      const ann_umMin = min(datiAnno.map(d => d.umiditaMin));
+      const ann_umMax = max(datiAnno.map(d => d.umiditaMax));
 
-      // -------------------------
-      // 🔹 ANNI < 2025 (solo year.xml)
-      // -------------------------
+      // ================================================================
+      // 🟢 ANNI < 2025 — SOLO year.xml
+      // ================================================================
       if (this.year < 2025) {
+
+        if (!ann) {
+          this.arrResponseAnno = [{
+            giorno: `Anno ${this.year}`,
+            tempMin: '-', tempMax: '-', tempMedia: '-', ventoMax: '-',
+            pressioneMin: '-', pressioneMax: '-', umiditaMin: '-',
+            umiditaMax: '-', pioggiaGiornalieraMax: '-', pioggia: '-'
+          }];
+          this.dataSourceAnno.data = this.arrResponseAnno;
+          return;
+        }
 
         this.arrResponseAnno = [{
           giorno: `Anno ${this.year}`,
-          tempMin: (ann?.minTemp ?? min(dati.map(d => d.tempMin))).toFixed(1),
-          tempMax: (ann?.maxTemp ?? max(dati.map(d => d.tempMax))).toFixed(1),
-          tempMedia: ann_tempMedia.toFixed(1),
-          ventoMax: ann_ventoMax.toFixed(1),
-          pressioneMin: ann_pressMin.toFixed(1),
-          pressioneMax: ann_pressMax.toFixed(1),
-          umiditaMin: ann_umMin.toFixed(0),
-          umiditaMax: ann_umMax.toFixed(0),
-          pioggiaGiornalieraMax: (ann?.maxRainDay ?? max(dati.map(d => d.pioggia))).toFixed(1),
-          pioggia: (ann?.totalRain ?? sum(dati.map(d => d.pioggia))).toFixed(1)
+
+          tempMin: ann.minTemp.toFixed(1),
+          tempMax: ann.maxTemp.toFixed(1),
+          tempMedia: isNaN(ann.tempMean) ? '-' : ann.tempMean.toFixed(1),
+
+          ventoMax: ann.windMax.toFixed(1),
+          pressioneMin: ann.pressureMin.toFixed(1),
+          pressioneMax: ann.pressureMax.toFixed(1),
+
+          umiditaMin: '-',     // non presente nel file
+          umiditaMax: '-',
+
+          // rainfall_24h se presente, fallback automatico
+          pioggiaGiornalieraMax: ann.maxRainDay.toFixed(1),
+          pioggia: ann.totalRain.toFixed(1)
         }];
 
         this.dataSourceAnno.data = this.arrResponseAnno;
         return;
       }
 
-      // -------------------------
-      // 🔹 ANNO 2025 COMBINATO
-      // -------------------------
+
+      // 🟧 ANNO 2025 → combinato XML GEN–AGO + Dayfile SET–DIC
       if (this.year === 2025) {
 
-        const xmlRain = ann?.totalRain ?? 0;   // GEN–AGO
-        const xmlMaxRain = ann?.maxRainDay ?? 0;
-        const xmlMinTemp = ann?.minTemp ?? 99;
-        const xmlMaxTemp = ann?.maxTemp ?? -99;
+        const xml = this.annualStats;
 
-        const df = dati.filter(d => d.mese >= 9);
+        const xmlRain      = xml?.totalRain ?? 0;        // pioggia GEN–AGO
+        const xmlMaxRain   = xml?.maxRainDay ?? 0;       // ⛔ SOLO da 2025.xml
+        const xmlMinTemp   = xml?.minTemp ??  99;
+        const xmlMaxTemp   = xml?.maxTemp ?? -99;
 
-        const dfRain = sum(df.map(d => d.pioggia));
-        const dfMaxRain = max(df.map(d => d.pioggia));
+        // SET–DIC dal dayfile
+        const df = datiAnno.filter(d => d.mese >= 9);
+
+        const dfRain    = sum(df.map(d => d.pioggia));
         const dfMinTemp = min(df.map(d => d.tempMin));
         const dfMaxTemp = max(df.map(d => d.tempMax));
 
-        const totalRain = xmlRain + dfRain;
-        const maxRainDay = Math.max(xmlMaxRain, dfMaxRain);
-        const minTemp = Math.min(xmlMinTemp, dfMinTemp);
-        const maxTemp = Math.max(xmlMaxTemp, dfMaxTemp);
+        // pioggia totale sì, combinata
+        const annual_totalRain = xmlRain + (isFinite(dfRain) ? dfRain : 0);
+
+        // ⚠️ Pioggia giornaliera massima: SOLO quella del file 2025.xml
+        const annual_maxRain = xmlMaxRain;
+
+        const annual_minTemp = Math.min(xmlMinTemp, isFinite(dfMinTemp) ? dfMinTemp : xmlMinTemp);
+        const annual_maxTemp = Math.max(xmlMaxTemp, isFinite(dfMaxTemp) ? dfMaxTemp : xmlMaxTemp);
+
+        // media, vento, pressione, umidità le tieni dal dayfile di tutto l'anno
+        const ann_tempMedia = avg(datiAnno.map(d => d.tempMedia));
+        const ann_ventoMax  = max(datiAnno.map(d => d.ventoMax));
+        const ann_pressMin  = min(datiAnno.map(d => d.pressioneMin));
+        const ann_pressMax  = max(datiAnno.map(d => d.pressioneMax));
+        const ann_umMin     = min(datiAnno.map(d => d.umiditaMin));
+        const ann_umMax     = max(datiAnno.map(d => d.umiditaMax));
 
         this.arrResponseAnno = [{
-          giorno: `Anno 2025`,
-          tempMin: minTemp.toFixed(1),
-          tempMax: maxTemp.toFixed(1),
+          giorno: 'Anno 2025',
+          tempMin: annual_minTemp.toFixed(1),
+          tempMax: annual_maxTemp.toFixed(1),
           tempMedia: ann_tempMedia.toFixed(1),
           ventoMax: ann_ventoMax.toFixed(1),
           pressioneMin: ann_pressMin.toFixed(1),
           pressioneMax: ann_pressMax.toFixed(1),
           umiditaMin: ann_umMin.toFixed(0),
           umiditaMax: ann_umMax.toFixed(0),
-          pioggiaGiornalieraMax: maxRainDay.toFixed(1),
-          pioggia: totalRain.toFixed(1)
+          // 👇 qui ora è SEMPRE il valore del 2025.xml (35.9 nel tuo caso)
+          pioggiaGiornalieraMax: annual_maxRain.toFixed(1),
+          pioggia: annual_totalRain.toFixed(1)
         }];
 
         this.dataSourceAnno.data = this.arrResponseAnno;
         return;
       }
 
-      // -------------------------
-      // 🔹 ANNI > 2025 (solo dayfile)
-      // -------------------------
+
+      // ================================================================
+      // 🟥 ANNI > 2025 — SOLO DAYFILE
+      // ================================================================
       if (this.year > 2025) {
 
         this.arrResponseAnno = [{
           giorno: `Anno ${this.year}`,
-          tempMin: min(dati.map(d => d.tempMin)).toFixed(1),
-          tempMax: max(dati.map(d => d.tempMax)).toFixed(1),
-          tempMedia: ann_tempMedia.toFixed(1),
-          ventoMax: ann_ventoMax.toFixed(1),
-          pressioneMin: ann_pressMin.toFixed(1),
-          pressioneMax: ann_pressMax.toFixed(1),
+          tempMin: min(datiAnno.map(d => d.tempMin)).toFixed(1),
+          tempMax: max(datiAnno.map(d => d.tempMax)).toFixed(1),
+          tempMedia: ann_tempMedia_fromDayfile.toFixed(1),
+          ventoMax: ann_ventoMax_fromDayfile.toFixed(1),
+          pressioneMin: ann_pressMin_fromDayfile.toFixed(1),
+          pressioneMax: ann_pressMax_fromDayfile.toFixed(1),
           umiditaMin: ann_umMin.toFixed(0),
           umiditaMax: ann_umMax.toFixed(0),
-          pioggiaGiornalieraMax: max(dati.map(d => d.pioggia)).toFixed(1),
-          pioggia: sum(dati.map(d => d.pioggia)).toFixed(1)
+          pioggiaGiornalieraMax: max(datiAnno.map(d => d.pioggia)).toFixed(1),
+          pioggia: sum(datiAnno.map(d => d.pioggia)).toFixed(1)
         }];
 
         this.dataSourceAnno.data = this.arrResponseAnno;
@@ -368,6 +373,8 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       this.dataLoaded.emit(true);
     }
   }
+
+
 
 
 
@@ -490,34 +497,45 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       const parser = new DOMParser();
       const xml = parser.parseFromString(xmlString, 'application/xml');
 
-      // helper per pulire valori tipo "38.5 °C"
-      const clean = (s: string | null | undefined) =>
+      const clean = (s: string | null | undefined): number =>
         parseFloat((s || '').replace(/[^\d.-]/g, ''));
 
-      // valori finali
-      let totalRain = 0;
-      let maxRainDay = 0;
-      let maxRainDayDate = '';
-      let minTemp = 0;
-      let minTempDate = '';
-      let maxTemp = 0;
-      let maxTempDate = '';
-
-      // ============================================================
-      // 📌 FORMATO PRE-2025 (vecchio)
-      // riconoscibile perché usa tag names <tn-min>, <tx-max>, <total-rainfall>
-      // ============================================================
+      // =====================================================================
+      // 📌 FORMATO PRE-2025 (come 2024)
+      // =====================================================================
       if (xml.querySelector('tn-min')) {
 
-        totalRain = clean(xml.querySelector('total-rainfall')?.textContent);
-        maxRainDay = clean(xml.querySelector('max-rainfall-day')?.textContent);
-        maxRainDayDate = xml.querySelector('max-rainfall-day-date-text')?.textContent?.trim() || '';
+        // totale annuo
+        const totalRain = clean(xml.querySelector('total-rainfall')?.textContent);
 
-        minTemp = clean(xml.querySelector('tn-min')?.textContent);
-        minTempDate = xml.querySelector('tn-min-date-text')?.textContent?.trim() || '';
+        // pioggia max 24h
+        const maxRainDay = clean(xml.querySelector('rainfall_24h > max')?.textContent);
 
-        maxTemp = clean(xml.querySelector('tx-max')?.textContent);
-        maxTempDate = xml.querySelector('tx-max-date-text')?.textContent?.trim() || '';
+        const maxRainDayDate =
+          xml.querySelector('max-rainfall-day-date-text')?.textContent?.trim() || '';
+
+        // temperature min-max
+        const minTemp = clean(xml.querySelector('tn-min')?.textContent);
+        const minTempDate = xml.querySelector('tn-min-date-text')?.textContent?.trim() || '';
+
+        const maxTemp = clean(xml.querySelector('tx-max')?.textContent);
+        const maxTempDate = xml.querySelector('tx-max-date-text')?.textContent?.trim() || '';
+
+        // temperatura media annuale
+        const tMinMean = clean(xml.querySelector('t-min-mean')?.textContent);
+        const tMaxMean = clean(xml.querySelector('t-max-mean')?.textContent);
+
+        const tempMean =
+          (!isNaN(tMinMean) && !isNaN(tMaxMean))
+            ? (tMinMean + tMaxMean) / 2
+            : NaN;
+
+        // vento max
+        const windMax = clean(xml.querySelector('wind_speed > max')?.textContent);
+
+        // pressione
+        const pressureMin = clean(xml.querySelector('relative_pressure > min')?.textContent);
+        const pressureMax = clean(xml.querySelector('relative_pressure > max')?.textContent);
 
         return {
           totalRain,
@@ -527,30 +545,53 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
           minTempDate,
           maxTemp,
           maxTempDate,
+          tempMean,
+          windMax,
+          pressureMin,
+          pressureMax
         };
       }
 
-      // ============================================================
-      // 📌 FORMATO 2025 (nuovo)
-      // riconoscibile perché usa attributi tipo value=""
-      // ============================================================
+      // =====================================================================
+      // 📌 FORMATO 2025 (con attributi)
+      // =====================================================================
       if (xml.querySelector('total-rainfall[value]')) {
 
-        const rainNode = xml.querySelector('total-rainfall');
-        const maxRainNode = xml.querySelector('max-rainfall');
+        // totale annuo
+        const totalRain = clean(xml.querySelector('total-rainfall')?.getAttribute('value'));
 
-        const tnNode = xml.querySelector('tn');
-        const txNode = xml.querySelector('tx');
+        // pioggia max 24h
+        const maxRainDay = clean(xml.querySelector('rainfall_24h')?.getAttribute('max'));
 
-        totalRain = clean(rainNode?.getAttribute('value'));
-        maxRainDay = clean(maxRainNode?.getAttribute('day'));
-        maxRainDayDate = maxRainNode?.getAttribute('day-date-text') || '';
+        const maxRainDayDate =
+          xml.querySelector('rainfall_24h')?.getAttribute('max-date-text') || '';
 
-        minTemp = clean(tnNode?.getAttribute('min'));
-        minTempDate = tnNode?.getAttribute('min-date-text') || '';
+        // temperature min-max
+        const tn = xml.querySelector('tn');
+        const tx = xml.querySelector('tx');
 
-        maxTemp = clean(txNode?.getAttribute('max'));
-        maxTempDate = txNode?.getAttribute('max-date-text') || '';
+        const minTemp = clean(tn?.getAttribute('min'));
+        const minTempDate = tn?.getAttribute('min-date-text') || '';
+
+        const maxTemp = clean(tx?.getAttribute('max'));
+        const maxTempDate = tx?.getAttribute('max-date-text') || '';
+
+        // temperatura media
+        const tMinMean = clean(xml.querySelector('t-min-mean')?.getAttribute('value'));
+        const tMaxMean = clean(xml.querySelector('t-max-mean')?.getAttribute('value'));
+
+        const tempMean =
+          (!isNaN(tMinMean) && !isNaN(tMaxMean) && isFinite(tMinMean) && isFinite(tMaxMean))
+            ? (tMinMean + tMaxMean) / 2
+            : NaN;
+
+        // vento max
+        const windMax = clean(xml.querySelector('wind_speed')?.getAttribute('max'));
+
+        // pressione
+        const rp = xml.querySelector('relative_pressure');
+        const pressureMin = clean(rp?.getAttribute('min'));
+        const pressureMax = clean(rp?.getAttribute('max'));
 
         return {
           totalRain,
@@ -560,16 +601,25 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
           minTempDate,
           maxTemp,
           maxTempDate,
+          tempMean,
+          windMax,
+          pressureMin,
+          pressureMax
         };
       }
 
       return null;
 
     } catch (e) {
-      console.warn('Errore lettura year.xml', e);
+      console.error('Errore year.xml:', e);
       return null;
     }
   }
+
+
+
+
+
 
 
   private parseDayfile(content: string, year: number): DatoGiornalieroRaw[] {

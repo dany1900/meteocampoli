@@ -16,13 +16,24 @@ export interface DatoGiornalieroRaw {
 
 export interface AnnualRaw {
   totalRain: number;
-  maxRainDay: number;
+
+  maxRainDay: number;        // pioggia giornaliera max (24h se disponibile)
   maxRainDayDate: string;
+
   minTemp: number;
   minTempDate: string;
   maxTemp: number;
   maxTempDate: string;
+
+  tempMean: number;          // temperatura media annuale stimata
+
+  windMax: number;           // raffica max annua
+  pressureMin: number;       // pressione relativa minima annua
+  pressureMax: number;       // pressione relativa massima annua
 }
+
+
+
 
 
 

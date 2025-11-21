@@ -185,7 +185,7 @@
       <ng-container matColumnDef="pioggiaGiornalieraMax">
         <th class="riepilogo-pioggia-header" mat-header-cell *matHeaderCellDef mat-sort-header> Pioggia Giornaliera Massima</th>
         <td class="riepilogo-pioggia-body" mat-cell *matCellDef="let element"
-            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getPioggiaColor(element?.pioggiaMaxEvento)}"> {{(element?.pioggiaMaxEvento) ? element?.pioggiaMaxEvento + ' mm' : '-' }} </td>
+            [ngStyle]="{'background-color': element?.giorno === 'Mensile' ? 'rgb(159 153 153)' : getPioggiaColor(element?.pioggiaGiornalieraMax)}"> {{(element?.pioggiaGiornalieraMax) ? element?.pioggiaGiornalieraMax + ' mm' : '-' }} </td>
       </ng-container>
 
       <!-- Magnitudo Column -->
