@@ -1,9 +1,19 @@
+export interface DatoGiornalieroRaw {
+  giorno: string;
+  mese: number;
+  anno: number;
+  tempMin: number;
+  tempMax: number;
+  tempMedia: number;
+  ventoMax: number;
+  pressioneMin: number;
+  pressioneMax: number;
+  umiditaMin: number;
+  umiditaMax: number;
+  pioggia: number;
+}
 
-/**
- * sezione Be
- */
 export interface StatisticheStazioneTreoInterface {
-  counter?: number;
   giorno?: string;
   tempMin?: string;
   tempMax: string;
@@ -22,4 +32,5 @@ export interface StatisticheStazioneTreoInterface {
   tempMediaMese?: string;
   ventoMaxMese?: string;
   umiditaMaxMese?: string;
+  pioggiaGiornalieraMax?: string;
 }

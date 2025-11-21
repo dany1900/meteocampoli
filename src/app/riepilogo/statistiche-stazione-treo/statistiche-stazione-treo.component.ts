@@ -7,7 +7,7 @@ import {SEOService} from '../../service/seoservice.service';
 import {Router} from '@angular/router';
 import {UtiliyService} from '../../service/utiliy.service';
 import {HttpClient} from '@angular/common/http';
-import {StatisticheStazioneTreoInterface} from './statistiche-stazione-treo.interface';
+import {DatoGiornalieroRaw, StatisticheStazioneTreoInterface} from './statistiche-stazione-treo.interface';
 import {FileService} from '../../service/file.service';
 
 @Component({
@@ -34,6 +34,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
   isVisibleAnno = false;
 
   @ViewChild('paginatorMensile') paginator: MatPaginator;
+
   @ViewChild(MatSort) set matSort(sort: MatSort) {
     if (!this.dataSource.sort) {
       this.dataSource.sort = sort;
@@ -61,7 +62,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
   public dateControl = new FormControl(new Date());
   @Output() dataLoaded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  private cacheAnnuale: Record<number, StatisticheStazioneTreoInterface[]> = {};
+  cacheAnnuale: { [anno: number]: DatoGiornalieroRaw[] } = {};
   // 🔹 Cache annuale: conserva il riassunto già calcolato per ogni anno
   private cacheAnnualSummary: Record<number, StatisticheStazioneTreoInterface[]> = {};
 
@@ -88,6 +89,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
   }
+
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
     this.today = new Date();
@@ -96,7 +98,8 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
     this.month = (this.today.getMonth() + 1).toString().padStart(2, '0');
     this.currentPage = this.today.getMonth();
     this.precYear = this.year;
-    this.loadCumulusDayFileData(); // carica mese+anno
+
+    this.loadCumulusDayFileData();
   }
 
   ngAfterViewInit() {
@@ -105,77 +108,94 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
   }
 
   async loadCumulusDayFileData(): Promise<void> {
+
     const selectedDate = this.dateControl.value;
     this.year = selectedDate.getFullYear();
     const monthNum = selectedDate.getMonth() + 1;
     this.month = monthNum.toString().padStart(2, '0');
 
-    // Spinner
     this.imageLoader = true;
     this.imageLoaderAnno = true;
     this.isVisible = false;
     this.isVisibleAnno = false;
 
     try {
-      // --- Helper numerici ---
+      // Helpers matematici
       const num = (a: number[]) => a.filter(v => typeof v === 'number' && !isNaN(v));
       const min = (a: number[]) => Math.min(...num(a));
       const max = (a: number[]) => Math.max(...num(a));
       const avg = (a: number[]) => {
-        const vals = num(a);
-        return vals.length ? vals.reduce((x, y) => x + y, 0) / vals.length : NaN;
+        const v = num(a);
+        return v.length ? v.reduce((s, x) => s + x, 0) / v.length : NaN;
       };
-      const sum = (a: number[]) => num(a).reduce((x, y) => x + y, 0);
+      const sum = (a: number[]) => num(a).reduce((s, x) => s + x, 0);
 
-      // --- 1️⃣ Carica sorgenti ---
-      let xmlData: any[] = [];
-      let dayfileData: any[] = [];
+      let datiAnno: DatoGiornalieroRaw[] = [];
+      let datiMese: DatoGiornalieroRaw[] = [];
 
-      // Tutti gli anni fino al 2025-08 inclusi: XML
-      if (this.year <= 2025) {
-        const endMonthXml = this.year === 2025 ? 8 : 12;
-        xmlData = await this.loadXmlAnnualRawData(this.year, 1, endMonthXml);
+      // -------------------------------------------------------------------
+      // 1️⃣ CARICO ANNO SOLO LA PRIMA VOLTA
+      // -------------------------------------------------------------------
+      if (this.cacheAnnuale[this.year]) {
+        datiAnno = this.cacheAnnuale[this.year];
+      } else {
+
+        if (this.year < 2025) {
+          datiAnno = await this.loadXmlAnnualRawData(this.year, 1, 12);
+        }
+
+        else if (this.year === 2025) {
+          const xml = await this.loadXmlAnnualRawData(2025, 1, 8);
+          const txt = await this.http.get('assets/storico-treo/dayfile.txt?v=' + Date.now(), { responseType: 'text' }).toPromise();
+          const dayfileParsed = this.parseDayfile(txt, 2025).filter(d => d.mese >= 9);
+          datiAnno = [...xml, ...dayfileParsed];
+        }
+
+        else {
+          const txt = await this.http.get('assets/storico-treo/dayfile.txt?v=' + Date.now(), { responseType: 'text' }).toPromise();
+          datiAnno = this.parseDayfile(txt, this.year);
+        }
+
+        this.cacheAnnuale[this.year] = datiAnno; // salva SOLO RAW
       }
 
-      // Se anno >= 2025 → Cumulus
-      if (this.year >= 2025) {
-        const txt = await this.http.get('assets/storico-treo/dayfile.txt', { responseType: 'text' }).toPromise();
-        const parsed = this.parseDayfile(txt, this.year);
-        // Se è 2025 → prendi solo da settembre in poi
-        dayfileData = this.year === 2025 ? parsed.filter(d => d.mese >= 9) : parsed;
+      // -------------------------------------------------------------------
+      // 2️⃣ CARICO SOLO IL MESE (RAW)
+      // -------------------------------------------------------------------
+      if (this.year < 2025) {
+        datiMese = await this.loadXmlAnnualRawData(this.year, monthNum, monthNum);
+      }
+      else if (this.year === 2025) {
+        if (monthNum <= 8) {
+          datiMese = await this.loadXmlAnnualRawData(2025, monthNum, monthNum);
+        } else {
+          datiMese = datiAnno.filter(d => d.mese === monthNum);
+        }
+      }
+      else {
+        datiMese = datiAnno.filter(d => d.mese === monthNum);
       }
 
-      // --- 2️⃣ Combina sorgenti ---
-      const allData = [...xmlData, ...dayfileData];
-      console.log(`📊 Dati combinati per ${this.year}: XML=${xmlData.length}, Cumulus=${dayfileData.length}`);
-
-      // --- 3️⃣ Filtra per mese selezionato ---
-      const datiMese = allData.filter(d => d.mese === monthNum);
-
+      // -------------------------------------------------------------------
+      // 3️⃣ SE MENSILE VUOTO
+      // -------------------------------------------------------------------
       if (!datiMese.length) {
         this.arrResponse = [{
           giorno: `Nessun dato per ${this.getMonthName(this.month)} ${this.year}`,
           tempMin: '-', tempMax: '-', tempMedia: '-', ventoMax: '-',
           pressioneMin: '-', pressioneMax: '-', umiditaMin: '-', umiditaMax: '-',
-          pioggiaMaxEvento: '-', pioggia: '-'
+          pioggia: '-'
         }];
         this.dataSource.data = this.arrResponse;
-        this.arrResponseAnno = [{
-          giorno: `Anno ${this.year}`,
-          tempMin: '-', tempMax: '-', tempMedia: '-', ventoMax: '-',
-          pressioneMin: '-', pressioneMax: '-', umiditaMin: '-', umiditaMax: '-', pioggiaMaxEvento: '-', pioggia: '-'
-        }];
-        this.dataSourceAnno.data = this.arrResponseAnno;
-        this.imageLoader = false;
-        this.imageLoaderAnno = false;
-        this.isVisible = this.isVisibleAnno = true;
         return;
       }
 
-      // --- 4️⃣ Calcolo riepilogo mensile ---
-      const giorni = [...datiMese].sort((a, b) => Number(a.giorno) - Number(b.giorno));
-      giorni.push({
-        giorno: 'Mensile',
+      // -------------------------------------------------------------------
+      // 4️⃣ COSTRUZIONE TABELLA MENSILE FORMATTATA
+      // -------------------------------------------------------------------
+      const giorniOrd = [...datiMese].sort((a, b) => Number(a.giorno) - Number(b.giorno));
+
+      const mensileRaw = {
         tempMin: min(datiMese.map(d => d.tempMin)),
         tempMax: max(datiMese.map(d => d.tempMax)),
         tempMedia: avg(datiMese.map(d => d.tempMedia)),
@@ -184,55 +204,74 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         pressioneMax: max(datiMese.map(d => d.pressioneMax)),
         umiditaMin: min(datiMese.map(d => d.umiditaMin)),
         umiditaMax: max(datiMese.map(d => d.umiditaMax)),
-        pioggia: sum(datiMese.map(d => d.pioggia))
-      });
-
-      this.arrResponse = giorni.map(g => ({
-        giorno: g.giorno,
-        tempMin: g.tempMin?.toFixed?.(1) || '-',
-        tempMax: g.tempMax?.toFixed?.(1) || '-',
-        tempMedia: g.tempMedia?.toFixed?.(1) || '-',
-        ventoMax: g.ventoMax?.toFixed?.(1) || '-',
-        pressioneMin: g.pressioneMin?.toFixed?.(1) || '-',
-        pressioneMax: g.pressioneMax?.toFixed?.(1) || '-',
-        umiditaMin: g.umiditaMin?.toFixed?.(0) || '-',
-        umiditaMax: g.umiditaMax?.toFixed?.(0) || '-',
-        pioggiaMaxEvento: '-',
-        pioggia: g.pioggia?.toFixed?.(1) || '-'
-      }));
-      this.dataSource.data = this.arrResponse;
-
-      // --- 5️⃣ Calcolo riepilogo ANNUALE ---
-      const annuale = {
-        giorno: `Anno ${this.year}`,
-        tempMin: min(allData.map(d => d.tempMin)),
-        tempMax: max(allData.map(d => d.tempMax)),
-        tempMedia: avg(allData.map(d => d.tempMedia)),
-        ventoMax: max(allData.map(d => d.ventoMax)),
-        pressioneMin: min(allData.map(d => d.pressioneMin)),
-        pressioneMax: max(allData.map(d => d.pressioneMax)),
-        umiditaMin: min(allData.map(d => d.umiditaMin)),
-        umiditaMax: max(allData.map(d => d.umiditaMax)),
-        pioggia: sum(allData.map(d => d.pioggia))
+        pioggia: sum(datiMese.map(d => d.pioggia)),
+        pioggiaGiornalieraMax: max(datiMese.map(d => d.pioggia))
       };
 
-      this.arrResponseAnno = [annuale].map(g => ({
-        giorno: g.giorno,
-        tempMin: g.tempMin?.toFixed?.(1) || '-',
-        tempMax: g.tempMax?.toFixed?.(1) || '-',
-        tempMedia: g.tempMedia?.toFixed?.(1) || '-',
-        ventoMax: g.ventoMax?.toFixed?.(1) || '-',
-        pressioneMin: g.pressioneMin?.toFixed?.(1) || '-',
-        pressioneMax: g.pressioneMax?.toFixed?.(1) || '-',
-        umiditaMin: g.umiditaMin?.toFixed?.(0) || '-',
-        umiditaMax: g.umiditaMax?.toFixed?.(0) || '-',
-        pioggiaMaxEvento: '-',
-        pioggia: g.pioggia?.toFixed?.(1) || '-'
-      }));
+      // RAW → tabella
+      this.arrResponse = [
+        ...giorniOrd.map(g => ({
+          giorno: g.giorno,
+          tempMin: g.tempMin.toFixed(1),
+          tempMax: g.tempMax.toFixed(1),
+          tempMedia: g.tempMedia.toFixed(1),
+          ventoMax: g.ventoMax.toFixed(1),
+          pressioneMin: g.pressioneMin.toFixed(1),
+          pressioneMax: g.pressioneMax.toFixed(1),
+          umiditaMin: g.umiditaMin.toFixed(0),
+          umiditaMax: g.umiditaMax.toFixed(0),
+          pioggia: g.pioggia.toFixed(1)
+        })),
+
+        {
+          giorno: 'Mensile',
+          tempMin: mensileRaw.tempMin.toFixed(1),
+          tempMax: mensileRaw.tempMax.toFixed(1),
+          tempMedia: mensileRaw.tempMedia.toFixed(1),
+          ventoMax: mensileRaw.ventoMax.toFixed(1),
+          pressioneMin: mensileRaw.pressioneMin.toFixed(1),
+          pressioneMax: mensileRaw.pressioneMax.toFixed(1),
+          umiditaMin: mensileRaw.umiditaMin.toFixed(0),
+          umiditaMax: mensileRaw.umiditaMax.toFixed(0),
+          pioggiaGiornalieraMax: mensileRaw.pioggiaGiornalieraMax.toFixed(1),
+          pioggia: mensileRaw.pioggia.toFixed(1)
+        }
+      ];
+
+      this.dataSource.data = this.arrResponse;
+
+      // -------------------------------------------------------------------
+      // 5️⃣ ANNUALE FORMATTATO
+      // -------------------------------------------------------------------
+      const annualeRaw = {
+        tempMin: min(datiAnno.map(d => d.tempMin)),
+        tempMax: max(datiAnno.map(d => d.tempMax)),
+        tempMedia: avg(datiAnno.map(d => d.tempMedia)),
+        ventoMax: max(datiAnno.map(d => d.ventoMax)),
+        pressioneMin: min(datiAnno.map(d => d.pressioneMin)),
+        pressioneMax: max(datiAnno.map(d => d.pressioneMax)),
+        umiditaMin: min(datiAnno.map(d => d.umiditaMin)),
+        umiditaMax: max(datiAnno.map(d => d.umiditaMax)),
+        pioggiaGiornalieraMax: max(datiAnno.map(d => d.pioggia)),
+        pioggia: sum(datiAnno.map(d => d.pioggia))
+      };
+
+      this.arrResponseAnno = [{
+        giorno: `Anno ${this.year}`,
+        tempMin: annualeRaw.tempMin.toFixed(1),
+        tempMax: annualeRaw.tempMax.toFixed(1),
+        tempMedia: annualeRaw.tempMedia.toFixed(1),
+        ventoMax: annualeRaw.ventoMax.toFixed(1),
+        pressioneMin: annualeRaw.pressioneMin.toFixed(1),
+        pressioneMax: annualeRaw.pressioneMax.toFixed(1),
+        umiditaMin: annualeRaw.umiditaMin.toFixed(0),
+        umiditaMax: annualeRaw.umiditaMax.toFixed(0),
+        pioggiaGiornalieraMax: annualeRaw.pioggiaGiornalieraMax.toFixed(1),
+        pioggia: annualeRaw.pioggia.toFixed(1)
+      }];
+
       this.dataSourceAnno.data = this.arrResponseAnno;
 
-    } catch (err) {
-      console.error('❌ Errore loadCumulusDayFileData:', err);
     } finally {
       this.imageLoader = false;
       this.imageLoaderAnno = false;
@@ -242,9 +281,17 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private async loadXmlAnnualRawData(year: number, startMonth: number, endMonth: number): Promise<any[]> {
+
+
+
+  private async loadXmlAnnualRawData(
+    year: number,
+    startMonth: number,
+    endMonth: number
+  ): Promise<DatoGiornalieroRaw[]> {
+
     const parser = new DOMParser();
-    const result: any[] = [];
+    const result: DatoGiornalieroRaw[] = [];
 
     for (let m = startMonth; m <= endMonth; m++) {
       const month = m.toString().padStart(2, '0');
@@ -255,7 +302,11 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         if (!files?.length) continue;
 
         for (const filename of files) {
-          const xmlString = await this.http.get(`assets/storico-treo/${year}/${month}/${filename}`, { responseType: 'text' }).toPromise();
+          const xmlString = await this.http.get(
+            `assets/storico-treo/${year}/${month}/${filename}`,
+            { responseType: 'text' }
+          ).toPromise();
+
           if (!xmlString?.trim()) continue;
 
           const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
@@ -266,49 +317,43 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
             const el = xmlDoc.querySelector(sel);
             if (!el) return NaN;
             if (attr && el.hasAttribute(attr)) {
-              return parseFloat(el.getAttribute(attr)?.replace(/[^\d.-]/g, '') || 'NaN');
+              return parseFloat(el.getAttribute(attr) || '');
             }
-            const text = el.textContent?.replace(/[^\d.-]/g, '');
-            return parseFloat(text || 'NaN');
+            return parseFloat(el.textContent || '');
           };
 
-          const isNewFormat = xmlDoc.querySelector('outdoor_temperature')?.hasAttribute('max');
-          const day = root.getAttribute('day') || filename.split('_')[2]?.split('.')[0] || '?';
+          const isNew = xmlDoc.querySelector('outdoor_temperature')?.hasAttribute('max');
+          const day = root.getAttribute('day') || '01';
 
           result.push({
             giorno: day.padStart(2, '0'),
             mese: m,
             anno: year % 100,
-            tempMin: isNewFormat ? val('outdoor_temperature', 'min') : val('outdoor_temperature > min'),
-            tempMax: isNewFormat ? val('outdoor_temperature', 'max') : val('outdoor_temperature > max'),
-            tempMedia: isNewFormat
+            tempMin: isNew ? val('outdoor_temperature', 'min') : val('outdoor_temperature > min'),
+            tempMax: isNew ? val('outdoor_temperature', 'max') : val('outdoor_temperature > max'),
+            tempMedia: isNew
               ? val('outdoor_temperature', 'mean')
               : (val('outdoor_temperature > min') + val('outdoor_temperature > max')) / 2,
-            ventoMax: isNewFormat ? val('wind_speed', 'max') : val('wind_speed > max'),
-            pressioneMin: isNewFormat ? val('relative_pressure', 'min') : val('relative_pressure > min'),
-            pressioneMax: isNewFormat ? val('relative_pressure', 'max') : val('relative_pressure > max'),
-            umiditaMin: isNewFormat ? val('outdoor_humidity', 'min') : val('outdoor_humidity > min'),
-            umiditaMax: isNewFormat ? val('outdoor_humidity', 'max') : val('outdoor_humidity > max'),
-            pioggia: isNewFormat ? val('total-rainfall', 'value') : val('total-rainfall')
+            ventoMax: isNew ? val('wind_speed', 'max') : val('wind_speed > max'),
+            pressioneMin: isNew ? val('relative_pressure', 'min') : val('relative_pressure > min'),
+            pressioneMax: isNew ? val('relative_pressure', 'max') : val('relative_pressure > max'),
+            umiditaMin: isNew ? val('outdoor_humidity', 'min') : val('outdoor_humidity > min'),
+            umiditaMax: isNew ? val('outdoor_humidity', 'max') : val('outdoor_humidity > max'),
+            pioggia: isNew ? val('total-rainfall', 'value') : val('total-rainfall')
           });
         }
-      } catch {
-        continue;
-      }
+      } catch { }
     }
 
-    console.log(`📁 XML caricati per ${year}: ${result.length}`);
     return result;
   }
 
 
 
-
-// 🔍 Parser per il dayfile.txt
-  private parseDayfile(content: string, year: number): any[] {
+  private parseDayfile(content: string, year: number): DatoGiornalieroRaw[] {
     const righe = content.trim().split('\n');
     const yearShort = year % 100;
-    const result: any[] = [];
+    const result: DatoGiornalieroRaw[] = [];
 
     for (const riga of righe) {
       const c = riga.split(',');
@@ -317,6 +362,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       if (anno !== yearShort) continue;
 
       const safe = (v: string) => parseFloat(v) || 0;
+
       result.push({
         giorno: giorno.toString().padStart(2, '0'),
         mese,
@@ -325,7 +371,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         tempMax: safe(c[6]),
         pressioneMin: safe(c[8]),
         pressioneMax: safe(c[10]),
-        pioggia: safe(c[12]),
+        pioggia: safe(c[14]),       // ← colonna giusta della pioggia
         tempMedia: safe(c[15]) || (safe(c[4]) + safe(c[6])) / 2,
         umiditaMin: safe(c[19]),
         umiditaMax: safe(c[21]),
@@ -333,15 +379,18 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       });
     }
 
-    console.log(`✅ Parsed ${result.length} righe per ${year}`);
     return result;
   }
+
+
 
   //Get-ChildItem -Recurse -Directory | ForEach-Object { $xmls = Get-ChildItem $_.FullName -Filter *.xml -Name | Where-Object { $_ -match "^\d{4}_\d{2}_\d{2}\.xml$" } | Sort-Object; if ($xmls.Count -gt 0) { $jsonBody = ($xmls | ForEach-Object { '    "' + $_ + '"' }) -join ",`n"; $json = "[`n$jsonBody`n]"; $path = Join-Path $_.FullName "filelist.json"; Set-Content -Path $path -Value $json -Encoding UTF8; Write-Host "✅ Creato $path con $($xmls.Count) file XML"; } else { Write-Host "❌ Nessun file XML giornaliero in $($_.FullName)"; } }
 
   // 🔍 Cambio data nel datepicker
   filterData(selectedDate: Date = this.dateControl.value): void {
-    if (!selectedDate) return;
+    if (!selectedDate) {
+      return;
+    }
     this.month = (selectedDate.getMonth() + 1).toString().padStart(2, '0');
     this.year = selectedDate.getFullYear();
     this.loadCumulusDayFileData();
@@ -350,19 +399,33 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
 
   // 📆 Cambio mese con paginator
   public handlePage(e: PageEvent): void {
-    if (!this.dateControl.value) return;
+    if (!this.dateControl.value) {
+      return;
+    }
     let currentMonth = this.dateControl.value.getMonth();
     let currentYear = this.year;
 
-    if (e.pageIndex > e.previousPageIndex) { currentMonth++; if (currentMonth > 11) { currentMonth = 0; currentYear++; } }
-    if (e.pageIndex < e.previousPageIndex) { currentMonth--; if (currentMonth < 0) { currentMonth = 11; currentYear--; } }
+    if (e.pageIndex > e.previousPageIndex) {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+    }
+    if (e.pageIndex < e.previousPageIndex) {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+    }
 
     this.year = currentYear;
     this.month = (currentMonth + 1).toString().padStart(2, '0');
     this.currentPage = currentMonth;
 
     const selectedDate = new Date(currentYear, currentMonth, 1);
-    this.dateControl.setValue(selectedDate, { emitEvent: false });
+    this.dateControl.setValue(selectedDate, {emitEvent: false});
 
     console.log(`📅 Cambio mese → ${this.month}/${this.year}`);
     this.imageLoader = this.imageLoaderAnno = true;
@@ -377,26 +440,22 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
     const goingForward = e.pageIndex > this.currentPageAnno;
     const goingBackward = e.pageIndex < this.currentPageAnno;
 
-    if (goingForward && this.year < MAX_YEAR) this.year++;
-    else if (goingBackward && this.year > MIN_YEAR) this.year--;
-    else return;
+    if (goingForward && this.year < MAX_YEAR) {
+      this.year++;
+    } else if (goingBackward && this.year > MIN_YEAR) {
+      this.year--;
+    } else {
+      return;
+    }
 
     this.currentPageAnno = e.pageIndex;
     const selectedDate = new Date(this.year, this.dateControl.value.getMonth(), 1);
-    this.dateControl.setValue(selectedDate, { emitEvent: false });
+    this.dateControl.setValue(selectedDate, {emitEvent: false});
     console.log(`📆 Cambio anno → ${this.year}`);
     this.imageLoader = this.imageLoaderAnno = true;
     this.isVisible = this.isVisibleAnno = false;
     setTimeout(() => this.loadCumulusDayFileData(), 100);
   }
-
-
-
-
-
-
-
-
 
 
   // Funzione per calcolare il colore in base al valore
