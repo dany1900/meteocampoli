@@ -11,7 +11,21 @@ export interface DatoGiornalieroRaw {
   umiditaMin: number;
   umiditaMax: number;
   pioggia: number;
+  pioggiaGiornalieraMax?: number;
 }
+
+export interface AnnualRaw {
+  totalRain: number;
+  maxRainDay: number;
+  maxRainDayDate: string;
+  minTemp: number;
+  minTempDate: string;
+  maxTemp: number;
+  maxTempDate: string;
+}
+
+
+
 
 export interface StatisticheStazioneTreoInterface {
   giorno?: string;
