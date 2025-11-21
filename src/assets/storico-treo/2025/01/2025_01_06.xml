@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml-stylesheet href="./../../day.xsl" type="text/xsl"?>
+<statistics year="2025" month="01" str-month="gennaio" day="06" str-day="lunedì">
+	<tn value="7.5 °C"/>
+	<tx value="13.5 °C"/>
+	<total-rainfall value="0.0 mm"/>
+	<nb-hours-of-sunshine value="0.0"/>
+	<total-solar-energy value="0"/>
+	<heat-degree-days value="0.0"/>
+	<cool-degree-days value="0.0"/>
+	<wind-direction-distribution n="56.0" nne="0.0" ne="0.0" ene="0.0" e="4.0" ese="0.0" se="0.0" sse="4.0" s="0.0" ssw="0.0" sw="0.0" wsw="0.0" w="0.0" wnw="0.0" nw="28.0" nnw="8.0" />
+	<absolute_pressure max="955.9" max-date="1736121780" max-date-text="01h03" min="950.0" min-date="1736192160" min-date-text="20h36" max-pos-var="+0.1" max-pos-var-date="1736195760" max-pos-var-date-text="21h36" max-neg-var="-0.6" max-neg-var-date="1736175780" max-neg-var-date-text="16h03" max-pos-rate="+0.5" max-pos-rate-date="1736195760" max-pos-rate-date-text="21h36" max-neg-rate="-0.8" max-neg-rate-date="1736168580" max-neg-rate-date-text="14h03" mean="952.6" />
+	<relative_pressure max="1018.6" max-date="1736121780" max-date-text="01h03" min="1012.4" min-date="1736192160" min-date-text="20h36" max-pos-var="+0.1" max-pos-var-date="1736195760" max-pos-var-date-text="21h36" max-neg-var="-0.7" max-neg-var-date="1736175780" max-neg-var-date-text="16h03" max-pos-rate="+0.5" max-pos-rate-date="1736195760" max-pos-rate-date-text="21h36" max-neg-rate="-0.9" max-neg-rate-date="1736168580" max-neg-rate-date-text="14h03" mean="1015.1" />
+	<absolute_rainfall max="7157.5" max-date="1736188560" max-date-text="19h36" min="5652.7" min-date="1736118180" min-date-text="00h03" max-pos-var="NA" max-pos-var-date="0" max-pos-var-date-text="NA" max-neg-var="NA" max-neg-var-date="0" max-neg-var-date-text="NA" max-pos-rate="0.0" max-pos-rate-date="1736118180" max-pos-rate-date-text="00h03" max-neg-rate="0.0" max-neg-rate-date="1736118180" max-neg-rate-date-text="00h03" />
+	<relative_rainfall max="0.0" max-date="1736118180" max-date-text="00h03" min="NA" min-date="0" min-date-text="NA" />
+	<indoor_temperature max="23.4" max-date="1736184960" max-date-text="18h36" min="16.8" min-date="1736157780" min-date-text="11h03" max-pos-var="+1.3" max-pos-var-date="1736175780" max-pos-var-date-text="16h03" max-neg-var="-0.5" max-neg-var-date="1736132580" max-neg-var-date-text="04h03" max-pos-rate="+1.9" max-pos-rate-date="1736175780" max-pos-rate-date-text="16h03" max-neg-rate="-0.7" max-neg-rate-date="1736132580" max-neg-rate-date-text="04h03" mean="19.8" />
+	<outdoor_temperature max="13.5" max-date="1736179380" max-date-text="17h03" min="7.5" min-date="1736150580" min-date-text="09h03" max-pos-var="NA" max-pos-var-date="0" max-pos-var-date-text="NA" max-neg-var="NA" max-neg-var-date="0" max-neg-var-date-text="NA" max-pos-rate="NA" max-pos-rate-date="0" max-pos-rate-date-text="NA" max-neg-rate="NA" max-neg-rate-date="0" max-neg-rate-date-text="NA" mean="10.5" />
+	<indoor_humidity max="65.0" max-date="1736175780" max-date-text="16h03" min="55.0" min-date="1736202960" min-date-text="23h36" max-pos-var="+1.3" max-pos-var-date="1736118180" max-pos-var-date-text="00h03" max-neg-var="-2.3" max-neg-var-date="1736188560" max-neg-var-date-text="19h36" max-pos-rate="+3.0" max-pos-rate-date="1736175780" max-pos-rate-date-text="16h03" max-neg-rate="-4.0" max-neg-rate-date="1736184960" max-neg-rate-date-text="18h36" mean="58.9" />
+	<outdoor_humidity max="NA" max-date="0" max-date-text="NA" min="NA" min-date="0" min-date-text="NA" max-pos-var="NA" max-pos-var-date="0" max-pos-var-date-text="NA" max-neg-var="NA" max-neg-var-date="0" max-neg-var-date-text="NA" max-pos-rate="NA" max-pos-rate-date="0" max-pos-rate-date-text="NA" max-neg-rate="NA" max-neg-rate-date="0" max-neg-rate-date-text="NA" mean="0.0" />
+	<dew_point max="NA" max-date="0" max-date-text="NA" min="NA" min-date="0" min-date-text="NA" max-pos-var="NA" max-pos-var-date="0" max-pos-var-date-text="NA" max-neg-var="NA" max-neg-var-date="0" max-neg-var-date-text="NA" max-pos-rate="NA" max-pos-rate-date="0" max-pos-rate-date-text="NA" max-neg-rate="NA" max-neg-rate-date="0" max-neg-rate-date-text="NA" mean="0.0" />
+	<wind_speed max="11.2" max-date="1736150580" max-date-text="09h03" min="0.0" min-date="1736118180" min-date-text="00h03" mean="0.4" />
+	<wind_direction mean="NW (337°)" />
+	<wind_chill max="13.5" max-date="1736179380" max-date-text="17h03" min="7.5" min-date="1736150580" min-date-text="09h03" max-pos-var="NA" max-pos-var-date="0" max-pos-var-date-text="NA" max-neg-var="NA" max-neg-var-date="0" max-neg-var-date-text="NA" max-pos-rate="NA" max-pos-rate-date="0" max-pos-rate-date-text="NA" max-neg-rate="NA" max-neg-rate-date="0" max-neg-rate-date-text="NA" mean="10.5" />
+	<heat_index max="NA" max-date="0" max-date-text="NA" min="NA" min-date="0" min-date-text="NA" max-pos-var="NA" max-pos-var-date="0" max-pos-var-date-text="NA" max-neg-var="NA" max-neg-var-date="0" max-neg-var-date-text="NA" max-pos-rate="NA" max-pos-rate-date="0" max-pos-rate-date-text="NA" max-neg-rate="NA" max-neg-rate-date="0" max-neg-rate-date-text="NA" mean="0.0" />
+	<cloud_base max="NA" max-date="0" max-date-text="NA" min="NA" min-date="0" min-date-text="NA" max-pos-var="NA" max-pos-var-date="0" max-pos-var-date-text="NA" max-neg-var="NA" max-neg-var-date="0" max-neg-var-date-text="NA" max-pos-rate="NA" max-pos-rate-date="0" max-pos-rate-date-text="NA" max-neg-rate="NA" max-neg-rate-date="0" max-neg-rate-date-text="NA" mean="0" />
+	<rainfall_1h max="0.0" max-date="1736118180" max-date-text="00h03" min="NA" min-date="0" min-date-text="NA" />
+	<rainfall_24h max="0.6" max-date="1736118180" max-date-text="00h03" min="NA" min-date="0" min-date-text="NA" />
+	<wind_speed_10 max="11.2" max-date="1736150580" max-date-text="09h03" min="0.0" min-date="1736118180" min-date-text="00h03" mean="0.4" />
+	<weather_icon />
+	<weather_forecast />
+</statistics>

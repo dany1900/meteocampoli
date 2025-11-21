@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml-stylesheet href="./../../month.xsl" type="text/xsl"?>
+<statistics year="2016" month="01" str-month="gennaio">
+	<map>
+		<day-01 available="1"/>
+		<day-02 available="1"/>
+		<day-03 available="1"/>
+		<day-04 available="1"/>
+		<day-05 available="1"/>
+		<day-06 available="1"/>
+		<day-07 available="1"/>
+		<day-08 available="1"/>
+		<day-09 available="1"/>
+		<day-10 available="1"/>
+		<day-11 available="1"/>
+		<day-12 available="1"/>
+		<day-13 available="1"/>
+		<day-14 available="1"/>
+		<day-15 available="1"/>
+		<day-16 available="1"/>
+		<day-17 available="1"/>
+		<day-18 available="1"/>
+		<day-19 available="1"/>
+		<day-20 available="1"/>
+		<day-21 available="1"/>
+		<day-22 available="1"/>
+		<day-23 available="1"/>
+		<day-24 available="1"/>
+		<day-25 available="1"/>
+		<day-26 available="1"/>
+		<day-27 available="1"/>
+		<day-28 available="1"/>
+		<day-29 available="1"/>
+		<day-30 available="1"/>
+		<day-31 available="1"/>
+	</map>
+	<nb-of-records>7722099</nb-of-records>
+	<total-rainfall>148.8 mm</total-rainfall>
+	<max-rainfall-day>25.0 mm</max-rainfall-day>
+	<max-rainfall-day-date>1452812400</max-rainfall-day-date>
+	<max-rainfall-day-date-text>ven 15</max-rainfall-day-date-text>
+	<nb-days-of-rainfall>12</nb-days-of-rainfall>
+	<nb-days-of-freeze>3</nb-days-of-freeze>
+	<nb-days-of-heat>0</nb-days-of-heat>
+	<tn-min>-3.5 °C</tn-min>
+	<tn-min-date>1453244400</tn-min-date>
+	<tn-min-date-text>mer 20</tn-min-date-text>
+	<t-min-mean>3.2 °C</t-min-mean>
+	<tx-max>16.3 °C</tx-max>
+	<tx-max-date>1452294000</tx-max-date>
+	<tx-max-date-text>sab 09</tx-max-date-text>
+	<t-max-mean>10.9 °C</t-max-mean>
+	<nb-days-of-30-heat-index>0</nb-days-of-30-heat-index>
+	<nb-days-of-35-heat-index>0</nb-days-of-35-heat-index>
+	<nb-days-of-sunshine>0</nb-days-of-sunshine>
+	<nb-tropical-nights>0</nb-tropical-nights>
+	<nb-hours-of-sunshine>0.0</nb-hours-of-sunshine>
+	<total-solar-energy>0 kWh</total-solar-energy>
+	<heat-degree-days>0.0</heat-degree-days>
+	<cool-degree-days>360.7</cool-degree-days>
+	<wind-direction-distribution>
+		<n>7.3</n>
+		<nne>16.5</nne>
+		<ne>18.3</ne>
+		<ene>9.3</ene>
+		<e>5.0</e>
+		<ese>4.3</ese>
+		<se>2.2</se>
+		<sse>2.6</sse>
+		<s>5.5</s>
+		<ssw>3.6</ssw>
+		<sw>2.2</sw>
+		<wsw>3.1</wsw>
+		<w>7.1</w>
+		<wnw>7.4</wnw>
+		<nw>3.0</nw>
+		<nnw>2.7</nnw>
+	</wind-direction-distribution>
+	<absolute_pressure>
+		<max>970.5 hPa</max>
+		<minmax>950.5 hPa</minmax>
+		<max-date>1453629540</max-date>
+		<max-date-text>dom 24 - 10:59</max-date-text>
+		<min>950.0 hPa</min>
+		<maxmin>966.7 hPa</maxmin>
+		<min-date>1451771820</min-date>
+		<min-date-text>sab 02 - 22:57</min-date-text>
+		<max-pos-var>+2.5 hPa</max-pos-var>
+		<max-pos-var-date>1452706800</max-pos-var-date>
+		<max-pos-var-date-text>mer 13 - 18:40</max-pos-var-date-text>
+		<max-neg-var>-2.9 hPa</max-neg-var>
+		<max-neg-var-date>1451740140</max-neg-var-date>
+		<max-neg-var-date-text>sab 02 - 14:09</max-neg-var-date-text>
+		<max-pos-rate>+1.6 hPa</max-pos-rate>
+		<max-pos-rate-date>1453104300</max-pos-rate-date>
+		<max-pos-rate-date-text>lun 18 - 09:05</max-pos-rate-date-text>
+		<max-neg-rate>-1.4 hPa</max-neg-rate>
+		<max-neg-rate-date>1452801480</max-neg-rate-date>
+		<max-neg-rate-date-text>gio 14 - 20:58</max-neg-rate-date-text>
+		<mean>961.5 hPa</mean>
+		<nb-of-records>3959</nb-of-records>
+	</absolute_pressure>
+	<relative_pressure>
+		<max>1034.2 hPa</max>
+		<minmax>1001.1 hPa</minmax>
+		<max-date>1453629540</max-date>
+		<max-date-text>dom 24 - 10:59</max-date-text>
+		<min>996.3 hPa</min>
+		<maxmin>1030.2 hPa</maxmin>
+		<min-date>1451915280</min-date>
+		<min-date-text>lun 04 - 14:48</min-date-text>
+		<max-pos-var>+3.3 hPa</max-pos-var>
+		<max-pos-var-date>1452146640</max-pos-var-date>
+		<max-pos-var-date-text>gio 07 - 07:04</max-pos-var-date-text>
+		<max-neg-var>-4.0 hPa</max-neg-var>
+		<max-neg-var-date>1451781900</max-neg-var-date>
+		<max-neg-var-date-text>dom 03 - 01:45</max-neg-var-date-text>
+		<max-pos-rate>+2.3 hPa</max-pos-rate>
+		<max-pos-rate-date>1452994080</max-pos-rate-date>
+		<max-pos-rate-date-text>dom 17 - 02:28</max-pos-rate-date-text>
+		<max-neg-rate>-2.2 hPa</max-neg-rate>
+		<max-neg-rate-date>1453021440</max-neg-rate-date>
+		<max-neg-rate-date-text>dom 17 - 10:04</max-neg-rate-date-text>
+		<mean>1016.4 hPa</mean>
+		<nb-of-records>7091</nb-of-records>
+	</relative_pressure>
+	<absolute_rainfall>
+		<max>19828.5 mm</max>
+		<minmax>1157.5 mm</minmax>
+		<max-date>1451602920</max-date>
+		<max-date-text>ven 01 - 00:02</max-date-text>
+		<min>1136.6 mm</min>
+		<maxmin>5524.1 mm</maxmin>
+		<min-date>1451657340</min-date>
+		<min-date-text>ven 01 - 15:09</min-date-text>
+		<max-pos-var>+2126.4 mm</max-pos-var>
+		<max-pos-var-date>1452866640</max-pos-var-date>
+		<max-pos-var-date-text>ven 15 - 15:04</max-pos-var-date-text>
+		<max-neg-var>0.0 mm</max-neg-var>
+		<max-neg-var-date>1451602920</max-neg-var-date>
+		<max-neg-var-date-text>ven 01 - 00:02</max-neg-var-date-text>
+		<max-pos-rate>+1717.7 mm</max-pos-rate>
+		<max-pos-rate-date>1452866040</max-pos-rate-date>
+		<max-pos-rate-date-text>ven 15 - 14:54</max-pos-rate-date-text>
+		<max-neg-rate>0.0 mm</max-neg-rate>
+		<max-neg-rate-date>1451602920</max-neg-rate-date>
+		<max-neg-rate-date-text>ven 01 - 00:02</max-neg-rate-date-text>
+		<mean>4321.5 mm</mean>
+		<nb-of-records>7091</nb-of-records>
+	</absolute_rainfall>
+	<relative_rainfall>
+		<max>6.3 mm</max>
+		<minmax>0.0 mm</minmax>
+		<max-date>1452811200</max-date>
+		<max-date-text>gio 14 - 23:40</max-date-text>
+		<min>0.0 mm</min>
+		<maxmin>0.0 mm</maxmin>
+		<min-date>1451602920</min-date>
+		<min-date-text>ven 01 - 00:02</min-date-text>
+		<max-pos-var>+6.3 mm</max-pos-var>
+		<max-pos-var-date>1452811200</max-pos-var-date>
+		<max-pos-var-date-text>gio 14 - 23:40</max-pos-var-date-text>
+		<max-neg-var>-5.7 mm</max-neg-var>
+		<max-neg-var-date>1451918880</max-neg-var-date>
+		<max-neg-var-date-text>lun 04 - 15:48</max-neg-var-date-text>
+		<max-pos-rate>+1717.7 mm</max-pos-rate>
+		<max-pos-rate-date>1452866040</max-pos-rate-date>
+		<max-pos-rate-date-text>ven 15 - 14:54</max-pos-rate-date-text>
+		<max-neg-rate>0.0 mm</max-neg-rate>
+		<max-neg-rate-date>1451602920</max-neg-rate-date>
+		<max-neg-rate-date-text>ven 01 - 00:02</max-neg-rate-date-text>
+		<mean>0.0 mm</mean>
+		<nb-of-records>7091</nb-of-records>
+	</relative_rainfall>
+	<indoor_temperature>
+		<max>22.6 °C</max>
+		<minmax>16.6 °C</minmax>
+		<max-date>1452455880</max-date>
+		<max-date-text>dom 10 - 20:58</max-date-text>
+		<min>11.6 °C</min>
+		<maxmin>18.3 °C</maxmin>
+		<min-date>1453313100</min-date>
+		<min-date-text>mer 20 - 19:05</min-date-text>
+		<max-pos-var>+5.7 °C</max-pos-var>
+		<max-pos-var-date>1453488420</max-pos-var-date>
+		<max-pos-var-date-text>ven 22 - 19:47</max-pos-var-date-text>
+		<max-neg-var>-3.7 °C</max-neg-var>
+		<max-neg-var-date>1453170180</max-neg-var-date>
+		<max-neg-var-date-text>mar 19 - 03:23</max-neg-var-date-text>
+		<max-pos-rate>+3.7 °C</max-pos-rate>
+		<max-pos-rate-date>1453830780</max-pos-rate-date>
+		<max-pos-rate-date-text>mar 26 - 18:53</max-pos-rate-date-text>
+		<max-neg-rate>-1.6 °C</max-neg-rate>
+		<max-neg-rate-date>1453593180</max-neg-rate-date>
+		<max-neg-rate-date-text>dom 24 - 00:53</max-neg-rate-date-text>
+		<mean>17.0 °C</mean>
+		<nb-of-records>7091</nb-of-records>
+	</indoor_temperature>
+	<outdoor_temperature>
+		<max>16.3 °C</max>
+		<minmax>4.4 °C</minmax>
+		<max-date>1452339240</max-date>
+		<max-date-text>sab 09 - 12:34</max-date-text>
+		<min>-3.5 °C</min>
+		<maxmin>10.2 °C</maxmin>
+		<min-date>1453267020</min-date>
+		<min-date-text>mer 20 - 06:17</min-date-text>
+		<max-pos-var>+8.3 °C</max-pos-var>
+		<max-pos-var-date>1453631340</max-pos-var-date>
+		<max-pos-var-date-text>dom 24 - 11:29</max-pos-var-date-text>
+		<max-neg-var>-6.2 °C</max-neg-var>
+		<max-neg-var-date>1452707880</max-neg-var-date>
+		<max-neg-var-date-text>mer 13 - 18:58</max-neg-var-date-text>
+		<max-pos-rate>+4.9 °C</max-pos-rate>
+		<max-pos-rate-date>1453623420</max-pos-rate-date>
+		<max-pos-rate-date-text>dom 24 - 09:17</max-pos-rate-date-text>
+		<max-neg-rate>-6.1 °C</max-neg-rate>
+		<max-neg-rate-date>1451681820</max-neg-rate-date>
+		<max-neg-rate-date-text>ven 01 - 21:57</max-neg-rate-date-text>
+		<mean>6.6 °C</mean>
+		<nb-of-records>7091</nb-of-records>
+	</outdoor_temperature>
+	<indoor_humidity>
+		<max>71.0 %</max>
+		<minmax>46.0 %</minmax>
+		<max-date>1454242620</max-date>
+		<max-date-text>dom 31 - 13:17</max-date-text>
+		<min>38.0 %</min>
+		<maxmin>54.0 %</maxmin>
+		<min-date>1453152900</min-date>
+		<min-date-text>lun 18 - 22:35</min-date-text>
+		<max-pos-var>+13.0 %</max-pos-var>
+		<max-pos-var-date>1454242620</max-pos-var-date>
+		<max-pos-var-date-text>dom 31 - 13:17</max-pos-var-date-text>
+		<max-neg-var>-16.0 %</max-neg-var>
+		<max-neg-var-date>1452357960</max-neg-var-date>
+		<max-neg-var-date-text>sab 09 - 17:46</max-neg-var-date-text>
+		<max-pos-rate>+10.0 %</max-pos-rate>
+		<max-pos-rate-date>1452343560</max-pos-rate-date>
+		<max-pos-rate-date-text>sab 09 - 13:46</max-pos-rate-date-text>
+		<max-neg-rate>-10.0 %</max-neg-rate>
+		<max-neg-rate-date>1452352200</max-neg-rate-date>
+		<max-neg-rate-date-text>sab 09 - 16:10</max-neg-rate-date-text>
+		<mean>51.8 %</mean>
+		<nb-of-records>7091</nb-of-records>
+	</indoor_humidity>
+	<outdoor_humidity>
+		<max>88.0 %</max>
+		<minmax>52.0 %</minmax>
+		<max-date>1452095880</max-date>
+		<max-date-text>mer 06 - 16:58</max-date-text>
+		<min>33.0 %</min>
+		<maxmin>81.0 %</maxmin>
+		<min-date>1453116900</min-date>
+		<min-date-text>lun 18 - 12:35</min-date-text>
+		<max-pos-var>+23.0 %</max-pos-var>
+		<max-pos-var-date>1452613920</max-pos-var-date>
+		<max-pos-var-date-text>mar 12 - 16:52</max-pos-var-date-text>
+		<max-neg-var>-35.0 %</max-neg-var>
+		<max-neg-var-date>1452937200</max-neg-var-date>
+		<max-neg-var-date-text>sab 16 - 10:40</max-neg-var-date-text>
+		<max-pos-rate>+11.0 %</max-pos-rate>
+		<max-pos-rate-date>1451817540</max-pos-rate-date>
+		<max-pos-rate-date-text>dom 03 - 11:39</max-pos-rate-date-text>
+		<max-neg-rate>-22.0 %</max-neg-rate>
+		<max-neg-rate-date>1452936840</max-neg-rate-date>
+		<max-neg-rate-date-text>sab 16 - 10:34</max-neg-rate-date-text>
+		<mean>73.7 %</mean>
+		<nb-of-records>7083</nb-of-records>
+	</outdoor_humidity>
+	<dew_point>
+		<max>12.5 °C</max>
+		<minmax>-7.9 °C</minmax>
+		<max-date>1452338520</max-date>
+		<max-date-text>sab 09 - 12:22</max-date-text>
+		<min>-12.3 °C</min>
+		<maxmin>7.0 °C</maxmin>
+		<min-date>1453143180</min-date>
+		<min-date-text>lun 18 - 19:53</min-date-text>
+		<max-pos-var>+6.5 °C</max-pos-var>
+		<max-pos-var-date>1452861600</max-pos-var-date>
+		<max-pos-var-date-text>ven 15 - 13:40</max-pos-var-date-text>
+		<max-neg-var>-7.9 °C</max-neg-var>
+		<max-neg-var-date>1452874200</max-neg-var-date>
+		<max-neg-var-date-text>ven 15 - 17:10</max-neg-var-date-text>
+		<max-pos-rate>+6.0 °C</max-pos-rate>
+		<max-pos-rate-date>1452861600</max-pos-rate-date>
+		<max-pos-rate-date-text>ven 15 - 13:40</max-pos-rate-date-text>
+		<max-neg-rate>-7.1 °C</max-neg-rate>
+		<max-neg-rate-date>1452867360</max-neg-rate-date>
+		<max-neg-rate-date-text>ven 15 - 15:16</max-neg-rate-date-text>
+		<mean>2.0 °C</mean>
+		<nb-of-records>7091</nb-of-records>
+	</dew_point>
+	<wind_speed>
+		<max>75.5 km/h</max>
+		<minmax>5.0 km/h</minmax>
+		<max-date>1452985440</max-date>
+		<max-date-text>dom 17 - 00:04</max-date-text>
+		<min>0.0 km/h</min>
+		<maxmin>0.0 km/h</maxmin>
+		<min-date>1451602920</min-date>
+		<min-date-text>ven 01 - 00:02</min-date-text>
+		<max-pos-var>+15.8 km/h</max-pos-var>
+		<max-pos-var-date>1452984360</max-pos-var-date>
+		<max-pos-var-date-text>sab 16 - 23:46</max-pos-var-date-text>
+		<max-neg-var>-17.7 km/h</max-neg-var>
+		<max-neg-var-date>1452996240</max-neg-var-date>
+		<max-neg-var-date-text>dom 17 - 03:04</max-neg-var-date-text>
+		<max-pos-rate>+47.0 km/h</max-pos-rate>
+		<max-pos-rate-date>1453113660</max-pos-rate-date>
+		<max-pos-rate-date-text>lun 18 - 11:41</max-pos-rate-date-text>
+		<max-neg-rate>-60.0 km/h</max-neg-rate>
+		<max-neg-rate-date>1452989040</max-neg-rate-date>
+		<max-neg-rate-date-text>dom 17 - 01:04</max-neg-rate-date-text>
+		<mean>2.3 km/h</mean>
+		<nb-of-records>7083</nb-of-records>
+	</wind_speed>
+	<wind_direction>
+		<mean>NNE (29°)</mean>
+		<nb-of-records>7091</nb-of-records>
+	</wind_direction>
+	<wind_gust>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 km/h</mean>
+		<nb-of-records>0</nb-of-records>
+	</wind_gust>
+	<wind_chill>
+		<max>16.3 °C</max>
+		<minmax>4.1 °C</minmax>
+		<max-date>1452339240</max-date>
+		<max-date-text>sab 09 - 12:34</max-date-text>
+		<min>-16.7 °C</min>
+		<maxmin>10.2 °C</maxmin>
+		<min-date>1453269900</min-date>
+		<min-date-text>mer 20 - 07:05</min-date-text>
+		<max-pos-var>+19.1 °C</max-pos-var>
+		<max-pos-var-date>1453280700</max-pos-var-date>
+		<max-pos-var-date-text>mer 20 - 10:05</max-pos-var-date-text>
+		<max-neg-var>-13.9 °C</max-neg-var>
+		<max-neg-var-date>1453269900</max-neg-var-date>
+		<max-neg-var-date-text>mer 20 - 07:05</max-neg-var-date-text>
+		<max-pos-rate>+14.2 °C</max-pos-rate>
+		<max-pos-rate-date>1453273500</max-pos-rate-date>
+		<max-pos-rate-date-text>mer 20 - 08:05</max-pos-rate-date-text>
+		<max-neg-rate>-13.7 °C</max-neg-rate>
+		<max-neg-rate-date>1453269900</max-neg-rate-date>
+		<max-neg-rate-date-text>mer 20 - 07:05</max-neg-rate-date-text>
+		<mean>6.4 °C</mean>
+		<nb-of-records>7091</nb-of-records>
+	</wind_chill>
+	<solar_radiation>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 W/m²</mean>
+		<nb-of-records>0</nb-of-records>
+	</solar_radiation>
+	<uv_index>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0</mean>
+		<nb-of-records>0</nb-of-records>
+	</uv_index>
+	<heat_index>
+		<max>16.3 °C</max>
+		<minmax>4.4 °C</minmax>
+		<max-date>1452339240</max-date>
+		<max-date-text>sab 09 - 12:34</max-date-text>
+		<min>-3.5 °C</min>
+		<maxmin>10.2 °C</maxmin>
+		<min-date>1453267020</min-date>
+		<min-date-text>mer 20 - 06:17</min-date-text>
+		<max-pos-var>+8.3 °C</max-pos-var>
+		<max-pos-var-date>1453631340</max-pos-var-date>
+		<max-pos-var-date-text>dom 24 - 11:29</max-pos-var-date-text>
+		<max-neg-var>-6.2 °C</max-neg-var>
+		<max-neg-var-date>1452707880</max-neg-var-date>
+		<max-neg-var-date-text>mer 13 - 18:58</max-neg-var-date-text>
+		<max-pos-rate>+4.9 °C</max-pos-rate>
+		<max-pos-rate-date>1453623420</max-pos-rate-date>
+		<max-pos-rate-date-text>dom 24 - 09:17</max-pos-rate-date-text>
+		<max-neg-rate>-6.1 °C</max-neg-rate>
+		<max-neg-rate-date>1451681820</max-neg-rate-date>
+		<max-neg-rate-date-text>ven 01 - 21:57</max-neg-rate-date-text>
+		<mean>6.6 °C</mean>
+		<nb-of-records>7091</nb-of-records>
+	</heat_index>
+	<cloud_base>
+		<max>2292 </max>
+		<minmax>487 </minmax>
+		<max-date>1453116900</max-date>
+		<max-date-text>lun 18 - 12:35</max-date-text>
+		<min>274 </min>
+		<maxmin>1340 </maxmin>
+		<min-date>1452133320</min-date>
+		<min-date-text>gio 07 - 03:22</min-date-text>
+		<max-pos-var>+1115 </max-pos-var>
+		<max-pos-var-date>1452938280</max-pos-var-date>
+		<max-pos-var-date-text>sab 16 - 10:58</max-pos-var-date-text>
+		<max-neg-var>-847 </max-neg-var>
+		<max-neg-var-date>1453224900</max-neg-var-date>
+		<max-neg-var-date-text>mar 19 - 18:35</max-neg-var-date-text>
+		<max-pos-rate>+745 </max-pos-rate>
+		<max-pos-rate-date>1452936840</max-pos-rate-date>
+		<max-pos-rate-date-text>sab 16 - 10:34</max-pos-rate-date-text>
+		<max-neg-rate>-474 </max-neg-rate>
+		<max-neg-rate-date>1453032960</max-neg-rate-date>
+		<max-neg-rate-date-text>dom 17 - 13:16</max-neg-rate-date-text>
+		<mean>703 </mean>
+		<nb-of-records>7083</nb-of-records>
+	</cloud_base>
+	<rainfall_1h>
+		<max>14.9 mm</max>
+		<minmax>0.0 mm</minmax>
+		<max-date>1452814080</max-date>
+		<max-date-text>ven 15 - 00:28</max-date-text>
+		<min>0.0 mm</min>
+		<maxmin>0.0 mm</maxmin>
+		<min-date>1451602920</min-date>
+		<min-date-text>ven 01 - 00:02</min-date-text>
+		<max-pos-var>+13.2 mm</max-pos-var>
+		<max-pos-var-date>1452814080</max-pos-var-date>
+		<max-pos-var-date-text>ven 15 - 00:28</max-pos-var-date-text>
+		<max-neg-var>-12.6 mm</max-neg-var>
+		<max-neg-var-date>1452824880</max-neg-var-date>
+		<max-neg-var-date-text>ven 15 - 03:28</max-neg-var-date-text>
+		<max-pos-rate>+14.9 mm</max-pos-rate>
+		<max-pos-rate-date>1452814080</max-pos-rate-date>
+		<max-pos-rate-date-text>ven 15 - 00:28</max-pos-rate-date-text>
+		<max-neg-rate>-9.8 mm</max-neg-rate>
+		<max-neg-rate-date>1452817680</max-neg-rate-date>
+		<max-neg-rate-date-text>ven 15 - 01:28</max-neg-rate-date-text>
+		<mean>0.2 mm</mean>
+		<nb-of-records>7091</nb-of-records>
+	</rainfall_1h>
+	<rainfall_24h>
+		<max>47.3 mm</max>
+		<minmax>0.0 mm</minmax>
+		<max-date>1452861600</max-date>
+		<max-date-text>ven 15 - 13:40</max-date-text>
+		<min>0.0 mm</min>
+		<maxmin>23.4 mm</maxmin>
+		<min-date>1451602920</min-date>
+		<min-date-text>ven 01 - 00:02</min-date-text>
+		<max-pos-var>+20.0 mm</max-pos-var>
+		<max-pos-var-date>1452817320</max-pos-var-date>
+		<max-pos-var-date-text>ven 15 - 01:22</max-pos-var-date-text>
+		<max-neg-var>-20.0 mm</max-neg-var>
+		<max-neg-var-date>1452904080</max-neg-var-date>
+		<max-neg-var-date-text>sab 16 - 01:28</max-neg-var-date-text>
+		<max-pos-rate>+14.9 mm</max-pos-rate>
+		<max-pos-rate-date>1452814080</max-pos-rate-date>
+		<max-pos-rate-date-text>ven 15 - 00:28</max-pos-rate-date-text>
+		<max-neg-rate>-14.9 mm</max-neg-rate>
+		<max-neg-rate-date>1452900840</max-neg-rate-date>
+		<max-neg-rate-date-text>sab 16 - 00:34</max-neg-rate-date-text>
+		<mean>4.7 mm</mean>
+		<nb-of-records>7091</nb-of-records>
+	</rainfall_24h>
+	<temperature_1>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 °C</mean>
+		<nb-of-records>0</nb-of-records>
+	</temperature_1>
+	<temperature_2>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 °C</mean>
+		<nb-of-records>0</nb-of-records>
+	</temperature_2>
+	<temperature_3>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 °C</mean>
+		<nb-of-records>0</nb-of-records>
+	</temperature_3>
+	<temperature_4>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 °C</mean>
+		<nb-of-records>0</nb-of-records>
+	</temperature_4>
+	<temperature_5>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 °C</mean>
+		<nb-of-records>0</nb-of-records>
+	</temperature_5>
+	<temperature_6>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 °C</mean>
+		<nb-of-records>0</nb-of-records>
+	</temperature_6>
+	<temperature_7>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 °C</mean>
+		<nb-of-records>0</nb-of-records>
+	</temperature_7>
+	<humidity_1>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 %</mean>
+		<nb-of-records>0</nb-of-records>
+	</humidity_1>
+	<humidity_2>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 %</mean>
+		<nb-of-records>0</nb-of-records>
+	</humidity_2>
+	<humidity_3>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 %</mean>
+		<nb-of-records>0</nb-of-records>
+	</humidity_3>
+	<humidity_4>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 %</mean>
+		<nb-of-records>0</nb-of-records>
+	</humidity_4>
+	<humidity_5>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 %</mean>
+		<nb-of-records>0</nb-of-records>
+	</humidity_5>
+	<humidity_6>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 %</mean>
+		<nb-of-records>0</nb-of-records>
+	</humidity_6>
+	<humidity_7>
+		<max>NA</max>
+		<minmax>NA</minmax>
+		<max-date>0</max-date>
+		<max-date-text>NA</max-date-text>
+		<min>NA</min>
+		<maxmin>NA</maxmin>
+		<min-date>0</min-date>
+		<min-date-text>NA</min-date-text>
+		<max-pos-var>NA</max-pos-var>
+		<max-pos-var-date>0</max-pos-var-date>
+		<max-pos-var-date-text>NA</max-pos-var-date-text>
+		<max-neg-var>NA</max-neg-var>
+		<max-neg-var-date>0</max-neg-var-date>
+		<max-neg-var-date-text>NA</max-neg-var-date-text>
+		<max-pos-rate>NA</max-pos-rate>
+		<max-pos-rate-date>0</max-pos-rate-date>
+		<max-pos-rate-date-text>NA</max-pos-rate-date-text>
+		<max-neg-rate>NA</max-neg-rate>
+		<max-neg-rate-date>0</max-neg-rate-date>
+		<max-neg-rate-date-text>NA</max-neg-rate-date-text>
+		<mean>0.0 %</mean>
+		<nb-of-records>0</nb-of-records>
+	</humidity_7>
+</statistics>
