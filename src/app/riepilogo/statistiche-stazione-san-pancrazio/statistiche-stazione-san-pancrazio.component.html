@@ -38,7 +38,7 @@
     <h2 class="title-micro-section">{{getMonthName(month) + " " + yearMonth}} </h2>
 
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #sortMese="matSort">
 
       <!-- Data Ora Column -->
       <ng-container matColumnDef="giorno">
@@ -84,10 +84,14 @@
         <td class="mat-cell red" colspan="7">Nessun dato disponibile</td>
       </tr>
     </table>
-    <mat-paginator [pageIndex]="currentPage" [hidePageSize]="true" [pageSize]="dataSource?.data?.length"
-                   [showFirstLastButtons]="false"
-                   (page)="pageEvent = handlePage($event)"
-                   aria-label="Select page of periodic elements">
+    <mat-paginator
+      #paginatorMese
+      [pageIndex]="1"
+      [length]="3"
+      [pageSize]="1"
+      [hidePageSize]="true"
+      [showFirstLastButtons]="false"
+      (page)="handleMonthPager($event)">
     </mat-paginator>
   </div>
 </div>
@@ -115,7 +119,7 @@
     <br>
     <h2 class="title-micro-section">{{'Anno ' + year}} </h2>
 
-    <table mat-table [dataSource]="dataSourceAnno" class="mat-elevation-z8" matSort>
+    <table mat-table [dataSource]="dataSourceAnno" class="mat-elevation-z8" matSort #sortAnno="matSort">
 
       <!-- Profondita Column -->
       <ng-container matColumnDef="tempMin">
@@ -154,10 +158,14 @@
         <td class="mat-cell red" colspan="7">Nessun dato disponibile</td>
       </tr>
     </table>
-    <mat-paginator [pageIndex]="currentPageAnno" [hidePageSize]="true" [pageSize]="dataSourceAnno?.data?.length"
-                   [showFirstLastButtons]="false"
-                   (page)="pageEventAnno = handlePageAnno($event)"
-                   aria-label="Select page of periodic elements">
+    <mat-paginator
+      #paginatorAnno
+      [pageIndex]="currentYearIndex"
+      [length]="availableYears"
+      [pageSize]="1"
+      [hidePageSize]="true"
+      [showFirstLastButtons]="true"
+      (page)="handleYearPage($event)">
     </mat-paginator>
   </div>
 </div>

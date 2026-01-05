@@ -35,21 +35,11 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   isVisible = false;
   isVisibleAnno = false;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('paginatorMese') paginator!: MatPaginator;
+  @ViewChild('paginatorAnno') paginatorAnno!: MatPaginator;
 
-  @ViewChild(MatSort) set matSort(sort: MatSort) {
-    if (!this.dataSource.sort) {
-      this.dataSource.sort = sort;
-    }
-  }
-
-  @ViewChild(MatPaginator) paginatorAnno: MatPaginator;
-
-  @ViewChild(MatSort) set matSortAnno(sort: MatSort) {
-    if (!this.dataSourceAnno.sort) {
-      this.dataSourceAnno.sort = sort;
-    }
-  }
+  @ViewChild('sortMese') sortMese!: MatSort;
+  @ViewChild('sortAnno') sortAnno!: MatSort;
 
   public pageSize;
   public currentPage;
@@ -87,6 +77,9 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   dateControlAnnuale = new FormControl(new Date());  // Imposta la data odierna
   csvUrlMese: string;  // URL del file CSV
   csvAnnoPath: string;  // URL del file CSV anno
+  startYear = 2023;
+  availableYears: number;
+  currentYearIndex: number;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService, private http: HttpClient, public renderer: Renderer2,
               private fb: FormBuilder, private fileService: FileService) {
@@ -103,6 +96,8 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
     this.today = new Date();
+    this.availableYears = this.today.getFullYear() - this.startYear + 1; // es. 2013..2026
+    this.currentYearIndex = this.today.getFullYear() - this.startYear;
     this.year = this.today.getFullYear();
     this.yearMonth = this.year;
     this.month = (this.today.getMonth() + 1).toString();
@@ -119,219 +114,296 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     this.dataSourceAnno.paginator = this.paginatorAnno;
   }
 
-  loadCSVAnnoData() {
+  loadCSVAnnoData(): void {
     this.imageLoaderAnno = true;
+    this.isVisibleAnno = false;
 
-    this.csvAnnoPath = 'assets/storico-cicerone/cicerone-' + this.year + '.csv';
+    // reset per evitare duplicati quando cambi anno o ricarichi
+    this.arrResponseAnno = [];
+    this.dataSourceAnno.data = [];
 
-    this.fileService.getCSV(this.csvAnnoPath).subscribe(res => {
+    // normalizza year dal dateControl (evita incoerenze con paginator)
+    const selected: Date = (this.dateControl?.value ?? new Date()) as Date;
+    this.year = selected.getFullYear();
+
+    this.csvAnnoPath = `assets/storico-cicerone/cicerone-${this.year}.csv`;
+
+    const tempField = 'Valle del Rio - Temperatura Aria - 51436 (°C)';
+    const urField   = 'Valle del Rio - Umidità Relativa - 51437 (%)';
+    const rainField = 'Valle del Rio - Pioggia Cumulata - 51438 (mm)';
+
+    this.fileService.getCSV(this.csvAnnoPath).subscribe({
+      next: (res) => {
         this.csvDataAnno = this.fileService.parseCSV(res, ';');
+
         let minTemperature = Infinity;
-        let maxTemperature = -20;
-        let avgTemperature = 0;
+        let maxTemperature = -Infinity;
+
+        let tempSum = 0;
+        let tempCount = 0;
+
         let minUr = Infinity;
-        let maxUr = 0;
-        let tempCount = 1;
-        this.csvDataAnno.forEach(anno => {
-          const temp = parseFloat(anno['Valle del Rio - Temperatura Aria - 51436 (°C)']);
-          const ur = parseFloat(anno['Valle del Rio - Umidità Relativa - 51437 (%)']) || 0;  // Se non ci sono dati di vento, usa 0
+        let maxUr = -Infinity;
 
-          if (!isNaN(temp) && temp < 43 && temp < minTemperature) {
-            minTemperature = temp;
-          }
-          if (!isNaN(temp) && temp < 43 && temp > maxTemperature) {
-            maxTemperature = temp;
-          }
-          if (!isNaN(temp) && temp < 43) {
-            avgTemperature += temp;
-            tempCount += 1;
-          }
-          if (!isNaN(ur) && ur < minUr) {
-            minUr = ur;
-          }
-          if (!isNaN(ur) && ur > maxUr) {
-            maxUr = ur;
-          }
-        });
+        for (const row of this.csvDataAnno) {
+          const tempRaw = parseFloat(row[tempField]);
+          const temp = Number.isNaN(tempRaw) ? NaN : tempRaw;
 
+          // Mantengo il tuo filtro: scarta valori assurdi sopra 43
+          if (!Number.isNaN(temp) && temp < 43) {
+            minTemperature = Math.min(minTemperature, temp);
+            maxTemperature = Math.max(maxTemperature, temp);
+            tempSum += temp;
+            tempCount++;
+          }
+
+          const urRaw = parseFloat(row[urField]);
+          const ur = Number.isNaN(urRaw) ? NaN : urRaw;
+
+          // NON usare "|| 0": se manca il dato non deve falsare min/max
+          if (!Number.isNaN(ur)) {
+            minUr = Math.min(minUr, ur);
+            maxUr = Math.max(maxUr, ur);
+          }
+        }
+
+        const annualTempMin = minTemperature !== Infinity ? minTemperature.toFixed(1) : null;
+        const annualTempMax = maxTemperature !== -Infinity ? maxTemperature.toFixed(1) : null;
+        const annualTempAvg = tempCount ? (tempSum / tempCount).toFixed(1) : null;
+
+        const annualUrMin = minUr !== Infinity ? minUr.toFixed(0) : null;
+        const annualUrMax = maxUr !== -Infinity ? maxUr.toFixed(0) : null;
+
+        const annualRain =
+          this.csvDataAnno?.length
+            ? (this.csvDataAnno[this.csvDataAnno.length - 1][rainField] ?? null)
+            : null;
 
         this.arrResponseAnno.push({
           giorno: 'Annuale',
-          tempMin: minTemperature.toString(),
-          tempMax: maxTemperature.toString(),
-          tempMedia: (avgTemperature / tempCount).toFixed(1),
-          umiditaMax: maxUr.toString(),
-          umiditaMin: minUr.toString(),
-          pioggia: this.csvDataAnno && this.csvDataAnno.length ? this.csvDataAnno[this.csvDataAnno.length - 1]['Valle del Rio - Pioggia Cumulata - 51438 (mm)'] : null
+          tempMin: annualTempMin,
+          tempMax: annualTempMax,
+          tempMedia: annualTempAvg,
+          umiditaMax: annualUrMax,
+          umiditaMin: annualUrMin,
+          pioggia: annualRain
         });
 
-        /*if (this.paginatorAnno) {
-          if (this.dateControl && this.dateControl.value.getFullYear() < (this.today.getFullYear())) {
-            this.paginatorAnno.length = 400;
-          } else {
-            this.paginatorAnno.length = 0;
-          }
-        }*/
-        //this.dataSourceAnno.paginator = this.paginatorAnno;
         this.dataSourceAnno.data = this.arrResponseAnno;
-        this.dataSourceAnno.data.length = this.arrResponseAnno.length;
-        this.imageLoaderAnno = false;
-        this.isVisibleAnno = true;
-      },
-      (error) => {
-        this.currentPageAnno = this.dateControl.value.getMonth() - 1;
-        if (this.currentPageAnno === 0) {
-          this.currentPageAnno = 1;
-        }
-        this.dataSourceAnno.data.length = 1;
-        this.dataSourceAnno.data = [];
-        this.paginatorAnno.length = 400;
+
         this.imageLoaderAnno = false;
         this.isVisibleAnno = true;
         this.utilityService.scrollToSpecifyPosition();
-      });
+      },
+      error: () => {
+        // anno non trovato => mostra tabella vuota ma non rompere UI
+        this.arrResponseAnno = [];
+        this.dataSourceAnno.data = [];
+
+        this.imageLoaderAnno = false;
+        this.isVisibleAnno = true;
+        this.utilityService.scrollToSpecifyPosition();
+      }
+    });
   }
 
 
-  // Carica i dati dal CSV
+
+  // Carica i dati dal CSV (MESE) - versione corretta e stabile (niente casino col paginator)
   loadCSVMeseData(): void {
     this.imageLoader = true;
-    this.csvUrlMese = 'assets/storico-cicerone/cicerone-' + this.year + this.month + '.csv';
+    this.isVisible = false;
 
-    const dailyTemperatures: { [key: string]: { giorno, tempMin, tempMax, tempMedia, umiditaMax, umiditaMin, pioggia, pioggiaMese, tempCount } } = {};
-    // Ottenere e parsare il CSV al caricamento del componente
-    forkJoin(
-      this.fileService.getCSV(this.csvUrlMese),
-    )
-      .pipe(
-        map(([csvMese]) => {
-          return {
-            csvMese: csvMese,
-          };
-        }),
-      )
-      .subscribe(async res => {
-          this.csvDataMese = this.fileService.parseCSV(res.csvMese, ';');
-          this.csvDataMese.map((csv => {
-            let dayPrec;
-            // Estrai solo la parte della data (senza l'ora)
-            const dateObj = new Date(csv.Orario);
-            const day = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1).toString().padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')}`;
-            const rain = parseFloat(csv['Valle del Rio - Pioggia Cumulata - 51438 (mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
-            const rainMese = parseFloat(csv['Valle del Rio - Pioggia Cumulata - 51438 (mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
-            const ur = parseFloat(csv['Valle del Rio - Umidità Relativa - 51437 (%)']) || null;  // Se non ci sono dati di vento, usa 0
-            const temp = parseFloat(csv['Valle del Rio - Temperatura Aria - 51436 (°C)']) || null;  // Se non ci sono dati di vento, usa 0
+    // reset (evita accumuli)
+    this.arrResponse = [];
+    this.dataSource.data = [];
 
-            if (dateObj.getMonth() + 1 === this.dateControl.value.getMonth() + 1) {
-              if (!dailyTemperatures[day]) {
-                dailyTemperatures[day] = {
-                  giorno: dateObj.getDate().toString().padStart(2, '0'),
-                  tempMin: temp,
-                  tempMax: temp,
-                  tempMedia: temp,
-                  umiditaMax: ur,
-                  umiditaMin: ur,
-                  pioggia: rain,
-                  pioggiaMese: rainMese,
-                  tempCount: 1
-                };
-              } else {
-                // Aggiorna la temperatura minima e massima
-                if (temp && temp < 43) {
-                  dailyTemperatures[day].tempMin = Math.min(dailyTemperatures[day].tempMin, temp);
-                  dailyTemperatures[day].tempMax = Math.max(dailyTemperatures[day].tempMax, temp);
-                  // Aggiorna la somma e il conteggio delle temperature per calcolare la media
-                  dailyTemperatures[day].tempMedia += temp;
-                  dailyTemperatures[day].tempCount += 1;
-                }
-                // Somma la pioggia totale del giorno
-                dailyTemperatures[day].pioggia = Math.max(dailyTemperatures[day].pioggia, rain);
+    // normalizza mese/anno dal dateControl (così non sballa quando vai indietro)
+    const selected: Date = (this.dateControl?.value ?? new Date()) as Date;
+    this.year = selected.getFullYear();
+    this.month = (selected.getMonth() + 1).toString().padStart(2, '0');
+    this.yearMonth = this.year;
 
-                if (ur) {
-                  // umidita
-                  dailyTemperatures[day].umiditaMax = Math.max(dailyTemperatures[day].umiditaMax, ur);
-                  // umidita
-                  dailyTemperatures[day].umiditaMin = Math.min(dailyTemperatures[day].umiditaMin, ur);
-                }
-              }
-            }
-          }));
+    this.csvUrlMese = `assets/storico-cicerone/cicerone-${this.year}${this.month}.csv`;
 
+    // Aggregati giornalieri
+    const daily: {
+      [dayKey: string]: {
+        giorno: string;
+        tempMin: number;
+        tempMax: number;
+        tempSum: number;
+        tempCount: number;
+        urMin: number;
+        urMax: number;
+        // Qui salvo il "cumulato" max del giorno (dal CSV), poi lo trasformo in differenza tra giorni
+        rainCumMax: number;
+      };
+    } = {};
 
-          // Trasforma l'oggetto in un array se necessario
+    // WARNING: il tuo campo sembra "Pioggia Cumulata". Per la pioggia del singolo giorno
+    // facciamo la differenza tra cumulati giornalieri (ordinati per data).
+    const rainField = 'Valle del Rio - Pioggia Cumulata - 51438 (mm)';
+    const urField   = 'Valle del Rio - Umidità Relativa - 51437 (%)';
+    const tempField = 'Valle del Rio - Temperatura Aria - 51436 (°C)';
 
-          let previousRain = 0; // Variabile per memorizzare la pioggia del giorno precedente
-          const result = Object.keys(dailyTemperatures).map((day, index) => {
-            const currentRain = dailyTemperatures[day].pioggia;
-            // Calcola la pioggia attuale meno quella del giorno precedente
-            const pioggiaSottratta = index === 0 ? currentRain : currentRain - previousRain;
-            // Aggiorna la variabile previousRain con il valore della pioggia attuale per il prossimo giorno
-            previousRain = currentRain;
-            return {
-              giorno: dailyTemperatures[day].giorno,
-              tempMin: dailyTemperatures[day].tempMin,
-              tempMax: dailyTemperatures[day].tempMax,
-              tempMedia: (dailyTemperatures[day].tempMedia / dailyTemperatures[day].tempCount).toFixed(1),
-              umiditaMax: dailyTemperatures[day].umiditaMax,
-              umiditaMin: dailyTemperatures[day].umiditaMin,
-              pioggia: pioggiaSottratta.toFixed(1), // La pioggia con il valore del giorno precedente sottratto
-              pioggiaMese: this.csvDataMese && this.csvDataMese.length ? this.csvDataMese[this.csvDataMese.length - 1]['Valle del Rio - Pioggia Cumulata - 51438 (mm)'] : null,
+    this.fileService.getCSV(this.csvUrlMese).subscribe({
+      next: (csvText) => {
+        // parse col separatore corretto
+        this.csvDataMese = this.fileService.parseCSV(csvText, ';');
+
+        for (const row of this.csvDataMese) {
+          const dateObj = new Date(row.Orario);
+          if (Number.isNaN(dateObj.getTime())) continue;
+
+          // questo check è opzionale (il file è già del mese), ma lo lasciamo safe
+          if (dateObj.getFullYear() !== this.year || dateObj.getMonth() !== selected.getMonth()) {
+            continue;
+          }
+
+          const dayKey = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1).toString().padStart(2, '0')}-${dateObj
+            .getDate()
+            .toString()
+            .padStart(2, '0')}`;
+
+          const dayLabel = dateObj.getDate().toString().padStart(2, '0');
+
+          const tempRaw = parseFloat(row[tempField]);
+          const temp = Number.isNaN(tempRaw) ? NaN : tempRaw;
+
+          const urRaw = parseFloat(row[urField]);
+          const ur = Number.isNaN(urRaw) ? NaN : urRaw;
+
+          const rainCumRaw = parseFloat(row[rainField]);
+          const rainCum = Number.isNaN(rainCumRaw) ? 0 : rainCumRaw;
+
+          if (!daily[dayKey]) {
+            daily[dayKey] = {
+              giorno: dayLabel,
+              tempMin: Number.isNaN(temp) ? Infinity : temp,
+              tempMax: Number.isNaN(temp) ? -Infinity : temp,
+              tempSum: Number.isNaN(temp) ? 0 : temp,
+              tempCount: Number.isNaN(temp) ? 0 : 1,
+              urMin: Number.isNaN(ur) ? Infinity : ur,
+              urMax: Number.isNaN(ur) ? -Infinity : ur,
+              rainCumMax: rainCum
             };
-          });
-
-          const tempMinEstrema = Math.min(...result.map(dato => dato.tempMin ? parseFloat(dato.tempMin) : null));
-          const tempMaxEstrema = Math.max(...result.map(dato => dato.tempMax ? parseFloat(dato.tempMax) : null));
-          const tempMediaTot = result.reduce((acc, dato) => dato.tempMedia ? acc + parseFloat(dato.tempMedia) : null, 0) / result.length;
-          const umiditaEstremaMax = Math.max(...result.map(dato => dato.umiditaMax ? parseFloat(dato.umiditaMax) : null));
-          const umiditaEstremaMin = Math.min(...result.map(dato => dato.umiditaMin ? parseFloat(dato.umiditaMin) : null));
-
-          result.push({
-            pioggiaMese: undefined,
-            giorno: 'Mensile',
-            tempMin: tempMinEstrema.toString(),
-            tempMax: tempMaxEstrema.toString(),
-            tempMedia: tempMediaTot.toFixed(1).toString(),
-            umiditaMax: umiditaEstremaMax.toString(),
-            umiditaMin: umiditaEstremaMin.toString(),
-            pioggia: result && result.length ? result[result.length - 1].pioggiaMese : null
-          });
-
-          this.arrResponse = result;
-
-
-          this.dataSource.data = this.arrResponse;
-          this.dataSource.data.length = this.arrResponse.length;
-          if (this.dateControl.value.getMonth() === 1) {
-            this.currentPage = 1;
           } else {
-            this.currentPage = this.dateControl.value.getMonth() - 1;
-          }
-          if (this.paginator) {
-            if (this.dateControl && this.dateControl.value.getMonth() < (this.today.getMonth())) {
-              this.paginator.length = 400;
-            } else {
-              this.paginator.length = 0;
+            // Temperature: evita il bug "if(temp)" (0 o negativi vengono scartati!)
+            // E mantieni il tuo filtro "temp < 43" ma in modo corretto
+            if (!Number.isNaN(temp) && temp < 43) {
+              daily[dayKey].tempMin = Math.min(daily[dayKey].tempMin, temp);
+              daily[dayKey].tempMax = Math.max(daily[dayKey].tempMax, temp);
+              daily[dayKey].tempSum += temp;
+              daily[dayKey].tempCount++;
             }
+
+            // Umidità: evita "if(ur)" (0 viene scartato)
+            if (!Number.isNaN(ur)) {
+              daily[dayKey].urMin = Math.min(daily[dayKey].urMin, ur);
+              daily[dayKey].urMax = Math.max(daily[dayKey].urMax, ur);
+            }
+
+            // Pioggia cumulata: prendiamo il massimo del cumulato nel giorno
+            daily[dayKey].rainCumMax = Math.max(daily[dayKey].rainCumMax, rainCum);
           }
-          this.dataSource.sort = this.matSort;
-          this.utilityService.scrollToSpecifyPosition();
-          this.yearMonth = this.year;
-          this.imageLoader = false;
-          this.isVisible = true;
-        },
-        (error) => {
-          this.currentPage = this.dateControl.value.getMonth() - 1;
-          if (this.currentPage === 0) {
-            this.currentPage = 1;
-          }
-          this.dataSource.data.length = 1;
-          this.dataSource.data = [];
-          this.paginator.length = 400;
-          this.imageLoader = false;
-          this.utilityService.scrollToSpecifyPosition();
         }
-      );
+
+        // Costruisci array ORDINATO per giorno (fondamentale per pioggia differenza e per "indietro" coerente)
+        const daysSorted = Object.keys(daily).sort();
+
+        let prevCum = 0;
+        const result = daysSorted.map((k, idx) => {
+          const d = daily[k];
+
+          const dayRain = idx === 0 ? d.rainCumMax : Math.max(0, d.rainCumMax - prevCum);
+          prevCum = d.rainCumMax;
+
+          const tMin = d.tempMin !== Infinity ? d.tempMin : null;
+          const tMax = d.tempMax !== -Infinity ? d.tempMax : null;
+          const tAvg = d.tempCount ? (d.tempSum / d.tempCount) : null;
+
+          const urMin = d.urMin !== Infinity ? d.urMin : null;
+          const urMax = d.urMax !== -Infinity ? d.urMax : null;
+
+          return {
+            giorno: d.giorno,
+            tempMin: tMin !== null ? tMin.toFixed(1) : null,
+            tempMax: tMax !== null ? tMax.toFixed(1) : null,
+            tempMedia: tAvg !== null ? tAvg.toFixed(1) : null,
+            umiditaMax: urMax !== null ? urMax.toFixed(0) : null,
+            umiditaMin: urMin !== null ? urMin.toFixed(0) : null,
+            pioggia: dayRain.toFixed(1),
+            // cumulata mese = ultimo cumulato disponibile nel mese
+            pioggiaMese: daysSorted.length ? daily[daysSorted[daysSorted.length - 1]].rainCumMax.toFixed(1) : null
+          };
+        });
+
+        // Riepilogo mensile (usa filtri NaN-safe)
+        const nums = (v: any) => {
+          const n = parseFloat(v);
+          return Number.isNaN(n) ? null : n;
+        };
+
+        const validTempMin = result.map(r => nums(r.tempMin)).filter(v => v !== null) as number[];
+        const validTempMax = result.map(r => nums(r.tempMax)).filter(v => v !== null) as number[];
+        const validTempAvg = result.map(r => nums(r.tempMedia)).filter(v => v !== null) as number[];
+        const validUrMin   = result.map(r => nums(r.umiditaMin)).filter(v => v !== null) as number[];
+        const validUrMax   = result.map(r => nums(r.umiditaMax)).filter(v => v !== null) as number[];
+
+        const tempMinEstrema = validTempMin.length ? Math.min(...validTempMin) : null;
+        const tempMaxEstrema = validTempMax.length ? Math.max(...validTempMax) : null;
+        const tempMediaTot   = validTempAvg.length ? (validTempAvg.reduce((a, b) => a + b, 0) / validTempAvg.length) : null;
+
+        const umiditaEstremaMin = validUrMin.length ? Math.min(...validUrMin) : null;
+        const umiditaEstremaMax = validUrMax.length ? Math.max(...validUrMax) : null;
+
+        const lastPioggiaMese = result.length ? result[result.length - 1].pioggiaMese : null;
+
+        result.push({
+          giorno: 'Mensile',
+          tempMin: tempMinEstrema !== null ? tempMinEstrema.toFixed(1) : '-',
+          tempMax: tempMaxEstrema !== null ? tempMaxEstrema.toFixed(1) : '-',
+          tempMedia: tempMediaTot !== null ? tempMediaTot.toFixed(1) : '-',
+          umiditaMax: umiditaEstremaMax !== null ? umiditaEstremaMax.toFixed(0) : '-',
+          umiditaMin: umiditaEstremaMin !== null ? umiditaEstremaMin.toFixed(0) : '-',
+          pioggia: lastPioggiaMese !== null ? parseFloat(lastPioggiaMese).toFixed(1) : '0.0',
+          pioggiaMese: lastPioggiaMese !== null ? parseFloat(lastPioggiaMese).toFixed(1) : '0.0'
+        });
+
+
+        this.arrResponse = result;
+        this.dataSource.data = this.arrResponse;
+
+        // ===== Paginator: NON fare più length=0/400 o pageSize variabile =====
+        // Se vuoi usare il paginator come "mese avanti/indietro", mettilo con:
+        // length=3 pageSize=1 pageIndex=1 e reset a centro nel handler.
+        // Qui ci limitiamo a tenere currentPage coerente con mese (0..11) se ti serve per UI.
+        this.currentPage = selected.getMonth();
+
+        // sort (se usi due sort, metti reference; qui assumo sortMese corretto)
+        if (this.sortMese) {
+          this.dataSource.sort = this.sortMese;
+        }
+
+        this.imageLoader = false;
+        this.isVisible = true;
+        this.utilityService.scrollToSpecifyPosition();
+      },
+      error: () => {
+        // File mese non trovato: mostra comunque tabella vuota, NON sballare paginator
+        this.arrResponse = [];
+        this.dataSource.data = [];
+
+        this.currentPage = selected.getMonth();
+
+        this.imageLoader = false;
+        this.isVisible = true;
+        this.utilityService.scrollToSpecifyPosition();
+      }
+    });
   }
+
 
   // Funzione per calcolare il colore in base al valore
   getCellColor(value: number): string {
@@ -509,48 +581,64 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     this.precYear = this.year;
   }
 
-  public handlePage(e: any) {
-    let month;
-    if (this.month === '03') {
-      if (e.previousPageIndex === 1 && e.pageIndex === 2) {
-        this.currentPage = 3;
-        month = 3;
-      } else {
-        this.currentPage = 2;
-        month = 1;
-      }
-    } else if (this.month === '02') {
-      if (e.previousPageIndex === 0 && e.pageIndex === 1) {
-        this.currentPage = 2;
-        month = 2;
-      } else if (e.previousPageIndex === 1 && e.pageIndex === 2) {
-        this.currentPage = 2;
-        month = 2;
-      } else {
-        this.currentPage = 1;
-        month = 0;
-      }
-    } else {
-      this.currentPage = e.pageIndex + 1;
-      if (e.previousPageIndex === 0 && e.pageIndex === 1) {
-        month = 1;
-      } else {
-        if (this.currentPage === 0) {
-          month = 0;
-        } else {
-          month = this.currentPage;
-        }
-      }
+  handleMonthPager(e: PageEvent) {
+    // previousPageIndex può essere undefined (primo evento)
+    const prev = (e.previousPageIndex ?? 1);
+
+    // se rimani al centro (1) non fare nulla
+    if (e.pageIndex === 1) {
+      return;
     }
-    const selectedDate = new Date(this.year, month); // Anno, mese (da 0)
-    this.dateControl.setValue(selectedDate);
-    this.filterData(this.dateControl.value);
+
+    // se vai a 0 -> indietro, se vai a 2 -> avanti
+    const delta = e.pageIndex < prev ? -1 : +1;
+
+    const cur = (this.dateControl?.value ?? new Date()) as Date;
+    const next = new Date(cur.getFullYear(), cur.getMonth() + delta, 1);
+
+    // aggiorna stato
+    this.dateControl.setValue(next);
+    this.year = next.getFullYear();
+    this.month = (next.getMonth() + 1).toString().padStart(2, '0');
+    this.yearMonth = this.year;
+
+    // ricarica mese
+    this.loadCSVMeseData();
+
+    // se cambia anno, ricarica annuale
+    if (this.precYear !== this.year) {
+      this.precYear = this.year;
+      this.loadCSVAnnoData();
+    }
+
+    // reset paginator al centro (mai grigio)
+    queueMicrotask(() => {
+      this.paginator.pageIndex = 1;
+
+      // refresh UI senza usare _changePageSize (più stabile)
+      // In molte versioni basta questo; se noti che non si aggiorna, vedi nota sotto.
+    });
   }
 
-  public handlePageAnno(e: any) {
-    this.currentPageAnno = e.pageIndex;
-    const selectedDate = new Date(e.pageIndex < e.previousPageIndex ? this.year - 1 : this.year + 1, this.dateControl.value.getMonth()); // Anno, mese (da 0)
-    //this.dateControl.setValue(selectedDate);
-    this.filterData(selectedDate, true);
+  handleYearPage(e: PageEvent) {
+    this.currentYearIndex = e.pageIndex;
+
+    const year = this.startYear + this.currentYearIndex;
+    const cur = (this.dateControl?.value ?? new Date()) as Date;
+
+    const selectedDate = new Date(year, cur.getMonth(), 1);
+
+    // sincronizza lo stato
+    this.dateControl.setValue(selectedDate);
+    this.year = year;
+    this.month = (selectedDate.getMonth() + 1).toString().padStart(2, '0');
+    this.yearMonth = this.year;
+
+    // IMPORTANT: reset precYear e ricarica sempre l'annuale
+    this.precYear = this.year;
+    this.loadCSVAnnoData();
+
+    // opzionale: se vuoi anche il mese coerente col nuovo anno
+    this.loadCSVMeseData();
   }
 }

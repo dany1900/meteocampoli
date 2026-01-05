@@ -35,21 +35,11 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   isVisible = false;
   isVisibleAnno = false;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('paginatorMese') paginator!: MatPaginator;
+  @ViewChild('paginatorAnno') paginatorAnno!: MatPaginator;
 
-  @ViewChild(MatSort) set matSort(sort: MatSort) {
-    if (!this.dataSource.sort) {
-      this.dataSource.sort = sort;
-    }
-  }
-
-  @ViewChild(MatPaginator) paginatorAnno: MatPaginator;
-
-  @ViewChild(MatSort) set matSortAnno(sort: MatSort) {
-    if (!this.dataSourceAnno.sort) {
-      this.dataSourceAnno.sort = sort;
-    }
-  }
+  @ViewChild('sortMese') sortMese!: MatSort;
+  @ViewChild('sortAnno') sortAnno!: MatSort;
 
   public pageSize;
   public currentPage;
@@ -87,6 +77,10 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   dateControlAnnuale = new FormControl(new Date());  // Imposta la data odierna
   csvUrlMese: string;  // URL del file CSV
   csvAnnoPath: string;  // URL del file CSV anno
+  currentMonthIndex = new Date().getMonth(); // 0..11
+  startYear = 2024;
+  availableYears: number;
+  currentYearIndex: number;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService, private http: HttpClient, public renderer: Renderer2,
               private fb: FormBuilder, private fileService: FileService) {
@@ -98,11 +92,14 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
     this.seo.updateMetaInfo(this.title, this.description, this.keywords, this.ogUrl, this.ogImage);
     this.seo.cleanCanonicalUrl();
     this.seo.setCanonicalURL();
+
   }
 
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
     this.today = new Date();
+    this.availableYears = this.today.getFullYear() - this.startYear + 1; // es. 2013..2026
+    this.currentYearIndex = this.today.getFullYear() - this.startYear;
     this.year = this.today.getFullYear();
     this.yearMonth = this.year;
     this.month = (this.today.getMonth() + 1).toString();
@@ -116,278 +113,357 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sortMese;
+
     this.dataSourceAnno.paginator = this.paginatorAnno;
+    this.dataSourceAnno.sort = this.sortAnno;
   }
 
-  loadCSVAnnoData() {
+  // ==============================
+//  ANNO (riepilogo annuale)
+// ==============================
+  loadCSVAnnoData(): void {
     this.imageLoaderAnno = true;
     this.isVisibleAnno = false;
-    this.csvAnnoPath = 'assets/storico-prato/' + this.year + '.csv';
-    this.fileService.getCSV(this.csvAnnoPath).subscribe(res => {
+
+    // IMPORTANT: reset per evitare duplicati quando ricarichi anno
+    this.arrResponseAnno = [];
+    this.dataSourceAnno.data = [];
+
+    this.csvAnnoPath = `assets/storico-prato/${this.year}.csv`;
+
+    this.fileService.getCSV(this.csvAnnoPath).subscribe({
+      next: (res) => {
         this.csvDataAnno = this.fileService.parseCSV(res, ',');
+
         let minTemperature = Infinity;
-        let maxTemperature = -20;
-        let avgTemperature = 0;
+        let maxTemperature = -Infinity;
+
+        let tempSum = 0;
+        let tempCount = 0;
+
         let windMax = 0;
+
         let minUr = Infinity;
-        let maxUr = 0;
+        let maxUr = -Infinity;
+
         let minPress = Infinity;
-        let maxPress = 0;
+        let maxPress = -Infinity;
+
         let maxPioggiaEvento = 0;
-        let tempCount = 1;
-        this.csvDataAnno.forEach(anno => {
-          const temp = parseFloat(anno['Temperatura esterna(℃)']);
-          const wind = parseFloat(anno['Raffica(km/h)']) || 0;  // Se non ci sono dati di vento, usa 0
-          const ur = parseFloat(anno['Umidità esterna(%)']) || 0;  // Se non ci sono dati di vento, usa 0
-          const pressione = this.calculateSeaLevelPressure(parseFloat(anno['Pressione ass.(hpa)']), 586) || 0;  // Se non ci sono dati di vento, usa 0
-          const pioggiaEvento = parseFloat((anno['Pioggia dell\'evento(mm)'])) || 0;
 
-          if (!isNaN(temp) && temp < minTemperature) {
-            minTemperature = temp;
+        for (const row of this.csvDataAnno) {
+          const temp = parseFloat(row['Temperatura esterna(℃)']);
+          if (!Number.isNaN(temp)) {
+            minTemperature = Math.min(minTemperature, temp);
+            maxTemperature = Math.max(maxTemperature, temp);
+            tempSum += temp;
+            tempCount++;
           }
-          if (!isNaN(temp) && temp > maxTemperature) {
-            maxTemperature = temp;
-          }
-          if (!isNaN(temp)) {
-            avgTemperature += temp;
-            tempCount += 1;
-          }
-          if (!isNaN(wind) && wind > windMax) {
-            windMax = wind;
-          }
-          if (!isNaN(ur) && ur < minUr) {
-            minUr = ur;
-          }
-          if (!isNaN(ur) && ur > maxUr) {
-            maxUr = ur;
-          }
-          if (!isNaN(pressione) && pressione < minPress) {
-            minPress = pressione;
-          }
-          if (!isNaN(pressione) && pressione > maxPress) {
-            maxPress = pressione;
-          }
-          if (!isNaN(pioggiaEvento) && pioggiaEvento > maxPioggiaEvento) {
-            maxPioggiaEvento = pioggiaEvento;
-          }
-        });
 
+          const wind = parseFloat(row['Raffica(km/h)']) || 0;
+          windMax = Math.max(windMax, wind);
+
+          const ur = parseFloat(row['Umidità esterna(%)']);
+          if (!Number.isNaN(ur)) {
+            minUr = Math.min(minUr, ur);
+            maxUr = Math.max(maxUr, ur);
+          }
+
+          const stationPress = parseFloat(row['Pressione ass.(hpa)']);
+          if (!Number.isNaN(stationPress)) {
+            const sea = this.calculateSeaLevelPressure(stationPress, 586);
+            if (!Number.isNaN(sea)) {
+              minPress = Math.min(minPress, sea);
+              maxPress = Math.max(maxPress, sea);
+            }
+          }
+
+          const pioggiaEvento = parseFloat(row[`Pioggia dell'evento(mm)`]) || 0;
+          maxPioggiaEvento = Math.max(maxPioggiaEvento, pioggiaEvento);
+        }
+
+        // Edge-cases: file vuoto / tutto NaN
+        const annualAvg = tempCount ? (tempSum / tempCount).toFixed(1) : null;
+        const tempMinOut = minTemperature !== Infinity ? minTemperature.toFixed(1) : null;
+        const tempMaxOut = maxTemperature !== -Infinity ? maxTemperature.toFixed(1) : null;
+
+        const urMinOut = minUr !== Infinity ? minUr.toFixed(0) : null;
+        const urMaxOut = maxUr !== -Infinity ? maxUr.toFixed(0) : null;
+
+        const pressMinOut = minPress !== Infinity ? minPress.toFixed(1) : null;
+        const pressMaxOut = maxPress !== -Infinity ? maxPress.toFixed(1) : null;
+
+        const rainYear =
+          this.csvDataAnno?.length
+            ? (this.csvDataAnno[this.csvDataAnno.length - 1]['Pioggia annuale(mm)'] ?? null)
+            : null;
 
         this.arrResponseAnno.push({
           giorno: 'Annuale',
-          tempMin: minTemperature.toString(),
-          tempMax: maxTemperature.toString(),
-          tempMedia: (avgTemperature / tempCount).toFixed(1),
-          ventoMax: windMax.toString(),
-          umiditaMax: maxUr.toString(),
-          umiditaMin: minUr.toString(),
-          pressioneMax: maxPress.toFixed(1).toString(),
-          pressioneMin: minPress.toFixed(1).toString(),
-          pioggiaMaxEvento: maxPioggiaEvento.toFixed(1).toString(),
-          pioggia: this.csvDataAnno && this.csvDataAnno.length ? this.csvDataAnno[this.csvDataAnno.length - 1]['Pioggia annuale(mm)'] : null
+          tempMin: tempMinOut,
+          tempMax: tempMaxOut,
+          tempMedia: annualAvg,
+          ventoMax: windMax ? windMax.toFixed(0) : '0',
+          umiditaMax: urMaxOut,
+          umiditaMin: urMinOut,
+          pressioneMax: pressMaxOut,
+          pressioneMin: pressMinOut,
+          pioggiaMaxEvento: maxPioggiaEvento.toFixed(1),
+          pioggia: rainYear
         });
 
-        //const rainAnno = parseFloat(this.csvDataAnno[this.csvDataAnno.length - 1]['Pioggia annuale(mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
-
-
         this.dataSourceAnno.data = this.arrResponseAnno;
-        this.dataSourceAnno.data.length = this.arrResponseAnno.length;
-        this.imageLoaderAnno = false;
-        this.isVisibleAnno = true;
-        //const tempMinEstrema = Math.min(...this.csvDataAnno.map(dato => dato['Temperatura esterna(℃)'] ? parseFloat(dato['Temperatura esterna(℃)']) : null));
-      },
-      (error) => {
-        this.currentPageAnno = this.dateControl.value.getMonth() - 1;
-        if (this.currentPageAnno === 0) {
-          this.currentPageAnno = 1;
-        }
-        this.dataSourceAnno.data.length = 1;
-        this.dataSourceAnno.data = [];
-        this.paginatorAnno.length = 400;
+
+        // paginator anno (se lo usi come “fake pager”) – qui non forzo length
         this.imageLoaderAnno = false;
         this.isVisibleAnno = true;
         this.utilityService.scrollToSpecifyPosition();
-      });
+      },
+      error: () => {
+        // fallback: nessun file per quell’anno
+        this.dataSourceAnno.data = [];
+        this.arrResponseAnno = [];
+
+        if (this.paginatorAnno) {
+          this.paginatorAnno.length = 0;
+        }
+
+        this.imageLoaderAnno = false;
+        this.isVisibleAnno = true;
+        this.utilityService.scrollToSpecifyPosition();
+      }
+    });
   }
 
 
-  // Carica i dati dal CSV
+// ==============================
+//  MESE (riepilogo giornaliero + riga Mensile)
+// ==============================
   loadCSVMeseData(): void {
     this.imageLoader = true;
-    this.csvUrlMese = 'assets/storico-prato/' + this.year + this.month + '.csv';
+    this.isVisible = false;
 
-    const dailyTemperatures: { [key: string]: { giorno, tempMin, tempMax, tempMedia, vento, pressioneMax, pressioneMin, umiditaMax, umiditaMin, pioggia, pioggiaMese, pioggiaAnno, tempCount } } = {};
-    // Ottenere e parsare il CSV al caricamento del componente
-    forkJoin(
-      this.fileService.getCSV(this.csvUrlMese),
-      //this.fileService.getCSV(this.csvAnnoPath),
-    )
-      .pipe(
-        map(([csvMese]) => {
-          return {
-            csvMese: csvMese,
-            //csvAnno: csvAnno,
-          };
-        }),
-      )
-      .subscribe(async res => {
-          this.csvDataMese = this.fileService.parseCSV(res.csvMese, ',');
-          //this.csvDataAnno = this.fileService.parseCSV(res.csvAnno, ',');
+    // IMPORTANT: reset per evitare accumuli su cambio mese/anno
+    this.arrResponse = [];
+    this.dataSource.data = [];
 
-          this.csvDataMese.map((csv => {
-            // Estrai solo la parte della data (senza l'ora)
-            const dateObj = new Date(csv.ora);
-            const day = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1).toString().padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')}`;
-            const rain = parseFloat(csv['Piog. Giorno(mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
-            const rainMese = parseFloat(csv['Pioggia mensile(mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
-            const rainAnno = parseFloat(csv['Pioggia annuale(mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
-            const wind = parseFloat(csv['Raffica(km/h)']) || 0;  // Se non ci sono dati di vento, usa 0
-            const windMese = parseFloat(csv['Raffica(km/h)']) || 0;  // Se non ci sono dati di vento, usa 0
-            const ur = parseFloat(csv['Umidità esterna(%)']) || 0;  // Se non ci sono dati di vento, usa 0
-            const pressione = this.calculateSeaLevelPressure(parseFloat(csv['Pressione ass.(hpa)']), 586) || 0;  // Se non ci sono dati di vento, usa 0
+    this.csvUrlMese = `assets/storico-prato/${this.year}${this.month}.csv`;
 
-            if (dateObj.getMonth() + 1 === this.dateControl.value.getMonth() + 1) {
-              if (!dailyTemperatures[day]) {
-                dailyTemperatures[day] = {
-                  giorno: dateObj.getDate().toString().padStart(2, '0'),
-                  tempMin: csv['Temperatura esterna(℃)'],
-                  tempMax: csv['Temperatura esterna(℃)'],
-                  tempMedia: parseFloat(csv['Temperatura esterna(℃)']),
-                  vento: wind,
-                  umiditaMax: ur,
-                  umiditaMin: ur,
-                  pressioneMax: pressione,
-                  pressioneMin: pressione,
-                  pioggia: rain,
-                  pioggiaMese: rainMese,
-                  pioggiaAnno: rainAnno,
-                  tempCount: 1
-                };
-              } else {
-                // Aggiorna la temperatura minima e massima
-                if (!isNaN(csv['Temperatura esterna(℃)'])) {
-                  dailyTemperatures[day].tempMin = Math.min(dailyTemperatures[day].tempMin, csv['Temperatura esterna(℃)']);
-                  dailyTemperatures[day].tempMax = Math.max(dailyTemperatures[day].tempMax, csv['Temperatura esterna(℃)']);
-                  // Aggiorna la somma e il conteggio delle temperature per calcolare la media
-                  dailyTemperatures[day].tempMedia += parseFloat(csv['Temperatura esterna(℃)']);
-                  dailyTemperatures[day].tempCount += 1;
-                }
-                // Somma la pioggia totale del giorno
-                dailyTemperatures[day].pioggia = Math.max(dailyTemperatures[day].pioggia, rain);
+    // Contenitore aggregati giornalieri
+    const daily: {
+      [dayKey: string]: {
+        giorno: string;
+        tempMin: number;
+        tempMax: number;
+        tempSum: number;
+        tempCount: number;
 
-                // Raffica massima del vento
-                dailyTemperatures[day].vento = Math.max(dailyTemperatures[day].vento, wind);
+        ventoMax: number;
 
-                // umidita
-                dailyTemperatures[day].umiditaMax = Math.max(dailyTemperatures[day].umiditaMax, ur);
-                // umidita
-                dailyTemperatures[day].umiditaMin = Math.min(dailyTemperatures[day].umiditaMin, ur);
+        urMin: number;
+        urMax: number;
 
-                // umidita
-                dailyTemperatures[day].pressioneMax = Math.max(dailyTemperatures[day].pressioneMax, pressione);
-                // umidita
-                dailyTemperatures[day].pressioneMin = Math.min(dailyTemperatures[day].pressioneMin, pressione);
+        pressMin: number;
+        pressMax: number;
 
-              }
-            }
-          }));
+        pioggiaGiornoMax: number; // nel tuo CSV sembra “cumulata giorno”: uso max come facevi
+        pioggiaMese: number;      // cumulata mese (ultimo valore utile)
+        pioggiaAnno: number;      // cumulata anno (ultimo valore utile)
+      };
+    } = {};
 
-          let result: StatisticheStazioneInterface[];
+    // Per media mensile “vera” su tutte le righe (non media delle medie giornaliere)
+    let monthTempSum = 0;
+    let monthTempCount = 0;
 
-          // Trasforma l'oggetto in un array se necessario
+    this.fileService.getCSV(this.csvUrlMese).subscribe({
+      next: (csvText) => {
+        this.csvDataMese = this.fileService.parseCSV(csvText, ',');
 
-          result = Object.keys(dailyTemperatures).map(day => (
-            {
-              giorno: dailyTemperatures[day].giorno,
-              tempMin: dailyTemperatures[day].tempMin,
-              tempMax: dailyTemperatures[day].tempMax,
-              tempMedia: (dailyTemperatures[day].tempMedia / dailyTemperatures[day].tempCount).toFixed(1),
-              ventoMax: dailyTemperatures[day].vento,
-              umiditaMax: dailyTemperatures[day].umiditaMax,
-              umiditaMin: dailyTemperatures[day].umiditaMin,
-              pressioneMax: (dailyTemperatures[day].pressioneMax).toFixed(1),
-              pressioneMin: dailyTemperatures[day].pressioneMin.toFixed(1),
-              pioggia: dailyTemperatures[day].pioggia,
-              pioggiaMese: dailyTemperatures[day].pioggiaMese,
-              pioggiaAnno: dailyTemperatures[day].pioggiaAnno,
-            }));
+        for (const row of this.csvDataMese) {
+          const dateObj = new Date(row.ora);
+          if (Number.isNaN(dateObj.getTime())) {
+            continue; // riga senza data valida
+          }
 
-          const tempMinEstrema = Math.min(...result.map(dato => dato.tempMin ? parseFloat(dato.tempMin) : null));
-          const tempMaxEstrema = Math.max(...result.map(dato => dato.tempMax ? parseFloat(dato.tempMax) : null));
-          const tempMediaTot = result.reduce((acc, dato) => dato.tempMedia ? acc + parseFloat(dato.tempMedia) : null, 0) / result.length;
-          const ventoMaxEstremo = Math.max(...result.map(dato => dato.ventoMax ? parseFloat(dato.ventoMax) : null));
-          const umiditaEstremaMax = Math.max(...result.map(dato => dato.umiditaMax ? parseFloat(dato.umiditaMax) : null));
-          const umiditaEstremaMin = Math.min(...result.map(dato => dato.umiditaMin ? parseFloat(dato.umiditaMin) : null));
-          const pressioneEstremaMax = Math.max(...result.map(dato => dato.pressioneMax ? parseFloat(dato.pressioneMax) : null));
-          const pressioneEstremaMin = Math.min(...result.map(dato => dato.pressioneMin ? parseFloat(dato.pressioneMin) : null));
+          // Filtra per mese selezionato (dovrebbe già essere così, ma teniamolo)
+          if (dateObj.getMonth() !== this.dateControl.value.getMonth()) {
+            continue;
+          }
 
-          this.arrResponse = result;
+          const dayKey = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1)
+            .toString()
+            .padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')}`;
 
-          result.push({
-            giorno: 'Mensile',
-            tempMin: tempMinEstrema.toString(),
-            tempMax: tempMaxEstrema.toString(),
-            tempMedia: tempMediaTot.toFixed(1).toString(),
-            ventoMax: ventoMaxEstremo.toString(),
-            umiditaMax: umiditaEstremaMax.toString(),
-            umiditaMin: umiditaEstremaMin.toString(),
-            pressioneMax: pressioneEstremaMax.toFixed(1).toString(),
-            pressioneMin: pressioneEstremaMin.toFixed(1).toString(),
-            pioggia: result && result.length ? result[result.length - 1].pioggiaMese : null
-          });
+          const dayLabel = dateObj.getDate().toString().padStart(2, '0');
 
-          /*result.push({
-            giorno: 'Annuale',
-            tempMin: null,
-            tempMax: null,
-            tempMedia: null,
-            ventoMax: null,
-            umiditaMax: null,
-            umiditaMin: null,
-            pressioneMax: null,
-            pressioneMin: null,
-            pioggia: result && result.length ? result[result.length - 2].pioggiaAnno : null
-          });*/
+          const t = parseFloat(row['Temperatura esterna(℃)']);
+          const wind = parseFloat(row['Raffica(km/h)']) || 0;
 
-          this.arrResponse = result;
+          const urVal = parseFloat(row['Umidità esterna(%)']);
+          const stationPress = parseFloat(row['Pressione ass.(hpa)']);
+          const press = !Number.isNaN(stationPress)
+            ? this.calculateSeaLevelPressure(stationPress, 586)
+            : NaN;
 
+          const rainDay = parseFloat(row['Piog. Giorno(mm)']) || 0;
+          const rainMese = parseFloat(row['Pioggia mensile(mm)']) || 0;
+          const rainAnno = parseFloat(row['Pioggia annuale(mm)']) || 0;
 
-          this.dataSource.data = this.arrResponse;
-          this.dataSource.data.length = this.arrResponse.length;
-          if (this.dateControl.value.getMonth() === 1) {
-            this.currentPage = 1;
+          // mese: media vera su tutte le righe
+          if (!Number.isNaN(t)) {
+            monthTempSum += t;
+            monthTempCount++;
+          }
+
+          if (!daily[dayKey]) {
+            // Inizializzazione con valori “sicuri”
+            daily[dayKey] = {
+              giorno: dayLabel,
+              tempMin: Number.isNaN(t) ? Infinity : t,
+              tempMax: Number.isNaN(t) ? -Infinity : t,
+              tempSum: Number.isNaN(t) ? 0 : t,
+              tempCount: Number.isNaN(t) ? 0 : 1,
+
+              ventoMax: wind,
+
+              urMin: Number.isNaN(urVal) ? Infinity : urVal,
+              urMax: Number.isNaN(urVal) ? -Infinity : urVal,
+
+              pressMin: Number.isNaN(press) ? Infinity : press,
+              pressMax: Number.isNaN(press) ? -Infinity : press,
+
+              pioggiaGiornoMax: rainDay,
+              pioggiaMese: rainMese,
+              pioggiaAnno: rainAnno
+            };
           } else {
-            this.currentPage = this.dateControl.value.getMonth() - 1;
-            /*if(this.currentPage < 1) {
-              this.currentPage = 1;
-            }*/
-          }
-          if (this.paginator) {
-            if (this.dateControl && this.dateControl.value.getMonth() < (this.today.getMonth())) {
-              this.paginator.length = 400;
-            } else {
-              this.paginator.length = 0;
+            // Temperature
+            if (!Number.isNaN(t)) {
+              daily[dayKey].tempMin = Math.min(daily[dayKey].tempMin, t);
+              daily[dayKey].tempMax = Math.max(daily[dayKey].tempMax, t);
+              daily[dayKey].tempSum += t;
+              daily[dayKey].tempCount++;
             }
+
+            // vento max
+            daily[dayKey].ventoMax = Math.max(daily[dayKey].ventoMax, wind);
+
+            // umidità min/max
+            if (!Number.isNaN(urVal)) {
+              daily[dayKey].urMin = Math.min(daily[dayKey].urMin, urVal);
+              daily[dayKey].urMax = Math.max(daily[dayKey].urMax, urVal);
+            }
+
+            // pressione min/max
+            if (!Number.isNaN(press)) {
+              daily[dayKey].pressMin = Math.min(daily[dayKey].pressMin, press);
+              daily[dayKey].pressMax = Math.max(daily[dayKey].pressMax, press);
+            }
+
+            // pioggia giorno: nel tuo codice usi max (probabilmente perché è già “cumulata giorno”)
+            daily[dayKey].pioggiaGiornoMax = Math.max(daily[dayKey].pioggiaGiornoMax, rainDay);
+
+            // cumulati mese/anno: tieni l’ultimo valore (di solito cresce)
+            daily[dayKey].pioggiaMese = rainMese;
+            daily[dayKey].pioggiaAnno = rainAnno;
           }
-          this.dataSource.sort = this.matSort;
-          this.utilityService.scrollToSpecifyPosition();
-          this.yearMonth = this.year;
-          this.imageLoader = false;
-          this.isVisible = true;
-        },
-        (error) => {
-          this.currentPage = this.dateControl.value.getMonth() - 1;
-          if (this.currentPage === 0) {
-            this.currentPage = 1;
-          }
-          this.dataSource.data.length = 1;
-          this.dataSource.data = [];
-          this.paginator.length = 400;
-          this.imageLoader = false;
-          this.utilityService.scrollToSpecifyPosition();
         }
-      );
+
+        // Trasformo in array ordinato per giorno
+        const daysSorted = Object.keys(daily).sort(); // YYYY-MM-DD => ordine corretto
+        const result: StatisticheStazioneInterface[] = daysSorted.map((k) => {
+          const d = daily[k];
+
+          const tMin = d.tempMin !== Infinity ? d.tempMin : null;
+          const tMax = d.tempMax !== -Infinity ? d.tempMax : null;
+          const tAvg = d.tempCount ? (d.tempSum / d.tempCount) : null;
+
+          return {
+            giorno: d.giorno,
+            tempMin: tMin !== null ? tMin.toFixed(1) : null,
+            tempMax: tMax !== null ? tMax.toFixed(1) : null,
+            tempMedia: tAvg !== null ? tAvg.toFixed(1) : null,
+            ventoMax: d.ventoMax.toFixed(0),
+            umiditaMin: d.urMin !== Infinity ? d.urMin.toFixed(0) : null,
+            umiditaMax: d.urMax !== -Infinity ? d.urMax.toFixed(0) : null,
+            pressioneMin: d.pressMin !== Infinity ? d.pressMin.toFixed(1) : null,
+            pressioneMax: d.pressMax !== -Infinity ? d.pressMax.toFixed(1) : null,
+            pioggia: d.pioggiaGiornoMax.toFixed(1),
+            pioggiaMese: d.pioggiaMese.toFixed(1),
+            pioggiaAnno: d.pioggiaAnno.toFixed(1)
+          };
+        });
+
+        // Riepilogo mensile (estremi + media mensile vera)
+        const numeric = (v: any) => (v === null || v === undefined || v === '' ? NaN : parseFloat(v));
+
+        const tempMinEstrema = Math.min(...result.map(r => numeric(r.tempMin)).filter(v => !Number.isNaN(v)));
+        const tempMaxEstrema = Math.max(...result.map(r => numeric(r.tempMax)).filter(v => !Number.isNaN(v)));
+        const ventoMaxEstremo = Math.max(...result.map(r => numeric(r.ventoMax)).filter(v => !Number.isNaN(v)));
+
+        const umiditaEstremaMin = Math.min(...result.map(r => numeric(r.umiditaMin)).filter(v => !Number.isNaN(v)));
+        const umiditaEstremaMax = Math.max(...result.map(r => numeric(r.umiditaMax)).filter(v => !Number.isNaN(v)));
+
+        const pressioneEstremaMin = Math.min(...result.map(r => numeric(r.pressioneMin)).filter(v => !Number.isNaN(v)));
+        const pressioneEstremaMax = Math.max(...result.map(r => numeric(r.pressioneMax)).filter(v => !Number.isNaN(v)));
+
+        // pioggia mese: prendo l’ultimo valore disponibile del cumulato mese
+        const lastRainMese = result.length ? (result[result.length - 1].pioggiaMese ?? null) : null;
+
+        const tempMediaMensileVera =
+          monthTempCount ? (monthTempSum / monthTempCount).toFixed(1) : null;
+
+        result.push({
+          giorno: 'Mensile',
+          tempMin: Number.isFinite(tempMinEstrema) ? tempMinEstrema.toFixed(1) : null,
+          tempMax: Number.isFinite(tempMaxEstrema) ? tempMaxEstrema.toFixed(1) : null,
+          tempMedia: tempMediaMensileVera,
+          ventoMax: Number.isFinite(ventoMaxEstremo) ? ventoMaxEstremo.toFixed(0) : '0',
+          umiditaMin: Number.isFinite(umiditaEstremaMin) ? umiditaEstremaMin.toFixed(0) : null,
+          umiditaMax: Number.isFinite(umiditaEstremaMax) ? umiditaEstremaMax.toFixed(0) : null,
+          pressioneMin: Number.isFinite(pressioneEstremaMin) ? pressioneEstremaMin.toFixed(1) : null,
+          pressioneMax: Number.isFinite(pressioneEstremaMax) ? pressioneEstremaMax.toFixed(1) : null,
+          pioggia: lastRainMese
+        });
+
+        this.arrResponse = result;
+        this.dataSource.data = this.arrResponse;
+
+        // Mantieni coerente l’header (mese/anno mostrati)
+        this.yearMonth = this.year;
+
+        // Se il paginator lo usi come “cambio mese”:
+        // pageIndex deve essere 0..11 (mese)
+        this.currentPage = this.dateControl.value.getMonth();
+
+        // Se vuoi: abilita frecce solo quando esiste file mese:
+        if (this.paginator) {
+          // lunghezza 12 pagine (mesi)
+          this.paginator.length = 12;
+        }
+
+        this.imageLoader = false;
+        this.isVisible = true;
+        this.utilityService.scrollToSpecifyPosition();
+      },
+      error: () => {
+        // File mese inesistente
+        this.arrResponse = [];
+        this.dataSource.data = [];
+
+        if (this.paginator) {
+          this.paginator.length = 12; // mantieni comunque 12 mesi
+        }
+
+        this.imageLoader = false;
+        this.isVisible = true;
+        this.utilityService.scrollToSpecifyPosition();
+      }
+    });
   }
+
 
   // Funzione per calcolare il colore in base al valore
   getCellColor(value: number): string {
@@ -617,6 +693,45 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
     this.dataSourceAnno.paginator = this.paginatorAnno;
     const selectedDate = new Date(e.pageIndex < e.previousPageIndex ? this.year - 1 : this.year + 1, this.dateControl.value.getMonth()); // Anno, mese (da 0)
     //this.dateControl.setValue(selectedDate);
+    this.filterData(selectedDate, true);
+  }
+
+  handleMonthPager(e: PageEvent) {
+    // direzione: se vai a 0 -> indietro, se vai a 2 -> avanti
+    const goPrev = e.pageIndex < e.previousPageIndex;
+    const delta = goPrev ? -1 : +1;
+
+    // calcola nuova data mese
+    const cur = this.dateControl?.value ?? new Date();
+    const next = new Date(cur.getFullYear(), cur.getMonth() + delta, 1);
+
+    // aggiorna form control + year/month coerenti
+    this.dateControl.setValue(next);
+    this.year = next.getFullYear();
+    this.month = (next.getMonth() + 1).toString().padStart(2, '0');
+    this.yearMonth = this.year;
+
+    // ricarica mese
+    this.loadCSVMeseData();
+
+    // se cambia anno, ricarica annuale
+    if (this.precYear !== this.year) {
+      this.precYear = this.year;
+      this.loadCSVAnnoData();
+    }
+
+    // IMPORTANTISSIMO: rimetti il paginator al centro (così frecce sempre attive)
+    // setTimeout per evitare ExpressionChangedAfterItHasBeenChecked
+    setTimeout(() => {
+      this.paginator.pageIndex = 1;
+      // forza update UI (alcune versioni material lo richiedono)
+      this.paginator._changePageSize(this.paginator.pageSize);
+    });
+  }
+
+  handleYearPage(e: PageEvent) {
+    const year = this.startYear + e.pageIndex;
+    const selectedDate = new Date(year, this.dateControl.value.getMonth(), 1);
     this.filterData(selectedDate, true);
   }
 }

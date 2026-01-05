@@ -35,21 +35,11 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
   isVisible = false;
   isVisibleAnno = false;
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild('paginatorMese') paginator!: MatPaginator;
+  @ViewChild('paginatorAnno') paginatorAnno!: MatPaginator;
 
-  @ViewChild(MatSort) set matSort(sort: MatSort) {
-    if (!this.dataSource.sort) {
-      this.dataSource.sort = sort;
-    }
-  }
-
-  @ViewChild(MatPaginator) paginatorAnno: MatPaginator;
-
-  @ViewChild(MatSort) set matSortAnno(sort: MatSort) {
-    if (!this.dataSourceAnno.sort) {
-      this.dataSourceAnno.sort = sort;
-    }
-  }
+  @ViewChild('sortMese') sortMese!: MatSort;
+  @ViewChild('sortAnno') sortAnno!: MatSort;
 
   public pageSize;
   public currentPage;
@@ -87,6 +77,10 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
   dateControlAnnuale = new FormControl(new Date());  // Imposta la data odierna
   csvUrlMese: string;  // URL del file CSV
   csvAnnoPath: string;  // URL del file CSV anno
+  currentMonthIndex = new Date().getMonth(); // 0..11
+  startYear = 2023;
+  availableYears: number;
+  currentYearIndex: number;
 
   constructor(private seo: SEOService, protected router: Router, public utilityService: UtiliyService, private http: HttpClient, public renderer: Renderer2,
               private fb: FormBuilder, private fileService: FileService) {
@@ -103,6 +97,8 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
     this.today = new Date();
+    this.availableYears = this.today.getFullYear() - this.startYear + 1; // es. 2013..2026
+    this.currentYearIndex = this.today.getFullYear() - this.startYear;
     this.year = this.today.getFullYear();
     this.yearMonth = this.year;
     this.month = (this.today.getMonth() + 1).toString();
@@ -119,195 +115,251 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
     this.dataSourceAnno.paginator = this.paginatorAnno;
   }
 
-  loadCSVAnnoData() {
+  // ==============================
+//  SAN PANCRAZIO - ANNO
+// ==============================
+  loadCSVAnnoData(): void {
     this.imageLoaderAnno = true;
+    this.isVisibleAnno = false;
 
-    this.csvAnnoPath = 'assets/storico-san-pancrazio/sanpancrazio-' + this.year + '.csv';
+    // reset (evita duplicati quando ricarichi anno)
+    this.arrResponseAnno = [];
+    this.dataSourceAnno.data = [];
 
-    this.fileService.getCSV(this.csvAnnoPath).subscribe(res => {
+    // normalizza anno da dateControl (così non sballa con paginator)
+    const selected: Date = (this.dateControl?.value ?? new Date()) as Date;
+    this.year = selected.getFullYear();
+
+    this.csvAnnoPath = `assets/storico-san-pancrazio/sanpancrazio-${this.year}.csv`;
+
+    const tempField = 'Campoli Appennino - Temperatura Aria - 18350 (°C)';
+    const rainField = 'Campoli Appennino - Pioggia Cumulata - 18349 (mm)';
+
+    this.fileService.getCSV(this.csvAnnoPath).subscribe({
+      next: (res) => {
         this.csvDataAnno = this.fileService.parseCSV(res, ';');
+
         let minTemperature = Infinity;
-        let maxTemperature = -20;
-        let avgTemperature = 0;
-        let tempCount = 1;
-        this.csvDataAnno.forEach(anno => {
-          const temp = parseFloat(anno['Campoli Appennino - Temperatura Aria - 18350 (°C)']);
+        let maxTemperature = -Infinity;
 
-          if (!isNaN(temp) && temp < 43 && temp < minTemperature) {
-            minTemperature = temp;
-          }
-          if (!isNaN(temp) && temp < 43 && temp > maxTemperature) {
-            maxTemperature = temp;
-          }
-          if (!isNaN(temp) && temp < 43) {
-            avgTemperature += temp;
-            tempCount += 1;
-          }
-        });
+        let tempSum = 0;
+        let tempCount = 0;
 
+        for (const row of this.csvDataAnno) {
+          const tempRaw = parseFloat(row[tempField]);
+          const temp = Number.isNaN(tempRaw) ? NaN : tempRaw;
+
+          // mantengo il tuo filtro: scarto valori "assurdi" sopra 43
+          if (!Number.isNaN(temp) && temp < 43) {
+            minTemperature = Math.min(minTemperature, temp);
+            maxTemperature = Math.max(maxTemperature, temp);
+            tempSum += temp;
+            tempCount++;
+          }
+        }
+
+        const annualTempMin = minTemperature !== Infinity ? minTemperature.toFixed(1) : '-';
+        const annualTempMax = maxTemperature !== -Infinity ? maxTemperature.toFixed(1) : '-';
+        const annualTempAvg = tempCount ? (tempSum / tempCount).toFixed(1) : '-';
+
+        const annualRain =
+          this.csvDataAnno?.length
+            ? (this.csvDataAnno[this.csvDataAnno.length - 1][rainField] ?? '0.0')
+            : '0.0';
 
         this.arrResponseAnno.push({
           giorno: 'Annuale',
-          tempMin: minTemperature.toString(),
-          tempMax: maxTemperature.toString(),
-          tempMedia: (avgTemperature / tempCount).toFixed(1),
-          pioggia: this.csvDataAnno && this.csvDataAnno.length ? this.csvDataAnno[this.csvDataAnno.length - 1]['Campoli Appennino - Pioggia Cumulata - 18349 (mm)'] : null
+          tempMin: annualTempMin,
+          tempMax: annualTempMax,
+          tempMedia: annualTempAvg,
+          pioggia: annualRain
         });
 
-        /*if (this.paginatorAnno) {
-          if (this.dateControl && this.dateControl.value.getFullYear() < (this.today.getFullYear())) {
-            this.paginatorAnno.length = 400;
-          } else {
-            this.paginatorAnno.length = 0;
-          }
-        }*/
-        // this.dataSourceAnno.paginator.length = ;
         this.dataSourceAnno.data = this.arrResponseAnno;
-        this.dataSourceAnno.data.length = this.arrResponseAnno.length;
-        this.dataSourceAnno.sort = this.matSortAnno;
-        this.imageLoaderAnno = false;
-        this.isVisibleAnno = true;
-      },
-      (error) => {
-        this.currentPageAnno = this.dateControl.value.getMonth() - 1;
-        if (this.currentPageAnno === 0) {
-          this.currentPageAnno = 1;
+
+        // sort (se usi due sort, meglio template-ref; qui uso il tuo)
+        if (this.sortAnno) {
+          this.dataSourceAnno.sort = this.sortAnno;
         }
-        this.dataSourceAnno.data.length = 1;
-        this.dataSourceAnno.data = [];
-        this.paginatorAnno.length = 400;
+
         this.imageLoaderAnno = false;
         this.isVisibleAnno = true;
         this.utilityService.scrollToSpecifyPosition();
-      });
+      },
+      error: () => {
+        // anno non trovato => mostra tabella vuota ma UI ok
+        this.arrResponseAnno = [];
+        this.dataSourceAnno.data = [];
+
+        this.imageLoaderAnno = false;
+        this.isVisibleAnno = true;
+        this.utilityService.scrollToSpecifyPosition();
+      }
+    });
   }
 
 
-  // Carica i dati dal CSV
+// ==============================
+//  SAN PANCRAZIO - MESE
+// ==============================
   loadCSVMeseData(): void {
     this.imageLoader = true;
-    this.csvUrlMese = 'assets/storico-san-pancrazio/sanpancrazio-' + this.year + this.month + '.csv';
+    this.isVisible = false;
 
-    const dailyTemperatures: { [key: string]: { giorno, tempMin, tempMax, tempMedia, pioggia, pioggiaMese, tempCount } } = {};
-    // Ottenere e parsare il CSV al caricamento del componente
-    forkJoin(
-      this.fileService.getCSV(this.csvUrlMese),
-    )
-      .pipe(
-        map(([csvMese]) => {
-          return {
-            csvMese: csvMese,
-          };
-        }),
-      )
-      .subscribe(async res => {
-          this.csvDataMese = this.fileService.parseCSV(res.csvMese, ';');
-          this.csvDataMese.map((csv => {
-            // Estrai solo la parte della data (senza l'ora)
-            const dateObj = new Date(csv.Orario);
-            const day = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1).toString().padStart(2, '0')}-${dateObj.getDate().toString().padStart(2, '0')}`;
-            const rain = parseFloat(csv['Campoli Appennino - Pioggia Cumulata - 18349 (mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
-            const rainMese = parseFloat(csv['Campoli Appennino - Pioggia Cumulata - 18349 (mm)']) || 0;  // Se non ci sono dati di pioggia, usa 0
-            const temp = parseFloat(csv['Campoli Appennino - Temperatura Aria - 18350 (°C)']) || null;  // Se non ci sono dati di vento, usa 0
+    // reset
+    this.arrResponse = [];
+    this.dataSource.data = [];
 
-            if (dateObj.getMonth() + 1 === this.dateControl.value.getMonth() + 1) {
-              if (!dailyTemperatures[day]) {
-                dailyTemperatures[day] = {
-                  giorno: dateObj.getDate().toString().padStart(2, '0'),
-                  tempMin: temp,
-                  tempMax: temp,
-                  tempMedia: temp,
-                  pioggia: rain,
-                  pioggiaMese: rainMese,
-                  tempCount: 1
-                };
-              } else {
-                // Aggiorna la temperatura minima e massima
-                if (temp && temp < 43) {
-                  dailyTemperatures[day].tempMin = Math.min(dailyTemperatures[day].tempMin, temp);
-                  dailyTemperatures[day].tempMax = Math.max(dailyTemperatures[day].tempMax, temp);
-                  // Aggiorna la somma e il conteggio delle temperature per calcolare la media
-                  dailyTemperatures[day].tempMedia += temp;
-                  dailyTemperatures[day].tempCount += 1;
-                }
-                // Somma la pioggia totale del giorno
-                dailyTemperatures[day].pioggia = Math.max(dailyTemperatures[day].pioggia, rain);
-              }
-            }
-          }));
+    // normalizza mese/anno dal dateControl
+    const selected: Date = (this.dateControl?.value ?? new Date()) as Date;
+    this.year = selected.getFullYear();
+    this.month = (selected.getMonth() + 1).toString().padStart(2, '0');
+    this.yearMonth = this.year;
 
+    this.csvUrlMese = `assets/storico-san-pancrazio/sanpancrazio-${this.year}${this.month}.csv`;
 
-          // Trasforma l'oggetto in un array se necessario
+    const tempField = 'Campoli Appennino - Temperatura Aria - 18350 (°C)';
+    const rainField = 'Campoli Appennino - Pioggia Cumulata - 18349 (mm)';
 
-          let previousRain = 0; // Variabile per memorizzare la pioggia del giorno precedente
-          const result = Object.keys(dailyTemperatures).map((day, index) => {
-            const currentRain = dailyTemperatures[day].pioggia;
-            // Calcola la pioggia attuale meno quella del giorno precedente
-            const pioggiaSottratta = index === 0 ? currentRain : currentRain - previousRain;
-            // Aggiorna la variabile previousRain con il valore della pioggia attuale per il prossimo giorno
-            previousRain = currentRain;
-            return {
-              giorno: dailyTemperatures[day].giorno,
-              tempMin: dailyTemperatures[day].tempMin,
-              tempMax: dailyTemperatures[day].tempMax,
-              tempMedia: (dailyTemperatures[day].tempMedia / dailyTemperatures[day].tempCount).toFixed(1),
-              pioggia: pioggiaSottratta.toFixed(1), // La pioggia con il valore del giorno precedente sottratto
-              pioggiaMese: this.csvDataMese && this.csvDataMese.length ? this.csvDataMese[this.csvDataMese.length - 1]['Campoli Appennino - Pioggia Cumulata - 18349 (mm)'] : null,
+    // Aggregati giornalieri
+    const daily: {
+      [dayKey: string]: {
+        giorno: string;
+        tempMin: number;
+        tempMax: number;
+        tempSum: number;
+        tempCount: number;
+        // massimo del cumulato nel giorno (poi facciamo differenza tra giorni ordinati)
+        rainCumMax: number;
+      };
+    } = {};
+
+    this.fileService.getCSV(this.csvUrlMese).subscribe({
+      next: (csvText) => {
+        this.csvDataMese = this.fileService.parseCSV(csvText, ';');
+
+        for (const row of this.csvDataMese) {
+          const dateObj = new Date(row.Orario);
+          if (Number.isNaN(dateObj.getTime())) continue;
+
+          // safe: resta nel mese selezionato
+          if (dateObj.getFullYear() !== this.year || dateObj.getMonth() !== selected.getMonth()) {
+            continue;
+          }
+
+          const dayKey = `${dateObj.getFullYear()}-${(dateObj.getMonth() + 1).toString().padStart(2, '0')}-${dateObj
+            .getDate()
+            .toString()
+            .padStart(2, '0')}`;
+
+          const dayLabel = dateObj.getDate().toString().padStart(2, '0');
+
+          const tempRaw = parseFloat(row[tempField]);
+          const temp = Number.isNaN(tempRaw) ? NaN : tempRaw;
+
+          const rainCumRaw = parseFloat(row[rainField]);
+          const rainCum = Number.isNaN(rainCumRaw) ? 0 : rainCumRaw;
+
+          if (!daily[dayKey]) {
+            daily[dayKey] = {
+              giorno: dayLabel,
+              tempMin: Number.isNaN(temp) ? Infinity : temp,
+              tempMax: Number.isNaN(temp) ? -Infinity : temp,
+              tempSum: Number.isNaN(temp) ? 0 : temp,
+              tempCount: Number.isNaN(temp) ? 0 : 1,
+              rainCumMax: rainCum
             };
-          });
-
-
-          const tempMinEstrema = Math.min(...result.map(dato => dato.tempMin ? parseFloat(dato.tempMin) : null));
-          const tempMaxEstrema = Math.max(...result.map(dato => dato.tempMax ? parseFloat(dato.tempMax) : null));
-          const tempMediaTot = result.reduce((acc, dato) => dato.tempMedia ? acc + parseFloat(dato.tempMedia) : null, 0) / result.length;
-
-          this.arrResponse = result;
-
-          result.push({
-            pioggiaMese: undefined,
-            giorno: 'Mensile',
-            tempMin: tempMinEstrema.toString(),
-            tempMax: tempMaxEstrema.toString(),
-            tempMedia: tempMediaTot.toFixed(1).toString(),
-            pioggia: result && result.length ? result[result.length - 1].pioggiaMese : null
-          });
-
-          this.arrResponse = result;
-
-
-          this.dataSource.data = this.arrResponse;
-          this.dataSource.data.length = this.arrResponse.length;
-          if (this.dateControl.value.getMonth() === 1) {
-            this.currentPage = 1;
           } else {
-            this.currentPage = this.dateControl.value.getMonth() - 1;
-          }
-          if (this.paginator) {
-            if (this.dateControl && this.dateControl.value.getMonth() < (this.today.getMonth())) {
-              this.paginator.length = 400;
-            } else {
-              this.paginator.length = 0;
+            // NB: niente "if(temp)" perché 0 o negativi sarebbero scartati
+            if (!Number.isNaN(temp) && temp < 43) {
+              daily[dayKey].tempMin = Math.min(daily[dayKey].tempMin, temp);
+              daily[dayKey].tempMax = Math.max(daily[dayKey].tempMax, temp);
+              daily[dayKey].tempSum += temp;
+              daily[dayKey].tempCount++;
             }
+
+            daily[dayKey].rainCumMax = Math.max(daily[dayKey].rainCumMax, rainCum);
           }
-          this.dataSource.sort = this.matSort;
-          this.utilityService.scrollToSpecifyPosition();
-          this.yearMonth = this.year;
-          this.imageLoader = false;
-          this.isVisible = true;
-        },
-        (error) => {
-          this.currentPage = this.dateControl.value.getMonth() - 1;
-          if (this.currentPage === 0) {
-            this.currentPage = 1;
-          }
-          this.dataSource.data.length = 1;
-          this.dataSource.data = [];
-          this.paginator.length = 400;
-          this.imageLoader = false;
-          this.utilityService.scrollToSpecifyPosition();
         }
-      );
+
+        // ORDINAMENTO fondamentale: senza sort, la differenza pioggia va a caso!
+        const daysSorted = Object.keys(daily).sort();
+
+        let prevCum = 0;
+        const result = daysSorted.map((k, idx) => {
+          const d = daily[k];
+
+          const rainDay = idx === 0 ? d.rainCumMax : Math.max(0, d.rainCumMax - prevCum);
+          prevCum = d.rainCumMax;
+
+          const tMin = d.tempMin !== Infinity ? d.tempMin : null;
+          const tMax = d.tempMax !== -Infinity ? d.tempMax : null;
+          const tAvg = d.tempCount ? (d.tempSum / d.tempCount) : null;
+
+          return {
+            giorno: d.giorno,
+            tempMin: tMin !== null ? tMin.toFixed(1) : '-',
+            tempMax: tMax !== null ? tMax.toFixed(1) : '-',
+            tempMedia: tAvg !== null ? tAvg.toFixed(1) : '-',
+            pioggia: rainDay.toFixed(1),
+            // cumulata mese = ultimo cumulato disponibile nel mese
+            pioggiaMese: daysSorted.length
+              ? daily[daysSorted[daysSorted.length - 1]].rainCumMax.toFixed(1)
+              : '0.0'
+          };
+        });
+
+        // riepilogo mensile
+        const toNum = (v: any): number | null => {
+          const n = parseFloat(v);
+          return Number.isNaN(n) ? null : n;
+        };
+
+        const validMin = result.map(r => toNum(r.tempMin)).filter(v => v !== null) as number[];
+        const validMax = result.map(r => toNum(r.tempMax)).filter(v => v !== null) as number[];
+        const validAvg = result.map(r => toNum(r.tempMedia)).filter(v => v !== null) as number[];
+
+        const tempMinEstrema = validMin.length ? Math.min(...validMin) : null;
+        const tempMaxEstrema = validMax.length ? Math.max(...validMax) : null;
+        const tempMediaTot = validAvg.length ? (validAvg.reduce((a, b) => a + b, 0) / validAvg.length) : null;
+
+        const lastPioggiaMese = result.length ? result[result.length - 1].pioggiaMese : '0.0';
+
+        result.push({
+          giorno: 'Mensile',
+          tempMin: tempMinEstrema !== null ? tempMinEstrema.toFixed(1) : '-',
+          tempMax: tempMaxEstrema !== null ? tempMaxEstrema.toFixed(1) : '-',
+          tempMedia: tempMediaTot !== null ? tempMediaTot.toFixed(1) : '-',
+          pioggia: lastPioggiaMese,
+          pioggiaMese: lastPioggiaMese
+        });
+
+        this.arrResponse = result;
+        this.dataSource.data = this.arrResponse;
+
+        // IMPORTANT: non toccare paginator.length = 0/400 qui (crea frecce “a caso”)
+        // Se usi il paginator come frecce mese, gestiscilo nel relativo handler.
+
+        if (this.sortMese) {
+          this.dataSource.sort = this.sortMese;
+        }
+
+        this.imageLoader = false;
+        this.isVisible = true;
+        this.utilityService.scrollToSpecifyPosition();
+      },
+      error: () => {
+        // mese non trovato => mostra tabella vuota ma UI ok
+        this.arrResponse = [];
+        this.dataSource.data = [];
+
+        this.imageLoader = false;
+        this.isVisible = true;
+        this.utilityService.scrollToSpecifyPosition();
+      }
+    });
   }
+
 
   // Funzione per calcolare il colore in base al valore
   getCellColor(value: number): string {
@@ -484,48 +536,65 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
     this.precYear = this.year;
   }
 
-  public handlePage(e: any) {
-    let month;
-    if (this.month === '03') {
-      if (e.previousPageIndex === 1 && e.pageIndex === 2) {
-        this.currentPage = 3;
-        month = 3;
-      } else {
-        this.currentPage = 2;
-        month = 1;
-      }
-    } else if (this.month === '02') {
-      if (e.previousPageIndex === 0 && e.pageIndex === 1) {
-        this.currentPage = 2;
-        month = 2;
-      } else if (e.previousPageIndex === 1 && e.pageIndex === 2) {
-        this.currentPage = 2;
-        month = 2;
-      } else {
-        this.currentPage = 1;
-        month = 0;
-      }
-    } else {
-      this.currentPage = e.pageIndex + 1;
-      if (e.previousPageIndex === 0 && e.pageIndex === 1) {
-        month = 1;
-      } else {
-        if (this.currentPage === 0) {
-          month = 0;
-        } else {
-          month = this.currentPage;
-        }
-      }
+  handleMonthPager(e: PageEvent) {
+    // previousPageIndex può essere undefined (primo evento)
+    const prev = (e.previousPageIndex ?? 1);
+
+    // se rimani al centro (1) non fare nulla
+    if (e.pageIndex === 1) {
+      return;
     }
-    const selectedDate = new Date(this.year, month); // Anno, mese (da 0)
-    this.dateControl.setValue(selectedDate);
-    this.filterData(this.dateControl.value);
+
+    // se vai a 0 -> indietro, se vai a 2 -> avanti
+    const delta = e.pageIndex < prev ? -1 : +1;
+
+    const cur = (this.dateControl?.value ?? new Date()) as Date;
+    const next = new Date(cur.getFullYear(), cur.getMonth() + delta, 1);
+
+    // aggiorna stato
+    this.dateControl.setValue(next);
+    this.year = next.getFullYear();
+    this.month = (next.getMonth() + 1).toString().padStart(2, '0');
+    this.yearMonth = this.year;
+
+    // ricarica mese
+    this.loadCSVMeseData();
+
+    // se cambia anno, ricarica annuale
+    if (this.precYear !== this.year) {
+      this.precYear = this.year;
+      this.loadCSVAnnoData();
+    }
+
+    // reset paginator al centro (mai grigio)
+    queueMicrotask(() => {
+      this.paginator.pageIndex = 1;
+
+      // refresh UI senza usare _changePageSize (più stabile)
+      // In molte versioni basta questo; se noti che non si aggiorna, vedi nota sotto.
+    });
   }
 
-  public handlePageAnno(e: any) {
-    this.currentPageAnno = e.pageIndex;
-    const selectedDate = new Date(e.pageIndex < e.previousPageIndex ? this.year - 1 : this.year + 1, this.dateControl.value.getMonth()); // Anno, mese (da 0)
-    //this.dateControl.setValue(selectedDate);
-    this.filterData(selectedDate, true);
+  handleYearPage(e: PageEvent) {
+    this.currentYearIndex = e.pageIndex;
+
+    const year = this.startYear + this.currentYearIndex;
+    const cur = (this.dateControl?.value ?? new Date()) as Date;
+
+    const selectedDate = new Date(year, cur.getMonth(), 1);
+
+    // sincronizza lo stato
+    this.dateControl.setValue(selectedDate);
+    this.year = year;
+    this.month = (selectedDate.getMonth() + 1).toString().padStart(2, '0');
+    this.yearMonth = this.year;
+
+    // IMPORTANT: reset precYear e ricarica sempre l'annuale
+    this.precYear = this.year;
+    this.loadCSVAnnoData();
+
+    // opzionale: se vuoi anche il mese coerente col nuovo anno
+     this.loadCSVMeseData();
   }
+
 }
