@@ -29,7 +29,7 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
   arrResponse: StatisticheStazioneInterface[] = [];
   arrResponseAnno: StatisticheStazioneInterface[] = [];
   displayedColumns: string[] = ['giorno', 'tempMin', 'tempMax', 'tempMedia', 'vento', 'pressione', 'umidita', 'pioggia'];
-  displayedColumnsAnno: string[] = ['tempMin', 'tempMax', 'tempMedia', 'vento', 'pressione', 'pioggiaGiornalieraMax', 'pioggia'];
+  displayedColumnsAnno: string[] = ['anno', 'tempMin', 'tempMax', 'tempMedia', 'vento', 'pressione', 'pioggiaGiornalieraMax', 'pioggia'];
   dataSource = new MatTableDataSource<StatisticheStazioneInterface>(this.arrResponse);
   dataSourceAnno = new MatTableDataSource<StatisticheStazioneInterface>(this.arrResponseAnno);
   isVisible = false;
@@ -198,9 +198,34 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
           this.csvDataAnno?.length
             ? (this.csvDataAnno[this.csvDataAnno.length - 1]['Pioggia annuale(mm)'] ?? null)
             : null;
-
         this.arrResponseAnno.push({
-          giorno: 'Annuale',
+          anno: '2024',
+          tempMin: '-4.1',
+          tempMax: '36.7',
+          tempMedia: '15.1',
+          ventoMax: '61',
+          // umiditaMax: urMaxOut,
+          // umiditaMin: urMinOut,
+          pressioneMax: '1031.6',
+          pressioneMin: '989.2',
+          pioggiaMaxEvento: '80.3',
+          pioggia: '993.5'
+        });
+        this.arrResponseAnno.push({
+          anno: '2025',
+          tempMin: '-5.0',
+          tempMax: '36.0',
+          tempMedia: '13.2',
+          ventoMax: '67',
+          // umiditaMax: urMaxOut,
+          // umiditaMin: urMinOut,
+          pressioneMax: '1030.1',
+          pressioneMin: '994.4',
+          pioggiaMaxEvento: '88.5',
+          pioggia: '1260.4'
+        });
+        this.arrResponseAnno.push({
+          anno: this.today.getFullYear().toString(),
           tempMin: tempMinOut,
           tempMax: tempMaxOut,
           tempMedia: annualAvg,
@@ -642,49 +667,11 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
     if (!onlyYear) {
       this.loadCSVMeseData();
     }
-    if (this.year !== this.precYear) {
+    /*if (this.year !== this.precYear) {
       this.arrResponseAnno = [];
       this.loadCSVAnnoData();
-    }
+    }*/
     this.precYear = this.year;
-  }
-
-  public handlePage(e: any) {
-    let month;
-    if (this.month === '03') {
-      if (e.previousPageIndex === 1 && e.pageIndex === 2) {
-        this.currentPage = 3;
-        month = 3;
-      } else {
-        this.currentPage = 2;
-        month = 1;
-      }
-    } else if (this.month === '02') {
-      if (e.previousPageIndex === 0 && e.pageIndex === 1) {
-        this.currentPage = 2;
-        month = 2;
-      } else if (e.previousPageIndex === 1 && e.pageIndex === 2) {
-        this.currentPage = 2;
-        month = 2;
-      } else {
-        this.currentPage = 1;
-        month = 0;
-      }
-    } else {
-      this.currentPage = e.pageIndex + 1;
-      if (e.previousPageIndex === 0 && e.pageIndex === 1) {
-        month = 1;
-      } else {
-        if (this.currentPage === 0) {
-          month = 0;
-        } else {
-          month = this.currentPage;
-        }
-      }
-    }
-    const selectedDate = new Date(this.year, month); // Anno, mese (da 0)
-    this.dateControl.setValue(selectedDate);
-    this.filterData(this.dateControl.value);
   }
 
   public handlePageAnno(e: any) {
@@ -692,7 +679,7 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
     this.paginatorAnno.length = 400;
     this.dataSourceAnno.paginator = this.paginatorAnno;
     const selectedDate = new Date(e.pageIndex < e.previousPageIndex ? this.year - 1 : this.year + 1, this.dateControl.value.getMonth()); // Anno, mese (da 0)
-    //this.dateControl.setValue(selectedDate);
+    // this.dateControl.setValue(selectedDate);
     this.filterData(selectedDate, true);
   }
 
@@ -715,10 +702,10 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
     this.loadCSVMeseData();
 
     // se cambia anno, ricarica annuale
-    if (this.precYear !== this.year) {
+    /*if (this.precYear !== this.year) {
       this.precYear = this.year;
       this.loadCSVAnnoData();
-    }
+    }*/
 
     // IMPORTANTISSIMO: rimetti il paginator al centro (così frecce sempre attive)
     // setTimeout per evitare ExpressionChangedAfterItHasBeenChecked

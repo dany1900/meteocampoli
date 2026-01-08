@@ -5,6 +5,7 @@
 export interface StatisticheStazioneInterface {
   counter?: number;
   giorno?: string;
+  anno?: string;
   tempMin?: string;
   tempMax: string;
   tempMedia: string;
