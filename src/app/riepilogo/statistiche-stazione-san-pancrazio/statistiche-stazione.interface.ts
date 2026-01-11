@@ -4,6 +4,7 @@
  */
 export interface StatisticheStazioneInterface {
   counter?: number;
+  anno?: string;
   giorno?: string;
   tempMin?: string;
   tempMax: string;

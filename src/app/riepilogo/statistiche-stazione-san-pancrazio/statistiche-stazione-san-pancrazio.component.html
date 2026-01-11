@@ -117,10 +117,15 @@
     <button mat-raised-button color="primary" class="esegui" (click)="filterData()">ESEGUI</button>
     -->
     <br>
-    <h2 class="title-micro-section">{{'Anno ' + year}} </h2>
+    <h2 class="title-micro-section">{{'Annuali'}} </h2>
 
     <table mat-table [dataSource]="dataSourceAnno" class="mat-elevation-z8" matSort #sortAnno="matSort">
-
+      <!-- Data Ora Column -->
+      <ng-container matColumnDef="anno">
+        <th class="riepilogo-giorno-header" mat-header-cell *matHeaderCellDef mat-sort-header> Anno</th>
+        <td class="riepilogo-giorno-body" mat-cell *matCellDef="let element"
+            [ngStyle]="{'background-color': '#e3dede'} "> {{(element?.anno) ? element?.anno : '-' }} </td>
+      </ng-container>
       <!-- Profondita Column -->
       <ng-container matColumnDef="tempMin">
         <th class="riepilogo-temMin-header" mat-header-cell *matHeaderCellDef mat-sort-header> Temperatura Minima</th>
@@ -158,14 +163,5 @@
         <td class="mat-cell red" colspan="7">Nessun dato disponibile</td>
       </tr>
     </table>
-    <mat-paginator
-      #paginatorAnno
-      [pageIndex]="currentYearIndex"
-      [length]="availableYears"
-      [pageSize]="1"
-      [hidePageSize]="true"
-      [showFirstLastButtons]="true"
-      (page)="handleYearPage($event)">
-    </mat-paginator>
   </div>
 </div>

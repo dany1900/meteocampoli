@@ -9,8 +9,6 @@ import {UtiliyService} from '../../service/utiliy.service';
 import {HttpClient} from '@angular/common/http';
 import {StatisticheStazioneInterface} from './statistiche-stazione.interface';
 import {FileService} from '../../service/file.service';
-import {forkJoin} from 'rxjs';
-import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'statistiche-stazione-san-pancrazio',
@@ -29,7 +27,7 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
   arrResponse: StatisticheStazioneInterface[] = [];
   arrResponseAnno: StatisticheStazioneInterface[] = [];
   displayedColumns: string[] = ['giorno', 'tempMin', 'tempMax', 'tempMedia', 'pioggia'];
-  displayedColumnsAnno: string[] = ['tempMin', 'tempMax', 'tempMedia', 'pioggia'];
+  displayedColumnsAnno: string[] = ['anno', 'tempMin', 'tempMax', 'tempMedia', 'pioggia'];
   dataSource = new MatTableDataSource<StatisticheStazioneInterface>(this.arrResponse);
   dataSourceAnno = new MatTableDataSource<StatisticheStazioneInterface>(this.arrResponseAnno);
   isVisible = false;
@@ -166,9 +164,30 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
           this.csvDataAnno?.length
             ? (this.csvDataAnno[this.csvDataAnno.length - 1][rainField] ?? '0.0')
             : '0.0';
+        this.arrResponseAnno.push({
+          anno: '2023',
+          tempMin: '-1.5',
+          tempMax: '37.2',
+          tempMedia: '14.8',
+          pioggia: '1290.6'
+        });
+        this.arrResponseAnno.push({
+          anno: '2024',
+          tempMin: '0.0',
+          tempMax: '36.1',
+          tempMedia: '15.4',
+          pioggia: '1070.1'
+        });
+        this.arrResponseAnno.push({
+          anno: '2025',
+          tempMin: '-0.9',
+          tempMax: '35.7',
+          tempMedia: '14.9',
+          pioggia: '1223.5'
+        });
 
         this.arrResponseAnno.push({
-          giorno: 'Annuale',
+          anno: this.today.getFullYear().toString(),
           tempMin: annualTempMin,
           tempMax: annualTempMax,
           tempMedia: annualTempAvg,
@@ -529,10 +548,10 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
     if (!onlyYear) {
       this.loadCSVMeseData();
     }
-    if (this.year !== this.precYear) {
+    /*if (this.year !== this.precYear) {
       this.arrResponseAnno = [];
       this.loadCSVAnnoData();
-    }
+    }*/
     this.precYear = this.year;
   }
 
@@ -561,10 +580,10 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
     this.loadCSVMeseData();
 
     // se cambia anno, ricarica annuale
-    if (this.precYear !== this.year) {
+    /*if (this.precYear !== this.year) {
       this.precYear = this.year;
       this.loadCSVAnnoData();
-    }
+    }*/
 
     // reset paginator al centro (mai grigio)
     queueMicrotask(() => {
@@ -591,7 +610,7 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
 
     // IMPORTANT: reset precYear e ricarica sempre l'annuale
     this.precYear = this.year;
-    this.loadCSVAnnoData();
+    //this.loadCSVAnnoData();
 
     // opzionale: se vuoi anche il mese coerente col nuovo anno
      this.loadCSVMeseData();

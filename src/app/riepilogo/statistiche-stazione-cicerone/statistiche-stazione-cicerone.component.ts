@@ -29,7 +29,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
   arrResponse: StatisticheStazioneInterface[] = [];
   arrResponseAnno: StatisticheStazioneInterface[] = [];
   displayedColumns: string[] = ['giorno', 'tempMin', 'tempMax', 'tempMedia', 'umidita', 'pioggia'];
-  displayedColumnsAnno: string[] = ['tempMin', 'tempMax', 'tempMedia', 'pioggia'];
+  displayedColumnsAnno: string[] = ['anno', 'tempMin', 'tempMax', 'tempMedia', 'pioggia'];
   dataSource = new MatTableDataSource<StatisticheStazioneInterface>(this.arrResponse);
   dataSourceAnno = new MatTableDataSource<StatisticheStazioneInterface>(this.arrResponseAnno);
   isVisible = false;
@@ -180,7 +180,29 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
             : null;
 
         this.arrResponseAnno.push({
-          giorno: 'Annuale',
+          anno: '2023',
+          tempMin: '-3.3',
+          tempMax: '36.9',
+          tempMedia: '12.9',
+          pioggia: '1717.4'
+        });
+        this.arrResponseAnno.push({
+          anno: '2024',
+          tempMin: '-2.5',
+          tempMax: '36.4',
+          tempMedia: '13.4',
+          pioggia: '1467.6'
+        });
+        this.arrResponseAnno.push({
+          anno: '2025',
+          tempMin: '-4.3',
+          tempMax: '34.5',
+          tempMedia: '12.6',
+          pioggia: '1589.5'
+        });
+
+        this.arrResponseAnno.push({
+          anno: this.today.getFullYear().toString(),
           tempMin: annualTempMin,
           tempMax: annualTempMax,
           tempMedia: annualTempAvg,
@@ -574,10 +596,10 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     if (!onlyYear) {
       this.loadCSVMeseData();
     }
-    if (this.year !== this.precYear) {
+    /*if (this.year !== this.precYear) {
       this.arrResponseAnno = [];
       this.loadCSVAnnoData();
-    }
+    }*/
     this.precYear = this.year;
   }
 
@@ -606,10 +628,10 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     this.loadCSVMeseData();
 
     // se cambia anno, ricarica annuale
-    if (this.precYear !== this.year) {
+    /*if (this.precYear !== this.year) {
       this.precYear = this.year;
       this.loadCSVAnnoData();
-    }
+    }*/
 
     // reset paginator al centro (mai grigio)
     queueMicrotask(() => {
@@ -636,7 +658,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
 
     // IMPORTANT: reset precYear e ricarica sempre l'annuale
     this.precYear = this.year;
-    this.loadCSVAnnoData();
+    //this.loadCSVAnnoData();
 
     // opzionale: se vuoi anche il mese coerente col nuovo anno
     this.loadCSVMeseData();
