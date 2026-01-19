@@ -129,7 +129,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     this.csvAnnoPath = `assets/storico-cicerone/cicerone-${this.year}.csv`;
 
     const tempField = 'Valle del Rio - Temperatura Aria - 51436 (°C)';
-    const urField   = 'Valle del Rio - Umidità Relativa - 51437 (%)';
+    const urField = 'Valle del Rio - Umidità Relativa - 51437 (%)';
     const rainField = 'Valle del Rio - Pioggia Cumulata - 51438 (mm)';
 
     this.fileService.getCSV(this.csvAnnoPath).subscribe({
@@ -180,11 +180,20 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
             : null;
 
         this.arrResponseAnno.push({
-          anno: '2023',
-          tempMin: '-3.3',
-          tempMax: '36.9',
-          tempMedia: '12.9',
-          pioggia: '1717.4'
+          anno: this.today.getFullYear().toString(),
+          tempMin: annualTempMin,
+          tempMax: annualTempMax,
+          tempMedia: annualTempAvg,
+          umiditaMax: annualUrMax,
+          umiditaMin: annualUrMin,
+          pioggia: annualRain
+        });
+        this.arrResponseAnno.push({
+          anno: '2025',
+          tempMin: '-4.3',
+          tempMax: '34.5',
+          tempMedia: '12.6',
+          pioggia: '1589.5'
         });
         this.arrResponseAnno.push({
           anno: '2024',
@@ -194,22 +203,13 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
           pioggia: '1467.6'
         });
         this.arrResponseAnno.push({
-          anno: '2025',
-          tempMin: '-4.3',
-          tempMax: '34.5',
-          tempMedia: '12.6',
-          pioggia: '1589.5'
+          anno: '2023',
+          tempMin: '-3.3',
+          tempMax: '36.9',
+          tempMedia: '12.9',
+          pioggia: '1717.4'
         });
 
-        this.arrResponseAnno.push({
-          anno: this.today.getFullYear().toString(),
-          tempMin: annualTempMin,
-          tempMax: annualTempMax,
-          tempMedia: annualTempAvg,
-          umiditaMax: annualUrMax,
-          umiditaMin: annualUrMin,
-          pioggia: annualRain
-        });
 
         this.dataSourceAnno.data = this.arrResponseAnno;
 
@@ -228,7 +228,6 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
       }
     });
   }
-
 
 
   // Carica i dati dal CSV (MESE) - versione corretta e stabile (niente casino col paginator)
@@ -266,7 +265,7 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
     // WARNING: il tuo campo sembra "Pioggia Cumulata". Per la pioggia del singolo giorno
     // facciamo la differenza tra cumulati giornalieri (ordinati per data).
     const rainField = 'Valle del Rio - Pioggia Cumulata - 51438 (mm)';
-    const urField   = 'Valle del Rio - Umidità Relativa - 51437 (%)';
+    const urField = 'Valle del Rio - Umidità Relativa - 51437 (%)';
     const tempField = 'Valle del Rio - Temperatura Aria - 51436 (°C)';
 
     this.fileService.getCSV(this.csvUrlMese).subscribe({
@@ -276,7 +275,9 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
 
         for (const row of this.csvDataMese) {
           const dateObj = new Date(row.Orario);
-          if (Number.isNaN(dateObj.getTime())) continue;
+          if (Number.isNaN(dateObj.getTime())) {
+            continue;
+          }
 
           // questo check è opzionale (il file è già del mese), ma lo lasciamo safe
           if (dateObj.getFullYear() !== this.year || dateObj.getMonth() !== selected.getMonth()) {
@@ -370,12 +371,12 @@ export class StatisticheStazioneCiceroneComponent implements OnInit, AfterViewIn
         const validTempMin = result.map(r => nums(r.tempMin)).filter(v => v !== null) as number[];
         const validTempMax = result.map(r => nums(r.tempMax)).filter(v => v !== null) as number[];
         const validTempAvg = result.map(r => nums(r.tempMedia)).filter(v => v !== null) as number[];
-        const validUrMin   = result.map(r => nums(r.umiditaMin)).filter(v => v !== null) as number[];
-        const validUrMax   = result.map(r => nums(r.umiditaMax)).filter(v => v !== null) as number[];
+        const validUrMin = result.map(r => nums(r.umiditaMin)).filter(v => v !== null) as number[];
+        const validUrMax = result.map(r => nums(r.umiditaMax)).filter(v => v !== null) as number[];
 
         const tempMinEstrema = validTempMin.length ? Math.min(...validTempMin) : null;
         const tempMaxEstrema = validTempMax.length ? Math.max(...validTempMax) : null;
-        const tempMediaTot   = validTempAvg.length ? (validTempAvg.reduce((a, b) => a + b, 0) / validTempAvg.length) : null;
+        const tempMediaTot = validTempAvg.length ? (validTempAvg.reduce((a, b) => a + b, 0) / validTempAvg.length) : null;
 
         const umiditaEstremaMin = validUrMin.length ? Math.min(...validUrMin) : null;
         const umiditaEstremaMax = validUrMax.length ? Math.max(...validUrMax) : null;

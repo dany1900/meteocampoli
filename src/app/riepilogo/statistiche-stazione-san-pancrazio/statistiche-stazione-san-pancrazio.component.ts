@@ -164,12 +164,20 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
           this.csvDataAnno?.length
             ? (this.csvDataAnno[this.csvDataAnno.length - 1][rainField] ?? '0.0')
             : '0.0';
+
         this.arrResponseAnno.push({
-          anno: '2023',
-          tempMin: '-1.5',
-          tempMax: '37.2',
-          tempMedia: '14.8',
-          pioggia: '1290.6'
+          anno: this.today.getFullYear().toString(),
+          tempMin: annualTempMin,
+          tempMax: annualTempMax,
+          tempMedia: annualTempAvg,
+          pioggia: annualRain
+        });
+        this.arrResponseAnno.push({
+          anno: '2025',
+          tempMin: '-0.9',
+          tempMax: '35.7',
+          tempMedia: '14.9',
+          pioggia: '1223.5'
         });
         this.arrResponseAnno.push({
           anno: '2024',
@@ -179,20 +187,13 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
           pioggia: '1070.1'
         });
         this.arrResponseAnno.push({
-          anno: '2025',
-          tempMin: '-0.9',
-          tempMax: '35.7',
-          tempMedia: '14.9',
-          pioggia: '1223.5'
+          anno: '2023',
+          tempMin: '-1.5',
+          tempMax: '37.2',
+          tempMedia: '14.8',
+          pioggia: '1290.6'
         });
 
-        this.arrResponseAnno.push({
-          anno: this.today.getFullYear().toString(),
-          tempMin: annualTempMin,
-          tempMax: annualTempMax,
-          tempMedia: annualTempAvg,
-          pioggia: annualRain
-        });
 
         this.dataSourceAnno.data = this.arrResponseAnno;
 
@@ -259,7 +260,9 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
 
         for (const row of this.csvDataMese) {
           const dateObj = new Date(row.Orario);
-          if (Number.isNaN(dateObj.getTime())) continue;
+          if (Number.isNaN(dateObj.getTime())) {
+            continue;
+          }
 
           // safe: resta nel mese selezionato
           if (dateObj.getFullYear() !== this.year || dateObj.getMonth() !== selected.getMonth()) {
@@ -613,7 +616,7 @@ export class StatisticheStazioneSanPancrazioComponent implements OnInit, AfterVi
     //this.loadCSVAnnoData();
 
     // opzionale: se vuoi anche il mese coerente col nuovo anno
-     this.loadCSVMeseData();
+    this.loadCSVMeseData();
   }
 
 }

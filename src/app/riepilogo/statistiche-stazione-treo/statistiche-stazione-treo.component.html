@@ -36,7 +36,7 @@
     <h2 class="title-micro-section">{{getMonthName(month) + " " + year}} </h2>
 
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort #sortMese="matSort">
 
       <!-- Data Ora Column -->
       <ng-container matColumnDef="giorno">
@@ -140,9 +140,15 @@
     <button mat-raised-button color="primary" class="esegui" (click)="filterData()">ESEGUI</button>
     -->
     <br>
-    <h2 class="title-micro-section">{{'Anno ' + year}} </h2>
+    <h2 class="title-micro-section">{{'Annuali'}} </h2>
 
-    <table mat-table [dataSource]="dataSourceAnno" class="mat-elevation-z8" matSort>
+    <table mat-table [dataSource]="dataSourceAnno" class="mat-elevation-z8" matSort #sortAnno="matSort">
+    <!-- Data Ora Column -->
+    <ng-container matColumnDef="anno">
+      <th class="riepilogo-giorno-header" mat-header-cell *matHeaderCellDef mat-sort-header> Anno</th>
+      <td class="riepilogo-giorno-body" mat-cell *matCellDef="let element"
+          [ngStyle]="{'background-color': '#e3dede'} "> {{(element?.anno) ? element?.anno : '-' }} </td>
+    </ng-container>
 
       <!-- Profondita Column -->
       <ng-container matColumnDef="tempMin">
@@ -204,16 +210,10 @@
         <td class="mat-cell red" colspan="7">Nessun dato disponibile</td>
       </tr>
     </table>
-    <mat-paginator
-      #paginatorAnnuale
-      [pageIndex]="currentPageAnno"
-      [hidePageSize]="true"
-      [pageSize]="dataSourceAnno?.data?.length || 1"
-      [length]="paginatorLengthAnnuale"
-      [showFirstLastButtons]="false"
-      [disabled]="imageLoaderAnno"
-      (page)="handlePageAnno($event)"
-      aria-label="Naviga anni">
-    </mat-paginator>
   </div>
+
 </div>
+<br>
+<br>
+<h2> * Il 2025 ha dati incompleti, recupero in corso... </h2>
+

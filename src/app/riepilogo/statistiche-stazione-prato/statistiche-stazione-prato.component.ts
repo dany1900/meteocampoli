@@ -198,18 +198,19 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
           this.csvDataAnno?.length
             ? (this.csvDataAnno[this.csvDataAnno.length - 1]['Pioggia annuale(mm)'] ?? null)
             : null;
+
         this.arrResponseAnno.push({
-          anno: '2024',
-          tempMin: '-4.1',
-          tempMax: '36.7',
-          tempMedia: '15.1',
-          ventoMax: '61',
-          // umiditaMax: urMaxOut,
-          // umiditaMin: urMinOut,
-          pressioneMax: '1031.6',
-          pressioneMin: '989.2',
-          pioggiaMaxEvento: '80.3',
-          pioggia: '993.5'
+          anno: this.today.getFullYear().toString(),
+          tempMin: tempMinOut,
+          tempMax: tempMaxOut,
+          tempMedia: annualAvg,
+          ventoMax: windMax ? windMax.toFixed(0) : '0',
+          umiditaMax: urMaxOut,
+          umiditaMin: urMinOut,
+          pressioneMax: pressMaxOut,
+          pressioneMin: pressMinOut,
+          pioggiaMaxEvento: maxPioggiaEvento.toFixed(1),
+          pioggia: rainYear
         });
         this.arrResponseAnno.push({
           anno: '2025',
@@ -225,18 +226,19 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
           pioggia: '1260.4'
         });
         this.arrResponseAnno.push({
-          anno: this.today.getFullYear().toString(),
-          tempMin: tempMinOut,
-          tempMax: tempMaxOut,
-          tempMedia: annualAvg,
-          ventoMax: windMax ? windMax.toFixed(0) : '0',
-          umiditaMax: urMaxOut,
-          umiditaMin: urMinOut,
-          pressioneMax: pressMaxOut,
-          pressioneMin: pressMinOut,
-          pioggiaMaxEvento: maxPioggiaEvento.toFixed(1),
-          pioggia: rainYear
+          anno: '2024',
+          tempMin: '-4.1',
+          tempMax: '36.7',
+          tempMedia: '15.1',
+          ventoMax: '61',
+          // umiditaMax: urMaxOut,
+          // umiditaMin: urMinOut,
+          pressioneMax: '1031.6',
+          pressioneMin: '989.2',
+          pioggiaMaxEvento: '80.3',
+          pioggia: '993.5'
         });
+
 
         this.dataSourceAnno.data = this.arrResponseAnno;
 

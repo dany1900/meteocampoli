@@ -27,27 +27,17 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
   arrResponse: StatisticheStazioneTreoInterface[] = [];
   arrResponseAnno: StatisticheStazioneTreoInterface[] = [];
   displayedColumns: string[] = ['giorno', 'tempMin', 'tempMax', 'tempMedia', 'vento', 'pressione', 'umidita', 'pioggia'];
-  displayedColumnsAnno: string[] = ['tempMin', 'tempMax', 'tempMedia', 'vento', 'pressione', 'pioggiaGiornalieraMax', 'pioggia'];
+  displayedColumnsAnno: string[] = ['anno', 'tempMin', 'tempMax', 'tempMedia', 'vento', 'pressione', 'pioggiaGiornalieraMax', 'pioggia'];
   dataSource = new MatTableDataSource<StatisticheStazioneTreoInterface>(this.arrResponse);
   dataSourceAnno = new MatTableDataSource<StatisticheStazioneTreoInterface>(this.arrResponseAnno);
   isVisible = false;
   isVisibleAnno = false;
 
-  @ViewChild('paginatorMensile') paginator: MatPaginator;
+  @ViewChild('paginatorMese') paginator!: MatPaginator;
+  @ViewChild('paginatorAnno') paginatorAnno!: MatPaginator;
 
-  @ViewChild(MatSort) set matSort(sort: MatSort) {
-    if (!this.dataSource.sort) {
-      this.dataSource.sort = sort;
-    }
-  }
-
-  @ViewChild('paginatorAnnuale') paginatorAnno: MatPaginator;
-
-  @ViewChild(MatSort) set matSortAnno(sort: MatSort) {
-    if (!this.dataSourceAnno.sort) {
-      this.dataSourceAnno.sort = sort;
-    }
-  }
+  @ViewChild('sortMese') sortMese!: MatSort;
+  @ViewChild('sortAnno') sortAnno!: MatSort;
 
   paginatorLengthMensile = 400;
   paginatorLengthAnnuale = 9999;
@@ -69,6 +59,10 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
     'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
     'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'
   ];
+
+  startYear = 2013;
+  availableYears: number;
+  currentYearIndex: number;
 
   constructor(
     private seo: SEOService,
@@ -92,18 +86,22 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
     this.today = new Date();
+    this.availableYears = this.today.getFullYear() - this.startYear + 1; // es. 2013..2026
+    this.currentYearIndex = this.today.getFullYear() - this.startYear;
     this.year = this.today.getFullYear();
     this.yearMonth = this.year;
-    this.month = (this.today.getMonth() + 1).toString().padStart(2, '0');
+    this.month = (this.today.getMonth() + 1).toString();
     this.currentPage = this.today.getMonth();
-    this.precYear = this.year;
 
     this.loadCumulusDayFileData();
   }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sortMese;
+
     this.dataSourceAnno.paginator = this.paginatorAnno;
+    this.dataSourceAnno.sort = this.sortAnno;
   }
 
   async loadCumulusDayFileData(): Promise<void> {
@@ -134,24 +132,24 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       let datiMese: DatoGiornalieroRaw[] = [];
 
       // ================================================================
-      // 1️⃣ CARICO ANNUALE — year.xml se disponibile
+      // CARICO ANNUALE — year.xml se disponibile
       // ================================================================
-      if (this.year <= 2025) {
+      /*if (this.year <= 2025) {
         this.annualStats = await this.loadXmlYearStats(this.year);
-      }
+      }*/
 
       // ================================================================
-      // 2️⃣ CARICO DATI GIORNALIERI (dayfile sempre usato)
+      // CARICO DATI GIORNALIERI (dayfile sempre usato)
       // ================================================================
       const txt = await this.http.get(
         'assets/storico-treo/dayfile.txt?v=' + Date.now(),
-        { responseType: 'text' }
+        {responseType: 'text'}
       ).toPromise();
 
       datiAnno = this.parseDayfile(txt, this.year);
 
       // ================================================================
-      // 3️⃣ CARICO SOLO IL MESE RICHIESTO
+      // CARICO SOLO IL MESE RICHIESTO
       // ================================================================
 
       if (this.year < 2025) {
@@ -159,22 +157,18 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         if (!datiMese.length) {
           datiMese = datiAnno.filter(d => d.mese === monthNum);
         }
-      }
-
-      else if (this.year === 2025) {
+      } else if (this.year === 2025) {
         if (monthNum <= 8) {
           datiMese = await this.loadXmlMonthlyData(2025, monthNum);
         } else {
           datiMese = datiAnno.filter(d => d.mese === monthNum);
         }
-      }
-
-      else {
+      } else {
         datiMese = datiAnno.filter(d => d.mese === monthNum);
       }
 
       // ================================================================
-      // 4️⃣ SE MENSILE VUOTO
+      // SE MENSILE VUOTO
       // ================================================================
       if (!datiMese.length) {
         this.arrResponse = [{
@@ -187,7 +181,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       }
 
       // ================================================================
-      // 5️⃣ COSTRUZIONE TABELLA MENSILE
+      // COSTRUZIONE TABELLA MENSILE
       // ================================================================
       const giorniOrd = [...datiMese].sort((a, b) => Number(a.giorno) - Number(b.giorno));
 
@@ -236,7 +230,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       this.dataSource.data = this.arrResponse;
 
       // ================================================================
-      // 6️⃣ COSTRUZIONE ANNUALE
+      // COSTRUZIONE ANNUALE
       // ================================================================
 
       const ann = this.annualStats;
@@ -249,9 +243,9 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       const ann_umMax = max(datiAnno.map(d => d.umiditaMax));
 
       // ================================================================
-      // 🟢 ANNI < 2025 — SOLO year.xml
+      // ANNI < 2025 — SOLO year.xml
       // ================================================================
-      if (this.year < 2025) {
+      /*if (this.year < 2025) {
 
         if (!ann) {
           this.arrResponseAnno = [{
@@ -265,30 +259,25 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         }
 
         this.arrResponseAnno = [{
-          giorno: `Anno ${this.year}`,
-
+          anno: this.today.getFullYear().toString(),
           tempMin: ann.minTemp.toFixed(1),
           tempMax: ann.maxTemp.toFixed(1),
           tempMedia: isNaN(ann.tempMean) ? '-' : ann.tempMean.toFixed(1),
-
           ventoMax: ann.windMax.toFixed(1),
           pressioneMin: ann.pressureMin.toFixed(1),
           pressioneMax: ann.pressureMax.toFixed(1),
-
           umiditaMin: '-',     // non presente nel file
           umiditaMax: '-',
-
           // rainfall_24h se presente, fallback automatico
           pioggiaGiornalieraMax: ann.maxRainDay.toFixed(1),
           pioggia: ann.totalRain.toFixed(1)
         }];
-
         this.dataSourceAnno.data = this.arrResponseAnno;
         return;
       }
 
 
-      // 🟧 ANNO 2025 → combinato XML GEN–AGO + Dayfile SET–DIC
+      // ANNO 2025 → combinato XML GEN–AGO + Dayfile SET–DIC
       if (this.year === 2025) {
 
         const xml = this.annualStats;
@@ -308,7 +297,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         // pioggia totale sì, combinata
         const annual_totalRain = xmlRain + (isFinite(dfRain) ? dfRain : 0);
 
-        // ⚠️ Pioggia giornaliera massima: SOLO quella del file 2025.xml
+        // Pioggia giornaliera massima: SOLO quella del file 2025.xml
         const annual_maxRain = xmlMaxRain;
 
         const annual_minTemp = Math.min(xmlMinTemp, isFinite(dfMinTemp) ? dfMinTemp : xmlMinTemp);
@@ -339,31 +328,201 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
 
         this.dataSourceAnno.data = this.arrResponseAnno;
         return;
-      }
+      }*/
 
 
       // ================================================================
-      // 🟥 ANNI > 2025 — SOLO DAYFILE
+      // ANNI > 2025 — SOLO DAYFILE
       // ================================================================
-      if (this.year > 2025) {
+      //if (this.year > 2025) {
 
-        this.arrResponseAnno = [{
-          giorno: `Anno ${this.year}`,
-          tempMin: min(datiAnno.map(d => d.tempMin)).toFixed(1),
-          tempMax: max(datiAnno.map(d => d.tempMax)).toFixed(1),
-          tempMedia: ann_tempMedia_fromDayfile.toFixed(1),
-          ventoMax: ann_ventoMax_fromDayfile.toFixed(1),
-          pressioneMin: ann_pressMin_fromDayfile.toFixed(1),
-          pressioneMax: ann_pressMax_fromDayfile.toFixed(1),
-          umiditaMin: ann_umMin.toFixed(0),
-          umiditaMax: ann_umMax.toFixed(0),
-          pioggiaGiornalieraMax: max(datiAnno.map(d => d.pioggia)).toFixed(1),
-          pioggia: sum(datiAnno.map(d => d.pioggia)).toFixed(1)
-        }];
+      this.arrResponseAnno = [{
+        anno: this.today.getFullYear().toString(),
+        tempMin: min(datiAnno.map(d => d.tempMin)).toFixed(1),
+        tempMax: max(datiAnno.map(d => d.tempMax)).toFixed(1),
+        tempMedia: ann_tempMedia_fromDayfile.toFixed(1),
+        ventoMax: ann_ventoMax_fromDayfile.toFixed(1),
+        pressioneMin: ann_pressMin_fromDayfile.toFixed(1),
+        pressioneMax: ann_pressMax_fromDayfile.toFixed(1),
+        //umiditaMin: ann_umMin.toFixed(0),
+        //umiditaMax: ann_umMax.toFixed(0),
+        pioggiaGiornalieraMax: max(datiAnno.map(d => d.pioggia)).toFixed(1),
+        pioggia: sum(datiAnno.map(d => d.pioggia)).toFixed(1)
+      }];
+      this.arrResponseAnno.push({
+        anno: '2025*',
+        tempMin: '-1.8',
+        tempMax: '38.3',
+        tempMedia: '15.6',
+        ventoMax: '60.0',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1031.4',
+        pressioneMin: '1000.2',
+        pioggiaGiornalieraMax: '35.9',
+        pioggia: '781.6'
+      });
+      this.arrResponseAnno.push({
+        anno: '2024',
+        tempMin: '-6.4',
+        tempMax: '38.5',
+        tempMedia: '16.3',
+        ventoMax: '85.7',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1033.7',
+        pressioneMin: '989.4',
+        pioggiaGiornalieraMax: '73',
+        pioggia: '908.7'
+      });
+      this.arrResponseAnno.push({
+        anno: '2023',
+        tempMin: '-3.1',
+        tempMax: '40.1',
+        tempMedia: '15.8',
+        ventoMax: '71.3',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1034.1',
+        pressioneMin: '988.2',
+        pioggiaGiornalieraMax: '107.5',
+        pioggia: '1275.5'
+      });
+      this.arrResponseAnno.push({
+        anno: '2022',
+        tempMin: '-1.4',
+        tempMax: '38.3',
+        tempMedia: '15.3',
+        ventoMax: '85.0',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1034.3',
+        pressioneMin: '989.0',
+        pioggiaGiornalieraMax: '100.0',
+        pioggia: '937.6'
+      });
+      this.arrResponseAnno.push({
+        anno: '2021',
+        tempMin: '-3.1',
+        tempMax: '39.3',
+        tempMedia: '15.1',
+        ventoMax: '46.4',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1034.8',
+        pressioneMin: '988.6',
+        pioggiaGiornalieraMax: '90.0',
+        pioggia: '1321.5'
+      });
+      this.arrResponseAnno.push({
+        anno: '2020',
+        tempMin: '-2.2',
+        tempMax: '39.3',
+        tempMedia: '15.3',
+        ventoMax: '75.0',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1037.3',
+        pressioneMin: '988.1',
+        pioggiaGiornalieraMax: '76.9',
+        pioggia: '1057.7'
+      });
+      this.arrResponseAnno.push({
+        anno: '2019',
+        tempMin: '-3.5',
+        tempMax: '38',
+        tempMedia: '15.4',
+        ventoMax: '87.1',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1030.8',
+        pressioneMin: '981.7',
+        pioggiaGiornalieraMax: '99.1',
+        pioggia: '1324.3'
+      });
+      this.arrResponseAnno.push({
+        anno: '2018',
+        tempMin: '-7.3',
+        tempMax: '35.9',
+        tempMedia: '15.4',
+        ventoMax: '56.9',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1034.1',
+        pressioneMin: '989.7',
+        pioggiaGiornalieraMax: '82.6',
+        pioggia: '1624.6'
+      });
+      this.arrResponseAnno.push({
+        anno: '2017',
+        tempMin: '-5.7',
+        tempMax: '41.3',
+        tempMedia: '15.3',
+        ventoMax: '79.5',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1033.9',
+        pressioneMin: '989.8',
+        pioggiaGiornalieraMax: '66.7',
+        pioggia: '1097.6 '
+      });
+      this.arrResponseAnno.push({
+        anno: '2016',
+        tempMin: '-3.5',
+        tempMax: '35.5',
+        tempMedia: '15.1',
+        ventoMax: '75.5',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1047.1',
+        pressioneMin: '983.5',
+        pioggiaGiornalieraMax: '85.8',
+        pioggia: '1194.1'
+      });
+      this.arrResponseAnno.push({
+        anno: '2015',
+        tempMin: '-5.1',
+        tempMax: '37.9',
+        tempMedia: '15.3',
+        ventoMax: '91.7',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1036.5',
+        pressioneMin: '978.2',
+        pioggiaGiornalieraMax: '83.8',
+        pioggia: '1069.5'
+      });
+      this.arrResponseAnno.push({
+        anno: '2014',
+        tempMin: '-5.8',
+        tempMax: '32.5',
+        tempMedia: '15.0',
+        ventoMax: '80.2',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1047.8',
+        pressioneMin: '986.7',
+        pioggiaGiornalieraMax: '82.6',
+        pioggia: '1577.7'
+      });
+      this.arrResponseAnno.push({
+        anno: '2013',
+        tempMin: '-4.1',
+        tempMax: '38.1',
+        tempMedia: '14.8',
+        ventoMax: '82.0',
+        // umiditaMax: urMaxOut,
+        // umiditaMin: urMinOut,
+        pressioneMax: '1035.5',
+        pressioneMin: '982.3',
+        pioggiaGiornalieraMax: '66.1',
+        pioggia: '1728.7'
+      });
 
-        this.dataSourceAnno.data = this.arrResponseAnno;
-        return;
-      }
+
+      this.dataSourceAnno.data = this.arrResponseAnno;
+      return;
+      // }
 
     } finally {
       this.imageLoader = false;
@@ -373,9 +532,6 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       this.dataLoaded.emit(true);
     }
   }
-
-
-
 
 
   private async loadXmlMonthlyData(
@@ -397,21 +553,27 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       return [];
     }
 
-    if (!files?.length) return [];
+    if (!files?.length) {
+      return [];
+    }
 
     for (const filename of files) {
 
       try {
         const xmlString = await this.http.get(
           `assets/storico-treo/${year}/${monthStr}/${filename}`,
-          { responseType: 'text' }
+          {responseType: 'text'}
         ).toPromise();
 
-        if (!xmlString?.trim()) continue;
+        if (!xmlString?.trim()) {
+          continue;
+        }
 
         const xmlDoc = parser.parseFromString(xmlString, 'application/xml');
         const root = xmlDoc.querySelector('statistics');
-        if (!root) continue;
+        if (!root) {
+          continue;
+        }
 
         const day = (root.getAttribute('day') || '01').padStart(2, '0');
 
@@ -421,7 +583,9 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
 
         const val = (sel: string, attr?: string): number => {
           const el = xmlDoc.querySelector(sel);
-          if (!el) return NaN;
+          if (!el) {
+            return NaN;
+          }
           if (attr && el.hasAttribute(attr)) {
             return parseFloat(el.getAttribute(attr) || '');
           }
@@ -456,7 +620,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         }
 
         // ===============================
-        // 📌 XML VECCHIO (fino al 2024)
+        // XML VECCHIO (fino al 2024)
         // ===============================
         result.push({
           giorno: day,
@@ -491,8 +655,10 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
     const url = `assets/storico-treo/${year}/${year}.xml`;
 
     try {
-      const xmlString = await this.http.get(url, { responseType: 'text' }).toPromise();
-      if (!xmlString) return null;
+      const xmlString = await this.http.get(url, {responseType: 'text'}).toPromise();
+      if (!xmlString) {
+        return null;
+      }
 
       const parser = new DOMParser();
       const xml = parser.parseFromString(xmlString, 'application/xml');
@@ -501,7 +667,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
         parseFloat((s || '').replace(/[^\d.-]/g, ''));
 
       // =====================================================================
-      // 📌 FORMATO PRE-2025 (come 2024)
+      // FORMATO PRE-2025 (come 2024)
       // =====================================================================
       if (xml.querySelector('tn-min')) {
 
@@ -553,7 +719,7 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
       }
 
       // =====================================================================
-      // 📌 FORMATO 2025 (con attributi)
+      // FORMATO 2025 (con attributi)
       // =====================================================================
       if (xml.querySelector('total-rainfall[value]')) {
 
@@ -617,11 +783,6 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
   }
 
 
-
-
-
-
-
   private parseDayfile(content: string, year: number): DatoGiornalieroRaw[] {
     const righe = content.trim().split('\n');
     const yearShort = year % 100;
@@ -629,9 +790,13 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
 
     for (const riga of righe) {
       const c = riga.split(',');
-      if (c.length < 25) continue;
+      if (c.length < 25) {
+        continue;
+      }
       const [giorno, mese, anno] = c[0].split('/').map(Number);
-      if (anno !== yearShort) continue;
+      if (anno !== yearShort) {
+        continue;
+      }
 
       const safe = (v: string) => parseFloat(v) || 0;
 
@@ -655,10 +820,9 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
   }
 
 
-
   //Get-ChildItem -Recurse -Directory | ForEach-Object { $xmls = Get-ChildItem $_.FullName -Filter *.xml -Name | Where-Object { $_ -match "^\d{4}_\d{2}_\d{2}\.xml$" } | Sort-Object; if ($xmls.Count -gt 0) { $jsonBody = ($xmls | ForEach-Object { '    "' + $_ + '"' }) -join ",`n"; $json = "[`n$jsonBody`n]"; $path = Join-Path $_.FullName "filelist.json"; Set-Content -Path $path -Value $json -Encoding UTF8; Write-Host "✅ Creato $path con $($xmls.Count) file XML"; } else { Write-Host "❌ Nessun file XML giornaliero in $($_.FullName)"; } }
 
-  // 🔍 Cambio data nel datepicker
+  // Cambio data nel datepicker
   filterData(selectedDate: Date = this.dateControl.value): void {
     if (!selectedDate) {
       return;
@@ -666,7 +830,6 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
     this.month = (selectedDate.getMonth() + 1).toString().padStart(2, '0');
     this.year = selectedDate.getFullYear();
     this.loadCumulusDayFileData();
-    this.precYear = this.year;
   }
 
   // 📆 Cambio mese con paginator
@@ -699,7 +862,6 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
     const selectedDate = new Date(currentYear, currentMonth, 1);
     this.dateControl.setValue(selectedDate, {emitEvent: false});
 
-    console.log(`📅 Cambio mese → ${this.month}/${this.year}`);
     this.imageLoader = this.imageLoaderAnno = true;
     this.isVisible = this.isVisibleAnno = false;
 
@@ -707,27 +869,27 @@ export class StatisticheStazioneTreoComponent implements OnInit, AfterViewInit {
   }
 
   // 📆 Cambio anno nel paginator annuale
-  public handlePageAnno(e: PageEvent): void {
-    const MIN_YEAR = 2013, MAX_YEAR = 2050;
-    const goingForward = e.pageIndex > this.currentPageAnno;
-    const goingBackward = e.pageIndex < this.currentPageAnno;
+  /* public handlePageAnno(e: PageEvent): void {
+     const MIN_YEAR = 2013, MAX_YEAR = 2050;
+     const goingForward = e.pageIndex > this.currentPageAnno;
+     const goingBackward = e.pageIndex < this.currentPageAnno;
 
-    if (goingForward && this.year < MAX_YEAR) {
-      this.year++;
-    } else if (goingBackward && this.year > MIN_YEAR) {
-      this.year--;
-    } else {
-      return;
-    }
+     if (goingForward && this.year < MAX_YEAR) {
+       this.year++;
+     } else if (goingBackward && this.year > MIN_YEAR) {
+       this.year--;
+     } else {
+       return;
+     }
 
-    this.currentPageAnno = e.pageIndex;
-    const selectedDate = new Date(this.year, this.dateControl.value.getMonth(), 1);
-    this.dateControl.setValue(selectedDate, {emitEvent: false});
-    console.log(`📆 Cambio anno → ${this.year}`);
-    this.imageLoader = this.imageLoaderAnno = true;
-    this.isVisible = this.isVisibleAnno = false;
-    setTimeout(() => this.loadCumulusDayFileData(), 100);
-  }
+     this.currentPageAnno = e.pageIndex;
+     const selectedDate = new Date(this.year, this.dateControl.value.getMonth(), 1);
+     this.dateControl.setValue(selectedDate, {emitEvent: false});
+     console.log(`📆 Cambio anno → ${this.year}`);
+     this.imageLoader = this.imageLoaderAnno = true;
+     this.isVisible = this.isVisibleAnno = false;
+     setTimeout(() => this.loadCumulusDayFileData(), 100);
+   }*/
 
 
   // Funzione per calcolare il colore in base al valore

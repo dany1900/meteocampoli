@@ -40,6 +40,7 @@ export interface AnnualRaw {
 
 export interface StatisticheStazioneTreoInterface {
   giorno?: string;
+  anno?: string;
   tempMin?: string;
   tempMax: string;
   tempMedia: string;
