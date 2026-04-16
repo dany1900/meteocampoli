@@ -2,14 +2,17 @@
 
 <mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
 <br>
+
 <div [hidden]="imageLoader" class="center">
   <br>
   <br>
+
   <h2 class="title-micro-section">Meteogramma Campoli Appennino</h2>
   <img class="previsioni-frame" width="95%" height="650"
        src="https://my.meteoblue.com/visimage/meteogram_web_hd?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Campoli+Appennino&iso2=it&lat=41.7354&lon=13.6833&asl=650&tz=Europe%2FRome&lang=it&sig=1be2d034299438e91d58e3781c53787f"
        alt="meteogramma" rel="noreferrer"
-       (load)="imageLoader = false;" (click)="toggleClass($event,'zoomed')"/><br/>
+       (load)="imageLoader = false;"
+       (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
   <h2 class="title-micro-section">Spaghi modello GFS Campoli Appennino</h2>
@@ -24,19 +27,20 @@
        (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
-    <h2 class="title-micro-section">Spaghi modello GEM Campoli Appennino</h2>
-      <img class="previsioni-spaghi" rel="noreferrer" width="95%" height="100" alt="spaghi modello GEM"
-           [src]="linkGem | safe"
-           (click)="toggleClass($event,'zoomed')"/><br/>
+  <h2 class="title-micro-section">Spaghi modello GEM Campoli Appennino</h2>
+  <img class="previsioni-spaghi" rel="noreferrer" width="95%" height="100" alt="spaghi modello GEM"
+       [src]="linkGem | safe"
+       (click)="toggleClass($event,'zoomed')"/><br/>
 
-      <br>
+  <br>
   <em class="title-micro-section">Pioggia modello WRF prossime 48H</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="1077"  alt="pioggia wrf 48 h" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" height="1077" alt="pioggia wrf 48 h" rel="noreferrer"
        src="https://cdn1.meteonetwork.it/models/malawi/wrf/output/lastrun/wrf_italia_prectot.png?_1670578702"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+
   <em class="title-micro-section">Pioggia modello ECMWF prossime 72H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia ecmwf 72h" rel="noreferrer"
@@ -44,13 +48,15 @@
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+
   <em class="title-micro-section">Pioggia modello GFS prossime 72H</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%" height="797"  alt="pioggia gfs 72h" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia gfs 72h" rel="noreferrer"
        src="https://www.wetterzentrale.de/maps/GFSOPIT{{runGfs}}_72_18.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+
   <em class="title-micro-section">Pioggia modello UKMO prossime 72H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia ukmo 72h" rel="noreferrer"
@@ -58,6 +64,7 @@
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+
   <em class="title-micro-section">Pioggia modello GEM prossime 72H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia gem 72h" rel="noreferrer"
@@ -65,6 +72,7 @@
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+
   <em class="title-micro-section">Pioggia modello ICON prossime 72H</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="797" alt="pioggia icon 72h" rel="noreferrer"
@@ -72,6 +80,233 @@
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+
+  <em class="title-micro-section">Animazione Instabilità Atmosferica (CAPE & LIFTED INDEX) 48H - Modello GFS</em>
+
+  <!-- NOTA ESPANDIBILE -->
+  <details class="forecast-note">
+    <summary class="forecast-note-title">
+      🔍 Come leggere la mappa (CAPE / Lifted Index)
+    </summary>
+
+    <p><strong>Colori (CAPE)</strong>: indicano l’energia disponibile per i temporali.</p>
+    <p>
+      Blu: stabile (0-100)<br>
+      Verde: instabilità debole (200-800)<br>
+      Giallo: temporali possibili (800-1500)<br>
+      Arancione: temporali forti (1500-2500)<br>
+      Rosso/viola: fenomeni anche severi (>2500)
+    </p>
+
+    <p><strong>Numeri bianchi (Lifted Index)</strong>:</p>
+    <p>
+      Valori positivi: stabile<br>
+      0: neutro<br>
+      -2 / -4: temporali possibili<br>
+      -6 / -8: temporali forti<br>
+      < -8: forte instabilità
+    </p>
+
+    <p>
+      Colori più intensi + valori negativi = maggiore probabilità di temporali,
+      anche localmente intensi.
+    </p>
+  </details>
+
+  <div class="cape-wrapper">
+
+    <img class="previsioni-no-heigth"
+         width="95%"
+         height="797"
+         [src]="currentCapeImage"
+         alt="animazione instabilità GFS Italia"
+         rel="noreferrer"
+         (click)="toggleClass($event,'zoomed')"
+         (error)="onImageCapeError()"/>
+
+    <div class="cape-controls-wrapper">
+      <div class="cape-controls">
+        <button type="button" (click)="prevCapeImage()">⏮ Indietro</button>
+        <button type="button" (click)="startCapeAnimation()">▶ Play</button>
+        <button type="button" (click)="stopCapeAnimation()">⏸ Stop</button>
+        <button type="button" (click)="nextCapeImage()">⏭ Avanti</button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <em class="title-micro-section">
+    Animazione Precipitazioni 3h - LAMMA WRF IFS (ECMWF)
+  </em>
+
+  <details class="forecast-note">
+    <summary class="forecast-note-title">
+      🌧️ Come leggere la mappa LAMMA WRF IFS
+    </summary>
+    <p>
+      La mappa mostra le precipitazioni previste nelle 3 ore.
+      Colori più intensi indicano quantitativi di pioggia più elevati.
+    </p>
+    <p>
+      È utile per individuare rovesci intensi, temporali localizzati
+      e fenomeni più dettagliati rispetto ai modelli a scala più ampia.
+    </p>
+  </details>
+
+  <div class="cape-wrapper">
+    <img class="previsioni-no-heigth"
+         width="95%"
+         height="797"
+         [src]="currentLammaWrfIfsImage"
+         alt="animazione precipitazioni LAMMA WRF IFS"
+         rel="noreferrer"
+         (click)="toggleClass($event,'zoomed')"
+         (error)="onImageLammaWrfIfsError()">
+
+    <br>
+
+    <div class="cape-controls-wrapper">
+      <div class="cape-controls">
+        <button type="button" (click)="prevLammaWrfIfsImage()">⏮ Indietro</button>
+        <button type="button" (click)="startLammaWrfIfsAnimation()">▶ Play</button>
+        <button type="button" (click)="stopLammaWrfIfsAnimation()">⏸ Stop</button>
+        <button type="button" (click)="nextLammaWrfIfsImage()">⏭ Avanti</button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <em class="title-micro-section">
+    Animazione Precipitazioni 3h - LAMMA Moloch GFS
+  </em>
+  <details class="forecast-note">
+    <summary class="forecast-note-title">
+      🌧️ Come leggere la mappa LAMMA Moloch GFS
+    </summary>
+    <p>
+      La mappa mostra le precipitazioni previste nelle 3 ore.
+      Colori più intensi indicano quantitativi di pioggia più elevati.
+    </p>
+    <p>
+      È utile per individuare nuclei temporaleschi, rovesci intensi
+      e le aree con precipitazioni più persistenti.
+    </p>
+  </details>
+  <div class="cape-wrapper">
+    <img class="previsioni-no-heigth"
+         width="95%"
+         height="797"
+         [src]="currentLammaMolochGfsImage"
+         alt="animazione precipitazioni LAMMA Moloch GFS"
+         rel="noreferrer"
+         (click)="toggleClass($event,'zoomed')"
+         (error)="onImageLammaMolochGfsError()">
+
+    <br>
+
+    <div class="cape-controls-wrapper">
+      <div class="cape-controls">
+        <button type="button" (click)="prevLammaMolochGfsImage()">⏮ Indietro</button>
+        <button type="button" (click)="startLammaMolochGfsAnimation()">▶ Play</button>
+        <button type="button" (click)="stopLammaMolochGfsAnimation()">⏸ Stop</button>
+        <button type="button" (click)="nextLammaMolochGfsImage()">⏭ Avanti</button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <em class="title-micro-section">
+    Animazione Precipitazioni 3h - LAMMA Moloch IFS (ECMWF)
+  </em>
+
+  <details class="forecast-note">
+    <summary class="forecast-note-title">
+      🌧️ Come leggere la mappa LAMMA Moloch IFS
+    </summary>
+    <p>
+      La mappa mostra le precipitazioni previste nelle 3 ore.
+      Colori più intensi indicano quantitativi di pioggia più elevati.
+    </p>
+    <p>
+      È utile per individuare nuclei temporaleschi, rovesci intensi
+      e le aree con precipitazioni più persistenti.
+    </p>
+  </details>
+
+  <div class="cape-wrapper">
+    <img class="previsioni-no-heigth"
+         width="95%"
+         height="797"
+         [src]="currentLammaMolochIfsImage"
+         alt="animazione precipitazioni LAMMA Moloch IFS"
+         rel="noreferrer"
+         (click)="toggleClass($event,'zoomed')"
+         (error)="onImageLammaMolochIfsError()">
+
+    <br>
+
+    <div class="cape-controls-wrapper">
+      <div class="cape-controls">
+        <button type="button" (click)="prevLammaMolochIfsImage()">⏮ Indietro</button>
+        <button type="button" (click)="startLammaMolochIfsAnimation()">▶ Play</button>
+        <button type="button" (click)="stopLammaMolochIfsAnimation()">⏸ Stop</button>
+        <button type="button" (click)="nextLammaMolochIfsImage()">⏭ Avanti</button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <em class="title-micro-section">
+    Animazione Temperatura 850 hPa - LAMMA Moloch IFS (ECMWF)
+  </em>
+
+  <details class="forecast-note">
+    <summary class="forecast-note-title">
+      🌡️ Come leggere la mappa Temperatura 850 hPa
+    </summary>
+    <p>
+      La mappa mostra la temperatura prevista a circa 1500 metri di quota.
+      È molto utile per valutare masse d’aria, ingressi freddi o caldi e il potenziale termico generale.
+    </p>
+    <p>
+      Valori più bassi indicano aria più fredda in quota, valori più alti aria più calda.
+      È una delle mappe più usate per seguire evoluzioni termiche e possibili nevicate a quote medio-basse.
+    </p>
+  </details>
+
+  <div class="cape-wrapper">
+    <img class="previsioni-no-heigth"
+         width="95%"
+         height="797"
+         [src]="currentLammaMolochIfs850Image"
+         alt="animazione temperatura 850 hPa LAMMA Moloch IFS"
+         rel="noreferrer"
+         (click)="toggleClass($event,'zoomed')"
+         (error)="onImageLammaMolochIfs850Error()">
+
+    <br>
+
+    <div class="cape-controls-wrapper">
+      <div class="cape-controls">
+        <button type="button" (click)="prevLammaMolochIfs850Image()">⏮ Indietro</button>
+        <button type="button" (click)="startLammaMolochIfs850Animation()">▶ Play</button>
+        <button type="button" (click)="stopLammaMolochIfs850Animation()">⏸ Stop</button>
+        <button type="button" (click)="nextLammaMolochIfs850Image()">⏭ Avanti</button>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
   <em class="title-micro-section">Previsioni 9 giorni ECMWF - AVG 850Hpa - Mosaico</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="797" alt="mosaico 850hpa ecmwf 9 giorni" rel="noreferrer"
@@ -79,28 +314,68 @@
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+
   <em class="title-micro-section">Previsioni 9 giorni GFS - OPE Precipitazioni - Mosaico</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" height="797" alt="mosaico precipitazioni gfs 9 giorni" rel="noreferrer"
        src="https://www.wetterzentrale.de/maps/GFSPANELOPEU{{runGfs}}_4.png"
        (click)="toggleClass($event,'zoomed')"/>
+
   <br>
   <br>
+
+  <em class="title-micro-section">Animazione Polveri Sahariane 48H - Europa</em>
+
+  <div class="cape-wrapper">
+    <img class="previsioni-no-heigth"
+         width="95%"
+         height="797"
+         [src]="currentDustImage"
+         alt="animazione polveri sahariane"
+         rel="noreferrer"
+         (click)="toggleClass($event,'zoomed')"
+         (error)="onImageDustError()"/>
+
+    <br>
+
+    <div class="cape-controls">
+      <button (click)="prevDustImage()">⏮ Indietro</button>
+      <button (click)="startDustAnimation()">▶ Play</button>
+      <button (click)="stopDustAnimation()">⏸ Stop</button>
+      <button (click)="nextDustImage()">⏭ Avanti</button>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
   <h2 class="title-micro-section">Previsioni 5 Giorni Campoli Appennino ilMeteo</h2>
-  <iframe *ngIf="!deviceService.isMobile()" width="1070" height="940" scrolling="no" frameborder="no" title="previsioni campoli appennino IlMeteo" rel="noreferrer" noresize="noresize" src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=750&ico=4&lang=ita&days=6&font=Arial&fontsize=17&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
-  <iframe *ngIf="deviceService.isMobile()" width="1060" height="790" scrolling="no" frameborder="no" title="previsioni campoli appennino IlMeteo" rel="noreferrer" noresize="noresize" src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=1150&ico=4&lang=ita&days=6&font=Arial&fontsize=18.5&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
+  <iframe *ngIf="!deviceService.isMobile()" width="1070" height="940" scrolling="no" frameborder="no"
+          title="previsioni campoli appennino IlMeteo" rel="noreferrer" noresize="noresize"
+          src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=750&ico=4&lang=ita&days=6&font=Arial&fontsize=17&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
+  <iframe *ngIf="deviceService.isMobile()" width="1060" height="790" scrolling="no" frameborder="no"
+          title="previsioni campoli appennino IlMeteo" rel="noreferrer" noresize="noresize"
+          src="https://www.ilmeteo.it/box/previsioni.php?citta=1194&type=tri1&width=1150&ico=4&lang=ita&days=6&font=Arial&fontsize=18.5&bg=FFFFFF&fg=000000&bgtitle=0099FF&fgtitle=FFFFFF&bgtab=F0F0F0&fglink=1773C2"></iframe>
   <br>
   <br>
   <br>
   <br>
+
   <h2 class="title-micro-section">Previsioni 7 Giorni Campoli Appennino 3bMeteo</h2>
   <iframe src="https://www.3bmeteo.com/moduli_esterni/localita_7_giorni_orario/1194/ffffff/286fe2/d02525/ffffff/it"
-          width=1030 height=650  frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="previsioni campoli 3bMeteo" rel="preload" ></iframe>
+          width="1030" height="650" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+          title="previsioni campoli 3bMeteo" rel="preload"></iframe>
   <br>
   <br>
-  <h2 class="title-micro-section">Previsioni Campoli Appennino MeteoGiuliacci </h2>
-  <div><iframe rel="noreferrer" src="https://www.meteogiuliacci.it/previsioni/widget_comunali.php?staz=Campoli Appennino"  title="previsioni campoli meteogiuliacci" width="1030"  height="700" scrolling="no" border="0" rel='preload' as='font' type='font/woff' crossorigin></iframe></div>
+
+  <h2 class="title-micro-section">Previsioni Campoli Appennino MeteoGiuliacci</h2>
+  <div>
+    <iframe rel="noreferrer" src="https://www.meteogiuliacci.it/previsioni/widget_comunali.php?staz=Campoli Appennino"
+            title="previsioni campoli meteogiuliacci" width="1030" height="700" scrolling="no" border="0"
+            crossorigin></iframe>
+  </div>
   <br>
+
   <h2 class="title-micro-section">Anomalie termiche ultimi 10 giorni</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="anomalie termiche"
        src="https://www.cpc.ncep.noaa.gov/products/CFSv2/imagesInd3/glbT850MonInd1.gif"
@@ -111,26 +386,38 @@
   <br>
   <em class="title-micro-section">Precisione Modelli - Confronto 30 giorni</em>
   <br>
-  <img class="previsioni-no-heigth" width="95%"  alt="confronto precisione modelli 30 giorni" rel="noreferrer"
+  <img class="previsioni-no-heigth" width="95%" alt="confronto precisione modelli 30 giorni" rel="noreferrer"
        src="https://www.emc.ncep.noaa.gov/users/verification/global/gfs/ops/grid2grid_all_models/images/acc_valid00Z_HGT_P500_fhr120_G002NHX.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+
   <indici-climatici></indici-climatici>
 
   <br>
   <h2 class="title-micro-section">Previsioni Meteo Lazio 6 Giorni</h2>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
-    src="https://www.ilmeteo.it/cartine2/0.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
-    src="https://www.ilmeteo.it/cartine2/1.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
-    src="https://www.ilmeteo.it/cartine2/2.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
-    src="https://www.ilmeteo.it/cartine2/3.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
-  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
-    src="https://www.ilmeteo.it/cartine2/4.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
-  <a href="https://www.ilmeteo.it/LAzio" title="Meteo Piemonte" target="_blank" rel="noreferrer"><img
-    src="https://www.ilmeteo.it/cartine2/5.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0" rel="noreferrer"/></a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer">
+    <img src="https://www.ilmeteo.it/cartine2/0.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"
+         rel="noreferrer"/>
+  </a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer">
+    <img src="https://www.ilmeteo.it/cartine2/1.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"
+         rel="noreferrer"/>
+  </a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer">
+    <img src="https://www.ilmeteo.it/cartine2/2.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"
+         rel="noreferrer"/>
+  </a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer">
+    <img src="https://www.ilmeteo.it/cartine2/3.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"
+         rel="noreferrer"/>
+  </a>
+  <a href="https://www.ilmeteo.it/Lazio" title="Meteo Piemonte" target="_blank" rel="noreferrer">
+    <img src="https://www.ilmeteo.it/cartine2/4.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"
+         rel="noreferrer"/>
+  </a>
+  <a href="https://www.ilmeteo.it/LAzio" title="Meteo Piemonte" target="_blank" rel="noreferrer">
+    <img src="https://www.ilmeteo.it/cartine2/5.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"
+         rel="noreferrer"/>
+  </a>
 </div>
-
