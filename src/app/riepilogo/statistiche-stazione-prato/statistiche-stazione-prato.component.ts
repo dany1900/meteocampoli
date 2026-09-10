@@ -150,7 +150,7 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
         let minPress = Infinity;
         let maxPress = -Infinity;
 
-        let maxPioggiaEvento = 0;
+        let maxPioggiaGiornaliera = 0;
 
         for (const row of this.csvDataAnno) {
           const temp = parseFloat(row['Temperatura esterna(℃)']);
@@ -179,8 +179,8 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
             }
           }
 
-          const pioggiaEvento = parseFloat(row[`Pioggia dell'evento(mm)`]) || 0;
-          maxPioggiaEvento = Math.max(maxPioggiaEvento, pioggiaEvento);
+          const pioggiaGiornaliera = parseFloat(row['Piog. Giorno(mm)']) || 0;
+          maxPioggiaGiornaliera = Math.max(maxPioggiaGiornaliera, pioggiaGiornaliera);
         }
 
         // Edge-cases: file vuoto / tutto NaN
@@ -209,7 +209,7 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
           umiditaMin: urMinOut,
           pressioneMax: pressMaxOut,
           pressioneMin: pressMinOut,
-          pioggiaMaxEvento: maxPioggiaEvento.toFixed(1),
+          pioggiaMaxEvento: maxPioggiaGiornaliera.toFixed(1),
           pioggia: rainYear
         });
         this.arrResponseAnno.push({
@@ -222,21 +222,21 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
           // umiditaMin: urMinOut,
           pressioneMax: '1030.1',
           pressioneMin: '994.4',
-          pioggiaMaxEvento: '88.5',
+          pioggiaMaxEvento: '71.2',
           pioggia: '1260.4'
         });
         this.arrResponseAnno.push({
           anno: '2024',
           tempMin: '-4.1',
           tempMax: '36.7',
-          tempMedia: '15.1',
-          ventoMax: '61',
+          tempMedia: '13.7',
+          ventoMax: '62',
           // umiditaMax: urMaxOut,
           // umiditaMin: urMinOut,
-          pressioneMax: '1031.6',
+          pressioneMax: '1033.2',
           pressioneMin: '989.2',
-          pioggiaMaxEvento: '80.3',
-          pioggia: '993.5'
+          pioggiaMaxEvento: '58.3',
+          pioggia: '1190.3'
         });
 
 
@@ -724,3 +724,4 @@ export class StatisticheStazionePratoComponent implements OnInit, AfterViewInit 
     this.filterData(selectedDate, true);
   }
 }
+
