@@ -31,10 +31,10 @@
           [urlWebcam]="'https://images-webcams.windy.com/59/1275214259/current/full/1275214259.jpg'"
   >
   </webcam>
-  <webcam *ngIf="!utilityService.isHttps()" [luogo]="'ARPINO (FR)'"
+  <webcam  [luogo]="'ARPINO (FR)'"
           [altitudine]="'500'"
           [urlSite]="'sre.altervista.org'"
-          [urlWebcam]="'http://sre.altervista.org/webcam/webcam.php'"
+          [urlWebcam]="'https://sre.altervista.org/webcam/webcam.php'"
   >
   </webcam>
   <!--<webcam [luogo]="'ATINA (FR)'"
@@ -135,16 +135,16 @@
           [urlWebcam]="'https://www.meteoindiretta.it/get_webcam.php?src=http%3A%2F%2Fwww.meteotecchiena.com%2Fwebcam%2Fscatto%2Fcam.jpg&w=630'"
   >
   </webcam>
-  <webcam [luogo]="'PICO (FR)'"
-          [altitudine]="'620'"
-          [urlSite]="'meteopiconline.altervista.org'"
-          [urlWebcam]="'https://meteopiconline.altervista.org/webcam/webcam.php?'"
-  >
-  </webcam>
   <webcam [luogo]="'COLLEPARDO - MONTI ERNICI (FR)'"
           [altitudine]="'586'"
           [urlSite]="'www.meteocollepardomontiernici.it'"
           [urlWebcam]="'https://www.meteocollepardomontiernici.it/webcam/FoscamCamera_00626EEDFFC3/snap/webcam.php'"
+  >
+  </webcam>
+  <webcam [luogo]="'PICO (FR)'"
+          [altitudine]="'110'"
+          [urlSite]="'meteopiconline.altervista.org'"
+          [urlWebcam]="'https://meteopiconline.altervista.org/webcam8/webcam.php?'"
   >
   </webcam>
   <webcam [luogo]="'PONTECORVO (FR)'"
