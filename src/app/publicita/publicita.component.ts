@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {DeviceDetectorService} from 'ngx-device-detector';
+import { Component, OnInit } from '@angular/core';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'publicita',
@@ -8,15 +8,11 @@ import {DeviceDetectorService} from 'ngx-device-detector';
 })
 export class PublicitaComponent implements OnInit {
 
-  isMobile: boolean;
+  isMobile = false;
 
-  constructor(private deviceService: DeviceDetectorService) {
+  constructor(private deviceService: DeviceDetectorService) {}
+
+  ngOnInit(): void {
+    this.isMobile = this.deviceService.isMobile();
   }
-
-  ngOnInit() {
-    if (this.deviceService.isMobile()) {
-      this.isMobile = true;
-    }
-  }
-
 }

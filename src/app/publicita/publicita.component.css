@@ -1,0 +1,39 @@
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.advertising-container {
+  display: block;
+  position: relative;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: 20px auto;
+  padding: 0;
+
+  text-align: center;
+
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.advertising-container ng2-adsense {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/*
+ * Adsense genera internamente un <ins class="adsbygoogle">.
+ * Lo forziamo a rimanere centrato.
+ */
+:host ::ng-deep .adsbygoogle {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 100% !important;
+}

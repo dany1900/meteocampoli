@@ -1,56 +1,236 @@
 <!doctype html>
-<html lang="it">
-<head>
-  <base href="/">
-  <meta charset="utf-8">
-  <meta content='width=device-width' name='viewport' />
-  <meta name="description"
-        content="Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.">
-  <title>Meteo Campoli - Monitoraggio Meteo</title>
-  <meta property="og:locale" content="it_IT">
-  <meta property="og:title" content="Meteo Campoli - Monitoraggio Meteo">
-  <meta property="og:description"
-        content="Tutte le stazioni locali e del centro italia visualizzabili con comodi script.Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio.">
-  <meta property="og:site_name" content="www.meteocampoli.altervista.org">
-  <meta property="og:url" content="www.meteocampoli.altervista.org">
-  <meta name="google-site-verification" content="1frZgR33vxPhT8_2Gpa6kRw2Y5WjtutFscEt0KhLjzM" />
-  <base href="/">
-<!--
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
--->
-  <link rel="apple-touch-icon" href="favicon.ico">
-  <link onload="this.rel = 'stylesheet'" rel="preload" href="assets/css/font-awesome.css" as="font">
 
-  <script type="module" async rel="preconnect" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6215193089819382"
-          crossorigin="anonymous"></script>
-  <!-- iubenda -->
-  <script type="module" rel="preload" defer>(function (w, d) {
-    var loader = function () {
-      var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0];
-      s.src = "https://cdn.iubenda.com/iubenda.js";
-      tag.parentNode.insertBefore(s, tag);
-    };
-    if (w.addEventListener) {
-      w.addEventListener("load", loader, false);
-    } else if (w.attachEvent) {
-      w.attachEvent("onload", loader);
-    } else {
-      w.onload = loader;
-    }
-  })(window, document); </script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-831QTRM97E"></script>
+<html lang="it">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <base href="/">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Tutte le stazioni locali e del centro Italia visualizzabili con comodi script. Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio."
+  >
+
+  <title>Meteo Campoli - Monitoraggio Meteo</title>
+
+  <meta
+    property="og:locale"
+    content="it_IT"
+  >
+
+  <meta
+    property="og:title"
+    content="Meteo Campoli - Monitoraggio Meteo"
+  >
+
+  <meta
+    property="og:description"
+    content="Tutte le stazioni locali e del centro Italia visualizzabili con comodi script. Completo di Mappe, Radar, WebCam e Previsioni. Il miglior sito meteo di monitoraggio."
+  >
+
+  <meta
+    property="og:site_name"
+    content="Meteo Campoli"
+  >
+
+  <meta
+    property="og:url"
+    content="https://meteocampoli.altervista.org/"
+  >
+
+  <meta
+    name="google-site-verification"
+    content="1frZgR33vxPhT8_2Gpa6kRw2Y5WjtutFscEt0KhLjzM"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="favicon.ico"
+  >
+
+  <link
+    rel="stylesheet"
+    href="assets/css/font-awesome.css"
+  >
+
+  <!-- Google AdSense -->
+  <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6215193089819382"
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Iubenda -->
+  <script>
+    (function (w, d) {
+
+      var loader = function () {
+
+        var s = d.createElement('script');
+        var tag = d.getElementsByTagName('script')[0];
+
+        s.src = 'https://cdn.iubenda.com/iubenda.js';
+
+        tag.parentNode.insertBefore(s, tag);
+      };
+
+      if (w.addEventListener) {
+
+        w.addEventListener('load', loader, false);
+
+      } else if (w.attachEvent) {
+
+        w.attachEvent('onload', loader);
+
+      } else {
+
+        w.onload = loader;
+      }
+
+    })(window, document);
+  </script>
+
+  <!-- Google Analytics -->
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-831QTRM97E">
+  </script>
+
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
+
     gtag('config', 'G-831QTRM97E');
   </script>
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
+
+  <link
+    rel="manifest"
+    href="manifest.webmanifest"
+  >
+
+  <meta
+    name="theme-color"
+    content="#1976d2"
+  >
+
 </head>
-<body class="mat-typography">
+
+<body class="mat-typography google-anno-skip">
+
 <app-root></app-root>
-<noscript>Please enable JavaScript to continue using this application.</noscript>
+
+<noscript>
+  Please enable JavaScript to continue using this application.
+</noscript>
+
+
+<script>
+  (function () {
+
+    function fixGoogleAnchorAd() {
+
+      const ads = document.querySelectorAll(
+        'ins.adsbygoogle[data-anchor-status="displayed"]'
+      );
+
+      ads.forEach(function (ad) {
+
+        ad.style.setProperty('position', 'fixed', 'important');
+        ad.style.setProperty('bottom', '0', 'important');
+        ad.style.setProperty('top', 'auto', 'important');
+
+        ad.style.setProperty('left', '0', 'important');
+        ad.style.setProperty('right', '0', 'important');
+
+        ad.style.setProperty('width', '100%', 'important');
+        ad.style.setProperty('max-width', 'none', 'important');
+
+        ad.style.setProperty('margin', '0', 'important');
+        ad.style.setProperty('padding', '0', 'important');
+
+        ad.style.setProperty('transform', 'none', 'important');
+        ad.style.setProperty('display', 'block', 'important');
+
+        ad.style.setProperty('background', '#fff', 'important');
+        ad.style.setProperty('border-radius', '0', 'important');
+        ad.style.setProperty('box-sizing', 'border-box', 'important');
+
+
+        const host = ad.querySelector('[id$="_host"]');
+
+        if (host) {
+
+          host.style.setProperty('position', 'absolute', 'important');
+
+          host.style.setProperty('left', '50%', 'important');
+          host.style.setProperty('right', 'auto', 'important');
+
+          host.style.setProperty(
+            'transform',
+            'translateX(-50%)',
+            'important'
+          );
+
+          host.style.setProperty('margin', '0', 'important');
+        }
+
+
+        const grip = ad.querySelector('.grippy-host');
+
+        if (grip) {
+
+          grip.style.setProperty('position', 'absolute', 'important');
+
+          grip.style.setProperty('left', '50%', 'important');
+          grip.style.setProperty('right', 'auto', 'important');
+
+          grip.style.setProperty(
+            'transform',
+            'translateX(-50%)',
+            'important'
+          );
+        }
+
+      });
+
+    }
+
+
+    window.addEventListener('load', function () {
+
+      fixGoogleAnchorAd();
+
+      setTimeout(fixGoogleAnchorAd, 1000);
+      setTimeout(fixGoogleAnchorAd, 3000);
+
+    });
+
+
+    const observer = new MutationObserver(function () {
+      fixGoogleAnchorAd();
+    });
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true
+    });
+
+  })();
+</script>
+
 </body>
+
 </html>
