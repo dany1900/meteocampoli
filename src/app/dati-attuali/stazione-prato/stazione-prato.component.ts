@@ -34,7 +34,7 @@ export class StazionePratoComponent implements OnInit {
     if (this.utilityService.isMobile()) {
       this.height = '2400';
     } else {
-      this.height = '3200';
+      this.height = '3900';
     }
   }
 

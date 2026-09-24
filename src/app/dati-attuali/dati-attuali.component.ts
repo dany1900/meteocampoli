@@ -37,7 +37,7 @@ export class DatiAttualiComponent implements OnInit, OnDestroy {
     if (this.utilityService.isMobile()) {
       this.height = '2400';
     } else {
-      this.height = '3200';
+      this.height = '3500';
     }
     /*if (environment.production) {
       let headers = new HttpHeaders().set('header-name', 'header-value');
