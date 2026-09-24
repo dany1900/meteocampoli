@@ -4,3 +4,124 @@ img.zoomed {
   overflow: scroll;
   overflow-x: hidden;
 }
+
+.filter-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  padding: 18px 12px 16px;
+
+  box-sizing: border-box;
+}
+
+.filter-box {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 430px;
+
+  height: 50px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  border: 1px solid #7daed3;
+  border-radius: 12px;
+
+  box-sizing: border-box;
+
+  padding: 0 14px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filter-box:focus-within {
+  border-color: #2f80c1;
+  box-shadow: 0 0 0 2px rgba(47, 128, 193, 0.15);
+}
+
+.filter-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 10px;
+
+  font-size: 18px;
+  line-height: 1;
+}
+
+.filter-input {
+  flex: 1;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  font-size: 16px;
+  font-family: inherit;
+
+  color: #333;
+
+  box-sizing: border-box;
+}
+
+.filter-input::placeholder {
+  color: #697786;
+  opacity: 1;
+}
+
+.filter-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  margin-left: 8px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: #536473;
+
+  font-size: 24px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.filter-clear:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+@media screen and (max-width: 600px) {
+
+  .filter-wrapper {
+    padding: 12px 8px;
+  }
+
+  .filter-box {
+    max-width: 100%;
+    height: 46px;
+  }
+
+  .filter-input {
+    font-size: 14px;
+  }
+
+}

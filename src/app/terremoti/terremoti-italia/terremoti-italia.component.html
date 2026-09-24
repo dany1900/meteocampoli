@@ -1,63 +1,209 @@
 <br>
-<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+
+<mat-spinner
+  *ngIf="imageLoader"
+  mode="indeterminate">
+</mat-spinner>
+
 <br>
-<div [hidden]="imageLoader" *ngIf="isVisible">
-  <h2 class="title-micro-section"> Lista Terremoti Italia ultimi 10 giorni > 2.0 Magnitudo </h2>
+
+<div
+  [hidden]="imageLoader"
+  *ngIf="isVisible">
+
+  <h2 class="title-micro-section">
+    Lista Terremoti Italia ultimi 10 giorni > 2.0 Magnitudo
+  </h2>
+
   <div class="mat-elevation-z8 table-meteocampoli center">
-    <mat-form-field appearance="standard">
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-    </mat-form-field>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+    <!-- FILTRO -->
+    <div class="filter-wrapper">
+
+      <div class="filter-box">
+
+        <span class="filter-icon">
+          🔎
+        </span>
+
+        <input
+          class="filter-input"
+          type="text"
+          (keyup)="applyFilter($event)"
+          placeholder="Filtra terremoti..."
+          #input
+        >
+
+        <button
+          *ngIf="input.value"
+          class="filter-clear"
+          type="button"
+          aria-label="Cancella filtro"
+          (click)="clearFilter(input)">
+          ×
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- TABELLA -->
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8"
+      matSort>
 
       <!-- Data Ora Column -->
       <ng-container matColumnDef="dataOra">
-        <th class="terremoti-data-ora-header" mat-header-cell *matHeaderCellDef mat-sort-header> Data e ora</th>
-        <td class="terremoti-data-ora-body" mat-cell *matCellDef="let element"> {{element.dataOra}} </td>
+
+        <th
+          class="terremoti-data-ora-header"
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header>
+          Data e ora
+        </th>
+
+        <td
+          class="terremoti-data-ora-body"
+          mat-cell
+          *matCellDef="let element">
+          {{element.dataOra}}
+        </td>
+
       </ng-container>
+
 
       <!-- Profondita Column -->
       <ng-container matColumnDef="profondita">
-        <th class="terremoti-profondita-header" mat-header-cell *matHeaderCellDef mat-sort-header> Profondità</th>
-        <td class="terremoti-profondita-body" mat-cell *matCellDef="let element"> {{element.profondita}} </td>
+
+        <th
+          class="terremoti-profondita-header"
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header>
+          Profondità
+        </th>
+
+        <td
+          class="terremoti-profondita-body"
+          mat-cell
+          *matCellDef="let element">
+          {{element.profondita}}
+        </td>
+
       </ng-container>
+
 
       <!-- Zona Column -->
       <ng-container matColumnDef="zona">
-        <th class="terremoti-zona-header" mat-header-cell *matHeaderCellDef mat-sort-header> Zona</th>
-        <td class="terremoti-zona-body" mat-cell *matCellDef="let element"> {{element.zona}} </td>
+
+        <th
+          class="terremoti-zona-header"
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header>
+          Zona
+        </th>
+
+        <td
+          class="terremoti-zona-body"
+          mat-cell
+          *matCellDef="let element">
+          {{element.zona}}
+        </td>
+
       </ng-container>
+
 
       <!-- Magnitudo Column -->
       <ng-container matColumnDef="magnitudo">
-        <th class="terremoti-magnitudo-header" mat-header-cell *matHeaderCellDef mat-sort-header> Magnitudo</th>
-        <td class="terremoti-magnitudo-body" mat-cell *matCellDef="let element"> {{element.magnitudo}} </td>
+
+        <th
+          class="terremoti-magnitudo-header"
+          mat-header-cell
+          *matHeaderCellDef
+          mat-sort-header>
+          Magnitudo
+        </th>
+
+        <td
+          class="terremoti-magnitudo-body"
+          mat-cell
+          *matCellDef="let element">
+          {{element.magnitudo}}
+        </td>
+
       </ng-container>
 
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns">
+      </tr>
 
-      <!-- Row shown when there is no matching data. -->
-      <!--<tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-      </tr>-->
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+
+      <!--
+      <tr
+        class="mat-row"
+        *matNoDataRow>
+
+        <td
+          class="mat-cell"
+          colspan="4">
+          Nessun terremoto trovato per "{{input.value}}"
+        </td>
+
+      </tr>
+      -->
+
     </table>
-    <mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[10, 20, 40]" [showFirstLastButtons]="true"
-                   [length]="totalSize"
-                   [pageIndex]="currentPage" (page)="pageEvent = handlePage($event)"
-                   aria-label="Select page of periodic elements">
+
+
+    <!-- PAGINATORE -->
+    <mat-paginator
+      #paginator
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[10, 20, 40]"
+      [showFirstLastButtons]="true"
+      [length]="totalSize"
+      [pageIndex]="currentPage"
+      (page)="pageEvent = handlePage($event)"
+      aria-label="Seleziona pagina terremoti">
     </mat-paginator>
+
   </div>
+
   <br>
   <br>
-  <h2 class="title-micro-section"> Mappa Sismica Italia - Pericolosità</h2>
-  <img src='./assets/img/mappa-sismica-italia.png'
-       alt="mappa rischio sismico" class="mappa-terremoti" (click)="toggleClass($event,'zoomed')">
-<br>
+
+  <h2 class="title-micro-section">
+    Mappa Sismica Italia - Pericolosità
+  </h2>
+
+  <img
+    src="./assets/img/mappa-sismica-italia.png"
+    alt="mappa rischio sismico"
+    class="mappa-terremoti"
+    (click)="toggleClass($event,'zoomed')">
+
   <br>
-  <h2 class="title-micro-section"> Mappa Sismica Italia - Intensità</h2>
-  <img src='./assets/img/mappa-sismica-italia-2.png'
-       alt="mappa terremoti italia intensita" class="mappa-terremoti" (click)="toggleClass($event,'zoomed')">
+  <br>
+
+  <h2 class="title-micro-section">
+    Mappa Sismica Italia - Intensità
+  </h2>
+
+  <img
+    src="./assets/img/mappa-sismica-italia-2.png"
+    alt="mappa terremoti italia intensita"
+    class="mappa-terremoti"
+    (click)="toggleClass($event,'zoomed')">
 
 </div>

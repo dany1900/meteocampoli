@@ -135,5 +135,10 @@ export class TerremotiMondoComponent implements OnInit, AfterViewInit {
     }
   }
 
+  clearFilter(input: HTMLInputElement): void {
+    input.value = '';
+    this.dataSource.filter = '';
+  }
+
 
 }

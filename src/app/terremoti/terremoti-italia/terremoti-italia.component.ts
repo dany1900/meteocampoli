@@ -173,6 +173,11 @@ export class TerremotiItaliaComponent implements OnInit, AfterViewInit {
     this.tabellaTerremoti(magMin, magMax, null, null);
   }
 
+  clearFilter(input: HTMLInputElement): void {
+    input.value = '';
+    this.dataSource.filter = '';
+  }
+
   /*searchMagnitudo(value: string) {
     const filter = value.toLowerCase();
     return this.magnitudos.filter(option => option.startsWith(filter));
