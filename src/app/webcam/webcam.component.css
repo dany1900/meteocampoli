@@ -1,0 +1,410 @@
+
+/* ==========================================
+   WEBCAM COMPONENT - METEO CAMPOLI
+   ========================================== */
+
+:host {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+}
+
+figure {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================
+   CONTENITORE PLAYER
+   ========================================== */
+
+.webcam-youtube-container {
+  display: block;
+  position: relative;
+
+  width: 85%;
+  max-width: 1100px;
+  aspect-ratio: 16 / 9;
+
+  margin: 0 auto 25px;
+  padding: 2px;
+
+  background-color: #fff;
+
+  border: 4px solid #fff;
+  border-radius: 20px;
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ==========================================
+   YOUTUBE / CAMSTREAMER
+   ========================================== */
+
+.webcam-youtube-container iframe {
+  display: block;
+  position: absolute;
+
+  top: 2px;
+  left: 2px;
+
+  width: calc(100% - 4px) !important;
+  height: calc(100% - 4px) !important;
+
+  border: none;
+  border-radius: 14px;
+}
+
+/* ==========================================
+   PLAYER HLS
+   ========================================== */
+
+.webcam-hls-player {
+  display: block;
+  position: absolute;
+
+  top: 2px;
+  left: 2px;
+
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+
+  background-color: #000;
+  border: 0;
+  border-radius: 14px;
+
+  object-fit: contain;
+}
+
+/* ==========================================
+   ANTEPRIMA CON PLAY
+   ========================================== */
+
+.webcam-live-preview {
+  position: absolute;
+  inset: 2px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+
+  padding: 15px;
+  box-sizing: border-box;
+
+  background-color: #182c40;
+  color: #fff;
+
+  border: none;
+  border-radius: 14px;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.webcam-live-preview:hover {
+  background-color: #213d58;
+}
+
+.webcam-live-preview:focus-visible {
+  outline: 3px solid #ffce00;
+  outline-offset: -5px;
+}
+
+/* ==========================================
+   PULSANTE PLAY
+   ========================================== */
+
+.webcam-live-play {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 76px;
+  height: 54px;
+
+  background-color: #f00032;
+  color: #fff;
+
+  border-radius: 14px;
+
+  font-size: 27px;
+  line-height: 1;
+}
+
+.webcam-live-preview-text {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ==========================================
+   PLAYER WINDY UFFICIALE
+   ========================================== */
+
+.webcam-windy-container {
+  background-color: #182c40;
+}
+
+.webcam-windy-player {
+  position: absolute;
+
+  top: 2px;
+  left: 2px;
+
+  width: calc(100% - 4px);
+  height: calc(100% - 4px);
+
+  overflow: hidden;
+  border-radius: 14px;
+  background-color: #182c40;
+}
+
+/* Collegamento iniziale che Windy
+   sostituisce con il proprio player */
+
+.webcam-windy-player > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 10px;
+
+  color: #fff;
+  font-size: 15px;
+
+  text-decoration: underline;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Player incorporato generato da Windy */
+
+.webcam-windy-player iframe {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  border: 0 !important;
+  border-radius: 14px;
+}
+
+/* Eventuali wrapper creati dallo script */
+
+.webcam-windy-player > div {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+/* Crediti alla sorgente */
+
+.webcam-windy-credit {
+  margin: -16px auto 22px;
+
+  color: #26384b;
+  font-size: 12px;
+  text-align: center;
+}
+
+.webcam-windy-credit a {
+  color: #1769aa;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ==========================================
+   BADGE LIVE
+   ========================================== */
+
+.webcam-live-badge {
+  display: inline-block;
+
+  margin-left: 8px;
+  padding: 3px 7px;
+
+  background-color: #d90000;
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.4;
+
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+/* ==========================================
+   BADGE TIMELAPSE
+   ========================================== */
+
+.webcam-timelapse-badge {
+  display: inline-block;
+
+  margin-left: 8px;
+  padding: 3px 7px;
+
+  background-color: #1769aa;
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.4;
+
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+/* ==========================================
+   ERRORI VIDEO
+   ========================================== */
+
+.webcam-youtube-error {
+  width: 85%;
+  max-width: 1100px;
+
+  margin: 15px auto;
+  padding: 30px 10px;
+
+  background-color: #eee;
+  color: #555;
+
+  text-align: center;
+  border-radius: 20px;
+
+  box-sizing: border-box;
+}
+
+.webcam-hls-message {
+  width: 85%;
+  max-width: 1100px;
+
+  margin: -10px auto 20px;
+  padding: 10px;
+
+  background-color: #fff3cd;
+  color: #664d03;
+
+  border: 1px solid #ffecb5;
+  border-radius: 6px;
+
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+/* ==========================================
+   PULSANTE RIPROVA HLS
+   ========================================== */
+
+.webcam-retry-button {
+  display: inline-block;
+
+  margin-top: 10px;
+  padding: 9px 20px;
+
+  background-color: #1769aa;
+  color: #fff;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.webcam-retry-button:hover {
+  background-color: #104b7a;
+}
+
+.webcam-retry-button:focus-visible {
+  outline: 3px solid #ffce00;
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   SPINNER
+   ========================================== */
+
+mat-spinner {
+  margin: 20px auto;
+}
+
+/* ==========================================
+   RESPONSIVE MOBILE
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  .webcam-youtube-container {
+    width: 95%;
+    margin: 0 auto 20px;
+    border-radius: 14px;
+  }
+
+  .webcam-youtube-container iframe,
+  .webcam-hls-player,
+  .webcam-windy-player {
+    border-radius: 8px;
+  }
+
+  .webcam-live-preview {
+    border-radius: 8px;
+  }
+
+  .webcam-live-play {
+    width: 62px;
+    height: 44px;
+    font-size: 22px;
+  }
+
+  .webcam-live-preview-text {
+    font-size: 15px;
+  }
+
+  .webcam-youtube-error,
+  .webcam-hls-message {
+    width: 95%;
+  }
+
+  .webcam-live-badge,
+  .webcam-timelapse-badge {
+    margin-top: 5px;
+    font-size: 10px;
+  }
+
+  .webcam-retry-button {
+    font-size: 12px;
+  }
+
+  .webcam-windy-player > a {
+    font-size: 13px;
+    padding: 8px;
+    text-align: center;
+  }
+
+  .webcam-windy-credit {
+    font-size: 11px;
+  }
+}

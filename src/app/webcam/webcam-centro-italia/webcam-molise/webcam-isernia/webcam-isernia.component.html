@@ -5,6 +5,7 @@
         [urlWebcam]="'https://ws1.turismometeo.it/webcam/webcam-pratogentile/FI9900P_00626E8667E5/snap/cam.jpg'"
 >
 </webcam>-->
+
 <webcam [luogo]="'CAPRACOTTA - PIAZZA FALCONI (IS)'"
         [altitudine]="'1421'"
         [urlSite]="'www.meteo2.it'"
@@ -12,18 +13,22 @@
 >
 </webcam>
 
-<webcam [luogo]="'CAPRACOTTA - VISTA NORD (IS)'"
-        [altitudine]="'1421'"
-        [urlSite]="'www.windy.com'"
-        [urlWebcam]="'https://imgproxy.windy.com/_/full/plain/current/1545069048/original.jpg'"
->
+<!-- CAPRACOTTA - VIA SAN GIOVANNI (IS) -->
+<webcam
+  [luogo]="'CAPRACOTTA - VISTA NORD (IS)'"
+  [altitudine]="'1421'"
+  [urlSite]="'windy.com'"
+  [windyId]="'1545069048'"
+  [tipo]="'windy'">
 </webcam>
-<webcam [luogo]="'PESCOPENNATTARO (IS)'"
-        [altitudine]="'1190'"
-        [urlSite]="'www.meteoinmolise.com'"
-        [urlWebcam]="'https://pp-dir-nno-webcam.s4mu.it/pescopennataro1/latest.jpg'"
->
+<webcam
+  [luogo]="'PESCOPENNATTARO (IS)'"
+  [altitudine]="'1190'"
+  [urlSite]="'windy.com'"
+  [windyId]="'1692700370'"
+  [tipo]="'windy'">
 </webcam>
+
 <!--<webcam [luogo]="'SCAPOLI (IS)'"
         [altitudine]="'1130'"
         [urlSite]="'www.meteoinmolise.com'"

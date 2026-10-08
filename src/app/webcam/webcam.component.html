@@ -1,21 +1,335 @@
-<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+
+<!-- ========================================== -->
+<!-- SPINNER WEBCAM FOTOGRAFICHE -->
+<!-- ========================================== -->
+
+<mat-spinner
+  *ngIf="tipo === 'immagine' && imageLoader"
+  mode="indeterminate">
+</mat-spinner>
+
 <br>
-<div class="center" [hidden]="imageLoader">
+
+<div class="center">
+
   <figure>
+
+    <!-- ====================================== -->
+    <!-- INTESTAZIONE WEBCAM -->
+    <!-- ====================================== -->
+
     <div class="webcam-script-header">
-      <span class="content-webcam-principal"><span class="hidden">WebCam </span>{{luogo}} |
-        {{altitudine}} m.s.l.m. | </span> <a (click)="redirect()" target="_blank"
-                                             rel="noopener"><span class="mouse-pointer">{{ urlSite }}</span> </a>
+
+      <span class="content-webcam-principal">
+
+        <span class="hidden">
+          WebCam
+        </span>
+
+        {{ luogo }}
+
+        <ng-container *ngIf="altitudine">
+          | {{ altitudine }} m.s.l.m.
+        </ng-container>
+
+        |
+
+      </span>
+
+      <!-- SITO ORIGINALE -->
+      <a
+        (click)="redirect()"
+        class="mouse-pointer"
+        rel="noopener noreferrer">
+
+        <span class="mouse-pointer">
+          {{ urlSite }}
+        </span>
+
+      </a>
+
+      <!-- BADGE LIVE -->
+      <span
+        *ngIf="
+          tipo === 'youtube' ||
+          tipo === 'iframe' ||
+          tipo === 'hls'
+        "
+        class="webcam-live-badge">
+
+        &#9679; LIVE
+
+      </span>
+
+      <!-- BADGE WINDY -->
+      <span
+        *ngIf="tipo === 'windy'"
+        class="webcam-timelapse-badge">
+
+        &#9654; TIMELAPSE
+
+      </span>
 
     </div>
-    <a (click)="openModal(urlWebcam)" data-rel="prettyPhoto"><img
-      [src]="urlWebcam" alt="webcam {{luogo}}" [hidden]="imageLoader"
-      (load)="imageLoader = false;" (error)="errorHandler(timeout)" width="85%" height="100%" class="webcam lazyload" /></a>
+
+    <!-- ====================================== -->
+    <!-- WEBCAM FOTOGRAFICA -->
+    <!-- ====================================== -->
+
+    <ng-container *ngIf="tipo === 'immagine'">
+
+      <a
+        (click)="openModal(urlWebcam)"
+        data-rel="prettyPhoto"
+        [hidden]="imageLoader">
+
+        <img
+          [src]="urlWebcam"
+          [alt]="'Webcam ' + luogo"
+          (load)="imageLoader = false"
+          (error)="errorHandler(timeout)"
+          width="85%"
+          height="100%"
+          class="webcam lazyload" />
+
+      </a>
+
+    </ng-container>
+
+    <!-- ====================================== -->
+    <!-- WEBCAM YOUTUBE -->
+    <!-- ====================================== -->
+
+    <ng-container *ngIf="tipo === 'youtube'">
+
+      <div
+        *ngIf="safeVideoUrl"
+        class="webcam-youtube-container">
+
+        <iframe
+          class="webcam-youtube-player"
+          [src]="safeVideoUrl"
+          [title]="'Webcam Live ' + luogo"
+          loading="lazy"
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+    </ng-container>
+
+    <!-- ====================================== -->
+    <!-- WEBCAM CAMSTREAMER -->
+    <!-- ====================================== -->
+
+    <ng-container *ngIf="tipo === 'iframe'">
+
+      <div
+        *ngIf="safeVideoUrl"
+        class="webcam-youtube-container">
+
+        <!-- PLAY INIZIALE -->
+        <button
+          *ngIf="!videoAvviato"
+          type="button"
+          class="webcam-live-preview"
+          (click)="avviaVideo()"
+          [attr.aria-label]="
+            'Avvia webcam live ' + luogo
+          ">
+
+          <span class="webcam-live-play">
+            &#9654;
+          </span>
+
+          <span class="webcam-live-preview-text">
+            Guarda la diretta
+          </span>
+
+        </button>
+
+        <!-- PLAYER CAMSTREAMER -->
+        <iframe
+          *ngIf="videoAvviato"
+          class="webcam-youtube-player"
+          [src]="safeVideoUrl"
+          [title]="'Webcam Live ' + luogo"
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen>
+        </iframe>
+
+      </div>
+
+    </ng-container>
+
+    <!-- ====================================== -->
+    <!-- WEBCAM HLS -->
+    <!-- ====================================== -->
+
+    <ng-container *ngIf="tipo === 'hls'">
+
+      <div
+        *ngIf="!videoError || videoAvviato"
+        class="webcam-youtube-container">
+
+        <!-- PLAY INIZIALE -->
+        <button
+          *ngIf="!videoAvviato"
+          type="button"
+          class="webcam-live-preview"
+          (click)="avviaVideo()"
+          [attr.aria-label]="
+            'Avvia webcam live ' + luogo
+          ">
+
+          <span class="webcam-live-play">
+            &#9654;
+          </span>
+
+          <span class="webcam-live-preview-text">
+            Guarda la diretta
+          </span>
+
+        </button>
+
+        <!-- PLAYER VIDEO HLS -->
+        <video
+          *ngIf="videoAvviato"
+          #hlsVideo
+          class="webcam-hls-player"
+          controls
+          playsinline
+          preload="none"
+          [attr.aria-label]="
+            'Webcam Live ' + luogo
+          ">
+
+          Il browser non supporta
+          il video HTML5.
+
+        </video>
+
+      </div>
+
+      <!-- ERRORE E RIPROVA -->
+      <div
+        *ngIf="videoError"
+        class="webcam-hls-message">
+
+        <div>
+          {{ videoError }}
+        </div>
+
+        <button
+          *ngIf="videoAvviato"
+          type="button"
+          class="webcam-retry-button"
+          (click)="riprovaVideo()">
+
+          &#8635; Riprova
+
+        </button>
+
+      </div>
+
+    </ng-container>
+
+    <!-- ====================================== -->
+    <!-- WEBCAM WINDY -->
+    <!-- ====================================== -->
+
+    <ng-container *ngIf="tipo === 'windy'">
+
+      <!-- PLAYER UFFICIALE VISIBILE SUBITO -->
+      <div
+        *ngIf="!windyError"
+        class="
+          webcam-youtube-container
+          webcam-windy-container
+        ">
+
+        <div
+          #windyHost
+          class="webcam-windy-player">
+
+          <!--
+            Codice ufficiale Windy.
+            Il player gestisce la fotografia
+            di anteprima e il proprio Play.
+          -->
+
+          <a
+            name="windy-webcam-timelapse-player"
+            [attr.data-id]="windyId"
+            data-play="day"
+            data-loop="0"
+            data-auto-play="0"
+            data-force-full-screen-on-overlay-play="0"
+            data-interactive="1"
+            [href]="
+              'https://windy.com/webcams/' +
+              windyId
+            "
+            target="_blank"
+            rel="noopener noreferrer">
+
+            {{ luogo }}
+
+          </a>
+
+          <!--
+            Lo script viene aggiunto
+            dinamicamente dal TypeScript
+            dopo la creazione del contenitore.
+          -->
+
+        </div>
+
+      </div>
+
+      <!-- EVENTUALE ERRORE WINDY -->
+      <div
+        *ngIf="windyError"
+        class="webcam-hls-message">
+
+        {{ windyError }}
+
+      </div>
+
+      <!-- ATTRIBUZIONE WINDY -->
+     <!-- <div class="webcam-windy-credit">
+
+        Webcam fornita da
+        <a
+          href="https://www.windy.com/"
+          target="_blank"
+          rel="noopener noreferrer">
+          Windy.com
+        </a>
+
+      </div>-->
+
+    </ng-container>
+
+    <!-- ====================================== -->
+    <!-- STREAMING NON DISPONIBILE -->
+    <!-- ====================================== -->
+
+    <div
+      *ngIf="
+        (tipo === 'youtube' ||
+        tipo === 'iframe') &&
+        !safeVideoUrl
+      "
+      class="webcam-youtube-error">
+
+      Streaming non disponibile.
+
+    </div>
+
   </figure>
+
 </div>
-
-
-
-
-
-
