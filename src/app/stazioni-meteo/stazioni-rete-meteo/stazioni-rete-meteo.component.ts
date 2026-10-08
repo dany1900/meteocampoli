@@ -31,4 +31,8 @@ export class StazioniReteMeteoComponent implements OnInit {
   ngOnInit() {
     this.utilityService.scrollToSpecifyPosition();
   }
+
+  onIframeLoad(): void {
+    this.imageLoader = false;
+  }
 }

@@ -1,9 +1,38 @@
 <br>
-<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
-<div class="scroll-view"></div>
-<br>
-<div [hidden]="imageLoader">
-  <iframe src="https://retemeteo.lineameteo.it/index.php" (load)="this.imageLoader = false;"
-          class="rete-meteo" title="rete meteo stazioni" rel="noopener"></iframe>
 
+<h2 class="title-micro-section">
+  Stazioni Meteo Italia - Mappa Interattiva MeteoNetwork
+</h2>
+
+<br>
+
+<div class="rete-meteo-container">
+  <iframe
+    src="https://www.meteonetwork.it/rete/livemap/"
+    (load)="onIframeLoad()"
+    class="rete-meteo"
+    title="Stazioni Meteo Italia - MeteoNetwork">
+  </iframe>
 </div>
+
+<br>
+<br>
+
+<h2 class="title-micro-section">
+  Stazioni Meteo Lazio - Mappa Interattiva in Tempo Reale
+</h2>
+
+<br>
+
+<div class="rete-meteo-container meteo-lazio-container">
+  <iframe
+    src="https://www.meteoregionelazio.it/mappa-live/"
+    (load)="onIframeLoad()"
+    class="rete-meteo meteo-lazio-iframe"
+    title="Stazioni Meteo Lazio"
+    scrolling="no">
+  </iframe>
+</div>
+
+<br>
+<br>

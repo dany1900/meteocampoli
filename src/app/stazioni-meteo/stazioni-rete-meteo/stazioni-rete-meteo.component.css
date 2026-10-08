@@ -1,0 +1,46 @@
+/* METEONETWORK */
+.rete-meteo-container {
+  width: 100%;
+  height: 860px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 8px;
+}
+
+.rete-meteo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* METEO REGIONE LAZIO */
+.meteo-lazio-container {
+  height: 1800px;
+  overflow: hidden;
+}
+
+.meteo-lazio-iframe {
+  position: absolute;
+  top: -880px;
+  left: 0;
+  width: 100%;
+  height: 2600px;
+  border: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .rete-meteo-container {
+    height: 550px;
+  }
+
+  .meteo-lazio-container {
+    height: 750px;
+  }
+
+  .meteo-lazio-iframe {
+    top: -400px;
+    height: 1150px;
+  }
+}
