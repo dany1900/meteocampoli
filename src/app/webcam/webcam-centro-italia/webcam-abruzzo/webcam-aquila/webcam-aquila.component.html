@@ -42,12 +42,21 @@
 >
 </webcam>-->
 
-<webcam [luogo]="'SCANNO (AQ) - PASSO GODI'"
+
+<webcam
+  [luogo]="'SCANNO (AQ) - PASSO GODI'"
+  [altitudine]="'1562'"
+  [urlSite]="'windy.com'"
+  [windyId]="'1503643628'"
+  [tipo]="'windy'">
+</webcam>
+
+<!--<webcam [luogo]="'SCANNO (AQ) - PASSO GODI'"
         [altitudine]="'1562'"
         [urlSite]="'www.meteoregioneabruzzo.it'"
         [urlWebcam]="'https://www.meteoregioneabruzzo.it/webcams/passo_godi/FI9900P_00626E6D233D/snap/webcam.php?1609443793'"
 >
-</webcam>
+</webcam>-->
 
 <webcam [luogo]="'SCANNO (AQ) - PINETA'"
         [altitudine]="'1100'"
@@ -68,16 +77,16 @@
         [urlWebcam]="'https://stazioni.meteoproject.it/webcam/rifugioducaabruzzi/gransasso.jpg'"
 >
 </webcam>
-<webcam [luogo]="'CAMPO IMPERATORE (AQ)'"
-        [altitudine]="'2138'"
-        [urlSite]="'www.neveitalia.it'"
-        [urlWebcam]="'https://www.neveitalia.it/cache/mod/Webcam/500/2007.jpg'"
+<webcam [luogo]="'PASSO LANCIANO - CORNO GRANDE'"
+        [altitudine]="'2188 (da valutare)'"
+        [urlSite]="'https://winterseason.it'"
+        [urlWebcam]="'https://www.ramsatwebcams.it/pl/upt360/foto/passolanciano_05gz2.jpg'"
 >
 </webcam>
 <webcam [luogo]="'FUNIVIA GRAN SASSO (AQ)'"
         [altitudine]="'2130'"
-        [urlSite]="'www.campanialive.it'"
-        [urlWebcam]="'https://www.campanialive.it/webcam/montagna/campoimperatore/funiviagransasso.jpg'"
+        [urlSite]="'webcam.valtline.it'"
+        [urlWebcam]="'https://webcam.valtline.it/api/webcam/campo-imperatore/latest'"
 >
 </webcam>
 <webcam [luogo]="'COPPO DELL\'ORSO (AQ)'"
@@ -92,6 +101,12 @@
         [urlWebcam]="'https://ovindolimagnola.it/ovindolimagnola.it/webcam01/MMI_image_01.jpg'"
 >
 </webcam>
+<webcam [luogo]="'OVINDOLI - PESE (AQ)'"
+        [altitudine]="'1375'"
+        [urlSite]="'webcams.ventusky.com'"
+        [urlWebcam]="'https://webcams.ventusky.com/data/25/298103925/hour/20261101_1200.jpg?1793534883'"
+>
+</webcam>
 
 <webcam [luogo]="'CAMPO FELICE (AQ) - ARRIVO SEGGIOVIA BRECCIARA'"
         [altitudine]="'1727'"
@@ -99,23 +114,46 @@
         [urlWebcam]="'https://webcam.witel.it/img/campofelice/ipcam/02/hires/snapshot.jpg'"
 >
 </webcam>
-<webcam [luogo]="'ROCCARASO - ROCCA ALTA (AQ)'"
-        [altitudine]="'1710'"
-        [urlSite]="'www.centrometeomolise.it'"
-        [urlWebcam]="'https://www.centrometeomolise.it/zurrone/cam.jpg'"
+<webcam [luogo]="'ROCCARASO - PIZZALTO (AQ)'"
+        [altitudine]="'1483'"
+        [urlSite]="'vedetta.org'"
+        [urlWebcam]="'https://vedetta.org/image-client/roccaraso-pizzalto/image.jpg?rand=4a2gb'"
 >
 </webcam>
+<!--<webcam
+  [luogo]="'ROCCARASO - PISTE (AQ)'"
+  [altitudine]="'1710'"
+  [urlWebcam]="'https://ws1.turismometeo.it/webcam/webcam_roccaraso_baita/cam.jpg'"
+  [urlSite]="'www.turismometeo.it'">
+</webcam>-->
+
+<!--<webcam
+  [luogo]="'ROCCARASO - AREMOGNA (AQ)'"
+  [altitudine]="'1500'"
+  [tipo]="'hls'"
+  [urlWebcam]="'https://player.meteo2.it/hls-clean/webcam6-clean.m3u8'"
+  [urlSite]="'www.meteo2.it'">
+</webcam>-->
+
 <webcam [luogo]="'ALTOPIANO DELLE CINQUE MIGLIA - VISTA MONTE ZURRONE (AQ)'"
         [altitudine]="'1710'"
         [urlSite]="'www.centrometeomolise.it'"
         [urlWebcam]="'https://www.centrometeomolise.it/zurrone/cam.jpg'"
 >
 </webcam>
+
 <webcam [luogo]="'CAMPO DI GIOVE - RIFUGIO GUADO DI COCCIA (AQ)'"
         [altitudine]="'1674'"
         [urlSite]="'www.chietimeteo.it'"
         [urlWebcam]="'https://imgproxy.windy.com/_/full/plain/current/1755120086/original.jpg'"
 >
+</webcam>
+<webcam
+  [luogo]="'CAMPO DI GIOVE (AQ)'"
+  [altitudine]="'1060'"
+  [urlSite]="'windy.com'"
+  [windyId]="'1793910237'"
+  [tipo]="'windy'">
 </webcam>
 <webcam [luogo]="'CAMPO FELICE (AQ) - PIAZZALE BRECCIARA'"
         [altitudine]="'1414'"
@@ -142,13 +180,20 @@
 >
 </webcam>
 
+<webcam
+  [luogo]="'RIVISONDOLI (AQ)'"
+  [altitudine]="'1300'"
+  [urlSite]="'windy.com'"
+  [windyId]="'1793904110'"
+  [tipo]="'windy'">
+</webcam>
 
-<webcam [luogo]="'RIVISONDOLI (AQ)'"
+<!--<webcam [luogo]="'RIVISONDOLI (AQ)'"
         [altitudine]="'1300'"
         [urlSite]="'www.campanialive.it'"
         [urlWebcam]="'https://www.campanialive.it/webcam/montagna/rivisondoli/rivisondoli.jpg'"
 >
-</webcam>
+</webcam>-->
 <webcam [luogo]="'PACENTRO - SAN LEONARDO (AQ)'"
         [altitudine]="'1282'"
         [urlSite]="'www.windy.com'"
@@ -186,25 +231,38 @@
         [urlWebcam]="'https://imgproxy.windy.com/_/full/plain/current/1428165218/original.jpg'"
 >
 </webcam>
-<webcam [luogo]="'CASTEL DI SANGRO - VIA RIVIERA (AQ)'"
+<webcam
+  [luogo]="'CASTEL DI SANGRO - VIA RIVIERA (AQ)'"
+  [altitudine]="'890'"
+  [urlSite]="'windy.com'"
+  [windyId]="'1739482271'"
+  [tipo]="'windy'">
+</webcam>
+<!--<webcam [luogo]="'CASTEL DI SANGRO - VIA RIVIERA (AQ)'"
         [altitudine]="'890'"
         [urlSite]="'www.windy.com'"
         [urlWebcam]="'https://imgproxy.windy.com/_/full/plain/current/1739482271/original.jpg'"
 >
-</webcam>
+</webcam>-->
 <webcam [luogo]="'CANISTRO PIAZZA MUNICIPIO - VALLE ROVETO (AQ)'"
         [altitudine]="'554'"
         [urlSite]="'www.comunecanistro.it'"
         [urlWebcam]="'https://webcam.witel.it/img/canistro/ipcam/05/hires/snapshot.jpg'"
 >
 </webcam>
-
-<webcam [luogo]="'CIVITELLA ROVETO (AQ)'"
+<webcam
+  [luogo]="'CIVITELLA ROVETO (AQ)'"
+  [altitudine]="'528'"
+  [urlSite]="'windy.com'"
+  [windyId]="'1646591996'"
+  [tipo]="'windy'">
+</webcam>
+<!--<webcam [luogo]="'CIVITELLA ROVETO (AQ)'"
         [altitudine]="'528'"
         [urlSite]="'www.windy.com'"
         [urlWebcam]="'https://imgproxy.windy.com/_/full/plain/current/1646591996/original.jpg'"
 >
-</webcam>
+</webcam>-->
 
 <webcam [luogo]="'AVEZZANO NORD (AQ)'"
         [altitudine]="'700'"
@@ -257,6 +315,13 @@
         [urlSite]="'www.caputfrigoris.it'"
         [urlWebcam]="'https://webcam.witel.it/img/cappadocia/ipcam/01/hires/snapshot.jpg'"
 >
+</webcam>
+<webcam
+  [luogo]="'SCONTRONE (AQ)'"
+  [altitudine]="'1050'"
+  [urlSite]="'windy.com'"
+  [windyId]="'1738611786'"
+  [tipo]="'windy'">
 </webcam>
 <webcam [luogo]="'L AQUILA (AQ)'"
         [altitudine]="'714'"

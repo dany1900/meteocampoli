@@ -234,7 +234,7 @@ h4 {
 }
 
 .webcam {
-  width: 85%;
+  width: 95%;
   max-height: 550px !important;
   border-radius: 20px;
   border: 4px;
@@ -339,7 +339,7 @@ h4 {
   background-color: #d6e0fc;
   color: black;
   font-weight: Bold;
-  width: 75%;
+  width: 85%;
   padding: 1px;
   border: Solid 2px #070707;
   border-radius: 5px;
@@ -1312,9 +1312,17 @@ iframe#aswift_3 {
 
 .example_responsive_1 { width: 728px !important; height: 90px!important; }
 
-.adsbygoogle{
+.adsbygoogle {
   width: 100%!important;
 }
+
+/*.webcam-youtube-container.webcam-windy-container {
+  zoom: 1.428571 !important;
+  width: 85% !important;
+  max-width: 1100px !important;
+}*/
+
+
 
 
 

@@ -1,9 +1,10 @@
-
 import {
   Component,
   Input,
   OnInit,
   OnDestroy,
+  OnChanges,
+  SimpleChanges,
   ElementRef,
   ViewChild
 } from '@angular/core';
@@ -15,6 +16,7 @@ import {
 
 import {
   DomSanitizer,
+  SafeHtml,
   SafeResourceUrl
 } from '@angular/platform-browser';
 
@@ -28,7 +30,8 @@ import Hls from 'hls.js';
   templateUrl: './webcam.component.html',
   styleUrls: ['./webcam.component.css']
 })
-export class WebcamComponent implements OnInit, OnDestroy {
+export class WebcamComponent
+  implements OnInit, OnChanges, OnDestroy {
 
   @Input() luogo: string;
   @Input() altitudine: string;
@@ -43,12 +46,17 @@ export class WebcamComponent implements OnInit, OnDestroy {
   @Input() windyId = '';
 
   imageLoader = true;
+
+  // YOUTUBE / CAMSTREAMER
   safeVideoUrl: SafeResourceUrl | null = null;
 
+  // WINDY
+  safeWindyHtml: SafeHtml | null = null;
+  windyError = '';
+
+  // HLS / CAMSTREAMER
   videoAvviato = false;
   videoError = '';
-  windyError = '';
-  windyCaricamento = false;
 
   // ==========================================
   // HLS
@@ -64,17 +72,11 @@ export class WebcamComponent implements OnInit, OnDestroy {
   private readonly MAX_TENTATIVI_RETE = 2;
   private readonly MAX_TENTATIVI_MEDIA = 2;
 
-  // ==========================================
-  // WINDY
-  // ==========================================
-
-  private readonly WINDY_SCRIPT =
-    'https://webcams.windy.com/webcams/public/embed/v2/script/player.js';
-
-  private windyHostElement: HTMLDivElement | null = null;
-  private windyScriptElement: HTMLScriptElement | null = null;
-  private windyInizializzato = false;
   private distrutto = false;
+
+  // ==========================================
+  // RIFERIMENTO AL VIDEO HLS
+  // ==========================================
 
   @ViewChild('hlsVideo')
   set hlsVideoRef(
@@ -83,7 +85,8 @@ export class WebcamComponent implements OnInit, OnDestroy {
     if (
       !ref ||
       this.tipo !== 'hls' ||
-      !this.videoAvviato
+      !this.videoAvviato ||
+      this.distrutto
     ) {
       return;
     }
@@ -95,33 +98,35 @@ export class WebcamComponent implements OnInit, OnDestroy {
     }
   }
 
-  @ViewChild('windyHost')
-  set windyHostRef(
-    ref: ElementRef<HTMLDivElement> | undefined
-  ) {
-    if (
-      !ref ||
-      this.tipo !== 'windy' ||
-      this.distrutto
-    ) {
-      return;
-    }
-
-    const host = ref.nativeElement;
-
-    if (this.windyHostElement !== host) {
-      this.windyHostElement = host;
-      this.inizializzaWindy(host);
-    }
-  }
-
   constructor(
     private matDialog: MatDialog,
     private deviceService: DeviceDetectorService,
     private sanitizer: DomSanitizer
   ) {}
 
+  // ==========================================
+  // INIZIALIZZAZIONE
+  // ==========================================
+
   ngOnInit(): void {
+    this.preparaComponente();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes['tipo'] ||
+      changes['urlWebcam'] ||
+      changes['windyId']
+    ) {
+      this.preparaComponente();
+    }
+  }
+
+  private preparaComponente(): void {
+    if (this.distrutto) {
+      return;
+    }
+
     if (
       this.tipo === 'youtube' ||
       this.tipo === 'iframe'
@@ -136,11 +141,8 @@ export class WebcamComponent implements OnInit, OnDestroy {
     }
 
     if (this.tipo === 'windy') {
+      this.prepareWindy();
       this.imageLoader = false;
-
-      if (!this.isWindyIdValido()) {
-        this.windyError = 'ID webcam Windy non valido.';
-      }
     }
   }
 
@@ -208,10 +210,17 @@ export class WebcamComponent implements OnInit, OnDestroy {
 
       } else if (this.tipo === 'iframe') {
 
-        if (
-          url.hostname !== 'camstreamer.com' ||
-          !url.pathname.startsWith('/embed/')
-        ) {
+        // Player iframe autorizzati: CamStreamer e Meteo2 Roccaraso.
+        const camStreamerConsentito =
+          url.hostname.toLowerCase() === 'camstreamer.com' &&
+          url.pathname.startsWith('/embed/');
+
+        const meteo2Consentito =
+          url.hostname.toLowerCase() === 'player.meteo2.it' &&
+          url.pathname === '/player-unico/player.html' &&
+          url.search === '?cam=roccaraso';
+
+        if (!camStreamerConsentito && !meteo2Consentito) {
           console.error(
             'Player iframe non consentito:',
             this.urlWebcam
@@ -238,8 +247,122 @@ export class WebcamComponent implements OnInit, OnDestroy {
   }
 
   // ==========================================
-  // PREPARAZIONE HLS
+  // WINDY - VALIDAZIONE
   // ==========================================
+
+  private isWindyIdValido(): boolean {
+    return /^[0-9]+$/.test(this.windyId || '');
+  }
+
+  // ==========================================
+  // WINDY - DOCUMENTO HTML ISOLATO
+  // ==========================================
+
+  private prepareWindy(): void {
+    this.safeWindyHtml = null;
+    this.windyError = '';
+
+    if (!this.isWindyIdValido()) {
+      this.windyError = 'ID webcam Windy non valido.';
+      return;
+    }
+
+    // L'ID viene validato prima dell'inserimento
+    // nel documento HTML.
+    //
+    // Non inseriamo HTML o JavaScript proveniente
+    // da altri input dell'utente.
+
+    const id = this.windyId;
+
+    const html = `
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+<meta
+  name="viewport"
+content="width=device-width, initial-scale=1.0"
+  >
+
+  <style>
+  * {
+    box-sizing: border-box;
+}
+
+html,
+  body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #182c40;
+  overflow-x: hidden;
+}
+
+.windy-wrapper {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.windy-wrapper > a {
+  display: block;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="windy-wrapper">
+
+<a
+  name="windy-webcam-timelapse-player"
+data-id="${id}"
+data-play="day"
+data-loop="0"
+data-auto-play="0"
+data-force-full-screen-on-overlay-play="0"
+data-interactive="1"
+href="https://windy.com/webcams/${id}"
+target="_blank"
+rel="noopener noreferrer"
+  >
+  Apri webcam Windy
+</a>
+
+</div>
+
+<script
+async
+type="text/javascript"
+src="https://webcams.windy.com/webcams/public/embed/v2/script/player.js">
+  </script>
+
+  </body>
+  </html>
+    `;
+
+    // Documento costruito esclusivamente con markup
+    // statico e con un ID numerico validato.
+    //
+    // Il trusted HTML viene utilizzato soltanto
+    // per questo embed ufficiale e controllato.
+
+    this.safeWindyHtml =
+      this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  // ==========================================
+  // HLS - PREPARAZIONE URL
+  // ==========================================
+
 
   prepareHlsUrl(): void {
     this.hlsUrl = '';
@@ -258,41 +381,45 @@ export class WebcamComponent implements OnInit, OnDestroy {
         url.protocol !== 'https:' ||
         !url.pathname.toLowerCase().endsWith('.m3u8')
       ) {
-        this.videoError =
-          'Indirizzo HLS non valido.';
+        this.videoError = 'Indirizzo HLS non valido.';
         return;
       }
 
-      const hostConsentiti = [
-        '5e0add8153fcd.streamlock.net'
-      ];
+      // CamStreamer
+      const sorgenteCamStreamer =
+        url.hostname.toLowerCase() === '5e0add8153fcd.streamlock.net' &&
+        url.pathname.startsWith('/vedetta/');
+
+      // TurismoMeteo - Zurrone
+      const sorgenteTurismoMeteo =
+        url.hostname.toLowerCase() === 'streaming-05.dyndns.org' &&
+        url.pathname === '/hls/zurrone.m3u8';
+
+      // Meteo2 - Roccaraso
+      const sorgenteMeteo2 =
+        url.hostname.toLowerCase() === 'player.meteo2.it' &&
+        url.pathname === '/hls-clean/webcam6-clean.m3u8';
 
       if (
-        !hostConsentiti.includes(
-          url.hostname.toLowerCase()
-        ) ||
-        !url.pathname.startsWith('/vedetta/')
+        !sorgenteCamStreamer &&
+        !sorgenteTurismoMeteo &&
+        !sorgenteMeteo2
       ) {
-        this.videoError =
-          'Sorgente HLS non consentita.';
+        this.videoError = 'Sorgente HLS non consentita.';
         return;
       }
 
       this.hlsUrl = url.href;
 
     } catch (error) {
-      this.videoError =
-        'Indirizzo streaming non valido.';
-
-      console.error(
-        'Errore URL HLS:',
-        error
-      );
+      this.videoError = 'Indirizzo streaming non valido.';
+      console.error('Errore URL HLS:', error);
     }
   }
 
+
   // ==========================================
-  // AVVIO VIDEO YOUTUBE/IFRAME/HLS
+  // AVVIO CAMSTREAMER / HLS
   // ==========================================
 
   avviaVideo(): void {
@@ -312,9 +439,6 @@ export class WebcamComponent implements OnInit, OnDestroy {
       this.resetTentativi();
       this.videoAvviato = true;
     }
-
-    // Windy non usa più questo metodo:
-    // il suo player viene mostrato subito.
   }
 
   // ==========================================
@@ -337,8 +461,7 @@ export class WebcamComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // Pulisce il player precedente prima
-    // di assegnare quello nuovo.
+    // Pulisce il vecchio player
     this.distruggiHls();
 
     this.videoElement = video;
@@ -347,19 +470,8 @@ export class WebcamComponent implements OnInit, OnDestroy {
     video.playsInline = true;
     video.preload = 'none';
 
-    // Safari: supporto HLS nativo.
-    if (
-      video.canPlayType(
-        'application/vnd.apple.mpegurl'
-      )
-    ) {
-      video.src = this.hlsUrl;
-      video.load();
-      this.tentaRiproduzione(video);
-      return;
-    }
-
-    // Chrome / Firefox / Edge.
+    // Prima Hls.js: alcuni browser dichiarano il supporto
+    // HLS nativo ma non riescono a decodificare certi stream.
     if (Hls.isSupported()) {
       const player = new Hls({
         enableWorker: true,
@@ -391,44 +503,35 @@ export class WebcamComponent implements OnInit, OnDestroy {
       player.on(
         Hls.Events.ERROR,
         (_event, data) => {
-          if (
-            !data.fatal ||
-            this.hls !== player ||
-            this.distrutto
-          ) {
+          if (this.hls !== player || this.distrutto) {
             return;
           }
 
+          // Manteniamo i dettagli per capire eventuali
+          // errori CORS, HTTP o incompatibilità codec.
           console.warn(
             'Errore HLS:',
             data.type,
-            data.details
+            data.details,
+            data
           );
 
-          // Problemi di rete: recupero controllato.
-          if (
-            data.type ===
-            Hls.ErrorTypes.NETWORK_ERROR
-          ) {
-            if (
-              this.tentativiRete <
-              this.MAX_TENTATIVI_RETE
-            ) {
+          if (!data.fatal) {
+            return;
+          }
+
+          // Recupero problemi di rete
+          if (data.type === Hls.ErrorTypes.NETWORK_ERROR) {
+            if (this.tentativiRete < this.MAX_TENTATIVI_RETE) {
               this.tentativiRete++;
               player.startLoad();
               return;
             }
           }
 
-          // Problemi multimediali.
-          if (
-            data.type ===
-            Hls.ErrorTypes.MEDIA_ERROR
-          ) {
-            if (
-              this.tentativiMedia <
-              this.MAX_TENTATIVI_MEDIA
-            ) {
+          // Recupero errori multimediali
+          if (data.type === Hls.ErrorTypes.MEDIA_ERROR) {
+            if (this.tentativiMedia < this.MAX_TENTATIVI_MEDIA) {
               this.tentativiMedia++;
               player.recoverMediaError();
               return;
@@ -443,21 +546,32 @@ export class WebcamComponent implements OnInit, OnDestroy {
       );
 
       player.attachMedia(video);
-
-    } else {
-      this.videoError =
-        'Il browser non supporta HLS.';
+      return;
     }
+
+    // HLS nativo come alternativa, ad esempio Safari.
+    if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = this.hlsUrl;
+      video.load();
+      this.tentaRiproduzione(video);
+      return;
+    }
+
+    this.videoError = 'Il browser non supporta HLS.';
   }
 
   private tentaRiproduzione(
     video: HTMLVideoElement
   ): void {
     video.play().catch(() => {
-      // Il browser può richiedere
-      // un clic sul Play nativo.
+      // Alcuni browser richiedono
+      // un secondo clic sul Play nativo.
     });
   }
+
+  // ==========================================
+  // HLS - RIPROVA
+  // ==========================================
 
   riprovaVideo(): void {
     if (
@@ -469,12 +583,14 @@ export class WebcamComponent implements OnInit, OnDestroy {
 
     this.distruggiHls();
     this.resetTentativi();
-    this.videoError = '';
 
-    // Torna all'anteprima e permette
-    // un nuovo avvio senza Ctrl+F5.
+    this.videoError = '';
     this.videoAvviato = false;
   }
+
+  // ==========================================
+  // HLS - PULIZIA
+  // ==========================================
 
   private distruggiHls(): void {
     if (this.hls) {
@@ -494,101 +610,12 @@ export class WebcamComponent implements OnInit, OnDestroy {
   }
 
   // ==========================================
-  // WINDY - VALIDAZIONE
-  // ==========================================
-
-  private isWindyIdValido(): boolean {
-    return /^[0-9]+$/.test(
-      this.windyId || ''
-    );
-  }
-
-  // ==========================================
-  // WINDY - INIZIALIZZAZIONE PLAYER
-  // ==========================================
-
-  private inizializzaWindy(
-    host: HTMLDivElement
-  ): void {
-    if (
-      this.distrutto ||
-      this.windyInizializzato
-    ) {
-      return;
-    }
-
-    if (!this.isWindyIdValido()) {
-      this.windyError =
-        'ID webcam Windy non valido.';
-      return;
-    }
-
-    this.windyInizializzato = true;
-    this.windyCaricamento = true;
-    this.windyError = '';
-
-    // L'anchor Windy è già presente
-    // all'interno del template Angular.
-    //
-    // Il player ufficiale cerca gli anchor:
-    // name="windy-webcam-timelapse-player"
-    //
-    // Aggiungiamo il suo script dopo
-    // che Angular ha creato il contenitore.
-    const script =
-      document.createElement('script');
-
-    script.src = this.WINDY_SCRIPT;
-    script.type = 'text/javascript';
-    script.async = true;
-
-    script.onload = () => {
-      if (this.distrutto) {
-        return;
-      }
-
-      this.windyCaricamento = false;
-    };
-
-    script.onerror = () => {
-      if (this.distrutto) {
-        return;
-      }
-
-      this.windyCaricamento = false;
-      this.windyError =
-        'Impossibile caricare il player Windy.';
-
-      console.error(
-        'Errore caricamento player Windy'
-      );
-    };
-
-    this.windyScriptElement = script;
-
-    // Script ufficiale per ogni webcam Windy.
-    // Da verificare quando molti componenti
-    // vengono creati contemporaneamente.
-    host.appendChild(script);
-  }
-
-  // ==========================================
   // DISTRUZIONE COMPONENTE
   // ==========================================
 
   ngOnDestroy(): void {
     this.distrutto = true;
-
     this.distruggiHls();
-
-    if (this.windyScriptElement) {
-      this.windyScriptElement.onload = null;
-      this.windyScriptElement.onerror = null;
-      this.windyScriptElement.remove();
-      this.windyScriptElement = null;
-    }
-
-    this.windyHostElement = null;
   }
 
   // ==========================================
@@ -662,9 +689,7 @@ export class WebcamComponent implements OnInit, OnDestroy {
   // ==========================================
 
   errorHandler(timeout: boolean): void {
-    if (
-      this.tipo !== 'immagine'
-    ) {
+    if (this.tipo !== 'immagine') {
       return;
     }
 

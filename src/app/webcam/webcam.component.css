@@ -31,7 +31,7 @@ figure {
   display: block;
   position: relative;
 
-  width: 85%;
+  width: 95%;
   max-width: 1100px;
   aspect-ratio: 16 / 9;
 
@@ -39,9 +39,8 @@ figure {
   padding: 2px;
 
   background-color: #fff;
-
-  border: 4px solid #fff;
-  border-radius: 20px;
+  border: 2px solid #fff;
+  border-radius: 8px;
 
   box-sizing: border-box;
   overflow: hidden;
@@ -51,7 +50,7 @@ figure {
    YOUTUBE / CAMSTREAMER
    ========================================== */
 
-.webcam-youtube-container iframe {
+.webcam-youtube-container:not(.webcam-windy-container) iframe {
   display: block;
   position: absolute;
 
@@ -62,7 +61,7 @@ figure {
   height: calc(100% - 4px) !important;
 
   border: none;
-  border-radius: 14px;
+  border-radius: 4px;
 }
 
 /* ==========================================
@@ -81,13 +80,14 @@ figure {
 
   background-color: #000;
   border: 0;
-  border-radius: 14px;
+  border-radius: 4px;
 
   object-fit: contain;
 }
 
 /* ==========================================
    ANTEPRIMA CON PLAY
+   CAMSTREAMER / HLS
    ========================================== */
 
 .webcam-live-preview {
@@ -110,7 +110,7 @@ figure {
   color: #fff;
 
   border: none;
-  border-radius: 14px;
+  border-radius: 4px;
 
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -140,7 +140,7 @@ figure {
   background-color: #f00032;
   color: #fff;
 
-  border-radius: 14px;
+  border-radius: 4px;
 
   font-size: 27px;
   line-height: 1;
@@ -153,14 +153,71 @@ figure {
 }
 
 /* ==========================================
-   PLAYER WINDY UFFICIALE
+   PLAYER WINDY - PANNELLO ESTERNO
    ========================================== */
 
-.webcam-windy-container {
-  background-color: #182c40;
+.windy-zoom-panel {
+  display: block;
+
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0 auto;
+
+  /* Nessun secondo zoom annidato */
+  zoom: 1 !important;
 }
 
-.webcam-windy-player {
+/* ==========================================
+   PLAYER WINDY - CONTENITORE
+   ========================================== */
+
+.webcam-youtube-container.webcam-windy-container {
+  display: block;
+  position: relative;
+
+  width: 95%;
+  max-width: 1100px;
+
+  zoom: 1.5 !important;
+
+  aspect-ratio: 16 / 9;
+
+  margin: 0 auto 25px;
+  padding: 2px;
+
+  background-color: #182c40;
+
+  border: 2px solid #fff;
+  border-radius: 8px;
+
+  box-sizing: border-box;
+  overflow: hidden !important;
+}
+
+/* Regola specifica quando Windy è nel pannello */
+.windy-zoom-panel
+.webcam-youtube-container.webcam-windy-container {
+  display: block;
+
+  width: 95% !important;
+  max-width: 1100px !important;
+
+  zoom: 2.77 !important;
+
+  aspect-ratio: 16 / 9 !important;
+
+  margin: 0 auto 20px !important;
+
+  overflow: hidden !important;
+}
+
+/* ==========================================
+   IFRAME WINDY
+   ========================================== */
+
+.webcam-windy-iframe {
+  display: block;
   position: absolute;
 
   top: 2px;
@@ -169,54 +226,35 @@ figure {
   width: calc(100% - 4px);
   height: calc(100% - 4px);
 
-  overflow: hidden;
-  border-radius: 14px;
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  border-radius: 4px;
+
   background-color: #182c40;
+  overflow: hidden;
 }
 
-/* Collegamento iniziale che Windy
-   sostituisce con il proprio player */
+/* Quando è presente il pannello esterno */
+.windy-zoom-panel .webcam-windy-iframe {
+  position: absolute;
+  inset: 0;
 
-.webcam-windy-player > a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 100%;
-
-  padding: 10px;
-
-  color: #fff;
-  font-size: 15px;
-
-  text-decoration: underline;
-  text-align: center;
-  box-sizing: border-box;
-}
-
-/* Player incorporato generato da Windy */
-
-.webcam-windy-player iframe {
   display: block;
 
   width: 100% !important;
   height: 100% !important;
 
-  border: 0 !important;
-  border-radius: 14px;
+  margin: 0;
+  padding: 0;
+
+  border: none;
 }
 
-/* Eventuali wrapper creati dallo script */
-
-.webcam-windy-player > div {
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-}
-
-/* Crediti alla sorgente */
+/* ==========================================
+   ATTRIBUZIONE WINDY
+   ========================================== */
 
 .webcam-windy-credit {
   margin: -16px auto 22px;
@@ -269,17 +307,16 @@ figure {
   font-size: 11px;
   font-weight: bold;
   line-height: 1.4;
-
   border-radius: 4px;
   vertical-align: middle;
 }
 
 /* ==========================================
-   ERRORI VIDEO
+   STREAMING NON DISPONIBILE
    ========================================== */
 
 .webcam-youtube-error {
-  width: 85%;
+  width: 95%;
   max-width: 1100px;
 
   margin: 15px auto;
@@ -289,13 +326,17 @@ figure {
   color: #555;
 
   text-align: center;
-  border-radius: 20px;
+  border-radius: 4px;
 
   box-sizing: border-box;
 }
 
+/* ==========================================
+   MESSAGGIO ERRORE HLS / WINDY
+   ========================================== */
+
 .webcam-hls-message {
-  width: 85%;
+  width: 95%;
   max-width: 1100px;
 
   margin: -10px auto 20px;
@@ -305,7 +346,7 @@ figure {
   color: #664d03;
 
   border: 1px solid #ffecb5;
-  border-radius: 6px;
+  border-radius: 4px;
 
   box-sizing: border-box;
   font-size: 14px;
@@ -325,13 +366,13 @@ figure {
   color: #fff;
 
   border: none;
-  border-radius: 8px;
+  border-radius: 4px;
 
   font-size: 14px;
   font-weight: bold;
 
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s;
 }
 
 .webcam-retry-button:hover {
@@ -360,17 +401,51 @@ mat-spinner {
   .webcam-youtube-container {
     width: 95%;
     margin: 0 auto 20px;
-    border-radius: 14px;
+    border-radius: 4px;
   }
 
-  .webcam-youtube-container iframe,
+  .windy-zoom-panel {
+    width: 100%;
+    max-width: 100%;
+    zoom: 1 !important;
+  }
+
+  .webcam-youtube-container.webcam-windy-container {
+    width: 95% !important;
+    max-width: none !important;
+
+    zoom: 1.5 !important;
+
+    aspect-ratio: 16 / 9 !important;
+
+    margin: 0 auto 20px !important;
+    border-radius: 4px;
+
+    overflow: hidden !important;
+  }
+
+  /* FIX: mantiene 2.77 anche su mobile */
+  .windy-zoom-panel
+  .webcam-youtube-container.webcam-windy-container {
+    width: 95% !important;
+    max-width: none !important;
+
+    zoom: 2.77 !important;
+
+    aspect-ratio: 16 / 9 !important;
+
+    margin: 0 auto 20px !important;
+    border-radius: 4px;
+  }
+
+  .webcam-youtube-container:not(.webcam-windy-container) iframe,
   .webcam-hls-player,
-  .webcam-windy-player {
-    border-radius: 8px;
+  .webcam-windy-iframe {
+    border-radius: 4px;
   }
 
   .webcam-live-preview {
-    border-radius: 8px;
+    border-radius: 4px;
   }
 
   .webcam-live-play {
@@ -398,13 +473,131 @@ mat-spinner {
     font-size: 12px;
   }
 
-  .webcam-windy-player > a {
-    font-size: 13px;
-    padding: 8px;
-    text-align: center;
-  }
-
   .webcam-windy-credit {
     font-size: 11px;
   }
 }
+
+/* ==========================================
+   WINDY - FULLSCREEN
+   Normale: 2.77
+   Fullscreen: 1
+   ========================================== */
+
+/* Se il pannello stesso entra in fullscreen */
+.windy-zoom-panel:fullscreen,
+.windy-zoom-panel:-webkit-full-screen {
+  zoom: 1.6 !important;
+}
+
+/* Se il contenitore Windy entra in fullscreen */
+.windy-zoom-panel
+.webcam-youtube-container.webcam-windy-container:fullscreen,
+.windy-zoom-panel
+.webcam-youtube-container.webcam-windy-container:-webkit-full-screen {
+  zoom: 1.6 !important;
+
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Se un elemento interno accessibile è fullscreen */
+.windy-zoom-panel:has(:fullscreen)
+.webcam-youtube-container.webcam-windy-container {
+  zoom: 1.6 !important;
+}
+
+/* Gestione fullscreen dell'iframe esterno */
+.windy-zoom-panel
+.webcam-windy-iframe:fullscreen,
+.windy-zoom-panel
+.webcam-windy-iframe:-webkit-full-screen {
+  zoom: 1.6 !important;
+
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+}
+
+
+/* ==========================================
+   WINDY - FULLSCREEN VERTICALE ANDROID
+   Test: zoom 1, area disponibile completa
+   ========================================== */
+
+@media (orientation: portrait) {
+
+  /* Quando il pannello entra in fullscreen */
+  .windy-zoom-panel:fullscreen,
+  .windy-zoom-panel:-webkit-full-screen {
+    zoom: 1 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #000 !important;
+    overflow: hidden !important;
+  }
+
+  /* Quando il contenitore Windy entra in fullscreen */
+  .windy-zoom-panel .webcam-youtube-container.webcam-windy-container:fullscreen,
+  .windy-zoom-panel .webcam-youtube-container.webcam-windy-container:-webkit-full-screen,
+  .webcam-windy-container:fullscreen,
+  .webcam-windy-container:-webkit-full-screen {
+    zoom: 1 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #000 !important;
+    overflow: hidden !important;
+  }
+
+  /* Se il fullscreen riguarda un discendente del pannello */
+  .windy-zoom-panel:has(:fullscreen)
+  .webcam-youtube-container.webcam-windy-container {
+    zoom: 1 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    aspect-ratio: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  /* Iframe esterno direttamente in fullscreen */
+  .windy-zoom-panel .webcam-windy-iframe:fullscreen,
+  .windy-zoom-panel .webcam-windy-iframe:-webkit-full-screen,
+  .webcam-windy-iframe:fullscreen,
+  .webcam-windy-iframe:-webkit-full-screen {
+    zoom: 1 !important;
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100dvh !important;
+    max-width: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: #000 !important;
+  }
+
+  /* Se il contenitore Windy stesso e' fullscreen */
+  .webcam-windy-container:fullscreen .webcam-windy-iframe,
+  .webcam-windy-container:-webkit-full-screen .webcam-windy-iframe {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+  }
+}
+
