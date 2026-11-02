@@ -1,36 +1,729 @@
-<h1>RadioSondaggi</h1>
-<br>
-<p class="testo-articoli">
-  I radiosondaggi sono osservazioni di alcune variabili o parametri meteorologici prelevati attraverso una
-  strumentazione di misura agganciata ad un pallone sonda che viene rilasciato in atmosfera.
-  <br>
-  La strumentazione comunica con il centro meteo posto a terra tramite segnali radio ovvero una radiocomunicazione.<br>
-  Questi assumono il nome di messaggi TEMP e sono costituiti per lo più da stringhe di numeri decifrabili manualmente o
-  con l'utilizzo di un elaboratore.<br>
-  Il pallone sonda è a perdere. Il radiosondaggio analizza principalmente il profilo verticale dell'atmosfera,
-  cioè il cambiamento di alcuni valori quali la temperatura e la pressione al variare della quota, in libera
-  atmosfera.<br>
-  Il tempo di rilascio standard avviene alle cosiddette "ore sinottiche", in modo da poter confrontare i dati anche sul
-  piano orizzontale,
-  fra stazioni di rilascio diverse.</p>
-<br>
-<p class="title-micro-section">Radiosondaggio Pratica di Mare</p>
-<iframe class="radiosondaggio-pratica"
-        [src]="link | safe"
-        frameborder="0" title="radiosondaggio pratica di mare"></iframe>
-<br>
-<br>
-<p class="title-micro-section">Radiosondaggi Europa, clicca su LIRE per ultimo report pratica di mare</p>
-<iframe class="radiosondaggio-europa" src="https://weather.uwyo.edu/upperair/europe.html" alt="radiosondaggi europa"
-        title="radiosondaggi europa" scrolling="no"></iframe>
-<br>
-<br>
-<p class="title-micro-section">Grafico Radiosondaggio Pratica di Mare</p>
-<img src='http://www.lamma.rete.toscana.it/models/mol02gfs/snd/last/snd_Roma_3.png' alt="radiosondaggio pratica di mare"
-     title="radiosondaggio pratica di mare" scrolling="no" width="750" height="580">
+<h1 class="header-macro-section">
+  Radiosondaggi e Temperature in Quota - Meteo Campoli
+</h1>
+
+<div class="rs-page">
+
+  <div class="rs-intro">
+    <p>
+      Consulta prima i radiosondaggi realmente misurati dai palloni sonda
+      delle stazioni italiane (NOAA IGRA), poi le temperature in quota
+      elaborate dai modelli meteorologici Open-Meteo.
+      Le due fonti sono distinte e non vanno confuse.
+    </p>
+  </div>
+
+  <!-- SEZIONE 1: RADIOSONDAGGI REALI OSSERVATI -->
+  <section class="rs-section rs-sources">
+    <h2 class="title-micro-section">Radiosondaggi Reali Osservati - Palloni Sonda NOAA IGRA</h2>
+    <p class="rs-description">
+      Dati misurati da palloni sonda, distinti dai valori dei modelli
+      meteorologici Open-Meteo presentati nella sezione successiva. I lanci sono in UTC
+      e possono comparire in archivio con uno o due giorni di ritardo.
+    </p>
+
+    <div class="rs-controls">
+      <div class="rs-field">
+        <label for="rs-stazione-osservata">Stazione di lancio</label>
+        <select id="rs-stazione-osservata"
+                [value]="stazioneOsservata"
+                (change)="cambiaStazioneOsservata($any($event.target).value)">
+          <option *ngFor="let stazione of stazioniOsservate"
+                  [value]="stazione.id">
+            {{ stazione.nome }} ({{ stazione.id }})
+          </option>
+        </select>
+      </div>
+      <div class="rs-field">
+        <label for="rs-lancio-osservato">Lancio osservato (UTC)</label>
+        <select id="rs-lancio-osservato"
+                [value]="lancioSelezionato"
+                [disabled]="!lanciOsservati.length"
+                (change)="cambiaLancioOsservato($any($event.target).value)">
+          <option *ngFor="let lancio of lanciOsservati"
+                  [value]="lancio.id">{{ lancio.dataUtc }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="rs-actions">
+      <button type="button" class="rs-button"
+              [disabled]="caricamentoOsservazioni"
+              (click)="caricaRadiosondaggi()">
+        Aggiorna radiosondaggi NOAA
+      </button>
+    </div>
+
+    <div *ngIf="caricamentoOsservazioni" class="rs-loading">
+      Download e lettura archivio NOAA in corso...
+    </div>
+    <div *ngIf="erroreOsservazioni" class="rs-error">
+      {{ erroreOsservazioni }}
+    </div>
+
+    <ng-container *ngIf="lancioCorrente">
+      <div class="rs-source-bar">
+        <strong>Osservazione reale</strong>
+        <span>{{ lancioCorrente?.dataUtc }}</span>
+        <span>Fonte NOAA IGRA 2.2</span>
+      </div>
+
+      <div class="rs-temperature-grid">
+        <div class="rs-temperature-card">
+          <span class="rs-level">850 hPa osservati</span>
+          <strong class="rs-temperature-value">{{ formattaTemperatura(osservato850?.temperatura) }}</strong>
+          <span class="rs-height">{{ formattaQuota(osservato850?.quota) }}</span>
+        </div>
+        <div class="rs-temperature-card">
+          <span class="rs-level">700 hPa osservati</span>
+          <strong class="rs-temperature-value">{{ formattaTemperatura(osservato700?.temperatura) }}</strong>
+          <span class="rs-height">{{ formattaQuota(osservato700?.quota) }}</span>
+        </div>
+        <div class="rs-temperature-card">
+          <span class="rs-level">500 hPa osservati</span>
+          <strong class="rs-temperature-value">{{ formattaTemperatura(osservato500?.temperatura) }}</strong>
+          <span class="rs-height">{{ formattaQuota(osservato500?.quota) }}</span>
+        </div>
+      </div>
+
+      <div class="rs-table-container">
+        <table class="rs-table">
+          <thead>
+          <tr>
+            <th>Pressione</th><th>Quota</th><th>Temperatura</th>
+            <th>Rugiada</th><th>Umidità</th><th>Vento</th><th>Direzione</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let livello of livelliOsservati"
+              [class.rs-highlight]="livello.pressione === 850 || livello.pressione === 700 || livello.pressione === 500">
+            <td>{{ livello.pressione }} hPa</td>
+            <td>{{ formattaQuota(livello.quota) }}</td>
+            <td>{{ formattaTemperatura(livello.temperatura) }}</td>
+            <td>{{ formattaTemperatura(livello.rugiada) }}</td>
+            <td>{{ formattaUmidita(livello.umidita) }}</td>
+            <td>{{ formattaVento(livello.vento) }}</td>
+            <td>{{ formattaDirezione(livello.direzione) }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="rs-note">N/D: misurazione assente nel lancio selezionato. Nessuna interpolazione dei valori mancanti.</p>
+    </ng-container>
+
+    <div class="rs-source-links">
+      <a [href]="urlArchivioOsservazioni" target="_blank" rel="noopener noreferrer"
+         *ngIf="urlArchivioOsservazioni">Apri il file ufficiale NOAA ZIP</a>
+      <a [href]="urlRadiosondaggiReali" target="_blank" rel="noopener noreferrer">
+        Archivio alternativo Wyoming
+      </a>
+    </div>
+  </section>
 
 
-<!--
-<qrcode [qrdata]="myAngularxQrCode" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
--->
+  <!-- SEZIONE 2: TEMPERATURE CALCOLATE DAI MODELLI -->
+  <section class="rs-section">
+    <h2 class="title-micro-section">Temperature in Quota Calcolate - Modelli Open-Meteo</h2>
+    <p class="rs-description">
+      Previsioni e analisi orarie delle temperature ai livelli di 850, 700 e 500 hPa,
+      e delle altre quote atmosferiche. Sono dati elaborati da modelli numerici,
+      non misurazioni dirette dei palloni sonda.
+    </p>
+  </section>
 
+  <!-- SELEZIONE LOCALITA E ORARIO -->
+  <section class="rs-panel">
+
+    <h2 class="title-micro-section">
+      Seleziona Località e Orario
+    </h2>
+
+    <div class="rs-controls">
+
+      <div class="rs-field">
+        <label for="rs-localita">
+          Località
+        </label>
+
+        <select
+          id="rs-localita"
+          [value]="localitaSelezionata"
+          (change)="cambiaLocalita(
+            $any($event.target).value
+          )">
+
+          <option
+            *ngFor="let luogo of localita; let i = index"
+            [value]="i">
+            {{ luogo.nome }}
+          </option>
+
+        </select>
+      </div>
+
+      <div class="rs-field">
+        <label for="rs-orario">
+          Data e ora (Italia)
+        </label>
+
+        <select
+          id="rs-orario"
+          [value]="indiceOraSelezionata"
+          [disabled]="!oreDisponibili.length"
+          (change)="cambiaOra(
+            $any($event.target).value
+          )">
+
+          <option
+            *ngFor="let ora of oreDisponibili"
+            [value]="ora.indice">
+            {{ ora.etichetta }}
+          </option>
+
+        </select>
+      </div>
+
+    </div>
+
+    <div class="rs-actions">
+
+      <button
+        type="button"
+        class="rs-button rs-button-secondary"
+        [disabled]="indiceOraSelezionata <= 0"
+        (click)="spostaOra(-1)">
+        ← Ora precedente
+      </button>
+
+      <button
+        type="button"
+        class="rs-button"
+        [disabled]="indiceOraCorrente < 0"
+        (click)="tornaOraCorrente()">
+        Ora attuale
+      </button>
+
+      <button
+        type="button"
+        class="rs-button rs-button-secondary"
+        [disabled]="
+          indiceOraSelezionata >=
+          oreDisponibili.length - 1
+        "
+        (click)="spostaOra(1)">
+        Ora successiva →
+      </button>
+
+      <button
+        type="button"
+        class="rs-button rs-button-refresh"
+        [disabled]="caricamento"
+        (click)="caricaDati()">
+        Aggiorna dati
+      </button>
+
+    </div>
+
+    <p class="rs-note">
+      Disponibili 12 ore precedenti e 72 ore
+      successive. Gli orari sono espressi
+      nel fuso Europe/Rome.
+    </p>
+
+  </section>
+
+  <!-- MESSAGGI -->
+  <div
+    *ngIf="caricamento"
+    class="rs-loading">
+    Caricamento temperature in quota...
+  </div>
+
+  <div
+    *ngIf="errore"
+    class="rs-error">
+    {{ errore }}
+  </div>
+
+  <!-- DATA E FONTE -->
+  <div class="rs-source-bar">
+
+    <strong>{{ luogoCorrente.nome }}</strong>
+
+    <span *ngIf="oraSelezionata">
+      {{ oraSelezionata.etichetta }}
+    </span>
+
+    <span *ngIf="ultimoAggiornamento">
+      Aggiornato: {{ ultimoAggiornamento }}
+    </span>
+
+    <span>
+      Fonte: Open-Meteo
+    </span>
+
+  </div>
+
+  <!-- TEMPERATURE IN EVIDENZA -->
+  <section class="rs-section">
+
+    <h2 class="title-micro-section">
+      Temperature ai Principali Livelli
+    </h2>
+
+    <p class="rs-description">
+      La temperatura è riferita al livello di pressione.
+      La quota corrispondente varia in funzione
+      delle condizioni atmosferiche.
+    </p>
+
+    <div class="rs-temperature-grid">
+
+      <div class="rs-temperature-card">
+
+        <span class="rs-level">
+          850 hPa
+        </span>
+
+        <strong
+          class="rs-temperature-value"
+          [class.rs-cold]="
+            temperatura850?.temperatura != null &&
+            temperatura850!.temperatura! < 0
+          ">
+          {{ formattaTemperatura(
+          temperatura850?.temperatura
+        ) }}
+        </strong>
+
+        <span class="rs-height">
+          {{ formattaQuota(
+          temperatura850?.quota
+        ) }}
+        </span>
+
+        <small>
+          Indicativamente 1.500 m s.l.m.
+        </small>
+
+      </div>
+
+      <div class="rs-temperature-card">
+
+        <span class="rs-level">
+          700 hPa
+        </span>
+
+        <strong
+          class="rs-temperature-value"
+          [class.rs-cold]="
+            temperatura700?.temperatura != null &&
+            temperatura700!.temperatura! < 0
+          ">
+          {{ formattaTemperatura(
+          temperatura700?.temperatura
+        ) }}
+        </strong>
+
+        <span class="rs-height">
+          {{ formattaQuota(
+          temperatura700?.quota
+        ) }}
+        </span>
+
+        <small>
+          Indicativamente 3.000 m s.l.m.
+        </small>
+
+      </div>
+
+      <div class="rs-temperature-card">
+
+        <span class="rs-level">
+          500 hPa
+        </span>
+
+        <strong
+          class="rs-temperature-value"
+          [class.rs-cold]="
+            temperatura500?.temperatura != null &&
+            temperatura500!.temperatura! < 0
+          ">
+          {{ formattaTemperatura(
+          temperatura500?.temperatura
+        ) }}
+        </strong>
+
+        <span class="rs-height">
+          {{ formattaQuota(
+          temperatura500?.quota
+        ) }}
+        </span>
+
+        <small>
+          Indicativamente 5.500 m s.l.m.
+        </small>
+
+      </div>
+
+    </div>
+
+    <!-- RIEPILOGO -->
+    <div class="rs-summary-grid">
+
+      <div class="rs-summary-card">
+        <span>
+          Zero termico stimato
+        </span>
+
+        <strong>
+          {{ formattaQuota(zeroTermico) }}
+        </strong>
+
+        <small>
+          Primo attraversamento dello zero
+          nel profilo disponibile
+        </small>
+      </div>
+
+      <div class="rs-summary-card">
+        <span>
+          Temperatura minima nel profilo
+        </span>
+
+        <strong>
+          {{ formattaTemperatura(
+          temperaturaMinima
+        ) }}
+        </strong>
+      </div>
+
+      <div class="rs-summary-card">
+        <span>
+          Temperatura massima nel profilo
+        </span>
+
+        <strong>
+          {{ formattaTemperatura(
+          temperaturaMassima
+        ) }}
+        </strong>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TABELLA COMPLETA -->
+  <section class="rs-section">
+
+    <h2 class="title-micro-section">
+      Tutte le Temperature alle Varie Quote
+    </h2>
+
+    <p class="rs-description">
+      Temperature, quote, punto di rugiada,
+      umidità relativa e vento
+      per ciascun livello di pressione.
+    </p>
+
+    <div class="rs-table-container">
+
+      <table class="rs-table">
+
+        <thead>
+        <tr>
+          <th>Pressione</th>
+          <th>Quota</th>
+          <th>Temperatura</th>
+          <th>Rugiada</th>
+          <th>Umidità</th>
+          <th>Vento</th>
+          <th>Direzione</th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <tr
+          *ngFor="let livello of livelli"
+          [class.rs-highlight]="
+              livello.pressione === 850 ||
+              livello.pressione === 700 ||
+              livello.pressione === 500
+            ">
+
+          <td>
+            <strong>
+              {{ livello.pressione }} hPa
+            </strong>
+          </td>
+
+          <td>
+            {{ formattaQuota(livello.quota) }}
+          </td>
+
+          <td>
+            <strong
+              [class.rs-cold]="
+                  livello.temperatura != null &&
+                  livello.temperatura < 0
+                ">
+              {{ formattaTemperatura(
+              livello.temperatura
+            ) }}
+            </strong>
+          </td>
+
+          <td>
+            {{ formattaTemperatura(
+            livello.rugiada
+          ) }}
+          </td>
+
+          <td>
+            {{ formattaUmidita(
+            livello.umidita
+          ) }}
+          </td>
+
+          <td>
+            {{ formattaVento(
+            livello.vento
+          ) }}
+          </td>
+
+          <td>
+            {{ formattaDirezione(
+            livello.direzione
+          ) }}
+          </td>
+
+        </tr>
+
+        <tr *ngIf="!livelli.length">
+          <td colspan="7" class="rs-empty">
+            Nessun dato ancora disponibile.
+          </td>
+        </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <p class="rs-note">
+      La quota geopotenziale è espressa in metri.
+      I livelli di pressione non corrispondono
+      sempre alle stesse altitudini.
+      N/D indica un valore non restituito dal modello.
+    </p>
+
+  </section>
+
+  <!-- GRAFICO -->
+  <section class="rs-section">
+
+    <h2 class="title-micro-section">
+      Profilo Verticale della Temperatura
+    </h2>
+
+    <p class="rs-description">
+      Andamento della temperatura e del punto di
+      rugiada in funzione della quota.
+    </p>
+
+    <div class="rs-chart-panel">
+
+      <div class="rs-chart-legend">
+        <span class="rs-legend-temp">
+          Temperatura
+        </span>
+
+        <span class="rs-legend-dew">
+          Punto di rugiada
+        </span>
+      </div>
+
+      <div
+        *ngIf="!puntiTemperatura"
+        class="rs-empty">
+        Grafico disponibile dopo
+        il caricamento dei dati.
+      </div>
+
+      <div
+        *ngIf="puntiTemperatura"
+        class="rs-chart-scroll">
+
+        <svg
+          class="rs-chart"
+          viewBox="0 0 800 390"
+          role="img"
+          aria-label="Profilo verticale delle temperature">
+
+          <!-- GRIGLIA QUOTE -->
+          <ng-container *ngFor="let quota of asseQuote">
+
+            <line
+              x1="58"
+              x2="758"
+              [attr.y1]="getY(quota)"
+              [attr.y2]="getY(quota)"
+              class="rs-grid-line">
+            </line>
+
+            <text
+              x="48"
+              [attr.y]="getY(quota) + 4"
+              text-anchor="end"
+              class="rs-axis-label">
+              {{ quota }}
+            </text>
+
+          </ng-container>
+
+          <!-- GRIGLIA TEMPERATURE -->
+          <ng-container
+            *ngFor="let temperatura of asseTemperature">
+
+            <line
+              [attr.x1]="getX(temperatura)"
+              [attr.x2]="getX(temperatura)"
+              y1="40"
+              y2="350"
+              class="rs-grid-line">
+            </line>
+
+            <text
+              [attr.x]="getX(temperatura)"
+              y="369"
+              text-anchor="middle"
+              class="rs-axis-label">
+              {{ temperatura }}°
+            </text>
+
+          </ng-container>
+
+          <!-- ZERO GRADI -->
+          <line
+            [attr.x1]="getX(0)"
+            [attr.x2]="getX(0)"
+            y1="40"
+            y2="350"
+            class="rs-zero-line">
+          </line>
+
+          <!-- TEMPERATURA -->
+          <polyline
+            [attr.points]="puntiTemperatura"
+            class="rs-temp-line">
+          </polyline>
+
+          <!-- PUNTO DI RUGIADA -->
+          <polyline
+            [attr.points]="puntiRugiada"
+            class="rs-dew-line">
+          </polyline>
+
+          <text
+            x="410"
+            y="388"
+            text-anchor="middle"
+            class="rs-axis-title">
+            Temperatura (°C)
+          </text>
+
+          <text
+            x="15"
+            y="195"
+            text-anchor="middle"
+            transform="rotate(-90 15 195)"
+            class="rs-axis-title">
+            Quota (m)
+          </text>
+
+        </svg>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SPIEGAZIONI -->
+  <section class="rs-section rs-sources">
+
+    <h2 class="title-micro-section">
+      Come Interpretare le Temperature in Quota
+    </h2>
+
+    <p>
+      <strong>850 hPa:</strong>
+      livello intorno ai 1.500 metri, utile
+      per valutare la massa d'aria nei bassi
+      strati atmosferici, al di sopra di
+      molte influenze locali del suolo.
+    </p>
+
+    <p>
+      <strong>700 hPa:</strong>
+      livello intorno ai 3.000 metri,
+      utile per studiare temperature,
+      umidità e circolazione a media quota.
+    </p>
+
+    <p>
+      <strong>500 hPa:</strong>
+      livello intorno ai 5.500 metri,
+      importante per analizzare le
+      condizioni atmosferiche in quota.
+    </p>
+
+    <p>
+      <strong>Zero termico:</strong>
+      quota stimata alla quale il profilo
+      passa da temperature positive
+      a temperature nulle o negative.
+      Non coincide necessariamente
+      con la quota neve.
+    </p>
+
+    <p>
+      <strong>Origine dei dati:</strong>
+      Open-Meteo fornisce dati numerici
+      elaborati da modelli meteorologici.
+      Non si tratta di misure dirette
+      del pallone sonda di Pratica di Mare.
+    </p>
+
+    <p>
+      <strong>Nota sulle località:</strong>
+      il confronto tra Pratica di Mare,
+      Campoli Appennino e Sora rappresenta
+      le rispettive colonne atmosferiche
+      del modello, non tre radiosondaggi osservati.
+    </p>
+
+    <div class="rs-source-links">
+
+      <a
+        [href]="urlDocumentazione"
+        target="_blank"
+        rel="noopener noreferrer">
+        Documentazione Open-Meteo
+      </a>
+
+      <a
+        [href]="urlRichiesta"
+        target="_blank"
+        rel="noopener noreferrer"
+        *ngIf="urlRichiesta">
+        Visualizza dati JSON
+      </a>
+
+    </div>
+
+  </section>
+</div>

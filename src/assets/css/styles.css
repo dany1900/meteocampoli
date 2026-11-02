@@ -1,4 +1,3 @@
-
 html, body {
   height: 100%;
 }
@@ -234,7 +233,7 @@ h4 {
 }
 
 .webcam {
-  width: 95%;
+  width: 85%;
   max-height: 550px !important;
   border-radius: 20px;
   border: 4px;
@@ -339,7 +338,7 @@ h4 {
   background-color: #d6e0fc;
   color: black;
   font-weight: Bold;
-  width: 85%;
+  width: 75%;
   padding: 1px;
   border: Solid 2px #070707;
   border-radius: 5px;
@@ -1312,17 +1311,240 @@ iframe#aswift_3 {
 
 .example_responsive_1 { width: 728px !important; height: 90px!important; }
 
-.adsbygoogle {
+.adsbygoogle{
   width: 100%!important;
 }
 
-/*.webcam-youtube-container.webcam-windy-container {
-  zoom: 1.428571 !important;
-  width: 85% !important;
-  max-width: 1100px !important;
-}*/
+/* =========================================================
+   METEO CAMPOLI - TIPOGRAFIA CONDIVISA
+   Nessuna media query, nessuna modifica allo zoom.
+   Applica le classi nell'HTML; dimensioni responsive
+   specifiche nei CSS dei componenti.
+   ========================================================= */
+.mc-intro-text { max-width:950px; margin:12px auto 24px; color:#26384b; font-size:23px; font-weight:600; line-height:1.6; text-align:center; }
+.mc-section-description { max-width:950px; margin:10px auto 22px; color:#405b74; font-size:21px; font-weight:500; line-height:1.65; text-align:center; }
+.mc-body-text { color:#40536a; font-size:19px; font-weight:400; line-height:1.7; }
+.mc-secondary-text { color:#526d82; font-size:18px; font-weight:400; line-height:1.6; }
+.mc-note-text { color:#536d83; font-size:17px; font-weight:400; line-height:1.65; }
+.mc-card-title { color:#26384b; font-size:25px; font-weight:800; line-height:1.4; }
+.mc-action-text { font-size:18px; font-weight:700; }
+.mc-eyebrow-text { font-size:17px; font-weight:800; }
+.mc-key-value { font-size:25px; font-weight:800; }
 
 
+/* ==========================================
+   METEO CAMPOLI - TIPOGRAFIA CONDIVISA
+   QUALITÀ ARIA / RADIOSONDAGGI / BOLLETTINO
+   ========================================== */
 
+:root {
+  --mc-font-intro: 21px;
+  --mc-font-title: 27px;
+  --mc-font-section: 20px;
+  --mc-font-body: 19px;
+  --mc-font-secondary: 18px;
+  --mc-font-note: 17px;
+  --mc-font-card-title: 24px;
+  --mc-font-control: 18px;
+  --mc-font-label: 18px;
+  --mc-font-number: 39px;
+  --mc-font-summary: 27px;
+  --mc-font-table: 18px;
+  --mc-font-eyebrow: 17px;
+}
 
+/* INTRODUZIONI */
 
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(.rs-intro p, .qa-intro p, .bm-intro p, .mc-intro-text) {
+  font-size: var(--mc-font-intro) !important;
+  line-height: 1.6 !important;
+}
+
+/* TITOLI DELLE SEZIONI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+.title-micro-section {
+  font-size: var(--mc-font-title) !important;
+  line-height: 1.35 !important;
+}
+
+/* DESCRIZIONI SOTTO I TITOLI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-description,
+  .qa-section-description,
+  .bm-description,
+  .mc-section-description
+) {
+  font-size: var(--mc-font-section) !important;
+  line-height: 1.6 !important;
+}
+
+/* PARAGRAFI PRINCIPALI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-sources p,
+  .qa-arpa-panel p,
+  .qa-sources p,
+  .bm-header p,
+  .bm-info-card p,
+  .bm-notice,
+  .mc-body-text,
+  .qa-interpret-card p
+) {
+  font-size: var(--mc-font-body) !important;
+  line-height: 1.65 !important;
+}
+
+/* TESTI SECONDARI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-source-bar,
+  .qa-card-heading p,
+  .qa-city-quality,
+  .qa-pollen-info span,
+  .qa-limits-description,
+  .qa-pollen-legend-description,
+  .bm-link-content p,
+  .bm-level-info span,
+  .mc-secondary-text
+) {
+  font-size: var(--mc-font-secondary) !important;
+  line-height: 1.6 !important;
+}
+
+/* NOTE E TESTI PICCOLI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-note,
+  .rs-temperature-card small,
+  .rs-summary-card small,
+  .qa-legend-items span,
+  .qa-limits-note,
+  .qa-extra-note,
+  .qa-uv-scale span,
+  .qa-chart-labels,
+  .bm-legend-note,
+  .bm-zone-info small,
+  .mc-note-text
+) {
+  font-size: var(--mc-font-note) !important;
+  line-height: 1.55 !important;
+}
+
+/* TITOLI DELLE SCHEDE */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .bm-header h3,
+  .bm-link-content h4,
+  .qa-subheading,
+  .qa-limits-title,
+  .qa-arpa-panel h3,
+  .qa-interpret-card h4,
+  .mc-card-title
+) {
+  font-size: var(--mc-font-card-title) !important;
+  line-height: 1.4 !important;
+}
+
+/* PULSANTI E COLLEGAMENTI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-button,
+  .rs-source-links a,
+  .qa-refresh,
+  .qa-forecast-selector button,
+  .qa-source-links a,
+  .bm-source a,
+  .bm-refresh-button,
+  .bm-link-action,
+  .mc-action-text
+) {
+  font-size: var(--mc-font-control) !important;
+}
+
+/* ETICHETTE E SELETTORI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-field label,
+  .rs-field select,
+  .qa-toolbar,
+  .qa-chart-legend span,
+  .rs-chart-legend span,
+  .qa-legend,
+  .qa-legend > span,
+  .bm-level-info strong,
+  .mc-key-value
+) {
+  font-size: var(--mc-font-label) !important;
+}
+
+/* TEMPERATURE E VALORI AQI PRINCIPALI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-temperature-value,
+  .qa-aqi-number
+) {
+  font-size: var(--mc-font-number) !important;
+}
+
+/* VALORI NUMERICI SECONDARI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-summary-card strong,
+  .qa-extra-value,
+  .qa-subindex-item strong,
+  .bm-zone-info strong
+) {
+  font-size: var(--mc-font-summary) !important;
+}
+
+/* TABELLE */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .rs-table,
+  .rs-table th,
+  .rs-table td,
+  .qa-limits-table,
+  .qa-limits-table th,
+  .qa-limits-table td
+) {
+  font-size: var(--mc-font-table) !important;
+}
+
+/* ETICHETTE SUPERIORI */
+
+html body
+:is(.rs-page, .qualita-aria-page, .bm-page)
+:is(
+  .qa-tag,
+  .qa-eyebrow,
+  .bm-tag,
+  .bm-zone-info > span,
+  .mc-eyebrow-text
+) {
+  font-size: var(--mc-font-eyebrow) !important;
+}

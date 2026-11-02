@@ -1,6 +1,6 @@
 
 <h1 class="header-macro-section">
-  Qualità dell'Aria - Meteo Campoli
+  Monitoraggio Qualità Aria - Meteo Campoli
 </h1>
 
 <mat-spinner
@@ -49,6 +49,7 @@
       stimate di PM2.5 e PM10 da Open-Meteo / CAMS.
     </p>
 
+    <!-- SCHEDA PRINCIPALE -->
     <div class="qa-main-card">
 
       <div class="qa-card-heading">
@@ -57,6 +58,7 @@
         </span>
 
         <h3>Campoli Appennino</h3>
+
         <p>
           Riferimento locale per la Valle di Comino
           e il comprensorio di Sora.
@@ -85,6 +87,7 @@
         </div>
 
         <div class="qa-pm-values">
+
           <div>
             <span>PM2.5</span>
             <strong>
@@ -98,18 +101,65 @@
               {{ formattaNumero(principale.pm10) }} µg/m³
             </strong>
           </div>
-        </div>
 
+        </div>
       </div>
 
       <div class="qa-card-footer">
-        <span>Fonte: Open-Meteo Air Quality API</span>
+
+        <span>
+          Fonte: Open-Meteo Air Quality API
+        </span>
+
         <span *ngIf="principale.aggiornamento">
           Dato modello:
           {{ principale.aggiornamento | date:'dd/MM/yyyy HH:mm' }}
         </span>
+
       </div>
 
+    </div>
+
+    <!-- NUOVI INQUINANTI -->
+    <h3 class="qa-subheading">Altri inquinanti e condizioni atmosferiche</h3>
+    <p class="qa-section-description">
+      Valori stimati per Campoli Appennino. L'indice UV non è un inquinante.
+    </p>
+    <div class="qa-extra-grid">
+      <article class="qa-extra-card" *ngFor="let i of inquinanti">
+        <span class="qa-extra-name">{{ i.nome }}</span>
+        <strong>{{ i.formula }}</strong>
+        <div class="qa-extra-value">
+          {{ formattaNumero(i.valore) }}
+          <small>{{ i.unita }}</small>
+        </div>
+        <span class="qa-extra-note">{{ i.note }}</span>
+        <span *ngIf="i.indice !== null" class="qa-extra-index"
+              [style.color]="coloreAqi(i.indice)">
+          Sottoindice AQI: {{ formattaNumero(i.indice, 0) }}
+        </span>
+      </article>
+    </div>
+
+    <!-- SOTTOINDICI EUROPEI -->
+    <div class="qa-subindices-panel">
+      <h3 class="qa-limits-title">Quale inquinante incide di più sull'AQI?</h3>
+      <p class="qa-limits-description">
+        L'indice complessivo corrisponde al massimo dei sottoindici disponibili.
+        Inquinante prevalente: <strong>{{ inquinantePrevalente }}</strong>.
+      </p>
+      <div class="qa-subindex-grid">
+        <div class="qa-subindex-item" *ngFor="let item of sottoindici">
+          <span>{{ item.nome }}</span>
+          <strong [style.color]="coloreAqi(item.valore)">
+            {{ item.valore === null ? 'N/D' : formattaNumero(item.valore, 0) }}
+          </strong>
+          <div class="qa-subindex-track">
+            <div [style.width.%]="item.valore === null ? 0 : (item.valore > 100 ? 100 : item.valore)"
+                 [style.backgroundColor]="coloreAqi(item.valore)"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ALTRE LOCALITÀ -->
@@ -141,6 +191,7 @@
         </div>
 
         <div class="qa-city-pm">
+
           <div>
             <span>PM2.5</span>
             <strong>
@@ -154,6 +205,7 @@
               {{ formattaNumero(localita.pm10) }} µg/m³
             </strong>
           </div>
+
         </div>
 
       </article>
@@ -162,20 +214,294 @@
 
     <!-- LEGENDA AQI -->
     <div class="qa-legend">
+
       <span>Scala AQI europea:</span>
 
       <div class="qa-legend-items">
-        <span class="qa-legend-good">0–20 Buona</span>
-        <span class="qa-legend-fair">21–40 Discreta</span>
-        <span class="qa-legend-moderate">41–60 Moderata</span>
-        <span class="qa-legend-poor">61–80 Scarsa</span>
-        <span class="qa-legend-very-poor">81–100 Molto scarsa</span>
+        <span class="qa-legend-good">
+          0–20 Buona
+        </span>
+
+        <span class="qa-legend-fair">
+          21–40 Discreta
+        </span>
+
+        <span class="qa-legend-moderate">
+          41–60 Moderata
+        </span>
+
+        <span class="qa-legend-poor">
+          61–80 Scarsa
+        </span>
+
+        <span class="qa-legend-very-poor">
+          81–100 Molto scarsa
+        </span>
+
         <span class="qa-legend-extreme">
           &gt;100 Estremamente scarsa
         </span>
       </div>
+
     </div>
 
+    <!-- NUOVA LEGENDA PM2.5 E PM10 -->
+    <div class="qa-limits-panel">
+
+      <h3 class="qa-limits-title">
+        Come interpretare PM2.5 e PM10
+      </h3>
+
+      <p class="qa-limits-description">
+        Le polveri sottili si misurano in microgrammi
+        per metro cubo d'aria (µg/m³).
+        Più bassa è la concentrazione, migliore è
+        generalmente la qualità dell'aria.
+      </p>
+
+      <div class="qa-limits-table-wrapper">
+
+        <table class="qa-limits-table">
+
+          <thead>
+          <tr>
+            <th>Qualità dell'aria</th>
+            <th>PM2.5</th>
+            <th>PM10</th>
+          </tr>
+          </thead>
+
+          <tbody>
+
+          <tr>
+            <td>
+              <span class="qa-limit-dot qa-limit-good"></span>
+              Buona
+            </td>
+            <td>0–5</td>
+            <td>0–15</td>
+          </tr>
+
+          <tr>
+            <td>
+              <span class="qa-limit-dot qa-limit-fair"></span>
+              Discreta
+            </td>
+            <td>&gt;5–15</td>
+            <td>&gt;15–45</td>
+          </tr>
+
+          <tr>
+            <td>
+              <span class="qa-limit-dot qa-limit-moderate"></span>
+              Moderata
+            </td>
+            <td>&gt;15–50</td>
+            <td>&gt;45–120</td>
+          </tr>
+
+          <tr>
+            <td>
+              <span class="qa-limit-dot qa-limit-poor"></span>
+              Scarsa
+            </td>
+            <td>&gt;50–90</td>
+            <td>&gt;120–195</td>
+          </tr>
+
+          <tr>
+            <td>
+              <span class="qa-limit-dot qa-limit-very-poor"></span>
+              Molto scarsa
+            </td>
+            <td>&gt;90–140</td>
+            <td>&gt;195–270</td>
+          </tr>
+
+          <tr>
+            <td>
+              <span class="qa-limit-dot qa-limit-extreme"></span>
+              Estremamente scarsa
+            </td>
+            <td>&gt;140</td>
+            <td>&gt;270</td>
+          </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <p class="qa-limits-note">
+        Fasce di qualità dell'aria secondo la classificazione
+        europea EEA. Il simbolo &gt; significa "maggiore di".
+        Non sono limiti di legge giornalieri o annuali.
+        L'AQI complessivo può dipendere anche da altri inquinanti,
+        oltre a PM2.5 e PM10.
+      </p>
+
+    </div>
+
+    <!-- LEGENDA NO2, O3 E SO2 -->
+    <div class="qa-limits-panel">
+      <h3 class="qa-limits-title">Come interpretare NO₂, O₃ e SO₂</h3>
+      <p class="qa-limits-description">
+        Fasce dell'indice europeo EEA in µg/m³. I valori sono concentrazioni
+        stimate e non soglie di legge giornaliere o annuali.
+      </p>
+      <div class="qa-limits-table-wrapper">
+        <table class="qa-limits-table">
+          <thead>
+          <tr><th>Qualità dell'aria</th><th>NO₂</th><th>O₃</th><th>SO₂</th></tr>
+          </thead>
+          <tbody>
+          <tr><td><span class="qa-limit-dot qa-limit-good"></span>Buona</td><td>0–10</td><td>0–60</td><td>0–20</td></tr>
+          <tr><td><span class="qa-limit-dot qa-limit-fair"></span>Discreta</td><td>&gt;10–25</td><td>&gt;60–100</td><td>&gt;20–40</td></tr>
+          <tr><td><span class="qa-limit-dot qa-limit-moderate"></span>Moderata</td><td>&gt;25–60</td><td>&gt;100–120</td><td>&gt;40–125</td></tr>
+          <tr><td><span class="qa-limit-dot qa-limit-poor"></span>Scarsa</td><td>&gt;60–100</td><td>&gt;120–160</td><td>&gt;125–190</td></tr>
+          <tr><td><span class="qa-limit-dot qa-limit-very-poor"></span>Molto scarsa</td><td>&gt;100–150</td><td>&gt;160–180</td><td>&gt;190–275</td></tr>
+          <tr><td><span class="qa-limit-dot qa-limit-extreme"></span>Estremamente scarsa</td><td>&gt;150</td><td>&gt;180</td><td>&gt;275</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="qa-limits-note">
+        NO₂: prevalentemente combustione e traffico; O₃: ozono al suolo, spesso più
+        rilevante durante le giornate soleggiate; SO₂: emissioni da combustione.
+        Fonte: European Environment Agency (EEA).
+      </p>
+    </div>
+
+    <!-- LEGENDA CO, DUST E UV -->
+    <div class="qa-limits-panel">
+      <h3 class="qa-limits-title">Come leggere CO, polveri sahariane e indice UV</h3>
+      <div class="qa-interpret-grid">
+        <div class="qa-interpret-card">
+          <h4>Monossido di carbonio (CO)</h4>
+          <p>Concentrazione stimata in µg/m³. Non concorre all'AQI europeo
+            visualizzato qui; per valutare limiti di esposizione occorrono
+            medie temporali specifiche, non un singolo valore istantaneo.</p>
+        </div>
+        <div class="qa-interpret-card">
+          <h4>Polveri sahariane (Dust)</h4>
+          <p>Concentrazione modellistica in µg/m³. Non esiste una scala AQI
+            europea separata per questo parametro; valori maggiori indicano
+            più polveri desertiche stimate, non automaticamente un rischio definito.</p>
+        </div>
+        <div class="qa-interpret-card">
+          <h4>Indice ultravioletto (UV)</h4>
+          <p>Misura l'intensità della radiazione UV solare; non è un inquinante.
+            Da UV 3 in su sono consigliate misure di protezione solare.</p>
+        </div>
+      </div>
+      <div class="qa-uv-scale" aria-label="Scala dell'indice UV">
+        <span class="qa-uv-low">0–2 Basso</span>
+        <span class="qa-uv-moderate">3–5 Moderato</span>
+        <span class="qa-uv-high">6–7 Alto</span>
+        <span class="qa-uv-very-high">8–10 Molto alto</span>
+        <span class="qa-uv-extreme">11+ Estremo</span>
+      </div>
+      <p class="qa-limits-note">
+        Le categorie UV sono quelle internazionali OMS. I sottoindici di
+        PM2.5, PM10, NO₂, O₃ e SO₂ usano invece la scala AQI mostrata sopra.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- STORICO E PREVISIONI AQI CAMPOLI -->
+  <section class="qa-section">
+    <h2 class="title-micro-section">Andamento AQI – ultime 24 ore e prossime 48 ore</h2>
+    <p class="qa-section-description">
+      Confronto tra le ultime 24 ore modellistiche e la previsione per Campoli Appennino.
+      La linea continua indica il passato, quella tratteggiata il futuro.
+    </p>
+
+    <div class="qa-history-panel" *ngIf="graficoDisponibile; else qaHistoryEmpty">
+      <div class="qa-chart-head">
+        <span><i class="qa-chart-key qa-chart-past"></i> Ultime 24 ore</span>
+        <span><i class="qa-chart-key qa-chart-future"></i> Prossime 48 ore</span>
+      </div>
+      <svg class="qa-history-svg" viewBox="0 0 720 220"
+           role="img" aria-label="Grafico AQI modellistico: 24 ore passate e 48 ore future">
+        <line x1="0" y1="190" x2="720" y2="190" stroke="#cbd9e6" stroke-width="1" />
+        <line x1="0" y1="110" x2="720" y2="110" stroke="#e0e9f2" stroke-width="1" />
+        <line [attr.x1]="separatoreSvg" y1="10" [attr.x2]="separatoreSvg"
+              y2="196" stroke="#7b91a5" stroke-width="1.5" stroke-dasharray="5,5" />
+        <polyline *ngIf="storicoDisponibile" [attr.points]="storicoSvg"
+                  fill="none" stroke="#337ab7" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round" />
+        <polyline *ngIf="previsione.length" [attr.points]="futuroSvg"
+                  fill="none" stroke="#de873b" stroke-width="3"
+                  stroke-dasharray="7,5" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <div class="qa-chart-labels">
+        <span>−24 h</span><span>Adesso</span><span>+24 h</span><span>+48 h</span>
+      </div>
+      <p class="qa-limits-note">
+        Serie AQI oraria Open-Meteo / CAMS. La parte passata è una stima
+        modellistica, non uno storico di misurazioni effettuate in loco.
+        Le linee collegano i dati orari disponibili.
+      </p>
+    </div>
+    <ng-template #qaHistoryEmpty>
+      <p class="qa-info-text">Storico e previsioni AQI non disponibili.</p>
+    </ng-template>
+
+    <div class="qa-bestworst-grid" *ngIf="miglioreOra && peggioreOra">
+      <div class="qa-bestworst-card">
+        <span>Aria prevista migliore</span>
+        <strong>{{ etichettaPrevisione(miglioreOra!.ora) }}</strong>
+        <span [style.color]="coloreAqi(miglioreOra!.aqi)">
+          AQI {{ formattaNumero(miglioreOra!.aqi, 0) }} · {{ statoAqi(miglioreOra!.aqi) }}
+        </span>
+      </div>
+      <div class="qa-bestworst-card">
+        <span>Aria prevista peggiore</span>
+        <strong>{{ etichettaPrevisione(peggioreOra!.ora) }}</strong>
+        <span [style.color]="coloreAqi(peggioreOra!.aqi)">
+          AQI {{ formattaNumero(peggioreOra!.aqi, 0) }} · {{ statoAqi(peggioreOra!.aqi) }}
+        </span>
+      </div>
+    </div>
+    <p class="qa-info-text">Gli orari migliori e peggiori si riferiscono soltanto
+      alla previsione disponibile delle prossime 48 ore e non rappresentano
+      indicazioni mediche o garanzie sulle condizioni reali.</p>
+  </section>
+
+  <!-- PREVISIONE ORARIA CAMPOLI -->
+  <section class="qa-section">
+    <h2 class="title-micro-section">Previsione Qualità dell'Aria – 48 ore</h2>
+    <p class="qa-section-description">
+      Evoluzione modellistica prevista per Campoli Appennino.
+      Le barre mostrano un campione ogni tre ore; non sono misure di centraline.
+    </p>
+    <div class="qa-forecast-panel">
+      <div class="qa-forecast-selector">
+        <button *ngFor="let opt of previsioniOpzioni" type="button"
+                [class.active]="previsioneScelta === opt.codice"
+                (click)="previsioneScelta = $any(opt.codice)">
+          {{ opt.nome }}
+        </button>
+      </div>
+      <ng-container *ngIf="previsioneDisponibile; else qaForecastEmpty">
+        <div class="qa-forecast-row" *ngFor="let p of mostraOrePrevisione()">
+          <span class="qa-forecast-hour">{{ etichettaPrevisione(p.ora) }}</span>
+          <div class="qa-forecast-track">
+            <div [style.width.%]="larghezzaPrevisione(p)"
+                 [style.backgroundColor]="previsioneScelta === 'aqi' ? coloreAqi(p.aqi) : '#337ab7'"></div>
+          </div>
+          <strong>{{ formattaNumero(p[previsioneScelta], previsioneScelta === 'aqi' ? 0 : 1) }}</strong>
+        </div>
+        <p class="qa-limits-note">
+          {{ previsioneScelta === 'aqi' ? 'Indice AQI europeo (senza unità)' : 'Concentrazione in µg/m³' }}.
+          L'ampiezza delle barre è relativa al massimo mostrato nella previsione.
+        </p>
+      </ng-container>
+      <ng-template #qaForecastEmpty>
+        <p class="qa-info-text">Previsione non disponibile per questa variabile.</p>
+      </ng-template>
+    </div>
   </section>
 
   <!-- POLLINI -->
@@ -202,14 +528,19 @@
         *ngFor="let polline of pollini">
 
         <div class="qa-pollen-info">
-          <strong>{{ polline.nome }}</strong>
+
+          <strong>
+            {{ polline.nome }}
+          </strong>
 
           <span [style.color]="polline.colore">
             {{ polline.stato }}
+
             <ng-container *ngIf="polline.valore !== null">
               · {{ formattaNumero(polline.valore) }} granuli/m³
             </ng-container>
           </span>
+
         </div>
 
         <div class="qa-pollen-track">
@@ -223,11 +554,61 @@
       </div>
 
       <div class="qa-pollen-footer">
+
         <span>
           ● {{ testoQualitaPollini() }}
         </span>
-        <span>Open-Meteo / CAMS</span>
+
+        <span>
+          Open-Meteo / CAMS
+        </span>
+
       </div>
+
+    </div>
+
+    <!-- NUOVA LEGENDA POLLINI -->
+    <div class="qa-pollen-legend">
+
+      <h3 class="qa-limits-title">
+        Come leggere la concentrazione dei pollini
+      </h3>
+
+      <p class="qa-pollen-legend-description">
+        Il valore rappresenta la concentrazione stimata
+        di granuli di polline in un metro cubo d'aria.
+      </p>
+
+      <div class="qa-pollen-legend-items">
+
+        <div>
+          <strong>0 granuli/m³</strong>
+          <span>Concentrazione nulla nel modello</span>
+        </div>
+
+        <div>
+          <strong>Da 1 a meno di 10</strong>
+          <span>Pollini presenti</span>
+        </div>
+
+        <div>
+          <strong>Da 10 a meno di 30</strong>
+          <span>Concentrazione crescente</span>
+        </div>
+
+        <div>
+          <strong>30 o più granuli/m³</strong>
+          <span>Concentrazione elevata nella scala grafica</span>
+        </div>
+
+      </div>
+
+      <p class="qa-limits-note">
+        Questa classificazione descrive la scala grafica
+        utilizzata da Meteo Campoli e non rappresenta
+        soglie sanitarie ufficiali. La sensibilità ai pollini
+        varia in base alla specie e alla persona.
+      </p>
 
     </div>
 
@@ -240,6 +621,33 @@
 
   </section>
 
+  <!-- DATI UFFICIALI ARPA LAZIO -->
+  <section class="qa-section">
+    <h2 class="title-micro-section">Confronta con ARPA Lazio</h2>
+    <p class="qa-section-description">
+      I valori di Meteo Campoli sono stime modellistiche. Per consultare
+      le misure effettive delle centraline della rete regionale,
+      usa i dati ufficiali pubblicati da ARPA Lazio.
+    </p>
+    <div class="qa-arpa-panel">
+      <h3>Monitoraggio ufficiale della qualità dell'aria nel Lazio</h3>
+      <p>ARPA Lazio pubblica dati delle stazioni di misura aggiornati
+        generalmente al giorno precedente, non necessariamente coincidenti
+        con la posizione di Campoli Appennino. Il confronto tra misure
+        e modello deve considerare località, orario e tipo di dato.</p>
+      <div class="qa-source-links">
+        <a [href]="urlArpaLazio" target="_blank" rel="noopener noreferrer">
+          Stato qualità dell'aria – ARPA Lazio
+        </a>
+        <a [href]="urlArpaArchivio" target="_blank" rel="noopener noreferrer">
+          Archivio e rapporti ARPA Lazio
+        </a>
+      </div>
+      <p class="qa-limits-note">Non vengono mostrati numeri ARPA in questa sezione:
+        evita di confondere le stime CAMS con le rilevazioni ufficiali.</p>
+    </div>
+  </section>
+
   <!-- FONTI E NOTE -->
   <section class="qa-sources">
 
@@ -248,7 +656,7 @@
     </h2>
 
     <p>
-      I valori AQI, PM2.5 e PM10 sono elaborazioni modellistiche
+      I valori AQI, le polveri e gli altri inquinanti sono elaborazioni modellistiche
       Open-Meteo basate su CAMS. Non rappresentano necessariamente
       rilevazioni di centraline installate nei singoli comuni.
     </p>
@@ -265,12 +673,14 @@
     </p>
 
     <div class="qa-source-links">
+
       <a
         [href]="urlOpenMeteo"
         target="_blank"
         rel="noopener noreferrer">
         Open-Meteo Air Quality
       </a>
+
     </div>
 
   </section>

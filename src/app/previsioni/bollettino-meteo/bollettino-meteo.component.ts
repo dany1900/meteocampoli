@@ -82,20 +82,24 @@ export class BollettinoMeteoComponent implements OnInit {
     public utilityService: UtiliyService,
     private http: HttpClient
   ) {
-    this.title = 'Bollettino Meteo - Meteo Campoli';
+    this.title = 'Bollettino Meteo e Allertamento - Meteo Campoli';
 
     this.description =
-      'Bollettini meteorologici, criticità idrogeologica e ' +
-      'allertamenti della Protezione Civile Regione Lazio. ' +
-      'Zona G Bacino del Liri, Campoli Appennino e Sora.';
+      'Bollettini e allerte meteo.' +
+      'Consulta criticità idrogeologiche, rischio temporali e allertamenti.';
 
     this.keywords =
-      'bollettino meteo Lazio, allerta meteo Campoli Appennino, ' +
-      'protezione civile Lazio, Bacino del Liri, zona G, ' +
-      'allerta Sora, rischio idrogeologico';
+      'bollettino meteo Lazio, allerta meteo Lazio, ' +
+      'allerta meteo Campoli Appennino, allerta meteo Sora, ' +
+      'Protezione Civile Regione Lazio, bollettino criticità, ' +
+      'allerta idrogeologica Lazio, rischio temporali, ' +
+      'rischio idraulico, allerta gialla, allerta arancione, ' +
+      'allerta rossa, Zona G Bacino del Liri, ' +
+      'previsioni meteo Frosinone, allerte meteo Ciociaria';
+
 
     this.ogUrl =
-      'https://meteocampoli.altervista.org/bollettino-meteo';
+      'https://meteocampoli.altervista.org/previsioni/bollettino-meteo';
 
     this.ogImage = '';
 

@@ -1,4 +1,8 @@
 
+/* ==========================================
+   SMARTPHONE E TABLET IN VERTICALE
+   ========================================== */
+
 @media only screen and (max-width: 1025px) and (orientation: portrait) {
 
   /* Zoom originale del layout verticale */
@@ -38,9 +42,16 @@
     font-size: 24px;
   }
 
-  strong {
-    font-size: 18px !important;
-  }
+  /*
+   * Rimossa la vecchia regola globale:
+   *
+   * strong {
+   *   font-size: 18px !important;
+   * }
+   *
+   * Ora ogni componente gestisce autonomamente
+   * la dimensione dei propri valori numerici.
+   */
 
   .logo {
     font-family: unset !important;
@@ -240,7 +251,6 @@
   .table-riepilogo-stazione-prato {
     zoom: 1 !important;
   }
-
 }
 
 /* ==========================================
@@ -264,6 +274,7 @@
     min-width: unset !important;
   }
 
+  /* Zoom originale invariato */
   html {
     zoom: 0.7 !important;
   }
@@ -273,7 +284,8 @@
    TABLET VERTICALE 1024-1366 PX
    ========================================== */
 
-@media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
+@media screen and (min-width: 1024px) and (max-width: 1366px)
+and (orientation: portrait) {
 
   .btn-lg {
     height: 50px !important;
@@ -291,6 +303,7 @@
     min-width: unset !important;
   }
 
+  /* Zoom originale invariato */
   html {
     zoom: 0.9 !important;
   }
@@ -314,7 +327,77 @@
     min-width: unset !important;
   }
 
+  /* Zoom originale invariato */
   html {
     zoom: 1.0 !important;
+  }
+}
+
+
+
+/* ==========================================
+   METEO CAMPOLI - TIPOGRAFIA MOBILE
+   QUALITÀ ARIA / RADIOSONDAGGI / BOLLETTINO
+   ========================================== */
+
+@media only screen and (max-width: 1025px)
+and (orientation: portrait) {
+
+  :root {
+    --mc-font-intro: 27px;
+    --mc-font-title: 34px;
+    --mc-font-section: 26px;
+    --mc-font-body: 25px;
+    --mc-font-secondary: 23px;
+    --mc-font-note: 22px;
+    --mc-font-card-title: 29px;
+    --mc-font-control: 23px;
+    --mc-font-label: 23px;
+    --mc-font-number: 48px;
+    --mc-font-summary: 33px;
+    --mc-font-table: 23px;
+    --mc-font-eyebrow: 21px;
+  }
+
+  /* Titoli principali gestiti globalmente */
+  .rs-page .title-micro-section,
+  .qualita-aria-page .title-micro-section,
+  .bm-page .title-micro-section {
+    font-size: var(--mc-font-title) !important;
+  }
+
+  /* Le righe della tabella devono poter contenere
+     testi più grandi senza sovrapporsi */
+  .rs-page .rs-table th,
+  .rs-page .rs-table td,
+  .qualita-aria-page .qa-limits-table th,
+  .qualita-aria-page .qa-limits-table td {
+    padding: 13px 11px;
+    line-height: 1.45;
+  }
+
+  /* Le tabelle larghe devono scorrere in orizzontale */
+  .rs-page .rs-table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .rs-page .rs-table {
+    min-width: 850px;
+  }
+
+  /* Controlli maggiormente leggibili */
+  .rs-page .rs-field select,
+  .rs-page .rs-button {
+    min-height: 52px;
+  }
+
+  /* Evita che le schede taglino il testo */
+  .rs-page .rs-temperature-card,
+  .rs-page .rs-summary-card,
+  .qualita-aria-page .qa-main-card,
+  .bm-page .bm-main-card {
+    min-width: 0;
+    height: auto;
   }
 }

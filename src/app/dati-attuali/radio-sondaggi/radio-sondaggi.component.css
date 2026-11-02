@@ -1,0 +1,775 @@
+
+/* ==========================================
+   TEMPERATURE IN QUOTA - METEO CAMPOLI
+   ========================================== */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.rs-page {
+  width: 95%;
+  max-width: 1100px;
+  margin: 0 auto 45px;
+  padding: 10px 0 30px;
+  box-sizing: border-box;
+  color: #243d56;
+}
+
+/* INTRODUZIONE */
+
+.rs-intro {
+  text-align: center;
+  margin: 10px auto 25px;
+}
+
+.rs-intro p {
+  max-width: 950px;
+  margin: 12px auto 24px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #26384b;
+}
+
+/* SEZIONI */
+
+.rs-section {
+  margin: 25px 0 32px;
+}
+
+.rs-panel,
+.rs-chart-panel,
+.rs-sources {
+  padding: 22px;
+  background: #f5f9fe;
+  border: 1px solid #d6e3ef;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+.rs-page .title-micro-section {
+  text-align: center;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  color: #4a5065 !important;
+  line-height: 1.4;
+}
+
+.rs-description {
+  max-width: 900px;
+  margin: 10px auto 22px;
+  text-align: center;
+  color: #3b5065;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* SELETTORE */
+
+.rs-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.rs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rs-field label {
+  color: #405b74;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.rs-field select {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 12px;
+  color: #26384b;
+  background: #ffffff;
+  border: 1px solid #c9dbe9;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+.rs-field select:focus {
+  outline: 2px solid #a6cfe9;
+  outline-offset: 1px;
+}
+
+.rs-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.rs-button {
+  padding: 11px 17px;
+  color: #ffffff;
+  background: #337ab7;
+  border: 1px solid #337ab7;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rs-button:hover:not(:disabled) {
+  background: #286090;
+}
+
+.rs-button-secondary {
+  color: #337ab7;
+  background: #ffffff;
+}
+
+.rs-button-secondary:hover:not(:disabled) {
+  color: #286090;
+  background: #eaf4fc;
+}
+
+.rs-button-refresh {
+  background: #276c88;
+  border-color: #276c88;
+}
+
+.rs-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.rs-note {
+  margin: 14px auto 0;
+  color: #61768a;
+  font-size: 13px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* STATI */
+
+.rs-loading,
+.rs-error {
+  margin: 16px auto;
+  padding: 15px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.rs-loading {
+  color: #1769aa;
+  background: #eef6fc;
+  border: 1px solid #c9e3f5;
+}
+
+.rs-error {
+  color: #a52222;
+  background: #fff3f3;
+  border: 1px solid #e5a6a6;
+}
+
+/* LOCALITA E ORARIO */
+
+.rs-source-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 15px 18px;
+  background: #eef5fb;
+  border: 1px solid #d6e3ef;
+  border-radius: 9px;
+  color: #405b74;
+  font-size: 14px;
+}
+
+.rs-source-bar strong {
+  color: #26384b;
+}
+
+/* TEMPERATURE PRINCIPALI */
+
+.rs-temperature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.rs-temperature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 15px;
+  min-height: 190px;
+  background: #f5f9fe;
+  border: 1px solid #d6e3ef;
+  border-radius: 12px;
+  box-shadow: 0 3px 11px rgba(20, 61, 95, 0.06);
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.rs-level {
+  color: #405b74;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.rs-temperature-value {
+  color: #d3653c;
+  font-size: 39px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.rs-cold {
+  color: #1769aa !important;
+}
+
+.rs-height {
+  color: #26384b;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.rs-temperature-card small {
+  color: #61768a;
+  font-size: 13px;
+}
+
+/* RIEPILOGO */
+
+.rs-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.rs-summary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  padding: 18px 12px;
+  background: #ffffff;
+  border: 1px solid #dce6ef;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.rs-summary-card span {
+  color: #4a5065;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rs-summary-card strong {
+  color: #1769aa;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.rs-summary-card small {
+  color: #61768a;
+  font-size: 12px;
+}
+
+/* TABELLA */
+
+.rs-table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #dce6ef;
+  border-radius: 10px;
+}
+
+.rs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+.rs-table th {
+  padding: 13px 12px;
+  background: #e5f1fb;
+  color: #26384b;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  border-bottom: 1px solid #dce6ef;
+}
+
+.rs-table td {
+  padding: 12px;
+  color: #405b74;
+  border-bottom: 1px solid #e7edf3;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.rs-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.rs-table tbody tr:hover {
+  background: #f3f9fe;
+}
+
+.rs-table td strong {
+  color: #26384b;
+  font-weight: 700;
+}
+
+.rs-table .rs-highlight {
+  background: #edf6fd;
+}
+
+.rs-table .rs-highlight td {
+  font-weight: 600;
+}
+
+.rs-table td .rs-cold {
+  color: #1769aa !important;
+}
+
+.rs-empty {
+  padding: 30px 15px !important;
+  color: #6a7f91 !important;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* GRAFICO */
+
+.rs-chart-panel {
+  width: 100%;
+  overflow: hidden;
+}
+
+.rs-chart-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin: 12px auto 18px;
+}
+
+.rs-chart-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: #405b74;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.rs-chart-legend span::before {
+  display: inline-block;
+  width: 24px;
+  height: 4px;
+  border-radius: 4px;
+  content: '';
+}
+
+.rs-legend-temp::before {
+  background: #e06b45;
+}
+
+.rs-legend-dew::before {
+  background: #337ab7;
+}
+
+.rs-chart-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.rs-chart {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.rs-grid-line {
+  stroke: #dbe5ef;
+  stroke-width: 1;
+}
+
+.rs-zero-line {
+  stroke: #8e9eae;
+  stroke-width: 1.5;
+  stroke-dasharray: 5 5;
+}
+
+.rs-axis-label {
+  fill: #61768a;
+  font-size: 12px;
+}
+
+.rs-axis-title {
+  fill: #405b74;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.rs-temp-line {
+  fill: none;
+  stroke: #e06b45;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rs-dew-line {
+  fill: none;
+  stroke: #337ab7;
+  stroke-width: 2.5;
+  stroke-dasharray: 7 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* FONTI */
+
+.rs-sources p {
+  margin: 12px auto;
+  max-width: 950px;
+  color: #405b74;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.rs-source-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.rs-source-links a {
+  display: inline-block;
+  padding: 11px 17px;
+  color: #ffffff;
+  background: #337ab7;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.rs-source-links a:hover {
+  color: #ffffff;
+  background: #286090;
+  text-decoration: none;
+}
+
+/* TABLET */
+
+@media (max-width: 1100px) {
+  .rs-page {
+    width: 95%;
+  }
+
+  .rs-temperature-grid {
+    gap: 12px;
+  }
+
+  .rs-temperature-value {
+    font-size: 34px;
+  }
+}
+
+/* SMARTPHONE */
+
+@media (max-width: 768px) {
+  .rs-page {
+    width: 95%;
+    padding: 5px 0 25px;
+  }
+
+  .rs-intro p {
+    font-size: 17px;
+  }
+
+  .rs-page .title-micro-section {
+    font-size: 24px !important;
+  }
+
+  .rs-description {
+    font-size: 14px;
+  }
+
+  .rs-panel,
+  .rs-chart-panel,
+  .rs-sources {
+    padding: 14px;
+  }
+
+  .rs-controls {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .rs-field label {
+    font-size: 13px;
+  }
+
+  .rs-field select {
+    font-size: 14px;
+  }
+
+  .rs-actions {
+    gap: 8px;
+  }
+
+  .rs-button {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .rs-temperature-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .rs-temperature-card {
+    min-height: 145px;
+    padding: 17px 12px;
+    gap: 7px;
+  }
+
+  .rs-level {
+    font-size: 17px;
+  }
+
+  .rs-temperature-value {
+    font-size: 35px;
+  }
+
+  .rs-height {
+    font-size: 16px;
+  }
+
+  .rs-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 9px;
+  }
+
+  .rs-summary-card {
+    padding: 13px;
+  }
+
+  .rs-summary-card strong {
+    font-size: 21px;
+  }
+
+  .rs-table {
+    font-size: 12px;
+  }
+
+  .rs-table th {
+    padding: 10px 9px;
+  }
+
+  .rs-table td {
+    padding: 9px;
+  }
+
+  .rs-chart-legend {
+    gap: 15px;
+  }
+
+  .rs-chart-legend span {
+    font-size: 12px;
+  }
+
+  .rs-chart {
+    min-width: 430px;
+  }
+
+  .rs-sources p {
+    font-size: 13px;
+  }
+
+  .rs-source-links a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 370px) {
+  .rs-actions {
+    flex-direction: column;
+  }
+
+  .rs-button {
+    width: 100%;
+  }
+}
+
+
+/* ==========================================
+   TEMPERATURE IN QUOTA - LEGGIBILITÀ
+   Non modifica lo zoom globale
+   ========================================== */
+
+.rs-page .rs-intro p {
+  font-size: 25px !important;
+  line-height: 1.65 !important;
+}
+
+.rs-page .title-micro-section {
+  font-size: 34px !important;
+  line-height: 1.4 !important;
+}
+
+.rs-page .rs-description {
+  font-size: 23px !important;
+  line-height: 1.65 !important;
+}
+
+.rs-page .rs-field label {
+  font-size: 22px !important;
+}
+
+.rs-page .rs-field select {
+  font-size: 23px !important;
+  min-height: 58px;
+}
+
+.rs-page .rs-button {
+  font-size: 21px !important;
+  padding: 14px 19px;
+}
+
+.rs-page .rs-source-bar {
+  font-size: 21px !important;
+}
+
+.rs-page .rs-level {
+  font-size: 27px !important;
+}
+
+.rs-page .rs-temperature-value {
+  font-size: 52px !important;
+}
+
+.rs-page .rs-height {
+  font-size: 25px !important;
+}
+
+.rs-page .rs-temperature-card small,
+.rs-page .rs-summary-card small {
+  font-size: 19px !important;
+}
+
+.rs-page .rs-summary-card span {
+  font-size: 22px !important;
+}
+
+.rs-page .rs-summary-card strong {
+  font-size: 35px !important;
+}
+
+.rs-page .rs-table,
+.rs-page .rs-table th,
+.rs-page .rs-table td {
+  font-size: 21px !important;
+}
+
+.rs-page .rs-table th {
+  padding: 16px 13px;
+}
+
+.rs-page .rs-table td {
+  padding: 15px 13px;
+}
+
+.rs-page .rs-note {
+  font-size: 19px !important;
+}
+
+.rs-page .rs-chart-legend span {
+  font-size: 20px !important;
+}
+
+.rs-page .rs-sources p {
+  font-size: 22px !important;
+  line-height: 1.7 !important;
+}
+
+.rs-page .rs-source-links a {
+  font-size: 20px !important;
+}
+
+.rs-page .rs-loading,
+.rs-page .rs-error,
+.rs-page .rs-empty {
+  font-size: 19px !important;
+}
+
+/* ==========================================
+   SMARTPHONE - SOLO CSS LOCALE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .rs-page .rs-intro p {
+    font-size: 20px !important;
+  }
+
+  .rs-page .title-micro-section {
+    font-size: 27px !important;
+  }
+
+  .rs-page .rs-description {
+    font-size: 19px !important;
+  }
+
+  .rs-page .rs-field label,
+  .rs-page .rs-field select {
+    font-size: 19px !important;
+  }
+
+  .rs-page .rs-button {
+    font-size: 17px !important;
+  }
+
+  .rs-page .rs-temperature-value {
+    font-size: 43px !important;
+  }
+
+  .rs-page .rs-table,
+  .rs-page .rs-table th,
+  .rs-page .rs-table td {
+    font-size: 17px !important;
+  }
+
+  .rs-page .rs-note {
+    font-size: 16px !important;
+  }
+
+  .rs-page .rs-sources p {
+    font-size: 18px !important;
+  }
+}
+
