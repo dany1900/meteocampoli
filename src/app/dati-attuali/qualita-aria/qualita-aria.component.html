@@ -1,0 +1,278 @@
+
+<h1 class="header-macro-section">
+  Qualità dell'Aria - Meteo Campoli
+</h1>
+
+<mat-spinner
+  *ngIf="imageLoader"
+  mode="indeterminate">
+</mat-spinner>
+
+<div class="qualita-aria-page">
+
+  <!-- INTRODUZIONE -->
+  <div class="qa-intro">
+    <p>
+      Monitoraggio della qualità dell'aria, delle polveri sottili
+      e dei pollini a Campoli Appennino e nella provincia
+      di Frosinone.
+    </p>
+
+    <div class="qa-toolbar">
+      <span *ngIf="ultimoAggiornamento">
+        Aggiornamento: {{ ultimoAggiornamento }}
+      </span>
+
+      <button
+        type="button"
+        class="qa-refresh"
+        [disabled]="caricamento"
+        (click)="caricaDati()">
+        {{ caricamento ? 'Aggiornamento...' : '↻ Aggiorna dati' }}
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="erroreGenerale" class="qa-error">
+    {{ erroreGenerale }}
+  </div>
+
+  <!-- QUALITÀ DELL'ARIA -->
+  <section class="qa-section">
+
+    <h2 class="title-micro-section">
+      Qualità dell'Aria (AQI) in Tempo Reale
+    </h2>
+
+    <p class="qa-section-description">
+      Indice europeo della qualità dell'aria e concentrazioni
+      stimate di PM2.5 e PM10 da Open-Meteo / CAMS.
+    </p>
+
+    <div class="qa-main-card">
+
+      <div class="qa-card-heading">
+        <span class="qa-eyebrow">
+          QUALITÀ DELL'ARIA · EUROPEAN AQI
+        </span>
+
+        <h3>Campoli Appennino</h3>
+        <p>
+          Riferimento locale per la Valle di Comino
+          e il comprensorio di Sora.
+        </p>
+      </div>
+
+      <div class="qa-main-values">
+
+        <div
+          class="qa-aqi-number"
+          [style.color]="coloreAqi(principale.aqi)"
+          [style.borderColor]="coloreAqi(principale.aqi)">
+          {{ principale.aqi !== null ? principale.aqi : 'N/D' }}
+        </div>
+
+        <div class="qa-aqi-description">
+          <span
+            class="qa-quality-label"
+            [style.color]="coloreAqi(principale.aqi)">
+            {{ statoAqi(principale.aqi) }}
+          </span>
+
+          <span class="qa-aqi-caption">
+            Indice europeo AQI
+          </span>
+        </div>
+
+        <div class="qa-pm-values">
+          <div>
+            <span>PM2.5</span>
+            <strong>
+              {{ formattaNumero(principale.pm25) }} µg/m³
+            </strong>
+          </div>
+
+          <div>
+            <span>PM10</span>
+            <strong>
+              {{ formattaNumero(principale.pm10) }} µg/m³
+            </strong>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="qa-card-footer">
+        <span>Fonte: Open-Meteo Air Quality API</span>
+        <span *ngIf="principale.aggiornamento">
+          Dato modello:
+          {{ principale.aggiornamento | date:'dd/MM/yyyy HH:mm' }}
+        </span>
+      </div>
+
+    </div>
+
+    <!-- ALTRE LOCALITÀ -->
+    <h3 class="qa-subheading">
+      Confronto con le altre località
+    </h3>
+
+    <div class="qa-cities-grid">
+
+      <article
+        class="qa-city-card"
+        *ngFor="let localita of altreLocalita">
+
+        <div class="qa-city-name">
+          {{ localita.nome }}
+        </div>
+
+        <div
+          class="qa-city-aqi"
+          [style.color]="coloreAqi(localita.aqi)">
+          {{ localita.aqi !== null ? localita.aqi : 'N/D' }}
+          <small>AQI</small>
+        </div>
+
+        <div
+          class="qa-city-quality"
+          [style.color]="coloreAqi(localita.aqi)">
+          {{ statoAqi(localita.aqi) }}
+        </div>
+
+        <div class="qa-city-pm">
+          <div>
+            <span>PM2.5</span>
+            <strong>
+              {{ formattaNumero(localita.pm25) }} µg/m³
+            </strong>
+          </div>
+
+          <div>
+            <span>PM10</span>
+            <strong>
+              {{ formattaNumero(localita.pm10) }} µg/m³
+            </strong>
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+
+    <!-- LEGENDA AQI -->
+    <div class="qa-legend">
+      <span>Scala AQI europea:</span>
+
+      <div class="qa-legend-items">
+        <span class="qa-legend-good">0–20 Buona</span>
+        <span class="qa-legend-fair">21–40 Discreta</span>
+        <span class="qa-legend-moderate">41–60 Moderata</span>
+        <span class="qa-legend-poor">61–80 Scarsa</span>
+        <span class="qa-legend-very-poor">81–100 Molto scarsa</span>
+        <span class="qa-legend-extreme">
+          &gt;100 Estremamente scarsa
+        </span>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- POLLINI -->
+  <section class="qa-section qa-bottom-section qa-pollen-full">
+
+    <h2 class="title-micro-section">
+      Concentrazione Pollini nell'Aria
+    </h2>
+
+    <p class="qa-section-description">
+      Previsione dei pollini per Campoli Appennino
+      tramite il modello europeo CAMS.
+    </p>
+
+    <div class="qa-pollen-panel">
+
+      <div class="qa-pollen-header">
+        <span>SPECIE MONITORATA</span>
+        <span>CONCENTRAZIONE</span>
+      </div>
+
+      <div
+        class="qa-pollen-row"
+        *ngFor="let polline of pollini">
+
+        <div class="qa-pollen-info">
+          <strong>{{ polline.nome }}</strong>
+
+          <span [style.color]="polline.colore">
+            {{ polline.stato }}
+            <ng-container *ngIf="polline.valore !== null">
+              · {{ formattaNumero(polline.valore) }} granuli/m³
+            </ng-container>
+          </span>
+        </div>
+
+        <div class="qa-pollen-track">
+          <div
+            class="qa-pollen-fill"
+            [style.width.%]="polline.percentuale"
+            [style.backgroundColor]="polline.colore">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="qa-pollen-footer">
+        <span>
+          ● {{ testoQualitaPollini() }}
+        </span>
+        <span>Open-Meteo / CAMS</span>
+      </div>
+
+    </div>
+
+    <p class="qa-info-text">
+      Le concentrazioni polliniche sono previsioni modellistiche.
+      La disponibilità dipende dalla stagione.
+      N/D significa dato non disponibile, non assenza di pollini.
+      Le barre sono indicatori visivi, non soglie sanitarie.
+    </p>
+
+  </section>
+
+  <!-- FONTI E NOTE -->
+  <section class="qa-sources">
+
+    <h2 class="title-micro-section">
+      Fonti dei Dati e Aggiornamento
+    </h2>
+
+    <p>
+      I valori AQI, PM2.5 e PM10 sono elaborazioni modellistiche
+      Open-Meteo basate su CAMS. Non rappresentano necessariamente
+      rilevazioni di centraline installate nei singoli comuni.
+    </p>
+
+    <p>
+      Il componente aggiorna automaticamente le informazioni
+      ogni 15 minuti. La frequenza di aggiornamento del sito
+      non coincide necessariamente con quella dei modelli sorgente.
+    </p>
+
+    <p>
+      I dati sui pollini sono previsioni modellistiche
+      e possono non essere disponibili fuori stagione.
+    </p>
+
+    <div class="qa-source-links">
+      <a
+        [href]="urlOpenMeteo"
+        target="_blank"
+        rel="noopener noreferrer">
+        Open-Meteo Air Quality
+      </a>
+    </div>
+
+  </section>
+
+</div>

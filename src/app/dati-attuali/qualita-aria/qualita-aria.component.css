@@ -1,0 +1,1252 @@
+
+
+/* ==========================================
+   QUALITÀ ARIA - METEO CAMPOLI
+   ========================================== */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.qualita-aria-page {
+  width: 95%;
+  max-width: 1350px;
+  margin: 0 auto 45px;
+  padding: 10px 0 30px;
+  box-sizing: border-box;
+  color: #243d56;
+}
+
+/* ==========================================
+   INTRODUZIONE
+   ========================================== */
+
+.qa-intro {
+  text-align: center;
+  margin: 10px auto 25px;
+}
+
+
+.qa-intro p {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #26384b;
+  max-width: 950px;
+  margin: 12px auto 24px;
+}
+
+
+.qa-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 15px;
+  color: #60778c;
+  font-size: 13px;
+}
+
+.qa-refresh {
+  padding: 9px 18px;
+  background: #1769aa;
+  color: white;
+  font-weight: 600;
+  font-size: 13px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.qa-refresh:hover {
+  background: #104d80;
+}
+
+.qa-refresh:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.qa-error {
+  padding: 15px;
+  margin: 15px auto;
+  border: 1px solid #e5a6a6;
+  background: #fff3f3;
+  color: #a52222;
+  text-align: center;
+  border-radius: 8px;
+}
+
+/* ==========================================
+   SEZIONI GENERALI
+   ========================================== */
+
+.qa-section {
+  margin: 25px 0;
+}
+
+.qa-section-description {
+  margin: 8px auto 20px;
+  max-width: 900px;
+  color: #647b91;
+  text-align: center;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.qa-eyebrow {
+  display: block;
+  color: #139bb3;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+/* ==========================================
+   SCHEDA PRINCIPALE CAMPOLI
+   ========================================== */
+
+.qa-main-card {
+  width: 100%;
+  padding: 25px;
+  border: 1px solid #d6e3ef;
+  border-radius: 12px;
+  background: #f5f9fe;
+  box-shadow: 0 4px 16px rgba(20, 61, 95, 0.08);
+  box-sizing: border-box;
+}
+
+.qa-card-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.qa-card-heading h3 {
+  margin: 9px 0 6px;
+  color: #26384b;
+  font-weight: 800;
+  font-size: 27px;
+}
+
+.qa-card-heading p {
+  margin: 0;
+  color: #667f94;
+  font-size: 14px;
+}
+
+.qa-main-values {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 18px 0;
+}
+
+.qa-aqi-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 115px;
+  height: 115px;
+  padding: 10px;
+  border: 3px solid;
+  border-radius: 16px;
+  background: white;
+  box-sizing: border-box;
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.qa-aqi-description {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 160px;
+}
+
+.qa-quality-label {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.qa-aqi-caption {
+  font-size: 14px;
+  color: #6d8092;
+}
+
+.qa-pm-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.qa-pm-values > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 135px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid #dce7f0;
+  border-radius: 9px;
+}
+
+.qa-pm-values span {
+  font-size: 12px;
+  font-weight: 700;
+  color: #6b8294;
+}
+
+.qa-pm-values strong {
+  color: #1769aa;
+  font-size: 18px;
+}
+
+.qa-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 17px;
+  margin-top: 15px;
+  border-top: 1px solid #d9e5f0;
+  color: #72899d;
+  font-size: 12px;
+}
+
+/* ==========================================
+   ALTRE CITTÀ
+   ========================================== */
+
+.qa-subheading {
+  margin: 30px 0 18px;
+  color: #26384b;
+  font-weight: 800;
+  text-align: center;
+  font-size: 21px;
+}
+
+.qa-cities-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.qa-city-card {
+  min-width: 0;
+  padding: 17px 14px;
+  border: 1px solid #dce6ef;
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 2px 9px rgba(30, 61, 91, 0.06);
+}
+
+.qa-city-name {
+  min-height: 20px;
+  color: #435c75;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.qa-city-aqi {
+  margin: 12px 0 4px;
+  font-size: 35px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.qa-city-aqi small {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.qa-city-quality {
+  min-height: 22px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.qa-city-pm {
+  margin-top: 15px;
+  padding-top: 12px;
+  border-top: 1px solid #e7edf3;
+}
+
+.qa-city-pm > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin-bottom: 7px;
+  font-size: 11px;
+}
+
+.qa-city-pm span {
+  color: #74899c;
+}
+
+.qa-city-pm strong {
+  color: #274e70;
+  font-weight: 700;
+}
+
+/* ==========================================
+   LEGENDA AQI
+   ========================================== */
+
+.qa-legend {
+  margin: 22px auto;
+  padding: 14px;
+  text-align: center;
+  border-radius: 8px;
+  background: #f0f5fa;
+  font-size: 12px;
+}
+
+.qa-legend > span {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.qa-legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.qa-legend-items span {
+  padding: 7px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.qa-legend-good {
+  background: #00b89c;
+}
+
+.qa-legend-fair {
+  background: #3498db;
+}
+
+.qa-legend-moderate {
+  background: #d89914;
+}
+
+.qa-legend-poor {
+  background: #ee793e;
+}
+
+.qa-legend-very-poor {
+  background: #d9534f;
+}
+
+.qa-legend-extreme {
+  background: #963ca9;
+}
+
+/* ==========================================
+   SEZIONI POLLINI E ALLERTE
+   ========================================== */
+
+.qa-bottom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.qa-bottom-section {
+  min-width: 0;
+  margin: 10px 0 25px;
+}
+
+.qa-bottom-section .title-micro-section {
+  line-height: 1.3;
+}
+
+/* ==========================================
+   POLLINI
+   ========================================== */
+
+.qa-pollen-panel {
+  padding: 20px;
+  background: #f5f9fe;
+  border: 1px solid #d6e3ef;
+  border-radius: 12px;
+}
+
+.qa-pollen-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed #cbd9e6;
+  color: #6e8497;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+  font-weight: 700;
+}
+
+.qa-pollen-row {
+  padding: 16px 0 9px;
+}
+
+.qa-pollen-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 9px;
+}
+
+.qa-pollen-info strong {
+  color: #244967;
+  font-size: 13px;
+}
+
+.qa-pollen-info span {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.qa-pollen-track {
+  width: 100%;
+  height: 7px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #dfe7f0;
+}
+
+.qa-pollen-fill {
+  height: 100%;
+  border-radius: 9px;
+  transition: width 0.4s ease;
+}
+
+.qa-pollen-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid #dbe6ef;
+  color: #4e6980;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.qa-info-text {
+  margin: 14px 4px;
+  color: #72879a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   PROTEZIONE CIVILE LAZIO
+   ========================================== */
+
+.qa-alert-panel {
+  padding: 20px;
+  border: 1px solid #d6e3ef;
+  border-radius: 12px;
+  background: #f5f9fe;
+}
+
+.qa-alert-header h3 {
+  color: #26384b;
+  font-weight: 800;
+  font-size: 19px;
+  margin: 10px 0;
+}
+
+.qa-alert-header p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #637b90;
+}
+
+.qa-alert-zone {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 16px;
+  margin: 18px 0;
+  border-radius: 8px;
+  background: #e5f1fb;
+  color: #1769aa;
+  font-size: 14px;
+}
+
+.qa-alert-zone strong {
+  font-weight: 800;
+}
+
+.qa-alert-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.qa-alert-links a {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 15px;
+  border: 1px solid #d8e6f2;
+  border-radius: 9px;
+  background: #fff;
+  color: #264967;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.qa-alert-links a:hover {
+  background: #eaf4fc;
+  text-decoration: none;
+}
+
+.qa-link-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: #e3f1fa;
+  border-radius: 9px;
+  color: #1769aa;
+  font-size: 20px;
+}
+
+.qa-alert-links a > span:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+
+.qa-alert-links strong {
+  font-size: 13px;
+}
+
+.qa-alert-links small {
+  font-size: 11px;
+  color: #72889b;
+}
+
+.qa-external {
+  color: #1769aa;
+  font-size: 20px;
+}
+
+.qa-alert-notice {
+  margin-top: 20px;
+  padding: 13px 15px;
+  border-left: 4px solid #1769aa;
+  background: #edf4fa;
+  border-radius: 5px;
+  color: #526b80;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   FONTI
+   ========================================== */
+
+.qa-sources {
+  padding: 22px;
+  margin-top: 15px;
+  background: #f5f8fc;
+  border: 1px solid #dce6ef;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.qa-sources p {
+  margin: 10px 0;
+  color: #587287;
+  line-height: 1.6;
+  font-size: 13px;
+}
+
+.qa-source-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.qa-source-links a {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 7px;
+  background: #1769aa;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.qa-source-links a:hover {
+  background: #104d80;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (max-width: 1100px) {
+  .qa-cities-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .qa-bottom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   SMARTPHONE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .qualita-aria-page {
+    width: 95%;
+    padding: 5px 0 25px;
+  }
+
+  .qa-intro p {
+    font-size: 14px;
+  }
+
+  .qa-main-card {
+    padding: 17px 12px;
+  }
+
+  .qa-card-heading h3 {
+    font-size: 23px;
+  }
+
+  .qa-main-values {
+    gap: 16px;
+  }
+
+  .qa-aqi-number {
+    min-width: 90px;
+    height: 90px;
+    font-size: 40px;
+  }
+
+  .qa-quality-label {
+    font-size: 20px;
+  }
+
+  .qa-pm-values {
+    width: 100%;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .qa-pm-values > div {
+    min-width: 0;
+    flex: 1;
+    padding: 12px;
+  }
+
+  .qa-pm-values strong {
+    font-size: 14px;
+  }
+
+  .qa-cities-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .qa-city-card {
+    padding: 13px 10px;
+  }
+
+  .qa-city-aqi {
+    font-size: 29px;
+  }
+
+  .qa-city-name {
+    font-size: 12px;
+  }
+
+  .qa-city-pm > div {
+    flex-wrap: wrap;
+  }
+
+  .qa-pollen-panel,
+  .qa-alert-panel {
+    padding: 14px;
+  }
+
+  .qa-pollen-header {
+    font-size: 9px;
+  }
+
+  .qa-pollen-info {
+    align-items: flex-start;
+  }
+
+  .qa-pollen-info strong,
+  .qa-pollen-info span {
+    font-size: 11px;
+  }
+
+  .qa-alert-links a {
+    padding: 12px;
+  }
+
+  .qa-alert-zone {
+    font-size: 12px;
+  }
+
+  .qa-sources {
+    padding: 15px;
+  }
+
+  .qa-sources p {
+    font-size: 12px;
+  }
+
+  .qa-card-footer {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ==========================================
+   SCHERMI MOLTO PICCOLI
+   ========================================== */
+
+@media (max-width: 370px) {
+  .qa-cities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .qa-pm-values {
+    flex-direction: column;
+  }
+}
+
+
+/* ==========================================
+   QUALITÀ ARIA - MIGLIORAMENTO LEGGIBILITÀ
+   METEO CAMPOLI
+   ========================================== */
+
+/* Descrizione iniziale */
+
+.qa-intro p {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #26384b;
+  max-width: 950px;
+  margin: 12px auto 24px;
+}
+
+
+/* Data aggiornamento */
+.qa-toolbar {
+  font-size: 15px;
+  color: #36546e;
+  gap: 16px;
+}
+
+.qa-refresh {
+  font-size: 15px;
+  padding: 11px 20px;
+}
+
+/* Titoli delle sezioni */
+.qualita-aria-page .title-micro-section {
+  font-size: 30px !important;
+  font-weight: 700 !important;
+  line-height: 1.35;
+  color: #26384b !important;
+}
+
+/* Sottotitoli descrittivi */
+.qa-section-description {
+  font-size: 17px;
+  line-height: 1.65;
+  color: #405b74;
+  font-weight: 500;
+}
+
+/* Etichette superiori */
+.qa-eyebrow {
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+/* ==========================================
+   CAMPOLI APPENNINO - RIQUADRO PRINCIPALE
+   ========================================== */
+
+.qa-main-card {
+  padding: 30px;
+}
+
+.qa-card-heading h3 {
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.qa-card-heading p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #48647b;
+}
+
+.qa-main-values {
+  gap: 30px;
+  padding: 24px 0;
+}
+
+.qa-aqi-number {
+  min-width: 125px;
+  height: 125px;
+  font-size: 55px;
+}
+
+.qa-quality-label {
+  font-size: 28px;
+}
+
+.qa-aqi-caption {
+  font-size: 16px;
+  color: #4e6579;
+}
+
+.qa-pm-values > div {
+  min-width: 150px;
+  padding: 18px 22px;
+}
+
+.qa-pm-values span {
+  font-size: 15px;
+  color: #48657e;
+}
+
+.qa-pm-values strong {
+  font-size: 22px;
+}
+
+.qa-card-footer {
+  font-size: 14px;
+  color: #49657c;
+}
+
+/* ==========================================
+   CONFRONTO CITTÀ
+   ========================================== */
+
+.qa-subheading {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 32px 0 20px;
+}
+
+.qa-cities-grid {
+  gap: 15px;
+}
+
+.qa-city-card {
+  padding: 22px 15px;
+}
+
+.qa-city-name {
+  font-size: 18px;
+  font-weight: 800;
+  color: #244763;
+}
+
+.qa-city-aqi {
+  margin: 15px 0 6px;
+  font-size: 44px;
+}
+
+.qa-city-aqi small {
+  font-size: 15px;
+}
+
+.qa-city-quality {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.qa-city-pm {
+  margin-top: 18px;
+  padding-top: 15px;
+}
+
+.qa-city-pm > div {
+  font-size: 14px;
+  line-height: 1.5;
+  gap: 8px;
+}
+
+.qa-city-pm span {
+  color: #506a80;
+  font-weight: 600;
+}
+
+.qa-city-pm strong {
+  color: #164e78;
+  font-weight: 800;
+}
+
+/* ==========================================
+   LEGENDA AQI
+   ========================================== */
+
+.qa-legend {
+  padding: 18px;
+  font-size: 15px;
+}
+
+.qa-legend > span {
+  font-size: 16px;
+}
+
+.qa-legend-items {
+  gap: 10px;
+}
+
+.qa-legend-items span {
+  padding: 9px 12px;
+  font-size: 13px;
+}
+
+/* ==========================================
+   POLLINI
+   ========================================== */
+
+.qa-pollen-panel {
+  padding: 23px;
+}
+
+.qa-pollen-header {
+  font-size: 13px;
+  color: #49657c;
+}
+
+.qa-pollen-row {
+  padding: 19px 0 13px;
+}
+
+.qa-pollen-info {
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.qa-pollen-info strong {
+  font-size: 16px;
+  color: #203e58;
+}
+
+.qa-pollen-info span {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.qa-pollen-track {
+  height: 9px;
+}
+
+.qa-pollen-footer {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.qa-info-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4f6a80;
+}
+
+/* ==========================================
+   PROTEZIONE CIVILE LAZIO
+   ========================================== */
+
+.qa-alert-panel {
+  padding: 23px;
+}
+
+.qa-alert-header h3 {
+  font-size: 23px;
+  line-height: 1.4;
+  font-weight: 800;
+}
+
+.qa-alert-header p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #405c75;
+}
+
+.qa-alert-zone {
+  padding: 17px 18px;
+  font-size: 17px;
+}
+
+.qa-alert-links a {
+  padding: 18px;
+  gap: 15px;
+}
+
+.qa-link-icon {
+  width: 46px;
+  height: 46px;
+  font-size: 23px;
+}
+
+.qa-alert-links strong {
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+.qa-alert-links small {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4e697f;
+}
+
+.qa-alert-notice {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #405c73;
+}
+
+/* ==========================================
+   FONTI
+   ========================================== */
+
+.qa-sources p {
+  font-size: 16px;
+  color: #405d74;
+}
+
+.qa-source-links a {
+  font-size: 15px;
+  padding: 12px 18px;
+}
+
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (min-width: 769px) and (max-width: 1100px) {
+
+  .qa-city-name {
+    font-size: 17px;
+  }
+
+  .qa-city-pm > div {
+    font-size: 13px;
+  }
+
+  .qa-main-values {
+    gap: 20px;
+  }
+}
+
+/* ==========================================
+   SMARTPHONE
+   ========================================== */
+
+@media (max-width: 768px) {
+
+  .qualita-aria-page .title-micro-section {
+    font-size: 26px !important;
+  }
+
+  .qa-intro p {
+    font-size: 16px;
+  }
+
+  .qa-section-description {
+    font-size: 15px;
+  }
+
+  .qa-main-card {
+    padding: 20px 14px;
+  }
+
+  .qa-card-heading h3 {
+    font-size: 26px;
+  }
+
+  .qa-card-heading p {
+    font-size: 14px;
+  }
+
+  .qa-aqi-number {
+    min-width: 95px;
+    height: 95px;
+    font-size: 42px;
+  }
+
+  .qa-quality-label {
+    font-size: 22px;
+  }
+
+  .qa-aqi-caption {
+    font-size: 14px;
+  }
+
+  .qa-pm-values > div {
+    min-width: 0;
+    padding: 13px;
+  }
+
+  .qa-pm-values span {
+    font-size: 13px;
+  }
+
+  .qa-pm-values strong {
+    font-size: 16px;
+  }
+
+  .qa-card-footer {
+    font-size: 12px;
+  }
+
+  .qa-subheading {
+    font-size: 22px;
+  }
+
+  .qa-city-card {
+    padding: 16px 11px;
+  }
+
+  .qa-city-name {
+    font-size: 15px;
+  }
+
+  .qa-city-aqi {
+    font-size: 36px;
+  }
+
+  .qa-city-quality {
+    font-size: 13px;
+  }
+
+  .qa-city-pm > div {
+    font-size: 12px;
+  }
+
+  .qa-legend-items span {
+    font-size: 11px;
+  }
+
+  .qa-pollen-panel,
+  .qa-alert-panel {
+    padding: 16px;
+  }
+
+  .qa-pollen-header {
+    font-size: 11px;
+  }
+
+  .qa-pollen-info strong {
+    font-size: 14px;
+  }
+
+  .qa-pollen-info span {
+    font-size: 13px;
+  }
+
+  .qa-pollen-footer {
+    font-size: 12px;
+  }
+
+  .qa-info-text {
+    font-size: 12px;
+  }
+
+  .qa-alert-header h3 {
+    font-size: 20px;
+  }
+
+  .qa-alert-header p {
+    font-size: 14px;
+  }
+
+  .qa-alert-zone {
+    font-size: 14px;
+  }
+
+  .qa-alert-links strong {
+    font-size: 15px;
+  }
+
+  .qa-alert-links small {
+    font-size: 12px;
+  }
+
+  .qa-alert-notice {
+    font-size: 13px;
+  }
+
+  .qa-sources p {
+    font-size: 13px;
+  }
+}
+
+/* Titoli interni: grassetto e scuri. Il titolo principale H1 resta invariato. */
+.qualita-aria-page .title-micro-section,
+.qualita-aria-page .qa-subheading,
+.qualita-aria-page .qa-card-heading h3,
+.qualita-aria-page .qa-alert-header h3 {
+  color: #26384b !important;
+  font-weight: 800 !important;
+}
+
+
+/* ==========================================
+   POLLINI A LARGHEZZA COMPLETA
+   DOPO LO SPOSTAMENTO DEL BOLLETTINO
+   ========================================== */
+
+.qa-pollen-full {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.qa-pollen-full .qa-pollen-panel {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Mantiene i titoli scuri e in grassetto */
+.qualita-aria-page .title-micro-section,
+.qualita-aria-page .qa-subheading,
+.qualita-aria-page .qa-card-heading h3 {
+  color: #26384b !important;
+  font-weight: 800 !important;
+}

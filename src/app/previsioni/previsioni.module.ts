@@ -8,6 +8,7 @@ import {IndiciClimaticiComponent} from './indici-climatici/indici-climatici.comp
 import {TabModelliConfrontoComponent} from './modelli-confronto/tab-modelli-confronto/tab-modelli-confronto.component';
 import {TabModelliTipologiaComponent} from './modelli-confronto/tab-modelli-tipologia/tab-modelli-tipologia.component';
 import {ModelliConfrontoComponent} from './modelli-confronto/modelli-confronto.component';
+import {BollettinoMeteoComponent} from './bollettino-meteo/bollettino-meteo.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {ModelliConfrontoComponent} from './modelli-confronto/modelli-confronto.c
     IndiciClimaticiComponent,
     ModelliConfrontoComponent,
     TabModelliConfrontoComponent,
-    TabModelliTipologiaComponent
+    TabModelliTipologiaComponent,
+    BollettinoMeteoComponent
   ],
   exports: []
 })

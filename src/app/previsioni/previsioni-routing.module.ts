@@ -4,6 +4,7 @@ import {PrevisioniComponent} from './previsioni.component';
 import {IndiciClimaticiComponent} from './indici-climatici/indici-climatici.component';
 import {TabModelliConfrontoComponent} from './modelli-confronto/tab-modelli-confronto/tab-modelli-confronto.component';
 import {ModelliCostants, ModelliTypeCostants} from '../shared/constants/stazioni-meteo.constants';
+import {BollettinoMeteoComponent} from './bollettino-meteo/bollettino-meteo.component';
 
 
 @NgModule({
@@ -19,6 +20,10 @@ import {ModelliCostants, ModelliTypeCostants} from '../shared/constants/stazioni
           {
             path: '',
             component: PrevisioniComponent,
+          },
+          {
+            path: 'bollettino-meteo',
+            component: BollettinoMeteoComponent,
           },
           {
             path: 'gfs/500Hpa',

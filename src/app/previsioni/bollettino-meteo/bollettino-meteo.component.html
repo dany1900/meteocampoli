@@ -1,0 +1,410 @@
+
+<h1 class="header-macro-section">
+  Bollettino Meteo e Allertamento - Meteo Campoli
+</h1>
+
+<div class="bm-page">
+
+  <!-- INTRODUZIONE -->
+  <div class="bm-intro">
+    <p>
+      Bollettini ufficiali di criticità meteorologica,
+      idrogeologica e idraulica pubblicati dalla
+      Protezione Civile della Regione Lazio.
+    </p>
+  </div>
+
+  <!-- INTESTAZIONE -->
+  <section class="bm-section">
+
+    <h2 class="title-micro-section">
+      Bollettini di Criticità e Allertamento
+    </h2>
+
+    <p class="bm-description">
+      Consulta gli aggiornamenti del Centro Funzionale Regionale
+      per Campoli Appennino, Sora e il Bacino del Liri.
+    </p>
+
+    <div class="bm-main-card">
+
+      <div class="bm-header">
+        <span class="bm-tag">
+          PROTEZIONE CIVILE REGIONE LAZIO
+        </span>
+
+        <h3>Centro Funzionale Regionale</h3>
+
+        <p>
+          Il Centro Funzionale Regionale pubblica bollettini
+          di criticità e, quando previsto, gli allertamenti
+          per il sistema di Protezione Civile.
+        </p>
+      </div>
+
+      <!-- ZONA DI ALLERTA -->
+      <div class="bm-zone-card">
+
+        <div class="bm-zone-icon">
+          {{ zonaAllerta }}
+        </div>
+
+        <div class="bm-zone-info">
+          <span>ZONA DI ALLERTA</span>
+          <strong>{{ nomeZona }}</strong>
+          <small>Campoli Appennino e comprensorio di Sora</small>
+        </div>
+
+      </div>
+
+      <!-- COLLEGAMENTI UFFICIALI -->
+      <div class="bm-links-grid">
+
+        <a
+          class="bm-link-card"
+          [href]="urlBollettini"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          <div class="bm-link-symbol">
+            ☁
+          </div>
+
+          <div class="bm-link-content">
+            <h4>Bollettini di Criticità</h4>
+
+            <p>
+              Consultazione dei bollettini ufficiali
+              per rischio idrogeologico e idraulico.
+            </p>
+
+            <span class="bm-link-action">
+              Consulta i bollettini ↗
+            </span>
+          </div>
+        </a>
+
+        <a
+          class="bm-link-card"
+          [href]="urlAllertamenti"
+          target="_blank"
+          rel="noopener noreferrer">
+
+          <div class="bm-link-symbol">
+            ⚠
+          </div>
+
+          <div class="bm-link-content">
+            <h4>Allertamenti Ufficiali</h4>
+
+            <p>
+              Comunicazioni di allertamento emesse
+              dalla Protezione Civile Regione Lazio.
+            </p>
+
+            <span class="bm-link-action">
+              Consulta gli allertamenti ↗
+            </span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- AVVISO -->
+      <div class="bm-notice">
+        <strong>Attenzione:</strong>
+        i livelli di allerta in vigore devono essere verificati
+        direttamente sui bollettini ufficiali.
+        Questa pagina non assegna automaticamente un livello
+        di allerta alla Zona G.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ULTIMO BOLLETTINO RECUPERATO AUTOMATICAMENTE -->
+  <section class="bm-section">
+
+    <h2 class="title-micro-section">
+      Ultimo Bollettino Regione Lazio
+    </h2>
+
+    <p class="bm-description">
+      Verifica automatica del documento ufficiale
+      all'apertura della pagina.
+    </p>
+
+    <div class="bm-main-card">
+
+      <!-- CARICAMENTO -->
+      <div
+        *ngIf="bollettinoCaricamento"
+        class="bm-header">
+
+        <p>
+          Verifica del bollettino regionale in corso...
+        </p>
+
+      </div>
+
+      <!-- DOCUMENTO DISPONIBILE -->
+      <ng-container
+        *ngIf="!bollettinoCaricamento && documentoDisponibile">
+
+        <div class="bm-header">
+
+          <span class="bm-tag">
+            DOCUMENTO REGIONE LAZIO
+          </span>
+
+          <h3>
+            Zona G - Bacino del Liri
+          </h3>
+
+          <p>
+            Data del bollettino:
+            <strong>{{ dataDocumentoFormattata }}</strong>
+          </p>
+
+          <p *ngIf="bollettino">
+            {{ bollettino.messaggio }}
+          </p>
+
+        </div>
+
+        <!-- STATO AGGIORNAMENTO -->
+        <div class="bm-zone-card">
+
+          <div class="bm-zone-icon">
+            G
+          </div>
+
+          <div class="bm-zone-info">
+
+            <span>
+              DISPONIBILITÀ DOCUMENTO
+            </span>
+
+            <strong>
+              {{ documentoOdierno
+              ? 'Documento odierno disponibile'
+              : 'Documento precedente disponibile' }}
+            </strong>
+
+            <small>
+              Il livello di allerta deve essere verificato
+              nel PDF ufficiale.
+            </small>
+
+          </div>
+
+        </div>
+
+        <!-- APERTURA DEL PDF -->
+        <div class="bm-source">
+
+          <a
+            *ngIf="bollettino && bollettino.urlPdf"
+            [href]="bollettino.urlPdf"
+            target="_blank"
+            rel="noopener noreferrer">
+            Apri il Bollettino Ufficiale PDF ↗
+          </a>
+
+        </div>
+
+        <!-- AVVISO DOCUMENTO PRECEDENTE -->
+        <div
+          *ngIf="!documentoOdierno"
+          class="bm-notice">
+
+          <strong>Attenzione:</strong>
+          il documento individuato non è datato oggi.
+          Verifica il periodo di validità e controlla
+          se sono stati pubblicati aggiornamenti più recenti.
+
+        </div>
+
+        <!-- PRECISAZIONE SUI LIVELLI -->
+        <div class="bm-notice">
+
+          <strong>Livelli di allerta:</strong>
+          da verificare nel bollettino ufficiale.
+
+          Il recupero automatico del documento non equivale
+          alla lettura dei livelli di criticità per la Zona G.
+
+        </div>
+
+      </ng-container>
+
+      <!-- ERRORE O DOCUMENTO NON DISPONIBILE -->
+      <ng-container
+        *ngIf="!bollettinoCaricamento && !documentoDisponibile">
+
+        <div class="bm-header">
+
+          <h3>
+            Bollettino non disponibile automaticamente
+          </h3>
+
+          <p>
+            {{ bollettinoErrore ||
+          'Non è stato possibile individuare un documento ufficiale.' }}
+          </p>
+
+        </div>
+
+        <div class="bm-source">
+
+          <a
+            [href]="urlBollettini"
+            target="_blank"
+            rel="noopener noreferrer">
+            Consulta il portale della Regione Lazio ↗
+          </a>
+
+        </div>
+
+      </ng-container>
+
+      <!-- AGGIORNAMENTO MANUALE -->
+      <div
+        class="bm-source"
+        *ngIf="!bollettinoCaricamento">
+
+        <button
+          type="button"
+          class="bm-refresh-button"
+          (click)="caricaBollettino()">
+          ↻ Verifica aggiornamenti
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BOLLETTINI UFFICIALI REGIONE LAZIO -->
+  <section class="bm-section">
+
+    <h2 class="title-micro-section">
+      Bollettini Aggiornati Regione Lazio
+    </h2>
+
+    <p class="bm-description">
+      Consulta direttamente i bollettini di criticità
+      e gli allertamenti pubblicati dalla Protezione Civile.
+      Per Campoli Appennino controlla la Zona G - Bacino del Liri.
+    </p>
+
+    <div class="bm-iframe-container">
+
+      <iframe
+        class="bm-iframe"
+        src="https://www.regione.lazio.it/protezione-civile/centro-funzionale-regionale/bollettini-criticita-idrogeologica-idraulica"
+        title="Bollettini ufficiali Protezione Civile Regione Lazio"
+        loading="lazy"
+        referrerpolicy="no-referrer">
+      </iframe>
+
+    </div>
+
+    <div class="bm-source">
+      <a
+        [href]="urlBollettini"
+        target="_blank"
+        rel="noopener noreferrer">
+        Apri i bollettini sul sito ufficiale ↗
+      </a>
+    </div>
+
+  </section>
+
+
+  <!-- LEGENDA -->
+  <section class="bm-section">
+
+    <h2 class="title-micro-section">
+      Legenda dei Livelli di Allerta
+    </h2>
+
+    <p class="bm-description">
+      Significato generale dei colori utilizzati
+      nel sistema di allertamento regionale.
+    </p>
+
+    <div class="bm-level-grid">
+
+      <div
+        class="bm-level-card"
+        *ngFor="let livello of livelliAllerta"
+        [ngClass]="'bm-level-' + livello.classe">
+
+        <div class="bm-level-dot"></div>
+
+        <div class="bm-level-info">
+          <strong>{{ livello.nome }}</strong>
+          <span>{{ livello.descrizione }}</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <p class="bm-legend-note">
+      Questa è una legenda informativa dei possibili livelli,
+      non una visualizzazione dell'allerta attualmente in vigore.
+      I colori e le criticità possono riferirsi a rischi differenti.
+    </p>
+
+  </section>
+
+  <!-- INFORMAZIONI -->
+  <section class="bm-section">
+
+    <h2 class="title-micro-section">
+      Informazioni sulla Zona G - Bacino del Liri
+    </h2>
+
+    <div class="bm-info-card">
+
+      <p>
+        La <strong>Zona G - Bacino del Liri</strong> è una
+        delle zone di allerta utilizzate dalla Regione Lazio
+        per le valutazioni del rischio idrogeologico
+        e idraulico.
+      </p>
+
+      <p>
+        I bollettini possono distinguere la criticità
+        idrogeologica, quella idrogeologica per temporali
+        e quella idraulica. Per conoscere il livello
+        applicabile occorre consultare il documento
+        ufficiale e il relativo periodo di validità.
+      </p>
+
+      <p>
+        Meteo Campoli mette a disposizione i collegamenti
+        alle fonti regionali, senza sostituire
+        le comunicazioni della Protezione Civile.
+      </p>
+
+      <div class="bm-source">
+
+        <a
+          [href]="urlCentroFunzionale"
+          target="_blank"
+          rel="noopener noreferrer">
+          Centro Funzionale Regionale Lazio ↗
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>

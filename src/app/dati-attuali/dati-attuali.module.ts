@@ -9,6 +9,7 @@ import {IncendiComponent} from './incendi/incendi.component';
 import {StazionePratoComponent} from './stazione-prato/stazione-prato.component';
 import {TabDatiComponent} from './tab-dati/tab-dati.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {QualitaAriaComponent} from './qualita-aria/qualita-aria.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     RadioSondaggiComponent,
     IncendiComponent,
     StazionePratoComponent,
+    QualitaAriaComponent,
     TabDatiComponent
   ],
   exports: []

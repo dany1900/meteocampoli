@@ -3,6 +3,7 @@ import {RouterModule} from '@angular/router';
 import {RadioSondaggiComponent} from './radio-sondaggi/radio-sondaggi.component';
 import {IncendiComponent} from './incendi/incendi.component';
 import {TabDatiComponent} from './tab-dati/tab-dati.component';
+import {QualitaAriaComponent} from './qualita-aria/qualita-aria.component';
 
 
 @NgModule({
@@ -40,6 +41,13 @@ import {TabDatiComponent} from './tab-dati/tab-dati.component';
             component: IncendiComponent,
             data: {
               title: 'Mappa Incendi Live - Meteo Campoli',
+            },
+          },
+          {
+            path: 'qualita-aria',
+            component: QualitaAriaComponent,
+            data: {
+              title: 'Qualità Aria - Meteo Campoli',
             },
           },
         ],

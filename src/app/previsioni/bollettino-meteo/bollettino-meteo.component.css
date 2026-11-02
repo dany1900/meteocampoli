@@ -1,0 +1,577 @@
+
+/* ==========================================
+   BOLLETTINO METEO - METEO CAMPOLI
+   ========================================== */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.bm-page {
+  width: 95%;
+  max-width: 1350px;
+  margin: 0 auto 45px;
+  padding: 10px 0 30px;
+  box-sizing: border-box;
+  color: #26384b;
+}
+
+.bm-intro {
+  margin: 10px auto 28px;
+  text-align: center;
+}
+
+.bm-intro p {
+  max-width: 980px;
+  margin: 0 auto;
+  font-size: 19px;
+  line-height: 1.7;
+  font-weight: 500;
+  color: #344d65;
+}
+
+.bm-section {
+  margin: 30px 0;
+}
+
+/* Titoli scuri e grassetto */
+.bm-page .title-micro-section {
+  margin: 15px auto 12px;
+  color: #26384b !important;
+  font-size: 30px !important;
+  line-height: 1.35;
+  font-weight: 800 !important;
+  text-align: center;
+}
+
+.bm-description {
+  max-width: 950px;
+  margin: 8px auto 22px;
+  color: #405b74;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.bm-main-card,
+.bm-info-card {
+  padding: 30px;
+  background: #f5f9fe;
+  border: 1px solid #d6e3ef;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(20, 61, 95, 0.08);
+  box-sizing: border-box;
+}
+
+.bm-header {
+  text-align: center;
+}
+
+.bm-tag {
+  display: block;
+  color: #139bb3;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.bm-header h3 {
+  margin: 12px 0;
+  color: #26384b;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+.bm-header p {
+  max-width: 850px;
+  margin: 0 auto 24px;
+  color: #48647b;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   ZONA DI ALLERTA
+   ========================================== */
+
+.bm-zone-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 650px;
+  margin: 22px auto 30px;
+  padding: 20px;
+  background: #e5f1fb;
+  border: 1px solid #d0e4f4;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.bm-zone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 75px;
+  height: 75px;
+  background: #1769aa;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.bm-zone-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bm-zone-info > span {
+  color: #5e7990;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.bm-zone-info strong {
+  color: #26384b;
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.bm-zone-info small {
+  color: #59758b;
+  font-size: 14px;
+}
+
+/* ==========================================
+   COLLEGAMENTI
+   ========================================== */
+
+.bm-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bm-link-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  min-width: 0;
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #dce6ef;
+  border-radius: 11px;
+  text-decoration: none !important;
+  box-shadow: 0 2px 9px rgba(30, 61, 91, 0.06);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.bm-link-card:hover {
+  background: #eef6fc;
+  border-color: #a9cde9;
+}
+
+.bm-link-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  background: #e3f1fa;
+  border-radius: 11px;
+  color: #1769aa;
+  font-size: 29px;
+}
+
+.bm-link-content {
+  min-width: 0;
+}
+
+.bm-link-content h4 {
+  margin: 0 0 10px;
+  color: #26384b;
+  font-size: 21px;
+  line-height: 1.35;
+  font-weight: 800;
+}
+
+.bm-link-content p {
+  margin: 0 0 17px;
+  color: #526d82;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.bm-link-action {
+  color: #1769aa;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.bm-notice {
+  margin-top: 25px;
+  padding: 17px 20px;
+  background: #edf4fa;
+  border-left: 4px solid #1769aa;
+  border-radius: 6px;
+  color: #405c73;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ==========================================
+   LEGENDA LIVELLI
+   ========================================== */
+
+.bm-level-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.bm-level-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #dce6ef;
+  border-radius: 10px;
+}
+
+.bm-level-dot {
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  margin-top: 4px;
+  border-radius: 50%;
+}
+
+.bm-level-info {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.bm-level-info strong {
+  color: #26384b;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+.bm-level-info span {
+  color: #526d82;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.bm-level-verde .bm-level-dot {
+  background: #18a85c;
+}
+
+.bm-level-giallo .bm-level-dot {
+  background: #e1b000;
+}
+
+.bm-level-arancione .bm-level-dot {
+  background: #e97828;
+}
+
+.bm-level-rosso .bm-level-dot {
+  background: #d33434;
+}
+
+.bm-legend-note {
+  margin: 16px 3px;
+  font-size: 14px;
+  color: #536d83;
+  line-height: 1.6;
+}
+
+/* ==========================================
+   INFORMAZIONI
+   ========================================== */
+
+.bm-info-card p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #405c73;
+  margin: 0 0 16px;
+}
+
+.bm-source {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.bm-source a {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #1769aa;
+  border-radius: 7px;
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.bm-source a:hover {
+  background: #104d80;
+  text-decoration: none;
+}
+
+/* ==========================================
+   TABLET
+   ========================================== */
+
+@media (max-width: 1100px) {
+  .bm-level-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ==========================================
+   SMARTPHONE
+   ========================================== */
+
+@media (max-width: 768px) {
+  .bm-page {
+    width: 95%;
+    padding: 5px 0 25px;
+  }
+
+  .bm-page .title-micro-section {
+    font-size: 26px !important;
+  }
+
+  .bm-intro p {
+    font-size: 16px;
+  }
+
+  .bm-description {
+    font-size: 15px;
+  }
+
+  .bm-main-card,
+  .bm-info-card {
+    padding: 18px 14px;
+  }
+
+  .bm-tag {
+    font-size: 11px;
+  }
+
+  .bm-header h3 {
+    font-size: 23px;
+  }
+
+  .bm-header p {
+    font-size: 14px;
+  }
+
+  .bm-zone-card {
+    gap: 13px;
+    padding: 14px;
+  }
+
+  .bm-zone-icon {
+    width: 58px;
+    height: 58px;
+    font-size: 31px;
+  }
+
+  .bm-zone-info > span {
+    font-size: 11px;
+  }
+
+  .bm-zone-info strong {
+    font-size: 19px;
+  }
+
+  .bm-zone-info small {
+    font-size: 12px;
+  }
+
+  .bm-links-grid {
+    grid-template-columns: 1fr;
+    gap: 13px;
+  }
+
+  .bm-link-card {
+    padding: 17px;
+    gap: 13px;
+  }
+
+  .bm-link-symbol {
+    width: 48px;
+    height: 48px;
+    font-size: 23px;
+  }
+
+  .bm-link-content h4 {
+    font-size: 18px;
+  }
+
+  .bm-link-content p {
+    font-size: 14px;
+  }
+
+  .bm-link-action {
+    font-size: 13px;
+  }
+
+  .bm-notice {
+    font-size: 13px;
+    padding: 13px;
+  }
+
+  .bm-level-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .bm-level-card {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .bm-level-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+  .bm-level-info strong {
+    font-size: 15px;
+  }
+
+  .bm-level-info span {
+    font-size: 12px;
+  }
+
+  .bm-legend-note {
+    font-size: 12px;
+  }
+
+  .bm-info-card p {
+    font-size: 14px;
+  }
+
+  .bm-source a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 370px) {
+  .bm-level-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================
+   BOLLETTINO METEO - LEGGIBILITÀ DESCRIZIONI
+   ========================================== */
+
+/* Descrizione principale sotto il titolo della pagina */
+.bm-intro p {
+  max-width: 950px;
+  margin: 12px auto 24px;
+
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #26384b;
+}
+
+/* Descrizione sotto Bollettini di Criticità e Allertamento */
+.bm-description {
+  max-width: 900px;
+  margin: 10px auto 22px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #3b5065;
+}
+
+/* Descrizione Centro Funzionale Regionale */
+.bm-header p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: #40536a;
+}
+
+/* Descrizioni nei due riquadri dei bollettini */
+.bm-link-content p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #40536a;
+}
+
+/* Testo dell'avviso */
+.bm-notice {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+/* Smartphone */
+@media (max-width: 768px) {
+  .bm-intro p {
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .bm-description {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .bm-header p {
+    font-size: 14px;
+  }
+
+  .bm-link-content p {
+    font-size: 14px;
+  }
+
+  .bm-notice {
+    font-size: 14px;
+  }
+}
+
+
+/* AGGIORNAMENTO BOLLETTINO */
+.bm-refresh-button {
+  display: inline-block;
+  padding: 10px 16px;
+  margin-top: 8px;
+  background-color: #337ab7;
+  color: #ffffff;
+  border: none;
+  border-radius: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.bm-refresh-button:hover {
+  background-color: #286090;
+}
+
+.bm-refresh-button:focus-visible {
+  outline: 2px solid #26384b;
+  outline-offset: 3px;
+}
+

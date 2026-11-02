@@ -156,17 +156,23 @@ figure {
    PLAYER WINDY - PANNELLO ESTERNO
    ========================================== */
 
+
+/* WINDY - PANNELLO ESTERNO */
 .windy-zoom-panel {
   display: block;
-
   width: 100%;
   max-width: 100%;
-
   margin: 0 auto;
-
-  /* Nessun secondo zoom annidato */
   zoom: 1 !important;
 }
+
+/* SOLO PC DESKTOP */
+@media (min-width: 1025px) {
+  .windy-zoom-panel {
+    zoom: 0.5 !important;
+  }
+}
+
 
 /* ==========================================
    PLAYER WINDY - CONTENITORE
@@ -598,6 +604,40 @@ mat-spinner {
     width: 100% !important;
     height: 100% !important;
     border-radius: 0 !important;
+  }
+}
+
+
+/* ==========================================
+   WINDY - FULLSCREEN PC
+   Zoom maggiorato per evitare lo sdoppiamento
+   Non modifica smartphone e tablet
+   ========================================== */
+
+@media (min-width: 1025px) and (orientation: landscape) {
+
+  .windy-zoom-panel:fullscreen,
+  .windy-zoom-panel:-webkit-full-screen {
+    zoom: 1.85 !important;
+  }
+
+  .windy-zoom-panel
+  .webcam-youtube-container.webcam-windy-container:fullscreen,
+  .windy-zoom-panel
+  .webcam-youtube-container.webcam-windy-container:-webkit-full-screen {
+    zoom: 1.85 !important;
+  }
+
+  .windy-zoom-panel:has(:fullscreen)
+  .webcam-youtube-container.webcam-windy-container {
+    zoom: 1.85 !important;
+  }
+
+  .windy-zoom-panel
+  .webcam-windy-iframe:fullscreen,
+  .windy-zoom-panel
+  .webcam-windy-iframe:-webkit-full-screen {
+    zoom: 1.85 !important;
   }
 }
 
