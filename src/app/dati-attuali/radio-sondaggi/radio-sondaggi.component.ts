@@ -60,7 +60,54 @@ interface LivelloOsservato {
   direzione: number | null;
 }
 
+interface SondaRecente {
+  seriale: string;
+  dataUtc: string;
+  latitudine: number;
+  longitudine: number;
+  quota: number | null;
+  temperatura: number | null;
+  umidita: number | null;
+  pressione: number | null;
+  url: string;
+}
+
+interface RispostaSondeRecenti {
+  fonte: string;
+  aggiornatoIl: string;
+  stazione?: { id: string; nome: string };
+  durataOre: number;
+  sonde: SondaRecente[];
+  errore?: string | null;
+}
+
+/** Dati già campionati dal PHP SondeHub (osservazioni reali in salita). */
+interface PuntoProfiloSonda {
+  quota: number;
+  temperatura: number | null;
+  umidita: number | null;
+  pressione: number | null;
+  latitudine: number | null;
+  longitudine: number | null;
+  dataUtc: string;
+  pressioneStimata?: number | null;
+}
+
+interface RispostaProfiloSonda {
+  fonte: string;
+  tipo: string;
+  seriale: string;
+  numeroOsservazioniOriginali: number;
+  numeroMisurazioni: number;
+  quotaMassima: number;
+  inizioUtc: string;
+  fineUtc: string;
+  profilo: PuntoProfiloSonda[];
+  errore?: string | null;
+}
+
 interface LancioOsservato {
+  fonte?: 'noaa' | 'wyoming';
   id: string;
   dataUtc: string;
   livelli: LivelloOsservato[];
@@ -163,6 +210,146 @@ export class RadioSondaggiComponent implements OnInit, OnDestroy {
     { nome: 'Decimomannu', id: 'ITM00016546' }
   ];
 
+  // SondeHub per stazione di lancio (non ricerca geografica).
+  private readonly urlApiSondeRecenti = '/assets/php/sondehub-stazioni.php';
+  readonly stazioniSondeHub = [
+    { id: '16245', nome: 'Pratica di Mare' },
+    { id: '16144', nome: 'San Pietro Capofiume' },
+    { id: '16045', nome: 'Udine / Rivolto' },
+    { id: '16064', nome: 'Novara / Cameri' },
+    { id: '16113', nome: 'Cuneo / Levaldigi' },
+    { id: '16332', nome: 'Lecce / Galatina' },
+    { id: '16429', nome: 'Trapani / Birgi' },
+    { id: '16546', nome: 'Decimomannu' },
+    { id: '-121', nome: 'Potenza CNR' },
+    { id: '-107', nome: 'Bolzano TEAMx' },
+    { id: '-31', nome: 'Bracciano' },
+    { id: '-37', nome: "L'Aquila CETEMPS" },
+    { id: '-116', nome: 'Monte Romano' },
+    { id: '16014', nome: 'Sterzing / Vipiteno' }
+  ];
+  stazioneSondeHub = '16245';
+  mostraAltriLanci = false;
+  readonly pressioniRiferimentoSonda = [850, 700, 500];
+  sondeRecenti: SondaRecente[] = [];
+  sondeRecentiCaricamento = false;
+  sondeRecentiErrore = '';
+  sondeRecentiControllo = '';
+  private richiestaSondeRecenti = 0;
+  // Profilo verticale: on demand, mai scaricato per tutte le schede assieme.
+  private readonly urlApiProfiloSonda = '/assets/php/sondehub-profilo.php';
+  profiloSonda: RispostaProfiloSonda | null = null;
+  serialeProfilo = '';
+  caricamentoProfilo = false;
+  erroreProfilo = '';
+  private richiestaProfilo = 0;
+
+  readonly quoteRiferimentoProfilo = [1500, 3000, 5500, 10000, 15000, 20000];
+  readonly asseTemperatureProfilo = [-80, -60, -40, -20, 0, 20, 40];
+  readonly temperaturaMinProfilo = -90;
+  readonly temperaturaMaxProfilo = 40;
+
+  readonly urlSondeHub = 'https://v2.sondehub.org/';
+  readonly urlWyoming = 'https://weather.uwyo.edu/upperair/sounding.shtml';
+
+  // Selezione automatica: mostra il ciclo osservato più recente tra gli archivi.
+  fonteOsservata: 'auto' | 'noaa' | 'wyoming' = 'auto';
+  private selezioneManualeLancio = false;
+  private readonly urlApiWyoming = '/assets/php/wyoming-ultimi.php';
+  lanciNoaa: LancioOsservato[] = [];
+  lanciWyoming: LancioOsservato[] = [];
+  caricamentoNoaa = false;
+  caricamentoWyoming = false;
+  erroreNoaa = '';
+  erroreWyoming = '';
+  readonly urlWyomingArchivio = 'https://weather.uwyo.edu/upperair/sounding.shtml';
+
+  get nomeFonteOsservata(): string {
+    return this.lancioCorrente?.fonte === 'wyoming'
+      ? 'University of Wyoming'
+      : 'NOAA IGRA 2.2';
+  }
+
+  cambiaFonteOsservata(fonte: string): void {
+    if (fonte !== 'auto' && fonte !== 'noaa' && fonte !== 'wyoming') { return; }
+    this.fonteOsservata = fonte;
+    this.selezioneManualeLancio = false;
+    this.lancioSelezionato = '';
+    this.aggiornaLanciDisponibili();
+  }
+
+  private aggiornaLanciDisponibili(): void {
+    const selezionati = this.fonteOsservata === 'noaa'
+      ? this.lanciNoaa.slice()
+      : this.fonteOsservata === 'wyoming'
+        ? this.lanciWyoming.slice()
+        : [...this.lanciNoaa, ...this.lanciWyoming];
+    // Stesso ciclo su entrambi gli archivi = un solo lancio.
+    // A parità di data si preferisce NOAA per la selezione automatica.
+    selezionati.sort((a,b) => {
+      const delta = b.id.localeCompare(a.id);
+      if (delta !== 0) { return delta; }
+      return a.fonte === 'noaa' ? -1 : 1;
+    });
+    const visti = new Set<string>();
+    this.lanciOsservati = selezionati.filter(l => {
+      if (visti.has(l.id)) { return false; }
+      visti.add(l.id);
+      return true;
+    }).slice(0,40);
+    if (this.fonteOsservata === 'auto' && !this.selezioneManualeLancio) {
+      this.lancioSelezionato = this.lanciOsservati[0]?.id || '';
+    } else if (!this.lanciOsservati.some(l => l.id === this.lancioSelezionato)) {
+      this.lancioSelezionato = this.lanciOsservati[0]?.id || '';
+    }
+    this.caricamentoOsservazioni = this.caricamentoNoaa || this.caricamentoWyoming;
+    const errori: string[] = [];
+    if (!this.lanciNoaa.length && this.erroreNoaa) { errori.push('NOAA: ' + this.erroreNoaa); }
+    if (!this.lanciWyoming.length && this.erroreWyoming) { errori.push('Wyoming: ' + this.erroreWyoming); }
+    this.erroreOsservazioni = this.lanciOsservati.length ? '' : errori.join(' · ');
+  }
+
+  caricaRadiosondaggi(): void {
+    const richiesta = ++this.richiestaOsservazioni;
+    this.lanciNoaa = [];
+    this.lanciWyoming = [];
+    this.lanciOsservati = [];
+    this.lancioSelezionato = '';
+    this.selezioneManualeLancio = false;
+    this.erroreNoaa = '';
+    this.erroreWyoming = '';
+    this.caricamentoNoaa = true;
+    this.caricamentoWyoming = true;
+    this.aggiornaLanciDisponibili();
+    void this.caricaNoaa(richiesta);
+    this.caricaWyoming(richiesta);
+  }
+
+  private caricaWyoming(richiesta: number): void {
+    const wmo = this.stazioneOsservata.replace(/^ITM000/, '');
+    this.http.get<{lanci?: LancioOsservato[]; errore?: string}>(this.urlApiWyoming, {
+      params: { id: wmo }
+    }).pipe(takeUntil(this.distruzione$)).subscribe({
+      next: res => {
+        if (richiesta !== this.richiestaOsservazioni) { return; }
+        this.lanciWyoming = Array.isArray(res.lanci)
+          ? res.lanci.filter(l => l && Array.isArray(l.livelli) && l.livelli.length > 0)
+            .map(l => ({...l, fonte:'wyoming' as const}))
+          : [];
+        this.erroreWyoming = res.errore || '';
+        this.caricamentoWyoming = false;
+        this.aggiornaLanciDisponibili();
+      },
+      error: err => {
+        if (richiesta !== this.richiestaOsservazioni) { return; }
+        console.error('Wyoming:',err);
+        this.erroreWyoming = 'Archivio non disponibile';
+        this.caricamentoWyoming = false;
+        this.aggiornaLanciDisponibili();
+      }
+    });
+  }
+
   stazioneOsservata = 'ITM00016245';
   caricamentoOsservazioni = false;
   erroreOsservazioni = '';
@@ -237,10 +424,13 @@ export class RadioSondaggiComponent implements OnInit, OnDestroy {
       .subscribe(() => this.caricaDati());
 
     this.caricaRadiosondaggi();
+    this.caricaSondeRecenti();
   }
 
   ngOnDestroy(): void {
+    this.richiestaSondeRecenti++;
     this.richiestaOsservazioni++;
+    this.richiestaProfilo++;
     this.distruzione$.next();
     this.distruzione$.complete();
   }
@@ -698,6 +888,232 @@ export class RadioSondaggiComponent implements OnInit, OnDestroy {
   }
 
 
+  cambiaStazioneSondeHub(id: string): void {
+    if (!this.stazioniSondeHub.some(s => s.id === id)) { return; }
+    this.stazioneSondeHub = id;
+    this.sondeRecenti = [];
+    this.mostraAltriLanci = false;
+    this.chiudiProfiloSonda();
+    this.caricaSondeRecenti();
+  }
+
+  get nomeStazioneSondeHub(): string {
+    return this.stazioniSondeHub.find(s => s.id === this.stazioneSondeHub)?.nome || 'Stazione';
+  }
+
+  /** Ultimi lanci associati alla stazione SondeHub selezionata, fino a 48 ore. */
+  caricaSondeRecenti(): void {
+    const richiesta = ++this.richiestaSondeRecenti;
+    this.sondeRecentiCaricamento = true;
+    this.sondeRecentiErrore = '';
+    const site = this.stazioneSondeHub;
+    this.http.get<RispostaSondeRecenti>(this.urlApiSondeRecenti, {
+      params: { site: site, last: '172800', _: String(Date.now()) }
+    }).pipe(takeUntil(this.distruzione$)).subscribe({
+      next: risposta => {
+        if (richiesta !== this.richiestaSondeRecenti) { return; }
+        this.sondeRecentiCaricamento = false;
+        if (!risposta || !Array.isArray(risposta.sonde)) {
+          this.sondeRecentiErrore = 'Risposta SondeHub non valida.';
+          return;
+        }
+        this.sondeRecenti = risposta.sonde;
+        if (this.serialeProfilo && !this.sondeRecenti.some(s => s.seriale === this.serialeProfilo)) {
+          this.chiudiProfiloSonda();
+        }
+        this.sondeRecentiControllo = risposta.aggiornatoIl || '';
+        if (risposta.errore) { this.sondeRecentiErrore = risposta.errore; }
+        if (!risposta.errore && this.sondeRecenti.length && !this.serialeProfilo) {
+          this.caricaProfiloSonda(this.sondeRecenti[0].seriale);
+        }
+      },
+      error: errore => {
+        if (richiesta !== this.richiestaSondeRecenti) { return; }
+        this.sondeRecentiCaricamento = false;
+        console.error('Errore SondeHub:', errore);
+        this.sondeRecenti = [];
+        this.sondeRecentiErrore =
+          'Lanci della stazione non recuperabili. Controlla sondehub-stazioni.php.';
+      }
+    });
+  }
+
+  /** Carica il profilo osservato della sonda selezionata dal PHP locale. */
+  caricaProfiloSonda(seriale: string): void {
+    if (!this.sondeRecenti.some(s => s.seriale === seriale)) { return; }
+    if (this.serialeProfilo === seriale && this.profiloSonda && !this.caricamentoProfilo) {
+      this.chiudiProfiloSonda();
+      return;
+    }
+    const richiesta = ++this.richiestaProfilo;
+    this.serialeProfilo = seriale;
+    this.profiloSonda = null;
+    this.erroreProfilo = '';
+    this.caricamentoProfilo = true;
+
+    this.http.get<RispostaProfiloSonda>(this.urlApiProfiloSonda, {
+      params: { seriale: seriale, _: String(Date.now()) }
+    }).pipe(takeUntil(this.distruzione$)).subscribe({
+      next: dati => {
+        if (richiesta !== this.richiestaProfilo) { return; }
+        this.caricamentoProfilo = false;
+        if (!dati || !Array.isArray(dati.profilo) || dati.errore) {
+          this.erroreProfilo = dati?.errore || 'Profilo della radiosonda non disponibile.';
+          return;
+        }
+        this.profiloSonda = {
+          ...dati,
+          profilo: dati.profilo.filter(p => typeof p.quota === 'number' && Number.isFinite(p.quota))
+            .sort((a, b) => a.quota - b.quota)
+        };
+        if (!this.profiloSonda.profilo.length) {
+          this.erroreProfilo = 'Nessun livello utilizzabile per questa radiosonda.';
+        } else {
+          this.calcolaPressioniStimate(this.profiloSonda.profilo);
+        }
+      },
+      error: err => {
+        if (richiesta !== this.richiestaProfilo) { return; }
+        this.caricamentoProfilo = false;
+        this.erroreProfilo = err?.error?.errore ||
+          'Impossibile recuperare il profilo SondeHub. Riprova o consulta il tracciato originale.';
+      }
+    });
+  }
+
+  /**
+   * Pressione STIMATA, non osservata: inizializzazione ISA alla prima quota
+   * disponibile e integrazione ipsometrica con temperatura media reale.
+   * Manca la pressione misurata al lancio: l'errore assoluto è sconosciuto.
+   */
+  private pressioneStandard(quota: number): number {
+    // Atmosfera standard ISA: fino a 11 km con gradiente standard.
+    const z = Math.max(0, quota);
+    if (z <= 11000) {
+      return 1013.25 * Math.pow(1 - 0.0065 * z / 288.15, 5.2558797);
+    }
+    const p11 = 226.321;
+    return p11 * Math.exp(-9.80665 * (z - 11000) / (287.05 * 216.65));
+  }
+
+  private calcolaPressioniStimate(punti: PuntoProfiloSonda[]): void {
+    if (!punti.length) { return; }
+    let pressione = this.pressioneStandard(punti[0].quota);
+    punti[0].pressioneStimata = Math.round(pressione * 10) / 10;
+    for (let i = 1; i < punti.length; i++) {
+      const precedente = punti[i - 1];
+      const corrente = punti[i];
+      // Evita valori non fisici ed usa il modello standard se manca la T.
+      const t1 = precedente.temperatura;
+      const t2 = corrente.temperatura;
+      if (t1 === null || t2 === null) {
+        pressione = this.pressioneStandard(corrente.quota);
+      } else {
+        const mediaK = (t1 + t2) / 2 + 273.15;
+        if (mediaK > 120 && mediaK < 340) {
+          pressione *= Math.exp(-9.80665 * (corrente.quota - precedente.quota) / (287.05 * mediaK));
+        } else {
+          pressione = this.pressioneStandard(corrente.quota);
+        }
+      }
+      corrente.pressioneStimata = Math.round(pressione * 10) / 10;
+    }
+  }
+
+  get livelloProfiloPressione(): Array<{ pressione: number; punto: PuntoProfiloSonda | null }> {
+    const punti = this.profiloSonda?.profilo || [];
+    return this.pressioniRiferimentoSonda.map(pressione => {
+      let punto: PuntoProfiloSonda | null = null;
+      let distanza = Infinity;
+      for (const p of punti) {
+        if (p.temperatura === null || p.pressioneStimata == null) { continue; }
+        const d = Math.abs(p.pressioneStimata - pressione);
+        if (d < distanza) { distanza = d; punto = p; }
+      }
+      // Evita di spacciare un livello lontano per una misura a questa pressione.
+      return { pressione: pressione, punto: distanza <= 25 ? punto : null };
+    });
+  }
+
+  formattaPressioneStimata(valore: number | null | undefined): string {
+    return valore == null ? 'N/D' : valore.toLocaleString('it-IT', {
+      minimumFractionDigits: 1, maximumFractionDigits: 1
+    }) + ' hPa';
+  }
+
+  chiudiProfiloSonda(): void {
+    this.richiestaProfilo++;
+    this.serialeProfilo = '';
+    this.profiloSonda = null;
+    this.caricamentoProfilo = false;
+    this.erroreProfilo = '';
+  }
+
+  get quotaMaxAsseProfilo(): number {
+    const max = this.profiloSonda?.quotaMassima || 5000;
+    return Math.max(5000, Math.ceil(max / 5000) * 5000);
+  }
+
+  get asseQuoteProfilo(): number[] {
+    const max = this.quotaMaxAsseProfilo;
+    const risultato: number[] = [];
+    for (let q = 0; q <= max; q += 5000) { risultato.push(q); }
+    return risultato;
+  }
+
+  get puntiGraficoProfilo(): string {
+    if (!this.profiloSonda) { return ''; }
+    return this.profiloSonda.profilo
+      .filter(p => p.temperatura !== null && Number.isFinite(p.temperatura))
+      .map(p => `${this.getXProfilo(p.temperatura as number)},${this.getYProfilo(p.quota)}`)
+      .join(' ');
+  }
+
+  getXProfilo(temperatura: number): number {
+    return 58 + (temperatura - this.temperaturaMinProfilo) /
+      (this.temperaturaMaxProfilo - this.temperaturaMinProfilo) * 700;
+  }
+
+  getYProfilo(quota: number): number {
+    return 350 - quota / this.quotaMaxAsseProfilo * 310;
+  }
+
+  /** Misura più vicina, entro 125 m: mai interpolazione. */
+  livelloProfiloVicino(quota: number): PuntoProfiloSonda | null {
+    if (!this.profiloSonda) { return null; }
+    let migliore: PuntoProfiloSonda | null = null;
+    let distanzaMinima = 125;
+    for (const punto of this.profiloSonda.profilo) {
+      if (punto.temperatura === null) { continue; }
+      const distanza = Math.abs(punto.quota - quota);
+      if (distanza <= distanzaMinima) {
+        migliore = punto;
+        distanzaMinima = distanza;
+      }
+    }
+    return migliore;
+  }
+
+  formattaIntero(valore: number): string {
+    return valore.toLocaleString('it-IT');
+  }
+
+  formattaUmiditaDecimale(valore: number | null | undefined): string {
+    return valore == null ? 'N/D' : valore.toLocaleString('it-IT', {
+      minimumFractionDigits: 1, maximumFractionDigits: 1
+    }) + ' %';
+  }
+
+  formattaDataUtc(data: string): string {
+    const parsed = new Date(data);
+    return isNaN(parsed.getTime())
+      ? 'N/D'
+      : parsed.toLocaleString('it-IT', {
+      timeZone: 'UTC', day: '2-digit', month: '2-digit', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', hour12: false
+    }) + ' UTC';
+  }
+
   cambiaStazioneOsservata(id: string): void {
     if (!this.stazioniOsservate.some(s => s.id === id)) {
       return;
@@ -709,15 +1125,11 @@ export class RadioSondaggiComponent implements OnInit, OnDestroy {
   cambiaLancioOsservato(id: string): void {
     if (this.lanciOsservati.some(l => l.id === id)) {
       this.lancioSelezionato = id;
+      this.selezioneManualeLancio = true;
     }
   }
 
-  async caricaRadiosondaggi(): Promise<void> {
-    const richiesta = ++this.richiestaOsservazioni;
-    this.caricamentoOsservazioni = true;
-    this.erroreOsservazioni = '';
-    this.lanciOsservati = [];
-    this.lancioSelezionato = '';
+  private async caricaNoaa(richiesta: number): Promise<void> {
 
     const anno = new Date().getUTCFullYear();
     const nome = `${this.stazioneOsservata}-data-beg${anno}.txt.zip`;
@@ -760,21 +1172,21 @@ export class RadioSondaggiComponent implements OnInit, OnDestroy {
       if (richiesta !== this.richiestaOsservazioni) {
         return;
       }
-      this.lanciOsservati = lanci.slice(-40).reverse();
-      this.lancioSelezionato = this.lanciOsservati[0]?.id || '';
+      this.lanciNoaa = lanci.slice(-40).reverse().map(l => ({...l, fonte:'noaa' as const}));
       if (!lanci.length) {
-        this.erroreOsservazioni = 'Non risultano lanci validi nell’archivio NOAA selezionato.';
+        this.erroreNoaa = 'Non risultano lanci validi';
       }
+      this.aggiornaLanciDisponibili();
     } catch (errore) {
       if (richiesta !== this.richiestaOsservazioni) {
         return;
       }
       console.error('Errore archivio IGRA:', errore);
-      this.erroreOsservazioni =
-        'Impossibile scaricare i radiosondaggi NOAA. Verifica la connessione e le restrizioni CORS del server; puoi comunque aprire l’archivio dalla fonte.';
+      this.erroreNoaa = 'Download non disponibile (eventuali restrizioni CORS).';
     } finally {
       if (richiesta === this.richiestaOsservazioni) {
-        this.caricamentoOsservazioni = false;
+        this.caricamentoNoaa = false;
+        this.aggiornaLanciDisponibili();
       }
     }
   }

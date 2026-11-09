@@ -1,0 +1,110 @@
+<h1 class="header-macro-section">Neve e Temperature Monti</h1>
+
+<div class="nm-page">
+  <div class="nm-intro">
+    <p class="mc-intro-text">Monitoraggio delle stazioni manuali Meteomont dei Carabinieri: altezza della neve,
+      neve fresca nelle 24 ore, temperature minime e massime e data dell'ultima rilevazione.</p>
+    <p class="nm-note">I dati sono rilievi manuali e non misurazioni in tempo reale. Ogni scheda indica sempre
+      la data dell'osservazione. La quota altimetrica non è presente in questa API.</p>
+  </div>
+
+  <section class="nm-panel" aria-label="Selezione area geografica">
+    <h2 class="nm-title">Seleziona la zona</h2>
+    <div class="nm-tabs" role="group" aria-label="Zone italiane">
+      <button type="button" *ngFor="let zona of zone" class="nm-tab"
+              [class.nm-tab-active]="zonaSelezionata === zona.id"
+              [attr.aria-pressed]="zonaSelezionata === zona.id"
+              (click)="selezionaZona(zona.id)">
+        {{ zona.nome }} <span class="nm-tab-count">{{ contaZona(zona.id) }}</span>
+      </button>
+    </div>
+
+    <div class="nm-controls">
+      <label class="nm-search-label" for="nm-cerca">Cerca località, comune o provincia
+        <input id="nm-cerca" type="search" placeholder="Es. Campo Catino, AQ, Gran Sasso..."
+               [value]="ricerca" (input)="ricerca = $any($event.target).value; aggiornaFiltri()" />
+      </label>
+      <label class="nm-sort-label" for="nm-ordina">Ordina per
+        <select id="nm-ordina" [value]="ordinamento" (change)="ordinamento = $any($event.target).value; aggiornaFiltri()">
+          <option value="recenti">Rilievo più recente</option>
+          <option value="neve">Più neve al suolo</option>
+          <option value="nome">Nome località</option>
+        </select>
+      </label>
+      <label class="nm-check"><input type="checkbox" [checked]="soloConNeve" (change)="soloConNeve = $any($event.target).checked; aggiornaFiltri()" /> Solo con neve</label>
+      <label class="nm-check"><input type="checkbox" [checked]="soloRecenti" (change)="soloRecenti = $any($event.target).checked; aggiornaFiltri()" /> Solo dati recenti</label>
+    </div>
+  </section>
+
+  <div *ngIf="caricamento" class="nm-info" role="status">Caricamento delle stazioni Meteomont...</div>
+
+  <div *ngIf="!caricamento && datiDiRiserva" class="nm-warning" role="status">
+    <strong>Dati di riserva (non aggiornati).</strong> Il collegamento alla fonte non è riuscito:
+    sono visualizzate le osservazioni del JSON salvato il 9 novembre 2026, che possono risalire
+    a mesi o anni precedenti. Controlla sempre la data su ogni scheda.
+  </div>
+  <div *ngIf="!caricamento && errore && !datiDiRiserva" class="nm-warning" role="alert">{{ errore }}</div>
+
+  <ng-container *ngIf="!caricamento">
+    <div class="nm-stats" aria-label="Riepilogo delle stazioni filtrate">
+      <div class="nm-stat"><span>Stazioni mostrate</span><strong>{{ visualizzate.length }}</strong></div>
+      <div class="nm-stat"><span>Con neve al suolo</span><strong>{{ contaConNeve }}</strong></div>
+      <div class="nm-stat"><span>Rilievo più recente</span><strong class="nm-stat-date">{{ rilievoPiuRecente ? (rilievoPiuRecente | date:'dd/MM/yyyy') : 'N/D' }}</strong></div>
+    </div>
+
+    <div class="nm-results-head">
+      <h2 class="nm-title">Stazioni — {{ zonaSelezionata === 'centro' ? 'Centro Italia' : (zonaSelezionata === 'nord' ? 'Nord Italia' : 'Sud e Isole') }}</h2>
+      <button class="nm-refresh" type="button" (click)="caricaStazioni()">Aggiorna dati</button>
+    </div>
+
+    <p *ngIf="visualizzate.length === 0" class="nm-info">Nessuna stazione corrisponde ai filtri selezionati.</p>
+
+    <div class="nm-grid" *ngIf="visualizzate.length">
+      <article class="nm-card" *ngFor="let stazione of visualizzate; trackBy: trackStazione"
+               [class.nm-card-old]="!eRecente(stazione)">
+        <header class="nm-card-head">
+          <div class="nm-card-name">
+            <h3>{{ stazione.nome }}</h3>
+            <p>{{ stazione.comune }} <span *ngIf="stazione.provincia">({{ stazione.provincia }})</span></p>
+          </div>
+          <span class="nm-recency" [class.nm-recency-fresh]="eRecente(stazione)">
+            {{ eRecente(stazione) ? 'Rilievo recente' : 'Rilievo datato' }}
+          </span>
+        </header>
+
+        <div class="nm-snow-row">
+          <div class="nm-snow-main">
+            <span class="nm-label">Neve al suolo</span>
+            <strong>{{ cm(stazione.neveCm) }}</strong>
+          </div>
+          <div class="nm-snow-fresh">
+            <span class="nm-label">Neve 24 ore</span>
+            <strong>{{ cm(stazione.neve24hCm) }}</strong>
+          </div>
+        </div>
+
+        <div class="nm-temps">
+          <div>
+            <span class="nm-label">Minima</span>
+            <strong [class.nm-temp-warm]="stazione.minima !== null && stazione.minima >= 0"
+                    [class.nm-temp-cold]="stazione.minima !== null && stazione.minima < 0">{{ temperatura(stazione.minima) }}</strong>
+          </div>
+          <div>
+            <span class="nm-label">Massima</span>
+            <strong [class.nm-temp-warm]="stazione.massima !== null && stazione.massima >= 0"
+                    [class.nm-temp-cold]="stazione.massima !== null && stazione.massima < 0">{{ temperatura(stazione.massima) }}</strong>
+          </div>
+        </div>
+
+        <footer class="nm-card-foot">
+          <span><strong>Ultimo rilievo:</strong> {{ stazione.rilievoTesto }}</span>
+          <a *ngIf="linkMappa(stazione) as url" [href]="url" target="_blank" rel="noopener noreferrer">Mappa</a>
+        </footer>
+      </article>
+    </div>
+  </ng-container>
+
+  <p class="nm-source">Fonte: <a href="https://meteomont.carabinieri.it/" target="_blank" rel="noopener noreferrer">METEOMONT CARABINIERI</a> — rete delle stazioni manuali.
+    L'innevamento e le temperature si riferiscono esclusivamente alla data dell'ultimo rilievo della singola stazione.
+    I dati non costituiscono un bollettino valanghe né un'indicazione delle condizioni attuali per escursioni.</p>
+</div>

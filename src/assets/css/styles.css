@@ -233,7 +233,7 @@ h4 {
 }
 
 .webcam {
-  width: 85%;
+  width: 95%;
   max-height: 550px !important;
   border-radius: 20px;
   border: 4px;
@@ -1337,21 +1337,23 @@ iframe#aswift_3 {
    QUALITÀ ARIA / RADIOSONDAGGI / BOLLETTINO
    ========================================== */
 
+
 :root {
-  --mc-font-intro: 21px;
-  --mc-font-title: 27px;
-  --mc-font-section: 20px;
-  --mc-font-body: 19px;
-  --mc-font-secondary: 18px;
-  --mc-font-note: 17px;
-  --mc-font-card-title: 24px;
-  --mc-font-control: 18px;
-  --mc-font-label: 18px;
-  --mc-font-number: 39px;
-  --mc-font-summary: 27px;
-  --mc-font-table: 18px;
-  --mc-font-eyebrow: 17px;
+  --mc-font-intro: 25px;
+  --mc-font-title: 32px;
+  --mc-font-section: 24px;
+  --mc-font-body: 23px;
+  --mc-font-secondary: 21px;
+  --mc-font-note: 20px;
+  --mc-font-card-title: 28px;
+  --mc-font-control: 21px;
+  --mc-font-label: 21px;
+  --mc-font-number: 46px;
+  --mc-font-summary: 32px;
+  --mc-font-table: 21px;
+  --mc-font-eyebrow: 20px;
 }
+
 
 /* INTRODUZIONI */
 
@@ -1548,3 +1550,30 @@ html body
 ) {
   font-size: var(--mc-font-eyebrow) !important;
 }
+
+/* === METEO CAMPOLI - COMPLETAMENTO TIPOGRAFIA RADIOSONDAGGI === */
+/* Unica fonte dei font-size per il componente, desktop e mobile. */
+html body .rs-page .rs-level,
+html body .rs-page .rs-height { font-size: var(--mc-font-section) !important; }
+html body .rs-page .rs-source-bar,
+html body .rs-page .rs-summary-card span,
+html body .rs-page .rs-chart-legend span { font-size: var(--mc-font-secondary) !important; }
+html body .rs-page .rs-temperature-card small,
+html body .rs-page .rs-summary-card small,
+html body .rs-page .rs-note { font-size: var(--mc-font-note) !important; }
+html body .rs-page .rs-loading,
+html body .rs-page .rs-error,
+html body .rs-page .rs-empty,
+html body .rs-page .rs-sources p { font-size: var(--mc-font-body) !important; }
+html body .rs-page .rs-table,
+html body .rs-page .rs-table th,
+html body .rs-page .rs-table td { font-size: var(--mc-font-table) !important; }
+html body .rs-page .rs-temperature-value { font-size: var(--mc-font-number) !important; }
+html body .rs-page .rs-summary-card strong { font-size: var(--mc-font-summary) !important; }
+html body .rs-page .rs-field label,
+html body .rs-page .rs-field select { font-size: var(--mc-font-label) !important; }
+html body .rs-page .rs-button,
+html body .rs-page .rs-source-links a { font-size: var(--mc-font-control) !important; }
+html body .rs-page .rs-intro p { font-size: var(--mc-font-intro) !important; }
+html body .rs-page .rs-description { font-size: var(--mc-font-section) !important; }
+html body .rs-page .title-micro-section { font-size: var(--mc-font-title) !important; }

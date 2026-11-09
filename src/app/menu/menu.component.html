@@ -57,7 +57,10 @@
                rel="noreferrer" target="_blank" title="incendi live">Incendi Live</a>
         </li>
         <li class="divider"></li>
-        <li><a routerLink="dati-attuali/radio-sondaggi" title="radio sondaggi attuali">RadioSondaggi</a>
+        <li><a routerLink="dati-attuali/radio-sondaggi" title="radio sondaggi attuali">RadioSondaggi <img
+          src="../../assets/img/new.gif"
+          alt="nuova sezione" class="img-new"
+          width="28" height="11"></a>
         </li>
         <li class="divider"></li>
         <li><a routerLink="dati-attuali/qualita-aria" title="qualità aria">Qualità aria <img
@@ -147,6 +150,12 @@
         <li class="divider"></li>
         <li><a [routerLink]="['/riepilogo/anomalie']"
                title="anomalie temperature precipitazioni mari">Anomalie Temperature/Precipitazioni/Mare</a></li>
+        <li class="divider"></li>
+        <li><a [routerLink]="['/riepilogo/neve-montagna']"
+               title="anomalie temperature precipitazioni mari">Neve Monti <img
+          src="../../assets/img/new.gif"
+          alt="nuova sezione" class="img-new"
+          width="28" height="11"></a></li>
       </ul>
     </div>
 
@@ -228,14 +237,14 @@
         <li><a  routerLink="previsioni/gfs/500Hpa"
                title="confronto modelli"  rel="noreferrer">Confronto Modelli</a></li>
         <li class="divider"></li>
-        <li><a href="https://www.meteociel.fr/modeles/gfse_cartes.php?ech=6&code=0&mode=1"
-               title="previsioni meteociel carte" target="_blank" rel="noreferrer">Previsioni Meteociel</a></li>
-        <li class="divider"></li>
         <li><a routerLink="previsioni/bollettino-meteo" title="bollettino meteo">Bollettino Meteo <img
           src="../../assets/img/new.gif"
           alt="nuova sezione" class="img-new"
           width="28" height="11"></a>
         </li>
+        <li class="divider"></li>
+        <li><a href="https://www.meteociel.fr/modeles/gfse_cartes.php?ech=6&code=0&mode=1"
+               title="previsioni meteociel carte" target="_blank" rel="noreferrer">Previsioni Meteociel</a></li>
       </ul>
     </div>
 

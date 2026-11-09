@@ -1,19 +1,17 @@
-<h1 class="header-macro-section">Statistiche Meteo - Anomalie</h1>
-
-<mat-spinner *ngIf="imageLoader" mode="indeterminate"></mat-spinner>
+<h1 class="header-macro-section">Anomalie Meteo e Clima - Meteo Campoli</h1>
 <br>
-<div [hidden]="imageLoader" class="center">
+<div class="center">
   <br>
   <br>
-  <h2 class="title-micro-section">Anomalie Media Temperature Scorso Mese - Italia</h2>
+ <!-- <h2 class="title-micro-section">Anomalie Media Temperature Scorso Mese - Italia</h2>
   <img class="previsioni-no-heigth" width="95%"  alt="Anomalie Media Temperature Scorso Mese Italia" rel="noreferrer"
        src="https://www.isac.cnr.it/~climstor/climate/latest_month_TMM.jpg"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
-  <hr>
+  <hr>-->
   <h2 class="title-micro-section">Anomalie Termiche Scorsa Settimana - Europa</h2>
   <img class="previsioni-no-heigth" width="95%"  alt="Anomalie Termiche Ultima Settimana Europa" rel="noreferrer"
-       src="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/wctan1.png" (load)="imageLoader = false;"
+       src="https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/regional_monitoring/wctan1.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <hr>
@@ -48,9 +46,9 @@
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <hr>
-  <h2 class="title-micro-section">Anomalia Di Temperatura Odierna - Mondo</h2>
+  <!--<h2 class="title-micro-section">Anomalia Di Temperatura Odierna - Mondo</h2>
   <img class="previsioni-no-heigth" width="95%"  alt="Anomalia Di Temperatura Odierna Mondo" rel="noreferrer"
-       src="https://climatereanalyzer.org/wx/todays-weather/input/gfs_world-wt_t2anom_d1.png"
+       src="https://climatereanalyzer.org/clim/t2_daily/domain_overlays/world-wt_world_mask.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <hr>
@@ -59,7 +57,7 @@
        src="https://climatereanalyzer.org/wx/todays-weather/input/gfs_world-wt_mslp-anomsd_d1.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
-  <hr>
+  <hr>-->
 
   <h2 class="title-micro-section">Trend temperature globali dal 1880</h2>
   <img class="previsioni-no-heigth" width="95%"  alt="Trend temperature globali" rel="noreferrer"
@@ -67,5 +65,64 @@
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
+<div class="am-page">
+  <div class="am-intro">
+    <p class="mc-intro-text">
+      Mappe delle anomalie di temperatura, precipitazioni e temperatura del mare
+      in Europa e nel mondo, con grafici e serie storiche climatiche.
+    </p>
+  </div>
 
+  <section *ngFor="let gruppo of gruppi" [id]="gruppo.id" class="am-section">
+    <h2 class="title-micro-section">{{ gruppo.titolo }}</h2>
+    <p class="mc-section-description am-description">{{ gruppo.sottotitolo }}</p>
+
+    <article *ngFor="let mappa of gruppo.mappe" class="am-map-card">
+      <div class="am-header">
+        <span class="am-source mc-eyebrow-text">{{ mappa.fonte }}</span>
+        <h3 class="mc-card-title">{{ mappa.titolo }}</h3>
+        <p class="mc-secondary-text">{{ mappa.descrizione }}</p>
+        <span class="am-period mc-note-text">Periodo: {{ mappa.periodo }}</span>
+      </div>
+
+      <div class="am-map-container">
+        <p *ngIf="!immaginiCaricate[mappa.id] && !immaginiErrore[mappa.id]"
+           class="am-loading mc-note-text">Caricamento mappa...</p>
+
+        <button *ngIf="!immaginiErrore[mappa.id]" class="am-image-button"
+                type="button" (click)="apriImmagine(mappa)"
+                [attr.aria-label]="'Ingrandisci ' + mappa.titolo">
+          <img [src]="mappa.immagine" [alt]="mappa.titolo"
+               loading="lazy" decoding="async"
+               (load)="immagineCaricata(mappa.id)"
+               (error)="immagineFallita(mappa.id)"
+               [hidden]="!immaginiCaricate[mappa.id]" />
+        </button>
+
+        <div *ngIf="immaginiErrore[mappa.id]" class="am-error mc-body-text">
+          La mappa non è al momento raggiungibile dalla fonte.
+        </div>
+      </div>
+
+      <div class="am-footer">
+        <span class="mc-note-text">Clicca sulla mappa per ingrandirla</span>
+        <a class="am-source-link mc-action-text" [href]="mappa.immagine"
+           target="_blank" rel="noopener noreferrer">Apri immagine originale ↗</a>
+      </div>
+    </article>
+  </section>
+
+  <p class="am-notice mc-note-text">
+    Le mappe Copernicus mostrate sono relative a ottobre 2026 e non cambiano automaticamente mese.
+    I prodotti con un URL fisso aggiornato dal fornitore possono cambiare nel tempo.
+    Controlla sempre la data riportata nell'immagine e la climatologia di riferimento.
+  </p>
+</div>
+
+<div *ngIf="immagineIngrandita as aperta" class="am-lightbox" role="dialog"
+     aria-modal="true" aria-label="Mappa ingrandita" (click)="chiudiImmagine()">
+  <button type="button" class="am-close mc-action-text"
+          (click)="chiudiImmagine(); $event.stopPropagation()">✕ Chiudi</button>
+  <img [src]="aperta.immagine" [alt]="aperta.titolo"
+       (click)="$event.stopPropagation()" />
 </div>

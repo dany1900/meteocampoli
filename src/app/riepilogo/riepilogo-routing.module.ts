@@ -3,6 +3,7 @@ import {RouterModule} from '@angular/router';
 import {TemperatureMareComponent} from './temperature-mare/temperature-mare.component';
 import {AnomalieComponent} from './anomalie/anomalie.component';
 import {TabRiepilogoComponent} from './tab-riepilogo/tab-riepilogo.component';
+import {NeveMontagnaComponent} from './neve-montagna/neve-montagna.component';
 
 
 @NgModule({
@@ -31,6 +32,10 @@ import {TabRiepilogoComponent} from './tab-riepilogo/tab-riepilogo.component';
       {
         path: 'anomalie',
         component: AnomalieComponent,
+      },
+      {
+        path: 'neve-montagna',
+        component: NeveMontagnaComponent,
       },
     ]),
   ],

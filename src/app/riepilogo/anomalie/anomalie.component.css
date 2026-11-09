@@ -1,0 +1,28 @@
+/* ANOMALIE METEO CAMPOLI - CSS LOCALE, NESSUNA MODIFICA ALLO ZOOM */
+:host { display:block; width:100%; }
+.am-page { width:95%; max-width:1350px; margin:0 auto 48px; padding:10px 0 28px; box-sizing:border-box; color:#25394d; }
+.am-intro { text-align:center; margin:12px auto 20px; max-width:1050px; }
+.am-menu { display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin:18px 0 36px; }
+.am-menu a { padding:11px 20px; color:#1769aa; border:1px solid #bdd7e9; background:#f4faff; border-radius:100px; text-decoration:none; font-weight:800; }
+.am-menu a:hover { background:#dfeffa; }
+.am-section { margin:36px 0 48px; scroll-margin-top:25px; }
+.am-section > h2 { text-align:center; margin:0 0 9px; }
+.am-description { text-align:center; margin:0 0 22px; }
+.am-map-card { background:#f6fafe; border:1px solid #d1e2ed; border-radius:17px; box-shadow:0 6px 22px rgba(27,77,121,.11); padding:22px; margin:0 0 26px; box-sizing:border-box; overflow:hidden; }
+.am-header { text-align:center; margin-bottom:18px; }
+.am-source { display:inline-block; background:#e3f5fa; color:#087a92; padding:7px 15px; border-radius:100px; font-weight:800; letter-spacing:.6px; }
+.am-header h3 { color:#213e5c; font-weight:800; margin:12px 0; }
+.am-header p { margin:0 auto 12px; max-width:850px; }
+.am-period { display:inline-block; color:#547187; background:#eaf1f8; padding:6px 12px; border-radius:8px; }
+.am-map-container { text-align:center; background:#fff; border:1px solid #d4e2ed; border-radius:11px; padding:12px; overflow:hidden; }
+.am-image-button { padding:0; margin:0; background:transparent; display:block; width:100%; border:0; cursor:zoom-in; }
+.am-image-button img { display:block; width:100%; height:auto; max-height:780px; object-fit:contain; margin:auto; }
+.am-loading, .am-error { background:#edf4fa; padding:25px 12px; border-radius:8px; }
+.am-footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-top:14px; }
+.am-source-link { background:#1769aa; color:#fff !important; border-radius:8px; padding:10px 17px; font-weight:800; text-decoration:none !important; }
+.am-source-link:hover { background:#104f81; }
+.am-notice { background:#edf4fa; border-left:4px solid #1769aa; border-radius:8px; padding:18px 20px; }
+.am-lightbox { position:fixed; inset:0; z-index:10000; background:rgba(8,21,38,.94); display:flex; justify-content:center; align-items:center; padding:60px 15px 15px; box-sizing:border-box; cursor:zoom-out; }
+.am-lightbox img { display:block; max-width:97%; max-height:93%; object-fit:contain; background:#fff; cursor:default; }
+.am-close { position:absolute; right:20px; top:15px; background:#fff; color:#174268; border:0; border-radius:8px; padding:10px 17px; cursor:pointer; font-weight:800; }
+@media(max-width:768px) { .am-page { padding-top:5px; } .am-menu { gap:8px; margin-bottom:22px; } .am-menu a { padding:9px 12px; } .am-section { margin:26px 0 32px; } .am-map-card { padding:14px 10px; margin-bottom:18px; } .am-map-container { padding:5px; } .am-footer { justify-content:center; } .am-lightbox { padding:65px 7px 14px; } }

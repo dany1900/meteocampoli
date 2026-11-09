@@ -1,81 +1,545 @@
-/* BOLLETTINO METEO - METEO CAMPOLI */
-:host { display:block; width:100%; }
-.bm-page { width:95%; max-width:1350px; margin:0 auto 45px; padding:10px 0 30px; box-sizing:border-box; color:#26384b; }
-.bm-intro { margin:10px auto 28px; text-align:center; }
-.bm-section { margin:30px 0; }
-/* Titoli e tipografia base centralizzati in styles.css */
-.bm-main-card,.bm-info-card { padding:30px; background:#f5f9fe; border:1px solid #d6e3ef; border-radius:12px; box-shadow:0 4px 16px rgba(20,61,95,.08); box-sizing:border-box; }
-.bm-header { text-align:center; }
-.bm-tag { display:block; color:#139bb3; font-weight:800; letter-spacing:1.2px; }
-.bm-header h3 { margin:12px 0; color:#26384b; font-weight:800; }
-.bm-header p { max-width:850px; margin:0 auto 24px; }
-/* ZONA DI ALLERTA */
-.bm-zone-card { display:flex; align-items:center; justify-content:center; gap:20px; width:100%; max-width:650px; margin:22px auto 30px; padding:20px; background:#e5f1fb; border:1px solid #d0e4f4; border-radius:10px; box-sizing:border-box; }
-.bm-zone-icon { display:flex; align-items:center; justify-content:center; flex-shrink:0; width:75px; height:75px; background:#1769aa; border-radius:12px; color:#fff; font-size:40px; font-weight:800; }
-.bm-zone-info { display:flex; flex-direction:column; gap:5px; min-width:0; }
-.bm-zone-info > span { color:#5e7990; font-weight:800; letter-spacing:1px; }
-.bm-zone-info strong { color:#26384b; font-weight:800; overflow-wrap:anywhere; }
-.bm-zone-info small { color:#59758b; }
-/* COLLEGAMENTI */
-.bm-links-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px; }
-.bm-link-card { display:flex; align-items:flex-start; gap:18px; min-width:0; padding:25px; background:#fff; border:1px solid #dce6ef; border-radius:11px; text-decoration:none !important; box-shadow:0 2px 9px rgba(30,61,91,.06); transition:background .2s ease,border-color .2s ease; }
-.bm-link-card:hover { background:#eef6fc; border-color:#a9cde9; }
-.bm-link-symbol { display:flex; align-items:center; justify-content:center; flex-shrink:0; width:65px; height:65px; background:#e3f1fa; border-radius:11px; color:#1769aa; font-size:29px; }
-.bm-link-content { min-width:0; }
-.bm-link-content h4 { margin:0 0 10px; color:#26384b; font-weight:800; line-height:1.35; padding:0; }
-.bm-link-content p { margin:0 0 17px; }
-.bm-link-action { color:#1769aa; font-weight:800; }
-.bm-notice { margin-top:25px; padding:17px 20px; background:#edf4fa; border-left:4px solid #1769aa; border-radius:6px; }
-/* LEGENDA LIVELLI */
-.bm-level-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
-.bm-level-card { display:flex; align-items:flex-start; gap:13px; min-width:0; padding:20px; background:#fff; border:1px solid #dce6ef; border-radius:10px; }
-.bm-level-dot { flex-shrink:0; width:19px; height:19px; margin-top:4px; border-radius:50%; }
-.bm-level-info { display:flex; flex-direction:column; gap:7px; min-width:0; }
-.bm-level-info strong { color:#26384b; font-weight:800; }
-.bm-level-verde .bm-level-dot { background:#18a85c; }
-.bm-level-giallo .bm-level-dot { background:#e1b000; }
-.bm-level-arancione .bm-level-dot { background:#e97828; }
-.bm-level-rosso .bm-level-dot { background:#d33434; }
-.bm-legend-note { margin:16px 3px; }
-/* INFORMAZIONI */
-.bm-info-card p { margin:0 0 16px; }
-.bm-source { margin-top:20px; text-align:center; }
-.bm-source a { display:inline-block; padding:12px 20px; background:#1769aa; border-radius:7px; color:#fff !important; font-weight:700; text-decoration:none; }
-.bm-source a:hover { background:#104d80; text-decoration:none; }
-.bm-refresh-button { display:inline-block; padding:10px 16px; margin-top:8px; background:#337ab7; color:#fff; border:0; border-radius:7px; font-family:Arial,Helvetica,sans-serif; font-weight:700; cursor:pointer; }
-.bm-refresh-button:hover { background:#286090; }
-.bm-refresh-button:focus-visible { outline:2px solid #26384b; outline-offset:3px; }
-/* IFRAME - tutte le regole responsive rimangono qui */
-.bm-iframe-container { width:100%; min-height:520px; overflow:hidden; border:1px solid #d6e3ef; border-radius:12px; background:#f5f9fe; }
-.bm-iframe { display:block; width:100%; min-height:680px; border:0; }
-@media (max-width:1100px) { .bm-level-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media (max-width:768px) {
-  .bm-page { width:95%; padding:5px 0 25px; }
-  .bm-main-card,.bm-info-card { padding:18px 14px; }
-  .bm-zone-card { gap:13px; padding:14px; }
-  .bm-zone-icon { width:58px; height:58px; font-size:31px; }
-  .bm-links-grid { grid-template-columns:1fr; gap:13px; }
-  .bm-link-card { padding:17px; gap:13px; }
-  .bm-link-symbol { width:48px; height:48px; font-size:23px; }
-  .bm-notice { padding:13px; }
-  .bm-level-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; }
-  .bm-level-card { padding:12px; gap:8px; }
-  .bm-level-dot { width:14px; height:14px; }
-  .bm-iframe-container { min-height:420px; }
-  .bm-iframe { min-height:520px; }
-}
-@media (max-width:370px) { .bm-level-grid { grid-template-columns:1fr; } }
+/* ==========================================
+   BOLLETTINO METEO - METEO CAMPOLI
+   Grafica completa, colori delle allerte dinamici.
+   Tipografia gestita da styles.css e media-query.css.
+   Nessuna modifica agli zoom.
+   ========================================== */
 
-/* Responsive typography: solo CSS locale, nessuna media query in styles.css */
-@media (max-width:768px) {
-  .bm-page .mc-intro-text { font-size:19px; }
-  .bm-page .mc-section-description { font-size:18px; }
-  .bm-page .mc-body-text { font-size:17px; }
-  .bm-page .mc-secondary-text { font-size:16px; }
-  .bm-page .mc-note-text { font-size:16px; }
-  .bm-page .mc-card-title { font-size:21px; }
-  .bm-page .mc-action-text { font-size:17px; }
-  .bm-page .mc-eyebrow-text { font-size:14px; }
-  .bm-page .mc-key-value { font-size:21px; }
-  .bm-page .title-micro-section { font-size:26px !important; }
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.bm-page {
+  width: 95%;
+  max-width: 1350px;
+  margin: 0 auto 45px;
+  padding: 10px 0 30px;
+  box-sizing: border-box;
+  color: #26384b;
+}
+
+.bm-page *,
+.bm-page *::before,
+.bm-page *::after {
+  box-sizing: border-box;
+}
+
+.bm-intro {
+  margin: 10px auto 28px;
+  text-align: center;
+}
+
+.bm-section {
+  margin: 30px 0;
+  min-width: 0;
+}
+
+.bm-description {
+  max-width: 1050px;
+  margin: 10px auto 22px;
+  text-align: center;
+  line-height: 1.55;
+}
+
+.bm-main-card,
+.bm-info-card {
+  padding: 30px;
+  background: #f5f9fe;
+  border: 1px solid #d6e3ef;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(20, 61, 95, .08);
+  min-width: 0;
+}
+
+.bm-header {
+  text-align: center;
+}
+
+.bm-tag {
+  display: block;
+  color: #078c9f;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+
+.bm-header h3 {
+  margin: 12px 0;
+  color: #26384b;
+  font-weight: 800;
+}
+
+.bm-header p {
+  max-width: 850px;
+  margin: 0 auto 24px;
+  line-height: 1.55;
+}
+
+/* ==========================================
+   CRUSCOTTO ALLERTA METEO - ZONA G
+   ========================================== */
+
+.bm-alert-dashboard > .bm-main-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f7fd 100%);
+  border: 1px solid #cbdfee;
+  border-top: 5px solid #1769aa;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(31, 86, 135, .12);
+  overflow: hidden;
+}
+
+.bm-alert-dashboard .bm-header {
+  padding: 2px 0 6px;
+}
+
+.bm-alert-dashboard .bm-tag {
+  display: inline-block;
+  padding: 7px 15px;
+  background: #e5f5fa;
+  border: 1px solid #c2e9f0;
+  border-radius: 999px;
+  color: #08778a;
+}
+
+.bm-alert-dashboard .bm-header h3 {
+  margin-top: 18px;
+}
+
+.bm-alert-days {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin: 25px 0 20px;
+  align-items: stretch;
+}
+
+.bm-alert-day {
+  min-width: 0;
+  padding: 23px;
+  border: 1px solid #d9e6f1;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 5px 16px rgba(26, 72, 115, .06);
+}
+
+.bm-alert-day > h3 {
+  margin: 0 0 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #dfe9f1;
+  color: #173f68;
+  font-weight: 800;
+  text-align: center;
+}
+
+.bm-alert-date {
+  margin: 8px 0 19px;
+  color: #526a80;
+  text-align: center;
+  line-height: 1.45;
+}
+
+.bm-alert-risk-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+
+/* Colori neutri di base: non assegnano alcuna allerta */
+.bm-alert-risk {
+  --bm-risk-bg: #edf1f5;
+  --bm-risk-border: #a9b6c4;
+  --bm-risk-text: #526273;
+  --bm-risk-dot: #9aa9b7;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 16px;
+  min-width: 0;
+  min-height: 94px;
+  padding: 17px 19px 17px 24px;
+  border: 1px solid var(--bm-risk-border);
+  border-left: 6px solid var(--bm-risk-dot);
+  border-radius: 13px;
+  background: var(--bm-risk-bg);
+  color: var(--bm-risk-text);
+}
+
+.bm-alert-risk::before {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  top: 14px;
+  right: 15px;
+  border-radius: 50%;
+  background: var(--bm-risk-dot);
+  box-shadow: 0 0 0 4px rgba(255,255,255,.7);
+}
+
+html body .bm-page .bm-alert-risk .bm-alert-risk-name.mc-secondary-text {
+  display: block;
+  min-width: 0;
+  padding-right: 5px;
+  color: var(--bm-risk-text) !important;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+html body .bm-page .bm-alert-risk .bm-alert-risk-level.mc-card-title {
+  display: block;
+  max-width: 100%;
+  margin-right: 10px;
+  color: var(--bm-risk-text) !important;
+  font-weight: 800;
+  line-height: 1.3;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* VERDE: conferma esplicita del dato verificato */
+.bm-alert-risk.bm-alert-verde {
+  --bm-risk-bg: #e2f6e9;
+  --bm-risk-border: #9ad4ad;
+  --bm-risk-text: #176338;
+  --bm-risk-dot: #1b9c54;
+}
+
+/* GIALLO */
+.bm-alert-risk.bm-alert-giallo {
+  --bm-risk-bg: #fff4c9;
+  --bm-risk-border: #e7c45b;
+  --bm-risk-text: #795600;
+  --bm-risk-dot: #dbaa00;
+}
+
+/* ARANCIONE */
+.bm-alert-risk.bm-alert-arancione {
+  --bm-risk-bg: #ffe8d7;
+  --bm-risk-border: #edae7f;
+  --bm-risk-text: #914415;
+  --bm-risk-dot: #e47724;
+}
+
+/* ROSSO */
+.bm-alert-risk.bm-alert-rosso {
+  --bm-risk-bg: #ffe3e3;
+  --bm-risk-border: #e6a1a1;
+  --bm-risk-text: #9e2626;
+  --bm-risk-dot: #dc3636;
+}
+
+/* DATO NON VERIFICABILE */
+.bm-alert-risk.bm-alert-non-disponibile {
+  --bm-risk-bg: #edf1f5;
+  --bm-risk-border: #b9c3cd;
+  --bm-risk-text: #566676;
+  --bm-risk-dot: #98a6b3;
+}
+
+.bm-alert-update {
+  margin: 16px 0 4px;
+  padding: 13px 16px;
+  background: #eaf2f9;
+  border-radius: 9px;
+  color: #526a80;
+  text-align: center;
+}
+
+.bm-alert-dashboard .bm-source {
+  margin-top: 16px;
+}
+
+/* ==========================================
+   ZONA DI ALLERTA
+   ========================================== */
+
+.bm-zone-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 650px;
+  margin: 22px auto 30px;
+  padding: 20px;
+  background: #e5f1fb;
+  border: 1px solid #d0e4f4;
+  border-radius: 12px;
+}
+
+.bm-zone-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 75px;
+  height: 75px;
+  background: #1769aa;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.bm-zone-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.bm-zone-info > span {
+  color: #5e7990;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.bm-zone-info strong {
+  color: #26384b;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.bm-zone-info small {
+  color: #59758b;
+}
+
+/* ==========================================
+   COLLEGAMENTI UFFICIALI
+   ========================================== */
+
+.bm-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bm-link-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  min-width: 0;
+  padding: 25px;
+  background: #fff;
+  border: 1px solid #dce6ef;
+  border-radius: 12px;
+  text-decoration: none !important;
+  box-shadow: 0 2px 9px rgba(30, 61, 91, .06);
+  transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.bm-link-card:hover {
+  background: #eef6fc;
+  border-color: #a9cde9;
+  transform: translateY(-2px);
+}
+
+.bm-link-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  background: #e3f1fa;
+  border-radius: 11px;
+  color: #1769aa;
+  font-size: 29px;
+}
+
+.bm-link-content { min-width: 0; }
+
+.bm-link-content h4 {
+  margin: 0 0 10px;
+  padding: 0;
+  color: #26384b;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.bm-link-content p { margin: 0 0 17px; }
+.bm-link-action { color: #1769aa; font-weight: 800; }
+
+/* AVVISI E PULSANTI */
+.bm-notice {
+  margin-top: 25px;
+  padding: 17px 20px;
+  background: #edf4fa;
+  border-left: 4px solid #1769aa;
+  border-radius: 8px;
+  line-height: 1.55;
+}
+
+.bm-info-card p { margin: 0 0 16px; }
+
+.bm-source {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.bm-source a {
+  display: inline-block;
+  max-width: 100%;
+  padding: 12px 20px;
+  background: #1769aa;
+  border-radius: 8px;
+  color: #fff !important;
+  font-weight: 700;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.bm-source a:hover {
+  background: #104d80;
+  text-decoration: none;
+}
+
+.bm-refresh-button {
+  display: inline-block;
+  max-width: 100%;
+  padding: 13px 20px;
+  margin-top: 8px;
+  background: #1769aa;
+  color: #fff;
+  border: 0;
+  border-radius: 9px;
+  font-family: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+
+.bm-refresh-button:hover:not(:disabled) {
+  background: #105388;
+  transform: translateY(-1px);
+}
+
+.bm-refresh-button:disabled { opacity: .6; cursor: not-allowed; }
+.bm-refresh-button:focus-visible { outline: 2px solid #26384b; outline-offset: 3px; }
+
+/* LEGENDA */
+.bm-level-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.bm-level-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #dce6ef;
+  border-radius: 11px;
+}
+
+.bm-level-dot {
+  flex-shrink: 0;
+  width: 19px;
+  height: 19px;
+  margin-top: 4px;
+  border-radius: 50%;
+}
+
+.bm-level-info { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.bm-level-info strong { color: #26384b; font-weight: 800; }
+.bm-level-verde .bm-level-dot { background: #18a85c; }
+.bm-level-giallo .bm-level-dot { background: #e1b000; }
+.bm-level-arancione .bm-level-dot { background: #e97828; }
+.bm-level-rosso .bm-level-dot { background: #d33434; }
+.bm-legend-note { margin: 16px 3px; }
+
+/* IFRAME DELLA REGIONE */
+.bm-iframe-container {
+  width: 100%;
+  min-height: 520px;
+  overflow: hidden;
+  border: 1px solid #d6e3ef;
+  border-radius: 12px;
+  background: #f5f9fe;
+}
+
+.bm-iframe { display: block; width: 100%; min-height: 680px; border: 0; }
+
+/* ==========================================
+   RESPONSIVE - SOLO LAYOUT
+   Font mobile in media-query.css, niente zoom.
+   ========================================== */
+
+@media (max-width: 1100px) {
+  .bm-level-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bm-alert-risk {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+    padding-right: 26px;
+  }
+  html body .bm-page .bm-alert-risk .bm-alert-risk-level.mc-card-title { margin-right: 0; text-align: left; }
+}
+
+@media (max-width: 900px) {
+  .bm-alert-days { grid-template-columns: minmax(0, 1fr); }
+  .bm-alert-risk { grid-template-columns: minmax(0, 1fr) auto; }
+  html body .bm-page .bm-alert-risk .bm-alert-risk-level.mc-card-title { text-align: right; margin-right: 10px; }
+}
+
+@media (max-width: 768px) {
+  .bm-page { width: 95%; padding: 5px 0 25px; }
+  .bm-main-card, .bm-info-card { padding: 18px 14px; }
+  .bm-alert-dashboard > .bm-main-card { padding: 22px 15px; }
+  .bm-alert-days { gap: 16px; margin-top: 20px; }
+  .bm-alert-day { padding: 17px 13px; }
+  .bm-alert-risk { min-height: 86px; padding: 14px 16px; }
+  .bm-zone-card { gap: 13px; padding: 14px; }
+  .bm-zone-icon { width: 58px; height: 58px; font-size: 31px; }
+  .bm-links-grid { grid-template-columns: 1fr; gap: 13px; }
+  .bm-link-card { padding: 17px; gap: 13px; }
+  .bm-link-symbol { width: 48px; height: 48px; font-size: 23px; }
+  .bm-notice { padding: 13px; }
+  .bm-level-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .bm-level-card { padding: 12px; gap: 8px; }
+  .bm-level-dot { width: 14px; height: 14px; }
+  .bm-iframe-container { min-height: 420px; }
+  .bm-iframe { min-height: 520px; }
+}
+
+@media (max-width: 540px) {
+  .bm-alert-risk { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  html body .bm-page .bm-alert-risk .bm-alert-risk-level.mc-card-title { text-align: left; margin-right: 0; }
+}
+
+@media (max-width: 370px) {
+  .bm-level-grid { grid-template-columns: 1fr; }
+}
+
+/* =======================================
+   DOCUMENTO E MAPPE DEL PDF REGIONALE
+   Nessuna modifica a font globali o zoom
+   ======================================= */
+.bm-actions-row {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 14px; margin: 22px auto 12px;
+}
+.bm-primary-link {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 12px 20px; color: #fff !important; background: #1769aa;
+  border-radius: 8px; font-weight: 700; text-decoration: none !important;
+}
+.bm-primary-link:hover { background: #104d80; }
+.bm-document-caption { text-align: center; margin: 12px auto; }
+.bm-pdf-viewer {
+  width: 100%; height: min(1050px, 95vh); min-height: 600px;
+  overflow: hidden; border: 1px solid #c9dbea;
+  border-radius: 12px; background: #e8f0f8;
+}
+.bm-pdf-frame { display: block; width: 100%; height: 100%; border: 0; }
+.bm-map-section .bm-main-card { padding: 18px; }
+@media (max-width: 768px) {
+  .bm-actions-row { flex-direction: column; align-items: stretch; }
+  .bm-pdf-viewer { min-height: 520px; height: 70vh; }
+  .bm-map-section .bm-main-card { padding: 10px; }
 }

@@ -19,6 +19,7 @@ import {StatisticheStazioneCiceroneComponent} from './statistiche-stazione-cicer
 import {StatisticheStazioneSanPancrazioComponent} from './statistiche-stazione-san-pancrazio/statistiche-stazione-san-pancrazio.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {StatisticheStazioneTreoComponent} from './statistiche-stazione-treo/statistiche-stazione-treo.component';
+import {NeveMontagnaComponent} from './neve-montagna/neve-montagna.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {StatisticheStazioneTreoComponent} from './statistiche-stazione-treo/stat
     TabRiepilogoComponent,
     StatisticheStazioneCiceroneComponent,
     StatisticheStazioneSanPancrazioComponent,
-    StatisticheStazioneTreoComponent
+    StatisticheStazioneTreoComponent,
+    NeveMontagnaComponent
   ],
   providers: [
     { provide: DateAdapter, useClass: MyDateAdapter },

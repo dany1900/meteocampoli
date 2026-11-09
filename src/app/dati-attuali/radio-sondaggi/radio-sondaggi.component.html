@@ -6,21 +6,32 @@
 
   <div class="rs-intro">
     <p>
-      Consulta prima i radiosondaggi realmente misurati dai palloni sonda
-      delle stazioni italiane (NOAA IGRA), poi le temperature in quota
-      elaborate dai modelli meteorologici Open-Meteo.
-      Le due fonti sono distinte e non vanno confuse.
+      Consulta prima i radiosondaggi osservati NOAA IGRA / University of Wyoming, poi i lanci recenti
+      identificati per stazione da SondeHub e infine le temperature calcolate dai modelli Open-Meteo.
+      Misure ufficiali, telemetria radio e dati modellistici sono fonti differenti.
     </p>
   </div>
 
+
   <!-- SEZIONE 1: RADIOSONDAGGI REALI OSSERVATI -->
   <section class="rs-section rs-sources">
-    <h2 class="title-micro-section">Radiosondaggi Reali Osservati - Palloni Sonda NOAA IGRA</h2>
+    <h2 class="title-micro-section">Radiosondaggi Osservati - NOAA IGRA / University of Wyoming</h2>
     <p class="rs-description">
       Dati misurati da palloni sonda, distinti dai valori dei modelli
-      meteorologici Open-Meteo presentati nella sezione successiva. I lanci sono in UTC
-      e possono comparire in archivio con uno o due giorni di ritardo.
+      meteorologici Open-Meteo presentati nell'ultima sezione. I lanci sono in UTC
+      e possono comparire nei due archivi con ritardi diversi.
     </p>
+
+    <div class="rs-field rs-source-chooser">
+      <label for="rs-fonte-osservata">Fonte dei radiosondaggi osservati</label>
+      <select id="rs-fonte-osservata" [value]="fonteOsservata"
+              (change)="cambiaFonteOsservata($any($event.target).value)">
+        <option value="auto">Automatica - lancio piu recente</option>
+        <option value="noaa">Solo NOAA IGRA</option>
+        <option value="wyoming">Solo University of Wyoming</option>
+      </select>
+      <small>In automatico viene mostrato il ciclo piu recente disponibile. I cicli duplicati fra archivi sono mostrati una sola volta.</small>
+    </div>
 
     <div class="rs-controls">
       <div class="rs-field">
@@ -50,12 +61,12 @@
       <button type="button" class="rs-button"
               [disabled]="caricamentoOsservazioni"
               (click)="caricaRadiosondaggi()">
-        Aggiorna radiosondaggi NOAA
+        Aggiorna Radiosondaggi
       </button>
     </div>
 
     <div *ngIf="caricamentoOsservazioni" class="rs-loading">
-      Download e lettura archivio NOAA in corso...
+      Ricerca degli ultimi radiosondaggi NOAA e Wyoming...
     </div>
     <div *ngIf="erroreOsservazioni" class="rs-error">
       {{ erroreOsservazioni }}
@@ -65,49 +76,93 @@
       <div class="rs-source-bar">
         <strong>Osservazione reale</strong>
         <span>{{ lancioCorrente?.dataUtc }}</span>
-        <span>Fonte NOAA IGRA 2.2</span>
+        <span>Fonte: {{ nomeFonteOsservata }}</span>
       </div>
 
       <div class="rs-temperature-grid">
         <div class="rs-temperature-card">
           <span class="rs-level">850 hPa osservati</span>
-          <strong class="rs-temperature-value">{{ formattaTemperatura(osservato850?.temperatura) }}</strong>
+          <strong class="rs-temperature-value"
+                  [class.rs-cold]="osservato850?.temperatura != null && osservato850!.temperatura! < 0" [class.rs-warm]="osservato850?.temperatura != null && osservato850!.temperatura! >= 0">{{ formattaTemperatura(osservato850?.temperatura) }}</strong>
           <span class="rs-height">{{ formattaQuota(osservato850?.quota) }}</span>
         </div>
         <div class="rs-temperature-card">
           <span class="rs-level">700 hPa osservati</span>
-          <strong class="rs-temperature-value">{{ formattaTemperatura(osservato700?.temperatura) }}</strong>
+          <strong class="rs-temperature-value"
+                  [class.rs-cold]="osservato700?.temperatura != null && osservato700!.temperatura! < 0" [class.rs-warm]="osservato700?.temperatura != null && osservato700!.temperatura! >= 0">{{ formattaTemperatura(osservato700?.temperatura) }}</strong>
           <span class="rs-height">{{ formattaQuota(osservato700?.quota) }}</span>
         </div>
         <div class="rs-temperature-card">
           <span class="rs-level">500 hPa osservati</span>
-          <strong class="rs-temperature-value">{{ formattaTemperatura(osservato500?.temperatura) }}</strong>
+          <strong class="rs-temperature-value"
+                  [class.rs-cold]="osservato500?.temperatura != null && osservato500!.temperatura! < 0" [class.rs-warm]="osservato500?.temperatura != null && osservato500!.temperatura! >= 0">{{ formattaTemperatura(osservato500?.temperatura) }}</strong>
           <span class="rs-height">{{ formattaQuota(osservato500?.quota) }}</span>
         </div>
       </div>
 
-      <div class="rs-table-container">
+      <!-- Parte NOAA visibile: tutte le misure da pressione superficiale a 500 hPa inclusi -->
+      <div class="rs-noaa-table-intro">
+        <strong>Livelli atmosferici osservati · fino a 500 hPa</strong>
+        <span>Pressione, quota, temperatura, rugiada, umidità e vento</span>
+      </div>
+      <div class="rs-table-container rs-noaa-visible-table">
         <table class="rs-table">
-          <thead>
-          <tr>
+          <thead><tr>
             <th>Pressione</th><th>Quota</th><th>Temperatura</th>
             <th>Rugiada</th><th>Umidità</th><th>Vento</th><th>Direzione</th>
-          </tr>
-          </thead>
+          </tr></thead>
           <tbody>
-          <tr *ngFor="let livello of livelliOsservati"
-              [class.rs-highlight]="livello.pressione === 850 || livello.pressione === 700 || livello.pressione === 500">
-            <td>{{ livello.pressione }} hPa</td>
-            <td>{{ formattaQuota(livello.quota) }}</td>
-            <td>{{ formattaTemperatura(livello.temperatura) }}</td>
-            <td>{{ formattaTemperatura(livello.rugiada) }}</td>
-            <td>{{ formattaUmidita(livello.umidita) }}</td>
-            <td>{{ formattaVento(livello.vento) }}</td>
-            <td>{{ formattaDirezione(livello.direzione) }}</td>
-          </tr>
+          <ng-container *ngFor="let livello of livelliOsservati">
+            <tr *ngIf="livello.pressione >= 500"
+                [class.rs-highlight]="livello.pressione === 850 || livello.pressione === 700 || livello.pressione === 500">
+              <td>{{ livello.pressione }} hPa</td>
+              <td>{{ formattaQuota(livello.quota) }}</td>
+              <td [class.rs-cold]="livello.temperatura != null && livello.temperatura < 0" [class.rs-warm]="livello.temperatura != null && livello.temperatura >= 0">{{ formattaTemperatura(livello.temperatura) }}</td>
+              <td>{{ formattaTemperatura(livello.rugiada) }}</td>
+              <td>{{ formattaUmidita(livello.umidita) }}</td>
+              <td>{{ formattaVento(livello.vento) }}</td>
+              <td>{{ formattaDirezione(livello.direzione) }}</td>
+            </tr>
+          </ng-container>
           </tbody>
         </table>
       </div>
+
+      <!-- I livelli superiori dell'atmosfera sono richiudibili: nessuna modifica TS necessaria -->
+      <details class="rs-noaa-table-details" *ngIf="livelliOsservati.length && livelliOsservati[livelliOsservati.length - 1].pressione < 500">
+        <summary class="rs-noaa-table-summary">
+          <span class="rs-noaa-table-summary-text">
+            <strong>Livelli superiori · sotto 500 hPa</strong>
+            <small>Espandi per consultare i livelli atmosferici oltre circa 5–6 km</small>
+          </span>
+          <span class="rs-noaa-table-toggle" aria-hidden="true">
+            <span class="rs-noaa-table-closed">Mostra altri livelli ▼</span>
+            <span class="rs-noaa-table-open">Nascondi livelli ▲</span>
+          </span>
+        </summary>
+        <div class="rs-table-container rs-noaa-visible-table rs-noaa-additional-table">
+          <table class="rs-table">
+            <thead><tr>
+              <th>Pressione</th><th>Quota</th><th>Temperatura</th>
+              <th>Rugiada</th><th>Umidità</th><th>Vento</th><th>Direzione</th>
+            </tr></thead>
+            <tbody>
+            <ng-container *ngFor="let livello of livelliOsservati">
+              <tr *ngIf="livello.pressione < 500"
+                  [class.rs-highlight]="livello.pressione === 850 || livello.pressione === 700 || livello.pressione === 500">
+                <td>{{ livello.pressione }} hPa</td>
+                <td>{{ formattaQuota(livello.quota) }}</td>
+                <td [class.rs-cold]="livello.temperatura != null && livello.temperatura < 0" [class.rs-warm]="livello.temperatura != null && livello.temperatura >= 0">{{ formattaTemperatura(livello.temperatura) }}</td>
+                <td>{{ formattaTemperatura(livello.rugiada) }}</td>
+                <td>{{ formattaUmidita(livello.umidita) }}</td>
+                <td>{{ formattaVento(livello.vento) }}</td>
+                <td>{{ formattaDirezione(livello.direzione) }}</td>
+              </tr>
+            </ng-container>
+            </tbody>
+          </table>
+        </div>
+      </details>
       <p class="rs-note">N/D: misurazione assente nel lancio selezionato. Nessuna interpolazione dei valori mancanti.</p>
     </ng-container>
 
@@ -118,6 +173,344 @@
         Archivio alternativo Wyoming
       </a>
     </div>
+  </section>
+
+
+
+  <!-- SEZIONE 2: SONDEHUB PER STAZIONE DI LANCIO -->
+  <section class="rs-section rs-sources rs-recenti">
+
+    <h2 class="title-micro-section">
+      Radiosondaggi recenti per stazione - SondeHub
+    </h2>
+
+    <p class="rs-recent-intro">
+      Ultimi lanci associati alla <strong>stazione italiana selezionata</strong>
+      negli archivi SondeHub (ultime 48 ore), non radiosonde semplicemente transitate nella zona.
+      Per ogni lancio puoi consultare il profilo verticale con temperatura e umidità misurate,
+      oltre alle pressioni <strong>stimate</strong>.
+    </p>
+
+    <div class="rs-recent-explanation">
+      <h3>Come leggere questi dati?</h3>
+
+      <p>
+        Ogni scheda rappresenta una radiosonda identificata dal proprio
+        numero di serie. Viene mostrata la sua
+        <strong>ultima osservazione disponibile</strong>.
+      </p>
+
+      <ul>
+        <li>
+          <strong>Quota rilevata:</strong>
+          altitudine della radiosonda al momento dell'ultima posizione ricevuta.
+          Non è necessariamente la quota massima raggiunta durante il volo.
+        </li>
+        <li>
+          <strong>Temperatura:</strong>
+          temperatura dell'aria misurata dalla sonda nella posizione indicata.
+        </li>
+        <li>
+          <strong>Umidità:</strong>
+          umidità relativa dell'aria nella stessa osservazione, se disponibile.
+        </li>
+        <li>
+          <strong>Data e ora:</strong>
+          momento dell'ultima trasmissione, espresso in UTC.
+          Durante l'ora solare italiana si aggiunge 1 ora,
+          durante l'ora legale si aggiungono 2 ore.
+        </li>
+      </ul>
+
+      <p class="rs-recent-warning">
+        <strong>Importante:</strong>
+        le radiosonde qui mostrate sono associate dal database SondeHub alla stazione scelta.
+        L'ultima osservazione non equivale all'ora del lancio né alla quota massima.
+        La copertura radio può essere incompleta e i dati non sostituiscono NOAA IGRA.
+      </p>
+    </div>
+
+    <div class="rs-controls rs-sonde-station-control">
+      <div class="rs-field">
+        <label for="rs-stazione-sondehub">Stazione di lancio SondeHub</label>
+        <select id="rs-stazione-sondehub" [value]="stazioneSondeHub"
+                (change)="cambiaStazioneSondeHub($any($event.target).value)">
+          <option *ngFor="let stazione of stazioniSondeHub" [value]="stazione.id">
+            {{ stazione.nome }} ({{ stazione.id }})
+          </option>
+        </select>
+      </div>
+      <div class="rs-sonde-station-caption">
+        <strong>{{ nomeStazioneSondeHub }}</strong>
+        <small>Fonte SondeHub · ultimi 2 giorni · dati osservati non ufficiali</small>
+      </div>
+    </div>
+
+    <div class="rs-actions">
+      <button
+        type="button"
+        class="rs-button rs-recent-refresh"
+        (click)="caricaSondeRecenti()"
+        [disabled]="sondeRecentiCaricamento">
+        Aggiorna ultimi lanci della stazione
+      </button>
+    </div>
+
+    <p
+      *ngIf="sondeRecentiCaricamento"
+      class="rs-loading"
+      role="status">
+      Lettura delle radiosonde recenti...
+    </p>
+
+    <p
+      *ngIf="sondeRecentiErrore"
+      class="rs-error"
+      role="status">
+      {{ sondeRecentiErrore }}
+    </p>
+
+    <p
+      *ngIf="!sondeRecentiCaricamento &&
+           !sondeRecentiErrore &&
+           !sondeRecenti.length"
+      class="rs-note"
+      role="status">
+      Nessun lancio SondeHub disponibile per questa stazione nelle ultime 48 ore.
+      Questo non significa necessariamente che non siano stati effettuati lanci.
+    </p>
+
+    <h3 *ngIf="sondeRecenti.length" class="rs-sonde-section-heading">Ultimo lancio disponibile · {{ nomeStazioneSondeHub }}</h3>
+    <div *ngIf="sondeRecenti.length" class="rs-recent-grid rs-last-launch">
+
+      <article
+        *ngFor="let sonda of sondeRecenti.slice(0, 1)"
+        class="rs-recent-card">
+
+        <div class="rs-recent-top">
+
+          <strong class="rs-recent-serial">
+            Radiosonda {{ sonda.seriale }}
+          </strong>
+
+          <span class="rs-recent-date">
+          {{ formattaDataUtc(sonda.dataUtc) }}
+        </span>
+
+        </div>
+
+        <div class="rs-recent-values">
+
+          <div class="rs-recent-value">
+            <small>Quota rilevata</small>
+            <strong>
+              {{ formattaQuota(sonda.quota) }}
+            </strong>
+          </div>
+
+          <div class="rs-recent-value">
+            <small>Temperatura</small>
+            <strong
+              [class.rs-cold]="
+              sonda.temperatura != null &&
+              sonda.temperatura < 0
+            " [class.rs-warm]="
+              sonda.temperatura != null &&
+              sonda.temperatura >= 0
+            ">
+              {{ formattaTemperatura(sonda.temperatura) }}
+            </strong>
+          </div>
+
+          <div class="rs-recent-value">
+            <small>Umidità</small>
+            <strong>
+              {{ formattaUmidita(sonda.umidita) }}
+            </strong>
+          </div>
+
+        </div>
+
+        <a
+          class="rs-recent-link"
+          [href]="sonda.url"
+          target="_blank"
+          rel="noopener noreferrer">
+          Visualizza posizione e tracciato su SondeHub ↗
+        </a>
+
+        <button type="button" class="rs-button rs-profile-open"
+                [attr.aria-expanded]="serialeProfilo === sonda.seriale"
+                [disabled]="caricamentoProfilo && serialeProfilo === sonda.seriale"
+                (click)="caricaProfiloSonda(sonda.seriale)">
+          {{ serialeProfilo === sonda.seriale && profiloSonda
+          ? 'Chiudi profilo verticale'
+          : 'Visualizza profilo verticale' }}
+        </button>
+
+      </article>
+
+    </div>
+
+    <div *ngIf="sondeRecenti.length > 1" class="rs-actions rs-other-toggle">
+      <button type="button" class="rs-button rs-button-secondary"
+              (click)="mostraAltriLanci = !mostraAltriLanci">
+        {{ mostraAltriLanci ? 'Nascondi' : 'Mostra' }} altri {{ sondeRecenti.length - 1 }} lanci
+      </button>
+    </div>
+    <div *ngIf="mostraAltriLanci && sondeRecenti.length > 1" class="rs-recent-grid">
+      <article *ngFor="let sonda of sondeRecenti.slice(1)" class="rs-recent-card">
+        <div class="rs-recent-top">
+          <strong class="rs-recent-serial">Radiosonda {{ sonda.seriale }}</strong>
+          <span class="rs-recent-date">{{ formattaDataUtc(sonda.dataUtc) }}</span>
+        </div>
+        <div class="rs-recent-values">
+          <div class="rs-recent-value"><small>Ultima quota</small><strong>{{ formattaQuota(sonda.quota) }}</strong></div>
+          <div class="rs-recent-value"><small>Temperatura</small><strong [class.rs-cold]="sonda.temperatura != null && sonda.temperatura < 0" [class.rs-warm]="sonda.temperatura != null && sonda.temperatura >= 0">{{ formattaTemperatura(sonda.temperatura) }}</strong></div>
+          <div class="rs-recent-value"><small>Umidità</small><strong>{{ formattaUmidita(sonda.umidita) }}</strong></div>
+        </div>
+        <a class="rs-recent-link" [href]="sonda.url" target="_blank" rel="noopener noreferrer">Apri su SondeHub ↗</a>
+        <button type="button" class="rs-button rs-profile-open"
+                (click)="caricaProfiloSonda(sonda.seriale)">Visualizza profilo verticale</button>
+      </article>
+    </div>
+
+    <!-- Profilo verticale misurato SondeHub: separato da NOAA e dai modelli -->
+    <section *ngIf="serialeProfilo" class="rs-profile-panel" aria-live="polite">
+      <div class="rs-profile-heading">
+        <div>
+          <h3>Profilo verticale osservato · {{ serialeProfilo }}</h3>
+          <p>Misure della fase di salita ricevute da SondeHub, campionate dal PHP ogni circa 250 m.</p>
+        </div>
+        <button type="button" class="rs-button rs-button-secondary"
+                (click)="chiudiProfiloSonda()">Chiudi</button>
+      </div>
+
+      <p *ngIf="caricamentoProfilo" class="rs-loading" role="status">
+        Recupero delle temperature osservate alle varie quote...
+      </p>
+      <p *ngIf="erroreProfilo" class="rs-error" role="alert">{{ erroreProfilo }}</p>
+
+      <ng-container *ngIf="profiloSonda as profilo">
+        <div class="rs-profile-summary">
+          <div><small>Osservazioni ricevute</small><strong>{{ formattaIntero(profilo.numeroOsservazioniOriginali) }}</strong></div>
+          <div><small>Livelli disponibili</small><strong>{{ profilo.profilo.length }}</strong></div>
+          <div><small>Quota massima</small><strong>{{ formattaQuota(profilo.quotaMassima) }}</strong></div>
+          <div><small>Prima osservazione</small><strong>{{ formattaDataUtc(profilo.inizioUtc) }}</strong></div>
+        </div>
+
+        <h4>Temperature ai principali livelli isobarici (hPa stimati)</h4>
+        <p class="rs-note">Pressione ricostruita con equazione ipsometrica e ancoraggio all'atmosfera standard alla prima quota.
+          <strong>Non è una pressione misurata.</strong> Senza pressione iniziale reale, le superfici isobariche possono avere errori.</p>
+        <div class="rs-profile-reference-grid rs-profile-pressure-grid">
+          <div *ngFor="let livello of livelloProfiloPressione" class="rs-profile-reference">
+            <span>{{ livello.pressione }} hPa stimati</span>
+            <strong [class.rs-cold]="livello.punto?.temperatura != null && livello.punto!.temperatura! < 0" [class.rs-warm]="livello.punto?.temperatura != null && livello.punto!.temperatura! >= 0">
+              {{ formattaTemperatura(livello.punto?.temperatura) }}
+            </strong>
+            <small>{{ formattaQuota(livello.punto?.quota) }} · {{ formattaPressioneStimata(livello.punto?.pressioneStimata) }}</small>
+          </div>
+        </div>
+
+        <h4>Temperature alle quote di riferimento</h4>
+        <p class="rs-note">Valore realmente osservato più vicino alla quota indicata (entro 125 metri); N/D se assente.</p>
+        <div class="rs-profile-reference-grid">
+          <div *ngFor="let quota of quoteRiferimentoProfilo" class="rs-profile-reference">
+            <span>{{ formattaQuota(quota) }}</span>
+            <strong [class.rs-cold]="livelloProfiloVicino(quota)?.temperatura != null && livelloProfiloVicino(quota)!.temperatura! < 0" [class.rs-warm]="livelloProfiloVicino(quota)?.temperatura != null && livelloProfiloVicino(quota)!.temperatura! >= 0">
+              {{ formattaTemperatura(livelloProfiloVicino(quota)?.temperatura) }}
+            </strong>
+            <small>UR {{ formattaUmiditaDecimale(livelloProfiloVicino(quota)?.umidita) }}</small>
+          </div>
+        </div>
+
+        <h4>Grafico verticale temperatura / quota</h4>
+        <div class="rs-chart-panel rs-profile-chart-panel">
+          <div class="rs-chart-scroll">
+            <svg class="rs-chart rs-profile-chart" viewBox="0 0 800 390"
+                 role="img" aria-label="Profilo SondeHub della temperatura durante la salita">
+              <ng-container *ngFor="let quota of asseQuoteProfilo">
+                <line x1="58" x2="758" [attr.y1]="getYProfilo(quota)"
+                      [attr.y2]="getYProfilo(quota)" class="rs-grid-line"></line>
+                <text x="48" [attr.y]="getYProfilo(quota) + 4" text-anchor="end"
+                      class="rs-axis-label">{{ quota / 1000 }}k</text>
+              </ng-container>
+              <ng-container *ngFor="let temperatura of asseTemperatureProfilo">
+                <line [attr.x1]="getXProfilo(temperatura)" [attr.x2]="getXProfilo(temperatura)"
+                      y1="40" y2="350" class="rs-grid-line"></line>
+                <text [attr.x]="getXProfilo(temperatura)" y="369" text-anchor="middle"
+                      class="rs-axis-label">{{ temperatura }}°</text>
+              </ng-container>
+              <line [attr.x1]="getXProfilo(0)" [attr.x2]="getXProfilo(0)"
+                    y1="40" y2="350" class="rs-zero-line"></line>
+              <polyline [attr.points]="puntiGraficoProfilo" class="rs-temp-line"></polyline>
+              <text x="410" y="388" text-anchor="middle" class="rs-axis-title">Temperatura (°C)</text>
+              <text x="15" y="195" text-anchor="middle" transform="rotate(-90 15 195)"
+                    class="rs-axis-title">Quota (m)</text>
+            </svg>
+          </div>
+        </div>
+
+        <h4>Tutti i livelli rilevati · {{ profilo.profilo.length }}</h4>
+        <div class="rs-table-container rs-profile-table-container">
+          <table class="rs-table rs-profile-table">
+            <thead><tr><th>Quota</th><th>Pressione stimata</th><th>Temperatura</th><th>Umidità</th><th>Ora (UTC)</th></tr></thead>
+            <tbody>
+            <tr *ngFor="let punto of profilo.profilo">
+              <td>{{ formattaQuota(punto.quota) }}</td>
+              <td>{{ formattaPressioneStimata(punto.pressioneStimata) }}</td>
+              <td [class.rs-cold]="punto.temperatura != null && punto.temperatura < 0" [class.rs-warm]="punto.temperatura != null && punto.temperatura >= 0">
+                <strong>{{ formattaTemperatura(punto.temperatura) }}</strong>
+              </td>
+              <td>{{ formattaUmiditaDecimale(punto.umidita) }}</td>
+              <td>{{ formattaDataUtc(punto.dataUtc) }}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="rs-note">
+          Quote in metri s.l.m. Le pressioni SondeHub qui indicate sono stime basate sulla
+          temperatura osservata e su una pressione di riferimento standard; NON misure barometriche.
+          Il profilo dipende dalla copertura radio.
+        </p>
+      </ng-container>
+    </section>
+
+    <div *ngIf="sondeRecentiControllo" class="rs-recent-footer">
+
+      <p>
+        <strong>Ultimo aggiornamento:</strong>
+        {{ formattaDataUtc(sondeRecentiControllo) }}
+      </p>
+
+      <p>
+        <strong>Nota:</strong>
+        N/D indica che il valore non è disponibile nella telemetria ricevuta.
+        Le quote sulle schede sono le ultime osservazioni ricevute,
+        non la quota massima raggiunta durante il lancio. Per visualizzare
+        le temperature alle diverse altitudini usa "Visualizza profilo verticale".
+      </p>
+
+    </div>
+
+    <div class="rs-source-links rs-recent-links">
+
+      <a
+        [href]="urlSondeHub"
+        target="_blank"
+        rel="noopener noreferrer">
+        Mappa SondeHub in diretta
+      </a>
+
+      <a
+        [href]="urlWyoming"
+        target="_blank"
+        rel="noopener noreferrer">
+        Radiosondaggi Wyoming (WMO 16245)
+      </a>
+
+    </div>
+
   </section>
 
 
@@ -290,6 +683,9 @@
           [class.rs-cold]="
             temperatura850?.temperatura != null &&
             temperatura850!.temperatura! < 0
+          " [class.rs-warm]="
+            temperatura850?.temperatura != null &&
+            temperatura850!.temperatura! >= 0
           ">
           {{ formattaTemperatura(
           temperatura850?.temperatura
@@ -319,6 +715,9 @@
           [class.rs-cold]="
             temperatura700?.temperatura != null &&
             temperatura700!.temperatura! < 0
+          " [class.rs-warm]="
+            temperatura700?.temperatura != null &&
+            temperatura700!.temperatura! >= 0
           ">
           {{ formattaTemperatura(
           temperatura700?.temperatura
@@ -348,6 +747,9 @@
           [class.rs-cold]="
             temperatura500?.temperatura != null &&
             temperatura500!.temperatura! < 0
+          " [class.rs-warm]="
+            temperatura500?.temperatura != null &&
+            temperatura500!.temperatura! >= 0
           ">
           {{ formattaTemperatura(
           temperatura500?.temperatura
@@ -391,7 +793,7 @@
           Temperatura minima nel profilo
         </span>
 
-        <strong>
+        <strong [class.rs-cold]="temperaturaMinima != null && temperaturaMinima < 0" [class.rs-warm]="temperaturaMinima != null && temperaturaMinima >= 0">
           {{ formattaTemperatura(
           temperaturaMinima
         ) }}
@@ -403,7 +805,7 @@
           Temperatura massima nel profilo
         </span>
 
-        <strong>
+        <strong [class.rs-cold]="temperaturaMassima != null && temperaturaMassima < 0" [class.rs-warm]="temperaturaMassima != null && temperaturaMassima >= 0">
           {{ formattaTemperatura(
           temperaturaMassima
         ) }}
@@ -468,6 +870,9 @@
               [class.rs-cold]="
                   livello.temperatura != null &&
                   livello.temperatura < 0
+                " [class.rs-warm]="
+                  livello.temperatura != null &&
+                  livello.temperatura >= 0
                 ">
               {{ formattaTemperatura(
               livello.temperatura

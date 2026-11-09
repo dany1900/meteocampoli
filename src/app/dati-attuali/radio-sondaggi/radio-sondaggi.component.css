@@ -1,6 +1,6 @@
-
 /* ==========================================
-   TEMPERATURE IN QUOTA - METEO CAMPOLI
+   RADIOSONDAGGI E TEMPERATURE IN QUOTA
+   METEO CAMPOLI
    ========================================== */
 
 :host {
@@ -17,7 +17,9 @@
   color: #243d56;
 }
 
-/* INTRODUZIONE */
+/* ==========================================
+   INTRODUZIONE
+   ========================================== */
 
 .rs-intro {
   text-align: center;
@@ -27,13 +29,14 @@
 .rs-intro p {
   max-width: 950px;
   margin: 12px auto 24px;
-  font-size: 19px;
   font-weight: 600;
   line-height: 1.6;
   color: #26384b;
 }
 
-/* SEZIONI */
+/* ==========================================
+   SEZIONI GENERALI
+   ========================================== */
 
 .rs-section {
   margin: 25px 0 32px;
@@ -51,7 +54,6 @@
 
 .rs-page .title-micro-section {
   text-align: center;
-  font-size: 24px !important;
   font-weight: bold !important;
   color: #4a5065 !important;
   line-height: 1.4;
@@ -62,12 +64,13 @@
   margin: 10px auto 22px;
   text-align: center;
   color: #3b5065;
-  font-size: 16px;
   font-weight: 500;
   line-height: 1.6;
 }
 
-/* SELETTORE */
+/* ==========================================
+   SELETTORI
+   ========================================== */
 
 .rs-controls {
   display: grid;
@@ -84,7 +87,6 @@
 
 .rs-field label {
   color: #405b74;
-  font-size: 14px;
   font-weight: 700;
 }
 
@@ -97,13 +99,16 @@
   border: 1px solid #c9dbe9;
   border-radius: 8px;
   box-sizing: border-box;
-  font-size: 15px;
 }
 
 .rs-field select:focus {
   outline: 2px solid #a6cfe9;
   outline-offset: 1px;
 }
+
+/* ==========================================
+   PULSANTI
+   ========================================== */
 
 .rs-actions {
   display: flex;
@@ -120,7 +125,6 @@
   border: 1px solid #337ab7;
   border-radius: 7px;
   cursor: pointer;
-  font-size: 14px;
   font-weight: 600;
 }
 
@@ -151,19 +155,19 @@
 .rs-note {
   margin: 14px auto 0;
   color: #61768a;
-  font-size: 13px;
   line-height: 1.6;
   text-align: center;
 }
 
-/* STATI */
+/* ==========================================
+   STATI CARICAMENTO / ERRORE
+   ========================================== */
 
 .rs-loading,
 .rs-error {
   margin: 16px auto;
   padding: 15px 18px;
   border-radius: 8px;
-  font-size: 14px;
   line-height: 1.6;
   text-align: center;
 }
@@ -180,7 +184,9 @@
   border: 1px solid #e5a6a6;
 }
 
-/* LOCALITA E ORARIO */
+/* ==========================================
+   LOCALITA E ORARIO
+   ========================================== */
 
 .rs-source-bar {
   display: flex;
@@ -193,14 +199,15 @@
   border: 1px solid #d6e3ef;
   border-radius: 9px;
   color: #405b74;
-  font-size: 14px;
 }
 
 .rs-source-bar strong {
   color: #26384b;
 }
 
-/* TEMPERATURE PRINCIPALI */
+/* ==========================================
+   TEMPERATURE PRINCIPALI
+   ========================================== */
 
 .rs-temperature-grid {
   display: grid;
@@ -227,13 +234,11 @@
 
 .rs-level {
   color: #405b74;
-  font-size: 19px;
   font-weight: 700;
 }
 
 .rs-temperature-value {
   color: #d3653c;
-  font-size: 39px;
   font-weight: 800;
   line-height: 1.2;
 }
@@ -244,16 +249,16 @@
 
 .rs-height {
   color: #26384b;
-  font-size: 18px;
   font-weight: 700;
 }
 
 .rs-temperature-card small {
   color: #61768a;
-  font-size: 13px;
 }
 
-/* RIEPILOGO */
+/* ==========================================
+   RIEPILOGO
+   ========================================== */
 
 .rs-summary-grid {
   display: grid;
@@ -276,22 +281,21 @@
 
 .rs-summary-card span {
   color: #4a5065;
-  font-size: 14px;
   font-weight: 600;
 }
 
 .rs-summary-card strong {
   color: #1769aa;
-  font-size: 24px;
   font-weight: 800;
 }
 
 .rs-summary-card small {
   color: #61768a;
-  font-size: 12px;
 }
 
-/* TABELLA */
+/* ==========================================
+   TABELLE
+   ========================================== */
 
 .rs-table-container {
   width: 100%;
@@ -304,7 +308,6 @@
   width: 100%;
   border-collapse: collapse;
   background: #ffffff;
-  font-size: 14px;
 }
 
 .rs-table th {
@@ -354,10 +357,11 @@
   padding: 30px 15px !important;
   color: #6a7f91 !important;
   text-align: center;
-  font-size: 14px;
 }
 
-/* GRAFICO */
+/* ==========================================
+   GRAFICO
+   ========================================== */
 
 .rs-chart-panel {
   width: 100%;
@@ -377,7 +381,6 @@
   align-items: center;
   gap: 9px;
   color: #405b74;
-  font-size: 14px;
   font-weight: 600;
 }
 
@@ -423,12 +426,10 @@
 
 .rs-axis-label {
   fill: #61768a;
-  font-size: 12px;
 }
 
 .rs-axis-title {
   fill: #405b74;
-  font-size: 13px;
   font-weight: 600;
 }
 
@@ -449,13 +450,14 @@
   stroke-linejoin: round;
 }
 
-/* FONTI */
+/* ==========================================
+   FONTI
+   ========================================== */
 
 .rs-sources p {
   margin: 12px auto;
   max-width: 950px;
   color: #405b74;
-  font-size: 15px;
   line-height: 1.7;
 }
 
@@ -473,7 +475,6 @@
   color: #ffffff;
   background: #337ab7;
   border-radius: 7px;
-  font-size: 14px;
   font-weight: 600;
   text-decoration: none;
 }
@@ -484,9 +485,234 @@
   text-decoration: none;
 }
 
-/* TABLET */
+/* ==========================================
+   SONDEHUB - RADIOSONDE RECENTI
+   ========================================== */
+
+.rs-recenti {
+  border-top: 4px solid #1686b1;
+}
+
+/* Introduzione SondeHub */
+
+.rs-recenti .rs-recent-intro {
+  font-size: 16px;
+  line-height: 1.75;
+  margin: 15px auto 20px;
+  text-align: center;
+  color: #334b61;
+}
+
+/* Spiegazione dei dati */
+
+.rs-recent-explanation {
+  background: #eaf4fc;
+  border: 1px solid #c6dfee;
+  border-left: 4px solid #2585bd;
+  border-radius: 12px;
+  padding: 18px 22px;
+  margin: 18px 0 22px;
+  text-align: left;
+}
+
+.rs-recent-explanation h3 {
+  font-size: 19px;
+  color: #244d71;
+  font-weight: 700;
+  margin: 0 0 13px;
+}
+
+.rs-recenti .rs-recent-explanation p,
+.rs-recent-explanation li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #36536a;
+}
+
+.rs-recent-explanation ul {
+  padding-left: 23px;
+  margin: 12px 0;
+}
+
+.rs-recent-explanation li {
+  margin-bottom: 9px;
+}
+
+.rs-recent-explanation strong {
+  color: #204d75;
+}
+
+.rs-recenti .rs-recent-warning {
+  margin-top: 15px;
+  padding: 12px 15px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #d2e3f0;
+}
+
+/* Aggiornamento telemetria */
+
+.rs-recenti .rs-recent-refresh {
+  font-size: 15px;
+  padding: 10px 18px;
+  font-weight: 600;
+}
+
+/* Griglia radiosonde */
+
+.rs-recent-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+}
+
+/* Scheda radiosonda */
+
+.rs-recent-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid #bfd9ec;
+  border-radius: 13px;
+  background: #f5faff;
+  box-shadow: 0 3px 12px rgba(25, 69, 106, .09);
+  transition: box-shadow .2s ease;
+  box-sizing: border-box;
+}
+
+.rs-recent-card:hover {
+  box-shadow: 0 5px 18px rgba(25, 69, 106, .15);
+}
+
+/* Intestazione */
+
+.rs-recent-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 15px;
+  margin-bottom: 18px;
+}
+
+.rs-recenti .rs-recent-serial,
+.rs-recenti .rs-recent-top > strong {
+  font-size: 17px;
+  font-weight: 700;
+  color: #234d73;
+  overflow-wrap: anywhere;
+}
+
+.rs-recenti .rs-recent-date,
+.rs-recenti .rs-recent-top > span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #526c83;
+}
+
+/* Contenitore valori */
+
+.rs-recent-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 11px;
+  margin-bottom: 18px;
+}
+
+/* Valore singolo */
+
+.rs-recent-value,
+.rs-recent-values > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  min-height: 105px;
+  padding: 14px 8px;
+  background: #ffffff;
+  border: 1px solid #d5e4ee;
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.rs-recenti .rs-recent-value small,
+.rs-recenti .rs-recent-values small {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #5c7388;
+}
+
+.rs-recenti .rs-recent-value strong,
+.rs-recenti .rs-recent-values strong {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #17649b;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+
+.rs-recenti .rs-recent-value .rs-cold,
+.rs-recenti .rs-recent-values .rs-cold {
+  color: #1265aa !important;
+}
+
+/* Link tracciato */
+
+.rs-recenti .rs-recent-link,
+.rs-recenti .rs-recent-card > a {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #146399;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.rs-recenti .rs-recent-link:hover,
+.rs-recenti .rs-recent-card > a:hover {
+  text-decoration: underline;
+}
+
+/* Aggiornamento e note */
+
+.rs-recent-footer {
+  margin: 22px 0 18px;
+  padding: 16px 18px;
+  background: #eef6fc;
+  border: 1px solid #d4e4ef;
+  border-radius: 10px;
+}
+
+.rs-recenti .rs-recent-footer p {
+  font-size: 14px;
+  line-height: 1.65;
+  margin: 0 0 9px;
+  color: #36536a;
+}
+
+.rs-recenti .rs-recent-footer p:last-child {
+  margin-bottom: 0;
+}
+
+/* Link alle fonti */
+
+.rs-recenti .rs-recent-links {
+  margin-top: 20px;
+  gap: 12px;
+}
+
+/* ==========================================
+   RESPONSIVE - TABLET
+   ========================================== */
 
 @media (max-width: 1100px) {
+
   .rs-page {
     width: 95%;
   }
@@ -495,29 +721,27 @@
     gap: 12px;
   }
 
-  .rs-temperature-value {
-    font-size: 34px;
-  }
 }
 
-/* SMARTPHONE */
+/* Radiosonde su una colonna */
+
+@media (max-width: 900px) {
+
+  .rs-recent-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* ==========================================
+   RESPONSIVE - SMARTPHONE
+   ========================================== */
 
 @media (max-width: 768px) {
+
   .rs-page {
     width: 95%;
     padding: 5px 0 25px;
-  }
-
-  .rs-intro p {
-    font-size: 17px;
-  }
-
-  .rs-page .title-micro-section {
-    font-size: 24px !important;
-  }
-
-  .rs-description {
-    font-size: 14px;
   }
 
   .rs-panel,
@@ -531,20 +755,11 @@
     gap: 12px;
   }
 
-  .rs-field label {
-    font-size: 13px;
-  }
-
-  .rs-field select {
-    font-size: 14px;
-  }
-
   .rs-actions {
     gap: 8px;
   }
 
   .rs-button {
-    font-size: 12px;
     padding: 10px 12px;
   }
 
@@ -559,18 +774,6 @@
     gap: 7px;
   }
 
-  .rs-level {
-    font-size: 17px;
-  }
-
-  .rs-temperature-value {
-    font-size: 35px;
-  }
-
-  .rs-height {
-    font-size: 16px;
-  }
-
   .rs-summary-grid {
     grid-template-columns: 1fr;
     gap: 9px;
@@ -578,14 +781,6 @@
 
   .rs-summary-card {
     padding: 13px;
-  }
-
-  .rs-summary-card strong {
-    font-size: 21px;
-  }
-
-  .rs-table {
-    font-size: 12px;
   }
 
   .rs-table th {
@@ -600,24 +795,83 @@
     gap: 15px;
   }
 
-  .rs-chart-legend span {
-    font-size: 12px;
-  }
-
   .rs-chart {
     min-width: 430px;
   }
 
-  .rs-sources p {
+}
+
+/* ==========================================
+   SONDEHUB - SMARTPHONE
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  .rs-recenti .rs-recent-intro {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .rs-recent-explanation {
+    padding: 15px;
+  }
+
+  .rs-recent-explanation h3 {
+    font-size: 18px;
+  }
+
+  .rs-recent-explanation li,
+  .rs-recenti .rs-recent-explanation p {
+    font-size: 14px;
+  }
+
+  .rs-recent-card {
+    padding: 16px;
+  }
+
+  .rs-recent-values {
+    gap: 7px;
+  }
+
+  .rs-recent-value,
+  .rs-recent-values > div {
+    padding: 12px 5px;
+    min-height: 90px;
+    gap: 8px;
+  }
+
+  .rs-recenti .rs-recent-value strong,
+  .rs-recenti .rs-recent-values strong {
+    font-size: 21px;
+  }
+
+  .rs-recenti .rs-recent-value small,
+  .rs-recenti .rs-recent-values small {
+    font-size: 12px;
+  }
+
+  .rs-recenti .rs-recent-serial,
+  .rs-recenti .rs-recent-top > strong {
+    font-size: 16px;
+  }
+
+  .rs-recenti .rs-recent-date,
+  .rs-recenti .rs-recent-top > span {
     font-size: 13px;
   }
 
-  .rs-source-links a {
-    font-size: 12px;
+  .rs-recent-footer {
+    padding: 13px;
   }
+
 }
 
+/* ==========================================
+   SCHERMI MOLTO PICCOLI
+   ========================================== */
+
 @media (max-width: 370px) {
+
   .rs-actions {
     flex-direction: column;
   }
@@ -625,151 +879,258 @@
   .rs-button {
     width: 100%;
   }
+
+}
+
+@media (max-width: 360px) {
+
+  .rs-recent-values {
+    grid-template-columns: 1fr;
+  }
+
+  .rs-recent-value,
+  .rs-recent-values > div {
+    min-height: 65px;
+  }
+
+}
+
+/* ==========================================
+   SONDEHUB - PROFILO VERTICALE OSSERVATO
+   ========================================== */
+.rs-recenti .rs-profile-open {
+  width: 100%; margin-top: 14px; padding: 11px 14px;
+  font-size: 15px; font-weight: 700;
+}
+.rs-profile-panel {
+  margin: 22px 0; padding: 22px; background: #fff;
+  border: 2px solid #c3deed; border-radius: 13px;
+  min-width: 0;
+}
+.rs-profile-heading {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 12px; margin-bottom: 16px;
+}
+.rs-profile-heading h3 { margin: 0 0 7px; color: #244d71; font-size: 21px; }
+.rs-recenti .rs-profile-heading p { margin: 0; font-size: 15px; }
+.rs-profile-panel h4 { color: #244d71; font-size: 18px; margin: 25px 0 12px; }
+.rs-profile-summary {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px;
+}
+.rs-profile-summary > div {
+  display: flex; flex-direction: column; gap: 10px; min-width: 0;
+  padding: 15px 9px; border-radius: 10px; text-align: center;
+  background: #eef6fc; border: 1px solid #d0e1ef;
+}
+.rs-profile-summary small { font-size: 13px; color: #5c7388; }
+.rs-profile-summary strong { font-size: 18px; color: #17649b; overflow-wrap: anywhere; }
+.rs-profile-reference-grid {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 17px;
+}
+.rs-profile-reference {
+  display: flex; flex-direction: column; align-items: center; gap: 9px;
+  padding: 16px 8px; background: #f5faff; border: 1px solid #cfdfeb;
+  border-radius: 10px; min-width: 0; text-align: center;
+}
+.rs-profile-reference span { color: #405b74; font-size: 14px; font-weight: 600; }
+.rs-profile-reference strong { color: #17649b; font-size: 24px; }
+.rs-profile-reference small { color: #536f86; font-size: 13px; }
+.rs-profile-chart-panel { padding: 14px 8px; }
+.rs-profile-table-container { max-height: 480px; overflow: auto; }
+.rs-profile-table th { position: sticky; top: 0; z-index: 1; }
+@media (max-width: 800px) {
+  .rs-profile-summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rs-profile-reference-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .rs-profile-panel { padding: 13px; }
+  .rs-profile-summary strong { font-size: 16px; }
+  .rs-profile-reference strong { font-size: 21px; }
+  .rs-profile-heading h3 { font-size: 18px; }
+}
+
+/* SondeHub: selettore stazione e ultimo lancio prioritario */
+.rs-sonde-station-control { align-items: end; }
+.rs-sonde-station-caption { display: flex; flex-direction: column; gap: 5px; color: #36536a; padding: 10px; }
+.rs-sonde-station-caption strong { font-size: 17px; }
+.rs-sonde-station-caption small { font-size: 13px; }
+.rs-sonde-section-heading { margin: 26px 0 12px; color: #244d71; font-size: 20px; }
+.rs-last-launch { grid-template-columns: minmax(0, 1fr); max-width: 700px; margin: 18px auto; }
+.rs-last-launch .rs-recent-card { border: 2px solid #9bc7e4; }
+.rs-other-toggle { margin: 18px 0; }
+.rs-profile-pressure-grid { margin-bottom: 18px; }
+@media (max-width: 700px) {
+  .rs-sonde-station-control { grid-template-columns: 1fr; }
+  .rs-sonde-section-heading { font-size: 18px; }
 }
 
 
 /* ==========================================
-   TEMPERATURE IN QUOTA - LEGGIBILITÀ
-   Non modifica lo zoom globale
+   NOAA IGRA - SEZIONE ESPANDIBILE
    ========================================== */
-
-.rs-page .rs-intro p {
-  font-size: 25px !important;
-  line-height: 1.65 !important;
+.rs-noaa-section { padding: 0; overflow: hidden; }
+.rs-noaa-details { width: 100%; }
+.rs-noaa-summary {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px; cursor: pointer; padding: 21px 23px;
+  list-style: none; background: #eaf4fc; color: #244d71;
+  transition: background .18s ease;
+}
+.rs-noaa-summary::-webkit-details-marker { display: none; }
+.rs-noaa-summary::marker { content: ''; }
+.rs-noaa-summary:hover { background: #dfedf9; }
+.rs-noaa-summary:focus-visible { outline: 3px solid #337ab7; outline-offset: -3px; }
+.rs-noaa-summary-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.rs-noaa-summary-heading { font-size: 20px; font-weight: 750; line-height: 1.35; }
+.rs-noaa-summary-subtitle { color: #496b85; font-size: 14px; font-weight: 500; line-height: 1.5; }
+.rs-noaa-summary-action {
+  flex-shrink: 0; display: inline-flex; align-items: center; gap: 12px;
+  border: 1px solid #abcfe6; border-radius: 8px; background: #fff;
+  padding: 10px 12px; color: #17649b; font-size: 14px; font-weight: 700;
+}
+.rs-noaa-open-label { display: none; }
+.rs-noaa-details[open] .rs-noaa-open-label { display: inline; }
+.rs-noaa-details[open] .rs-noaa-closed-label { display: none; }
+.rs-noaa-chevron {
+  display: inline-block; width: 9px; height: 9px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  transform: rotate(45deg); transition: transform .18s ease;
+}
+.rs-noaa-details[open] .rs-noaa-chevron { transform: rotate(225deg); }
+.rs-noaa-content { padding: 0 22px 22px; }
+@media (max-width: 600px) {
+  .rs-noaa-summary { padding: 16px 12px; gap: 8px; }
+  .rs-noaa-summary-heading { font-size: 17px; }
+  .rs-noaa-summary-subtitle { font-size: 12px; }
+  .rs-noaa-summary-action { padding: 9px 8px; font-size: 12px; gap: 7px; }
+  .rs-noaa-content { padding: 0 12px 15px; }
 }
 
-.rs-page .title-micro-section {
-  font-size: 34px !important;
-  line-height: 1.4 !important;
+/* ==========================================================
+   NOAA IGRA: livelli fino a 500 hPa sempre visibili
+   ========================================================== */
+.rs-noaa-table-intro {
+  margin: 22px 0 0;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: #eaf4fc;
+  border: 1px solid #c9ddeb;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
 }
-
-.rs-page .rs-description {
-  font-size: 23px !important;
-  line-height: 1.65 !important;
+.rs-noaa-table-intro strong { color: #244d71; font-size: 17px; line-height: 1.4; }
+.rs-noaa-table-intro span { color: #526c83; font-size: 14px; line-height: 1.45; }
+.rs-noaa-visible-table { border-radius: 0 0 10px 10px; }
+.rs-noaa-table-details {
+  margin: 12px 0 10px;
+  border: 1px solid #c9ddeb;
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
 }
-
-.rs-page .rs-field label {
-  font-size: 22px !important;
+.rs-noaa-table-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px 18px;
+  background: #eaf4fc;
+  color: #244d71;
+  cursor: pointer;
+  list-style: none;
 }
+.rs-noaa-table-summary::-webkit-details-marker { display: none; }
+.rs-noaa-table-summary::marker { content: ''; }
+.rs-noaa-table-summary:hover { background: #ddeefb; }
+.rs-noaa-table-summary:focus-visible { outline: 3px solid #337ab7; outline-offset: -3px; }
+.rs-noaa-table-summary-text { display: flex; flex-direction: column; gap: 5px; }
+.rs-noaa-table-summary-text strong { font-size: 16px; }
+.rs-noaa-table-summary-text small { font-size: 13px; color: #526c83; }
+.rs-noaa-table-toggle { font-size: 14px; font-weight: 700; color: #17649b; }
+.rs-noaa-table-open { display: none; }
+.rs-noaa-table-details[open] .rs-noaa-table-open { display: inline; }
+.rs-noaa-table-details[open] .rs-noaa-table-closed { display: none; }
+.rs-noaa-additional-table { border: none; border-top: 1px solid #dce6ef; border-radius: 0; }
 
-.rs-page .rs-field select {
-  font-size: 23px !important;
-  min-height: 58px;
+/* ==========================================================
+   SondeHub: numeri e descrizioni più leggibili
+   ========================================================== */
+.rs-recenti .rs-profile-panel { padding: 24px; }
+.rs-recenti .rs-profile-panel h4 {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  margin: 28px 0 14px;
 }
-
-.rs-page .rs-button {
-  font-size: 21px !important;
-  padding: 14px 19px;
+.rs-recenti .rs-profile-panel .rs-note {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 12px auto 18px;
 }
-
-.rs-page .rs-source-bar {
-  font-size: 21px !important;
-}
-
-.rs-page .rs-level {
-  font-size: 27px !important;
-}
-
-.rs-page .rs-temperature-value {
-  font-size: 52px !important;
-}
-
-.rs-page .rs-height {
-  font-size: 25px !important;
-}
-
-.rs-page .rs-temperature-card small,
-.rs-page .rs-summary-card small {
-  font-size: 19px !important;
-}
-
-.rs-page .rs-summary-card span {
-  font-size: 22px !important;
-}
-
-.rs-page .rs-summary-card strong {
-  font-size: 35px !important;
-}
-
-.rs-page .rs-table,
-.rs-page .rs-table th,
-.rs-page .rs-table td {
-  font-size: 21px !important;
-}
-
-.rs-page .rs-table th {
-  padding: 16px 13px;
-}
-
-.rs-page .rs-table td {
-  padding: 15px 13px;
-}
-
-.rs-page .rs-note {
-  font-size: 19px !important;
-}
-
-.rs-page .rs-chart-legend span {
-  font-size: 20px !important;
-}
-
-.rs-page .rs-sources p {
-  font-size: 22px !important;
-  line-height: 1.7 !important;
-}
-
-.rs-page .rs-source-links a {
-  font-size: 20px !important;
-}
-
-.rs-page .rs-loading,
-.rs-page .rs-error,
-.rs-page .rs-empty {
-  font-size: 19px !important;
-}
-
-/* ==========================================
-   SMARTPHONE - SOLO CSS LOCALE
-   ========================================== */
-
+.rs-recenti .rs-profile-summary { gap: 12px; }
+.rs-recenti .rs-profile-summary > div { min-height: 92px; padding: 16px 12px; justify-content: center; }
+.rs-recenti .rs-profile-summary small { font-size: 14px; line-height: 1.4; font-weight: 600; }
+.rs-recenti .rs-profile-summary strong { font-size: 22px; line-height: 1.25; font-weight: 800; }
+.rs-recenti .rs-profile-reference-grid { gap: 14px; margin-top: 18px; }
+.rs-recenti .rs-profile-reference { min-height: 118px; gap: 9px; padding: 17px 12px; justify-content: center; }
+.rs-recenti .rs-profile-reference span { font-size: 15px; font-weight: 700; }
+.rs-recenti .rs-profile-reference strong { font-size: 29px; font-weight: 800; line-height: 1.2; }
+.rs-recenti .rs-profile-reference small { font-size: 14px; line-height: 1.4; font-weight: 600; }
+.rs-recenti .rs-profile-table th { font-size: 14px; }
+.rs-recenti .rs-profile-table td { font-size: 15px; }
 @media (max-width: 768px) {
-  .rs-page .rs-intro p {
-    font-size: 20px !important;
-  }
-
-  .rs-page .title-micro-section {
-    font-size: 27px !important;
-  }
-
-  .rs-page .rs-description {
-    font-size: 19px !important;
-  }
-
-  .rs-page .rs-field label,
-  .rs-page .rs-field select {
-    font-size: 19px !important;
-  }
-
-  .rs-page .rs-button {
-    font-size: 17px !important;
-  }
-
-  .rs-page .rs-temperature-value {
-    font-size: 43px !important;
-  }
-
-  .rs-page .rs-table,
-  .rs-page .rs-table th,
-  .rs-page .rs-table td {
-    font-size: 17px !important;
-  }
-
-  .rs-page .rs-note {
-    font-size: 16px !important;
-  }
-
-  .rs-page .rs-sources p {
-    font-size: 18px !important;
-  }
+  .rs-noaa-table-intro { padding: 12px; }
+  .rs-noaa-table-intro strong { font-size: 15px; }
+  .rs-noaa-table-intro span { font-size: 13px; }
+  .rs-noaa-table-summary { padding: 13px 12px; }
+  .rs-noaa-table-summary-text strong { font-size: 14px; }
+  .rs-noaa-table-summary-text small { font-size: 12px; }
+  .rs-noaa-table-toggle { font-size: 12px; }
+  .rs-recenti .rs-profile-panel { padding: 14px 10px; }
+  .rs-recenti .rs-profile-panel h4 { font-size: 19px; }
+  .rs-recenti .rs-profile-panel .rs-note { font-size: 15px; }
+  .rs-recenti .rs-profile-summary strong { font-size: 19px; }
+  .rs-recenti .rs-profile-summary small { font-size: 13px; }
+  .rs-recenti .rs-profile-reference strong { font-size: 25px; }
+  .rs-recenti .rs-profile-reference span { font-size: 14px; }
+  .rs-recenti .rs-profile-reference small { font-size: 13px; }
+}
+@media (max-width: 420px) {
+  .rs-recenti .rs-profile-reference-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .rs-recenti .rs-profile-reference { min-height: 100px; padding: 12px 5px; }
+  .rs-recenti .rs-profile-reference strong { font-size: 23px; }
+  .rs-recenti .rs-profile-summary { gap: 8px; }
+  .rs-recenti .rs-profile-summary > div { padding: 12px 5px; }
+  .rs-recenti .rs-profile-summary strong { font-size: 17px; }
 }
 
+/* ==============================================
+   TEMPERATURE - REGOLA UNICA IN TUTTE LE SEZIONI
+   Arancione >= 0 °C; blu < 0 °C; N/D neutro
+   ============================================== */
+.rs-page .rs-warm {
+  color: #d3653c !important;
+}
+.rs-page .rs-cold {
+  color: #1769aa !important;
+}
+/* Nelle tabelle SondeHub la temperatura è dentro un strong: eredita il colore della cella */
+.rs-page .rs-table td.rs-warm > strong,
+.rs-page .rs-table td.rs-cold > strong {
+  color: inherit !important;
+}
+
+/* Scelta archivio osservazioni: NOAA / Wyoming / automatico */
+.rs-source-chooser {
+  max-width: 650px; margin: 15px auto 22px;
+  padding: 15px 18px; background: #edf6fc;
+  border: 1px solid #c9ddeb; border-radius: 10px;
+}
+.rs-source-chooser label { font-size: 16px; font-weight: 750; color: #244d71; }
+.rs-source-chooser select { font-size: 16px; min-height: 46px; font-weight: 600; }
+.rs-source-chooser small { color: #526c83; font-size: 13px; line-height: 1.5; }

@@ -1,11 +1,6 @@
-
-/* ==========================================
-   SMARTPHONE E TABLET IN VERTICALE
-   ========================================== */
-
 @media only screen and (max-width: 1025px) and (orientation: portrait) {
 
-  /* Zoom originale del layout verticale */
+  /* Manteniamo zoom 1 per il layout verticale, come nell'originale. */
   html {
     zoom: 1.0 !important;
   }
@@ -42,16 +37,9 @@
     font-size: 24px;
   }
 
-  /*
-   * Rimossa la vecchia regola globale:
-   *
-   * strong {
-   *   font-size: 18px !important;
-   * }
-   *
-   * Ora ogni componente gestisce autonomamente
-   * la dimensione dei propri valori numerici.
-   */
+  strong {
+    font-size: 18px !important;
+  }
 
   .logo {
     font-family: unset !important;
@@ -65,8 +53,9 @@
   .dropdown-menu > li > a {
     display: block;
     clear: both;
-    font-weight: bold;
+    font-weight: normal;
     line-height: 1.428571429;
+    font-weight: bold;
     color: #f5f5f5;
     white-space: nowrap;
     background-color: #2d65c4;
@@ -87,7 +76,7 @@
   }
 
   .webcam {
-    width: 95% !important;
+    width: 90% !important;
     max-height: 600px !important;
   }
 
@@ -122,7 +111,7 @@
 
   .webcam-script-header {
     font-size: 27px !important;
-    width: 85% !important;
+    width: 80% !important;
   }
 
   .arrow {
@@ -251,6 +240,16 @@
   .table-riepilogo-stazione-prato {
     zoom: 1 !important;
   }
+
+  /* Windy Android: preset verificato nella diagnostica */
+  .webcam-youtube-container.webcam-windy-container {
+    width: 90% !important;
+    max-width: none !important;
+    zoom: 1.5 !important;
+    aspect-ratio: 100 / 70 !important;
+    margin: 0 auto 20px;
+    overflow: hidden !important;
+  }
 }
 
 /* ==========================================
@@ -258,7 +257,6 @@
    ========================================== */
 
 @media screen and (min-width: 1024px) and (max-width: 1366px) {
-
   .btn-lg {
     height: 50px !important;
   }
@@ -274,7 +272,6 @@
     min-width: unset !important;
   }
 
-  /* Zoom originale invariato */
   html {
     zoom: 0.7 !important;
   }
@@ -284,9 +281,7 @@
    TABLET VERTICALE 1024-1366 PX
    ========================================== */
 
-@media screen and (min-width: 1024px) and (max-width: 1366px)
-and (orientation: portrait) {
-
+@media screen and (min-width: 1024px) and (max-width: 1366px) and (orientation: portrait) {
   .btn-lg {
     height: 50px !important;
   }
@@ -303,7 +298,6 @@ and (orientation: portrait) {
     min-width: unset !important;
   }
 
-  /* Zoom originale invariato */
   html {
     zoom: 0.9 !important;
   }
@@ -314,7 +308,6 @@ and (orientation: portrait) {
    ========================================== */
 
 @media screen and (min-width: 5000px) {
-
   .menu {
     height: 120px !important;
   }
@@ -327,77 +320,50 @@ and (orientation: portrait) {
     min-width: unset !important;
   }
 
-  /* Zoom originale invariato */
   html {
     zoom: 1.0 !important;
   }
 }
 
 
-
-/* ==========================================
-   METEO CAMPOLI - TIPOGRAFIA MOBILE
-   QUALITÀ ARIA / RADIOSONDAGGI / BOLLETTINO
-   ========================================== */
-
-@media only screen and (max-width: 1025px)
-and (orientation: portrait) {
-
+/* === METEO CAMPOLI - TIPOGRAFIA UNICA MOBILE === */
+@media only screen and (max-width: 1025px) and (orientation: portrait) {
   :root {
-    --mc-font-intro: 27px;
-    --mc-font-title: 34px;
-    --mc-font-section: 26px;
-    --mc-font-body: 25px;
-    --mc-font-secondary: 23px;
-    --mc-font-note: 22px;
-    --mc-font-card-title: 29px;
-    --mc-font-control: 23px;
-    --mc-font-label: 23px;
-    --mc-font-number: 48px;
-    --mc-font-summary: 33px;
-    --mc-font-table: 23px;
-    --mc-font-eyebrow: 21px;
+    --mc-font-intro: 32px;
+    --mc-font-title: 40px;
+    --mc-font-section: 31px;
+    --mc-font-body: 30px;
+    --mc-font-secondary: 27px;
+    --mc-font-note: 26px;
+    --mc-font-card-title: 34px;
+    --mc-font-control: 28px;
+    --mc-font-label: 28px;
+    --mc-font-number: 56px;
+    --mc-font-summary: 39px;
+    --mc-font-table: 27px;
+    --mc-font-eyebrow: 25px;
   }
+  /* TABELLE: scorrimento, senza comprimere i testi */
+  .rs-page .rs-table-container, .qualita-aria-page .qa-limits-table-container {
+    max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .rs-page .rs-table { min-width: 850px; }
+  .rs-page .rs-field select, .rs-page .rs-button { min-height: 52px; }
+  .rs-page .rs-temperature-card, .rs-page .rs-summary-card,
+  .qualita-aria-page .qa-main-card, .bm-page .bm-main-card {
+    min-width: 0; height: auto;
+  }
+}
 
-  /* Titoli principali gestiti globalmente */
-  .rs-page .title-micro-section,
-  .qualita-aria-page .title-micro-section,
-  .bm-page .title-micro-section {
-    font-size: var(--mc-font-title) !important;
+@media only screen and (max-width: 767px) and (orientation: portrait) {
+  .rs-page, .qualita-aria-page, .bm-page {
+    width: 100% !important; max-width: 100% !important; min-width: 0 !important;
+    box-sizing: border-box; margin-left: auto !important; margin-right: auto !important;
   }
-
-  /* Le righe della tabella devono poter contenere
-     testi più grandi senza sovrapporsi */
-  .rs-page .rs-table th,
-  .rs-page .rs-table td,
-  .qualita-aria-page .qa-limits-table th,
-  .qualita-aria-page .qa-limits-table td {
-    padding: 13px 11px;
-    line-height: 1.45;
-  }
-
-  /* Le tabelle larghe devono scorrere in orizzontale */
-  .rs-page .rs-table-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .rs-page .rs-table {
-    min-width: 850px;
-  }
-
-  /* Controlli maggiormente leggibili */
-  .rs-page .rs-field select,
-  .rs-page .rs-button {
-    min-height: 52px;
-  }
-
-  /* Evita che le schede taglino il testo */
-  .rs-page .rs-temperature-card,
-  .rs-page .rs-summary-card,
-  .qualita-aria-page .qa-main-card,
-  .bm-page .bm-main-card {
-    min-width: 0;
-    height: auto;
-  }
+  .rs-page .rs-section, .rs-page .rs-panel,
+  .bm-page .bm-section, .bm-page .bm-main-card,
+  .qualita-aria-page .qa-section { min-width: 0; max-width: 100%; box-sizing: border-box; }
+  .rs-page .rs-temperature-grid, .rs-page .rs-summary-grid,
+  .bm-page .bm-links-grid, .bm-page .bm-alert-days { grid-template-columns: 1fr; }
+  .rs-page p, .bm-page p, .qualita-aria-page p { max-width: 100%; overflow-wrap: break-word; }
 }
