@@ -26,6 +26,17 @@ export class PrevisioniComponent implements OnInit, OnDestroy {
   runEcmwf: string;
   runEUkmo: string;
 
+  // Le immagini vengono verificate prima di comparire nella pagina.
+  statoAnimazioni: Record<string, 'caricamento' | 'pronta' | 'non-disponibile'> = {
+    cape: 'caricamento',
+    dust: 'caricamento',
+    lammaWrfIfs: 'caricamento',
+    lammaMolochGfs: 'caricamento',
+    lammaMolochIfs: 'caricamento',
+    lammaMolochIfs850: 'caricamento'
+  };
+  private componenteDistrutto = false;
+
   // animazione mappe
   capeImages: string[] = [];
   currentCapeImage = '';
@@ -77,7 +88,7 @@ export class PrevisioniComponent implements OnInit, OnDestroy {
     this.linkGfs = this.calculateDateGfs();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.utilityService.scrollToSpecifyPosition();
     this.buildCapeImages();
     this.buildDustImages();
@@ -85,21 +96,98 @@ export class PrevisioniComponent implements OnInit, OnDestroy {
     this.buildLammaMolochIfsImages();
     this.buildLammaWrfIfsImages();
     this.buildLammaMolochIfs850Images();
-    this.preloadImages(this.capeImages);
-    this.preloadImages(this.dustImages);
-    this.preloadImages(this.lammaMolochGfsImages);
-    this.preloadImages(this.lammaMolochIfsImages);
-    this.preloadImages(this.lammaWrfIfsImages);
-    this.preloadImages(this.lammaMolochIfs850Images);
-    this.startCapeAnimation();
-    this.startDustAnimation();
-    this.startLammaMolochGfsAnimation();
-    this.startLammaMolochIfsAnimation();
-    this.startLammaWrfIfsAnimation();
-    this.startLammaMolochIfs850Animation();
+
+    // Ogni animazione viene avviata solo dopo la verifica dei suoi fotogrammi.
+    this.preparaAnimazione('cape', this.capeImages, validi => {
+      this.capeImages = validi;
+      this.currentCapeIndex = 0;
+      this.currentCapeImage = validi[0];
+      this.startCapeAnimation();
+    });
+    this.preparaAnimazione('dust', this.dustImages, validi => {
+      this.dustImages = validi;
+      this.currentDustIndex = 0;
+      this.currentDustImage = validi[0];
+      this.startDustAnimation();
+    });
+    this.preparaAnimazione('lammaWrfIfs', this.lammaWrfIfsImages, validi => {
+      this.lammaWrfIfsImages = validi;
+      this.currentLammaWrfIfsIndex = 0;
+      this.currentLammaWrfIfsImage = validi[0];
+      this.startLammaWrfIfsAnimation();
+    });
+    this.preparaAnimazione('lammaMolochGfs', this.lammaMolochGfsImages, validi => {
+      this.lammaMolochGfsImages = validi;
+      this.currentLammaMolochGfsIndex = 0;
+      this.currentLammaMolochGfsImage = validi[0];
+      this.startLammaMolochGfsAnimation();
+    });
+    this.preparaAnimazione('lammaMolochIfs', this.lammaMolochIfsImages, validi => {
+      this.lammaMolochIfsImages = validi;
+      this.currentLammaMolochIfsIndex = 0;
+      this.currentLammaMolochIfsImage = validi[0];
+      this.startLammaMolochIfsAnimation();
+    });
+    this.preparaAnimazione('lammaMolochIfs850', this.lammaMolochIfs850Images, validi => {
+      this.lammaMolochIfs850Images = validi;
+      this.currentLammaMolochIfs850Index = 0;
+      this.currentLammaMolochIfs850Image = validi[0];
+      this.startLammaMolochIfs850Animation();
+    });
+  }
+
+  private async preparaAnimazione(
+    nome: string,
+    immagini: string[],
+    onReady: (valide: string[]) => void
+  ): Promise<void> {
+    const valide = await this.verificaFotogrammi(immagini);
+    if (this.componenteDistrutto) { return; }
+    if (valide.length === 0) {
+      this.statoAnimazioni[nome] = 'non-disponibile';
+      return;
+    }
+    this.statoAnimazioni[nome] = 'pronta';
+    onReady(valide);
+  }
+
+  // Controlla un massimo di 5 immagini in parallelo per ogni modello,
+  // senza caricare alla cieca tutti i file che potrebbero non esistere.
+  private async verificaFotogrammi(immagini: string[]): Promise<string[]> {
+    const disponibili: boolean[] = new Array(immagini.length).fill(false);
+    let prossimo = 0;
+    const lavoratore = async () => {
+      while (prossimo < immagini.length && !this.componenteDistrutto) {
+        const posizione = prossimo++;
+        disponibili[posizione] = await this.verificaImmagine(immagini[posizione]);
+      }
+    };
+    const quanti = Math.min(5, immagini.length);
+    await Promise.all(Array.from({ length: quanti }, () => lavoratore()));
+    return immagini.filter((_, i) => disponibili[i]);
+  }
+
+  private verificaImmagine(src: string): Promise<boolean> {
+    return new Promise(resolve => {
+      const prova = new Image();
+      let risolto = false;
+      const chiudi = (valida: boolean) => {
+        if (risolto) { return; }
+        risolto = true;
+        clearTimeout(timeout);
+        prova.onload = null;
+        prova.onerror = null;
+        resolve(valida);
+      };
+      const timeout = setTimeout(() => chiudi(false), 8000);
+      prova.onload = () => chiudi(prova.naturalWidth > 0);
+      prova.onerror = () => chiudi(false);
+      prova.src = src;
+    });
   }
 
   ngOnDestroy(): void {
+    this.componenteDistrutto = true;
     this.stopCapeAnimation();
     this.stopDustAnimation();
     this.stopLammaMolochGfsAnimation();
@@ -185,8 +273,7 @@ export class PrevisioniComponent implements OnInit, OnDestroy {
       'https://www.wetterzentrale.de/maps/GFSOPIT00_45_11.png',
       'https://www.wetterzentrale.de/maps/GFSOPIT00_48_11.png'
     ];
-
-    this.currentCapeImage = this.capeImages[0];
+    this.currentCapeImage = '';
     this.currentCapeIndex = 0;
   }
 
@@ -201,8 +288,7 @@ export class PrevisioniComponent implements OnInit, OnDestroy {
       'https://forecast.uoa.gr/maps/0day/DUST/GRID1/zoomdepos_d/042.zoomdepos_d.png',
       'https://forecast.uoa.gr/maps/0day/DUST/GRID1/zoomdepos_d/048.zoomdepos_d.png'
     ];
-
-    this.currentDustImage = this.dustImages[0];
+    this.currentDustImage = '';
     this.currentDustIndex = 0;
   }
 
@@ -212,362 +298,360 @@ export class PrevisioniComponent implements OnInit, OnDestroy {
     for (let i = 1; i <= 25; i++) {
       this.lammaMolochGfsImages.push(
         `https://www.lamma.toscana.it/models/mol01gfs/last/pcp3h.z2.${i}.png`
-      );
-    }
-
-    this.currentLammaMolochGfsImage = this.lammaMolochGfsImages[0];
-    this.currentLammaMolochGfsIndex = 0;
-  }
-
-  buildLammaMolochIfsImages(): void {
-    this.lammaMolochIfsImages = [];
-
-    for (let i = 1; i <= 25; i++) {
-      this.lammaMolochIfsImages.push(
-        `https://www.lamma.toscana.it/models/mol01ecm/last/pcp3h.z2.${i}.png`
-      );
-    }
-
-    this.currentLammaMolochIfsImage = this.lammaMolochIfsImages[0];
-    this.currentLammaMolochIfsIndex = 0;
-  }
-
-  buildLammaWrfIfsImages(): void {
-    this.lammaWrfIfsImages = [];
-
-    for (let i = 1; i <= 25; i++) {
-      this.lammaWrfIfsImages.push(
-        `https://www.lamma.toscana.it/models/wrf03ecm/last/pcp3h.z2.${i}.png`
-      );
-    }
-
-    this.currentLammaWrfIfsImage = this.lammaWrfIfsImages[0];
-    this.currentLammaWrfIfsIndex = 0;
-  }
-
-  buildLammaMolochIfs850Images(): void {
-    this.lammaMolochIfs850Images = [];
-
-    for (let i = 1; i <= 25; i++) {
-      this.lammaMolochIfs850Images.push(
-        `https://www.lamma.toscana.it/models/mol01ecm/last/zt850.z2.${i}.png`
-      );
-    }
-
-    this.currentLammaMolochIfs850Image = this.lammaMolochIfs850Images[0];
-    this.currentLammaMolochIfs850Index = 0;
-  }
-
-  startCapeAnimation(): void {
-    if (!this.capeImages.length) {
-      return;
-    }
-
-    this.stopCapeAnimation();
-
-    this.capeInterval = setInterval(() => {
-      this.currentCapeIndex = (this.currentCapeIndex + 1) % this.capeImages.length;
-      this.currentCapeImage = this.capeImages[this.currentCapeIndex];
-    }, this.animationSpeed);
-  }
-
-  startDustAnimation(): void {
-    if (!this.dustImages.length) {
-      return;
-    }
-
-    this.stopDustAnimation();
-
-    this.dustInterval = setInterval(() => {
-      this.currentDustIndex =
-        (this.currentDustIndex + 1) % this.dustImages.length;
-
-      this.currentDustImage =
-        this.dustImages[this.currentDustIndex];
-    }, this.dustAnimationSpeed);
-  }
-
-  startLammaMolochGfsAnimation(): void {
-    if (!this.lammaMolochGfsImages.length) {
-      return;
-    }
-
-    this.stopLammaMolochGfsAnimation();
-
-    this.lammaMolochGfsInterval = setInterval(() => {
-      this.currentLammaMolochGfsIndex =
-        (this.currentLammaMolochGfsIndex + 1) % this.lammaMolochGfsImages.length;
-
-      this.currentLammaMolochGfsImage =
-        this.lammaMolochGfsImages[this.currentLammaMolochGfsIndex];
-    }, this.lammaMolochGfsAnimationSpeed);
-  }
-
-  startLammaMolochIfsAnimation(): void {
-    if (!this.lammaMolochIfsImages.length) {
-      return;
-    }
-
-    this.stopLammaMolochIfsAnimation();
-
-    this.lammaMolochIfsInterval = setInterval(() => {
-      this.currentLammaMolochIfsIndex =
-        (this.currentLammaMolochIfsIndex + 1) % this.lammaMolochIfsImages.length;
-
-      this.currentLammaMolochIfsImage =
-        this.lammaMolochIfsImages[this.currentLammaMolochIfsIndex];
-    }, this.lammaMolochIfsAnimationSpeed);
-  }
-
-  startLammaWrfIfsAnimation(): void {
-    if (!this.lammaWrfIfsImages.length) {
-      return;
-    }
-
-    this.stopLammaWrfIfsAnimation();
-
-    this.lammaWrfIfsInterval = setInterval(() => {
-      this.currentLammaWrfIfsIndex =
-        (this.currentLammaWrfIfsIndex + 1) % this.lammaWrfIfsImages.length;
-
-      this.currentLammaWrfIfsImage =
-        this.lammaWrfIfsImages[this.currentLammaWrfIfsIndex];
-    }, this.lammaWrfIfsAnimationSpeed);
-  }
-
-  startLammaMolochIfs850Animation(): void {
-    if (!this.lammaMolochIfs850Images.length) {
-      return;
-    }
-
-    this.stopLammaMolochIfs850Animation();
-
-    this.lammaMolochIfs850Interval = setInterval(() => {
-      this.currentLammaMolochIfs850Index =
-        (this.currentLammaMolochIfs850Index + 1) % this.lammaMolochIfs850Images.length;
-
-      this.currentLammaMolochIfs850Image =
-        this.lammaMolochIfs850Images[this.currentLammaMolochIfs850Index];
-    }, this.lammaMolochIfs850AnimationSpeed);
-  }
-
-  stopCapeAnimation(): void {
-    if (this.capeInterval) {
-      clearInterval(this.capeInterval);
-      this.capeInterval = null;
-    }
-  }
-
-  stopLammaMolochIfsAnimation(): void {
-    if (this.lammaMolochIfsInterval) {
-      clearInterval(this.lammaMolochIfsInterval);
-      this.lammaMolochIfsInterval = null;
-    }
-  }
-
-  stopLammaMolochGfsAnimation(): void {
-    if (this.lammaMolochGfsInterval) {
-      clearInterval(this.lammaMolochGfsInterval);
-      this.lammaMolochGfsInterval = null;
-    }
-  }
-
-  stopDustAnimation(): void {
-    if (this.dustInterval) {
-      clearInterval(this.dustInterval);
-      this.dustInterval = null;
-    }
-  }
-
-  stopLammaWrfIfsAnimation(): void {
-    if (this.lammaWrfIfsInterval) {
-      clearInterval(this.lammaWrfIfsInterval);
-      this.lammaWrfIfsInterval = null;
-    }
-  }
-
-  stopLammaMolochIfs850Animation(): void {
-    if (this.lammaMolochIfs850Interval) {
-      clearInterval(this.lammaMolochIfs850Interval);
-      this.lammaMolochIfs850Interval = null;
-    }
-  }
-
-  nextCapeImage(): void {
-    if (!this.capeImages.length) {
-      return;
-    }
-
-    this.currentCapeIndex = (this.currentCapeIndex + 1) % this.capeImages.length;
-    this.currentCapeImage = this.capeImages[this.currentCapeIndex];
-  }
-
-  nextDustImage(): void {
-    if (!this.dustImages.length) {
-      return;
-    }
-
-    this.currentDustIndex =
-      (this.currentDustIndex + 1) % this.dustImages.length;
-
-    this.currentDustImage =
-      this.dustImages[this.currentDustIndex];
-  }
-
-  nextLammaMolochGfsImage(): void {
-    if (!this.lammaMolochGfsImages.length) {
-      return;
-    }
-
-    this.currentLammaMolochGfsIndex =
-      (this.currentLammaMolochGfsIndex + 1) % this.lammaMolochGfsImages.length;
-
-    this.currentLammaMolochGfsImage =
-      this.lammaMolochGfsImages[this.currentLammaMolochGfsIndex];
-  }
-
-  nextLammaMolochIfsImage(): void {
-    if (!this.lammaMolochIfsImages.length) {
-      return;
-    }
-
-    this.currentLammaMolochIfsIndex =
-      (this.currentLammaMolochIfsIndex + 1) % this.lammaMolochIfsImages.length;
-
-    this.currentLammaMolochIfsImage =
-      this.lammaMolochIfsImages[this.currentLammaMolochIfsIndex];
-  }
-
-  nextLammaWrfIfsImage(): void {
-    if (!this.lammaWrfIfsImages.length) {
-      return;
-    }
-
-    this.currentLammaWrfIfsIndex =
-      (this.currentLammaWrfIfsIndex + 1) % this.lammaWrfIfsImages.length;
-
-    this.currentLammaWrfIfsImage =
-      this.lammaWrfIfsImages[this.currentLammaWrfIfsIndex];
-  }
-
-  nextLammaMolochIfs850Image(): void {
-    if (!this.lammaMolochIfs850Images.length) {
-      return;
-    }
-
-    this.currentLammaMolochIfs850Index =
-      (this.currentLammaMolochIfs850Index + 1) % this.lammaMolochIfs850Images.length;
-
-    this.currentLammaMolochIfs850Image =
-      this.lammaMolochIfs850Images[this.currentLammaMolochIfs850Index];
-  }
-
-  prevCapeImage(): void {
-    if (!this.capeImages.length) {
-      return;
-    }
-
-    this.currentCapeIndex = (this.currentCapeIndex - 1 + this.capeImages.length) % this.capeImages.length;
-    this.currentCapeImage = this.capeImages[this.currentCapeIndex];
-  }
-
-  prevDustImage(): void {
-    if (!this.dustImages.length) {
-      return;
-    }
-
-    this.currentDustIndex =
-      (this.currentDustIndex - 1 + this.dustImages.length) % this.dustImages.length;
-
-    this.currentDustImage =
-      this.dustImages[this.currentDustIndex];
-  }
-
-  prevLammaMolochGfsImage(): void {
-    if (!this.lammaMolochGfsImages.length) {
-      return;
-    }
-
-    this.currentLammaMolochGfsIndex =
-      (this.currentLammaMolochGfsIndex - 1 + this.lammaMolochGfsImages.length) % this.lammaMolochGfsImages.length;
-
-    this.currentLammaMolochGfsImage =
-      this.lammaMolochGfsImages[this.currentLammaMolochGfsIndex];
-  }
-
-  prevLammaMolochIfsImage(): void {
-    if (!this.lammaMolochIfsImages.length) {
-      return;
-    }
-
-    this.currentLammaMolochIfsIndex =
-      (this.currentLammaMolochIfsIndex - 1 + this.lammaMolochIfsImages.length) % this.lammaMolochIfsImages.length;
-
-    this.currentLammaMolochIfsImage =
-      this.lammaMolochIfsImages[this.currentLammaMolochIfsIndex];
-  }
-
-  prevLammaWrfIfsImage(): void {
-    if (!this.lammaWrfIfsImages.length) {
-      return;
-    }
-
-    this.currentLammaWrfIfsIndex =
-      (this.currentLammaWrfIfsIndex - 1 + this.lammaWrfIfsImages.length) % this.lammaWrfIfsImages.length;
-
-    this.currentLammaWrfIfsImage =
-      this.lammaWrfIfsImages[this.currentLammaWrfIfsIndex];
-  }
-
-  prevLammaMolochIfs850Image(): void {
-    if (!this.lammaMolochIfs850Images.length) {
-      return;
-    }
-
-    this.currentLammaMolochIfs850Index =
-      (this.currentLammaMolochIfs850Index - 1 + this.lammaMolochIfs850Images.length) % this.lammaMolochIfs850Images.length;
-
-    this.currentLammaMolochIfs850Image =
-      this.lammaMolochIfs850Images[this.currentLammaMolochIfs850Index];
-  }
-
-  onImageLoad(): void {
-    this.imageLoader = false;
-  }
-
-  onImageCapeError(): void {
-    this.imageLoader = false;
-    this.stopCapeAnimation();
-  }
-
-  onImageDustError(): void {
-    this.imageLoader = false;
-    this.stopDustAnimation();
-  }
-
-  onImageLammaMolochGfsError(): void {
-    this.imageLoader = false;
-    this.stopLammaMolochGfsAnimation();
-  }
-
-  onImageLammaMolochIfsError(): void {
-    this.imageLoader = false;
-    this.stopLammaMolochIfsAnimation();
-  }
-
-  onImageLammaWrfIfsError(): void {
-    this.stopLammaWrfIfsAnimation();
-  }
-
-  onImageLammaMolochIfs850Error(): void {
-    this.stopLammaMolochIfs850Animation();
-  }
-
-  preloadImages(images: string[]): void {
-    images.forEach(src => {
-      const img = new Image();
-      img.src = src;
-    });
-  }
+  );
+}
+this.currentLammaMolochGfsImage = '';
+this.currentLammaMolochGfsIndex = 0;
+}
+
+buildLammaMolochIfsImages(): void {
+  this.lammaMolochIfsImages = [];
+
+  for (let i = 1; i <= 25; i++) {
+  this.lammaMolochIfsImages.push(
+    `https://www.lamma.toscana.it/models/mol01ecm/last/pcp3h.z2.${i}.png`
+  );
+}
+this.currentLammaMolochIfsImage = '';
+this.currentLammaMolochIfsIndex = 0;
+}
+
+buildLammaWrfIfsImages(): void {
+  this.lammaWrfIfsImages = [];
+
+  for (let i = 1; i <= 25; i++) {
+  this.lammaWrfIfsImages.push(
+    `https://www.lamma.toscana.it/models/wrf03ecm/last/pcp3h.z2.${i}.png`
+  );
+}
+this.currentLammaWrfIfsImage = '';
+this.currentLammaWrfIfsIndex = 0;
+}
+
+buildLammaMolochIfs850Images(): void {
+  this.lammaMolochIfs850Images = [];
+
+  for (let i = 1; i <= 25; i++) {
+  this.lammaMolochIfs850Images.push(
+    `https://www.lamma.toscana.it/models/mol01ecm/last/zt850.z2.${i}.png`
+  );
+}
+this.currentLammaMolochIfs850Image = '';
+this.currentLammaMolochIfs850Index = 0;
+}
+
+startCapeAnimation(): void {
+  if (!this.capeImages.length) {
+  return;
+}
+
+this.stopCapeAnimation();
+
+this.capeInterval = setInterval(() => {
+  this.currentCapeIndex = (this.currentCapeIndex + 1) % this.capeImages.length;
+  this.currentCapeImage = this.capeImages[this.currentCapeIndex];
+}, this.animationSpeed);
+}
+
+startDustAnimation(): void {
+  if (!this.dustImages.length) {
+  return;
+}
+
+this.stopDustAnimation();
+
+this.dustInterval = setInterval(() => {
+  this.currentDustIndex =
+    (this.currentDustIndex + 1) % this.dustImages.length;
+
+  this.currentDustImage =
+    this.dustImages[this.currentDustIndex];
+}, this.dustAnimationSpeed);
+}
+
+startLammaMolochGfsAnimation(): void {
+  if (!this.lammaMolochGfsImages.length) {
+  return;
+}
+
+this.stopLammaMolochGfsAnimation();
+
+this.lammaMolochGfsInterval = setInterval(() => {
+  this.currentLammaMolochGfsIndex =
+    (this.currentLammaMolochGfsIndex + 1) % this.lammaMolochGfsImages.length;
+
+  this.currentLammaMolochGfsImage =
+    this.lammaMolochGfsImages[this.currentLammaMolochGfsIndex];
+}, this.lammaMolochGfsAnimationSpeed);
+}
+
+startLammaMolochIfsAnimation(): void {
+  if (!this.lammaMolochIfsImages.length) {
+  return;
+}
+
+this.stopLammaMolochIfsAnimation();
+
+this.lammaMolochIfsInterval = setInterval(() => {
+  this.currentLammaMolochIfsIndex =
+    (this.currentLammaMolochIfsIndex + 1) % this.lammaMolochIfsImages.length;
+
+  this.currentLammaMolochIfsImage =
+    this.lammaMolochIfsImages[this.currentLammaMolochIfsIndex];
+}, this.lammaMolochIfsAnimationSpeed);
+}
+
+startLammaWrfIfsAnimation(): void {
+  if (!this.lammaWrfIfsImages.length) {
+  return;
+}
+
+this.stopLammaWrfIfsAnimation();
+
+this.lammaWrfIfsInterval = setInterval(() => {
+  this.currentLammaWrfIfsIndex =
+    (this.currentLammaWrfIfsIndex + 1) % this.lammaWrfIfsImages.length;
+
+  this.currentLammaWrfIfsImage =
+    this.lammaWrfIfsImages[this.currentLammaWrfIfsIndex];
+}, this.lammaWrfIfsAnimationSpeed);
+}
+
+startLammaMolochIfs850Animation(): void {
+  if (!this.lammaMolochIfs850Images.length) {
+  return;
+}
+
+this.stopLammaMolochIfs850Animation();
+
+this.lammaMolochIfs850Interval = setInterval(() => {
+  this.currentLammaMolochIfs850Index =
+    (this.currentLammaMolochIfs850Index + 1) % this.lammaMolochIfs850Images.length;
+
+  this.currentLammaMolochIfs850Image =
+    this.lammaMolochIfs850Images[this.currentLammaMolochIfs850Index];
+}, this.lammaMolochIfs850AnimationSpeed);
+}
+
+stopCapeAnimation(): void {
+  if (this.capeInterval) {
+  clearInterval(this.capeInterval);
+  this.capeInterval = null;
+}
+}
+
+stopLammaMolochIfsAnimation(): void {
+  if (this.lammaMolochIfsInterval) {
+  clearInterval(this.lammaMolochIfsInterval);
+  this.lammaMolochIfsInterval = null;
+}
+}
+
+stopLammaMolochGfsAnimation(): void {
+  if (this.lammaMolochGfsInterval) {
+  clearInterval(this.lammaMolochGfsInterval);
+  this.lammaMolochGfsInterval = null;
+}
+}
+
+stopDustAnimation(): void {
+  if (this.dustInterval) {
+  clearInterval(this.dustInterval);
+  this.dustInterval = null;
+}
+}
+
+stopLammaWrfIfsAnimation(): void {
+  if (this.lammaWrfIfsInterval) {
+  clearInterval(this.lammaWrfIfsInterval);
+  this.lammaWrfIfsInterval = null;
+}
+}
+
+stopLammaMolochIfs850Animation(): void {
+  if (this.lammaMolochIfs850Interval) {
+  clearInterval(this.lammaMolochIfs850Interval);
+  this.lammaMolochIfs850Interval = null;
+}
+}
+
+nextCapeImage(): void {
+  if (!this.capeImages.length) {
+  return;
+}
+
+this.currentCapeIndex = (this.currentCapeIndex + 1) % this.capeImages.length;
+this.currentCapeImage = this.capeImages[this.currentCapeIndex];
+}
+
+nextDustImage(): void {
+  if (!this.dustImages.length) {
+  return;
+}
+
+this.currentDustIndex =
+  (this.currentDustIndex + 1) % this.dustImages.length;
+
+this.currentDustImage =
+  this.dustImages[this.currentDustIndex];
+}
+
+nextLammaMolochGfsImage(): void {
+  if (!this.lammaMolochGfsImages.length) {
+  return;
+}
+
+this.currentLammaMolochGfsIndex =
+  (this.currentLammaMolochGfsIndex + 1) % this.lammaMolochGfsImages.length;
+
+this.currentLammaMolochGfsImage =
+  this.lammaMolochGfsImages[this.currentLammaMolochGfsIndex];
+}
+
+nextLammaMolochIfsImage(): void {
+  if (!this.lammaMolochIfsImages.length) {
+  return;
+}
+
+this.currentLammaMolochIfsIndex =
+  (this.currentLammaMolochIfsIndex + 1) % this.lammaMolochIfsImages.length;
+
+this.currentLammaMolochIfsImage =
+  this.lammaMolochIfsImages[this.currentLammaMolochIfsIndex];
+}
+
+nextLammaWrfIfsImage(): void {
+  if (!this.lammaWrfIfsImages.length) {
+  return;
+}
+
+this.currentLammaWrfIfsIndex =
+  (this.currentLammaWrfIfsIndex + 1) % this.lammaWrfIfsImages.length;
+
+this.currentLammaWrfIfsImage =
+  this.lammaWrfIfsImages[this.currentLammaWrfIfsIndex];
+}
+
+nextLammaMolochIfs850Image(): void {
+  if (!this.lammaMolochIfs850Images.length) {
+  return;
+}
+
+this.currentLammaMolochIfs850Index =
+  (this.currentLammaMolochIfs850Index + 1) % this.lammaMolochIfs850Images.length;
+
+this.currentLammaMolochIfs850Image =
+  this.lammaMolochIfs850Images[this.currentLammaMolochIfs850Index];
+}
+
+prevCapeImage(): void {
+  if (!this.capeImages.length) {
+  return;
+}
+
+this.currentCapeIndex = (this.currentCapeIndex - 1 + this.capeImages.length) % this.capeImages.length;
+this.currentCapeImage = this.capeImages[this.currentCapeIndex];
+}
+
+prevDustImage(): void {
+  if (!this.dustImages.length) {
+  return;
+}
+
+this.currentDustIndex =
+  (this.currentDustIndex - 1 + this.dustImages.length) % this.dustImages.length;
+
+this.currentDustImage =
+  this.dustImages[this.currentDustIndex];
+}
+
+prevLammaMolochGfsImage(): void {
+  if (!this.lammaMolochGfsImages.length) {
+  return;
+}
+
+this.currentLammaMolochGfsIndex =
+  (this.currentLammaMolochGfsIndex - 1 + this.lammaMolochGfsImages.length) % this.lammaMolochGfsImages.length;
+
+this.currentLammaMolochGfsImage =
+  this.lammaMolochGfsImages[this.currentLammaMolochGfsIndex];
+}
+
+prevLammaMolochIfsImage(): void {
+  if (!this.lammaMolochIfsImages.length) {
+  return;
+}
+
+this.currentLammaMolochIfsIndex =
+  (this.currentLammaMolochIfsIndex - 1 + this.lammaMolochIfsImages.length) % this.lammaMolochIfsImages.length;
+
+this.currentLammaMolochIfsImage =
+  this.lammaMolochIfsImages[this.currentLammaMolochIfsIndex];
+}
+
+prevLammaWrfIfsImage(): void {
+  if (!this.lammaWrfIfsImages.length) {
+  return;
+}
+
+this.currentLammaWrfIfsIndex =
+  (this.currentLammaWrfIfsIndex - 1 + this.lammaWrfIfsImages.length) % this.lammaWrfIfsImages.length;
+
+this.currentLammaWrfIfsImage =
+  this.lammaWrfIfsImages[this.currentLammaWrfIfsIndex];
+}
+
+prevLammaMolochIfs850Image(): void {
+  if (!this.lammaMolochIfs850Images.length) {
+  return;
+}
+
+this.currentLammaMolochIfs850Index =
+  (this.currentLammaMolochIfs850Index - 1 + this.lammaMolochIfs850Images.length) % this.lammaMolochIfs850Images.length;
+
+this.currentLammaMolochIfs850Image =
+  this.lammaMolochIfs850Images[this.currentLammaMolochIfs850Index];
+}
+
+onImageLoad(): void {
+  this.imageLoader = false;
+}
+
+onImageCapeError(): void {
+  this.stopCapeAnimation();
+  this.currentCapeImage = '';
+  this.statoAnimazioni['cape'] = 'non-disponibile';
+}
+
+onImageDustError(): void {
+  this.stopDustAnimation();
+  this.currentDustImage = '';
+  this.statoAnimazioni['dust'] = 'non-disponibile';
+}
+
+onImageLammaMolochGfsError(): void {
+  this.stopLammaMolochGfsAnimation();
+  this.currentLammaMolochGfsImage = '';
+  this.statoAnimazioni['lammaMolochGfs'] = 'non-disponibile';
+}
+
+onImageLammaMolochIfsError(): void {
+  this.stopLammaMolochIfsAnimation();
+  this.currentLammaMolochIfsImage = '';
+  this.statoAnimazioni['lammaMolochIfs'] = 'non-disponibile';
+}
+
+onImageLammaWrfIfsError(): void {
+  this.stopLammaWrfIfsAnimation();
+  this.currentLammaWrfIfsImage = '';
+  this.statoAnimazioni['lammaWrfIfs'] = 'non-disponibile';
+}
+
+onImageLammaMolochIfs850Error(): void {
+  this.stopLammaMolochIfs850Animation();
+  this.currentLammaMolochIfs850Image = '';
+  this.statoAnimazioni['lammaMolochIfs850'] = 'non-disponibile';
+}
+
 
 }

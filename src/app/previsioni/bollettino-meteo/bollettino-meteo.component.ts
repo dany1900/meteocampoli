@@ -74,6 +74,10 @@ export class BollettinoMeteoComponent implements OnInit {
   bollettino: BollettinoLazioResponse | null = null;
   pdfAnteprimaUrl: SafeResourceUrl | null = null;
 
+  // Immagine della prima pagina, generata con PDF.js: funziona anche su Android.
+  mappaPrimaPaginaUrl: string | null = null;
+  mappaAnteprimaErrore = '';
+
   allerteCaricamento = false;
   allerteErrore = '';
   allerteZonaG: RispostaAllerteZonaG | null = null;
@@ -309,6 +313,34 @@ export class BollettinoMeteoComponent implements OnInit {
         console.log('[Zona G] Righe ricostruite:', righe.length);
         // Per capire eventuali variazioni di formato della tabella.
         console.log('[Zona G] Anteprima righe PDF:', righe.slice(0, 35));
+
+        // Riutilizza la stessa pagina gia scaricata: niente nuova chiamata HTTP.
+        // Un errore grafico non deve impedire di leggere i livelli di allerta.
+        try {
+          const viewportBase = pagina.getViewport({ scale: 1 });
+          const scala = Math.min(2, 1200 / viewportBase.width);
+          const viewport = pagina.getViewport({ scale: scala });
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.ceil(viewport.width);
+          canvas.height = Math.ceil(viewport.height);
+          const contesto = canvas.getContext('2d', { alpha: false });
+          if (!contesto) {
+            throw new Error('Canvas 2D non supportato dal browser.');
+          }
+          await pagina.render({ canvasContext: contesto, viewport }).promise;
+          if (richiesta === this.richiestaPdf) {
+            this.mappaPrimaPaginaUrl = canvas.toDataURL('image/jpeg', 0.88);
+            this.mappaAnteprimaErrore = '';
+          }
+          canvas.width = 0;
+          canvas.height = 0;
+        } catch (erroreAnteprima) {
+          console.warn('[Zona G] Anteprima grafica PDF non disponibile:', erroreAnteprima);
+          if (richiesta === this.richiestaPdf) {
+            this.mappaAnteprimaErrore =
+              'Non è stato possibile generare l’anteprima: apri il PDF ufficiale.';
+          }
+        }
       } finally {
         await documento.destroy();
       }
@@ -360,6 +392,8 @@ export class BollettinoMeteoComponent implements OnInit {
     this.bollettinoErrore = '';
     this.bollettino = null;
     this.pdfAnteprimaUrl = null;
+    this.mappaPrimaPaginaUrl = null;
+    this.mappaAnteprimaErrore = '';
 
     this.http.get<BollettinoLazioResponse>(this.urlApiBollettino, {
       params: { _: Date.now().toString() }

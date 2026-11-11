@@ -64,3 +64,238 @@ img.zoomed {
 .forecast-note p {
   margin: 6px 0;
 }
+
+/* Da aggiungere in fondo a previsioni.component.css */
+.forecast-animation-status {
+  width: min(95%, 820px);
+  margin: 12px auto;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  border: 1px solid #c9dced;
+  background: rgba(255,255,255,.82);
+  color: #244868;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  text-align: center;
+}
+.forecast-animation-unavailable {
+  color: #72552b;
+  background: rgba(255,248,232,.9);
+  border-color: #ead9b3;
+}
+
+/* Aggiungere IN FONDO al previsioni.component.css già esistente.
+   Stili locali: non modificano altri widget o animazioni. */
+:host .mc-windy-section {
+  width: 95%;
+  max-width: 1120px;
+  margin: 32px auto 28px;
+  box-sizing: border-box;
+  text-align: center;
+}
+:host .mc-windy-description {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #52718a;
+  margin: 8px auto 17px;
+}
+:host .mc-windy-card {
+  border: 1px solid #cbddeb;
+  border-radius: 15px;
+  background: #f5faff;
+  box-shadow: 0 5px 17px rgba(32, 82, 120, 0.10);
+  padding: 12px;
+  overflow: hidden;
+}
+:host .mc-windy-forecast-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  border-radius: 8px;
+}
+:host .mc-windy-forecast-scroll iframe {
+  display: block;
+  border: 0;
+  width: 100%;
+  min-width: 650px;
+  height: 240px;
+}
+:host .mc-windy-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 4px 1px;
+  font-size: 14px;
+  color: #59758d;
+}
+:host .mc-windy-footer a {
+  color: #1769aa;
+  font-weight: 700;
+  text-decoration: underline;
+}
+:host .mc-windy-map-details {
+  margin-top: 16px;
+  text-align: left;
+}
+:host .mc-windy-map-details summary {
+  border: 1px solid #cbddeb;
+  border-radius: 10px;
+  background: #edf6fd;
+  color: #1769aa;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 13px 16px;
+  cursor: pointer;
+}
+:host .mc-windy-map-card { margin-top: 12px; }
+:host .mc-windy-map-card iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  :host .mc-windy-section { width: 96%; margin: 25px auto 20px; }
+  :host .mc-windy-description { font-size: 16px; }
+  :host .mc-windy-card { padding: 7px; }
+  :host .mc-windy-forecast-scroll iframe { height: 215px; }
+  :host .mc-windy-map-card iframe { height: 360px; }
+  :host .mc-windy-footer { font-size: 14px; padding: 10px 5px; }
+}
+
+/* Aggiungere IN FONDO al previsioni.component.css già esistente.
+   Stili locali: non modificano altri widget o animazioni. */
+:host .mc-windy-section {
+  width: 95%;
+  max-width: 1120px;
+  margin: 32px auto 28px;
+  box-sizing: border-box;
+  text-align: center;
+}
+:host .mc-windy-description {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #52718a;
+  margin: 8px auto 17px;
+}
+:host .mc-windy-card {
+  border: 1px solid #cbddeb;
+  border-radius: 15px;
+  background: #f5faff;
+  box-shadow: 0 5px 17px rgba(32, 82, 120, 0.10);
+  padding: 12px;
+  overflow: hidden;
+}
+:host .mc-windy-forecast-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  border-radius: 8px;
+}
+:host .mc-windy-forecast-scroll iframe {
+  display: block;
+  border: 0;
+  width: 100%;
+  min-width: 650px;
+  height: 240px;
+}
+:host .mc-windy-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 4px 1px;
+  font-size: 14px;
+  color: #59758d;
+}
+:host .mc-windy-footer a {
+  color: #1769aa;
+  font-weight: 700;
+  text-decoration: underline;
+}
+:host .mc-windy-map-details {
+  margin-top: 16px;
+  text-align: left;
+}
+:host .mc-windy-map-details summary {
+  border: 1px solid #cbddeb;
+  border-radius: 10px;
+  background: #edf6fd;
+  color: #1769aa;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 13px 16px;
+  cursor: pointer;
+}
+:host .mc-windy-map-card { margin-top: 12px; }
+:host .mc-windy-map-card iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  :host .mc-windy-section { width: 96%; margin: 25px auto 20px; }
+  :host .mc-windy-description { font-size: 16px; }
+  :host .mc-windy-card { padding: 7px; }
+  :host .mc-windy-forecast-scroll iframe { height: 215px; }
+  :host .mc-windy-map-card iframe { height: 360px; }
+  :host .mc-windy-footer { font-size: 14px; padding: 10px 5px; }
+}
+
+/* Meteo2 - stili dedicati, senza interferire con altri widget */
+:host .mc-meteo2-section {
+  width: 95%;
+  max-width: 1120px;
+  margin: 32px auto 28px;
+  box-sizing: border-box;
+  text-align: center;
+}
+:host .mc-meteo2-description {
+  font-size: 16px;
+  line-height: 1.55;
+  color: #52718a;
+  margin: 8px auto 17px;
+}
+:host .mc-meteo2-card {
+  border: 1px solid #cbddeb;
+  border-radius: 15px;
+  background: #f5faff;
+  box-shadow: 0 5px 17px rgba(32,82,120,.10);
+  padding: 12px;
+  overflow: hidden;
+}
+:host .mc-meteo2-card iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 290px;
+  border: 0;
+  background: #fff;
+  border-radius: 8px;
+}
+:host .mc-meteo2-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 4px 2px;
+  color: #59758d;
+  font-size: 14px;
+}
+:host .mc-meteo2-footer a {color: #1769aa; font-weight: 700; text-decoration: underline;}
+@media (max-width: 768px) {
+  :host .mc-meteo2-section { width: 96%; margin: 24px auto 20px; }
+  :host .mc-meteo2-card { padding: 7px; }
+  :host .mc-meteo2-card iframe { height: 310px; }
+  :host .mc-meteo2-footer { justify-content: center; font-size: 14px; }
+}
+
+

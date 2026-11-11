@@ -543,3 +543,36 @@ html body .bm-page .bm-alert-risk .bm-alert-risk-level.mc-card-title {
   .bm-pdf-viewer { min-height: 520px; height: 70vh; }
   .bm-map-section .bm-main-card { padding: 10px; }
 }
+
+/* Bollettino Lazio: visualizzazione delle mappe ufficiali su smartphone.
+   Incollare IN FONDO al bollettino-meteo.component.css esistente. */
+:host .bm-pdf-desktop { display: block; }
+:host .bm-pdf-mobile { display: none; }
+
+@media screen and (max-width: 768px) {
+  :host .bm-pdf-desktop { display: none !important; }
+  :host .bm-pdf-mobile { display: block !important; width: 100%; min-width: 0; }
+  :host .bm-pdf-mobile-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #d2e3ee;
+    border-radius: 9px;
+    box-sizing: border-box;
+    background: #fff;
+  }
+  :host .bm-pdf-status {
+    text-align: center;
+    padding: 28px 12px;
+    border-radius: 9px;
+    background: #f1f7fc;
+    color: #466177;
+  }
+  :host .bm-map-section .bm-main-card {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+}

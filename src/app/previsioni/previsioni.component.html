@@ -12,6 +12,7 @@
        src="https://my.meteoblue.com/visimage/meteogram_web_hd?look=KILOMETER_PER_HOUR%2CCELSIUS%2CMILLIMETER&apikey=5838a18e295d&temperature=C&windspeed=kmh&precipitationamount=mm&winddirection=3char&city=Campoli+Appennino&iso2=it&lat=41.7354&lon=13.6833&asl=650&tz=Europe%2FRome&lang=it&sig=1be2d034299438e91d58e3781c53787f"
        alt="meteogramma" rel="noreferrer"
        (load)="imageLoader = false;"
+       (error)="imageLoader = false;"
        (click)="toggleClass($event,'zoomed')"/><br/>
 
   <br>
@@ -115,7 +116,16 @@
 
   <div class="cape-wrapper">
 
+    <div *ngIf="statoAnimazioni['cape'] === 'caricamento'"
+         class="forecast-animation-status" role="status">
+      Verifica delle immagini disponibili in corso...
+    </div>
+    <div *ngIf="statoAnimazioni['cape'] === 'non-disponibile'"
+         class="forecast-animation-status forecast-animation-unavailable" role="status">
+      Immagini temporaneamente non disponibili dalla fonte.
+    </div>
     <img class="previsioni-no-heigth"
+         *ngIf="currentCapeImage"
          width="95%"
          height="797"
          [src]="currentCapeImage"
@@ -156,7 +166,16 @@
   </details>
 
   <div class="cape-wrapper">
+    <div *ngIf="statoAnimazioni['lammaWrfIfs'] === 'caricamento'"
+         class="forecast-animation-status" role="status">
+      Verifica delle immagini disponibili in corso...
+    </div>
+    <div *ngIf="statoAnimazioni['lammaWrfIfs'] === 'non-disponibile'"
+         class="forecast-animation-status forecast-animation-unavailable" role="status">
+      Immagini temporaneamente non disponibili dalla fonte.
+    </div>
     <img class="previsioni-no-heigth"
+         *ngIf="currentLammaWrfIfsImage"
          width="95%"
          height="797"
          [src]="currentLammaWrfIfsImage"
@@ -197,7 +216,16 @@
     </p>
   </details>
   <div class="cape-wrapper">
+    <div *ngIf="statoAnimazioni['lammaMolochGfs'] === 'caricamento'"
+         class="forecast-animation-status" role="status">
+      Verifica delle immagini disponibili in corso...
+    </div>
+    <div *ngIf="statoAnimazioni['lammaMolochGfs'] === 'non-disponibile'"
+         class="forecast-animation-status forecast-animation-unavailable" role="status">
+      Immagini temporaneamente non disponibili dalla fonte.
+    </div>
     <img class="previsioni-no-heigth"
+         *ngIf="currentLammaMolochGfsImage"
          width="95%"
          height="797"
          [src]="currentLammaMolochGfsImage"
@@ -240,7 +268,16 @@
   </details>
 
   <div class="cape-wrapper">
+    <div *ngIf="statoAnimazioni['lammaMolochIfs'] === 'caricamento'"
+         class="forecast-animation-status" role="status">
+      Verifica delle immagini disponibili in corso...
+    </div>
+    <div *ngIf="statoAnimazioni['lammaMolochIfs'] === 'non-disponibile'"
+         class="forecast-animation-status forecast-animation-unavailable" role="status">
+      Immagini temporaneamente non disponibili dalla fonte.
+    </div>
     <img class="previsioni-no-heigth"
+         *ngIf="currentLammaMolochIfsImage"
          width="95%"
          height="797"
          [src]="currentLammaMolochIfsImage"
@@ -283,7 +320,16 @@
   </details>
 
   <div class="cape-wrapper">
+    <div *ngIf="statoAnimazioni['lammaMolochIfs850'] === 'caricamento'"
+         class="forecast-animation-status" role="status">
+      Verifica delle immagini disponibili in corso...
+    </div>
+    <div *ngIf="statoAnimazioni['lammaMolochIfs850'] === 'non-disponibile'"
+         class="forecast-animation-status forecast-animation-unavailable" role="status">
+      Immagini temporaneamente non disponibili dalla fonte.
+    </div>
     <img class="previsioni-no-heigth"
+         *ngIf="currentLammaMolochIfs850Image"
          width="95%"
          height="797"
          [src]="currentLammaMolochIfs850Image"
@@ -327,7 +373,16 @@
   <em class="title-micro-section">Animazione Polveri Sahariane 48H - Europa</em>
 
   <div class="cape-wrapper">
+    <div *ngIf="statoAnimazioni['dust'] === 'caricamento'"
+         class="forecast-animation-status" role="status">
+      Verifica delle immagini disponibili in corso...
+    </div>
+    <div *ngIf="statoAnimazioni['dust'] === 'non-disponibile'"
+         class="forecast-animation-status forecast-animation-unavailable" role="status">
+      Immagini temporaneamente non disponibili dalla fonte.
+    </div>
     <img class="previsioni-no-heigth"
+         *ngIf="currentDustImage"
          width="95%"
          height="797"
          [src]="currentDustImage"
@@ -376,6 +431,58 @@
   </div>
   <br>
 
+  <!-- WIDGET METEO2 - CAMPOLI APPENNINO -->
+  <section class="mc-meteo2-section" aria-label="Previsioni Meteo2 Campoli Appennino">
+    <h2 class="title-micro-section">Previsioni Campoli Appennino - Meteo2</h2>
+    <div class="mc-meteo2-card">
+      <iframe
+        title="Previsioni Meteo2 Campoli Appennino"
+        src="https://www.meteo2.it/custom/widget/localita/widget.php?localita=campoli_appennino_lazio"
+        width="100%" height="290" frameborder="0" scrolling="no"
+        loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div class="mc-meteo2-footer">
+        <span>Fonte: Meteo2</span>
+        <a href="https://www.meteo2.it/meteo-campoli-appennino/"
+           target="_blank" rel="noopener noreferrer">Previsioni complete su Meteo2</a>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+
+  <!-- NUOVI WIDGET CAMPOLI APPENNINO: WINDY.COM -->
+  <section class="mc-windy-section" aria-label="Previsioni Windy Campoli Appennino">
+    <h2 class="title-micro-section">Previsioni orarie Campoli Appennino - Windy.com</h2>
+    <div class="mc-windy-card">
+      <div class="mc-windy-forecast-scroll">
+        <iframe
+          title="Previsioni orarie Windy.com Campoli Appennino"
+          src="https://embed.windy.com/embed.html?type=forecast&amp;location=coordinates&amp;detail=true&amp;detailLat=41.7354&amp;detailLon=13.6833&amp;metricTemp=default&amp;metricRain=default&amp;metricWind=default"
+          width="100%" height="240" frameborder="0"
+          loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen></iframe>
+      </div>
+      <div class="mc-windy-footer">
+        <span>Fonte: Windy.com - previsione modellistica</span>
+        <a href="https://www.windy.com/41.735/13.683?41.735,13.683,10"
+           target="_blank" rel="noopener noreferrer">Apri su Windy.com</a>
+      </div>
+    </div>
+
+    <details class="mc-windy-map-details">
+      <summary>Mostra anche la mappa meteo Windy su Campoli Appennino</summary>
+      <div class="mc-windy-card mc-windy-map-card">
+        <iframe
+          title="Mappa Windy.com Campoli Appennino"
+          src="https://embed.windy.com/embed.html?type=map&amp;location=coordinates&amp;metricRain=default&amp;metricTemp=default&amp;metricWind=default&amp;zoom=8&amp;overlay=rain&amp;product=ecmwf&amp;level=surface&amp;lat=41.7354&amp;lon=13.6833"
+          width="100%" height="460" frameborder="0"
+          loading="lazy" allowfullscreen></iframe>
+      </div>
+    </details>
+  </section>
+  <br>
+  <br>
+
   <h2 class="title-micro-section">Anomalie termiche ultimi 10 giorni</h2>
   <img class="previsioni-frame" width="95%" height="650" alt="anomalie termiche"
        src="https://www.cpc.ncep.noaa.gov/products/CFSv2/imagesInd3/glbT850MonInd1.gif"
@@ -387,7 +494,7 @@
   <em class="title-micro-section">Precisione Modelli - Confronto 30 giorni</em>
   <br>
   <img class="previsioni-no-heigth" width="95%" alt="confronto precisione modelli 30 giorni" rel="noreferrer"
-       src="https://www.emc.ncep.noaa.gov/users/verification/global/gfs/ops/grid2grid_all_models/images/acc_valid00Z_HGT_P500_fhr120_G002NHX.png"
+       src="https://www.emc.ncep.noaa.gov/users/verification/global/gfs/prod/atmos/headline/images/evs.global_det.acc.hgt_p500.last31days.timeseries_valid00z_f120.g004_nhem.png"
        (click)="toggleClass($event,'zoomed')"/>
   <br>
   <br>
@@ -420,4 +527,16 @@
     <img src="https://www.ilmeteo.it/cartine2/5.LAZ.png" alt="Meteo Lazio" width="315" height="315" border="0"
          rel="noreferrer"/>
   </a>
+
+  <br>
+  <br>
+  <h2 class="title-micro-section">Previsioni Meteo Italia Oggi</h2>
+  <a title="Meteo in Italia" href="/"><img src="https://www.meteo2.it/custom/widget/italia/meteo-italia-widget.php?giorno=0" width="95%"/></a>
+  <br>
+  <br>
+  <h2 class="title-micro-section">Previsioni Meteo Italia Domani</h2>
+  <a title="Meteo in Italia" href="/"><img src="https://www.meteo2.it/custom/widget/italia/meteo-italia-widget.php?giorno=1" width="95%"/></a>
+
+
+
 </div>

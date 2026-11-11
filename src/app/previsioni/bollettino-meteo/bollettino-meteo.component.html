@@ -2,13 +2,10 @@
 
 <div class="bm-page">
   <div class="bm-intro">
-    <p class="mc-intro-text">
-      Allerte meteo e bollettini ufficiali della Regione Lazio per Campoli Appennino,
-      Sora e la Zona G - Bacino del Liri.
-    </p>
+    <p class="mc-intro-text">Allerte meteo e bollettini ufficiali della Regione Lazio per Campoli Appennino, Sora e la Zona G - Bacino del Liri.</p>
   </div>
 
-  <!-- 1. UNICA SEZIONE PRINCIPALE: LIVELLI + DOCUMENTO -->
+  <!-- 1. LIVELLI + DOCUMENTO -->
   <section class="bm-section bm-alert-dashboard">
     <h2 class="title-micro-section">Allerta Meteo Zona G - Bacino del Liri</h2>
     <p class="bm-description mc-section-description">
@@ -66,7 +63,6 @@
                 (click)="caricaBollettino()">
           ↻ Aggiorna dati e documento
         </button>
-        <!-- Il link compare solo dopo la verifica del PDF da parte del PHP. -->
         <a *ngIf="documentoOdierno"
            class="bm-primary-link mc-action-text"
            [href]="bollettino?.urlPdf"
@@ -109,7 +105,7 @@
     </div>
   </section>
 
-  <!-- 2. LE MAPPE SONO NELLA PRIMA PAGINA DELLO STESSO PDF -->
+  <!-- 2. MAPPA PRIMA PAGINA PDF: IMMAGINE PDF.JS SU MOBILE, IFRAME DESKTOP -->
   <section class="bm-section bm-map-section">
     <h2 class="title-micro-section">Mappe Ufficiali delle Allerte nel Lazio</h2>
     <p class="bm-description mc-section-description">
@@ -123,14 +119,30 @@
           Mappa del bollettino precedente del {{ dataDocumentoFormattata }}.
           Il documento di oggi ({{ dataOdiernaItalia }}) non è ancora disponibile.
         </p>
-        <div class="bm-pdf-viewer">
+
+        <!-- Desktop: mantiene l'anteprima PDF esistente -->
+        <div class="bm-pdf-viewer bm-pdf-desktop">
           <iframe class="bm-pdf-frame" [src]="pdfAnteprimaUrl"
                   title="Prima pagina del bollettino Regione Lazio con mappe delle allerte di oggi e domani"
                   loading="lazy"></iframe>
         </div>
+
+        <!-- Mobile: PDF.js genera un'immagine reale della prima pagina -->
+        <div class="bm-pdf-mobile" aria-label="Prima pagina del bollettino ufficiale">
+          <div *ngIf="allerteCaricamento && !mappaPrimaPaginaUrl" class="bm-pdf-status mc-body-text" role="status">
+            Generazione dell'anteprima del bollettino in corso...
+          </div>
+          <img *ngIf="mappaPrimaPaginaUrl" class="bm-pdf-mobile-image"
+               [src]="mappaPrimaPaginaUrl"
+               alt="Prima pagina del bollettino ufficiale Regione Lazio: mappe allerte oggi e domani, tabelle delle zone A-G e legenda" />
+          <p *ngIf="!allerteCaricamento && !mappaPrimaPaginaUrl" class="bm-pdf-status mc-body-text">
+            {{ mappaAnteprimaErrore || 'Anteprima non disponibile. Apri il PDF ufficiale.' }}
+          </p>
+        </div>
+
         <p class="bm-legend-note mc-note-text">
-          Anteprima del PDF ufficiale. Alcuni browser mobili non mostrano
-          i PDF incorporati: utilizza il collegamento sottostante.
+          Prima pagina del documento ufficiale, adattata allo schermo.
+          Per leggere i dettagli utilizza anche il PDF originale.
         </p>
         <div class="bm-source">
           <a class="mc-action-text" [href]="bollettino?.urlPdf"
@@ -151,7 +163,7 @@
     </div>
   </section>
 
-  <!-- 3. LEGENDA E FONTI, SENZA RIPETERE IL BOLLETTINO -->
+  <!-- 3. LEGENDA E FONTI -->
   <section class="bm-section">
     <h2 class="title-micro-section">Legenda dei Livelli di Allerta</h2>
     <div class="bm-level-grid">

@@ -4,8 +4,6 @@
   <div class="nm-intro">
     <p class="mc-intro-text">Monitoraggio delle stazioni manuali Meteomont dei Carabinieri: altezza della neve,
       neve fresca nelle 24 ore, temperature minime e massime e data dell'ultima rilevazione.</p>
-    <p class="nm-note">I dati sono rilievi manuali e non misurazioni in tempo reale. Ogni scheda indica sempre
-      la data dell'osservazione. La quota altimetrica non è presente in questa API.</p>
   </div>
 
   <section class="nm-panel" aria-label="Selezione area geografica">
@@ -19,21 +17,60 @@
       </button>
     </div>
 
-    <div class="nm-controls">
-      <label class="nm-search-label" for="nm-cerca">Cerca località, comune o provincia
-        <input id="nm-cerca" type="search" placeholder="Es. Campo Catino, AQ, Gran Sasso..."
-               [value]="ricerca" (input)="ricerca = $any($event.target).value; aggiornaFiltri()" />
+
+    <!-- PRIMA RIGA: RICERCA E ORDINAMENTO -->
+    <div class="nm-controls nm-controls-main">
+
+      <label class="nm-search-label" for="nm-cerca">
+        Cerca località, comune o provincia
+
+        <input
+          id="nm-cerca"
+          type="search"
+          placeholder="Es. Campo Catino, AQ, Gran Sasso..."
+          [value]="ricerca"
+          (input)="ricerca = $any($event.target).value; aggiornaFiltri()" />
       </label>
-      <label class="nm-sort-label" for="nm-ordina">Ordina per
-        <select id="nm-ordina" [value]="ordinamento" (change)="ordinamento = $any($event.target).value; aggiornaFiltri()">
+
+      <label class="nm-sort-label" for="nm-ordina">
+        Ordina per
+
+        <select
+          id="nm-ordina"
+          [value]="ordinamento"
+          (change)="ordinamento = $any($event.target).value; aggiornaFiltri()">
+
           <option value="recenti">Rilievo più recente</option>
           <option value="neve">Più neve al suolo</option>
           <option value="nome">Nome località</option>
+
         </select>
       </label>
-      <label class="nm-check"><input type="checkbox" [checked]="soloConNeve" (change)="soloConNeve = $any($event.target).checked; aggiornaFiltri()" /> Solo con neve</label>
-      <label class="nm-check"><input type="checkbox" [checked]="soloRecenti" (change)="soloRecenti = $any($event.target).checked; aggiornaFiltri()" /> Solo dati recenti</label>
+
     </div>
+
+    <!-- SECONDA RIGA: FILTRI CHECKBOX -->
+    <div class="nm-controls nm-controls-filters">
+
+      <label class="nm-check">
+        <input
+          type="checkbox"
+          [checked]="soloConNeve"
+          (change)="soloConNeve = $any($event.target).checked; aggiornaFiltri()" />
+        Solo con neve
+      </label>
+
+      <label class="nm-check">
+        <input
+          type="checkbox"
+          [checked]="soloRecenti"
+          (change)="soloRecenti = $any($event.target).checked; aggiornaFiltri()" />
+        Solo dati recenti
+      </label>
+
+    </div>
+
+
   </section>
 
   <div *ngIf="caricamento" class="nm-info" role="status">Caricamento delle stazioni Meteomont...</div>
@@ -68,7 +105,7 @@
             <p>{{ stazione.comune }} <span *ngIf="stazione.provincia">({{ stazione.provincia }})</span></p>
           </div>
           <span class="nm-recency" [class.nm-recency-fresh]="eRecente(stazione)">
-            {{ eRecente(stazione) ? 'Rilievo recente' : 'Rilievo datato' }}
+            {{ eRecente(stazione) ? 'Recente' : 'Datato' }}
           </span>
         </header>
 
